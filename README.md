@@ -10,7 +10,7 @@ The goal of EncoCoin is to achieve a decentralized sustainable crypto currency w
 - Fast transactions featuring guaranteed zero confirmation transactions, we call it _SwiftX_.
 - Decentralized blockchain voting utilizing Masternode technology to form a DAO. The blockchain will distribute monthly treasury funds based on successful proposals submitted by the community and voted on by the DAO.
 
-More information at [encocoin.org](http://www.encocoin.org) Visit our ANN thread at [BitcoinTalk](http://www.bitcointalk.org/index.php?topic=1262920)
+More information at [encocoin.net](http://www.encocoin.net) Visit our ANN thread at [BitcoinTalk](https://bitcointalk.org/index.php?topic=5028776.0). Join the community at [PIVX Discord](https://discord.gg/JFnYdyv).
 
 ### Coin Specs
 <table>
