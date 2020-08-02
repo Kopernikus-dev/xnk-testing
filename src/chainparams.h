@@ -19,11 +19,9 @@
 
 typedef unsigned char MessageStartChars[MESSAGE_START_SIZE];
 
-class CDNSSeedData {
-public:
+struct CDNSSeedData {
     std::string name, host;
     bool supportsServiceBitsFiltering;
-    std::string getHost(uint64_t requiredServiceBits) const;
     CDNSSeedData(const std::string& strName, const std::string& strHost, bool supportsServiceBitsFilteringIn = false) : name(strName), host(strHost), supportsServiceBitsFiltering(supportsServiceBitsFilteringIn) {}
 };
 
