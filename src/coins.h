@@ -8,8 +8,8 @@
 #ifndef BITCOIN_COINS_H
 #define BITCOIN_COINS_H
 
-#include "memusage.h"
 #include "compressor.h"
+#include "memusage.h"
 #include "consensus/consensus.h"  // can be removed once policy/ established
 #include "script/standard.h"
 #include "serialize.h"
@@ -289,8 +289,7 @@ public:
     size_t DynamicMemoryUsage() const {
         size_t ret = memusage::DynamicUsage(vout);
         for(const CTxOut &out : vout) {
-            const std::vector<unsigned char> *script = &out.scriptPubKey;
-            ret += memusage::DynamicUsage(*script);
+            ret += memusage::DynamicUsage(*static_cast<const CScriptBase*>(&out.scriptPubKey));
         }
         return ret;
     }
