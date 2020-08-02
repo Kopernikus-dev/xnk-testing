@@ -108,6 +108,7 @@ QT_MOC_CPP = \
   qt/moc_walletmodel.cpp \
   qt/encocoin/moc_loadingdialog.cpp \
   qt/moc_zxnkcontroldialog.cpp \
+  qt/encocoin/moc_focuseddialog.cpp \
   qt/encocoin/moc_pwidget.cpp \
   qt/encocoin/moc_snackbar.cpp \
   qt/encocoin/moc_navmenuwidget.cpp \
@@ -231,6 +232,7 @@ BITCOIN_QT_H = \
   qt/winshutdownmonitor.h \
   qt/zxnkcontroldialog.h \
   qt/encocoin/pwidget.h \
+  qt/encocoin/focuseddialog.h \
   qt/encocoin/guitransactionsutils.h \
   qt/encocoin/snackbar.h \
   qt/encocoin/navmenuwidget.h \
@@ -558,6 +560,7 @@ BITCOIN_QT_WALLET_CPP = \
   qt/encocoin/loadingdialog.cpp \
   qt/zxnkcontroldialog.cpp \
   qt/encocoin/pwidget.cpp \
+  qt/encocoin/focuseddialog.cpp \
   qt/encocoin/guitransactionsutils.cpp \
   qt/encocoin/snackbar.cpp \
   qt/encocoin/navmenuwidget.cpp \

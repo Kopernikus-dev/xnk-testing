@@ -5,7 +5,7 @@
 #ifndef SENDCUSTOMFEEDIALOG_H
 #define SENDCUSTOMFEEDIALOG_H
 
-#include <QDialog>
+#include "qt/encocoin/focuseddialog.h"
 #include "amount.h"
 #include "qt/encocoin/snackbar.h"
 
@@ -16,7 +16,7 @@ namespace Ui {
 class SendCustomFeeDialog;
 }
 
-class SendCustomFeeDialog : public QDialog
+class SendCustomFeeDialog : public FocusedDialog
 {
     Q_OBJECT
 

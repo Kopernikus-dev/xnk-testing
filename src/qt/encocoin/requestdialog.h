@@ -5,10 +5,11 @@
 #ifndef REQUESTDIALOG_H
 #define REQUESTDIALOG_H
 
-#include <QDialog>
-#include <QPixmap>
-#include "walletmodel.h"
+#include "qt/encocoin/focuseddialog.h"
 #include "qt/encocoin/snackbar.h"
+#include "walletmodel.h"
+
+#include <QPixmap>
 
 class WalletModel;
 class EncoCoinGUI;
@@ -17,7 +18,7 @@ namespace Ui {
 class RequestDialog;
 }
 
-class RequestDialog : public QDialog
+class RequestDialog : public FocusedDialog
 {
     Q_OBJECT
 
@@ -31,7 +32,7 @@ public:
     int res = -1;
 
 private Q_SLOTS:
-    void onNextClicked();
+    void accept() override;
     void onCopyClicked();
     void onCopyUriClicked();
 

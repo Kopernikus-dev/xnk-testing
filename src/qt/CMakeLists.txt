@@ -120,6 +120,7 @@ SET(QT_SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/encocoingui.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/loadingdialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/pwidget.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/focuseddialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/guitransactionsutils.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/snackbar.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/navmenuwidget.cpp
