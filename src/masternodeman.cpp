@@ -749,7 +749,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
         //  - this is checked later by .check() in many places and by ThreadCheckObfuScationPool()
         if (mnb.CheckInputsAndAdd(nDoS)) {
             // use this as a peer
-            addrman.Add(CAddress(mnb.addr), pfrom->addr, 2 * 60 * 60);
+            addrman.Add(CAddress(mnb.addr, NODE_NETWORK), pfrom->addr, 2 * 60 * 60);
             masternodeSync.AddedMasternodeList(mnb.GetHash());
         } else {
             LogPrint(BCLog::MASTERNODE,"mnb - Rejected Masternode entry %s\n", mnb.vin.prevout.hash.ToString());
@@ -886,7 +886,7 @@ void ThreadCheckMasternodes()
     if (fLiteMode) return; //disable all Masternode related functionality
 
     // Make this thread recognisable as the wallet flushing thread
-    util::ThreadRename("pivx-masternodeman");
+    util::ThreadRename("encocoin-masternodeman");
     LogPrintf("Masternodes thread started\n");
 
     unsigned int c = 0;

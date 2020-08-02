@@ -1047,7 +1047,7 @@ bool AppInit2()
     nMaxDatacarrierBytes = GetArg("-datacarriersize", nMaxDatacarrierBytes);
 
     if (GetBoolArg("-peerbloomfilters", DEFAULT_PEERBLOOMFILTERS))
-        nLocalServices |= NODE_BLOOM;
+        nLocalServices = ServiceFlags(nLocalServices | NODE_BLOOM);
 
     nMaxTipAge = GetArg("-maxtipage", DEFAULT_MAX_TIP_AGE);
 
