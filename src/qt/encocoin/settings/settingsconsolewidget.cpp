@@ -79,8 +79,7 @@ public:
         timer.start(millis);
     }
     ~QtRPCTimerBase() {}
-private Q_SLOTS:
-            void timeout() { func(); }
+
 private:
     QTimer timer;
     std::function<void(void)> func;
@@ -251,7 +250,6 @@ SettingsConsoleWidget::SettingsConsoleWidget(EncoCoinGUI* _window, QWidget *pare
     ui->left->setContentsMargins(10,10,10,10);
 
     // Title
-    ui->labelTitle->setText(tr("Console"));
     setCssTitleScreen(ui->labelTitle);
 
     // Console container
@@ -264,17 +262,14 @@ SettingsConsoleWidget::SettingsConsoleWidget(EncoCoinGUI* _window, QWidget *pare
 
     // Buttons
     ui->pushButton->setProperty("cssClass", "ic-arrow");
-    ui->pushButtonCommandOptions->setText(tr("Command Line Options "));
-    ui->pushButtonOpenDebug->setText(tr("Open Debug File"));
     setCssBtnSecondary(ui->pushButtonOpenDebug);
     setCssBtnSecondary(ui->pushButtonClear);
     setCssBtnSecondary(ui->pushButtonCommandOptions);
 
     setShadow(ui->pushButtonClear);
-    ui->pushButtonClear->setToolTip(tr("Clear history"));
     connect(ui->pushButtonClear, &QPushButton::clicked, [this]{ clear(false); });
     connect(ui->pushButtonOpenDebug, &QPushButton::clicked, [this](){
-        if(!GUIUtil::openDebugLogfile()){
+        if (!GUIUtil::openDebugLogfile()) {
             inform(tr("Cannot open debug file.\nVerify that you have installed a predetermined text editor."));
         }
     });
@@ -354,7 +349,8 @@ bool SettingsConsoleWidget::eventFilter(QObject* obj, QEvent* event)
     return QWidget::eventFilter(obj, event);
 }
 
-void SettingsConsoleWidget::loadClientModel() {
+void SettingsConsoleWidget::loadClientModel()
+{
     if (clientModel){
 
         //Setup autocomplete and attach it
@@ -392,7 +388,8 @@ static QString categoryClass(int category)
     }
 }
 
-void SettingsConsoleWidget::clear(bool clearHistory){
+void SettingsConsoleWidget::clear(bool clearHistory)
+{
     ui->messagesWidget->clear();
     if (clearHistory) {
         history.clear();
@@ -536,7 +533,8 @@ void SettingsConsoleWidget::changeTheme(bool isLightTheme, QString &theme)
     updateStyle(ui->messagesWidget);
 }
 
-void SettingsConsoleWidget::onCommandsClicked() {
+void SettingsConsoleWidget::onCommandsClicked()
+{
     if (!clientModel)
         return;
 
