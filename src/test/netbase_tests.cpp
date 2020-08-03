@@ -1,6 +1,7 @@
 // Copyright (c) 2012-2014 The Bitcoin Core developers
 // Copyright (c) 2014-2015 The Dash Core developers
-// Copyright (c) 2015-2019 The EncoCoin developers
+// Copyright (c) 2015-2020	The PIVX developers
+// Copyright (c) 2020		The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -9,8 +10,8 @@
 
 #include <string>
 
+#include <boost/assign/list_of.hpp>
 #include <boost/test/unit_test.hpp>
-
 
 BOOST_FIXTURE_TEST_SUITE(netbase_tests, BasicTestingSetup)
 
@@ -258,6 +259,22 @@ BOOST_AUTO_TEST_CASE(validate_test)
         BOOST_CHECK_MESSAGE(!validateMasternodeIP(ipStr), ipStr);
     for (const std::string& ipStr : invalidTor)
         BOOST_CHECK_MESSAGE(!validateMasternodeIP(ipStr), ipStr);
+}
+
+BOOST_AUTO_TEST_CASE(netbase_getgroup)
+{
+    BOOST_CHECK(CNetAddr("127.0.0.1").GetGroup() == boost::assign::list_of(0)); // Local -> !Routable()
+    BOOST_CHECK(CNetAddr("257.0.0.1").GetGroup() == boost::assign::list_of(0)); // !Valid -> !Routable()
+    BOOST_CHECK(CNetAddr("10.0.0.1").GetGroup() == boost::assign::list_of(0)); // RFC1918 -> !Routable()
+    BOOST_CHECK(CNetAddr("169.254.1.1").GetGroup() == boost::assign::list_of(0)); // RFC3927 -> !Routable()
+    BOOST_CHECK(CNetAddr("1.2.3.4").GetGroup() == boost::assign::list_of((unsigned char)NET_IPV4)(1)(2)); // IPv4
+    BOOST_CHECK(CNetAddr("::FFFF:0:102:304").GetGroup() == boost::assign::list_of((unsigned char)NET_IPV4)(1)(2)); // RFC6145
+    BOOST_CHECK(CNetAddr("64:FF9B::102:304").GetGroup() == boost::assign::list_of((unsigned char)NET_IPV4)(1)(2)); // RFC6052
+    BOOST_CHECK(CNetAddr("2002:102:304:9999:9999:9999:9999:9999").GetGroup() == boost::assign::list_of((unsigned char)NET_IPV4)(1)(2)); // RFC3964
+    BOOST_CHECK(CNetAddr("2001:0:9999:9999:9999:9999:FEFD:FCFB").GetGroup() == boost::assign::list_of((unsigned char)NET_IPV4)(1)(2)); // RFC4380
+    BOOST_CHECK(CNetAddr("FD87:D87E:EB43:edb1:8e4:3588:e546:35ca").GetGroup() == boost::assign::list_of((unsigned char)NET_TOR)(239)); // Tor
+    BOOST_CHECK(CNetAddr("2001:470:abcd:9999:9999:9999:9999:9999").GetGroup() == boost::assign::list_of((unsigned char)NET_IPV6)(32)(1)(4)(112)(175)); //he.net
+    BOOST_CHECK(CNetAddr("2001:2001:9999:9999:9999:9999:9999:9999").GetGroup() == boost::assign::list_of((unsigned char)NET_IPV6)(32)(1)(32)(1)); //IPv6
 }
 
 BOOST_AUTO_TEST_SUITE_END()
