@@ -1,7 +1,7 @@
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020	The PIVX developers
+// Copyright (c) 2020		The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #include "qt/encocoin/guitransactionsutils.h"
 #include "bitcoinunits.h"
 #include "optionsmodel.h"
@@ -36,7 +36,6 @@ namespace GuiTransactionsUtils {
                         "Duplicate address found, can only send to each address once per send operation.");
                 break;
             case WalletModel::TransactionCreationFailed:
-                retStr = parent->translate("Transaction creation failed!");
                 informType = CClientUIInterface::MSG_ERROR;
                 break;
             case WalletModel::TransactionCommitFailed:

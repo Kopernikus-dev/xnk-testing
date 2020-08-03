@@ -1,7 +1,7 @@
-// Copyright (c) 2019-2020 The EncoCoin developers
+// Copyright (c) 2019-2020	The PIVX developers
+// Copyright (c) 2020		The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #include "qt/encocoin/encocoingui.h"
 
 #ifdef Q_OS_MAC
@@ -612,6 +612,7 @@ bool EncoCoinGUI::addWallet(const QString& name, WalletModel* walletModel)
     settingsWidget->setWalletModel(walletModel);
 
     // Connect actions..
+    connect(walletModel, &WalletModel::message, this, &EncoCoinGUI::message);
     connect(privacyWidget, &PrivacyWidget::message, this, &EncoCoinGUI::message);
     connect(masterNodesWidget, &MasterNodesWidget::message, this, &EncoCoinGUI::message);
     connect(coldStakingWidget, &ColdStakingWidget::message, this, &EncoCoinGUI::message);
