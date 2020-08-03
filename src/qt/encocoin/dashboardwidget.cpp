@@ -1,7 +1,7 @@
-// Copyright (c) 2019-2020 The EncoCoin developers
+// Copyright (c) 2019-2020	The PIVX developers
+// Copyright (c) 2020		The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #include "qt/encocoin/dashboardwidget.h"
 #include "qt/encocoin/forms/ui_dashboardwidget.h"
 #include "qt/encocoin/sendconfirmdialog.h"
@@ -125,7 +125,6 @@ DashboardWidget::DashboardWidget(EncoCoinGUI* parent) :
     setCssProperty(ui->pushImgEmptyChart, "img-empty-staking-on");
 
     setCssBtnSecondary(ui->btnHowTo);
-
     setCssProperty(ui->labelEmptyChart, "text-empty");
     setCssSubtitleScreen(ui->labelMessageEmpty);
 
@@ -632,8 +631,8 @@ void DashboardWidget::onChartRefreshed()
         axisX->clear();
     }
     // init sets
-    set0 = new QBarSet("XNK");
-    set1 = new QBarSet("zXNK");
+    set0 = new QBarSet(CURRENCY_UNIT.c_str());
+    set1 = new QBarSet("z" + QString(CURRENCY_UNIT.c_str()));
     set0->setColor(QColor(124,104,23));
     set1->setColor(QColor(176,136,255));
 

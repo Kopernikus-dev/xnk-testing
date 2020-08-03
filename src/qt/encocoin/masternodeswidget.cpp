@@ -1,5 +1,5 @@
-// Copyright (c) 2019-2020 The PIVX developers
-// Copyright (c) 2020 The EncoCoin developers
+// Copyright (c) 2019-2020	The PIVX developers
+// Copyright (c) 2020		The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include "qt/encocoin/masternodeswidget.h"
@@ -482,7 +482,7 @@ void MasterNodesWidget::onCreateMNClicked()
     }
 
     if (walletModel->getBalance() <= CollateralRequired(chainActive.Height())) {
-        inform(tr("Not enough balance to create a masternode")); //, 10,000 XNK required."));
+        inform(tr("Not enough balance to create a masternode")); //, 10,000 %1 required.").arg(CURRENCY_UNIT.c_str()));
         return;
     }
     showHideOp(true);

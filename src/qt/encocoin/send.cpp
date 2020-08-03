@@ -1,5 +1,5 @@
 // Copyright (c) 2019-2020	The PIVX developers
-// Copyright (c) 2020		The EncoCoin developers
+// Copyright (c) 2020		The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include "qt/encocoin/send.h"
@@ -117,16 +117,9 @@ SendWidget::SendWidget(EncoCoinGUI* parent) :
 
 void SendWidget::refreshView()
 {
-/*    QString btnText;
-    if (ui->pushLeft->isChecked()) {
-        btnText = tr("Send XNK");
-        ui->pushButtonAddRecipient->setVisible(true);
-    } else {
-        btnText = tr("Send XNK");
-        ui->pushButtonAddRecipient->setVisible(false);
-    }
-    ui->pushButtonSave->setText(btnText);
-*/
+/*    const bool isChecked = ui->pushLeft->isChecked();
+    ui->pushButtonSave->setText((isChecked ? tr("Send ") : tr("Send z")) + QString(CURRENCY_UNIT.c_str()));
+    ui->pushButtonAddRecipient->setVisible(isChecked); */
     refreshAmounts();
 }
 
@@ -636,7 +629,7 @@ void SendWidget::onCoinControlClicked()
             ui->btnCoinControl->setActive(CoinControlDialog::coinControl->HasSelected());
             refreshAmounts();
         } else {
-            inform(tr("You don't have any XNK to select."));
+            inform(tr("You don't have any %1 to select.").arg(CURRENCY_UNIT.c_str()));
         }
     } else {
         if (walletModel->getZerocoinBalance() > 0) {

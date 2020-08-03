@@ -1,9 +1,9 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2019 The EncoCoin developers
+// Copyright (c) 2015-2020	The PIVX developers
+// Copyright (c) 2020		The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #include "askpassphrasedialog.h"
 #include "ui_askpassphrasedialog.h"
 #include <QGraphicsDropShadowEffect>
@@ -185,7 +185,7 @@ void AskPassphraseDialog::accept()
         bool ret = openStandardDialog(
                 tr("Confirm wallet encryption"),
                 "<b>" + tr("WARNING") + ":</b> " + tr("If you encrypt your wallet and lose your passphrase, you will") +
-                " <b>" + tr("LOSE ALL OF YOUR XNK") + "</b>!<br><br>" + tr("Are you sure you wish to encrypt your wallet?"),
+               " <b>" + tr("LOSE ALL OF YOUR COINS") + "</b>!<br><br>" + tr("Are you sure you wish to encrypt your wallet?"),
                 tr("ENCRYPT"), tr("CANCEL")
         );
         if (ret) {

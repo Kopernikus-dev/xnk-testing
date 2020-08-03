@@ -1,9 +1,9 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2019 The EncoCoin developers
+// Copyright (c) 2015-2020	The PIVX developers
+// Copyright (c) 2020		The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #include "bitcoinunits.h"
 #include "chainparams.h"
 #include "primitives/transaction.h"
@@ -55,27 +55,28 @@ QString BitcoinUnits::id(int unit)
 
 QString BitcoinUnits::name(int unit, bool isZxnk)
 {
+    const QString CURR_UNIT = QString(CURRENCY_UNIT.c_str());
     QString z = "";
     if(isZxnk) z = "z";
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
         case XNK:
-            return z + QString("XNK");
+            return z + CURR_UNIT;
         case mXNK:
-            return z + QString("mXNK");
+           return z + QString("m") + CURR_UNIT;
         case uXNK:
-            return z + QString::fromUtf8("μXNK");
+            return z + QString::fromUtf8("μ") + CURR_UNIT;
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
         case XNK:
-            return z + QString("tXNK");
+            return z + QString("t") + CURR_UNIT;
         case mXNK:
-            return z + QString("mtXNK");
+            return z + QString("mt") + CURR_UNIT;
         case uXNK:
-            return z + QString::fromUtf8("μtXNK");
+           return z + QString::fromUtf8("μt") + CURR_UNIT;
         default:
             return QString("???");
         }
@@ -84,25 +85,26 @@ QString BitcoinUnits::name(int unit, bool isZxnk)
 
 QString BitcoinUnits::description(int unit)
 {
+    const QString CURR_UNIT = QString(CURRENCY_UNIT.c_str());
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
         case XNK:
-            return QString("XNK");
+            return CURR_UNIT;
         case mXNK:
-            return QString("Milli-XNK (1 / 1" THIN_SP_UTF8 "000)");
+            return QString("Milli-") + CURR_UNIT + QString(" (1 / 1" THIN_SP_UTF8 "000)");
         case uXNK:
-            return QString("Micro-XNK (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            return QString("Micro-") + CURR_UNIT + QString(" (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
         case XNK:
-            return QString("TestXNKs");
+            return QString("Test") + CURR_UNIT;
         case mXNK:
-            return QString("Milli-TestXNK (1 / 1" THIN_SP_UTF8 "000)");
+            return QString("Milli-Test") + CURR_UNIT + QString(" (1 / 1" THIN_SP_UTF8 "000)");
         case uXNK:
-            return QString("Micro-TestXNK (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+           return QString("Micro-Test") + CURR_UNIT + QString(" (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }

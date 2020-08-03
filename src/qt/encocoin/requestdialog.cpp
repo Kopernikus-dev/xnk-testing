@@ -1,7 +1,7 @@
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020	The PIVX developers
+// Copyright (c) 2020		The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #include "qt/encocoin/requestdialog.h"
 #include "qt/encocoin/forms/ui_requestdialog.h"
 #include <QListView>
@@ -119,7 +119,7 @@ void RequestDialog::accept()
         PairResult r(false);
         if (this->isPaymentRequest) {
             r = walletModel->getNewAddress(address, label);
-            title = tr("Request for ") + BitcoinUnits::format(displayUnit, value, false, BitcoinUnits::separatorAlways) + " XNK";
+            title = tr("Request for ") + BitcoinUnits::format(displayUnit, value, false, BitcoinUnits::separatorAlways) + " " + QString(CURRENCY_UNIT.c_str());
         } else {
             r = walletModel->getNewStakingAddress(address, label);
             title = tr("Cold Staking Address Generated");

@@ -453,13 +453,13 @@ QString TransactionTableModel::formatTxType(const TransactionRecord* wtx) const
     case TransactionRecord::SendToSelf:
         return tr("Payment to yourself");
     case TransactionRecord::StakeMint:
-        return tr("XNK Stake");
+        return tr("%1 Stake").arg(CURRENCY_UNIT.c_str());
     case TransactionRecord::StakeZXNK:
-        return tr("zXNK Stake");
+        return tr("z%1 Stake").arg(CURRENCY_UNIT.c_str());
     case TransactionRecord::StakeDelegated:
-        return tr("XNK Cold Stake");
+        return tr("%1 Cold Stake").arg(CURRENCY_UNIT.c_str());
     case TransactionRecord::StakeHot:
-        return tr("XNK Stake on behalf of");
+        return tr("%1 Stake on behalf of").arg(CURRENCY_UNIT.c_str());
     case TransactionRecord::P2CSDelegationSent:
     case TransactionRecord::P2CSDelegationSentOwner:
     case TransactionRecord::P2CSDelegation:
@@ -470,15 +470,15 @@ QString TransactionTableModel::formatTxType(const TransactionRecord* wtx) const
     case TransactionRecord::Generated:
         return tr("Mined");
     case TransactionRecord::ZerocoinMint:
-        return tr("Converted XNK to zXNK");
+        return tr("Converted %1 to z%1").arg(CURRENCY_UNIT.c_str());
     case TransactionRecord::ZerocoinSpend:
-        return tr("Spent zXNK");
+        return tr("Spent z%1").arg(CURRENCY_UNIT.c_str());
     case TransactionRecord::RecvFromZerocoinSpend:
-        return tr("Received XNK from zXNK");
+        return tr("Received %1 from z%1").arg(CURRENCY_UNIT.c_str());
     case TransactionRecord::ZerocoinSpend_Change_zXnk:
-        return tr("Minted Change as zXNK from zXNK Spend");
+        return tr("Minted Change as z%1 from z%1 Spend").arg(CURRENCY_UNIT.c_str());
     case TransactionRecord::ZerocoinSpend_FromMe:
-        return tr("Converted zXNK to XNK");
+        return tr("Converted z%1 to %1").arg(CURRENCY_UNIT.c_str());
     default:
         return QString();
     }

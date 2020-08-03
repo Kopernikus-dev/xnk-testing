@@ -1,4 +1,5 @@
-// Copyright (c) 2019-2020 The EncoCoin developers
+// Copyright (c) 2019-2020	The PIVX developers
+// Copyright (c) 2020		The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -23,7 +24,6 @@
 #define NUM_ITEMS 3
 #define LOAD_MIN_TIME_INTERVAL 15
 #define REQUEST_LOAD_TASK 1
-
 
 class CSDelegationHolder : public FurListRow<QWidget*>
 {
@@ -128,7 +128,7 @@ ColdStakingWidget::ColdStakingWidget(EncoCoinGUI* parent) :
     setCssProperty(ui->labelEmpty, "text-empty");
 
     ui->btnCoinControl->setTitleClassAndText("btn-title-grey", tr("Coin Control"));
-    ui->btnCoinControl->setSubTitleClassAndText("text-subtitle", tr("Select XNK outputs to delegate."));
+    ui->btnCoinControl->setSubTitleClassAndText("text-subtitle", tr("Select %1 outputs to delegate.").arg(CURRENCY_UNIT.c_str()));
 
     ui->btnColdStaking->setTitleClassAndText("btn-title-grey", tr("Create Cold Staking Address"));
     ui->btnColdStaking->setSubTitleClassAndText("text-subtitle", tr("Creates an address to receive delegated coins\nand stake them on their owner's behalf."));
@@ -543,7 +543,7 @@ void ColdStakingWidget::onCoinControlClicked()
             coinControlDialog->exec();
             ui->btnCoinControl->setActive(CoinControlDialog::coinControl->HasSelected());
         } else {
-            inform(tr("You don't have any XNK to select."));
+            inform(tr("You don't have any %1 to select.").arg(CURRENCY_UNIT.c_str()));
         }
     }
 }
@@ -785,7 +785,7 @@ void ColdStakingWidget::updateStakingTotalLabel()
 {
     const CAmount& total = csModel->getTotalAmount();
     ui->labelStakingTotal->setText(tr("Total Staking: %1").arg(
-            (total == 0) ? "0.00 XNK" : GUIUtil::formatBalance(total, nDisplayUnit))
+            (total == 0) ? "0.00 " + QString(CURRENCY_UNIT.c_str()) : GUIUtil::formatBalance(total, nDisplayUnit))
     );
 }
 
