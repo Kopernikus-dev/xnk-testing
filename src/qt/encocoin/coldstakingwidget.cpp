@@ -294,7 +294,6 @@ void ColdStakingWidget::onContactsClicked(bool ownerAdd)
 
 void ColdStakingWidget::onContactsClicked()
 {
-
     if (menu && menu->isVisible()) {
         menu->hide();
     }
@@ -611,7 +610,6 @@ void ColdStakingWidget::handleMyColdAddressClicked(const QModelIndex &_index)
 
 void ColdStakingWidget::handleAddressClicked(const QModelIndex &rIndex)
 {
-
     bool isReceivedDelegation = rIndex.sibling(rIndex.row(), ColdStakingModel::IS_RECEIVED_DELEGATION).data(Qt::DisplayRole).toBool();
 
     ui->listView->setCurrentIndex(rIndex);
@@ -741,9 +739,9 @@ void ColdStakingWidget::onLabelClicked(QString dialogTitle, const QModelIndex &i
             QString label = dialog->getLabel();
             std::string stdString = qAddress.toStdString();
             std::string purpose = walletModel->getAddressTableModel()->purposeForAddress(stdString);
-            const CBitcoinAddress address = CBitcoinAddress(stdString.data());
+            const CTxDestination address = DecodeDestination(stdString.data());
             if (!label.isEmpty() && walletModel->updateAddressBookLabels(
-                    address.Get(),
+                    address,
                     label.toUtf8().constData(),
                     purpose
             )) {

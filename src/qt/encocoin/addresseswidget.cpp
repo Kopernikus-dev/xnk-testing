@@ -187,7 +187,8 @@ void AddressesWidget::onStoreContactClicked()
             return;
         }
 
-        CBitcoinAddress xnkAdd = CBitcoinAddress(address.toUtf8().constData());
+        bool isStakingAddress = false;
+        CTxDestination xnkAdd = DecodeDestination(address.toUtf8().constData(), isStakingAddress);
         if (walletModel->isMine(xnkAdd)) {
             setCssEditLine(ui->lineEditAddress, false, true);
             inform(tr("Cannot store your own address as contact"));
@@ -201,8 +202,8 @@ void AddressesWidget::onStoreContactClicked()
             return;
         }
 
-        if (walletModel->updateAddressBookLabels(xnkAdd.Get(), label.toUtf8().constData(),
-                xnkAdd.IsStakingAddress() ? AddressBook::AddressBookPurpose::COLD_STAKING_SEND : AddressBook::AddressBookPurpose::SEND)
+        if (walletModel->updateAddressBookLabels(xnkAdd, label.toUtf8().constData(),
+                isStakingAddress ? AddressBook::AddressBookPurpose::COLD_STAKING_SEND : AddressBook::AddressBookPurpose::SEND)
                 ) {
             ui->lineEditAddress->setText("");
             ui->lineEditName->setText("");
@@ -229,7 +230,7 @@ void AddressesWidget::onEditClicked()
     dialog->setData(address, currentLabel);
     if (openDialogWithOpaqueBackground(dialog, window)) {
         if (walletModel->updateAddressBookLabels(
-                CBitcoinAddress(address.toStdString()).Get(), dialog->getLabel().toStdString(), addressTablemodel->purposeForAddress(address.toStdString()))){
+                DecodeDestination(address.toStdString()), dialog->getLabel().toStdString(), addressTablemodel->purposeForAddress(address.toStdString()))){
             inform(tr("Contact edited"));
         } else {
             inform(tr("Contact edit failed"));

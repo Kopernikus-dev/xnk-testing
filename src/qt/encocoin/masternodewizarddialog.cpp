@@ -191,8 +191,8 @@ bool MasterNodeWizardDialog::createMN()
         std::string port = portStr.toStdString();
 
         // New receive address
-        CBitcoinAddress address;
-        PairResult r = walletModel->getNewAddress(address, alias);
+        Destination dest;
+        PairResult r = walletModel->getNewAddress(dest, alias);
 
         if (!r.result) {
             // generate address fail
@@ -201,7 +201,11 @@ bool MasterNodeWizardDialog::createMN()
         }
 
         // const QString& addr, const QString& label, const CAmount& amount, const QString& message
-        SendCoinsRecipient sendCoinsRecipient(QString::fromStdString(address.ToString()), QString::fromStdString(alias), CollateralRequired(chainActive.Height()), "");
+        SendCoinsRecipient sendCoinsRecipient(
+                QString::fromStdString(dest.ToString()),
+                QString::fromStdString(alias),
+				CollateralRequired(chainActive.Height()),
+				"");
 
         // Send the 10 tx to one of your address
         QList<SendCoinsRecipient> recipients;

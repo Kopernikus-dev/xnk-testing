@@ -5,7 +5,6 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #include "base58.h"
 #include "clientversion.h"
 #include "httpserver.h"
@@ -31,6 +30,7 @@
 #include <univalue.h>
 
 extern std::vector<CSporkDef> sporkDefs;
+
 
 /**
  * @note Do not add or change anything in the information returned by this
@@ -67,8 +67,7 @@ UniValue getinfo(const UniValue& params, bool fHelp)
             "  \"difficulty\": xxxxxx,         (numeric) the current difficulty\n"
             "  \"testnet\": true|false,        (boolean) if the server is using testnet or not\n"
             "  \"moneysupply\" : \"supply\"    (numeric) The money supply when this block was added to the blockchain\n"
-/*
-            "  \"zXNKsupply\" :\n"
+/*            "  \"zXNKsupply\" :\n"
             "  {\n"
             "     \"1\" : n,            (numeric) supply of 1 zXNK denomination\n"
             "     \"5\" : n,            (numeric) supply of 5 zXNK denomination\n"
@@ -79,8 +78,7 @@ UniValue getinfo(const UniValue& params, bool fHelp)
             "     \"1000\" : n,         (numeric) supply of 1000 zXNK denomination\n"
             "     \"5000\" : n,         (numeric) supply of 5000 zXNK denomination\n"
             "     \"total\" : n,        (numeric) The total supply of all zXNK denominations\n"
-            "  }\n"
-*/
+            "  }\n"  */
             "  \"keypoololdest\": xxxxxx,      (numeric) the timestamp (seconds since GMT epoch) of the oldest pre-generated key in the key pool\n"
             "  \"keypoolsize\": xxxx,          (numeric) how many new keys are pre-generated\n"
             "  \"unlocked_until\": ttt,        (numeric) the timestamp in seconds since epoch (midnight Jan 1 1970 GMT) that the wallet is unlocked for transfers, or 0 if the wallet is locked\n"
@@ -147,8 +145,7 @@ UniValue getinfo(const UniValue& params, bool fHelp)
     }
 
     obj.push_back(Pair("moneysupply",ValueFromAmount(nMoneySupply)));
-/*
-    UniValue zxnkObj(UniValue::VOBJ);
+/*    UniValue zxnkObj(UniValue::VOBJ);
     for (auto denom : libzerocoin::zerocoinDenomList) {
         if (mapZerocoinSupply.empty())
             zxnkObj.push_back(Pair(std::to_string(denom), ValueFromAmount(0)));
@@ -156,8 +153,8 @@ UniValue getinfo(const UniValue& params, bool fHelp)
             zxnkObj.push_back(Pair(std::to_string(denom), ValueFromAmount(mapZerocoinSupply.at(denom) * (denom*COIN))));
     }
     zxnkObj.push_back(Pair("total", ValueFromAmount(GetZerocoinSupply())));
-    obj.push_back(Pair("zXNKsupply", zxnkObj));
-*/
+    obj.push_back(Pair("zXNKsupply", zxnkObj)); 
+    * */
 #ifdef ENABLE_WALLET
     if (pwalletMain) {
         obj.push_back(Pair("keypoololdest", pwalletMain->GetOldestKeyPoolTime()));
@@ -280,7 +277,7 @@ public:
         obj.push_back(Pair("hex", HexStr(subscript.begin(), subscript.end())));
         UniValue a(UniValue::VARR);
         for (const CTxDestination& addr : addresses)
-            a.push_back(CBitcoinAddress(addr).ToString());
+            a.push_back(EncodeDestination(addr));
         obj.push_back(Pair("addresses", a));
         if (whichType == TX_MULTISIG)
             obj.push_back(Pair("sigsrequired", nRequired));
@@ -386,14 +383,14 @@ UniValue validateaddress(const UniValue& params, bool fHelp)
     LOCK(cs_main);
 #endif
 
-    CBitcoinAddress address(params[0].get_str());
-    bool isValid = address.IsValid();
+    std::string currentAddress = params[0].get_str();
+    bool isStakingAddress = false;
+    CTxDestination dest = DecodeDestination(currentAddress, isStakingAddress);
+    bool isValid = IsValidDestination(dest);
 
     UniValue ret(UniValue::VOBJ);
     ret.push_back(Pair("isvalid", isValid));
     if (isValid) {
-        CTxDestination dest = address.Get();
-        std::string currentAddress = address.ToString();
         ret.push_back(Pair("address", currentAddress));
         CScript scriptPubKey = GetScriptForDestination(dest);
         ret.push_back(Pair("scriptPubKey", HexStr(scriptPubKey.begin(), scriptPubKey.end())));
@@ -401,7 +398,7 @@ UniValue validateaddress(const UniValue& params, bool fHelp)
 #ifdef ENABLE_WALLET
         isminetype mine = pwalletMain ? IsMine(*pwalletMain, dest) : ISMINE_NO;
         ret.push_back(Pair("ismine", bool(mine & (ISMINE_SPENDABLE_ALL | ISMINE_COLD))));
-        ret.push_back(Pair("isstaking", address.IsStakingAddress()));
+        ret.push_back(Pair("isstaking", isStakingAddress));
         ret.push_back(Pair("iswatchonly", bool(mine & ISMINE_WATCH_ONLY)));
         UniValue detail = boost::apply_visitor(DescribeAddressVisitor(mine), dest);
         ret.pushKVs(detail);
@@ -436,14 +433,15 @@ CScript _createmultisig_redeemScript(const UniValue& params)
         const std::string& ks = keys[i].get_str();
 #ifdef ENABLE_WALLET
         // Case 1: EncoCoin address and we have full public key:
-        CBitcoinAddress address(ks);
-        if (pwalletMain && address.IsValid()) {
-            CKeyID keyID;
-            if (!address.GetKeyID(keyID))
+        CTxDestination dest = DecodeDestination(ks);
+        if (pwalletMain && IsValidDestination(dest)) {
+            const CKeyID* keyID = boost::get<CKeyID>(&dest);
+            if (!keyID) {
                 throw std::runtime_error(
-                    strprintf("%s does not refer to a key", ks));
+                        strprintf("%s does not refer to a key", ks));
+            }
             CPubKey vchPubKey;
-            if (!pwalletMain->GetPubKey(keyID, vchPubKey))
+            if (!pwalletMain->GetPubKey(*keyID, vchPubKey))
                 throw std::runtime_error(
                     strprintf("no full public key for address %s", ks));
             if (!vchPubKey.IsFullyValid())
@@ -503,10 +501,9 @@ UniValue createmultisig(const UniValue& params, bool fHelp)
     // Construct using pay-to-script-hash:
     CScript inner = _createmultisig_redeemScript(params);
     CScriptID innerID(inner);
-    CBitcoinAddress address(innerID);
 
     UniValue result(UniValue::VOBJ);
-    result.push_back(Pair("address", address.ToString()));
+    result.push_back(Pair("address", EncodeDestination(innerID)));
     result.push_back(Pair("redeemScript", HexStr(inner.begin(), inner.end())));
 
     return result;
@@ -543,13 +540,14 @@ UniValue verifymessage(const UniValue& params, bool fHelp)
     std::string strSign = params[1].get_str();
     std::string strMessage = params[2].get_str();
 
-    CBitcoinAddress addr(strAddress);
-    if (!addr.IsValid())
+    CTxDestination destination = DecodeDestination(strAddress);
+    if (!IsValidDestination(destination))
         throw JSONRPCError(RPC_TYPE_ERROR, "Invalid address");
 
-    CKeyID keyID;
-    if (!addr.GetKeyID(keyID))
+    const CKeyID* keyID = boost::get<CKeyID>(&destination);
+    if (!keyID) {
         throw JSONRPCError(RPC_TYPE_ERROR, "Address does not refer to key");
+    }
 
     bool fInvalid = false;
     std::vector<unsigned char> vchSig = DecodeBase64(strSign.c_str(), &fInvalid);
@@ -565,7 +563,7 @@ UniValue verifymessage(const UniValue& params, bool fHelp)
     if (!pubkey.RecoverCompact(ss.GetHash(), vchSig))
         return false;
 
-    return (pubkey.GetID() == keyID);
+    return (pubkey.GetID() == *keyID);
 }
 
 UniValue setmocktime(const UniValue& params, bool fHelp)

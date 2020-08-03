@@ -96,15 +96,15 @@ std::vector<CWalletTx> CWallet::getWalletTxs()
     return result;
 }
 
-PairResult CWallet::getNewAddress(CBitcoinAddress& ret, std::string label){
+PairResult CWallet::getNewAddress(CTxDestination& ret, std::string label){
     return getNewAddress(ret, label, AddressBook::AddressBookPurpose::RECEIVE);
 }
 
-PairResult CWallet::getNewStakingAddress(CBitcoinAddress& ret, std::string label){
+PairResult CWallet::getNewStakingAddress(CTxDestination& ret, std::string label){
     return getNewAddress(ret, label, AddressBook::AddressBookPurpose::COLD_STAKING, CChainParams::Base58Type::STAKING_ADDRESS);
 }
 
-PairResult CWallet::getNewAddress(CBitcoinAddress& ret, const std::string addressLabel, const std::string purpose,
+PairResult CWallet::getNewAddress(CTxDestination& ret, const std::string addressLabel, const std::string purpose,
                                          const CChainParams::Base58Type addrType)
 {
     LOCK(cs_wallet);
@@ -126,7 +126,7 @@ PairResult CWallet::getNewAddress(CBitcoinAddress& ret, const std::string addres
     if (!SetAddressBook(keyID, addressLabel, purpose))
         throw std::runtime_error("CWallet::getNewAddress() : SetAddressBook failed");
 
-    ret = CBitcoinAddress(keyID, addrType);
+    ret = DestinationFor(keyID, addrType);
     return PairResult(true);
 }
 
@@ -225,7 +225,7 @@ bool CWallet::LoadCScript(const CScript& redeemScript)
      * that never can be redeemed. However, old wallets may still contain
      * these. Do not add them to the wallet and warn. */
     if (redeemScript.size() > MAX_SCRIPT_ELEMENT_SIZE) {
-        std::string strAddr = CBitcoinAddress(CScriptID(redeemScript)).ToString();
+        std::string strAddr = EncodeDestination(CScriptID(redeemScript));
         LogPrintf("%s: Warning: This wallet contains a redeemScript of size %i which exceeds maximum size %i thus can never be redeemed. Do not use address %s.\n",
             __func__, redeemScript.size(), MAX_SCRIPT_ELEMENT_SIZE, strAddr);
         return true;
@@ -2582,7 +2582,6 @@ bool CWallet::CreateTransaction(CScript scriptPubKey, const CAmount& nValue, CWa
     return CreateTransaction(vecSend, wtxNew, reservekey, nFeeRet, strFailReason, coinControl, coin_type, useIX, nFeePay, fIncludeDelegated);
 }
 
-// ppcoin: create coin stake transaction
 bool CWallet::CreateCoinStake(
         const CKeyStore& keystore,
         const CBlockIndex* pindexPrev,
@@ -2618,12 +2617,10 @@ bool CWallet::CreateCoinStake(
     pStakerStatus->SetLastCoins(listInputs.size());
 
     // Kernel Search
-
     CAmount nCredit;
     CScript scriptPubKeyKernel;
     bool fKernelFound = false;
     int nAttempts = 0;
-
     for (std::unique_ptr<CStakeInput>& stakeInput : listInputs) {
         //new block came in, move on
         if (chainActive.Height() != pindexPrev->nHeight) return false;
@@ -2880,7 +2877,7 @@ CBitcoinAddress CWallet::ParseIntoAddress(const CTxDestination& dest, const std:
     const CChainParams::Base58Type addrType =
             AddressBook::IsColdStakingPurpose(purpose) ?
             CChainParams::STAKING_ADDRESS : CChainParams::PUBKEY_ADDRESS;
-    return CBitcoinAddress(dest, addrType);
+    return EncodeDestination(dest, addrType);
 }
 
 bool CWallet::SetAddressBook(const CTxDestination& address, const std::string& strName, const std::string& strPurpose)
@@ -2904,7 +2901,7 @@ bool CWallet::SetAddressBook(const CTxDestination& address, const std::string& s
 
 bool CWallet::DelAddressBook(const CTxDestination& address, const CChainParams::Base58Type addrType)
 {
-    std::string strAddress =  CBitcoinAddress(address, addrType).ToString();
+    std::string strAddress =  EncodeDestination(address, addrType);
     std::string purpose = purposeForAddress(address);
     {
         LOCK(cs_wallet); // mapAddressBook
