@@ -1,8 +1,8 @@
 // Copyright (c) 2011-2013 The Bitcoin developers
-// Copyright (c) 2017-2020 The EncoCoin developers
+// Copyright (c) 2017-2020 The PIVX developers
+// Copyright (c) 2020	   The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #ifndef BITCOIN_QT_COINCONTROLDIALOG_H
 #define BITCOIN_QT_COINCONTROLDIALOG_H
 
@@ -44,7 +44,7 @@ class CoinControlDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit CoinControlDialog(QWidget* parent = nullptr, bool fMultisigEnabled = false);
+    explicit CoinControlDialog(QWidget* parent = nullptr);
     ~CoinControlDialog();
 
     void setModel(WalletModel* model);
@@ -66,7 +66,6 @@ private:
     WalletModel* model;
     int sortColumn;
     Qt::SortOrder sortOrder;
-    bool fMultisigEnabled;
     bool fSelectAllToggled{true};     // false when pushButtonSelectAll text is "Unselect All"
 
     QMenu* contextMenu;
