@@ -1,7 +1,7 @@
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020	The PIVX developers
+// Copyright (c) 2020		The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #ifndef SEND_H
 #define SEND_H
 
@@ -103,7 +103,7 @@ private:
     void showHideCheckBoxDelegations();
     void updateEntryLabels(QList<SendCoinsRecipient> recipients);
     void setCustomFeeSelected(bool isSelected, const CAmount& customFee = DEFAULT_TRANSACTION_FEE);
-
+    void setCoinControlPayAmounts();
 };
 
 #endif // SEND_H

@@ -625,6 +625,7 @@ void SendWidget::onCoinControlClicked()
             } else {
                 coinControlDialog->refreshDialog();
             }
+            setCoinControlPayAmounts();
             coinControlDialog->exec();
             ui->btnCoinControl->setActive(CoinControlDialog::coinControl->HasSelected());
             refreshAmounts();
@@ -641,6 +642,16 @@ void SendWidget::onCoinControlClicked()
         } else {
             inform(tr("You don't have any zXNK in your balance to select."));
         }
+    }
+}
+
+void SendWidget::setCoinControlPayAmounts()
+{
+    if (!coinControlDialog) return;
+    coinControlDialog->clearPayAmounts();
+    QMutableListIterator<SendMultiRow*> it(entries);
+    while (it.hasNext()) {
+        coinControlDialog->addPayAmount(it.next()->getAmountValue());
     }
 }
 
