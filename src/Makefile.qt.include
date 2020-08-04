@@ -76,7 +76,6 @@ QT_MOC_CPP = \
   qt/moc_askpassphrasedialog.cpp \
   qt/moc_bantablemodel.cpp \
   qt/moc_bitcoinaddressvalidator.cpp \
-  qt/moc_bitcoinamountfield.cpp \
   qt/encocoin/moc_encocoingui.cpp \
   qt/moc_bitcoinunits.cpp \
   qt/moc_blockexplorer.cpp \
@@ -170,7 +169,6 @@ BITCOIN_MM = \
 
 QT_MOC = \
   qt/encocoin.moc \
-  qt/bitcoinamountfield.moc \
   qt/intro.moc \
   qt/rpcconsole.moc \
   qt/encocoin/settings/moc_settingsconsolewidget.cpp
@@ -190,7 +188,6 @@ BITCOIN_QT_H = \
   qt/askpassphrasedialog.h \
   qt/bantablemodel.h \
   qt/bitcoinaddressvalidator.h \
-  qt/bitcoinamountfield.h \
   qt/encocoin/encocoingui.h \
   qt/bitcoinunits.h \
   qt/blockexplorer.h \
@@ -516,7 +513,6 @@ RES_ICONS = \
 BITCOIN_QT_BASE_CPP = \
   qt/bantablemodel.cpp \
   qt/bitcoinaddressvalidator.cpp \
-  qt/bitcoinamountfield.cpp \
   qt/encocoin/encocoingui.cpp \
   qt/bitcoinunits.cpp \
   qt/blockexplorer.cpp \
