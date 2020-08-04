@@ -1,7 +1,7 @@
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020	   The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #include "qt/encocoin/settings/settingswalletoptionswidget.h"
 #include "qt/encocoin/settings/forms/ui_settingswalletoptionswidget.h"
 #include <QListView>
@@ -77,6 +77,11 @@ void SettingsWalletOptionsWidget::setMapper(QDataWidgetMapper *mapper){
     mapper->addMapping(ui->checkBoxConnect, OptionsModel::ProxyUse);
     mapper->addMapping(ui->lineEditProxy, OptionsModel::ProxyIP);
     mapper->addMapping(ui->lineEditPort, OptionsModel::ProxyPort);
+}
+
+void SettingsWalletOptionsWidget::setSpinBoxStakeSplitThreshold(double val)
+{
+    ui->spinBoxStakeSplitThreshold->setValue(val);
 }
 
 SettingsWalletOptionsWidget::~SettingsWalletOptionsWidget(){

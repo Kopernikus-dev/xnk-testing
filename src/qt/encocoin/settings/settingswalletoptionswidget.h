@@ -1,7 +1,7 @@
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020	   The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #ifndef SETTINGSWALLETOPTIONSWIDGET_H
 #define SETTINGSWALLETOPTIONSWIDGET_H
 
@@ -21,6 +21,7 @@ public:
     ~SettingsWalletOptionsWidget();
 
     void setMapper(QDataWidgetMapper *mapper);
+    void setSpinBoxStakeSplitThreshold(double val);
 
 Q_SIGNALS:
     void saveSettings();

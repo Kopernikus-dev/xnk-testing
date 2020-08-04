@@ -1,7 +1,7 @@
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020	   The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #include "qt/encocoin/settings/settingswidget.h"
 #include "qt/encocoin/settings/forms/ui_settingswidget.h"
 #include "qt/encocoin/qtutils.h"
@@ -231,8 +231,15 @@ void SettingsWidget::onResetAction()
 void SettingsWidget::onSaveOptionsClicked()
 {
     if (mapper->submit()) {
+        OptionsModel* optionsModel = this->clientModel->getOptionsModel();
+        if (optionsModel->isSSTChanged() && !optionsModel->isSSTValid()) {
+            const double stakeSplitMinimum = optionsModel->getSSTMinimum();
+            settingsWalletOptionsWidget->setSpinBoxStakeSplitThreshold(stakeSplitMinimum);
+            inform(tr("Stake Split too low, it shall be either >= %1 or equal to 0 (to disable stake splitting)").arg(stakeSplitMinimum));
+            return;
+        }
         pwalletMain->MarkDirty();
-        if (this->clientModel->getOptionsModel()->isRestartRequired()) {
+        if (optionsModel->isRestartRequired()) {
             bool fAcceptRestart = openStandardDialog(tr("Restart required"), tr("Your wallet needs to be restarted to apply the changes\n"), tr("Restart Now"), tr("Restart Later"));
 
             if (fAcceptRestart) {
