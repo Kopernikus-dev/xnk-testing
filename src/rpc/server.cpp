@@ -364,7 +364,6 @@ static const CRPCCommand vRPCCommands[] =
         /* Masternode features */
         {"masternodes", "listmasternodes", &listmasternodes, true, true, false},
         {"masternodes", "getmasternodecount", &getmasternodecount, true, true, false},
-        {"masternodes", "masternodeconnect", &masternodeconnect, true, true, false},
         {"masternodes", "createmasternodebroadcast", &createmasternodebroadcast, true, true, false},
         {"masternodes", "decodemasternodebroadcast", &decodemasternodebroadcast, true, true, false},
         {"masternodes", "relaymasternodebroadcast", &relaymasternodebroadcast, true, true, false},
