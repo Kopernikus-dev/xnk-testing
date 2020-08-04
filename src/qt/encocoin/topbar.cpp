@@ -331,7 +331,6 @@ void TopBar::showBottom()
 
 void TopBar::onColdStakingClicked() 
 {
-
     bool isColdStakingEnabled = walletModel->isColdStaking();
     ui->pushButtonColdStaking->setChecked(isColdStakingEnabled);
 
@@ -635,21 +634,14 @@ void TopBar::updateBalances(const CAmount& balance, const CAmount& unconfirmedBa
     ui->labelTitle1->setText(nLockedBalance > 0 ? tr("Available (Locked included)") : tr("Available"));
 
     // XNK Total
-    CAmount xnkAvailableBalance = balance;
-    // zXNK Balance
-    CAmount matureZerocoinBalance = zerocoinBalance - unconfirmedZerocoinBalance - immatureZerocoinBalance;
+    QString totalXnk = GUIUtil::formatBalance(balance, nDisplayUnit);
 
-    // Set
-    QString totalXnk = GUIUtil::formatBalance(xnkAvailableBalance, nDisplayUnit);
-    QString totalzXnk = GUIUtil::formatBalance(matureZerocoinBalance, nDisplayUnit, true);
+    // XNK
     // Top
     ui->labelAmountTopXnk->setText(totalXnk);
-
     // Expanded
     ui->labelAmountXnk->setText(totalXnk);
-
     ui->labelPendingXnk->setText(GUIUtil::formatBalance(unconfirmedBalance, nDisplayUnit));
-
     ui->labelImmatureXnk->setText(GUIUtil::formatBalance(immatureBalance, nDisplayUnit));
 }
 

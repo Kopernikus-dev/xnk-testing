@@ -12,7 +12,6 @@ QT_FORMS_UI = \
   qt/forms/addressbookpage.ui \
   qt/forms/askpassphrasedialog.ui \
   qt/forms/coincontroldialog.ui \
-  qt/forms/blockexplorer.ui \
   qt/forms/editaddressdialog.ui \
   qt/forms/helpmessagedialog.ui \
   qt/forms/intro.ui \
@@ -20,7 +19,6 @@ QT_FORMS_UI = \
   qt/forms/optionsdialog.ui \
   qt/forms/rpcconsole.ui \
   qt/encocoin/forms/loadingdialog.ui \
-  qt/forms/zxnkcontroldialog.ui \
   qt/encocoin/forms/snackbar.ui \
   qt/encocoin/forms/navmenuwidget.ui \
   qt/encocoin/forms/lockunlock.ui \
@@ -51,7 +49,6 @@ QT_FORMS_UI = \
   qt/encocoin/forms/tooltipmenu.ui \
   qt/encocoin/forms/addresseswidget.ui \
   qt/encocoin/forms/defaultdialog.ui \
-  qt/encocoin/forms/privacywidget.ui \
   qt/encocoin/forms/coldstakingwidget.ui \
   qt/encocoin/settings/forms/settingsbackupwallet.ui \
   qt/encocoin/settings/forms/settingsexportcsv.ui \
@@ -78,7 +75,6 @@ QT_MOC_CPP = \
   qt/moc_bitcoinaddressvalidator.cpp \
   qt/encocoin/moc_encocoingui.cpp \
   qt/moc_bitcoinunits.cpp \
-  qt/moc_blockexplorer.cpp \
   qt/moc_clientmodel.cpp \
   qt/moc_coincontroldialog.cpp \
   qt/moc_coincontroltreewidget.cpp \
@@ -106,7 +102,6 @@ QT_MOC_CPP = \
   qt/moc_utilitydialog.cpp \
   qt/moc_walletmodel.cpp \
   qt/encocoin/moc_loadingdialog.cpp \
-  qt/moc_zxnkcontroldialog.cpp \
   qt/encocoin/moc_focuseddialog.cpp \
   qt/encocoin/moc_pwidget.cpp \
   qt/encocoin/moc_snackbar.cpp \
@@ -144,7 +139,6 @@ QT_MOC_CPP = \
   qt/encocoin/moc_tooltipmenu.cpp \
   qt/encocoin/moc_addresseswidget.cpp \
   qt/encocoin/moc_defaultdialog.cpp \
-  qt/encocoin/moc_privacywidget.cpp \
   qt/encocoin/moc_coldstakingwidget.cpp \
   qt/encocoin/settings/moc_settingsexportcsv.cpp \
   qt/encocoin/settings/moc_settingsbackupwallet.cpp \
@@ -190,7 +184,6 @@ BITCOIN_QT_H = \
   qt/bitcoinaddressvalidator.h \
   qt/encocoin/encocoingui.h \
   qt/bitcoinunits.h \
-  qt/blockexplorer.h \
   qt/clientmodel.h \
   qt/coincontroldialog.h \
   qt/coincontroltreewidget.h \
@@ -227,7 +220,6 @@ BITCOIN_QT_H = \
   qt/encocoin/pfborderimage.h \
   qt/encocoin/loadingdialog.h \
   qt/winshutdownmonitor.h \
-  qt/zxnkcontroldialog.h \
   qt/encocoin/pwidget.h \
   qt/encocoin/focuseddialog.h \
   qt/encocoin/guitransactionsutils.h \
@@ -270,7 +262,6 @@ BITCOIN_QT_H = \
   qt/encocoin/tooltipmenu.h \
   qt/encocoin/addresseswidget.h \
   qt/encocoin/defaultdialog.h \
-  qt/encocoin/privacywidget.h \
   qt/encocoin/coldstakingwidget.h \
   qt/encocoin/settings/settingsbackupwallet.h \
   qt/encocoin/settings/settingsexportcsv.h \
@@ -515,7 +506,6 @@ BITCOIN_QT_BASE_CPP = \
   qt/bitcoinaddressvalidator.cpp \
   qt/encocoin/encocoingui.cpp \
   qt/bitcoinunits.cpp \
-  qt/blockexplorer.cpp \
   qt/clientmodel.cpp \
   qt/csvmodelwriter.cpp \
   qt/guiutil.cpp \
@@ -539,7 +529,6 @@ BITCOIN_QT_WALLET_CPP = \
   qt/addressbookpage.cpp \
   qt/addresstablemodel.cpp \
   qt/askpassphrasedialog.cpp \
-  qt/blockexplorer.cpp \
   qt/coincontroldialog.cpp \
   qt/coincontroltreewidget.cpp \
   qt/editaddressdialog.cpp \
@@ -554,7 +543,6 @@ BITCOIN_QT_WALLET_CPP = \
   qt/walletmodel.cpp \
   qt/walletmodeltransaction.cpp \
   qt/encocoin/loadingdialog.cpp \
-  qt/zxnkcontroldialog.cpp \
   qt/encocoin/pwidget.cpp \
   qt/encocoin/focuseddialog.cpp \
   qt/encocoin/guitransactionsutils.cpp \
@@ -596,7 +584,6 @@ BITCOIN_QT_WALLET_CPP = \
   qt/encocoin/tooltipmenu.cpp \
   qt/encocoin/addresseswidget.cpp \
   qt/encocoin/defaultdialog.cpp \
-  qt/encocoin/privacywidget.cpp \
   qt/encocoin/coldstakingwidget.cpp \
   qt/encocoin/settings/settingsbackupwallet.cpp \
   qt/encocoin/settings/settingsexportcsv.cpp \

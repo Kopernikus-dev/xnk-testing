@@ -81,8 +81,8 @@
             <item>
              <widget class="QLabel" name="labelSubtitle1">
               <property name="text">
-               <string>You can transfer public coins (XNK)</string>
-              </property>
+               <string>Send public coins (XNK)</string>
+			  </property>
              </widget>
             </item>
            </layout>
@@ -99,13 +99,6 @@
              </size>
             </property>
            </spacer>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_6">
-            <property name="spacing">
-             <number>0</number>
-            </property>
-           </layout>
           </item>
          </layout>
         </item>

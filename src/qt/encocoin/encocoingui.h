@@ -20,7 +20,6 @@
 #include "qt/encocoin/send.h"
 #include "qt/encocoin/receivewidget.h"
 #include "qt/encocoin/addresseswidget.h"
-#include "qt/encocoin/privacywidget.h"
 #include "qt/encocoin/coldstakingwidget.h"
 #include "qt/encocoin/masternodeswidget.h"
 #include "qt/encocoin/snackbar.h"
@@ -66,7 +65,6 @@ public Q_SLOTS:
     void goToSend();
     void goToReceive();
     void goToAddresses();
-    void goToPrivacy();
     void goToMasterNodes();
     void goToColdStaking();
     void goToSettings();
@@ -130,7 +128,6 @@ private:
     SendWidget *sendWidget = nullptr;
     ReceiveWidget *receiveWidget = nullptr;
     AddressesWidget *addressesWidget = nullptr;
-    PrivacyWidget *privacyWidget = nullptr;
     MasterNodesWidget *masterNodesWidget = nullptr;
     ColdStakingWidget *coldStakingWidget = nullptr;
     SettingsWidget* settingsWidget = nullptr;

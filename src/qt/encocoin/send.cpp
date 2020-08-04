@@ -16,9 +16,7 @@
 #include "addresstablemodel.h"
 #include "coincontrol.h"
 #include "script/standard.h"
-#include "zxnk/deterministicmint.h"
 #include "openuridialog.h"
-#include "zxnkcontroldialog.h"
 
 SendWidget::SendWidget(EncoCoinGUI* parent) :
     PWidget(parent),
@@ -115,14 +113,6 @@ SendWidget::SendWidget(EncoCoinGUI* parent) :
     connect(ui->pushButtonClear, &QPushButton::clicked, [this](){clearAll(true);});
 }
 
-void SendWidget::refreshView()
-{
-/*    const bool isChecked = ui->pushLeft->isChecked();
-    ui->pushButtonSave->setText((isChecked ? tr("Send ") : tr("Send z")) + QString(CURRENCY_UNIT.c_str()));
-    ui->pushButtonAddRecipient->setVisible(isChecked); */
-    refreshAmounts();
-}
-
 void SendWidget::refreshAmounts()
 {
     CAmount total = 0;
@@ -152,6 +142,7 @@ void SendWidget::refreshAmounts()
             GUIUtil::formatBalance(
                     totalAmount,
                     nDisplayUnit
+                    
                     )
     );
     // show or hide delegations checkbox if need be
@@ -188,8 +179,8 @@ void SendWidget::loadWalletModel()
             setCustomFeeSelected(true, nCustomFee);
         }
 
-        // Refresh view
-        refreshView();
+        // Refresh
+        refreshAmounts();
 
         // TODO: This only happen when the coin control features are modified in other screen, check before do this if the wallet has another screen modifying it.
         // Coin Control
@@ -306,9 +297,8 @@ void SendWidget::setFocusOnLastEntry()
 
 void SendWidget::showHideCheckBoxDelegations()
 {
-    // Show checkbox only when there is any available owned delegation,
-    // coincontrol is not selected, and we are trying to spend XNK (not zXNK)
-//    const bool isZxnk = ui->pushRight->isChecked();
+    // Show checkbox only when there is any available owned delegation and
+    // coincontrol is not selected.
     const bool isCControl = CoinControlDialog::coinControl->HasSelected();
     const bool hasDel = cachedDelegatedBalance > 0;
 
@@ -345,8 +335,6 @@ void SendWidget::onSendClicked()
         return;
     }
 
-    bool sendXnk = true;
-
     WalletModel::UnlockContext ctx(walletModel->requestUnlock());
     if (!ctx.isValid()) {
         // Unlock wallet was cancelled
@@ -354,7 +342,7 @@ void SendWidget::onSendClicked()
         return;
     }
 
-    if( (sendXnk) ? send(recipients) : sendZxnk(recipients)) {
+    if (send(recipients)) {
         updateEntryLabels(recipients);
     }
     setFocusOnLastEntry();
@@ -418,98 +406,6 @@ bool SendWidget::send(QList<SendCoinsRecipient> recipients)
 
     dialog->deleteLater();
     return false;
-}
-
-bool SendWidget::sendZxnk(QList<SendCoinsRecipient> recipients)
-{
-    if (!walletModel || !walletModel->getOptionsModel())
-        return false;
-
-    if (sporkManager.IsSporkActive(SPORK_16_ZEROCOIN_MAINTENANCE_MODE)) {
-        Q_EMIT message(tr("Spend Zerocoin"), tr("zXNK is currently undergoing maintenance."), CClientUIInterface::MSG_ERROR);
-        return false;
-    }
-
-    std::list<std::pair<CTxDestination, CAmount>> outputs;
-    CAmount total = 0;
-    for (SendCoinsRecipient rec : recipients){
-        total += rec.amount;
-        outputs.push_back(std::pair<CTxDestination, CAmount>(DecodeDestination(rec.address.toStdString()),rec.amount));
-    }
-
-    // use mints from zXNK selector if applicable
-    std::vector<CMintMeta> vMintsToFetch;
-    std::vector<CZerocoinMint> vMintsSelected;
-    if (!ZXnkControlDialog::setSelectedMints.empty()) {
-        vMintsToFetch = ZXnkControlDialog::GetSelectedMints();
-
-        for (auto& meta : vMintsToFetch) {
-            CZerocoinMint mint;
-            if (!walletModel->getMint(meta.hashSerial, mint)) {
-                inform(tr("Coin control mint not found"));
-                return false;
-            }
-            vMintsSelected.emplace_back(mint);
-        }
-    }
-
-    QString sendBody = outputs.size() == 1 ?
-            tr("Sending %1 to address %2\n")
-            .arg(BitcoinUnits::formatWithUnit(walletModel->getOptionsModel()->getDisplayUnit(), total, false, BitcoinUnits::separatorAlways))
-            .arg(recipients.first().address)
-            :
-           tr("Sending %1 to addresses:\n%2")
-           .arg(BitcoinUnits::formatWithUnit(walletModel->getOptionsModel()->getDisplayUnit(), total, false, BitcoinUnits::separatorAlways))
-           .arg(recipientsToString(recipients));
-
-    bool ret = false;
-    Q_EMIT message(
-            tr("Spend Zerocoin"),
-            sendBody,
-            CClientUIInterface::MSG_INFORMATION | CClientUIInterface::BTN_MASK | CClientUIInterface::MODAL,
-            &ret);
-
-    if (!ret) return false;
-
-    CZerocoinSpendReceipt receipt;
-
-    std::string changeAddress = "";
-    if (!boost::get<CNoDestination>(&CoinControlDialog::coinControl->destChange)) {
-        changeAddress = EncodeDestination(CoinControlDialog::coinControl->destChange);
-    } else {
-        changeAddress = walletModel->getAddressTableModel()->getAddressToShow().toStdString();
-    }
-
-    if (walletModel->sendZxnk(
-            vMintsSelected,
-            receipt,
-            outputs,
-            changeAddress
-    )
-            ) {
-        inform(tr("zXNK transaction sent!"));
-        ZXnkControlDialog::setSelectedMints.clear();
-        clearAll(false);
-        return true;
-    } else {
-        QString body;
-        if (receipt.GetStatus() == ZXNK_SPEND_V1_SEC_LEVEL) {
-            body = tr("Version 1 zXNK require a security level of 100 to successfully spend.");
-        } else {
-            int nNeededSpends = receipt.GetNeededSpends(); // Number of spends we would need for this transaction
-            const int nMaxSpends = Params().GetConsensus().ZC_MaxSpendsPerTx; // Maximum possible spends for one zXNK transaction
-            if (nNeededSpends > nMaxSpends) {
-                body = tr("Too much inputs (") + QString::number(nNeededSpends, 10) +
-                       tr(") needed.\nMaximum allowed: ") + QString::number(nMaxSpends, 10);
-                body += tr(
-                        "\nEither mint higher denominations (so fewer inputs are needed) or reduce the amount to spend.");
-            } else {
-                body = QString::fromStdString(receipt.GetStatusMessage());
-            }
-        }
-        Q_EMIT message("zXNK transaction failed", body, CClientUIInterface::MSG_ERROR);
-        return false;
-    }
 }
 
 QString SendWidget::recipientsToString(QList<SendCoinsRecipient> recipients)
@@ -617,31 +513,19 @@ void SendWidget::onChangeCustomFeeClicked()
 
 void SendWidget::onCoinControlClicked()
 {
-    if (isXNK){
-        if (walletModel->getBalance() > 0) {
-            if (!coinControlDialog) {
-                coinControlDialog = new CoinControlDialog();
-                coinControlDialog->setModel(walletModel);
-            } else {
-                coinControlDialog->refreshDialog();
-            }
-            setCoinControlPayAmounts();
-            coinControlDialog->exec();
-            ui->btnCoinControl->setActive(CoinControlDialog::coinControl->HasSelected());
-            refreshAmounts();
+    if (walletModel->getBalance() > 0) {
+        if (!coinControlDialog) {
+            coinControlDialog = new CoinControlDialog();
+            coinControlDialog->setModel(walletModel);
         } else {
-            inform(tr("You don't have any %1 to select.").arg(CURRENCY_UNIT.c_str()));
+            coinControlDialog->refreshDialog();
         }
+        setCoinControlPayAmounts();
+        coinControlDialog->exec();
+        ui->btnCoinControl->setActive(CoinControlDialog::coinControl->HasSelected());
+        refreshAmounts();
     } else {
-        if (walletModel->getZerocoinBalance() > 0) {
-            ZXnkControlDialog *zXnkControl = new ZXnkControlDialog(this);
-            zXnkControl->setModel(walletModel);
-            zXnkControl->exec();
-            ui->btnCoinControl->setActive(!ZXnkControlDialog::setSelectedMints.empty());
-            zXnkControl->deleteLater();
-        } else {
-            inform(tr("You don't have any zXNK in your balance to select."));
-        }
+        inform(tr("You don't have any %1 to select.").arg(CURRENCY_UNIT.c_str()));
     }
 }
 
@@ -667,14 +551,6 @@ void SendWidget::onCheckBoxChanged()
         fDelegationsChecked = checked;
         refreshAmounts();
     }
-}
-
-void SendWidget::onXNKSelected(bool _isXNK)
-{
-    isXNK = _isXNK;
-    setCssProperty(coinIcon, _isXNK ? "coin-icon-xnk" : "coin-icon-xnk");
-    refreshView();
-    updateStyle(coinIcon);
 }
 
 void SendWidget::onContactsClicked(SendMultiRow* entry)

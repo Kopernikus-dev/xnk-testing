@@ -32,8 +32,6 @@ NavMenuWidget::NavMenuWidget(EncoCoinGUI *mainWindow, QWidget *parent) :
     ui->btnReceive->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
     ui->btnAddress->setProperty("name", "address");
     ui->btnAddress->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-
-
     ui->btnMaster->setProperty("name", "master");
     ui->btnMaster->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
     ui->btnColdStaking->setProperty("name", "cold-staking");
@@ -78,9 +76,9 @@ void NavMenuWidget::connectActions() {
     ui->btnSend->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_2));
     ui->btnReceive->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_3));
     ui->btnAddress->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_4));
-    ui->btnMaster->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_6));
-    ui->btnColdStaking->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_7));
-    ui->btnSettings->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_8));
+    ui->btnMaster->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_5));
+    ui->btnColdStaking->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_6));
+    ui->btnSettings->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_7));
 }
 
 void NavMenuWidget::onSendClicked(){

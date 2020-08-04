@@ -79,7 +79,6 @@ PROTOBUF_GENERATE_CPP(PROTO_SRCS PROTO_HDRS ${CMAKE_CURRENT_SOURCE_DIR}/paymentr
 
 SET(QT_SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/bantablemodel.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/blockexplorer.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/bitcoinaddressvalidator.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/bitcoinunits.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/clientmodel.cpp
@@ -102,7 +101,6 @@ SET(QT_SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/addresstablemodel.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/askpassphrasedialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/coincontroldialog.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/zxnkcontroldialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/coincontroltreewidget.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/editaddressdialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/openuridialog.cpp
@@ -115,7 +113,6 @@ SET(QT_SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/transactiontablemodel.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/walletmodel.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/walletmodeltransaction.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/zxnkcontroldialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/encocoingui.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/loadingdialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/pwidget.cpp
@@ -159,7 +156,6 @@ SET(QT_SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/tooltipmenu.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/addresseswidget.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/defaultdialog.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/privacywidget.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/coldstakingwidget.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/settings/settingsbackupwallet.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/settings/settingsbittoolwidget.cpp

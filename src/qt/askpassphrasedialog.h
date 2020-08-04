@@ -44,8 +44,6 @@ public:
         ToggleLock,     /** Toggle wallet lock state */
         ChangePass,     /** Change passphrase */
         Send_XNK,       /** Send XNK */
-        Send_zXNK,      /** Send zXNK */
-        Mint_zXNK,      /** Mint zXNK */
         BIP_38,         /** BIP38 menu */
         Multi_Sig,      /** Multi-Signature dialog */
         Sign_Message,   /** Sign/verify message dialog */
