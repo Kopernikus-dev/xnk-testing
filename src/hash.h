@@ -1,7 +1,8 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2019 The EncoCoin developers
+// Copyright (c) 2015-2020	The PIVX developers
+// Copyright (c) 2020		The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -27,7 +28,6 @@
 #include <openssl/sha.h>
 #include <sstream>
 #include <vector>
-
 
 typedef uint256 ChainCode;
 
@@ -279,16 +279,19 @@ class CHashWriter
 private:
     CHash256 ctx;
 
+    const int nType;
+    const int nVersion;
+
 public:
-    int nType;
-    int nVersion;
 
     CHashWriter(int nTypeIn, int nVersionIn) : nType(nTypeIn), nVersion(nVersionIn) {}
 
-    CHashWriter& write(const char* pch, size_t size)
+    int GetType() const { return nType; }
+    int GetVersion() const { return nVersion; }
+
+    void write(const char* pch, size_t size)
     {
         ctx.Write((const unsigned char*)pch, size);
-        return (*this);
     }
 
     // invalidates the object
@@ -303,7 +306,7 @@ public:
     CHashWriter& operator<<(const T& obj)
     {
         // Serialize to this stream
-        ::Serialize(*this, obj, nType, nVersion);
+        ::Serialize(*this, obj);
         return (*this);
     }
 };

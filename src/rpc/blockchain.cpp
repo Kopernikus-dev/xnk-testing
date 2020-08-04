@@ -1,8 +1,8 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2020	The PIVX developers
-// Copyright (c) 2020		The EncoCoin developers (by Kopernikus-dev)
+// Copyright (c) 2015-2020 The PIVX developers
+// Copyright (c) 2020	   The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -1365,7 +1365,7 @@ UniValue getblockindexstats(const UniValue& params, bool fHelp) {
             nFees_all += nValueIn - nValueOut;
             if (!tx.HasZerocoinMintOutputs()) {
                 nFees += nValueIn - nValueOut;
-                nBytes += tx.GetSerializeSize(SER_NETWORK, CLIENT_VERSION);
+                nBytes += GetSerializeSize(tx, SER_NETWORK, CLIENT_VERSION);
             }
         }
 

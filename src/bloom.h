@@ -1,8 +1,8 @@
 // Copyright (c) 2012-2014 The Bitcoin developers
-// Copyright (c) 2017-2019 The EncoCoin developers
+// Copyright (c) 2017-2020	The PIVX developers
+// Copyright (c) 2020		The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #ifndef BITCOIN_BLOOM_H
 #define BITCOIN_BLOOM_H
 
@@ -70,7 +70,7 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
+    inline void SerializationOp(Stream& s, Operation ser_action)
     {
         READWRITE(vData);
         READWRITE(nHashFuncs);

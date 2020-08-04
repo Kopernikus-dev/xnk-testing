@@ -1,5 +1,6 @@
 // Copyright (c) 2012-2013 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The EncoCoin developers
+// Copyright (c) 2017-2020 The PIVX developers
+// Copyright (c) 2020	   The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -21,7 +22,6 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/tuple/tuple.hpp>
 
-
 BOOST_FIXTURE_TEST_SUITE(bloom_tests, BasicTestingSetup)
 
 BOOST_AUTO_TEST_CASE(bloom_create_insert_serialize)
@@ -40,7 +40,7 @@ BOOST_AUTO_TEST_CASE(bloom_create_insert_serialize)
     BOOST_CHECK_MESSAGE(filter.contains(ParseHex("b9300670b4c5366e95b2699e8b18bc75e5f729c5")), "BloomFilter doesn't contain just-inserted object (3)!");
 
     CDataStream stream(SER_NETWORK, PROTOCOL_VERSION);
-    filter.Serialize(stream, SER_NETWORK, PROTOCOL_VERSION);
+    stream << filter;
 
     std::vector<unsigned char> vch = ParseHex("03614e9b050000000000000001");
     std::vector<char> expected(vch.size());
@@ -72,7 +72,7 @@ BOOST_AUTO_TEST_CASE(bloom_create_insert_serialize_with_tweak)
     BOOST_CHECK_MESSAGE(filter.contains(ParseHex("b9300670b4c5366e95b2699e8b18bc75e5f729c5")), "BloomFilter doesn't contain just-inserted object (3)!");
 
     CDataStream stream(SER_NETWORK, PROTOCOL_VERSION);
-    filter.Serialize(stream, SER_NETWORK, PROTOCOL_VERSION);
+    stream << filter;
 
     std::vector<unsigned char> vch = ParseHex("03ce4299050000000100008001");
     std::vector<char> expected(vch.size());
@@ -99,7 +99,7 @@ BOOST_AUTO_TEST_CASE(bloom_create_insert_key)
     filter.insert(std::vector<unsigned char>(hash.begin(), hash.end()));
 
     CDataStream stream(SER_NETWORK, PROTOCOL_VERSION);
-    filter.Serialize(stream, SER_NETWORK, PROTOCOL_VERSION);
+    stream << filter;
 
     std::vector<unsigned char> vch = ParseHex("038fc16b080000000000000001");
     std::vector<char> expected(vch.size());
