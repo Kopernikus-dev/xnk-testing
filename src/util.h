@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2019 The EncoCoin developers
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020	   The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 /**
  * Server/client environment: argument handling, config file parsing,
  * thread wrappers
@@ -160,6 +160,12 @@ std::string HelpMessageGroup(const std::string& message);
  * @return the formatted string
  */
 std::string HelpMessageOpt(const std::string& option, const std::string& message);
+
+/**
+ * Return the number of cores available on the current system.
+ * @note This does count virtual cores, such as those provided by HyperThreading.
+ */
+int GetNumCores();
 
 void SetThreadPriority(int nPriority);
 
