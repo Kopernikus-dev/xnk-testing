@@ -1,7 +1,7 @@
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020	   The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #include "qt/encocoin/sendconfirmdialog.h"
 #include "qt/encocoin/forms/ui_sendconfirmdialog.h"
 #include "bitcoinunits.h"
@@ -128,7 +128,10 @@ void TxDetailDialog::setData(WalletModel *model, WalletModelTransaction& tx)
     ui->textAmount->setText(BitcoinUnits::formatWithUnit(nDisplayUnit, totalAmount, false, BitcoinUnits::separatorAlways) + " (Fee included)");
     int nRecipients = tx.getRecipients().size();
     if (nRecipients == 1) {
-        SendCoinsRecipient recipient = tx.getRecipients().at(0);
+        const SendCoinsRecipient& recipient = tx.getRecipients().at(0);
+        if (recipient.isP2CS) {
+            ui->labelSend->setText(tr("Delegating to"));
+        }
         if (recipient.label.isEmpty()) { // If there is no label, then do not show the blank space.
             ui->textSendLabel->setText(recipient.address);
             ui->textSend->setVisible(false);

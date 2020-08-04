@@ -1,7 +1,7 @@
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020	   The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #ifndef COLDSTAKINGWIDGET_H
 #define COLDSTAKINGWIDGET_H
 
@@ -72,8 +72,10 @@ private Q_SLOTS:
     void clearAll();
     void onLabelClicked();
     void onMyStakingAddressesClicked();
+    void onOwnerAddressChanged();
+    void onDelegationsRefreshed();
     void onSortChanged(int idx);
-    void onSortOrderChanged(int idx);    void onDelegationsRefreshed();
+    void onSortOrderChanged(int idx);
 
 
 private:
