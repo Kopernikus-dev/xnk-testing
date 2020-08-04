@@ -926,7 +926,6 @@ bool CheckFinalTx(const CTransaction& tx, int flags)
 
 CAmount GetMinRelayFee(const CTransaction& tx, const CTxMemPool& pool, unsigned int nBytes, bool fAllowFree)
 {
-    {
     uint256 hash = tx.GetHash();
     double dPriorityDelta = 0;
     CAmount nFeeDelta = 0;
