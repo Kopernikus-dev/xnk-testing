@@ -206,6 +206,7 @@ void EncoCoinGUI::connectActions()
     connect(settingsWidget, &SettingsWidget::execDialog, this, &EncoCoinGUI::execDialog);
 }
 
+
 void EncoCoinGUI::createTrayIcon(const NetworkStyle* networkStyle)
 {
 #ifndef Q_OS_MAC
@@ -230,6 +231,7 @@ EncoCoinGUI::~EncoCoinGUI()
     MacDockIconHandler::cleanup();
 #endif
 }
+
 
 /** Get restart command-line parameters and request restart */
 void EncoCoinGUI::handleRestart(QStringList args)
@@ -605,6 +607,7 @@ bool EncoCoinGUI::addWallet(const QString& name, WalletModel* walletModel)
     // Connect actions..
     connect(walletModel, &WalletModel::message, this, &EncoCoinGUI::message);
     connect(masterNodesWidget, &MasterNodesWidget::message, this, &EncoCoinGUI::message);
+    connect(coldStakingWidget, &ColdStakingWidget::message, this, &EncoCoinGUI::message);
     connect(topBar, &TopBar::message, this, &EncoCoinGUI::message);
     connect(sendWidget, &SendWidget::message,this, &EncoCoinGUI::message);
     connect(receiveWidget, &ReceiveWidget::message,this, &EncoCoinGUI::message);
