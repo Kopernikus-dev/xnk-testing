@@ -1551,7 +1551,8 @@ bool AppInit2()
                         CLegacyBlockIndex bi;
 
                         // Load zXNK supply map
-                        if (!fReindexZerocoin && chainHeight >= consensus.height_start_ZC && !zerocoinDB->ReadZCSupply(mapZerocoinSupply)) {
+                        if (!fReindexZerocoin && consensus.NetworkUpgradeActive(chainHeight, Consensus::UPGRADE_ZC) &&
+                                !zerocoinDB->ReadZCSupply(mapZerocoinSupply)) {
                             // try first reading legacy block index from DB
                             if (pblocktree->ReadLegacyBlockIndex(tipHash, bi) && !bi.mapZerocoinSupply.empty()) {
                                 mapZerocoinSupply = bi.mapZerocoinSupply;
@@ -1575,7 +1576,7 @@ bool AppInit2()
                 }
 
                 // Drop all information from the zerocoinDB and repopulate
-                if (fReindexZerocoin && chainHeight >= consensus.height_start_ZC) {
+                if (fReindexZerocoin && consensus.NetworkUpgradeActive(chainHeight, Consensus::UPGRADE_ZC)) {
                     LOCK(cs_main);
                     uiInterface.InitMessage(_("Reindexing zerocoin database..."));
                     std::string strError = ReindexZerocoinDB();

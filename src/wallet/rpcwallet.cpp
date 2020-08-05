@@ -4487,6 +4487,8 @@ UniValue spendrawzerocoin(const UniValue& params, bool fHelp)
     if (sporkManager.IsSporkActive(SPORK_16_ZEROCOIN_MAINTENANCE_MODE))
             throw JSONRPCError(RPC_WALLET_ERROR, "zXNK is currently disabled due to maintenance.");
 
+    const Consensus::Params& consensus = Params().GetConsensus();
+
     CBigNum serial;
     serial.SetHex(params[0].get_str());
 
@@ -4506,7 +4508,7 @@ UniValue spendrawzerocoin(const UniValue& params, bool fHelp)
     privkey = key.GetPrivKey();
 
     // Create the coin associated with these secrets
-    libzerocoin::PrivateCoin coin(Params().GetConsensus().Zerocoin_Params(false), denom, serial, randomness);
+    libzerocoin::PrivateCoin coin(consensus.Zerocoin_Params(false), denom, serial, randomness);
     coin.setPrivKey(privkey);
     coin.setVersion(libzerocoin::PrivateCoin::CURRENT_VERSION);
 
@@ -4526,7 +4528,7 @@ UniValue spendrawzerocoin(const UniValue& params, bool fHelp)
         bool found = false;
         {
             CBlockIndex* pindex = chainActive.Tip();
-            while (!found && pindex && pindex->nHeight >= Params().GetConsensus().height_start_ZC) {
+            while (!found && pindex && consensus.NetworkUpgradeActive(pindex->nHeight, Consensus::UPGRADE_ZC)) {
                 LogPrintf("%s : Checking block %d...\n", __func__, pindex->nHeight);
                 CBlock block;
                 if (!ReadBlockFromDisk(block, pindex))
