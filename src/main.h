@@ -254,6 +254,9 @@ bool AcceptableInputs(CTxMemPool& pool, CValidationState& state, const CTransact
 int GetInputAge(CTxIn& vin);
 int GetIXConfirmations(uint256 nTXHash);
 
+/** Convert CValidationState to a human-readable message for logging */
+std::string FormatStateMessage(const CValidationState &state);
+
 struct CNodeStateStats {
     int nMisbehavior;
     int nSyncHeight;
