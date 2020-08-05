@@ -121,10 +121,12 @@ struct Params {
     int height_start_ZC_SerialsV2;
     int height_ZC_RecalcAccumulators;
 
-
     // validation by-pass
     int64_t nEncoCoinBadBlockTime;
     unsigned int nEncoCoinBadBlockBits;
+
+    // Map with network updates (Starting with 'Rising Coin')
+    NetworkUpgrade vUpgrades[MAX_NETWORK_UPGRADES];
 
     int64_t TargetTimespan(const bool fV2 = true) const { return fV2 ? nTargetTimespanV2 : nTargetTimespan; }
     uint256 ProofOfStakeLimit(const bool fV2) const { return fV2 ? posLimitV2 : posLimitV1; }
@@ -159,7 +161,6 @@ struct Params {
         return (contextHeight - utxoFromBlockHeight >= nStakeMinDepth);
     }
 
-
     /*
      * (Legacy) Zerocoin consensus params
      */
@@ -182,6 +183,13 @@ struct Params {
         static libzerocoin::ZerocoinParams ZCParamsDec = libzerocoin::ZerocoinParams(bnDecModulus);
         return (useModulusV1 ? &ZCParamsHex : &ZCParamsDec);
     }
+
+    /**
+     * Returns true if the given network upgrade is active as of the given block
+     * height. Caller must check that the height is >= 0 (and handle unknown
+     * heights).
+     */
+    bool NetworkUpgradeActive(int nHeight, Consensus::UpgradeIndex idx) const;
 };
 } // namespace Consensus
 

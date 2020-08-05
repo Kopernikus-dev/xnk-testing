@@ -75,6 +75,7 @@ private:
     QAction* lockAction;
     QAction* unlockAction;
 
+    void updatePushButtonSelectAll(bool checked);
     void sortView(int, Qt::SortOrder);
     void inform(const QString& text);
 

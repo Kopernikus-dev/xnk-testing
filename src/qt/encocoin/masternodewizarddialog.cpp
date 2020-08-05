@@ -151,7 +151,6 @@ void MasterNodeWizardDialog::accept()
 
 bool MasterNodeWizardDialog::createMN()
 {
-    if (walletModel) {
     if (!walletModel) {
         returnStr = tr("walletModel not set");
         return false;
@@ -185,6 +184,10 @@ bool MasterNodeWizardDialog::createMN()
         returnStr = tr("Invalid IP address");
         return false;
     }
+
+    // ip + port
+    std::string ipAddress = addressStr.toStdString();
+    std::string port = portStr.toStdString();
 
     // create the mn key
     CKey secret;

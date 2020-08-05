@@ -463,14 +463,13 @@ public:
     {
         return dataRegtest;
     }
-};
 
     void UpdateNetworkUpgradeParameters(Consensus::UpgradeIndex idx, int nActivationHeight)
     {
         assert(idx > Consensus::BASE_NETWORK && idx < Consensus::MAX_NETWORK_UPGRADES);
         consensus.vUpgrades[idx].nActivationHeight = nActivationHeight;
     }
-
+};
 static CRegTestParams regTestParams;
 
 static CChainParams* pCurrentParams = 0;
