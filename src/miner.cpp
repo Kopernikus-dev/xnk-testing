@@ -32,6 +32,7 @@
 #include "blocksignature.h"
 #include "spork.h"
 #include "invalid.h"
+#include "policy/policy.h"
 #include "zxnkchain.h"
 
 
