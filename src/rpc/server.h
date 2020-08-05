@@ -195,6 +195,7 @@ extern UniValue clearbanned(const UniValue& params, bool fHelp);
 extern UniValue dumpprivkey(const UniValue& params, bool fHelp); // in rpcdump.cpp
 extern UniValue importprivkey(const UniValue& params, bool fHelp);
 extern UniValue importaddress(const UniValue& params, bool fHelp);
+extern UniValue importpubkey(const UniValue& params, bool fHelp);
 extern UniValue dumpwallet(const UniValue& params, bool fHelp);
 extern UniValue importwallet(const UniValue& params, bool fHelp);
 extern UniValue bip38encrypt(const UniValue& params, bool fHelp);
@@ -291,6 +292,7 @@ extern UniValue listlockunspent(const UniValue& params, bool fHelp);
 extern UniValue createrawtransaction(const UniValue& params, bool fHelp);
 extern UniValue decoderawtransaction(const UniValue& params, bool fHelp);
 extern UniValue decodescript(const UniValue& params, bool fHelp);
+extern UniValue fundrawtransaction(const UniValue& params, bool fHelp);
 extern UniValue signrawtransaction(const UniValue& params, bool fHelp);
 extern UniValue sendrawtransaction(const UniValue& params, bool fHelp);
 extern UniValue createrawzerocoinspend(const UniValue& params, bool fHelp);

@@ -207,6 +207,14 @@ public:
     bool IsActive() const { return (nTime + 30) >= GetTime(); }
 };
 
+struct CRecipient
+{
+    CScript scriptPubKey;
+    CAmount nAmount;
+    bool fSubtractFeeFromAmount;
+};
+
+
 /**
  * A CWallet is an extension of a keystore, which also maintains a set of transactions and balances,
  * and provides the ability to create new transactions.
@@ -452,17 +460,26 @@ public:
     CAmount GetUnconfirmedWatchOnlyBalance() const;
     CAmount GetImmatureWatchOnlyBalance() const;
     CAmount GetLockedWatchOnlyBalance() const;
-    bool CreateTransaction(const std::vector<std::pair<CScript, CAmount> >& vecSend,
+    bool FundTransaction(CMutableTransaction& tx, CAmount &nFeeRet, bool overrideEstimatedFeeRate, const CFeeRate& specificFeeRate, int& nChangePosInOut, std::string& strFailReason, bool includeWatching, bool lockUnspents, const CTxDestination& destChange = CNoDestination());
+    /**
+     * Create a new transaction paying the recipients with a set of coins
+     * selected by SelectCoins(); Also create the change output, when needed
+     * @note passing nChangePosInOut as -1 will result in setting a random position
+     */
+    bool CreateTransaction(const std::vector<CRecipient>& vecSend,
         CWalletTx& wtxNew,
         CReserveKey& reservekey,
         CAmount& nFeeRet,
+        int& nChangePosInOut,
         std::string& strFailReason,
         const CCoinControl* coinControl = NULL,
         AvailableCoinsType coin_type = ALL_COINS,
+        bool sign = true,
         bool useIX = false,
         CAmount nFeePay = 0,
         bool fIncludeDelegated = false);
     bool CreateTransaction(CScript scriptPubKey, const CAmount& nValue, CWalletTx& wtxNew, CReserveKey& reservekey, CAmount& nFeeRet, std::string& strFailReason, const CCoinControl* coinControl = NULL, AvailableCoinsType coin_type = ALL_COINS, bool useIX = false, CAmount nFeePay = 0, bool fIncludeDelegated = false);
+
     // enumeration for CommitResult (return status of CommitTransaction)
     enum CommitStatus
     {
@@ -643,7 +660,6 @@ public:
     /* Wallets parameter interaction */
     static bool ParameterInteraction();
 };
-    
 
 /** A key allocated from the key pool. */
 class CReserveKey
