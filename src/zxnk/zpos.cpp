@@ -24,7 +24,7 @@ bool CLegacyZXnkStake::InitFromTxIn(const CTxIn& txin)
 {
     // Construct the stakeinput object
     if (!txin.IsZerocoinSpend())
-        return error("%s: unable to initialize CLegacyZXnkStake from non zc-spend");
+        return error("%s: unable to initialize CLegacyZXnkStake from non zc-spend", __func__);
 
     // Check spend type
     libzerocoin::CoinSpend spend = TxInToZerocoinSpend(txin);
