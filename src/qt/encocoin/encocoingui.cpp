@@ -502,9 +502,21 @@ void EncoCoinGUI::goToSettings()
     showTop(settingsWidget);
 }
 
+void EncoCoinGUI::goToSettingsInfo()
+{
+    navMenu->selectSettings();
+    settingsWidget->showInformation();
+    goToSettings();
+}
+
 void EncoCoinGUI::goToReceive()
 {
     showTop(receiveWidget);
+}
+
+void EncoCoin::openNetworkMonitor()
+{
+    settingsWidget->openNetworkMonitor();
 }
 
 void EncoCoinGUI::showTop(QWidget* view)
