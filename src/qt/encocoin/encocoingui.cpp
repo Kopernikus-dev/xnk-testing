@@ -514,7 +514,7 @@ void EncoCoinGUI::goToReceive()
     showTop(receiveWidget);
 }
 
-void EncoCoin::openNetworkMonitor()
+void EncoCoinGUI::openNetworkMonitor()
 {
     settingsWidget->openNetworkMonitor();
 }
