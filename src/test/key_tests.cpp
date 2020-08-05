@@ -1,5 +1,6 @@
 // Copyright (c) 2012-2013 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The EncoCoin developers
+// Copyright (c) 2017-2020	The PIVX developers
+// Copyright (c) 2020		The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -16,7 +17,6 @@
 #include <vector>
 
 #include <boost/test/unit_test.hpp>
-
 
 static const std::string strSecret1  = "87vK7Vayi3QLsuiva5yWSuVwSMhMcRM9dBsaD6JXMD1P5vnjRFn";
 static const std::string strSecret2  = "87FGYGFDg5SYfdD4XL593hr7do6f52czPecVsYSAXi8N4RGeS9i";
@@ -44,11 +44,7 @@ void dumpKeyInfo(uint256 privkey)
 
     for (int nCompressed=0; nCompressed<2; nCompressed++)
     {
-        bool fCompressed = nCompressed == 1;
-        printf("  * %s:\n", fCompressed ? "compressed" : "uncompressed");
-        CBitcoinSecret bsecret;
-        bsecret.SetSecret(secret, fCompressed);
-        printf("    * secret (base58): %s\n", bsecret.ToString().c_str());
+        printf("    * secret (base58): %s\n", EncodeSecret(secret));
         CKey key;
         key.SetSecret(secret, fCompressed);
         std::vector<unsigned char> vchPubKey = key.GetPubKey();
@@ -62,21 +58,16 @@ BOOST_FIXTURE_TEST_SUITE(key_tests, TestingSetup)
 
 BOOST_AUTO_TEST_CASE(key_test1)
 {
-    CBitcoinSecret bsecret1, bsecret2, bsecret1C, bsecret2C, baddress1;
-    BOOST_CHECK( bsecret1.SetString (strSecret1));
-    BOOST_CHECK( bsecret2.SetString (strSecret2));
-    BOOST_CHECK( bsecret1C.SetString(strSecret1C));
-    BOOST_CHECK( bsecret2C.SetString(strSecret2C));
-    BOOST_CHECK(!baddress1.SetString(strAddressBad));
-
-    CKey key1  = bsecret1.GetKey();
-    BOOST_CHECK(key1.IsCompressed() == false);
-    CKey key2  = bsecret2.GetKey();
-    BOOST_CHECK(key2.IsCompressed() == false);
-    CKey key1C = bsecret1C.GetKey();
-    BOOST_CHECK(key1C.IsCompressed() == true);
-    CKey key2C = bsecret2C.GetKey();
-    BOOST_CHECK(key2C.IsCompressed() == true);
+    CKey key1  = DecodeSecret(strSecret1);
+    BOOST_CHECK(key1.IsValid() && !key1.IsCompressed());
+    CKey key2  = DecodeSecret(strSecret2);
+    BOOST_CHECK(key2.IsValid() && !key2.IsCompressed());
+    CKey key1C = DecodeSecret(strSecret1C);
+    BOOST_CHECK(key1C.IsValid() && key1C.IsCompressed());
+    CKey key2C = DecodeSecret(strSecret2C);
+    BOOST_CHECK(key2C.IsValid() && key2C.IsCompressed());
+    CKey bad_key = DecodeSecret(strAddressBad);
+    BOOST_CHECK(!bad_key.IsValid());
 
     CPubKey pubkey1  = key1. GetPubKey();
     CPubKey pubkey2  = key2. GetPubKey();

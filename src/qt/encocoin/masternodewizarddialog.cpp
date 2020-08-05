@@ -1,7 +1,7 @@
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020	The PIVX developers
+// Copyright (c) 2020		The EncoCoin developers (by Kopernikus-dev)
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #include "qt/encocoin/masternodewizarddialog.h"
 #include "qt/encocoin/forms/ui_masternodewizarddialog.h"
 
@@ -191,8 +191,7 @@ bool MasterNodeWizardDialog::createMN()
 
     // create the mn key
     CKey secret;
-    secret.MakeNewKey(false);
-    CBitcoinSecret mnKey = CBitcoinSecret(secret);
+    std::string mnKeyString = EncodeSecret(secret);
     std::string mnKeyString = mnKey.ToString();
 
     // Look for a valid collateral utxo
