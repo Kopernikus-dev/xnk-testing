@@ -107,6 +107,7 @@ BITCOIN_CORE_H = \
   consensus/tx_verify.h \
   consensus/zerocoin_verify.h \
   consensus/params.h \
+  consensus/upgrades.h \
   primitives/block.h \
   primitives/transaction.h \
   core_io.h \
@@ -149,6 +150,7 @@ BITCOIN_CORE_H = \
   netbase.h \
   noui.h \
   policy/fees.h \
+  optional.h \
   pow.h \
   prevector.h \
   protocol.h \
@@ -229,6 +231,7 @@ libbitcoin_server_a_SOURCES = \
   blocksignature.cpp \
   chain.cpp \
   checkpoints.cpp \
+  consensus/params.cpp \
   consensus/tx_verify.cpp \
   consensus/zerocoin_verify.cpp \
   httprpc.cpp \
@@ -390,6 +393,7 @@ libbitcoin_common_a_SOURCES = \
   base58.cpp \
   bip38.cpp \
   chainparams.cpp \
+  consensus/upgrades.cpp \
   coins.cpp \
   compressor.cpp \
   consensus/merkle.cpp \

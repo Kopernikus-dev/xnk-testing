@@ -49,6 +49,14 @@ Detailed release notes follow. This overview includes changes that affect behavi
 
 ### RPC/REST
 
+New network upgrades output
+---------------------------
+
+A new return field 'upgrades' was added to the `getblockchaininfo` RPC method.
+Showing the upcoming and active upgrades. Starting with EncoCoin v4.0.0 Rising Coin
+network upgrade.
+
+
 Asm representations of scriptSig signatures now contain SIGHASH type decodes
 ----------------------------------------------------------------------------
 
