@@ -362,7 +362,7 @@ public:
     //! >> Available coins (P2CS)
     void GetAvailableP2CSCoins(std::vector<COutput>& vCoins) const;
 
-    std::map<CBitcoinAddress, std::vector<COutput> > AvailableCoinsByAddress(bool fConfirmed = true, CAmount maxCoinValue = 0);
+    std::map<CTxDestination, std::vector<COutput> > AvailableCoinsByAddress(bool fConfirmed = true, CAmount maxCoinValue = 0);
 
     /// Get 10000 XNK output and keys which can be used for the Masternode
     bool GetMasternodeVinAndKeys(CTxIn& txinRet, CPubKey& pubKeyRet, CKey& keyRet, std::string strTxHash = "", std::string strOutputIndex = "");
@@ -383,7 +383,7 @@ public:
     PairResult getNewAddress(CTxDestination& ret, std::string label);
     PairResult getNewStakingAddress(CTxDestination& ret, std::string label);
     int64_t GetKeyCreationTime(CPubKey pubkey);
-    int64_t GetKeyCreationTime(const CBitcoinAddress& address);
+    int64_t GetKeyCreationTime(const CTxDestination& address);
 
     //! Adds a key to the store, and saves it to disk.
     bool AddKeyPubKey(const CKey& key, const CPubKey& pubkey);
@@ -548,7 +548,7 @@ public:
     DBErrors LoadWallet(bool& fFirstRunRet);
     DBErrors ZapWalletTx(std::vector<CWalletTx>& vWtx);
 
-    static CBitcoinAddress ParseIntoAddress(const CTxDestination& dest, const std::string& purpose);
+    bool IsUsed(const CTxDestination address) const;
 
     bool SetAddressBook(const CTxDestination& address, const std::string& strName, const std::string& purpose);
     bool DelAddressBook(const CTxDestination& address, const CChainParams::Base58Type addrType = CChainParams::PUBKEY_ADDRESS);
@@ -618,7 +618,7 @@ public:
             const CCoinControl* coinControl = NULL);
 
     // - ZC PublicSpends
-    bool SpendZerocoin(CAmount nAmount, CWalletTx& wtxNew, CZerocoinSpendReceipt& receipt, std::vector<CZerocoinMint>& vMintsSelected, std::list<std::pair<CTxDestination,CAmount>> addressesTo, CBitcoinAddress* changeAddress = nullptr);
+    bool SpendZerocoin(CAmount nAmount, CWalletTx& wtxNew, CZerocoinSpendReceipt& receipt, std::vector<CZerocoinMint>& vMintsSelected, std::list<std::pair<CTxDestination,CAmount>> addressesTo, CTxDestination* changeAddress = nullptr);
     bool MintsToInputVectorPublicSpend(std::map<CBigNum, CZerocoinMint>& mapMintsSelected, const uint256& hashTxOut, std::vector<CTxIn>& vin, CZerocoinSpendReceipt& receipt, libzerocoin::SpendType spendType, CBlockIndex* pindexCheckpoint = nullptr);
     bool CreateZCPublicSpendTransaction(
             CAmount nValue,
@@ -628,7 +628,7 @@ public:
             std::vector<CZerocoinMint>& vSelectedMints,
             std::vector<CDeterministicMint>& vNewMints,
             std::list<std::pair<CTxDestination,CAmount>> addressesTo,
-            CBitcoinAddress* changeAddress = nullptr);
+            CTxDestination* changeAddress = nullptr);
 
     // - ZC Balances
     CAmount GetZerocoinBalance(bool fMatureOnly) const;
