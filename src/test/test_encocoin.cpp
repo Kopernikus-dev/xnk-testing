@@ -9,6 +9,7 @@
 
 #include "main.h"
 #include "random.h"
+#include "script/sigcache.h"
 #include "txdb.h"
 #include "guiinterface.h"
 
@@ -28,6 +29,7 @@ BasicTestingSetup::BasicTestingSetup()
         ECC_Start();
         SetupEnvironment();
         fCheckBlockIndex = true;
+        InitSignatureCache();
         SelectParams(CBaseChainParams::MAIN);
 }
 BasicTestingSetup::~BasicTestingSetup()

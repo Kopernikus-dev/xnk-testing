@@ -12,23 +12,10 @@
 #include "uint256.h"
 #include "util.h"
 
+#include "cuckoocache.h"
 #include <boost/thread.hpp>
-#include <boost/unordered_set.hpp>
 
 namespace {
-
-/**
- * We're hashing a nonce into the entries themselves, so we don't need extra
- * blinding in the set hash computation.
- */
-class CSignatureCacheHasher
-{
-public:
-    size_t operator()(const uint256& key) const {
-        return key.GetCheapHash();
-    }
-};
-
 /**
  * Valid signature cache, to avoid doing expensive ECDSA signature checking
  * twice for every transaction (once when accepted into memory pool, and
@@ -39,7 +26,7 @@ class CSignatureCache
 private:
      //! Entries are SHA256(nonce || signature hash || public key || signature):
     uint256 nonce;
-    typedef boost::unordered_set<uint256, CSignatureCacheHasher> map_type;
+    typedef CuckooCache::cache<uint256, SignatureCacheHasher> map_type;
     map_type setValid;
     boost::shared_mutex cs_sigcache;
 
