@@ -55,6 +55,7 @@
 #include "wallet/db.h"
 #include "wallet/wallet.h"
 #include "wallet/walletdb.h"
+#include "wallet/rpcwallet.h"
 
 #endif
 
@@ -75,6 +76,7 @@
 #if ENABLE_ZMQ
 #include "zmq/zmqnotificationinterface.h"
 #endif
+
 
 #ifdef ENABLE_WALLET
 CzXNKWallet* zwalletMain = NULL;
@@ -353,11 +355,6 @@ void OnRPCStopped()
 
 void OnRPCPreCommand(const CRPCCommand& cmd)
 {
-#ifdef ENABLE_WALLET
-    if (cmd.reqWallet && !pwalletMain)
-        throw JSONRPCError(RPC_METHOD_NOT_FOUND, "Method not found (disabled)");
-#endif
-
     // Observe safe mode
     std::string strWarning = GetWarnings("rpc");
     if (strWarning != "" && !GetBoolArg("-disablesafemode", false) &&
@@ -612,12 +609,11 @@ std::string LicenseInfo()
            "\n";
 }
 
-
 static void BlockNotifyCallback(bool initialSync, const CBlockIndex *pBlockIndex)
 {
 
     if (initialSync || !pBlockIndex)
-        return;	
+        return;
 
     std::string strCmd = GetArg("-blocknotify", "");
 
@@ -917,7 +913,6 @@ void InitLogging()
     // Add newlines to the logfile to distinguish this execution from the last
     // one; called before console logging is set up, so this is only sent to
     // debug.log.
-
     LogPrintf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 
     g_logger->m_print_to_console = GetBoolArg("-printtoconsole", !GetBoolArg("-daemon", false));
@@ -1035,6 +1030,9 @@ bool AppInit2()
         if (SoftSetBoolArg("-staking", false))
             LogPrintf("AppInit2 : parameter interaction: wallet functionality not enabled -> setting -staking=0\n");
 #ifdef ENABLE_WALLET
+    } else {
+        // Register wallet RPC commands
+        walletRegisterRPCCommands();
     }
 #endif
 
@@ -1884,6 +1882,7 @@ bool AppInit2()
             vImportFiles.push_back(strFile);
     }
     threadGroup.create_thread(boost::bind(&ThreadImport, vImportFiles));
+
     // Wait for genesis block to be processed
     LogPrintf("Waiting for genesis block to be imported...\n");
     {
