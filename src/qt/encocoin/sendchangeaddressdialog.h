@@ -23,7 +23,7 @@ public:
     ~SendChangeAddressDialog();
 
     void setAddress(QString address);
-    QString getAddress() const;
+    CTxDestination getDestination() const;
 
     void showEvent(QShowEvent* event) override;
 
@@ -31,6 +31,8 @@ private:
     WalletModel* walletModel;
     Ui::SendChangeAddressDialog *ui;
     SnackBar *snackBar = nullptr;
+    CTxDestination dest;
+
     void inform(const QString& text);
 
 private Q_SLOTS:
