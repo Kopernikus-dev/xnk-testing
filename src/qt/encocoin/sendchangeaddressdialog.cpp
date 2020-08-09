@@ -26,6 +26,7 @@ SendChangeAddressDialog::SendChangeAddressDialog(QWidget* parent, WalletModel* m
     // Text
     ui->labelTitle->setProperty("cssClass", "text-title-dialog");
     ui->labelMessage->setProperty("cssClass", "text-main-grey");
+
     initCssEditLine(ui->lineEditAddress, true);
 
     // Buttons

@@ -94,7 +94,6 @@ DashboardWidget::DashboardWidget(EncoCoinGUI* parent) :
     // Sort type
     SortEdit* lineEditType = new SortEdit(ui->comboBoxSortType);
     connect(lineEditType, &SortEdit::Mouse_Pressed, [this](){ui->comboBoxSortType->showPopup();});
-
     setSortTxTypeFilter(ui->comboBoxSortType, lineEditType);
     ui->comboBoxSortType->setCurrentIndex(0);
     connect(ui->comboBoxSortType, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
@@ -123,6 +122,7 @@ DashboardWidget::DashboardWidget(EncoCoinGUI* parent) :
     setCssProperty(ui->pushImgEmptyChart, "img-empty-staking-on");
 
     setCssBtnSecondary(ui->btnHowTo);
+
     setCssProperty(ui->labelEmptyChart, "text-empty");
     setCssSubtitleScreen(ui->labelMessageEmpty);
 
@@ -154,7 +154,6 @@ bool hasCharts = false;
 
 void DashboardWidget::handleTransactionClicked(const QModelIndex &index)
 {
-
     ui->listTransactions->setCurrentIndex(index);
     QModelIndex rIndex = filter->mapToSource(index);
 
@@ -186,7 +185,7 @@ void DashboardWidget::loadWalletModel()
         ui->listTransactions->setModel(filter);
         ui->listTransactions->setModelColumn(TransactionTableModel::ToAddress);
 
-        if (txModel->size() == 0){
+        if (txModel->size() == 0) {
             ui->emptyContainer->setVisible(true);
             ui->listTransactions->setVisible(false);
             ui->comboBoxSortType->setVisible(false);
@@ -215,7 +214,7 @@ void DashboardWidget::loadWalletModel()
     updateDisplayUnit();
 }
 
-void DashboardWidget::onTxArrived(const QString& hash, const bool& isCoinStake, const bool& isCSAnyType) 
+void DashboardWidget::onTxArrived(const QString& hash, const bool& isCoinStake, const bool& isCSAnyType)
 {
     showList();
 #ifdef USE_QTCHARTS
@@ -243,7 +242,7 @@ void DashboardWidget::showList()
     }
 }
 
-void DashboardWidget::updateDisplayUnit() 
+void DashboardWidget::updateDisplayUnit()
 {
     if (walletModel && walletModel->getOptionsModel()) {
         nDisplayUnit = walletModel->getOptionsModel()->getDisplayUnit();
@@ -727,7 +726,7 @@ std::pair<int, int> DashboardWidget::getChartRange(QMap<int, std::pair<qint64, q
                 inform(tr("Error loading chart, invalid data"));
                 return std::make_pair(0, 0);
             }
-            qSort(keys);
+            std::sort(keys.begin(), keys.end());
             return std::make_pair(keys.first(), keys.last() + 1);
         }
         case MONTH:

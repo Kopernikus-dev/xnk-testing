@@ -5,6 +5,7 @@
 #ifndef SENDCHANGEADDRESSDIALOG_H
 #define SENDCHANGEADDRESSDIALOG_H
 
+#include "script/standard.h"
 #include "qt/encocoin/focuseddialog.h"
 #include "qt/encocoin/snackbar.h"
 
