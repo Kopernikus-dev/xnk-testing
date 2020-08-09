@@ -116,7 +116,7 @@ void RPCUnsetTimerInterface(RPCTimerInterface *iface);
  */
 void RPCRunLater(const std::string& name, std::function<void(void)> func, int64_t nSeconds);
 
-JSONRPCRequest& jsonRequest);
+typedef UniValue(*rpcfn_type)(const JSONRPCRequest& jsonRequest);
 
 class CRPCCommand
 {
@@ -286,7 +286,7 @@ extern UniValue listmasternodeconf(const JSONRPCRequest& request);
 extern UniValue getmasternodestatus(const JSONRPCRequest& request);
 extern UniValue getmasternodewinners(const JSONRPCRequest& request);
 extern UniValue getmasternodescores(const JSONRPCRequest& request);
-extern UniValue getcollateral(const UniValue& JSONRPCRequest& request);
+extern UniValue getcollateral(const JSONRPCRequest& request);
 
 extern UniValue preparebudget(const JSONRPCRequest& request); // in rpc/budget.cpp
 extern UniValue submitbudget(const JSONRPCRequest& request);

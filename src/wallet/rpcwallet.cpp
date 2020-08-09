@@ -1358,7 +1358,7 @@ UniValue getreceivedbyaddress(const JSONRPCRequest& request)
 }
 
 
-UniValue getreceivedbyaccount(const JSONRPCRequest& request)
+UniValue getreceivedbylabel(const JSONRPCRequest& request)
 {
     if (!IsDeprecatedRPCEnabled("accounts") && request.strMethod == "getreceivedbyaccount") {
         if (request.fHelp) {
@@ -2614,7 +2614,7 @@ UniValue listsinceblock(const JSONRPCRequest& request)
     if (request.params.size() > 0) {
         uint256 blockId;
 
-    if (request.params.size() > 0) {
+    blockId.SetHex(request.params[0].get_str());
         BlockMap::iterator it = mapBlockIndex.find(blockId);
         if (it != mapBlockIndex.end())
             pindex = it->second;
@@ -3220,7 +3220,7 @@ UniValue lockunspent(const JSONRPCRequest& request)
         return true;
     }
 
-    UniValue output_params = params[1].get_array();
+    UniValue output_request = request.params[1].get_array();
 
     // Create and validate the COutPoints first.
     std::vector<COutPoint> outputs;

@@ -180,7 +180,7 @@ void ImportAddress(const CTxDestination& dest, const std::string& strLabel, cons
     }
 }
 
-UniValue importaddress(const UniValue importaddress(const JSONRPCRequest& request)
+UniValue importaddress(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() < 1 || request.params.size() > 4)
         throw std::runtime_error(
@@ -238,9 +238,9 @@ UniValue importaddress(const UniValue importaddress(const JSONRPCRequest& reques
     return NullUniValue;
 }
 
-UniValue importpubkey(const UniValue& params, bool fHelp)
+UniValue importpubkey(const JSONRPCRequest& request)
 {
-    if (fHelp || params.size() < 1 || params.size() > 4)
+    if (request.fHelp || request.params.size() < 1 || request.params.size() > 4)
         throw std::runtime_error(
             "importpubkey \"pubkey\" ( \"label\" rescan )\n"
             "\nAdds a public key (in hex) that can be watched as if it were in your wallet but cannot be used to spend.\n"
@@ -388,7 +388,7 @@ UniValue importwallet(const JSONRPCRequest& request)
     return NullUniValue;
 }
 
-UniValue dumpprivkey(const UniValue& JSONRPCRequest& request)
+UniValue dumpprivkey(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() != 1)
         throw std::runtime_error(
@@ -423,7 +423,7 @@ UniValue dumpprivkey(const UniValue& JSONRPCRequest& request)
     return EncodeSecret(vchSecret);
 }
 
-UniValue dumpwallet(const UniValue& JSONRPCRequest& request)
+UniValue dumpwallet(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() != 1)
         throw std::runtime_error(

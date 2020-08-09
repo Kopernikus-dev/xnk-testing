@@ -383,7 +383,7 @@ UniValue createmasternodekey (const JSONRPCRequest& request)
     return EncodeSecret(secret);
 }
 
-UniValue getmasternodeoutputs ((const JSONRPCRequest& request)
+UniValue getmasternodeoutputs (const JSONRPCRequest& request)
 {
     if (request.fHelp || (request.params.size() != 0))
         throw std::runtime_error(
