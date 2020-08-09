@@ -156,7 +156,7 @@ UniValue blockToJSON(const CBlock& block, const CBlockIndex* blockindex, bool tx
 UniValue getsupply(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() != 0)
-        throw runtime_error(
+        throw std::runtime_error(
             "getsupply\n"
             "\nReturns the current supply.\n"
             "\nResult:\n"
@@ -165,7 +165,7 @@ UniValue getsupply(const JSONRPCRequest& request)
             HelpExampleCli("getsupply", "") + HelpExampleRpc("getsupply", ""));
 
     LOCK(cs_main);
-    return ValueFromAmount(chainActive.Tip()->nMoneySupply);
+    return ValueFromAmount(nMoneySupply);
 }
 
 UniValue getblockcount(const JSONRPCRequest& request)
@@ -1136,7 +1136,7 @@ UniValue reconsiderblock(const JSONRPCRequest& request)
 
 UniValue findserial(const JSONRPCRequest& request)
 {
-    if(request.fHelp || request.params.size() != 1)
+    if (request.fHelp || request.params.size() != 1)
         throw std::runtime_error(
             "findserial \"serial\"\n"
             "\nSearches the zerocoin database for a zerocoin spend transaction that contains the specified serial\n"
