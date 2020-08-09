@@ -249,6 +249,8 @@ SettingsConsoleWidget::SettingsConsoleWidget(EncoCoinGUI* _window, QWidget *pare
     // Containers
     setCssProperty({ui->left, ui->messagesWidget}, "container");
     ui->left->setContentsMargins(10,10,10,10);
+    ui->messagesWidget->setReadOnly(true);
+    ui->messagesWidget->setTextInteractionFlags(Qt::TextInteractionFlag::TextSelectableByMouse);
 
     // Title
     setCssTitleScreen(ui->labelTitle);
