@@ -306,7 +306,7 @@ UniValue mnbudgetvote(const UniValue& params, bool fHelp)
                 failed++;
                 statusObj.push_back(Pair("node", "local"));
                 statusObj.push_back(Pair("result", "failed"));
-                statusObj.push_back(Pair("error", "Failure to find masternode in list : " + activeMasternode.vin.ToString()));
+                statusObj.push_back(Pair("error", "Failure to find masternode in list : " + activeMasternode.vin->ToString()));
                 resultsObj.push_back(statusObj);
                 break;
             }
