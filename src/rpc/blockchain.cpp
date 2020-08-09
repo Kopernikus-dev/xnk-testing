@@ -153,6 +153,21 @@ UniValue blockToJSON(const CBlock& block, const CBlockIndex* blockindex, bool tx
     return result;
 }
 
+UniValue getsupply(const JSONRPCRequest& request)
+{
+    if (request.fHelp || request.params.size() != 0)
+        throw runtime_error(
+            "getsupply\n"
+            "\nReturns the current supply.\n"
+            "\nResult:\n"
+            "n    (numeric) The current supply\n"
+            "\nExamples:\n" +
+            HelpExampleCli("getsupply", "") + HelpExampleRpc("getsupply", ""));
+
+    LOCK(cs_main);
+    return ValueFromAmount(chainActive.Tip()->nMoneySupply);
+}
+
 UniValue getblockcount(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() != 0)

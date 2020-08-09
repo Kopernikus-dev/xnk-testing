@@ -262,6 +262,7 @@ extern UniValue getblockhash(const JSONRPCRequest& request);
 extern UniValue getblock(const JSONRPCRequest& request);
 extern UniValue getblockheader(const JSONRPCRequest& request);
 extern UniValue getfeeinfo(const JSONRPCRequest& request);
+extern UniValue getsupply(const JSONRPCRequest& request); // in rpc/blockchain.cpp
 extern UniValue gettxoutsetinfo(const JSONRPCRequest& request);
 extern UniValue gettxout(const JSONRPCRequest& request);
 extern UniValue verifychain(const JSONRPCRequest& request);
