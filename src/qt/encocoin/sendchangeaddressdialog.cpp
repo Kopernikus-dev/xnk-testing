@@ -48,7 +48,7 @@ void SendChangeAddressDialog::setAddress(QString address)
 
 CTxDestination SendChangeAddressDialog::getDestination() const
 {
-    return ui->lineEditAddress->text();
+    return dest;
 }
 
 void SendChangeAddressDialog::showEvent(QShowEvent *event)
