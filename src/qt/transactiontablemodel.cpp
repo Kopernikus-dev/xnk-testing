@@ -67,7 +67,7 @@ struct ConvertTxToVectorResult
 {
     QList<TransactionRecord> records;
     qint64 nFirstLoadedTxTime{0};
-}
+};
 
 // Private implementation
 class TransactionTablePriv

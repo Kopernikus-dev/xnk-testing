@@ -234,11 +234,11 @@ extern UniValue importzerocoins(const JSONRPCRequest& request);
 extern UniValue exportzerocoins(const JSONRPCRequest& request);
 extern UniValue reconsiderzerocoins(const JSONRPCRequest& request);
 extern UniValue getspentzerocoinamount(const JSONRPCRequest& request);
-extern UniValue setzpivseed(const JSONRPCRequest& request);
-extern UniValue getzpivseed(const JSONRPCRequest& request);
+extern UniValue setzxnkseed(const JSONRPCRequest& request);
+extern UniValue getzxnkseed(const JSONRPCRequest& request);
 extern UniValue generatemintlist(const JSONRPCRequest& request);
-extern UniValue searchdzpiv(const JSONRPCRequest& request);
-extern UniValue dzpivstate(const JSONRPCRequest& request);
+extern UniValue searchdzxnk(const JSONRPCRequest& request);
+extern UniValue dzxnkstate(const JSONRPCRequest& request);
 
 extern UniValue getrawtransaction(const JSONRPCRequest& request); // in rpc/rawtransaction.cpp
 extern UniValue createrawtransaction(const JSONRPCRequest& request);
@@ -249,6 +249,7 @@ extern UniValue signrawtransaction(const JSONRPCRequest& request);
 extern UniValue sendrawtransaction(const JSONRPCRequest& request);
 extern UniValue createrawzerocoinspend(const JSONRPCRequest& request);
 
+extern UniValue getsupply(const JSONRPCRequest& request); // in rpc/blockchain.cpp
 extern UniValue findserial(const JSONRPCRequest& request); // in rpc/blockchain.cpp
 extern UniValue getblockcount(const JSONRPCRequest& request);
 extern UniValue getbestblockhash(const JSONRPCRequest& request);
@@ -262,7 +263,6 @@ extern UniValue getblockhash(const JSONRPCRequest& request);
 extern UniValue getblock(const JSONRPCRequest& request);
 extern UniValue getblockheader(const JSONRPCRequest& request);
 extern UniValue getfeeinfo(const JSONRPCRequest& request);
-extern UniValue getsupply(const JSONRPCRequest& request); // in rpc/blockchain.cpp
 extern UniValue gettxoutsetinfo(const JSONRPCRequest& request);
 extern UniValue gettxout(const JSONRPCRequest& request);
 extern UniValue verifychain(const JSONRPCRequest& request);
@@ -279,6 +279,7 @@ extern UniValue getmasternodecount(const JSONRPCRequest& request);
 extern UniValue createmasternodebroadcast(const JSONRPCRequest& request);
 extern UniValue decodemasternodebroadcast(const JSONRPCRequest& request);
 extern UniValue relaymasternodebroadcast(const JSONRPCRequest& request);
+extern UniValue masternodeconnect(const JSONRPCRequest& request);
 extern UniValue masternodecurrent(const JSONRPCRequest& request);
 extern UniValue startmasternode(const JSONRPCRequest& request);
 extern UniValue createmasternodekey(const JSONRPCRequest& request);

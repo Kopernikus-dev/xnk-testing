@@ -1,5 +1,4 @@
 // Copyright (c) 2020 The PIVX developers
-// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -14,6 +13,7 @@
 #include "utilmoneystr.h"
 #include "zxnkchain.h"
 #include "zxnk/deterministicmint.h"
+
 
 /*
  * Legacy Zerocoin Wallet
@@ -847,7 +847,7 @@ std::string CWallet::ResetMintZerocoin()
 std::string CWallet::ResetSpentZerocoin()
 {
     long removed = 0;
-    CWalletDB walletdb(pwalletMain->strWalletFile);
+    CWalletDB walletdb(strWalletFile);
 
     std::set<CMintMeta> setMints = zxnkTracker->ListMints(false, false, true);
     std::list<CZerocoinSpend> listSpends = walletdb.ListSpentCoins();
@@ -903,7 +903,7 @@ bool IsMintInChain(const uint256& hashPubcoin, uint256& txid, int& nHeight)
 
 void CWallet::ReconsiderZerocoins(std::list<CZerocoinMint>& listMintsRestored, std::list<CDeterministicMint>& listDMintsRestored)
 {
-    CWalletDB walletdb(pwalletMain->strWalletFile);
+    CWalletDB walletdb(strWalletFile);
     std::list<CZerocoinMint> listMints = walletdb.ListArchivedZerocoins();
     std::list<CDeterministicMint> listDMints = walletdb.ListArchivedDeterministicMints();
 
@@ -1027,5 +1027,3 @@ bool CWallet::UpdateMint(const CBigNum& bnValue, const int& nHeight, const uint2
 
     return false;
 }
-
-

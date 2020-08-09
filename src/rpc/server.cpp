@@ -251,7 +251,7 @@ UniValue help(const JSONRPCRequest& jsonRequest)
             "\nResult:\n"
             "\"text\"     (string) The help text\n");
 
-     std::string strCommand;
+    std::string strCommand;
     if (jsonRequest.params.size() > 0)
         strCommand = jsonRequest.params[0].get_str();
 
@@ -299,6 +299,7 @@ static const CRPCCommand vRPCCommands[] =
         {"network", "clearbanned", &clearbanned, true },
 
         /* Block chain and UTXO */
+        {"blockchain", "getblockhash", &getblockhash, true },
         {"blockchain", "findserial", &findserial, true },
         {"blockchain", "getblockindexstats", &getblockindexstats, true },
         {"blockchain", "getserials", &getserials, true },
@@ -306,7 +307,6 @@ static const CRPCCommand vRPCCommands[] =
         {"blockchain", "getbestblockhash", &getbestblockhash, true },
         {"blockchain", "getblockcount", &getblockcount, true },
         {"blockchain", "getblock", &getblock, true },
-        {"blockchain", "getblockhash", &getblockhash, true },
         {"blockchain", "getblockheader", &getblockheader, false },
         {"blockchain", "getchaintips", &getchaintips, true },
         {"blockchain", "getdifficulty", &getdifficulty, true },
@@ -334,7 +334,6 @@ static const CRPCCommand vRPCCommands[] =
         {"generating", "setgenerate", &setgenerate, true },
         {"generating", "generate", &generate, true },
 #endif
-
         /* Raw transactions */
         {"rawtransactions", "createrawtransaction", &createrawtransaction, true },
         {"rawtransactions", "decoderawtransaction", &decoderawtransaction, true },
@@ -411,12 +410,11 @@ static const CRPCCommand vRPCCommands[] =
         {"zerocoin", "exportzerocoins", &exportzerocoins, false },
         {"zerocoin", "reconsiderzerocoins", &reconsiderzerocoins, false },
         {"zerocoin", "getspentzerocoinamount", &getspentzerocoinamount, false },
-        {"zerocoin", "getzpivseed", &getzpivseed, false },
-        {"zerocoin", "setzpivseed", &setzpivseed, false },
+        {"zerocoin", "getzxnkseed", &getzxnkseed, false },
+        {"zerocoin", "setzxnkseed", &setzxnkseed, false },
         {"zerocoin", "generatemintlist", &generatemintlist, false },
-        {"zerocoin", "searchdzpiv", &searchdzpiv, false },
-        {"zerocoin", "dzpivstate", &dzpivstate, false },
-*/
+        {"zerocoin", "searchdzxnk", &searchdzxnk, false },
+        {"zerocoin", "dzxnkstate", &dzxnkstate, false },   **/
 #endif // ENABLE_WALLET
 };
 
