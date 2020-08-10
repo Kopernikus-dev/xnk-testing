@@ -33,12 +33,12 @@ Notable Changes
 
 ### Removed zerocoin GUI
 
-Spending zPIV and getting zPIV balance information is no longer available in the graphical interface. The feature remains accessible through the RPC interface: `getzerocoinbalance`, `listmintedzerocoins`, `listzerocoinamounts`, `spendzerocoin`, `spendzerocoinmints`.
+Spending zXNK and getting zXNK balance information is no longer available in the graphical interface. The feature remains accessible through the RPC interface: `getzerocoinbalance`, `listmintedzerocoins`, `listzerocoinamounts`, `spendzerocoin`, `spendzerocoinmints`.
 
 
 ### Memory pool limiting
 
-Previous versions of PIVX Core had their mempool limited by checking a transaction's fees against the node's minimum relay fee. There was no upper bound on the size of the mempool and attackers could send a large number of transactions paying just slighly more than the default minimum relay fee to crash nodes with relatively low RAM.
+Previous versions of EncoCoin Core had their mempool limited by checking a transaction's fees against the node's minimum relay fee. There was no upper bound on the size of the mempool and attackers could send a large number of transactions paying just slighly more than the default minimum relay fee to crash nodes with relatively low RAM.
 
 EncoCoin Core 3.1.0 will have a strict maximum size on the mempool. The default value is 300 MB and can be configured with the `-maxmempool` parameter. Whenever a transaction would cause the mempool to exceed its maximum size, the transaction that (along with in-mempool descendants) has the lowest total feerate (as a package) will be evicted and the node's effective minimum relay feerate will be increased to match this feerate plus the initial minimum relay feerate. The initial minimum relay feerate is set to 1000 satoshis per kB.
 
@@ -48,10 +48,10 @@ EncoCoin Core 3.1.0 also introduces new default policy limits on the length and 
 
 EncoCoin Core 3.1.0 backports  the internal benchmarking framework from Bitcoin Core, which can be used to benchmark cryptographic algorithms (e.g. SHA1, SHA256, SHA512, RIPEMD160, Poly1305, ChaCha20), Base58 encoding and decoding and thread queue. More tests are needed for script validation, coin selection and coins database, cuckoo cache, p2p throughtput
 
-The binary file is compiled with pivx-core, unless configured with `--disable-bench`.<br>
-After compiling pivx-core, the benchmarks can be run with:
+The binary file is compiled with encocoin-core, unless configured with `--disable-bench`.<br>
+After compiling encocoin-core, the benchmarks can be run with:
 ```
-src/bench/bench_pivx
+src/bench/bench_encocoin
 ```
 The output will be similar to:
 ```
@@ -64,7 +64,7 @@ Base58CheckEncode,131072,7697,8065,7785,20015,20971,20242
 
 A new 'label' API has been introduced for the wallet. This is intended as a
 replacement for the deprecated 'account' API. The 'account' can continue to
-be used in v4.2 by starting pivxd with the '-deprecatedrpc=accounts'
+be used in v3.1 by starting encocoind with the '-deprecatedrpc=accounts'
 argument, and will be fully removed in v5.0.
 
 The label RPC methods mirror the account functionality, with the following functional differences:
@@ -111,7 +111,7 @@ Functional Changes
 
 ### Stake-Split threshold
 
-If the stake split is active (threshold > 0), then stake split threshold value must be greater than a minimum, set by default at 100 PIV. The minimum value can be changed using the `-minstakesplit` startup flag . A value `0` is still allowed, regardless of the minimum set, and, as before, can be used to disable the stake splitting functionality.
+If the stake split is active (threshold > 0), then stake split threshold value must be greater than a minimum, set by default at 100 XNK. The minimum value can be changed using the `-minstakesplit` startup flag . A value `0` is still allowed, regardless of the minimum set, and, as before, can be used to disable the stake splitting functionality.
 
 ### Changed command-line options
 
