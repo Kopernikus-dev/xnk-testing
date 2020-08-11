@@ -40,7 +40,7 @@ TxDetailDialog::TxDetailDialog(QWidget *parent, bool _isConfirmDialog, const QSt
     ui->labelWarning->setVisible(false);
     ui->gridInputs->setVisible(false);
     ui->outputsScrollArea->setVisible(false);
-    
+
     // hide change address for now
     ui->contentChangeAddress->setVisible(false);
     ui->labelDividerChange->setVisible(false);
@@ -97,7 +97,7 @@ void TxDetailDialog::setData(WalletModel *model, const QModelIndex &index)
         if (tx->vout.size() == 1) {
             ui->textSendLabel->setText(address);
         } else {
-            ui->textSend->setText(QString::number(tx->vout.size()) + " recipients");
+            ui->textSendLabel->setText(QString::number(tx->vout.size()) + " recipients");
         }
         ui->textSend->setVisible(false);
 
@@ -118,7 +118,7 @@ void TxDetailDialog::setData(WalletModel *model, const QModelIndex &index)
 
 }
 
-void TxDetailDialog::setData(WalletModel *model, WalletModelTransaction& tx)
+void TxDetailDialog::setData(WalletModel *model, WalletModelTransaction &tx)
 {
     this->model = model;
     this->tx = &tx;

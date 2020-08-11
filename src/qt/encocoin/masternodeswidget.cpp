@@ -95,11 +95,9 @@ MasterNodesWidget::MasterNodesWidget(EncoCoinGUI *parent) :
     /* Title */
     setCssTitleScreen(ui->labelTitle);
     ui->labelTitle->setFont(fontLight);
-
     setCssSubtitleScreen(ui->labelSubtitle1);
 
     /* Buttons */
-    ui->pushButtonSave->setText(tr("Create Masternode Controller"));
     setCssBtnPrimary(ui->pushButtonSave);
     setCssBtnPrimary(ui->pushButtonStartAll);
     setCssBtnPrimary(ui->pushButtonStartMissing);
@@ -136,7 +134,7 @@ MasterNodesWidget::MasterNodesWidget(EncoCoinGUI *parent) :
 void MasterNodesWidget::showEvent(QShowEvent *event)
 {
     if (mnModel) mnModel->updateMNList();
-    if( !timer) {
+    if (!timer) {
         timer = new QTimer(this);
         connect(timer, &QTimer::timeout, [this]() {mnModel->updateMNList();});
     }
@@ -204,7 +202,7 @@ bool MasterNodesWidget::checkMNsNetwork()
 
 void MasterNodesWidget::onEditMNClicked()
 {
-    if( walletModel) {
+    if (walletModel) {
         if (!walletModel->isRegTestNetwork() && !checkMNsNetwork()) return;
         if (index.sibling(index.row(), MNModel::WAS_COLLATERAL_ACCEPTED).data(Qt::DisplayRole).toBool()) {
             // Start MN
@@ -473,7 +471,7 @@ void MasterNodesWidget::onDeleteMNClicked()
 }
 
 void MasterNodesWidget::onCreateMNClicked()
-{        
+{
     WalletModel::UnlockContext ctx(walletModel->requestUnlock());
     if (!ctx.isValid()) {
         // Unlock wallet was cancelled

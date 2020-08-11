@@ -5,12 +5,12 @@
 #ifndef SENDCUSTOMFEEDIALOG_H
 #define SENDCUSTOMFEEDIALOG_H
 
-#include "qt/encocoin/focuseddialog.h"
 #include "amount.h"
+#include "qt/encocoin/focuseddialog.h"
 #include "qt/encocoin/snackbar.h"
 
-class WalletModel;
 class EncoCoinGUI;
+class WalletModel;
 
 namespace Ui {
 class SendCustomFeeDialog;
