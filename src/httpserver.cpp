@@ -21,7 +21,6 @@
 #include <sys/stat.h>
 #include <signal.h>
 #include <future>
-#include <deque>
 
 #include <event2/event.h>
 #include <event2/http.h>
@@ -262,7 +261,7 @@ static void http_request_cb(struct evhttp_request* req, void* arg)
 
     // Early address-based allow check
     if (!ClientAllowed(hreq->GetPeer())) {
-        hreq->WriteReply(HTTP_FORXNKDEN);
+        hreq->WriteReply(HTTP_FORBIDDEN);
         return;
     }
 
@@ -401,6 +400,7 @@ bool InitHTTPServer()
     if (!UpdateHTTPServerLogging(g_logger->WillLogCategory(BCLog::LIBEVENT))) {
         g_logger->DisableCategory(BCLog::LIBEVENT);
     }
+
 #ifdef WIN32
     evthread_use_windows_threads();
 #else

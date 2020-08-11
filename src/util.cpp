@@ -349,7 +349,7 @@ void ClearDatadirCache()
     pathCachedNetSpecific = fs::path();
 }
 
-boost::filesystem::path GetConfigFile()
+fs::path GetConfigFile()
 {
     fs::path pathConfigFile(GetArg("-conf", "encocoin.conf"));
     if (!pathConfigFile.is_complete())
