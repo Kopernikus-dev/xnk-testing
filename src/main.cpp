@@ -3286,7 +3286,7 @@ bool CheckColdStakeFreeOutput(const CTransaction& tx, const int nHeight)
         // last output can either be a mn reward or a budget payment
         // cold staking is active much after height_start_ZC_PublicSpends so GetMasternodePayment is always 3 XNK.
         // TODO: double check this if/when MN rewards change
-        if (lastOut.nValue == GetMasternodePayment())
+        if (lastOut.nValue == 3 * COIN)
             return true;
 
         // This could be a budget block.
@@ -5879,7 +5879,7 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
     } else {
         bool found = false;
         const std::vector<std::string>& allMessages = getAllNetMessageTypes();
-        for (const std::string msg& : allMessages) {
+        for (const std::string& msg : allMessages) {
             if (msg == strCommand) {
                 found = true;
                 break;
