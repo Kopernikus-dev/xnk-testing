@@ -239,6 +239,7 @@ void EncoCoinGUI::handleRestart(QStringList args)
         Q_EMIT requestedRestart(args);
 }
 
+
 void EncoCoinGUI::setClientModel(ClientModel* clientModel)
 {
     this->clientModel = clientModel;
@@ -410,7 +411,7 @@ void EncoCoinGUI::message(const QString& title, const QString& message, unsigned
         }
         if (ret != NULL)
             *ret = r;
-    } else if (style & CClientUIInterface::MSG_INFORMATION_SNACK){
+    } else if (style & CClientUIInterface::MSG_INFORMATION_SNACK) {
         messageInfo(message);
     } else {
         // Append title to "EncoCoin - "
@@ -496,8 +497,7 @@ void EncoCoinGUI::goToColdStaking()
     showTop(coldStakingWidget);
 }
 
-void EncoCoinGUI::goToSettings()
-{
+void EncoCoinGUI::goToSettings(){
     showTop(settingsWidget);
 }
 
@@ -557,7 +557,7 @@ bool EncoCoinGUI::execDialog(QDialog *dialog, int xDiv, int yDiv)
 void EncoCoinGUI::showHide(bool show)
 {
     if (!op) op = new QLabel(this);
-    if (!show){
+    if (!show) {
         op->setVisible(false);
         opEnabled = false;
     } else {
