@@ -333,7 +333,8 @@ void DashboardWidget::onSortTypeChanged(const QString& value)
     settings.setValue("transactionType", filterByType);
 }
 
-void DashboardWidget::walletSynced(bool sync) {
+void DashboardWidget::walletSynced(bool sync)
+{
     if (this->isSync != sync) {
         this->isSync = sync;
         ui->layoutWarning->setVisible(!this->isSync);
@@ -353,7 +354,7 @@ void DashboardWidget::changeTheme(bool isLightTheme, QString& theme)
 
 #ifdef USE_QTCHARTS
 
-void DashboardWidget::tryChartRefresh() 
+void DashboardWidget::tryChartRefresh()
 {
     if (!fShowCharts)
         return;
@@ -426,7 +427,7 @@ void DashboardWidget::showHideEmptyChart(bool showEmpty, bool loading, bool forc
     ui->labelEmptyChart->setText(loading ? tr("Loading chart..") : tr("You have no staking rewards"));
 }
 
-void DashboardWidget::initChart() 
+void DashboardWidget::initChart()
 {
     chart = new QChart();
     axisX = new QBarCategoryAxis();
@@ -482,7 +483,7 @@ void DashboardWidget::changeChartColors()
     if (set1) set1->setBorderColor(gridLineColorX);
 }
 
-void DashboardWidget::updateStakeFilter() 
+void DashboardWidget::updateStakeFilter()
 {
     if (chartShow != ALL) {
         bool filterByMonth = false;
@@ -519,7 +520,7 @@ void DashboardWidget::updateStakeFilter()
 }
 
 // pair XNK, zXNK
-const QMap<int, std::pair<qint64, qint64>> DashboardWidget::getAmountBy() 
+const QMap<int, std::pair<qint64, qint64>> DashboardWidget::getAmountBy()
 {
     updateStakeFilter();
     const int size = stakesFilter->rowCount();
@@ -622,7 +623,7 @@ void DashboardWidget::onChartYearChanged(const QString& yearStr)
     }
 }
 
-void DashboardWidget::onChartMonthChanged(const QString& monthStr) 
+void DashboardWidget::onChartMonthChanged(const QString& monthStr)
 {
     if (isChartInitialized) {
         int newMonth = ui->comboBoxMonths->currentData().toInt();
@@ -648,10 +649,10 @@ bool DashboardWidget::refreshChart()
     return execute(REQUEST_LOAD_TASK);
 }
 
-void DashboardWidget::onChartRefreshed() 
+void DashboardWidget::onChartRefreshed()
 {
     if (chart) {
-        if  (series) {
+        if (series) {
             series->clear();
             series->detachAxis(axisX);
             series->detachAxis(axisY);
@@ -745,7 +746,7 @@ void DashboardWidget::onChartRefreshed()
     isLoading = false;
 }
 
-std::pair<int, int> DashboardWidget::getChartRange(QMap<int, std::pair<qint64, qint64>> amountsBy) 
+std::pair<int, int> DashboardWidget::getChartRange(QMap<int, std::pair<qint64, qint64>> amountsBy)
 {
     switch (chartShow) {
         case YEAR:
@@ -768,7 +769,7 @@ std::pair<int, int> DashboardWidget::getChartRange(QMap<int, std::pair<qint64, q
     }
 }
 
-void DashboardWidget::updateAxisX(const QStringList* args) 
+void DashboardWidget::updateAxisX(const QStringList* args)
 {
     axisX->clear();
     QStringList months;
@@ -781,7 +782,8 @@ void DashboardWidget::updateAxisX(const QStringList* args)
     axisX->append(months);
 }
 
-void DashboardWidget::onChartArrowClicked(bool goLeft) {
+void DashboardWidget::onChartArrowClicked(bool goLeft)
+{
     bool updateMonth = false;
     bool updateYear = false;
     int dataenddate = getChartRange(chartData->amountsByCache).second;
@@ -833,7 +835,7 @@ void DashboardWidget::onChartArrowClicked(bool goLeft) {
 
 }
 
-void DashboardWidget::windowResizeEvent(QResizeEvent* event) 
+void DashboardWidget::windowResizeEvent(QResizeEvent* event)
 {
     if (hasStakes && axisX) {
         if (width() > 1300) {
@@ -874,7 +876,7 @@ void DashboardWidget::onHideChartsChanged(bool fHide)
 
 #endif
 
-void DashboardWidget::run(int type) 
+void DashboardWidget::run(int type)
 {
 #ifdef USE_QTCHARTS
     if (type == REQUEST_LOAD_TASK) {
@@ -882,15 +884,15 @@ void DashboardWidget::run(int type)
         if (loadChartData(withMonthNames))
             QMetaObject::invokeMethod(this, "onChartRefreshed", Qt::QueuedConnection);
     }
-
 #endif
 }
-void DashboardWidget::onError(QString error, int type) 
+void DashboardWidget::onError(QString error, int type)
 {
     inform(tr("Error loading chart: %1").arg(error));
 }
 
-void DashboardWidget::processNewTransaction(const QModelIndex& parent, int start, int /*end*/) {
+void DashboardWidget::processNewTransaction(const QModelIndex& parent, int start, int /*end*/)
+{
     // Prevent notifications-spam when initial block download is in progress
     if (!walletModel || !clientModel || clientModel->inInitialBlockDownload())
         return;

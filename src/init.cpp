@@ -853,7 +853,7 @@ void InitParameterInteraction()
     if (mapArgs.count("-connect") && mapMultiArgs["-connect"].size() > 0) {
         // when only connecting to trusted nodes, do not seed via DNS, or listen by default
         if (SoftSetBoolArg("-dnsseed", false))
-            LogPrintf("%s : parameter interaction: -connect set -> setting -dnsseed=0\n", __func__);;
+            LogPrintf("%s : parameter interaction: -connect set -> setting -dnsseed=0\n", __func__);
         if (SoftSetBoolArg("-listen", false))
             LogPrintf("%s : parameter interaction: -connect set -> setting -listen=0\n", __func__);
     }
@@ -1552,7 +1552,7 @@ bool AppInit2()
                 }
 
                 const Consensus::Params& consensus = Params().GetConsensus();
-                
+
                 // If the loaded chain has a wrong genesis, bail out immediately
                 // (we're likely using a testnet datadir, or the other way around).
                 if (!mapBlockIndex.empty() && mapBlockIndex.count(consensus.hashGenesisBlock) == 0)
@@ -1743,7 +1743,7 @@ bool AppInit2()
             else if (nLoadWalletRet == DB_NONCRITICAL_ERROR) {
                 std::string msg(_("Warning: error reading wallet.dat! All keys read correctly, but transaction data"
                              " or address book entries might be missing or incorrect."));
-			UIWarning(msg);
+                UIWarning(msg);
             } else if (nLoadWalletRet == DB_TOO_NEW)
                 strErrors << _("Error loading wallet.dat: Wallet requires newer version of EncoCoin Core") << "\n";
             else if (nLoadWalletRet == DB_NEED_REWRITE) {

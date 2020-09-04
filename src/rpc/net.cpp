@@ -284,7 +284,7 @@ UniValue getaddednodeinfo(const JSONRPCRequest& request)
 
     for (const AddedNodeInfo& info : vInfo) {
         UniValue obj(UniValue::VOBJ);
-       obj.push_back(Pair("addednode", info.strAddedNode));
+        obj.push_back(Pair("addednode", info.strAddedNode));
         obj.push_back(Pair("connected", info.fConnected));
         UniValue addresses(UniValue::VARR);
         if (info.fConnected) {
@@ -347,7 +347,7 @@ static UniValue GetNetworksInfo()
 
 UniValue getnetworkinfo(const JSONRPCRequest& request)
 {
-    if (request.fHelp || request.params.size() > 0)
+    if (request.fHelp || request.params.size() != 0)
         throw std::runtime_error(
             "getnetworkinfo\n"
             "\nReturns an object containing various state info regarding P2P networking.\n"

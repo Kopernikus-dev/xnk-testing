@@ -142,7 +142,7 @@ UniValue getmasternodecount (const JSONRPCRequest& request)
 
 UniValue masternodecurrent (const JSONRPCRequest& request)
 {
-    if (request.fHelp || (request.params.size() > 0))
+    if (request.fHelp || (request.params.size() != 0))
         throw std::runtime_error(
             "masternodecurrent\n"
             "\nGet current masternode winner (scheduled to be paid next).\n"

@@ -1634,7 +1634,7 @@ int CWallet::ScanForWalletTransactions(CBlockIndex* pindexStart, bool fUpdate, b
                     ret++;
             }
 
-            // Will try to rescan it if zXNK upgrade is active.
+            // Will try to rescan it if zPIV upgrade is active.
             doZXnkRescan(pindex, block, setAddedToWallet, consensus, fCheckZXNK);
 
             pindex = chainActive.Next(pindex);
@@ -2032,7 +2032,7 @@ bool CWallet::GetMasternodeVinAndKeys(CTxIn& txinRet, CPubKey& pubKeyRet, CKey& 
 
     // Masternode collateral value
     if (IsValidCollateral(txOut.nValue != txOut.nValue, chainActive.Height())) {
-        strError = "Invalid collateral tx value, must be required XNK";
+        strError = "Invalid collateral tx value";
         return error("%s: tx %s, index %d not a masternode collateral", __func__, strTxHash, nOutputIndex);
     }
 
@@ -2056,7 +2056,7 @@ bool CWallet::GetMasternodeVinAndKeys(CTxIn& txinRet, CPubKey& pubKeyRet, CKey& 
 
     // utxo need to be mine.
     isminetype mine = IsMine(txOut);
-     if (mine != ISMINE_SPENDABLE) {
+    if (mine != ISMINE_SPENDABLE) {
         strError = "Invalid collateral transaction. Not from this wallet";
         return error("%s: tx %s not mine", __func__, strTxHash);
     }
@@ -2596,7 +2596,7 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend,
                     bool combineChange = false;
 
                     // coin control: send change to custom address
-                    if (coinControl && !IsValidDestination(coinControl->destChange)) {
+                    if (coinControl && IsValidDestination(coinControl->destChange)) {
                         scriptChange = GetScriptForDestination(coinControl->destChange);
 
                         std::vector<CTxOut>::iterator it = txNew.vout.begin();
@@ -2640,7 +2640,7 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend,
                             nFeeRet += nChange;
                             nChange = 0;
                             reservekey.ReturnKey();
-                             nChangePosInOut = -1;
+                            nChangePosInOut = -1;
                         } else {
                             if (nChangePosInOut == -1) {
                                 // Insert change txn at random position:
@@ -2733,8 +2733,8 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend,
                 nFeeRet = nFeeNeeded;
                 continue;
             }
- 
-             // Give up if change keypool ran out and we failed to find a solution without change:
+
+            // Give up if change keypool ran out and we failed to find a solution without change:
             if (scriptChange.empty() && nChangePosInOut != -1) {
                 return false;
             }
@@ -3188,7 +3188,7 @@ size_t CWallet::KeypoolCountExternalKeys()
 
 bool CWallet::TopUpKeyPool(unsigned int kpSize)
 {
-        return m_spk_man->TopUp(kpSize);
+    return m_spk_man->TopUp(kpSize);
 }
 
 void CWallet::KeepKey(int64_t nIndex)
@@ -3688,7 +3688,7 @@ void CWallet::AutoCombineDust()
 
 bool CWallet::MultiSend()
 {
-     return false;
+    return false;
     /* disable multisend
     LOCK2(cs_main, cs_wallet);
     // Stop the old blocks from sending multisends
@@ -3896,7 +3896,6 @@ int CMerkleTx::GetBlocksToMaturity() const
         return 0;
     return std::max(0, (Params().GetConsensus().nCoinbaseMaturity + 1) - GetDepthInMainChain());
 }
-
 
 bool CMerkleTx::IsInMainChain() const
 {
