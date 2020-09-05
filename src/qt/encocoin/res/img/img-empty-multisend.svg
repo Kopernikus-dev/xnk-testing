@@ -7,13 +7,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   sodipodi:docname="img-empty-multisend.svg"
-   version="1.1"
-   viewBox="0 0 100 100"
-   height="100"
+   id="ic_empty_multisend"
    width="100"
-   id="ic_empty_multisend">
+   height="100"
+   viewBox="0 0 100 100"
+   version="1.1"
+   sodipodi:docname="img-empty-multisend1.svg"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)">
   <metadata
      id="metadata9878">
     <rdf:RDF>
@@ -22,138 +22,132 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <sodipodi:namedview
-     inkscape:current-layer="Group_9030"
-     inkscape:window-maximized="1"
-     inkscape:window-y="-8"
-     inkscape:window-x="-8"
-     inkscape:cy="50"
-     inkscape:cx="50"
-     inkscape:zoom="8.5"
-     showgrid="false"
-     id="namedview9876"
-     inkscape:window-height="1017"
-     inkscape:window-width="1920"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0"
-     guidetolerance="10"
-     gridtolerance="10"
-     objecttolerance="10"
-     borderopacity="1"
+     inkscape:document-rotation="0"
+     pagecolor="#ffffff"
      bordercolor="#666666"
-     pagecolor="#ffffff" />
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     id="namedview9876"
+     showgrid="false"
+     inkscape:zoom="8.5"
+     inkscape:cx="50"
+     inkscape:cy="50"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Group_9030" />
   <defs
      id="defs9855">
     <style
-       id="style9853"
-       type="text/css">
+       type="text/css"
+       id="style9853">
             .cls-1{fill:#d6d6d6}.cls-2{fill:#666}.cls-3{fill:none}
         </style>
   </defs>
   <g
-     data-name="Group 9031"
-     id="Group_9031">
+     id="Group_9031"
+     data-name="Group 9031">
     <g
-       data-name="Group 9029"
-       id="Group_9029">
+       id="Group_9029"
+       data-name="Group 9029">
       <path
-         transform="translate(45 18)"
-         data-name="Rectangle 4683"
-         class="cls-1"
+         id="Rectangle_4683"
          d="M0 0h10v9H0z"
-         id="Rectangle_4683" />
+         class="cls-1"
+         data-name="Rectangle 4683"
+         transform="translate(45 18)" />
       <g
-         data-name="Group 9028"
-         id="Group_9028">
+         id="Group_9028"
+         data-name="Group 9028">
         <path
-           transform="translate(14 66)"
+           id="Rectangle_4684"
+           d="M0 0h6v10H0z"
+           class="cls-1"
            data-name="Rectangle 4684"
-           class="cls-1"
-           d="M0 0h6v10H0z"
-           id="Rectangle_4684" />
+           transform="translate(14 66)" />
         <path
-           transform="translate(80 66)"
+           id="Rectangle_4685"
+           d="M0 0h6v10H0z"
+           class="cls-1"
            data-name="Rectangle 4685"
-           class="cls-1"
-           d="M0 0h6v10H0z"
-           id="Rectangle_4685" />
+           transform="translate(80 66)" />
         <path
-           transform="translate(47 66)"
-           data-name="Rectangle 4686"
-           class="cls-1"
+           id="Rectangle_4686"
            d="M0 0h6v10H0z"
-           id="Rectangle_4686" />
+           class="cls-1"
+           data-name="Rectangle 4686"
+           transform="translate(47 66)" />
       </g>
     </g>
     <g
-       data-name="Group 9030"
-       id="Group_9030">
+       id="Group_9030"
+       data-name="Group 9030">
       <path
-         transform="translate(67 40)"
-         data-name="Rectangle 4688"
-         class="cls-2"
+         id="Rectangle_4688"
          d="M0 0h2v4H0z"
-         id="Rectangle_4688" />
+         class="cls-2"
+         data-name="Rectangle 4688"
+         transform="translate(67 40)" />
       <circle
-         transform="translate(49 72)"
+         id="Ellipse_626"
+         cx="1"
+         cy="1"
+         r="1"
+         class="cls-2"
          data-name="Ellipse 626"
-         class="cls-2"
-         r="1"
-         cy="1"
-         cx="1"
-         id="Ellipse_626" />
+         transform="translate(49 72)" />
       <circle
-         transform="translate(82 72)"
+         id="Ellipse_627"
+         cx="1"
+         cy="1"
+         r="1"
+         class="cls-2"
          data-name="Ellipse 627"
-         class="cls-2"
-         r="1"
-         cy="1"
-         cx="1"
-         id="Ellipse_627" />
+         transform="translate(82 72)" />
       <path
-         transform="translate(32 58)"
-         data-name="Rectangle 4689"
-         class="cls-2"
+         id="Rectangle_4689"
          d="M0 0h4v2H0z"
-         id="Rectangle_4689" />
-      <path
-         data-name="Path 18986"
          class="cls-2"
+         data-name="Rectangle 4689"
+         transform="translate(32 58)" />
+      <path
+         id="Path_18986"
          d="M16 65h-3v3H7v4h2v-2h4v7h8v-7h4v21H9V76H7v17h20V68h-6v-3h-3v-5h10v-2H16zm3 2v8h-4v-8z"
-         id="Path_18986" />
+         class="cls-2"
+         data-name="Path 18986" />
       <circle
-         transform="translate(16 72)"
-         data-name="Ellipse 628"
-         class="cls-2"
-         r="1"
-         cy="1"
+         id="Ellipse_628"
          cx="1"
-         id="Ellipse_628" />
-      <path
-         data-name="Path 18987"
+         cy="1"
+         r="1"
          class="cls-2"
+         data-name="Ellipse 628"
+         transform="translate(16 72)" />
+      <path
+         id="Path_18987"
          d="M87 68v-3h-3v-7H51v-5h18v-5h-2v3H33V28h34v8h2v-8h4V17H59.46A5.994 5.994 0 1 0 50 9.69 5.995 5.995 0 1 0 40.54 17H27v11h4v25h18v5h-9v2h9v5h-3v3h-6v16h2V70h4v7h8v-7h4v21H42v-3h-2v5h20V68h-6v-3h-3v-5h31v5h-3v3h-6v12h2V70h4v7h8v-7h4v21H75v-7h-2v9h20V68zM71 19v7H56v-7zm-20-6a4 4 0 1 1 4 4h-4zm0 6h3v7h-8v-7h5zM45 9a4 4 0 0 1 4 4v4h-4a4 4 0 0 1 0-8zM29 26v-7h15v7H29zm23 41v8h-4v-8zm33 8h-4v-8h4z"
-         id="Path_18987" />
-      <text
-         transform="scale(0.91316996,1.0950864)"
-         id="text851"
-         y="43.817337"
-         x="39.317616"
-         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.6667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold Italic';fill:#666666;fill-opacity:1;stroke-width:2.95465;"
-         xml:space="preserve"><tspan
-           style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.6667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold Italic';fill:#666666;fill-opacity:1;stroke-width:2.95465;"
-           y="43.817337"
-           x="39.317616"
-           id="tspan849"
-           sodipodi:role="line">Xnk</tspan></text>
+         class="cls-2"
+         data-name="Path 18987" />
+      <path
+         id="path2277"
+         d="m 50.40362,49.344672 -0.0065,-1.006915 -1.021691,-0.536136 c -4.834294,-2.536816 -6.42292,-8.641803 -3.493569,-13.425553 0.875539,-1.429787 2.208082,-2.662565 3.787012,-3.503483 l 0.74123,-0.394785 v -1.061723 -1.061724 h 1.673805 1.673804 v 0.657763 0.657766 l 0.358673,0.06401 c 0.197269,0.03521 0.541596,0.06452 0.765168,0.06516 l 0.406494,0.0011 v 1.017584 c 0,0.559672 0.02765,1.303241 0.06145,1.652375 l 0.06145,0.63479 -1.041818,0.0013 c -1.282388,0.0019 -2.037384,0.183802 -3.098208,0.746539 -1.402478,0.743976 -2.769292,2.45294 -3.139223,3.925056 l -0.09732,0.387275 h 2.335617 2.335616 v 1.28552 1.285521 l -2.195265,0.03121 c -1.434589,0.0204 -2.231724,0.07066 -2.300488,0.145035 -0.22529,0.243694 0.511579,1.794315 1.288557,2.711556 0.463472,0.547141 0.959625,0.923564 1.861433,1.412243 0.883838,0.47894 1.718366,0.663852 3.006081,0.666077 l 1.038618,0.0017 -0.03519,1.558104 c -0.0415,1.837186 -0.04844,1.849913 -1.008218,1.849913 H 53.75772 v 0.619642 0.61964 h -1.673804 -1.673804 l -0.0065,-1.006916 z"
+         style="fill:#666666;fill-opacity:1;stroke-width:0.0993868" />
     </g>
   </g>
   <path
-     data-name="Rectangle 4690"
-     class="cls-3"
+     id="Rectangle_4690"
      d="M0 0h100v100H0z"
-     id="Rectangle_4690" />
+     class="cls-3"
+     data-name="Rectangle 4690" />
 </svg>
