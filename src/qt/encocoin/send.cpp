@@ -43,7 +43,7 @@ SendWidget::SendWidget(EncoCoinGUI* parent) :
     ui->labelTitle->setFont(fontLight);
 
     /* Subtitle */
-    setCssProperty({ui->labelSubtitle1}, "text-subtitle");
+    setCssProperty(ui->labelSubtitle1, "text-subtitle");
 
     /* Address - Amount*/
     setCssProperty({ui->labelSubtitleAddress, ui->labelSubtitleAmount}, "text-title");
@@ -151,7 +151,7 @@ void SendWidget::refreshAmounts()
     showHideCheckBoxDelegations();
 }
 
-void SendWidget::loadClientModel() 
+void SendWidget::loadClientModel()
 {
     if (clientModel) {
         connect(clientModel, &ClientModel::numBlocksChanged, [this](){
@@ -232,14 +232,14 @@ void SendWidget::clearEntries()
 
 void SendWidget::addEntry()
 {
-    if(entries.isEmpty()) {
+    if (entries.isEmpty()) {
         createEntry();
     } else {
         if (entries.length() == 1) {
             SendMultiRow *entry = entries.at(0);
             entry->hideLabels();
             entry->setNumber(1);
-        } else if (entries.length() == MAX_SEND_POPUP_ENTRIES){
+        } else if (entries.length() == MAX_SEND_POPUP_ENTRIES) {
             inform(tr("Maximum amount of outputs reached"));
             return;
         }
@@ -285,6 +285,7 @@ void SendWidget::showEvent(QShowEvent *event)
 {
     // Set focus on last recipient address when Send-window is displayed
     setFocusOnLastEntry();
+
     // Update cached delegated balance
     CAmount cachedDelegatedBalance_new = walletModel->getDelegatedBalance();
     if (cachedDelegatedBalance != cachedDelegatedBalance_new) {
@@ -316,7 +317,6 @@ void SendWidget::showHideCheckBoxDelegations()
 
 void SendWidget::onSendClicked()
 {
-
     if (!walletModel || !walletModel->getOptionsModel())
         return;
 
@@ -386,7 +386,7 @@ bool SendWidget::send(QList<SendCoinsRecipient> recipients)
     dialog->adjustSize();
     openDialogWithOpaqueBackgroundY(dialog, window, 3, 5);
 
-    if (dialog->isConfirm()){
+    if (dialog->isConfirm()) {
         // now send the prepared transaction
         WalletModel::SendCoinsReturn sendStatus = dialog->getStatus();
         // process sendStatus and on error generate message shown to user
@@ -426,7 +426,7 @@ void SendWidget::updateEntryLabels(QList<SendCoinsRecipient> recipients)
         QString label = rec.label;
         if (!label.isNull()) {
             QString labelOld = walletModel->getAddressTableModel()->labelForAddress(rec.address);
-            if(label.compare(labelOld) != 0) {
+            if (label.compare(labelOld) != 0) {
                 CTxDestination dest = DecodeDestination(rec.address.toStdString());
                 if (!walletModel->updateAddressBookLabels(dest, label.toStdString(),
                                                           this->walletModel->isMine(dest) ?
@@ -511,7 +511,7 @@ void SendWidget::onChangeCustomFeeClicked()
 {
     showHideOp(true);
     if (!customFeeDialog) {
-       customFeeDialog = new SendCustomFeeDialog(window, walletModel);
+        customFeeDialog = new SendCustomFeeDialog(window, walletModel);
     }
     if (openDialogWithOpaqueBackgroundY(customFeeDialog, window, 3, 5)) {
         const CAmount& nFeePerKb = customFeeDialog->getFeeRate().GetFeePerK();
@@ -579,7 +579,7 @@ void SendWidget::onContactsClicked(SendMultiRow* entry)
                     this
         );
         menuContacts->setWalletModel(walletModel, AddressTableModel::Send);
-        connect(menuContacts, &ContactsDropdown::contactSelected, [this](QString address, QString label){
+        connect(menuContacts, &ContactsDropdown::contactSelected, [this](QString address, QString label) {
             if (focusedEntry) {
                 if (label != "(no label)")
                     focusedEntry->setLabel(label);
@@ -614,14 +614,14 @@ void SendWidget::onContactsClicked(SendMultiRow* entry)
 void SendWidget::onMenuClicked(SendMultiRow* entry)
 {
     focusedEntry = entry;
-    if (menuContacts && menuContacts->isVisible()){
+    if (menuContacts && menuContacts->isVisible()) {
         menuContacts->hide();
     }
     QPoint pos = entry->pos();
     pos.setX(pos.x() + (entry->width() - entry->getMenuBtnWidth()));
     pos.setY(pos.y() + entry->height() + (entry->getMenuBtnWidth()));
 
-    if (!this->menu){
+    if (!this->menu) {
         this->menu = new TooltipMenu(window, this);
         this->menu->setCopyBtnVisible(false);
         this->menu->setEditBtnText(tr("Save contact"));
@@ -715,7 +715,7 @@ void SendWidget::onDeleteClicked()
 
 void SendWidget::resizeMenu()
 {
-    if (menuContacts && menuContacts->isVisible() && focusedEntry){
+    if (menuContacts && menuContacts->isVisible() && focusedEntry) {
         int width = focusedEntry->getEditWidth();
         menuContacts->resizeList(width, menuContacts->height());
         menuContacts->resize(width, menuContacts->height());

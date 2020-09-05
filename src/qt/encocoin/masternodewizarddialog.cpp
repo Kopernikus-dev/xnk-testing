@@ -101,7 +101,7 @@ void MasterNodeWizardDialog::showEvent(QShowEvent *event)
 
 void MasterNodeWizardDialog::accept()
 {
-    switch(pos){
+    switch(pos) {
         case 0:{
             ui->stackedWidget->setCurrentIndex(1);
             ui->pushName4->setChecked(false);

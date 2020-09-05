@@ -29,6 +29,7 @@ struct SeedSpec6 {
     uint8_t addr[16];
     uint16_t port;
 };
+
 /**
  * CChainParams defines various tweakable parameters of a given instance of the
  * EncoCoin system. There are three: the main network on which people trade goods
@@ -83,7 +84,6 @@ protected:
     CBlock genesis;
     Consensus::Params consensus;
     MessageStartChars pchMessageStart;
-    std::vector<unsigned char> vAlertPubKey;
     int nDefaultPort;
     std::vector<CDNSSeedData> vSeeds;
     std::vector<unsigned char> base58Prefixes[MAX_BASE58_TYPES];

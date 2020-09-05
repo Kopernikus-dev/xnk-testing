@@ -222,7 +222,8 @@ int SendMultiRow::getEditWidth()
     return ui->lineEditAddress->width();
 }
 
-int SendMultiRow::getNumber(){
+int SendMultiRow::getNumber()
+{
     return number;
 }
 
@@ -301,7 +302,7 @@ void SendMultiRow::enterEvent(QEvent *)
 
 void SendMultiRow::leaveEvent(QEvent *)
 {
-    if(isExpanded){
+    if (isExpanded) {
         isExpanded = false;
         ui->btnMenu->setVisible(isExpanded);
     }

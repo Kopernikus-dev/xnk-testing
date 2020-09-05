@@ -590,7 +590,7 @@ void ColdStakingWidget::handleMyColdAddressClicked(const QModelIndex &_index)
 
     QModelIndex rIndex = addressesFilter->mapToSource(_index);
 
-    if (!menuAddresses){
+    if (!menuAddresses) {
         menuAddresses = new TooltipMenu(window, this);
         menuAddresses->setEditBtnText(tr("Copy"));
         menuAddresses->setDeleteBtnText(tr("Edit"));
@@ -619,7 +619,7 @@ void ColdStakingWidget::handleAddressClicked(const QModelIndex &rIndex)
     pos.setX(pos.x() - (DECORATION_SIZE * 2));
     pos.setY(pos.y() + (DECORATION_SIZE * 2));
 
-    if (!this->menu){
+    if (!this->menu) {
         this->menu = new TooltipMenu(window, this);
         this->menu->setEditBtnText(tr("Stake"));
         this->menu->setDeleteBtnText(tr("Blacklist"));

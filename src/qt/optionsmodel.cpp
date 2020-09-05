@@ -179,7 +179,7 @@ void OptionsModel::setWindowDefaultOptions(QSettings& settings, bool reset)
 void OptionsModel::setDisplayDefaultOptions(QSettings& settings, bool reset)
 {
     if (!settings.contains("nDisplayUnit") || reset)
-         settings.setValue("nDisplayUnit", BitcoinUnits::XNK);
+        settings.setValue("nDisplayUnit", BitcoinUnits::XNK);
     nDisplayUnit = settings.value("nDisplayUnit").toInt();
     if (!settings.contains("digits") || reset)
         settings.setValue("digits", "2");
@@ -263,7 +263,7 @@ QVariant OptionsModel::data(const QModelIndex& index, int role) const
         case ShowMasternodesTab:
             return settings.value("fShowMasternodesTab");
         case StakeSplitThreshold:
-		{
+			{
             // Return CAmount/qlonglong as double
             const CAmount nStakeSplitThreshold = (pwalletMain) ? pwalletMain->nStakeSplitThreshold : CWallet::DEFAULT_STAKE_SPLIT_THRESHOLD;
             return QVariant(static_cast<double>(nStakeSplitThreshold / static_cast<double>(COIN)));

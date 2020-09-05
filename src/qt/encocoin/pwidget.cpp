@@ -13,7 +13,7 @@ PWidget::PWidget(PWidget* parent) : QWidget(parent), window(parent->getWindow())
 
 void PWidget::init()
 {
-    if(window)
+    if (window)
         connect(window, &EncoCoinGUI::themeChanged, this, &PWidget::onChangeTheme);
 }
 

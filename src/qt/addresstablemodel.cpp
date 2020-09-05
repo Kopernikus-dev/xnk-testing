@@ -331,7 +331,7 @@ QVariant AddressTableModel::data(const QModelIndex& index, int role) const
             return rec->address;
         case Date:
             return rec->creationTime;
-         case Type:
+        case Type:
             return translateTypeToString(rec->type);
         }
     } else if (role == Qt::FontRole) {
@@ -582,7 +582,7 @@ QString AddressTableModel::getAddressToShow() const
 {
     QString addressStr;
     LOCK(wallet->cs_wallet);
-    if( !wallet->mapAddressBook.empty()) {
+    if (!wallet->mapAddressBook.empty()) {
         for (auto it = wallet->mapAddressBook.rbegin(); it != wallet->mapAddressBook.rend(); ++it ) {
             if (it->second.purpose == AddressBook::AddressBookPurpose::RECEIVE) {
                 const CTxDestination &address = it->first;

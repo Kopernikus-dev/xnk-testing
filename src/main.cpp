@@ -358,7 +358,7 @@ struct CNodeState {
         nMisbehavior = 0;
         fShouldBan = false;
         pindexBestKnownBlock = NULL;
-        hashLastUnknownBlock = uint256(0);
+        hashLastUnknownBlock.SetNull();
         pindexLastCommonBlock = NULL;
         fSyncStarted = false;
         nStallingSince = 0;
@@ -1889,6 +1889,7 @@ bool CheckInputs(const CTransaction& tx, CValidationState &state, const CCoinsVi
 
         if (pvChecks)
             pvChecks->reserve(tx.vin.size());
+
         // The first loop above does all the inexpensive checks.
         // Only if ALL inputs pass do we perform expensive ECDSA signature checks.
         // Helps prevent CPU exhaustion attacks.
@@ -1968,9 +1969,9 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
     bool fClean = true;
 
     CBlockUndo blockUndo;
-    CDiskBlockPos pos = pindex->GetUndoPos();
     CAmount nValueOut = 0;
     CAmount nValueIn = 0;
+    CDiskBlockPos pos = pindex->GetUndoPos();
     if (pos.IsNull())
         return error("DisconnectBlock() : no undo data available");
     if (!blockUndo.ReadFromDisk(pos, pindex->pprev->GetBlockHash()))
@@ -1992,6 +1993,7 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
 
         nValueOut += tx.GetValueOut();
         uint256 hash = tx.GetHash();
+
 
         // Check that all outputs are available and match the outputs in the block itself
         // exactly. Note that transactions with only provably unspendable outputs won't
@@ -2047,6 +2049,7 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
         if (!tx.HasZerocoinSpendInputs() && !tx.IsCoinBase() && view.HaveInputs(tx))
             nValueIn += view.GetValueIn(tx);
     }
+
     // track money
     nMoneySupply -= (nValueOut - nValueIn);
 
@@ -2119,7 +2122,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
             return AbortNode(state, "Corrupt block found indicating potential hardware failure; shutting down");
         }
         return error("%s: CheckBlock failed for %s: %s", __func__, block.GetHash().ToString(), FormatStateMessage(state));
-	}
+    }
 
     // verify that the view's current state corresponds to the previous block
     uint256 hashPrevBlock = pindex->pprev == NULL ? UINT256_ZERO : pindex->pprev->GetBlockHash();
@@ -2312,7 +2315,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     LogPrint(BCLog::BENCH, "      - Connect %u transactions: %.2fms (%.3fms/tx, %.3fms/txin) [%.2fs]\n", (unsigned)block.vtx.size(), 0.001 * (nTime1 - nTimeStart), 0.001 * (nTime1 - nTimeStart) / block.vtx.size(), nInputs <= 1 ? 0 : 0.001 * (nTime1 - nTimeStart) / (nInputs - 1), nTimeConnect * 0.000001);
 
     //PoW phase redistributed fees to miner. PoS stage destroys fees.
-    CAmount nExpectedMint = GetBlockValue(pindex->pprev->nHeight + 1);
+    CAmount nExpectedMint = GetBlockValue(pindex->pprev->nHeight +1);
     if (block.IsProofOfWork())
         nExpectedMint += nFees;
 
@@ -2605,7 +2608,7 @@ bool static DisconnectTip(CValidationState& state)
     // Read block from disk.
     CBlock block;
     if (!ReadBlockFromDisk(block, pindexDelete))
-        return AbortNode(state, "Failed to read block");
+            return AbortNode(state, "Failed to read block");
     // Apply the block atomically to the chain state.
     int64_t nStart = GetTimeMicros();
     {
@@ -5019,7 +5022,7 @@ void static ProcessGetData(CNode* pfrom)
                         CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
                         ss.reserve(1000);
                         ss << budget.mapSeenFinalizedBudgets[inv.hash];
-                        pfrom->PushMessage("fbs", ss);
+                        pfrom->PushMessage(NetMsgType::FINALBUDGET, ss);
                         pushed = true;
                     }
                 }
@@ -5029,7 +5032,7 @@ void static ProcessGetData(CNode* pfrom)
                         CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
                         ss.reserve(1000);
                         ss << mnodeman.mapSeenMasternodeBroadcast[inv.hash];
-                        pfrom->PushMessage(NetMsgType::FINALBUDGET, ss);
+                        pfrom->PushMessage(NetMsgType::MNBROADCAST, ss);
                         pushed = true;
                     }
                 }
@@ -5876,7 +5879,7 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
     } else {
         bool found = false;
         const std::vector<std::string>& allMessages = getAllNetMessageTypes();
-        for (const std::string msg : allMessages) {
+        for (const std::string& msg : allMessages) {
             if (msg == strCommand) {
                 found = true;
                 break;

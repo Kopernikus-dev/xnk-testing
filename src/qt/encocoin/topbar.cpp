@@ -44,7 +44,7 @@ TopBar::TopBar(EncoCoinGUI* _mainWindow, QWidget *parent) :
     ui->containerTop->setProperty("cssClass", "container-top");
 #endif
 
-    std::initializer_list<QWidget*> lblTitles = {ui->labelTitle1, ui->labelTitle3, ui->labelTitle4 };
+    std::initializer_list<QWidget*> lblTitles = {ui->labelTitle1, ui->labelTitle3, ui->labelTitle4};
     setCssProperty(lblTitles, "text-title-topbar");
     QFont font;
     font.setWeight(QFont::Light);
@@ -136,7 +136,7 @@ void TopBar::onThemeClicked()
 
     setTheme(lightTheme);
 
-    if (lightTheme){
+    if (lightTheme) {
         ui->pushButtonTheme->setButtonClassStyle("cssClass", "btn-check-theme-light",  true);
         ui->pushButtonTheme->setButtonText(tr("Light Theme"));
     } else {
@@ -147,7 +147,6 @@ void TopBar::onThemeClicked()
 
     Q_EMIT themeChanged(lightTheme);
 }
-
 
 void TopBar::onBtnLockClicked()
 {
@@ -316,7 +315,7 @@ void TopBar::onBtnReceiveClicked()
 
 void TopBar::showTop()
 {
-    if (ui->bottom_container->isVisible()){
+    if (ui->bottom_container->isVisible()) {
         ui->bottom_container->setVisible(false);
         ui->widgetTopAmount->setVisible(true);
         this->setFixedHeight(75);
@@ -331,7 +330,7 @@ void TopBar::showBottom()
     this->adjustSize();
 }
 
-void TopBar::onColdStakingClicked() 
+void TopBar::onColdStakingClicked()
 {
     bool isColdStakingEnabled = walletModel->isColdStaking();
     ui->pushButtonColdStaking->setChecked(isColdStakingEnabled);
@@ -369,13 +368,13 @@ TopBar::~TopBar()
 
 void TopBar::loadClientModel()
 {
-    if(clientModel){
+    if (clientModel) {
         // Keep up to date with client
         setNumConnections(clientModel->getNumConnections());
         connect(clientModel, &ClientModel::numConnectionsChanged, this, &TopBar::setNumConnections);
 
         setNumBlocks(clientModel->getNumBlocks());
-       connect(clientModel, &ClientModel::numBlocksChanged, this, &TopBar::setNumBlocks);
+        connect(clientModel, &ClientModel::numBlocksChanged, this, &TopBar::setNumBlocks);
 
         timerStakingIcon = new QTimer(ui->pushButtonStack);
         connect(timerStakingIcon, &QTimer::timeout, this, &TopBar::updateStakingStatus);
@@ -404,7 +403,7 @@ void TopBar::updateStakingStatus()
     updateTorIcon();
 }
 
-void TopBar::setNumConnections(int count) 
+void TopBar::setNumConnections(int count)
 {
     if (count > 0) {
         if (!ui->pushButtonConnection->isChecked()) {
@@ -421,7 +420,7 @@ void TopBar::setNumConnections(int count)
     ui->pushButtonConnection->setButtonText(tr("%n active connection(s)", "", count));
 }
 
-void TopBar::setNumBlocks(int count) 
+void TopBar::setNumBlocks(int count)
 {
     if (!clientModel)
         return;
@@ -506,7 +505,7 @@ void TopBar::setNumBlocks(int count)
         progressBar->setValue(clientModel->getVerificationProgress() * 1000000000.0 + 0.5);
     }
 
-    if (text.empty()){
+    if (text.empty()) {
         text = "No block source available..";
     }
 
@@ -560,7 +559,7 @@ void TopBar::loadWalletModel()
     isInitializing = false;
 }
 
-void TopBar::updateTorIcon() 
+void TopBar::updateTorIcon()
 {
     std::string ip_port;
     bool torEnabled = clientModel->getTorInfo(ip_port);
@@ -571,7 +570,7 @@ void TopBar::updateTorIcon()
             ui->pushButtonTor->setButtonClassStyle("cssClass", "btn-check-tor", true);
         }
         QString ip_port_q = QString::fromStdString(ip_port);
-       ui->pushButtonTor->setButtonText(tr("Tor Active: %1").arg(ip_port_q));
+        ui->pushButtonTor->setButtonText(tr("Tor Active: %1").arg(ip_port_q));
     } else {
         if (ui->pushButtonTor->isChecked()) {
             ui->pushButtonTor->setChecked(false);
@@ -653,12 +652,12 @@ void TopBar::resizeEvent(QResizeEvent *event)
     QWidget::resizeEvent(event);
 }
 
-void TopBar::refreshProgressBarSize() 
+void TopBar::refreshProgressBarSize()
 {
     QMetaObject::invokeMethod(this, "expandSync", Qt::QueuedConnection);
 }
 
-void TopBar::expandSync() 
+void TopBar::expandSync()
 {
     if (progressBar) {
         progressBar->setMaximumWidth(ui->pushButtonSync->maximumWidth());

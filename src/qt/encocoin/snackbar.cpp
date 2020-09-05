@@ -23,7 +23,7 @@ SnackBar::SnackBar(EncoCoinGUI* _window, QWidget *parent) :
 
     connect(ui->pushButton, &QPushButton::clicked, this, &SnackBar::close);
     if (window)
-        connect(window, SIGNAL(windowResizeEvent(QResizeEvent*)), this, SLOT(windowResizeEvent(QResizeEvent*)));
+        connect(window, &EncoCoinGUI::windowResizeEvent, this, &SnackBar::windowResizeEvent);
     else {
         ui->horizontalLayout->setContentsMargins(0,0,0,0);
         ui->label->setStyleSheet("font-size: 15px; color:white;");

@@ -21,7 +21,7 @@ Qt::Modifier SHORT_KEY
 #endif
 
 // Open dialog at the bottom
-bool openDialog(QDialog *widget, QWidget *gui)
+bool openDialog(QDialog* widget, QWidget* gui)
 {
     widget->setWindowFlags(Qt::CustomizeWindowHint);
     widget->setAttribute(Qt::WA_TranslucentBackground, true);
@@ -36,7 +36,7 @@ bool openDialog(QDialog *widget, QWidget *gui)
     return widget->exec();
 }
 
-void closeDialog(QDialog *widget, EncoCoinGUI *gui)
+void closeDialog(QDialog* widget, EncoCoinGUI* gui)
 {
     widget->setWindowFlags(Qt::CustomizeWindowHint);
     widget->setAttribute(Qt::WA_TranslucentBackground, true);
@@ -48,7 +48,7 @@ void closeDialog(QDialog *widget, EncoCoinGUI *gui)
     animation->start(QAbstractAnimation::DeleteWhenStopped);
 }
 
-void openDialogFullScreen(QWidget *parent, QWidget * dialog)
+void openDialogFullScreen(QWidget* parent, QWidget* dialog)
 {
     dialog->setWindowFlags(Qt::CustomizeWindowHint);
     dialog->move(0, 0);
@@ -57,7 +57,7 @@ void openDialogFullScreen(QWidget *parent, QWidget * dialog)
     dialog->resize(parent->width(), parent->height());
 }
 
-bool openDialogWithOpaqueBackgroundY(QDialog *widget, EncoCoinGUI *gui, double posX, int posY)
+bool openDialogWithOpaqueBackgroundY(QDialog* widget, EncoCoinGUI* gui, double posX, int posY)
 {
     widget->setWindowFlags(Qt::CustomizeWindowHint);
     widget->setAttribute(Qt::WA_TranslucentBackground, true);
@@ -74,12 +74,12 @@ bool openDialogWithOpaqueBackgroundY(QDialog *widget, EncoCoinGUI *gui, double p
     return res;
 }
 
-bool openDialogWithOpaqueBackground(QDialog *widget, EncoCoinGUI *gui, double posX)
+bool openDialogWithOpaqueBackground(QDialog* widget, EncoCoinGUI* gui, double posX)
 {
     return openDialogWithOpaqueBackgroundY(widget, gui, posX, 5);
 }
 
-bool openDialogWithOpaqueBackgroundFullScreen(QDialog *widget, EncoCoinGUI *gui)
+bool openDialogWithOpaqueBackgroundFullScreen(QDialog* widget, EncoCoinGUI* gui)
 {
     widget->setWindowFlags(Qt::CustomizeWindowHint);
     widget->setAttribute(Qt::WA_TranslucentBackground, true);
@@ -100,7 +100,7 @@ bool openDialogWithOpaqueBackgroundFullScreen(QDialog *widget, EncoCoinGUI *gui)
     return res;
 }
 
-QPixmap encodeToQr(QString str, QString &errorStr, QColor qrColor)
+QPixmap encodeToQr(QString str, QString& errorStr, QColor qrColor)
 {
     if (!str.isEmpty()) {
         // limit URI length
@@ -178,7 +178,7 @@ QSettings* settings = nullptr;
 
 QSettings* getSettings()
 {
-    if(!settings) {
+    if (!settings) {
         settings = new QSettings();
         // Setup initial values if them are not there
         setupSettings(settings);
@@ -212,7 +212,7 @@ void updateStyle(QWidget* widget)
 
 QColor getRowColor(bool isLightTheme, bool isHovered, bool isSelected)
 {
-    if(isLightTheme) {
+    if (isLightTheme) {
         if (isSelected) {
             return QColor("#dfdfdf");
         } else if (isHovered) {
@@ -336,7 +336,7 @@ void setCssProperty(QWidget* wid, QString value, bool forceUpdate)
 
 void forceUpdateStyle(QWidget* widget, bool forceUpdate)
 {
-    if(forceUpdate)
+    if (forceUpdate)
         updateStyle(widget);
 }
 
