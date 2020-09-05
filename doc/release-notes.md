@@ -31,7 +31,10 @@ EncoCoin Core should also work on most other Unix-like systems but is not freque
 Notable Changes
 ==============
 
-(Developers: add your notes here as part of your pull requests whenever possible)
+### Removed zerocoin GUI
+
+Spending zPIV and getting zPIV balance information is no longer available in the graphical interface. The feature remains accessible through the RPC interface: `getzerocoinbalance`, `listmintedzerocoins`, `listzerocoinamounts`, `spendzerocoin`, `spendzerocoinmints`.
+
 
 ### Memory pool limiting
 
@@ -41,10 +44,9 @@ EncoCoin Core 3.1.0 will have a strict maximum size on the mempool. The default 
 
 EncoCoin Core 3.1.0 also introduces new default policy limits on the length and size of unconfirmed transaction chains that are allowed in the mempool (generally limiting the length of unconfirmed chains to 25 transactions, with a total size of 101 KB). These limits can be overridden using command line arguments
 
+### Benchmarking Framework
+
 EncoCoin Core 3.1.0 backports  the internal benchmarking framework from Bitcoin Core, which can be used to benchmark cryptographic algorithms (e.g. SHA1, SHA256, SHA512, RIPEMD160, Poly1305, ChaCha20), Base58 encoding and decoding and thread queue. More tests are needed for script validation, coin selection and coins database, cuckoo cache, p2p throughtput
-
-### GUI
-
 
 The binary file is compiled with pivx-core, unless configured with `--disable-bench`.<br>
 After compiling pivx-core, the benchmarks can be run with:
@@ -57,6 +59,43 @@ The output will be similar to:
 Base58CheckEncode,131072,7697,8065,7785,20015,20971,20242
 ```
 
+'label' and 'account' APIs for wallet
+-------------------------------------
+
+A new 'label' API has been introduced for the wallet. This is intended as a
+replacement for the deprecated 'account' API. The 'account' can continue to
+be used in v4.2 by starting pivxd with the '-deprecatedrpc=accounts'
+argument, and will be fully removed in v5.0.
+
+The label RPC methods mirror the account functionality, with the following functional differences:
+
+- Labels can be set on any address, not just receiving addresses. This functionality was previously only available through the GUI.
+- Labels can be deleted by reassigning all addresses using the `setlabel` RPC method.
+- There isn't support for sending transactions _from_ a label, or for determining which label a transaction was sent from.
+- Labels do not have a balance.
+
+Here are the changes to RPC methods:
+
+| Deprecated Method       | New Method            | Notes       |
+| :---------------------- | :-------------------- | :-----------|
+| `getaccount`            | `getaddressinfo`      | `getaddressinfo` returns a json object with address information instead of just the name of the account as a string. |
+| `getaccountaddress`     | n/a                   | There is no replacement for `getaccountaddress` since labels do not have an associated receive address. |
+| `getaddressesbyaccount` | `getaddressesbylabel` | `getaddressesbylabel` returns a json object with the addresses as keys, instead of a list of strings. |
+| `getreceivedbyaccount`  | `getreceivedbylabel`  | _no change in behavior_ |
+| `listaccounts`          | `listlabels`          | `listlabels` does not return a balance or accept `minconf` and `watchonly` arguments. |
+| `listreceivedbyaccount` | `listreceivedbylabel` | Both methods return new `label` fields, along with `account` fields for backward compatibility. |
+| `move`                  | n/a                   | _no replacement_ |
+| `sendfrom`              | n/a                   | _no replacement_ |
+| `setaccount`            | `setlabel`            | Both methods now: <ul><li>allow assigning labels to any address, instead of raising an error if the address is not receiving address.<li>delete the previous label associated with an address when the final address using that label is reassigned to a different label, instead of making an implicit `getaccountaddress` call to ensure the previous label still has a receiving address. |
+
+| Changed Method         | Notes   |
+| :--------------------- | :------ |
+| `listunspent`          | Returns new `label` fields, along with `account` fields for backward compatibility if running with the `-deprecatedrpc=accounts` argument |
+| `sendmany`             | The first parameter has been renamed to `dummy`, and must be set to an empty string, unless running with the `-deprecatedrpc=accounts` argument (in which case functionality is unchanged). |
+| `listtransactions`     | The first parameter has been renamed to `dummy`, and must be set to the string `*`, unless running with the `-deprecatedrpc=accounts` argument (in which case functionality is unchanged). |
+| `getbalance`           | `account`, `minconf` and `include_watchonly` parameters are deprecated, and can only be used if running with the `-deprecatedrpc=accounts` argument |
+| `getcoldstakingbalance`| The `account` parameter is deprecated, and can only be used if running with the `-deprecatedrpc=accounts` argument (in which case functionality is unchanged) |
+| `getdelegatedbalance`  | The `account` parameter is deprecated, and can only be used if running with the `-deprecatedrpc=accounts` argument (in which case functionality is unchanged) |
 
 GUI Changes
 ----------
@@ -66,11 +105,6 @@ GUI Changes
 - The "sync" button in the GUI topbar can be clicked to go directly to the Settings --> Information panel (where the current block number and hash is shown).
 
 - The "connections" button in the GUI topbar can be clicked to open the network monitor dialog
-
-### Removed zerocoin GUI
-
-Spending zPIV and getting zPIV balance information is no longer available in the graphical interface . The feature remains accessible through the RPC interface: `getzerocoinbalance`, `listmintedzerocoins`, `listzerocoinamounts`, `spendzerocoin`, `spendzerocoinmints`.
-
 
 Functional Changes
 ----------
@@ -89,14 +123,10 @@ If the stake split is active (threshold > 0), then stake split threshold value m
 
 - new commands `-limitdescendantcount=N` and `limitdescendantsize=N`, to limit the number and total size of all in-mempool descendants for a transaction
 
-Dependencies
-------------
-
-...
-
-
 RPC Changes
 ------------
+
+In addition to the afore mentioned 'label' and 'account' API changes, other RPC changes are as follows:
 
 ### Low-level API changes
 
@@ -112,10 +142,12 @@ and are affected by this change: RPC `getrawtransaction`, RPC `decoderawtransact
 
 ### Removed commands
 
+- `masternodedebug`. Use `getmasternodestatus` instead.
+
 ### Newly introduced commands
 
 
-*version* Change log
+*3.1.0* Change log
 ==============
 
 Detailed release notes follow. This overview includes changes that affect behavior, not code moves, refactors and string updates. For convenience in locating the code changes and accompanying discussion, both the pull request and git merge commit are mentioned.
