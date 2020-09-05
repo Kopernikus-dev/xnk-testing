@@ -1,4 +1,5 @@
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -6,7 +7,6 @@
 #include "qt/encocoin/forms/ui_snackbar.h"
 #include "qt/encocoin/qtutils.h"
 #include <QTimer>
-
 
 SnackBar::SnackBar(EncoCoinGUI* _window, QWidget *parent) :
     QDialog(parent),

@@ -1,7 +1,7 @@
 // Copyright (c) 2011-2014 The Bitcoin Core developers
 // Copyright (c) 2017-2020 The PIVX developers
-// Copyright (c) 2020	   The EncoCoin developers (by Kopernikus-dev)
-// Distributed under the MIT software license, see the accompanying
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020 The EncoCoin developers
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include "data/script_invalid.json.h"
 #include "data/script_valid.json.h"

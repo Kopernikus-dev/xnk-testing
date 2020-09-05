@@ -1,7 +1,7 @@
 // Copyright (c) 2020 The PIVX developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or https://www.opensource.org/licenses/mit-license.php.
-
 #ifndef VALIDATION_ZEROCOIN_LEGACY_H
 #define VALIDATION_ZEROCOIN_LEGACY_H
 
