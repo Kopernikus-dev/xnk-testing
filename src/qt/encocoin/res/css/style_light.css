@@ -2370,6 +2370,8 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 
 *[cssClass="coin-icon-xnk"] {
+    qproperty-icon: url("://ic-coin-xnk") off,
+    url("://ic-coin-xnk") on ;
     qproperty-iconSize: 24px 24px;
     background-color: #FFFFFF;
     border:  2px solid #FFFFFF;
