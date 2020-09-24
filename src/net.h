@@ -20,6 +20,7 @@
 #include "uint256.h"
 #include "utilstrencodings.h"
 
+#include <atomic>
 #include <deque>
 #include <stdint.h>
 
@@ -321,6 +322,8 @@ public:
     std::deque<CSerializeData> vSendMsg;
     RecursiveMutex cs_vSend;
 
+    RecursiveMutex cs_sendProcessing;
+
     std::deque<CInv> vRecvGetData;
     std::deque<CNetMessage> vRecvMsg;
     RecursiveMutex cs_vRecvMsg;
@@ -346,7 +349,7 @@ public:
     bool fClient;
     bool fInbound;
     bool fNetworkNode;
-    bool fSuccessfullyConnected;
+    std::atomic_bool fDisconnect;
     bool fDisconnect;
     // We use fRelayTxes for two purposes -
     // a) it allows us to not relay tx invs before receiving the peer's version message
