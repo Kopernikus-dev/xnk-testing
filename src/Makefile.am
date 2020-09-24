@@ -121,6 +121,7 @@ BITCOIN_CORE_H = \
   hash.h \
   httprpc.h \
   httpserver.h \
+  interface/wallet.h \
   init.h \
   invalid.h \
   invalid_outpoints.json.h \
@@ -287,6 +288,7 @@ libbitcoin_wallet_a_SOURCES = \
   bip38.cpp \
   collateral.cpp \
   denomination_functions.cpp \
+  interface/wallet.cpp \
   addressbook.cpp \
   crypter.cpp \
   key_io.cpp \
