@@ -348,8 +348,8 @@ public:
     bool fClient;
     bool fInbound;
     bool fNetworkNode;
+    bool fSuccessfullyConnected;
     std::atomic_bool fDisconnect;
-    bool fDisconnect;
     // We use fRelayTxes for two purposes -
     // a) it allows us to not relay tx invs before receiving the peer's version message
     // b) the peer may tell us in their version message that we should not relay tx invs

@@ -39,7 +39,7 @@ bool SignBlock(CBlock& block, const CKeyStore& keystore)
     return SignBlockWithKey(block, key);
 }
 
-bool CheckBlockSignature(const CBlock& block, const bool enableP2PKH))
+bool CheckBlockSignature(const CBlock& block, const bool enableP2PKH)
 {
     if (block.IsProofOfWork())
         return block.vchBlockSig.empty();
