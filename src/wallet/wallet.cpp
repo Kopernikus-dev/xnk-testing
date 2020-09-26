@@ -3892,7 +3892,6 @@ void CMerkleTx::SetMerkleBranch(const CBlockIndex* pindex, int posInBlock)
 
     // set the position of the transaction in the block
     nIndex = posInBlock;
-    }
 }
 
 int CMerkleTx::GetDepthInMainChain(bool enableIX) const
