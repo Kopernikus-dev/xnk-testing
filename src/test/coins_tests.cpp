@@ -163,9 +163,6 @@ BOOST_AUTO_TEST_CASE(coins_cache_simulation_test)
                     missed_an_entry = true;
                 }
             }
-            for (const CCoinsViewCacheTest *test : stack) {
-                test->SelfTest();
-            }
         }
 
         if (InsecureRandRange(100) == 0) {
