@@ -109,7 +109,7 @@ public:
     }
 
     //! empty constructor
-    CCoins() : fCoinBase(false), fCoinStake(false), vout(0), nHeight(0), nVersion(0) {}
+    CCoins() : fCoinBase(false), fCoinStake(false), vout(0), nHeight(0) {}
 
     //!remove spent outputs at the end of vout
     void Cleanup()

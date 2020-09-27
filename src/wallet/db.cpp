@@ -4,7 +4,6 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #include "db.h"
 
 #include "addrman.h"
@@ -22,9 +21,6 @@
 #include <boost/thread.hpp>
 #include <boost/version.hpp>
 
-
-
-unsigned int nWalletDBUpdated;
 
 
 //
