@@ -2839,7 +2839,7 @@ UniValue backupwallet(const JSONRPCRequest& request)
     if (request.fHelp || request.params.size() != 1)
         throw std::runtime_error(
             "backupwallet \"destination\"\n"
-            "\nSafely copies wallet.dat to destination, which can be a directory or a path with filename.\n"
+            "\nSafely copies wallet file to destination, which can be a directory or a path with filename.\n"
 
             "\nArguments:\n"
             "1. \"destination\"   (string) The destination directory or file\n"
@@ -4330,7 +4330,7 @@ UniValue resetmintzerocoin(const  JSONRPCRequest& request)
     if (request.fHelp || request.params.size() > 1)
         throw std::runtime_error(
             "resetmintzerocoin ( fullscan )\n"
-            "\nScan the blockchain for all of the zerocoins that are held in the wallet.dat.\n"
+            "\nScan the blockchain for all of the zerocoins that are held in the wallet database.\n"
             "Update any meta-data that is incorrect. Archive any mints that are not able to be found.\n" +
             HelpRequiringPassphrase() + "\n"
 
@@ -4390,7 +4390,7 @@ UniValue resetspentzerocoin(const JSONRPCRequest& request)
     if (request.fHelp || request.params.size() != 0)
         throw std::runtime_error(
             "resetspentzerocoin\n"
-            "\nScan the blockchain for all of the zerocoins that are held in the wallet.dat.\n"
+            "\nScan the blockchain for all of the zerocoins that are held in the wallet database.\n"
             "Reset mints that are considered spent that did not make it into the blockchain.\n"
 
             "\nResult:\n"
@@ -4509,7 +4509,7 @@ UniValue exportzerocoins(const JSONRPCRequest& request)
     if(request.fHelp || request.params.empty() || request.params.size() > 2)
         throw std::runtime_error(
             "exportzerocoins include_spent ( denomination )\n"
-            "\nExports zerocoin mints that are held by this wallet.dat\n" +
+            "\nExports zerocoin mints that are held by the current wallet database\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments:\n"
@@ -4587,7 +4587,7 @@ UniValue importzerocoins(const JSONRPCRequest& request)
             "importzerocoins importdata \n"
             "\n[{\"d\":denomination,\"p\":\"pubcoin_hex\",\"s\":\"serial_hex\",\"r\":\"randomness_hex\",\"t\":\"txid\",\"h\":height, \"u\":used},{\"d\":...}]\n"
             "\nImport zerocoin mints.\n"
-            "Adds raw zerocoin mints to the wallet.dat\n"
+            "Adds raw zerocoin mints to the wallet.\n"
             "Note it is recommended to use the json export created from the exportzerocoins RPC call\n" +
             HelpRequiringPassphrase() + "\n"
 
@@ -4811,7 +4811,7 @@ UniValue generatemintlist(const JSONRPCRequest& request)
 
     int nCount = request.params[0].get_int();
     int nRange = request.params[1].get_int();
-    CzXNKWallet* zwallet = pwalletMain->zwalletMain;
+    CzXNKWallet* zwallet = pwalletMain->getZWallet();
 
     UniValue arrRet(UniValue::VARR);
     for (int i = nCount; i < nCount + nRange; i++) {
@@ -4840,7 +4840,7 @@ UniValue dzxnkstate(const JSONRPCRequest& request) {
                         "\nExamples\n" +
                 HelpExampleCli("mintpoolstatus", "") + HelpExampleRpc("mintpoolstatus", ""));
 
-    CzXNKWallet* zwallet = pwalletMain->zwalletMain;
+    CzXNKWallet* zwallet = pwalletMain->getZWallet();
     UniValue obj(UniValue::VOBJ);
     int nCount, nCountLastUsed;
     zwallet->GetState(nCount, nCountLastUsed);
@@ -4909,7 +4909,7 @@ UniValue searchdzxnk(const JSONRPCRequest& request)
 
     int nThreads = request.params[2].get_int();
 
-    CzXNKWallet* zwallet = pwalletMain->zwalletMain;
+    CzXNKWallet* zwallet = pwalletMain->getZWallet();
 
     boost::thread_group* dzxnkThreads = new boost::thread_group();
     int nRangePerThread = nRange / nThreads;

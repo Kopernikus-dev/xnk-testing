@@ -4,7 +4,6 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #ifndef BITCOIN_SCRIPT_STANDARD_H
 #define BITCOIN_SCRIPT_STANDARD_H
 
@@ -14,6 +13,8 @@
 #include <boost/variant.hpp>
 
 #include <stdint.h>
+
+static const bool DEFAULT_ACCEPT_DATACARRIER = true;
 
 class CKeyID;
 class CScript;

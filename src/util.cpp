@@ -86,6 +86,9 @@
 #include <openssl/crypto.h>
 #include <openssl/rand.h>
 
+const char * const EncoCoin_CONF_FILENAME = "encocoin.conf";
+const char * const EncoCoin_PID_FILENAME = "encocoin.pid";
+const char * const EncoCoin_MASTERNODE_CONF_FILENAME = "masternode.conf";
 
 // EncoCoin only features
 // Masternode
@@ -449,13 +452,13 @@ void ClearDatadirCache()
 
 fs::path GetConfigFile()
 {
-    fs::path pathConfigFile(GetArg("-conf", "encocoin.conf"));
+    fs::path pathConfigFile(GetArg("-conf", EncoCoin_CONF_FILENAME));
     return AbsPathForConfigVal(pathConfigFile, false);
 }
 
 fs::path GetMasternodeConfigFile()
 {
-    fs::path pathConfigFile(GetArg("-mnconf", "masternode.conf"));
+    fs::path pathConfigFile(GetArg("-mnconf", EncoCoin_MASTERNODE_CONF_FILENAME));
     return AbsPathForConfigVal(pathConfigFile);
 }
 
@@ -498,7 +501,7 @@ fs::path AbsPathForConfigVal(const fs::path& path, bool net_specific)
 #ifndef WIN32
 fs::path GetPidFile()
 {
-    fs::path pathPidFile(GetArg("-pid", "encocoind.pid"));
+    fs::path pathPidFile(GetArg("-pid", EncoCoin_PID_FILENAME));
     return AbsPathForConfigVal(pathPidFile);
 }
 
