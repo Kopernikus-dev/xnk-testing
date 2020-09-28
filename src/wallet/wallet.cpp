@@ -3932,7 +3932,7 @@ CWallet* CWallet::CreateWalletFromFile(const std::string walletFile)
     // Forced upgrade
     const bool fLegacyWallet = GetBoolArg("-legacywallet", false);
     if (GetBoolArg("-upgradewallet", fFirstRun && !fLegacyWallet)) {
-        if (prev_version <= FEATURE_PRE_EncoCoin && walletInstance->IsLocked()) {
+        if (prev_version <= FEATURE_PRE_ENCOCOIN && walletInstance->IsLocked()) {
             // Cannot upgrade a locked wallet
             UIError("Cannot upgrade a locked wallet.");
             return nullptr;
@@ -3976,7 +3976,7 @@ CWallet* CWallet::CreateWalletFromFile(const std::string walletFile)
             }
             // Create legacy wallet
             LogPrintf("Creating Pre-HD Wallet\n");
-            walletInstance->SetMaxVersion(FEATURE_PRE_EncoCoin);
+            walletInstance->SetMaxVersion(FEATURE_PRE_ENCOCOIN);
         }
 
         // Top up the keypool
