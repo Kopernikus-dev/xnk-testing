@@ -2730,14 +2730,10 @@ bool CWallet::CreateCoinStake(
         const CBlockIndex* pindexPrev,
         unsigned int nBits,
         CMutableTransaction& txNew,
-        int64_t& nTxNewTime)
+        int64_t& nTxNewTime,
+        std::vector<COutput>* availableCoins
+        )
 {
-    // Get the list of stakable utxos
-    std::vector<COutput> vCoins;
-    if (!StakeableCoins(&vCoins)) {
-//        LogPrintf("%s: No coin available to stake.\n", __func__);
-        return false;
-    }
 
     const Consensus::Params& consensus = Params().GetConsensus();
 
@@ -2748,7 +2744,7 @@ bool CWallet::CreateCoinStake(
 
     // update staker status (hash)
     pStakerStatus->SetLastTip(pindexPrev);
-    pStakerStatus->SetLastCoins((int) vCoins.size());
+    pStakerStatus->SetLastCoins((int) availableCoins->size());
 
     // P2PKH block signatures were not accepted before v5 update.
     bool onlyP2PK = !consensus.NetworkUpgradeActive(pindexPrev->nHeight + 1, Consensus::UPGRADE_V5_DUMMY);
@@ -2758,7 +2754,7 @@ bool CWallet::CreateCoinStake(
     CScript scriptPubKeyKernel;
     bool fKernelFound = false;
     int nAttempts = 0;
-    for (const COutput &out : vCoins) {
+    for (const COutput &out : *availableCoins) {
         CXnkStake stakeInput;
         stakeInput.SetPrevout((CTransaction) *out.tx, out.i);
 
