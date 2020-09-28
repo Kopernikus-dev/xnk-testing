@@ -334,7 +334,7 @@ std::string GetRequiredPaymentsString(int nBlockHeight)
     }
 
     if (hasPayment) {
-        CAmount masternodePayment = GetMasternodePayment(pindexPrev->nHeight, blockValue, 0);
+        CAmount masternodePayment = GetMasternodePayment(pindexPrev->nHeight, GetBlockValue(pindexPrev->nHeight), 0);
         if (fProofOfStake) {
             /**For Proof Of Stake vout[0] must be null
              * Stake reward can be split into many different outputs, so we must

@@ -2752,7 +2752,7 @@ bool CWallet::CreateCoinStake(
     bool fKernelFound = false;
     int nAttempts = 0;
     for (const COutput &out : vCoins) {
-        CPivStake stakeInput;
+        CXnkStake stakeInput;
         stakeInput.SetPrevout((CTransaction) *out.tx, out.i);
 
         //new block came in, move on
