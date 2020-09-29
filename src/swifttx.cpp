@@ -50,7 +50,6 @@ void ProcessMessageSwiftTX(CNode* pfrom, std::string& strCommand, CDataStream& v
 
         CInv inv(MSG_TXLOCK_REQUEST, tx.GetHash());
         pfrom->AddInventoryKnown(inv);
-        GetMainSignals().Inventory(inv.hash);
 
         if (mapTxLockReq.count(tx.GetHash()) || mapTxLockReqRejected.count(tx.GetHash())) {
             return;
@@ -352,6 +351,8 @@ bool ProcessConsensusVote(CNode* pnode, CConsensusVote& ctx)
     if (i != mapTxLocks.end()) {
         (*i).second.AddSignature(ctx);
 
+        // Not enabled swiftx for now, mapRequestCount doesn't exist anymore,
+        /*
 #ifdef ENABLE_WALLET
         if (pwalletMain) {
             //when we get back signatures, we'll count them as requests. Otherwise the client will think it didn't propagate.
@@ -359,6 +360,7 @@ bool ProcessConsensusVote(CNode* pnode, CConsensusVote& ctx)
                 pwalletMain->mapRequestCount[ctx.txHash]++;
         }
 #endif
+         */
 
         LogPrint(BCLog::MASTERNODE, "%s : Transaction Lock Votes %d - %s !\n", __func__, (*i).second.CountSignatures(), ctx.GetHash().ToString().c_str());
 

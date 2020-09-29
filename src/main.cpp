@@ -5227,9 +5227,6 @@ void static ProcessGetData(CNode* pfrom, CConnman& connman, std::atomic<bool>& i
                 }
             }
 
-            // Track requests for our stuff.
-            GetMainSignals().Inventory(inv.hash);
-
             if (inv.type == MSG_BLOCK || inv.type == MSG_FILTERED_BLOCK)
                 break;
         }
@@ -5521,8 +5518,6 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
                 }
             }
 
-            // Track requests for our stuff
-            GetMainSignals().Inventory(inv.hash);
         }
 
         if (!vToFetch.empty())
