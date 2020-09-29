@@ -300,7 +300,7 @@ bool IsBlockPayeeValid(const CBlock& block, int nBlockHeight)
     if (!pindexPrev) return;
 
     if (sporkManager.IsSporkActive(SPORK_13_ENABLE_SUPERBLOCKS) && budget.IsBudgetPaymentBlock(pindexPrev->nHeight + 1)) {
-        budget.FillBlockPayee(txNew, pindexPrev, fProofOfStake);
+        budget.FillBlockPayee(txNew, fProofOfStake);
     } else {
        masternodePayments.FillBlockPayee(txNew, pindexPrev, fProofOfStake);
     }
