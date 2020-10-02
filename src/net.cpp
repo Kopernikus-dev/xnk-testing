@@ -1325,7 +1325,7 @@ void CConnman::ThreadSocketHandler()
                                 }
                                 WakeMessageHandler();
                             }
-                         } else if (nBytes == 0) {
+                        } else if (nBytes == 0) {
                             // socket closed gracefully
                             if (!pnode->fDisconnect)
                                 LogPrint(BCLog::NET, "socket closed\n");
@@ -1803,7 +1803,7 @@ std::vector<AddedNodeInfo> CConnman::GetAddedNodeInfo()
                 ret.push_back(AddedNodeInfo{strAddNode, CService(), false, false});
             }
         }
-	}
+    }
 
     return ret;
 }

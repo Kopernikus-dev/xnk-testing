@@ -21,7 +21,7 @@
 
 /**
  * A UTXO entry.
- * 
+ *
  * Serialized format:
  * - VARINT((coinbase ? 2 : 0) | (coinstake ? 1 : 0) | (height << 2))
  * - the non-spent CTxOut (via CTxOutCompressor)
@@ -207,9 +207,9 @@ protected:
     mutable uint256 hashBlock;
     mutable CCoinsMap cacheCoins;
 
-
     /* Cached dynamic memory usage for the inner Coin objects. */
     mutable size_t cachedCoinsUsage;
+
 public:
     CCoinsViewCache(CCoinsView *baseIn);
 

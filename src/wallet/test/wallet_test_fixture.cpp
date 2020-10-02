@@ -16,10 +16,10 @@
 void clean()
 {
     delete pwalletMain;
+
     pwalletMain = nullptr;
     bitdb.Flush(true);
     bitdb.Reset();
-    walletRegisterRPCCommands();
 }
 
 WalletTestingSetup::WalletTestingSetup(): TestingSetup()
@@ -28,6 +28,7 @@ WalletTestingSetup::WalletTestingSetup(): TestingSetup()
 
     clean(); // todo: research why we have an initialized bitdb here.
     bitdb.MakeMock();
+    walletRegisterRPCCommands();
 
     bool fFirstRun;
     pwalletMain = new CWallet("test_wallet.dat");

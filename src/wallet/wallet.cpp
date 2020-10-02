@@ -25,7 +25,7 @@
 
 CWallet* pwalletMain = nullptr;
 /**
-/** Settings
+ * Settings
  */
 CFeeRate payTxFee(DEFAULT_TRANSACTION_FEE);
 CAmount maxTxFee = DEFAULT_TRANSACTION_MAXFEE;
@@ -741,7 +741,7 @@ bool CWallet::EncryptWallet(const SecureString& strWalletPassphrase)
             pwalletdbEncryption->WriteMasterKey(nMasterKeyMaxID, kMasterKey);
         }
 
-         if (!EncryptKeys(vMasterKey) || (m_sspk_man->IsEnabled() && !m_sspk_man->EncryptSaplingKeys(vMasterKey))) {
+        if (!EncryptKeys(vMasterKey) || (m_sspk_man->IsEnabled() && !m_sspk_man->EncryptSaplingKeys(vMasterKey))) {
             if (fFileBacked) {
                 pwalletdbEncryption->TxnAbort();
                 delete pwalletdbEncryption;
@@ -1225,11 +1225,11 @@ void CWalletTx::UpdateTimeSmart()
     }
 }
 
- CAmount CWalletTx::GetCachableAmount(AmountType type, const isminefilter& filter, bool recalculate) const
+CAmount CWalletTx::GetCachableAmount(AmountType type, const isminefilter& filter, bool recalculate) const
 {
     auto& amount = m_amounts[type];
     if (recalculate || !amount.m_cached[filter]) {
-         amount.Set(filter, type == DEBIT ? pwallet->GetDebit(*this, filter) : pwallet->GetCredit(*this, filter));
+        amount.Set(filter, type == DEBIT ? pwallet->GetDebit(*this, filter) : pwallet->GetCredit(*this, filter));
     }
     return amount.m_value[filter];
 }
@@ -1278,7 +1278,7 @@ CAmount CWalletTx::GetCredit(const isminefilter& filter, bool recalculate) const
         credit += GetCachableAmount(CREDIT, ISMINE_SPENDABLE, recalculate);
     }
     if (filter & ISMINE_WATCH_ONLY) {
-       credit += GetCachableAmount(CREDIT, ISMINE_WATCH_ONLY, recalculate);
+        credit += GetCachableAmount(CREDIT, ISMINE_WATCH_ONLY, recalculate);
     }
     if (filter & ISMINE_COLD) {
         credit += GetCachableAmount(CREDIT, ISMINE_COLD, recalculate);
@@ -1299,7 +1299,7 @@ CAmount CWalletTx::GetImmatureCredit(bool fUseCache, const isminefilter& filter)
     return 0;
 }
 
- CAmount CWalletTx::GetAvailableCredit(bool fUseCache, const isminefilter& filter) const
+CAmount CWalletTx::GetAvailableCredit(bool fUseCache, const isminefilter& filter) const
 {
     if (!pwallet)
         return 0;
@@ -2052,6 +2052,7 @@ bool CWallet::AvailableCoins(std::vector<COutput>* pCoins,      // --> populates
                 if (IsSpent(wtxid, i)) continue;
 
                 isminetype mine = IsMine(pcoin->vout[i]);
+
                 // Check If not mine
                 if (mine == ISMINE_NO) continue;
 

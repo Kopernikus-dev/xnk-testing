@@ -77,7 +77,7 @@ public:
 
     void Relay() const;
 
-     std::string GetVoteString() const
+    std::string GetVoteString() const
     {
         std::string ret = "ABSTAIN";
         if (nVote == VOTE_YES) ret = "YES";

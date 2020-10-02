@@ -22,7 +22,7 @@ namespace libzerocoin {
 //PublicCoin class
 PublicCoin::PublicCoin(const ZerocoinParams* p):
     params(p) {
-    if (this->params->initialized) {
+    if (!this->params->initialized) {
         throw std::runtime_error("Params are not initialized");
     }
     // Assume this will get set by another method later

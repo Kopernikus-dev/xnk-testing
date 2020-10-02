@@ -16,9 +16,9 @@
 
 typedef std::vector<unsigned char> valtype;
 
- TransactionSignatureCreator::TransactionSignatureCreator(const CKeyStore* keystoreIn, const CTransaction* txToIn, unsigned int nInIn, const CAmount& amountIn, int nHashTypeIn) : BaseSignatureCreator(keystoreIn), txTo(txToIn), nIn(nInIn), nHashType(nHashTypeIn), amount(amountIn), checker(txTo, nIn, amountIn) {}
+TransactionSignatureCreator::TransactionSignatureCreator(const CKeyStore* keystoreIn, const CTransaction* txToIn, unsigned int nInIn, const CAmount& amountIn, int nHashTypeIn) : BaseSignatureCreator(keystoreIn), txTo(txToIn), nIn(nInIn), nHashType(nHashTypeIn), amount(amountIn), checker(txTo, nIn, amountIn) {}
 
- bool TransactionSignatureCreator::CreateSig(std::vector<unsigned char>& vchSig, const CKeyID& address, const CScript& scriptCode, SigVersion sigversion) const
+bool TransactionSignatureCreator::CreateSig(std::vector<unsigned char>& vchSig, const CKeyID& address, const CScript& scriptCode, SigVersion sigversion) const
 {
     CKey key;
     if (!keystore->GetKey(address, key))
@@ -61,7 +61,7 @@ static bool SignN(const std::vector<valtype>& multisigdata, const BaseSignatureC
 }
 
 /**
- * Sign scriptPubKey with private keys stored in keystore, given transaction hash and hash type.
+ * Sign scriptPubKey using signature made with creator.
  * Signatures are returned in scriptSigRet (or returns false if scriptPubKey can't be signed),
  * unless whichTypeRet is TX_SCRIPTHASH, in which case scriptSigRet is the redemption script.
  * Returns false if scriptPubKey could not be completely satisfied.
@@ -195,7 +195,7 @@ bool SignSignature(const CKeyStore &keystore, const CScript& fromPubKey, CMutabl
     assert(nIn < txTo.vin.size());
 
     CTransaction txToConst(txTo);
-     TransactionSignatureCreator creator(&keystore, &txToConst, nIn, amount, nHashType);
+    TransactionSignatureCreator creator(&keystore, &txToConst, nIn, amount, nHashType);
 
     SignatureData sigdata;
     bool ret = ProduceSignature(creator, fromPubKey, sigdata, fColdStake);
@@ -210,7 +210,7 @@ bool SignSignature(const CKeyStore &keystore, const CTransaction& txFrom, CMutab
     assert(txin.prevout.n < txFrom.vout.size());
     const CTxOut& txout = txFrom.vout[txin.prevout.n];
 
-     return SignSignature(keystore, txout.scriptPubKey, txTo, nIn, txout.nValue, nHashType, fColdStake);
+    return SignSignature(keystore, txout.scriptPubKey, txTo, nIn, txout.nValue, nHashType, fColdStake);
 }
 
 static std::vector<valtype> CombineMultisig(const CScript& scriptPubKey, const BaseSignatureChecker& checker,
@@ -329,7 +329,7 @@ static Stacks CombineSignatures(const CScript& scriptPubKey, const BaseSignature
             return result;
         }
     case TX_MULTISIG:
-         return Stacks(CombineMultisig(scriptPubKey, checker, vSolutions, sigs1.script, sigs2.script, sigversion));
+        return Stacks(CombineMultisig(scriptPubKey, checker, vSolutions, sigs1.script, sigs2.script, sigversion));
     }
 
     return Stacks();

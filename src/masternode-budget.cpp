@@ -645,7 +645,7 @@ TrxValidationStatus CBudgetManager::IsTransactionValid(const CTransaction& txNew
                 LogPrint(BCLog::MNBUDGET,"%s: GetBlockStart() passed\n", __func__);
                 transactionStatus = pfinalizedBudget->IsTransactionValid(txNew, nBlockHeight);
                 if (transactionStatus == TrxValidationStatus::Valid) {
-                    LogPrint(BCLog::MNBUDGET,"%s: pfinalizedBudget->IsTransactionValid() passed\n", __func__);;
+                    LogPrint(BCLog::MNBUDGET,"%s: pfinalizedBudget->IsTransactionValid() passed\n", __func__);
                     return TrxValidationStatus::Valid;
                 }
                 else {
@@ -1704,7 +1704,7 @@ CFinalizedBudget::CFinalizedBudget() :
         strBudgetName(""),
         nBlockStart(0),
         vecBudgetPayments(),
-        nFeeTXHash(0),
+        nFeeTXHash(),
         nTime(0)
 { }
 

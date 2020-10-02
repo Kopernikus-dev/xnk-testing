@@ -506,7 +506,7 @@ UniValue fundrawtransaction(const JSONRPCRequest& request)
         }
     }
 
-        // parse hex string from parameter
+    // parse hex string from parameter
     CTransaction origTx;
     if (!DecodeHexTx(origTx, request.params[0].get_str()))
         throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "TX decode failed");
@@ -618,7 +618,7 @@ UniValue signrawtransaction(const JSONRPCRequest& request)
     CMutableTransaction mergedTx(txVariants[0]);
 
     // Fetch previous transactions (inputs):
-     std::map<COutPoint, std::pair<CScript, CAmount>> mapPrevOut; // todo: check why do we have this for regtest..
+    std::map<COutPoint, std::pair<CScript, CAmount>> mapPrevOut; // todo: check why do we have this for regtest..
     if (Params().IsRegTestNet()) {
         for (const CTxIn &txbase : mergedTx.vin)
         {
@@ -626,7 +626,7 @@ UniValue signrawtransaction(const JSONRPCRequest& request)
             uint256 hashBlock;
             if (GetTransaction(txbase.prevout.hash, tempTx, hashBlock, true)) {
                 // Copy results into mapPrevOut:
-                 mapPrevOut[txbase.prevout] = std::make_pair(tempTx.vout[txbase.prevout.n].scriptPubKey, tempTx.vout[txbase.prevout.n].nValue);
+                mapPrevOut[txbase.prevout] = std::make_pair(tempTx.vout[txbase.prevout.n].scriptPubKey, tempTx.vout[txbase.prevout.n].nValue);
             }
         }
     }
@@ -782,17 +782,17 @@ UniValue signrawtransaction(const JSONRPCRequest& request)
         SignatureData sigdata;
         // Only sign SIGHASH_SINGLE if there's a corresponding output:
         if (!fHashSingle || (i < mergedTx.vout.size()))
-             ProduceSignature(MutableTransactionSignatureCreator(&keystore, &mergedTx, i, amount, nHashType), prevPubKey, sigdata, fColdStake);
+            ProduceSignature(MutableTransactionSignatureCreator(&keystore, &mergedTx, i, amount, nHashType), prevPubKey, sigdata, fColdStake);
 
         // ... and merge in other signatures:
         for (const CMutableTransaction& txv : txVariants) {
-             sigdata = CombineSignatures(prevPubKey, TransactionSignatureChecker(&txConst, i, amount), sigdata, DataFromTransaction(txv, i));
+            sigdata = CombineSignatures(prevPubKey, TransactionSignatureChecker(&txConst, i, amount), sigdata, DataFromTransaction(txv, i));
         }
-  
+
         UpdateTransaction(mergedTx, i, sigdata);
-  
+
         ScriptError serror = SCRIPT_ERR_OK;
-         if (!VerifyScript(txin.scriptSig, prevPubKey, STANDARD_SCRIPT_VERIFY_FLAGS, TransactionSignatureChecker(&txConst, i, amount), &serror)) {
+        if (!VerifyScript(txin.scriptSig, prevPubKey, STANDARD_SCRIPT_VERIFY_FLAGS, TransactionSignatureChecker(&txConst, i, amount), &serror)) {
             TxInErrorToJSON(txin, vErrors, ScriptErrorString(serror));
         }
     }

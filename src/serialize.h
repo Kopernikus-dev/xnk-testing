@@ -26,6 +26,7 @@
 #include "prevector.h"
 #include "sporkid.h"
 
+
 static const unsigned int MAX_SIZE = 0x02000000;
 
 /**
@@ -613,7 +614,7 @@ template<typename Stream, typename K, typename Pred, typename A> void Unserializ
 template <typename Stream, typename T>
 inline void Serialize(Stream& os, const T& a)
 {
-   a.Serialize(os);
+  a.Serialize(os);
 }
 
 template <typename Stream, typename T>

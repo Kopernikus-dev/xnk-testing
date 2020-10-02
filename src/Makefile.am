@@ -184,8 +184,8 @@ BITCOIN_CORE_H = \
   hash.h \
   httprpc.h \
   httpserver.h \
-  interface/wallet.h \
   init.h \
+  interface/wallet.h \
   invalid.h \
   invalid_outpoints.json.h \
   invalid_serials.json.h \
@@ -241,7 +241,7 @@ BITCOIN_CORE_H = \
   sporkdb.h \
   sporkid.h \
   stakeinput.h \
- script/ismine.h \
+  script/ismine.h \
   streams.h \
   support/cleanse.h \
   sync.h \

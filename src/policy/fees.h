@@ -73,7 +73,7 @@ private:
     std::vector<double> buckets;              // The upper-bound of the range for the bucket (inclusive)
     std::map<double, unsigned int> bucketMap; // Map of bucket upper-bound to index into all vectors by bucket
 
-   // feerate each bucket X:
+    // feerate each bucket X:
     // Count the total # of txs in each bucket
     // Track the historical moving average of this total over blocks
     std::vector<double> txCtAvg;
@@ -218,8 +218,8 @@ public:
     /** Return a feerate estimate */
     CFeeRate estimateFee(int confTarget);
 
-    /** Estimate fee rate needed to get be included in a block within
     /** Estimate feerate needed to get be included in a block within
+     *  confTarget blocks. If no answer can be given at confTarget, return an
      *  estimate at the lowest target where one can be given.
      */
     CFeeRate estimateSmartFee(int confTarget, int *answerFoundAtTarget, const CTxMemPool& pool);

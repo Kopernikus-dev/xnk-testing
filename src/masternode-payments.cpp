@@ -296,14 +296,14 @@ bool IsBlockPayeeValid(const CBlock& block, int nBlockHeight)
 }
 
 
- void FillBlockPayee(CMutableTransaction& txNew, const CBlockIndex* pindexPrev, bool fProofOfStake)
+void FillBlockPayee(CMutableTransaction& txNew, const CBlockIndex* pindexPrev, bool fProofOfStake)
 {
     if (!pindexPrev) return;
 
     if (sporkManager.IsSporkActive(SPORK_13_ENABLE_SUPERBLOCKS) && budget.IsBudgetPaymentBlock(pindexPrev->nHeight + 1)) {
         budget.FillBlockPayee(txNew, fProofOfStake);
     } else {
-       masternodePayments.FillBlockPayee(txNew, pindexPrev, fProofOfStake);
+        masternodePayments.FillBlockPayee(txNew, pindexPrev, fProofOfStake);
     }
 }
 
@@ -316,7 +316,7 @@ std::string GetRequiredPaymentsString(int nBlockHeight)
     }
 }
 
- void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const CBlockIndex* pindexPrev, bool fProofOfStake)
+void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const CBlockIndex* pindexPrev, bool fProofOfStake)
 {
     if (!pindexPrev) return;
 
@@ -395,8 +395,8 @@ void CMasternodePayments::ProcessMessageMasternodePayments(CNode* pfrom, std::st
         if (Params().NetworkID() == CBaseChainParams::MAIN) {
             if (pfrom->HasFulfilledRequest(NetMsgType::GETMNWINNERS)) {
                 LogPrintf("CMasternodePayments::ProcessMessageMasternodePayments() : mnget - peer already asked me for the list\n");
-                Misbehaving(pfrom->GetId(), 20);
                 LOCK(cs_main);
+                Misbehaving(pfrom->GetId(), 20);
                 return;
             }
         }
@@ -542,7 +542,7 @@ bool CMasternodeBlockPayees::IsTransactionValid(const CTransaction& txNew)
     LOCK(cs_vecPayments);
 
     int nMaxSignatures = 0;
-    int nMasternode_Drift_Count = 0;
+ int nMasternode_Drift_Count = 0;
 
     std::string strPayeesPossible = "";
 
@@ -550,7 +550,7 @@ bool CMasternodeBlockPayees::IsTransactionValid(const CTransaction& txNew)
     CAmount prevReward = GetBlockValue((nBlockHeight > 51) ? (nBlockHeight - 50) : nBlockHeight);
     CAmount nextReward = GetBlockValue(nBlockHeight + 50);
     const int mn_count_drift = Params().GetConsensus().nMasternodeCountDrift;
-    
+
     if (sporkManager.IsSporkActive(SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT)) {
         // Get a stable number of masternodes by ignoring newly activated (< 8000 sec old) masternodes
         nMasternode_Drift_Count = mnodeman.stable_size() + mn_count_drift;

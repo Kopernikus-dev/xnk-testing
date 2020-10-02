@@ -54,29 +54,29 @@ public:
         Init(nTypeIn, nVersionIn);
     }
 
-     CBaseDataStream(const_iterator pbegin, const_iterator pend, int nTypeIn, int nVersionIn) : vch(pbegin, pend)
+    CBaseDataStream(const_iterator pbegin, const_iterator pend, int nTypeIn, int nVersionIn) : vch(pbegin, pend)
     {
         Init(nTypeIn, nVersionIn);
     }
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1300
-     CBaseDataStream(const char* pbegin, const char* pend, int nTypeIn, int nVersionIn) : vch(pbegin, pend)
+    CBaseDataStream(const char* pbegin, const char* pend, int nTypeIn, int nVersionIn) : vch(pbegin, pend)
     {
         Init(nTypeIn, nVersionIn);
     }
 #endif
 
-     CBaseDataStream(const vector_type& vchIn, int nTypeIn, int nVersionIn) : vch(vchIn.begin(), vchIn.end())
+    CBaseDataStream(const vector_type& vchIn, int nTypeIn, int nVersionIn) : vch(vchIn.begin(), vchIn.end())
     {
         Init(nTypeIn, nVersionIn);
     }
 
-     CBaseDataStream(const std::vector<char>& vchIn, int nTypeIn, int nVersionIn) : vch(vchIn.begin(), vchIn.end())
+    CBaseDataStream(const std::vector<char>& vchIn, int nTypeIn, int nVersionIn) : vch(vchIn.begin(), vchIn.end())
     {
         Init(nTypeIn, nVersionIn);
     }
 
-     CBaseDataStream(const std::vector<unsigned char>& vchIn, int nTypeIn, int nVersionIn) : vch(vchIn.begin(), vchIn.end())
+    CBaseDataStream(const std::vector<unsigned char>& vchIn, int nTypeIn, int nVersionIn) : vch(vchIn.begin(), vchIn.end())
     {
         Init(nTypeIn, nVersionIn);
     }
@@ -246,7 +246,7 @@ public:
     {
         // Ignore from the beginning of the buffer
         if (nSize < 0) {
-             throw std::ios_base::failure("CBaseDataStream::ignore(): nSize negative");
+            throw std::ios_base::failure("CBaseDataStream::ignore(): nSize negative");
         }
         unsigned int nReadPosNext = nReadPos + nSize;
         if (nReadPosNext >= vch.size()) {

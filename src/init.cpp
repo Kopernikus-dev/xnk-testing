@@ -398,9 +398,9 @@ std::string HelpMessage(HelpMessageMode mode)
 #endif
     }
     strUsage += HelpMessageOpt("-datadir=<dir>", _("Specify data directory"));
-     strUsage += HelpMessageOpt("-paramsdir=<dir>", strprintf(_("Specify zk params directory (default: %s)"), ZC_GetParamsDir().string()));
+    strUsage += HelpMessageOpt("-paramsdir=<dir>", strprintf(_("Specify zk params directory (default: %s)"), ZC_GetParamsDir().string()));
     strUsage += HelpMessageOpt("-debuglogfile=<file>", strprintf(_("Specify location of debug log file: this can be an absolute path or a path relative to the data directory (default: %s)"), DEFAULT_DEBUGLOGFILE));
-     strUsage += HelpMessageOpt("-disablesystemnotifications", strprintf(_("Disable OS notifications for incoming transactions (default: %u)"), 0));
+    strUsage += HelpMessageOpt("-disablesystemnotifications", strprintf(_("Disable OS notifications for incoming transactions (default: %u)"), 0));
     strUsage += HelpMessageOpt("-dbcache=<n>", strprintf(_("Set database cache size in megabytes (%d to %d, default: %d)"), nMinDbCache, nMaxDbCache, nDefaultDbCache));
     strUsage += HelpMessageOpt("-loadblock=<file>", _("Imports blocks from external blk000??.dat file") + " " + _("on startup"));
     strUsage += HelpMessageOpt("-maxreorg=<n>", strprintf(_("Set the Maximum reorg depth (default: %u)"), DEFAULT_MAX_REORG_DEPTH));
@@ -495,9 +495,9 @@ std::string HelpMessage(HelpMessageMode mode)
     if (showDebug)
         strUsage += HelpMessageOpt("-nodebug", "Turn off debugging messages, same as -debug=0");
 
+    strUsage += HelpMessageOpt("-help-debug", _("Show all debugging options (usage: --help -help-debug)"));
     strUsage += HelpMessageOpt("-logips", strprintf(_("Include IP addresses in debug output (default: %u)"), DEFAULT_LOGIPS));
     strUsage += HelpMessageOpt("-logtimestamps", strprintf(_("Prepend debug output with timestamp (default: %u)"), DEFAULT_LOGTIMESTAMPS));
-    strUsage += HelpMessageOpt("-logtimestamps", strprintf(_("Prepend debug output with timestamp (default: %u)"), 1));
     strUsage += HelpMessageOpt("-logtimemicros", strprintf("Add microsecond precision to debug timestamps (default: %u)", DEFAULT_LOGTIMEMICROS));
     if (showDebug) {
         strUsage += HelpMessageOpt("-limitfreerelay=<n>", strprintf(_("Continuously rate-limit free transactions to <n>*1000 bytes per minute (default:%u)"), DEFAULT_LIMITFREERELAY));
@@ -1683,7 +1683,7 @@ bool AppInit2()
         return false;
 #else
     LogPrintf("No wallet compiled in!\n");
-#endif // !ENABLE_WALLET
+#endif
     // ********************************************************* Step 9: import blocks
 
     if (!CheckDiskSpace())
@@ -1919,7 +1919,7 @@ bool AppInit2()
 #ifdef ENABLE_WALLET
     // Generate coins in the background
     if (pwalletMain)
-         GenerateBitcoins(GetBoolArg("-gen", DEFAULT_GENERATE), pwalletMain, GetArg("-genproclimit", DEFAULT_GENERATE_PROCLIMIT));
+        GenerateBitcoins(GetBoolArg("-gen", DEFAULT_GENERATE), pwalletMain, GetArg("-genproclimit", DEFAULT_GENERATE_PROCLIMIT));
 #endif
 
     // ********************************************************* Step 12: finished

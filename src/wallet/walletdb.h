@@ -91,7 +91,7 @@ public:
     {
         nVersion = CKeyMetadata::CURRENT_VERSION;
         nCreateTime = 0;
-         hd_seed_id.SetNull();
+        hd_seed_id.SetNull();
         key_origin.clear();
     }
 

@@ -26,7 +26,7 @@ bool CCoinsViewBacked::BatchWrite(CCoinsMap& mapCoins, const uint256& hashBlock)
 CCoinsViewCursor *CCoinsViewBacked::Cursor() const { return base->Cursor(); }
 size_t CCoinsViewBacked::EstimateSize() const { return base->EstimateSize(); }
 
- SaltedOutpointHasher::SaltedOutpointHasher() : k0(GetRand(std::numeric_limits<uint64_t>::max())), k1(GetRand(std::numeric_limits<uint64_t>::max())) {}
+SaltedOutpointHasher::SaltedOutpointHasher() : k0(GetRand(std::numeric_limits<uint64_t>::max())), k1(GetRand(std::numeric_limits<uint64_t>::max())) {}
 
 CCoinsViewCache::CCoinsViewCache(CCoinsView *baseIn) : CCoinsViewBacked(baseIn), cachedCoinsUsage(0) {}
 
@@ -186,7 +186,7 @@ bool CCoinsViewCache::BatchWrite(CCoinsMap& mapCoins, const uint256& hashBlockIn
                     itUs->second.coin = std::move(it->second.coin);
                     cachedCoinsUsage += memusage::DynamicUsage(itUs->second.coin);
                     itUs->second.flags |= CCoinsCacheEntry::DIRTY;
-                     // NOTE: It is possible the child has a FRESH flag here in
+                    // NOTE: It is possible the child has a FRESH flag here in
                     // the event the entry we found in the parent is pruned. But
                     // we must not copy that FRESH flag to the parent as that
                     // pruned state likely still needs to be communicated to the
@@ -276,7 +276,7 @@ int CCoinsViewCache::GetCoinDepthAtHeight(const COutPoint& output, int nHeight) 
     return -1;
 }
 
- static const size_t MAX_OUTPUTS_PER_BLOCK = MAX_BLOCK_SIZE_CURRENT /  ::GetSerializeSize(CTxOut(), SER_NETWORK, PROTOCOL_VERSION); // TODO: merge with similar definition in undo.h.
+static const size_t MAX_OUTPUTS_PER_BLOCK = MAX_BLOCK_SIZE_CURRENT /  ::GetSerializeSize(CTxOut(), SER_NETWORK, PROTOCOL_VERSION); // TODO: merge with similar definition in undo.h.
 
 const Coin& AccessByTxid(const CCoinsViewCache& view, const uint256& txid)
 {

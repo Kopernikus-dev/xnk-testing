@@ -498,8 +498,6 @@ public:
     }
 };
 
-
-
 /** An in-memory indexed chain of blocks. */
 class CChain
 {

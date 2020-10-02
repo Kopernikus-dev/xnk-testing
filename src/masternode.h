@@ -229,7 +229,7 @@ public:
     {
         now == -1 ? now = GetAdjustedTime() : now;
 
-         return lastPing.IsNull() ? false : now - lastPing.sigTime < seconds;
+        return lastPing.IsNull() ? false : now - lastPing.sigTime < seconds;
     }
 
     void Disable()

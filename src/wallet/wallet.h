@@ -749,7 +749,6 @@ public:
     bool UpdateMint(const CBigNum& bnValue, const int& nHeight, const uint256& txid, const libzerocoin::CoinDenomination& denom);
     // Zerocoin entry changed. (called with lock cs_wallet held)
     boost::signals2::signal<void(CWallet* wallet, const std::string& pubCoin, const std::string& isUsed, ChangeType status)> NotifyZerocoinChanged;
-
 };
 
 /** A key allocated from the key pool. */

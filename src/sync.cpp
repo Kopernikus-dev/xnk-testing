@@ -60,8 +60,8 @@ struct CLockLocation {
 private:
     bool fTry;
     std::string mutexName;
-    const std::string& m_thread_name;
     std::string sourceFile;
+    const std::string& m_thread_name;
     int sourceLine;
 };
 

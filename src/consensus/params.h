@@ -158,6 +158,7 @@ struct Params {
         return (contextHeight - utxoFromBlockHeight >= nStakeMinDepth);
     }
 
+
     /*
      * (Legacy) Zerocoin consensus params
      */

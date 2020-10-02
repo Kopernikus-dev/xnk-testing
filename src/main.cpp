@@ -1013,7 +1013,7 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState &state, const C
             }
         }
 
-         CTxMemPoolEntry entry(tx, nFees, GetTime(), dPriority, chainHeight, pool.HasNoInputsOf(tx), inChainInputValue, fSpendsCoinbaseOrCoinstake, nSigOps);
+        CTxMemPoolEntry entry(tx, nFees, GetTime(), dPriority, chainHeight, pool.HasNoInputsOf(tx), inChainInputValue, fSpendsCoinbaseOrCoinstake, nSigOps);
         unsigned int nSize = entry.GetTxSize();
 
         // Don't accept it if it can't get into a block
@@ -1794,7 +1794,7 @@ void UpdateCoins(const CTransaction& tx, CCoinsViewCache &inputs, int nHeight)
 bool CScriptCheck::operator()()
 {
     const CScript& scriptSig = ptxTo->vin[nIn].scriptSig;
-     return VerifyScript(scriptSig, scriptPubKey, nFlags, CachingTransactionSignatureChecker(ptxTo, nIn, amount, cacheStore, *precomTxData), &error);
+    return VerifyScript(scriptSig, scriptPubKey, nFlags, CachingTransactionSignatureChecker(ptxTo, nIn, amount, cacheStore, *precomTxData), &error);
 }
 
 std::map<COutPoint, COutPoint> mapInvalidOutPoints;
@@ -1917,7 +1917,7 @@ bool CheckTxInputs(const CTransaction& tx, CValidationState& state, const CCoins
 }
 }// namespace Consensus
 
- bool CheckInputs(const CTransaction& tx, CValidationState &state, const CCoinsViewCache &inputs, bool fScriptChecks, unsigned int flags, bool cacheStore, PrecomputedTransactionData& precomTxData, std::vector<CScriptCheck> *pvChecks)
+bool CheckInputs(const CTransaction& tx, CValidationState &state, const CCoinsViewCache &inputs, bool fScriptChecks, unsigned int flags, bool cacheStore, PrecomputedTransactionData& precomTxData, std::vector<CScriptCheck> *pvChecks)
 {
     if (!tx.IsCoinBase() && !tx.HasZerocoinSpendInputs()) {
 
@@ -2094,6 +2094,7 @@ int ApplyTxInUndo(Coin&& undo, CCoinsViewCache& view, const COutPoint& out)
     return fClean ? DISCONNECT_OK : DISCONNECT_UNCLEAN;
 }
 
+
 /** Undo the effects of this block (with given index) on the UTXO set represented by coins.
  *  When UNCLEAN or FAILED is returned, view is left in an indeterminate state. */
 DisconnectResult DisconnectBlock(CBlock& block, CBlockIndex* pindex, CCoinsViewCache& view)
@@ -2253,7 +2254,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     assert(hashPrevBlock == view.GetBestBlock());
 
     const Consensus::Params& consensus = Params().GetConsensus();
-    
+
     // Special case for the genesis block, skipping connection of its transactions
     // (its coinbase is unspendable)
     if (block.GetHash() == consensus.hashGenesisBlock) {
@@ -2408,7 +2409,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
                 flags |= SCRIPT_VERIFY_CHECKLOCKTIMEVERIFY;
 
             bool fCacheResults = fJustCheck; /* Don't cache results if we're actually connecting blocks (still consult the cache, though) */
-             if (!CheckInputs(tx, state, view, fScriptChecks, flags, fCacheResults, precomTxData[i], nScriptCheckThreads ? &vChecks : NULL))
+            if (!CheckInputs(tx, state, view, fScriptChecks, flags, fCacheResults, precomTxData[i], nScriptCheckThreads ? &vChecks : NULL))
                 return error("%s: Check inputs on %s failed with %s", __func__, tx.GetHash().ToString(), FormatStateMessage(state));
             control.Add(vChecks);
         }
@@ -2515,6 +2516,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
 
     // add this block to the view's block chain
     view.SetBestBlock(pindex->GetBlockHash());
+
     // Update zXNK money supply map
     if (!UpdateZXNKSupplyConnect(block, pindex, fJustCheck)) {
         return state.DoS(100, error("%s: Failed to calculate new zXNK supply for block=%s height=%d", __func__,
@@ -2734,7 +2736,7 @@ bool static DisconnectTip(CValidationState& state)
     // Read block from disk.
     CBlock block;
     if (!ReadBlockFromDisk(block, pindexDelete))
-            return AbortNode(state, "Failed to read block");
+        return AbortNode(state, "Failed to read block");
     // Apply the block atomically to the chain state.
     int64_t nStart = GetTimeMicros();
     {
@@ -2785,7 +2787,7 @@ static int64_t nTimePostConnect = 0;
  * Connect a new block to chainActive. pblock is either NULL or a pointer to a CBlock
  * corresponding to pindexNew, to bypass loading it again from disk.
  */
- bool static ConnectTip(CValidationState& state, CBlockIndex* pindexNew, const CBlock* pblock, bool fAlreadyChecked, std::list<CTransaction> &txConflicted, std::vector<std::tuple<CTransaction,CBlockIndex*,int>> &txChanged)
+bool static ConnectTip(CValidationState& state, CBlockIndex* pindexNew, const CBlock* pblock, bool fAlreadyChecked, std::list<CTransaction> &txConflicted, std::vector<std::tuple<CTransaction,CBlockIndex*,int>> &txChanged)
 {
     assert(pindexNew->pprev == chainActive.Tip());
 
@@ -2797,7 +2799,7 @@ static int64_t nTimePostConnect = 0;
     CBlock block;
     if (!pblock) {
         if (!ReadBlockFromDisk(block, pindexNew))
-           return AbortNode(state, "Failed to read block");
+            return AbortNode(state, "Failed to read block");
         pblock = &block;
     }
     // Apply the block atomically to the chain state.
@@ -3033,7 +3035,7 @@ static bool ActivateBestChainStep(CValidationState& state, CBlockIndex* pindexMo
 
     if (fBlocksDisconnected) {
         mempool.removeForReorg(pcoinsTip, chainActive.Tip()->nHeight + 1, STANDARD_LOCKTIME_VERIFY_FLAGS);
-         LimitMempoolSize(mempool, GetArg("-maxmempool", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000, GetArg("-mempoolexpiry", DEFAULT_MEMPOOL_EXPIRY) * 60 * 60);
+        LimitMempoolSize(mempool, GetArg("-maxmempool", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000, GetArg("-mempoolexpiry", DEFAULT_MEMPOOL_EXPIRY) * 60 * 60);
     }
     mempool.check(pcoinsTip);
 
@@ -3103,7 +3105,7 @@ bool ActivateBestChain(CValidationState& state, const CBlock* pblock, bool fAlre
 
             break;
         }
-        
+
         // When we reach this point, we switched to a new tip (stored in pindexNewTip).
         // Notifications/callbacks that can run without cs_main
         if(connman)
@@ -3140,7 +3142,7 @@ bool ActivateBestChain(CValidationState& state, const CBlock* pblock, bool fAlre
                     uiInterface.NotifyBlockSize(static_cast<int>(size), hashNewTip);
                 }
             }
-            
+
         }
     } while (pindexMostWork != chainActive.Tip());
     CheckBlockIndex();
@@ -3175,7 +3177,7 @@ bool InvalidateBlock(CValidationState& state, CBlockIndex* pindex)
         }
     }
 
-     LimitMempoolSize(mempool, GetArg("-maxmempool", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000, GetArg("-mempoolexpiry", DEFAULT_MEMPOOL_EXPIRY) * 60 * 60);
+    LimitMempoolSize(mempool, GetArg("-maxmempool", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000, GetArg("-mempoolexpiry", DEFAULT_MEMPOOL_EXPIRY) * 60 * 60);
 
     // The resulting new best tip may not be in setBlockIndexCandidates anymore, so
     // add it again.
@@ -4886,6 +4888,7 @@ void static CheckBlockIndex()
     assert(nNodes == forward.size());
 }
 
+
 std::string GetWarnings(std::string strFor)
 {
     std::string strStatusBar;
@@ -5138,6 +5141,7 @@ void static ProcessGetData(CNode* pfrom, CConnman& connman, std::atomic<bool>& i
                         pushed = true;
                     }
                 }
+
                 if (!pushed && inv.type == MSG_TXLOCK_VOTE) {
                     if (mapTxLockVote.count(inv.hash)) {
                         CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
@@ -5500,6 +5504,7 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
 
             if (interruptMsgProc)
                 return true;
+
             pfrom->AddInventoryKnown(inv);
 
             bool fAlreadyHave = AlreadyHave(inv);
@@ -5543,6 +5548,7 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
         pfrom->vRecvGetData.insert(pfrom->vRecvGetData.end(), vInv.begin(), vInv.end());
         ProcessGetData(pfrom, connman, interruptMsgProc);
     }
+
 
     else if (strCommand == NetMsgType::GETBLOCKS || strCommand == NetMsgType::GETHEADERS) {
         CBlockLocator locator;

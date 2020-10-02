@@ -174,7 +174,7 @@ bool CreateCoinbaseTx(CBlock* pblock, const CScript& scriptPubKeyIn, CBlockIndex
     pblock->nBits = GetNextWorkRequired(pindexPrev, pblock);
     CMutableTransaction txCoinStake;
     int64_t nTxNewTime = 0;
-     if (!pwallet->CreateCoinStake(*pwallet, pindexPrev, pblock->nBits, txCoinStake, nTxNewTime, availableCoins)) {
+    if (!pwallet->CreateCoinStake(*pwallet, pindexPrev, pblock->nBits, txCoinStake, nTxNewTime, availableCoins)) {
         LogPrint(BCLog::STAKING, "%s : stake not found\n", __func__);
         return false;
     }
@@ -190,7 +190,7 @@ bool CreateCoinbaseTx(CBlock* pblock, const CScript& scriptPubKeyIn, CBlockIndex
     return true;
 }
 
- CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, bool fProofOfStake, std::vector<COutput>* availableCoins)
+CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, bool fProofOfStake, std::vector<COutput>* availableCoins)
 {
     // Create new block
     std::unique_ptr<CBlockTemplate> pblocktemplate(new CBlockTemplate());
@@ -214,7 +214,7 @@ bool CreateCoinbaseTx(CBlock* pblock, const CScript& scriptPubKeyIn, CBlockIndex
     }
 
     // Depending on the tip height, try to find a coinstake who solves the block or create a coinbase tx.
-     if (!(fProofOfStake ? SolveProofOfStake(pblock, pindexPrev, pwallet, availableCoins)
+    if (!(fProofOfStake ? SolveProofOfStake(pblock, pindexPrev, pwallet, availableCoins)
                         : CreateCoinbaseTx(pblock, scriptPubKeyIn, pindexPrev))) {
         return nullptr;
     }
@@ -435,7 +435,7 @@ bool CreateCoinbaseTx(CBlock* pblock, const CScript& scriptPubKeyIn, CBlockIndex
 
         nLastBlockTx = nBlockTx;
         nLastBlockSize = nBlockSize;
-       LogPrintf("%s : total size %u\n", __func__, nBlockSize);
+        LogPrintf("%s : total size %u\n", __func__, nBlockSize);
 
         // Fill in header
         pblock->hashPrevBlock = pindexPrev->GetBlockHash();
@@ -550,13 +550,13 @@ bool fGenerateBitcoins = false;
 bool fStakeableCoins = false;
 int nMintableLastCheck = 0;
 
- void CheckForCoins(CWallet* pwallet, const int minutes, std::vector<COutput>* availableCoins)
+void CheckForCoins(CWallet* pwallet, const int minutes, std::vector<COutput>* availableCoins)
 {
     //control the amount of times the client will check for mintable coins
     int nTimeNow = GetTime();
     if ((nTimeNow - nMintableLastCheck > minutes * 60)) {
         nMintableLastCheck = nTimeNow;
-         fStakeableCoins = pwallet->StakeableCoins(availableCoins);
+        fStakeableCoins = pwallet->StakeableCoins(availableCoins);
     }
 }
 
@@ -592,13 +592,13 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
             }
 
             // update fStakeableCoins (5 minute check time);
-             CheckForCoins(pwallet, 5, &availableCoins);
+            CheckForCoins(pwallet, 5, &availableCoins);
 
             while ((g_connman && g_connman->GetNodeCount(CConnman::CONNECTIONS_ALL) == 0 && Params().MiningRequiresPeers())
                     || pwallet->IsLocked() || !fStakeableCoins || masternodeSync.NotCompleted()) {
                 MilliSleep(5000);
                 // Do a separate 1 minute check here to ensure fStakeableCoins is updated
-                 if (!fStakeableCoins) CheckForCoins(pwallet, 1, &availableCoins);
+                if (!fStakeableCoins) CheckForCoins(pwallet, 1, &availableCoins);
             }
 
             //search our map of hashed blocks, see if bestblock has been hashed yet
@@ -613,7 +613,7 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
             // Late PoW: run for a little while longer, just in case there is a rewind on the chain.
             LogPrintf("%s: Exiting PoW Mining Thread at height: %d\n", __func__, pindexPrev->nHeight);
             return;
-        }
+       }
 
         //
         // Create new block
@@ -621,7 +621,7 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
         unsigned int nTransactionsUpdatedLast = mempool.GetTransactionsUpdated();
 
         std::unique_ptr<CBlockTemplate> pblocktemplate((fProofOfStake ?
-                                                         CreateNewBlock(CScript(), pwallet, true, &availableCoins) :
+                                                        CreateNewBlock(CScript(), pwallet, true, &availableCoins) :
                                                         CreateNewBlockWithKey(*opReservekey, pwallet)));
         if (!pblocktemplate.get()) continue;
         CBlock* pblock = &pblocktemplate->block;
@@ -714,6 +714,7 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
                 // Changing pblock->nTime can change work required on testnet:
                 hashTarget.SetCompact(pblock->nBits);
             }
+
         }
     }
 }

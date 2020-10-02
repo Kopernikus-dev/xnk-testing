@@ -263,7 +263,7 @@ set(WALLET_SOURCES
         ./src/masternodeman.cpp
         ./src/messagesigner.cpp
         ./src/zxnk/mintpool.cpp
-        ./src/wallet/hdchain.cpp 
+        ./src/wallet/hdchain.cpp
         ./src/wallet/rpcdump.cpp
         ./src/zxnk/deterministicmint.cpp
         ./src/zxnk/zerocoin.cpp

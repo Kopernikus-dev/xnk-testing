@@ -26,7 +26,6 @@
 #include <boost/date_time/posix_time/posix_time.hpp>
 
 
-
 #ifndef WIN32
 // for posix_fallocate
 #ifdef __linux__
@@ -89,6 +88,7 @@
 const char * const EncoCoin_CONF_FILENAME = "encocoin.conf";
 const char * const EncoCoin_PID_FILENAME = "encocoin.pid";
 const char * const EncoCoin_MASTERNODE_CONF_FILENAME = "masternode.conf";
+
 
 // EncoCoin only features
 // Masternode
