@@ -87,13 +87,17 @@ bool DoubleCheckProofOfWork(uint256 hash, unsigned int nBits)
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
     (0, uint256S("0x00000ae5d77e5eb3010a53e731688304019cdada4fee60dfa6b5bc424d87b2a1"))
-    (500, uint256S("0x0000042ff28adc30c4ebe9faa16e8a014bd9e327866413e0e536687e7c789c65"));// genesis
+    (500, uint256S("0x0000042ff28adc30c4ebe9faa16e8a014bd9e327866413e0e536687e7c789c65"))     // genesis
+    (182881, uint256S("0xb638593545e9c0d6460d2eab9c5ff8cef133baa95e803a0c306fc9193a571185"))  // networksplit here? by wallet version "break" from Crypos and Midas
+	(186412, uint256S("0x79d5e38df9fb877363bb27d9a7b547a2d5c5472edd7f7c7c80a8f88954d88a16"))  // Wallet sync stops on 3 nodes at height 186411
+    (200000, uint256S("0x90784a8df844a7aa590f4ce86004ab56da0aea466bb02f4c896f1c4d6614d65b")); // additional Checkpoint
+
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1546711076, // * UNIX timestamp of last checkpoint block
-    0,          // * total number of transactions between genesis and last checkpoint
+    1601693520, // * UNIX timestamp of last checkpoint block
+    430162,     // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
-    0           // * estimated number of transactions per day after checkpoint
+    3000        // * estimated number of transactions per day after checkpoint
 };
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
