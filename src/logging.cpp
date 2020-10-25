@@ -125,6 +125,7 @@ const CLogCategoryDesc LogCategories[] = {
         {BCLog::LEGACYZC,       "zero"},
         {BCLog::MNPING,         "mnping"},
         {BCLog::SPORKS,         "sporks"},
+        {BCLog::PEERS,          "peers"},
         {BCLog::ALL,            "1"},
         {BCLog::ALL,            "all"},
 };

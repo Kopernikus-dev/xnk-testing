@@ -225,7 +225,7 @@ void AdvertiseLocal(CNode* pnode)
             addrLocal.SetIP(pnode->GetAddrLocal());
         }
         if (addrLocal.IsRoutable()) {
-            LogPrintf("%s: advertising address %s\n", __func__, addrLocal.ToString());
+            LogPrint(BCLog::PEERS, "%s: advertising address %s\n", __func__, addrLocal.ToString());
             FastRandomContext insecure_rand;
             pnode->PushAddress(addrLocal, insecure_rand);
         }
@@ -887,7 +887,7 @@ size_t CConnman::SocketSendData(CNode* pnode)
                 // error
                 int nErr = WSAGetLastError();
                 if (nErr != WSAEWOULDBLOCK && nErr != WSAEMSGSIZE && nErr != WSAEINTR && nErr != WSAEINPROGRESS) {
-                    LogPrintf("socket send error %s\n", NetworkErrorString(nErr));
+                    LogPrint(BCLog::PEERS, "socket send error %s\n", NetworkErrorString(nErr));
                     pnode->CloseSocketDisconnect();
                 }
             }
@@ -1084,7 +1084,7 @@ void CConnman::AcceptConnection(const ListenSocket& hListenSocket) {
     }
 
     if (IsBanned(addr) && !whitelisted) {
-        LogPrintf("connection from %s dropped (banned)\n", addr.ToString());
+        LogPrint(BCLog::PEERS, "connection from %s dropped (banned)\n", addr.ToString());
         CloseSocket(hSocket);
         return;
     }
@@ -1335,7 +1335,7 @@ void CConnman::ThreadSocketHandler()
                             int nErr = WSAGetLastError();
                             if (nErr != WSAEWOULDBLOCK && nErr != WSAEMSGSIZE && nErr != WSAEINTR && nErr != WSAEINPROGRESS) {
                                 if (!pnode->fDisconnect)
-                                    LogPrintf("socket recv error %s\n", NetworkErrorString(nErr));
+                                    LogPrint(BCLog::PEERS, "socket recv error %s\n", NetworkErrorString(nErr));
                                 pnode->CloseSocketDisconnect();
                             }
                         }
