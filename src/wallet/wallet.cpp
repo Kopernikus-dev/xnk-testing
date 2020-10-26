@@ -19,7 +19,7 @@
 #include "util.h"
 #include "utilmoneystr.h"
 #include "zxnkchain.h"
-#include "collateral.h"
+
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/thread.hpp>
 
@@ -1367,7 +1367,7 @@ CAmount CWalletTx::GetLockedCredit() const
         }
 
         // Add masternode collaterals which are handled like locked coins
-        else if (fMasterNode && IsValidCollateral(vout[i].nValue, chainActive.Height())) {
+        else if (fMasterNode && vout[i].nValue == 50000 * COIN) {
             nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
         }
 
@@ -1971,8 +1971,8 @@ bool CWallet::GetMasternodeVinAndKeys(CTxIn& txinRet, CPubKey& pubKeyRet, CKey& 
     CTxOut txOut = wtx.vout[nOutputIndex];
 
     // Masternode collateral value
-    if (IsValidCollateral(txOut.nValue != txOut.nValue, chainActive.Height())) {
-        strError = "Invalid collateral tx value";
+    if (txOut.nValue != 50000 * COIN) {
+        strError = "Invalid collateral tx value, must be 50,000 XNK";
         return error("%s: tx %s, index %d not a masternode collateral", __func__, strTxHash, nOutputIndex);
     }
 
@@ -2090,7 +2090,7 @@ bool CWallet::AvailableCoins(std::vector<COutput>* pCoins,      // --> populates
     }
 }
 
-std::map<CTxDestination, std::vector<COutput> > CWallet::AvailableCoinsByAddress(bool fConfirmed, CAmount maxCoinValue)
+std::map<CTxDestination , std::vector<COutput> > CWallet::AvailableCoinsByAddress(bool fConfirmed, CAmount maxCoinValue)
 {
     std::vector<COutput> vCoins;
     // include cold
