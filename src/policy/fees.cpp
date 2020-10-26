@@ -481,7 +481,7 @@ void CBlockPolicyEstimator::Read(CAutoFile& filein, int nFileVersion)
     filein >> nFileBestSeenHeight;
     feeStats.Read(filein);
     nBestSeenHeight = nFileBestSeenHeight;
-    if (nFileVersion < 3019900) {
+    if (nFileVersion < 3009900) {
         TxConfirmStats priStats;
         priStats.Read(filein);
     }
