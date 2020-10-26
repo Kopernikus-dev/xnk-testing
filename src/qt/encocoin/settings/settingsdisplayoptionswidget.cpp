@@ -128,7 +128,7 @@ void SettingsDisplayOptionsWidget::initLanguages()
     ui->comboBoxLanguage->setCurrentIndex(selectedIndex);
 }
 
-void SettingsDisplayOptionsWidget::onResetClicked() 
+void SettingsDisplayOptionsWidget::onResetClicked()
 {
     if (clientModel) {
         OptionsModel *optionsModel = clientModel->getOptionsModel();

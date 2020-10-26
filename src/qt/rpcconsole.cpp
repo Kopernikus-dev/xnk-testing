@@ -92,8 +92,7 @@ public:
         timer.start(millis);
     }
     ~QtRPCTimerBase() {}
-private Q_SLOTS:
-    void timeout() { func(); }
+
 private:
     QTimer timer;
     std::function<void(void)> func;
@@ -961,7 +960,7 @@ void RPCConsole::hideEvent(QHideEvent* event)
 
     // stop PeerTableModel auto refresh
     clientModel->getPeerTableModel()->stopAutoRefresh();
-    clientModel->startMasternodesTimer();
+    clientModel->stopMasternodesTimer();
 }
 
 void RPCConsole::showBackups()

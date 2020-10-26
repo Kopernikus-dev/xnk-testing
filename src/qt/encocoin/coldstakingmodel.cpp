@@ -89,7 +89,7 @@ bool ColdStakingModel::parseCSDelegation(const CTxOut& out, CSDelegation& ret, c
             CChainParams::STAKING_ADDRESS
     );
 
-   std::string ownerAddressStr = EncodeDestination(
+    std::string ownerAddressStr = EncodeDestination(
             addresses[1],
             CChainParams::PUBKEY_ADDRESS
     );

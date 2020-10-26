@@ -123,7 +123,7 @@ void OptionsModel::setMainDefaultOptions(QSettings& settings, bool reset)
 
 void OptionsModel::setWalletDefaultOptions(QSettings& settings, bool reset)
 {
-    if (reset || !settings.contains("bSpendZeroConfChange"))
+    if (!settings.contains("bSpendZeroConfChange") || reset)
         settings.setValue("bSpendZeroConfChange", false);
     if (!SoftSetBoolArg("-spendzeroconfchange", settings.value("bSpendZeroConfChange").toBool()))
         addOverriddenOption("-spendzeroconfchange");
@@ -263,7 +263,7 @@ QVariant OptionsModel::data(const QModelIndex& index, int role) const
         case ShowMasternodesTab:
             return settings.value("fShowMasternodesTab");
         case StakeSplitThreshold:
-			{
+        {
             // Return CAmount/qlonglong as double
             const CAmount nStakeSplitThreshold = (pwalletMain) ? pwalletMain->nStakeSplitThreshold : CWallet::DEFAULT_STAKE_SPLIT_THRESHOLD;
             return QVariant(static_cast<double>(nStakeSplitThreshold / static_cast<double>(COIN)));

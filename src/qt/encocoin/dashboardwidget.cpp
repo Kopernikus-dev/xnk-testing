@@ -373,7 +373,7 @@ void DashboardWidget::tryChartRefresh()
     }
 }
 
-void DashboardWidget::setChartShow(ChartShowType type) 
+void DashboardWidget::setChartShow(ChartShowType type)
 {
     this->chartShow = type;
     if (chartShow == MONTH) {
@@ -411,7 +411,7 @@ void DashboardWidget::loadChart()
     }
 }
 
-void DashboardWidget::showHideEmptyChart(bool showEmpty, bool loading, bool forceView) 
+void DashboardWidget::showHideEmptyChart(bool showEmpty, bool loading, bool forceView)
 {
     if (stakesFilter->rowCount() > SHOW_EMPTY_CHART_VIEW_THRESHOLD || forceView) {
         ui->layoutChart->setVisible(!showEmpty);
@@ -612,7 +612,7 @@ bool DashboardWidget::loadChartData(bool withMonthNames)
     return true;
 }
 
-void DashboardWidget::onChartYearChanged(const QString& yearStr) 
+void DashboardWidget::onChartYearChanged(const QString& yearStr)
 {
     if (isChartInitialized) {
         int newYear = yearStr.toInt();
@@ -686,7 +686,7 @@ void DashboardWidget::onChartRefreshed()
     ui->labelAmountXnk->setText(GUIUtil::formatBalance(chartData->totalXnk, nDisplayUnit));
 
     series->append(set0);
-    if(hasZxnkStakes)
+    if (hasZxnkStakes)
         series->append(set1);
 
     // bar width

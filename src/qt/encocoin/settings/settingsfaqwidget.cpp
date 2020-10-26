@@ -104,7 +104,7 @@ void SettingsFaqWidget::setSection(int num)
 
 void SettingsFaqWidget::onFaqClicked(const QWidget* const widget)
 {
-    ui->scrollAreaFaq->verticalScrollBar()->setValue(widget->y());;
+    ui->scrollAreaFaq->verticalScrollBar()->setValue(widget->y());
 }
 
 void SettingsFaqWidget::windowResizeEvent(QResizeEvent* event)
@@ -130,4 +130,3 @@ SettingsFaqWidget::~SettingsFaqWidget()
 {
     delete ui;
 }
-

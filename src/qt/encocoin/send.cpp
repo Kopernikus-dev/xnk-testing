@@ -160,7 +160,7 @@ void SendWidget::loadClientModel()
     }
 }
 
-void SendWidget::loadWalletModel() 
+void SendWidget::loadWalletModel()
 {
     if (walletModel) {
         coinControlDialog->setModel(walletModel);
