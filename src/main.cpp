@@ -1542,19 +1542,10 @@ int64_t GetBlockValue(int nHeight)
         nSubsidy = 20 * COIN;
     }
 
-    // Check if we reached the coin max supply.
-    //int64_t nMoneySupply = chainActive.Tip()->nMoneySupply;
-    const Consensus::Params& consensus = Params().GetConsensus();
-    if (nMoneySupply + nSubsidy >= consensus.nMaxMoneyOut)
-        nSubsidy = consensus.nMaxMoneyOut - consensus.nMaxMoneyOut;
-
-    if (nMoneySupply >= consensus.nMaxMoneyOut)
-        nSubsidy = 0;
-
     return nSubsidy;
 }
 
-int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCount)
+int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 {
     int64_t ret = 0;
         
@@ -3428,8 +3419,11 @@ bool CheckColdStakeFreeOutput(const CTransaction& tx, const int nHeight)
         // last output can either be a mn reward or a budget payment
         // cold staking is active much after height_start_ZC_PublicSpends so GetMasternodePayment is always 3 XNK.
         // TODO: double check this if/when MN rewards change
-        if (lastOut.nValue == 3 * COIN)
-            return true;
+		CAmount blockValue = GetBlockValue(nHeight);                          	//if (lastOut.nValue == 3 * COIN)
+		CAmount masternodePayment = GetMasternodePayment(nHeight, blockValue);	// changing this with above
+																				// changing this with above
+		if (lastOut.nValue == masternodePayment)								// changing this with above
+			return true;														// changing this with above
 
         // This could be a budget block.
         if (Params().IsRegTestNet())
