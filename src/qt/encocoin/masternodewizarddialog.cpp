@@ -7,6 +7,7 @@
 
 #include "activemasternode.h"
 #include "optionsmodel.h"
+#include "collateral.h"
 #include "pairresult.h"
 #include "qt/encocoin/mnmodel.h"
 #include "qt/encocoin/guitransactionsutils.h"
@@ -212,8 +213,8 @@ bool MasterNodeWizardDialog::createMN()
         SendCoinsRecipient sendCoinsRecipient(
                 QString::fromStdString(dest.ToString()),
                 QString::fromStdString(alias),
-                CAmount(50000) * COIN,
-                "");
+				CollateralRequired(chainActive.Height()),
+				"");
 
         // Send the 10 tx to one of your address
         QList<SendCoinsRecipient> recipients;
@@ -262,7 +263,7 @@ bool MasterNodeWizardDialog::createMN()
         int indexOut = -1;
         for (int i=0; i < (int)walletTx->vout.size(); i++) {
             CTxOut& out = walletTx->vout[i];
-            if (out.nValue == 50000 * COIN) {
+            if (IsValidCollateral(out.nValue, chainActive.Height())) {
                 indexOut = i;
                 break;
             }

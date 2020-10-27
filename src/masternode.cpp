@@ -14,7 +14,7 @@
 #include "sync.h"
 #include "util.h"
 #include "wallet/wallet.h"
-
+#include "collateral.h"
 // keep track of the scanning errors I've seen
 std::map<uint256, int> mapSeenMasternodeScanningErrors;
 // cache block hashes as we calculate them
@@ -307,7 +307,7 @@ bool CMasternode::IsInputAssociatedWithPubkey() const
     uint256 hash;
     if(GetTransaction(vin.prevout.hash, txVin, hash, true)) {
         for (CTxOut out : txVin.vout) {
-            if (out.nValue == 50000 * COIN && out.scriptPubKey == payee) return true;
+            if (IsValidCollateral(out.nValue, chainActive.Height()) && out.scriptPubKey == payee) return true;
         }
     }
 
