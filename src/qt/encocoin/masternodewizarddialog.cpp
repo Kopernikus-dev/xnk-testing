@@ -213,8 +213,8 @@ bool MasterNodeWizardDialog::createMN()
         SendCoinsRecipient sendCoinsRecipient(
                 QString::fromStdString(dest.ToString()),
                 QString::fromStdString(alias),
-                CAmount(GetMNCollateral()) * COIN,
-				"");
+                CAmount(50000) * COIN,
+                "");
 
         // Send the 10 tx to one of your address
         QList<SendCoinsRecipient> recipients;
@@ -263,7 +263,7 @@ bool MasterNodeWizardDialog::createMN()
         int indexOut = -1;
         for (int i=0; i < (int)walletTx->vout.size(); i++) {
             CTxOut& out = walletTx->vout[i];
-            if (out.nValue == GetMNCollateral() * COIN) {
+            if (out.nValue == 50000 * COIN) {
                 indexOut = i;
                 break;
             }

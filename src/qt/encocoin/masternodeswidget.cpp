@@ -477,9 +477,8 @@ void MasterNodesWidget::onCreateMNClicked()
         return;
     }
 
-    if (walletModel->getBalance() <= (COIN * GetMNCollateral())) {
+    if (walletModel->getBalance() <= (COIN * 50000)) {
         inform(tr("Not enough balance to create a masternode, 50,000 %1 required.").arg(CURRENCY_UNIT.c_str()));
-/*      inform(tr("Not enough balance to create a masternode, %1 %2 required.").arg(GetMNCollateral()).arg(CURRENCY_UNIT.c_str())); */
         return;
     }
     showHideOp(true);
