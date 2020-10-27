@@ -580,7 +580,7 @@ bool CMasternodeBlockPayees::IsTransactionValid(const CTransaction& txNew)
         }
     }
 
-    LogPrint(BCLog::MASTERNODE,"CMasternodePayments::IsTransactionValid - Missing required payment of %s to %s\n", FormatMoney(prevMasternodePayment).c_str(), strPayeesPossible.c_str());
+     LogPrint(BCLog::MASTERNODE,"CMasternodePayments::IsTransactionValid - Missing required payment of %s to %s\n", FormatMoney(requiredMasternodePayment).c_str(), strPayeesPossible.c_str());
     return false;
 }
 
