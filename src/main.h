@@ -242,7 +242,7 @@ bool GetOutput(const uint256& hash, unsigned int index, CValidationState& state,
 
 // ***TODO***
 double ConvertBitsToDouble(unsigned int nBits);
-int64_t GetMasternodePayment(int nHeight, int64_t blockValue);
+int64_t GetMasternodePayment();		//int64_t GetMasternodePayment(int nHeight)
 unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader* pblock, bool fProofOfStake);
 
 bool ActivateBestChain(CValidationState& state, const CBlock* pblock = NULL, bool fAlreadyChecked = false, CConnman* connman = nullptr);
@@ -454,7 +454,7 @@ static const unsigned int REJECT_ALREADY_KNOWN = 0x101;
 /** Transaction conflicts with a transaction already known */
 static const unsigned int REJECT_CONFLICT = 0x102;
 
-inline int64_t GetMNCollateral() {
+/* inline int64_t GetMNCollateral() {
 	
 	int nHeight = chainActive.Height();
 
@@ -490,6 +490,6 @@ inline int64_t GetMNCollateral() {
 	{return 50000;}
 	else
 	{return 0;}
-}
+} */
 
 #endif // BITCOIN_MAIN_H

@@ -797,40 +797,44 @@ CAmount CBudgetManager::GetTotalBudget(int nHeight)
 
     //get block value and calculate from that
     CAmount nSubsidy = 0;
-    const Consensus::Params& consensus = Params().GetConsensus();
-    const bool isPoSActive = consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_POS);
-    if (nHeight >= 151200 && !isPoSActive) {
-        nSubsidy = 50 * COIN;
-    } else if (isPoSActive && nHeight <= 302399) {
-        nSubsidy = 50 * COIN;
-    } else if (nHeight <= 345599 && nHeight >= 302400) {
-        nSubsidy = 45 * COIN;
-    } else if (nHeight <= 388799 && nHeight >= 345600) {
-        nSubsidy = 40 * COIN;
-    } else if (nHeight <= 431999 && nHeight >= 388800) {
-        nSubsidy = 35 * COIN;
-    } else if (nHeight <= 475199 && nHeight >= 432000) {
-        nSubsidy = 30 * COIN;
-    } else if (nHeight <= 518399 && nHeight >= 475200) {
-        nSubsidy = 25 * COIN;
-    } else if (nHeight <= 561599 && nHeight >= 518400) {
-        nSubsidy = 20 * COIN;
-    } else if (nHeight <= 604799 && nHeight >= 561600) {
+	if (nHeight == 0) {
+		nSubsidy = 0 * COIN;
+    } else if (nHeight == 1 ) {
+        nSubsidy = 2400000 * COIN;
+    } else if (nHeight > 1 && nHeight <= 500) {
+        nSubsidy = 0.5 * COIN;
+    } else if (nHeight > 500 && nHeight <= 2000) {
+        nSubsidy = 0.1 * COIN;
+    } else if (nHeight > 2000 && nHeight <= 10000) {
+        nSubsidy = 0.15 * COIN;
+    } else if (nHeight > 10000 && nHeight <= 20000) {
+        nSubsidy = 0.3 * COIN;
+    } else if (nHeight > 20000 && nHeight <= 30000) {
+        nSubsidy = 0.6 * COIN;
+    } else if (nHeight > 30000 && nHeight <= 40000) {
+        nSubsidy = 1.2 * COIN;
+    } else if (nHeight > 40000 && nHeight <= 50000) {
+        nSubsidy = 1.5 * COIN;
+    } else if (nHeight > 50000 && nHeight <= 70000) {
+        nSubsidy = 3 * COIN;
+    } else if (nHeight > 70000 && nHeight <= 80000) {
+        nSubsidy = 6 * COIN;
+    } else if (nHeight > 80000 && nHeight <= 90000) {
+        nSubsidy = 7 * COIN;
+    } else if (nHeight > 90000 && nHeight <= 100000) {
+        nSubsidy = 7.5 * COIN;
+    } else if (nHeight > 100000 && nHeight <= 120000) {
         nSubsidy = 15 * COIN;
-    } else if (nHeight <= 647999 && nHeight >= 604800) {
-        nSubsidy = 10 * COIN;
-    } else if (consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_ZC_V2)) {
-        nSubsidy = 10 * COIN;
+    } else if (nHeight > 120000 && nHeight <= 140000) {
+        nSubsidy = 16.5 * COIN;
+    } else if (nHeight > 140000 && nHeight <= 150000) {
+        nSubsidy = 17 * COIN;
     } else {
-        nSubsidy = 5 * COIN;
+        nSubsidy = 20 * COIN;
     }
 
     // Amount of blocks in a months period of time (using 1 minutes per) = (60*24*30)
-    if (nHeight <= 172800) {
-        return 648000 * COIN;
-    } else {
         return ((nSubsidy / 100) * 10) * 1440 * 30;
-    }
 }
 
 void CBudgetManager::AddSeenProposal(const CBudgetProposalBroadcast& prop)

@@ -1505,6 +1505,12 @@ int64_t GetBlockValue(int nHeight)
             return 250000 * COIN;
     }
 
+    if (Params().IsRegTestNet()) {
+        if (nHeight == 0)
+            return 250 * COIN;
+
+    }
+
     int64_t nSubsidy = 0;
     if (nHeight == 0) {
         nSubsidy = 0 * COIN;
@@ -1545,9 +1551,9 @@ int64_t GetBlockValue(int nHeight)
     return nSubsidy;
 }
 
-int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
+int64_t GetMasternodePayment() // int64_t GetMasternodePayment(int nHeight)
 {
-    int64_t ret = 0;
+/*    int64_t ret = 0;
         
     if (nHeight <= 500) {
         ret = 0;
@@ -1579,8 +1585,8 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
         ret = 16.9999 * COIN;  
     } else {
         ret = 19.995 * COIN;
-    }
-    return ret;
+    } */
+    return 19.995 * COIN; //return ret;
 }
 
 bool IsInitialBlockDownload()
@@ -3416,14 +3422,8 @@ bool CheckColdStakeFreeOutput(const CTransaction& tx, const int nHeight)
     const unsigned int outs = tx.vout.size();
     const CTxOut& lastOut = tx.vout[outs-1];
     if (outs >=3 && lastOut.scriptPubKey != tx.vout[outs-2].scriptPubKey) {
-        // last output can either be a mn reward or a budget payment
-        // cold staking is active much after height_start_ZC_PublicSpends so GetMasternodePayment is always 3 XNK.
-        // TODO: double check this if/when MN rewards change
-		CAmount blockValue = GetBlockValue(nHeight);                          	//if (lastOut.nValue == 3 * COIN)
-		CAmount masternodePayment = GetMasternodePayment(nHeight, blockValue);	// changing this with above
-																				// changing this with above
-		if (lastOut.nValue == masternodePayment)								// changing this with above
-			return true;														// changing this with above
+        if (lastOut.nValue == GetMasternodePayment())	//int64_t GetMasternodePayment(int nHeight)
+			return true;
 
         // This could be a budget block.
         if (Params().IsRegTestNet())
