@@ -2100,8 +2100,8 @@ DisconnectResult DisconnectBlock(CBlock& block, CBlockIndex* pindex, CCoinsViewC
     }
 
     //Track zXNK money supply
-    if (!UpdateZPIVSupplyDisconnect(block, pindex)) {
-        error("%s: Failed to calculate new zPIV supply", __func__);
+    if (!UpdateZXNKSupplyDisconnect(block, pindex)) {
+        error("%s: Failed to calculate new zXNK supply", __func__);
         return DISCONNECT_FAILED;
     }
 
