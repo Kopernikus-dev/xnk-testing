@@ -33,7 +33,7 @@ int MultiSendModel::rowCount(const QModelIndex &parent) const
     return (int) pwalletMain->vMultiSend.size();
 }
 
-QVariant MultiSendModel::data(const QModelIndex &index, int role) const 
+QVariant MultiSendModel::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid())
         return QVariant();
@@ -195,7 +195,7 @@ SettingsMultisendWidget::SettingsMultisendWidget(PWidget *parent) :
     connect(ui->pushButtonClear, &QPushButton::clicked, this, &SettingsMultisendWidget::clearAll);
 }
 
-void SettingsMultisendWidget::showEvent(QShowEvent *event) 
+void SettingsMultisendWidget::showEvent(QShowEvent *event)
 {
     if (multiSendModel) {
         multiSendModel->updateList();
@@ -318,7 +318,7 @@ void SettingsMultisendWidget::addMultiSend(QString address, int percentage, QStr
     }
 
     CWalletDB walletdb(pwalletMain->strWalletFile);
-    if ( !walletdb.WriteMultiSend(pwalletMain->vMultiSend)) {
+    if (!walletdb.WriteMultiSend(pwalletMain->vMultiSend)) {
         inform(tr("Error saving  MultiSend, failed saving properties to the database."));
         return;
     }

@@ -10,7 +10,7 @@ namespace GuiTransactionsUtils {
 
     QString ProcessSendCoinsReturn(PWidget::Translator *parent, const WalletModel::SendCoinsReturn &sendCoinsReturn,
                                 WalletModel *walletModel, CClientUIInterface::MessageBoxFlags& informType, const QString &msgArg,
-                                bool fPrepare) 
+                                bool fPrepare)
     {
         QString retStr;
         informType = CClientUIInterface::MSG_WARNING;

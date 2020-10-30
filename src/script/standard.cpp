@@ -50,7 +50,7 @@ static bool MatchPayToPubkey(const CScript& script, valtype& pubkey)
 static bool MatchPayToPubkeyHash(const CScript& script, valtype& pubkeyhash)
 {
     if (script.size() == 25 && script[0] == OP_DUP && script[1] == OP_HASH160 && script[2] == 20 && script[23] == OP_EQUALVERIFY && script[24] == OP_CHECKSIG) {
-        pubkeyhash = valtype(script.begin () + 3, script.begin() + 23);
+        pubkeyhash = valtype(script.begin() + 3, script.begin() + 23);
         return true;
     }
     return false;
@@ -59,8 +59,8 @@ static bool MatchPayToPubkeyHash(const CScript& script, valtype& pubkeyhash)
 static bool MatchPayToColdStaking(const CScript& script, valtype& stakerPubKeyHash, valtype& ownerPubKeyHash)
 {
     if (script.IsPayToColdStaking()) {
-        stakerPubKeyHash = valtype(script.begin () + 6, script.begin() + 26);
-        ownerPubKeyHash = valtype(script.begin () + 28, script.begin() + 48);
+        stakerPubKeyHash = valtype(script.begin() + 6, script.begin() + 26);
+        ownerPubKeyHash = valtype(script.begin() + 28, script.begin() + 48);
         return true;
     }
     return false;

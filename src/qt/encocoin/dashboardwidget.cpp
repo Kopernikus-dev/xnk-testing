@@ -2,6 +2,7 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "qt/encocoin/dashboardwidget.h"
 #include "qt/encocoin/forms/ui_dashboardwidget.h"
 #include "qt/encocoin/sendconfirmdialog.h"
@@ -37,11 +38,11 @@ DashboardWidget::DashboardWidget(EncoCoinGUI* parent) :
     );
 
     this->setStyleSheet(parent->styleSheet());
-    this->setContentsMargins(0,0,0,0);
+    this->setContentsMargins(0, 0, 0, 0);
 
     // Containers
-    setCssProperty({this, ui->left}, "container");
-    ui->left->setContentsMargins(0,0,0,0);
+    setCssProperty({ this, ui->left }, "container");
+    ui->left->setContentsMargins(0, 0, 0, 0);
 
     // Title
     setCssTitleScreen(ui->labelTitle);
@@ -63,8 +64,8 @@ DashboardWidget::DashboardWidget(EncoCoinGUI* parent) :
     setCssProperty(ui->labelChart, "legend-chart");
     setCssProperty(ui->labelAmountXnk, "text-stake-xnk-disable");
 
-    setCssProperty({ui->pushButtonAll,  ui->pushButtonMonth, ui->pushButtonYear}, "btn-check-time");
-    setCssProperty({ui->comboBoxMonths,  ui->comboBoxYears}, "btn-combo-chart-selected");
+    setCssProperty({ ui->pushButtonAll,  ui->pushButtonMonth, ui->pushButtonYear }, "btn-check-time");
+    setCssProperty({ ui->comboBoxMonths,  ui->comboBoxYears }, "btn-combo-chart-selected");
 
     ui->comboBoxMonths->setView(new QListView());
     ui->comboBoxMonths->setStyleSheet("selection-background-color:transparent; selection-color:transparent;");
@@ -77,7 +78,7 @@ DashboardWidget::DashboardWidget(EncoCoinGUI* parent) :
 
 #ifdef USE_QTCHARTS
     setCssProperty(ui->right, "container-right");
-    ui->right->setContentsMargins(20,20,20,0);
+    ui->right->setContentsMargins(20, 20, 20, 0);
     connect(ui->comboBoxYears, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
         this, &DashboardWidget::onChartYearChanged);
 #else
@@ -87,13 +88,13 @@ DashboardWidget::DashboardWidget(EncoCoinGUI* parent) :
 
     // Sort Transactions
     SortEdit* lineEdit = new SortEdit(ui->comboBoxSort);
-    connect(lineEdit, &SortEdit::Mouse_Pressed, [this](){ui->comboBoxSort->showPopup();});
+    connect(lineEdit, &SortEdit::Mouse_Pressed, [this]() {ui->comboBoxSort->showPopup(); });
     setSortTx(ui->comboBoxSort, lineEdit);
     connect(ui->comboBoxSort, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged), this, &DashboardWidget::onSortChanged);
 
     // Sort type
     SortEdit* lineEditType = new SortEdit(ui->comboBoxSortType);
-    connect(lineEditType, &SortEdit::Mouse_Pressed, [this](){ui->comboBoxSortType->showPopup();});
+    connect(lineEditType, &SortEdit::Mouse_Pressed, [this]() {ui->comboBoxSortType->showPopup(); });
     setSortTxTypeFilter(ui->comboBoxSortType, lineEditType);
     ui->comboBoxSortType->setCurrentIndex(0);
     connect(ui->comboBoxSortType, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
@@ -138,9 +139,9 @@ bool hasCharts = false;
     hasCharts = true;
     isLoading = false;
     setChartShow(YEAR);
-    connect(ui->pushButtonYear, &QPushButton::clicked, [this](){setChartShow(YEAR);});
-    connect(ui->pushButtonMonth, &QPushButton::clicked, [this](){setChartShow(MONTH);});
-    connect(ui->pushButtonAll, &QPushButton::clicked, [this](){setChartShow(ALL);});
+    connect(ui->pushButtonYear, &QPushButton::clicked, [this]() {setChartShow(YEAR); });
+    connect(ui->pushButtonMonth, &QPushButton::clicked, [this]() {setChartShow(MONTH); });
+    connect(ui->pushButtonAll, &QPushButton::clicked, [this]() {setChartShow(ALL); });
     if (window)
         connect(window, &EncoCoinGUI::windowResizeEvent, this, &DashboardWidget::windowResizeEvent);
 #endif
@@ -437,7 +438,7 @@ void DashboardWidget::initChart()
     chart->legend()->setVisible(false);
     chart->legend()->setAlignment(Qt::AlignTop);
     chart->layout()->setContentsMargins(0, 0, 0, 0);
-    chart->setMargins({0, 0, 0, 0});
+    chart->setMargins({ 0, 0, 0, 0 });
     chart->setBackgroundRoundness(0);
     // Axis
     chart->addAxis(axisX, Qt::AlignBottom);
@@ -446,14 +447,14 @@ void DashboardWidget::initChart()
 
     chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
-    chartView->setRubberBand( QChartView::HorizontalRubberBand );
-    chartView->setContentsMargins(0,0,0,0);
+    chartView->setRubberBand(QChartView::HorizontalRubberBand);
+    chartView->setContentsMargins(0, 0, 0, 0);
 
     QHBoxLayout *baseScreensContainer = new QHBoxLayout(this);
     baseScreensContainer->setMargin(0);
     baseScreensContainer->addWidget(chartView);
     ui->chartContainer->setLayout(baseScreensContainer);
-    ui->chartContainer->setContentsMargins(0,0,0,0);
+    ui->chartContainer->setContentsMargins(0, 0, 0, 0);
     setCssProperty(ui->chartContainer, "container-chart");
 }
 
@@ -464,14 +465,14 @@ void DashboardWidget::changeChartColors()
     QColor backgroundColor;
     QColor gridY;
     if (isLightTheme()) {
-        gridLineColorX = QColor(255,255,255);
+        gridLineColorX = QColor(255, 255, 255);
         linePenColorY = gridLineColorX;
         backgroundColor = linePenColorY;
         axisY->setGridLineColor(QColor("#1a000000"));
     } else {
         gridY = QColor("#40ffffff");
         axisY->setGridLineColor(gridY);
-        gridLineColorX = QColor(7,6,6);
+        gridLineColorX = QColor(7, 6, 6);
         linePenColorY =  gridLineColorX;
         backgroundColor = linePenColorY;
     }
@@ -577,7 +578,7 @@ bool DashboardWidget::loadChartData(bool withMonthNames)
     chartData = new ChartData();
     chartData->amountsByCache = getAmountBy(); // pair XNK, zXNK
 
-    std::pair<int,int> range = getChartRange(chartData->amountsByCache);
+    std::pair<int, int> range = getChartRange(chartData->amountsByCache);
     if (range.first == 0 && range.second == 0) {
         // Problem loading the chart.
         return false;
@@ -612,7 +613,7 @@ bool DashboardWidget::loadChartData(bool withMonthNames)
     return true;
 }
 
-void DashboardWidget::onChartYearChanged(const QString& yearStr) 
+void DashboardWidget::onChartYearChanged(const QString& yearStr)
 {
     if (isChartInitialized) {
         int newYear = yearStr.toInt();

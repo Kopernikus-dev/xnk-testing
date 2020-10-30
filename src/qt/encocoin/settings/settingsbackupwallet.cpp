@@ -1,4 +1,5 @@
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -51,8 +52,8 @@ void SettingsBackupWallet::selectFileOutput()
     if (!filename.isEmpty() && walletModel) {
         ui->pushButtonDocuments->setText(filename);
         inform(walletModel->backupWallet(filename) ? tr("Backup created") : tr("Backup creation failed"));
-        ui->pushButtonDocuments->setText(tr("Select folder..."));
     } else {
+        ui->pushButtonDocuments->setText(tr("Select folder..."));
         inform(tr("Please select a folder to export the backup first."));
     }
 }

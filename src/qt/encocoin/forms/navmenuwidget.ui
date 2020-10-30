@@ -115,8 +115,8 @@ background-color:transparent;
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>102</width>
-           <height>617</height>
+           <width>100</width>
+           <height>640</height>
           </rect>
          </property>
          <property name="sizePolicy">

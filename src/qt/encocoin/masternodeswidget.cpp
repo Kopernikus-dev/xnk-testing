@@ -2,6 +2,7 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "qt/encocoin/masternodeswidget.h"
 #include "qt/encocoin/forms/ui_masternodeswidget.h"
 
@@ -195,7 +196,7 @@ void MasterNodesWidget::onMNClicked(const QModelIndex &index)
 
 bool MasterNodesWidget::checkMNsNetwork()
 {
-    bool isTierTwoSync = true;
+    bool isTierTwoSync = mnModel->isMNsNetworkSynced();
     if (!isTierTwoSync) inform(tr("Please wait until the node is fully synced"));
     return isTierTwoSync;
 }

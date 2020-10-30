@@ -3,6 +3,7 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "base58.h"
 #include "hash.h"
 #include "main.h" // For strMessageMagic
@@ -82,7 +83,7 @@ bool CSignedMessage::Sign(const CKey& key, const CPubKey& pubKey)
     std::string strError = "";
     uint256 hash = GetSignatureHash();
 
-    if(!CHashSigner::SignHash(hash, key, vchSig)) {
+    if (!CHashSigner::SignHash(hash, key, vchSig)) {
         return error("%s : SignHash() failed", __func__);
     }
 

@@ -150,7 +150,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
         CMutableTransaction txCoinStake;
         int64_t nTxNewTime = 0;
         if (!pwallet->CreateCoinStake(*pwallet, pindexPrev, pblock->nBits, txCoinStake, nTxNewTime)) {
-           LogPrint(BCLog::STAKING, "%s : stake not found\n", __func__);
+            LogPrint(BCLog::STAKING, "%s : stake not found\n", __func__);
             return nullptr;
         }
         // Stake found
@@ -420,7 +420,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
 
         nLastBlockTx = nBlockTx;
         nLastBlockSize = nBlockSize;
-       LogPrintf("%s : total size %u\n", __func__, nBlockSize);
+        LogPrintf("%s : total size %u\n", __func__, nBlockSize);
 
         // Compute final coinbase transaction.
         pblock->vtx[0].vin[0].scriptSig = CScript() << nHeight << OP_0;
@@ -449,7 +449,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
         }
 
         CValidationState state;
-        if (fProofOfStake && !TestBlockValidity(state, *pblock, pindexPrev, false, false)) {
+        if (!TestBlockValidity(state, *pblock, pindexPrev, false, false)) {
             LogPrintf("CreateNewBlock() : TestBlockValidity failed\n");
             mempool.clear();
             return nullptr;
@@ -514,7 +514,7 @@ bool ProcessBlockFound(CBlock* pblock, CWallet& wallet, Optional<CReserveKey>& r
     // Found a solution
     {
         WAIT_LOCK(g_best_block_mutex, lock);
-        if (pblock->hashPrevBlock !=  chainActive.Tip()->GetBlockHash())
+        if (pblock->hashPrevBlock != g_best_block)
             return error("EncoCoinMiner : generated block is stale");
     }
 
@@ -567,7 +567,7 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
     const int64_t nSpacingMillis = consensus.nTargetSpacing * 1000;
 
     // Each thread has its own key and counter
-    Optional<CReserveKey> opReservekey{nullopt};
+    Optional<CReserveKey> opReservekey{ nullopt };
     if (!fProofOfStake) {
         opReservekey = CReserveKey(pwallet);
 

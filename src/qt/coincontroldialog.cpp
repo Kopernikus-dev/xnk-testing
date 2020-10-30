@@ -4,6 +4,7 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "coincontroldialog.h"
 #include "ui_coincontroldialog.h"
 
@@ -31,7 +32,6 @@
 #include <QSettings>
 #include <QString>
 #include <QTreeWidget>
-
 
 bool CCoinControlWidgetItem::operator<(const QTreeWidgetItem &other) const {
     int column = treeWidget()->sortColumn();

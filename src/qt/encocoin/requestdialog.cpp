@@ -2,6 +2,7 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "qt/encocoin/requestdialog.h"
 #include "qt/encocoin/forms/ui_requestdialog.h"
 #include <QListView>
@@ -82,7 +83,6 @@ void RequestDialog::setPaymentRequest(bool isPaymentRequest)
 void RequestDialog::accept()
 {
     if (walletModel) {
-
         QString labelStr = ui->lineEditLabel->text();
 
         //Amount

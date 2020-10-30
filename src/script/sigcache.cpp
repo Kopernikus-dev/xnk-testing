@@ -79,7 +79,7 @@ void InitSignatureCache()
     size_t nMaxCacheSize = std::min(std::max((int64_t)0, GetArg("-maxsigcachesize", DEFAULT_MAX_SIG_CACHE_SIZE)), MAX_MAX_SIG_CACHE_SIZE) * ((size_t) 1 << 20);
     size_t nElems = signatureCache.setup_bytes(nMaxCacheSize);
     LogPrintf("Using %zu MiB out of %zu requested for signature cache, able to store %zu elements\n",
-            (nElems*sizeof(uint256)) >>20, nMaxCacheSize>>20, nElems);
+            (nElems * sizeof(uint256)) >> 20, nMaxCacheSize >> 20, nElems);
 }
 
 bool CachingTransactionSignatureChecker::VerifySignature(const std::vector<unsigned char>& vchSig, const CPubKey& pubkey, const uint256& sighash) const

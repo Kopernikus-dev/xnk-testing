@@ -232,7 +232,7 @@
                  <enum>Qt::NoFocus</enum>
                 </property>
                 <property name="text">
-                <string>Rescan blockchain file</string>
+                 <string>Rescan blockchain file</string>
                 </property>
                </widget>
               </item>

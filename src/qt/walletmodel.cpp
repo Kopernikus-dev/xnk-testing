@@ -67,12 +67,12 @@ bool WalletModel::isRegTestNetwork() const
     return Params().IsRegTestNet();
 }
 
-bool WalletModel::isColdStakingNetworkelyEnabled() const 
+bool WalletModel::isColdStakingNetworkelyEnabled() const
 {
     return sporkManager.IsSporkActive(SPORK_17_COLDSTAKING_ENFORCEMENT);
 }
 
-bool WalletModel::isStakingStatusActive() const 
+bool WalletModel::isStakingStatusActive() const
 {
     return wallet->pStakerStatus->IsActive();
 }
@@ -200,7 +200,7 @@ void WalletModel::updateStatus()
         Q_EMIT encryptionStatusChanged(newEncryptionStatus);
 }
 
-bool WalletModel::isWalletUnlocked() const 
+bool WalletModel::isWalletUnlocked() const
 {
     EncryptionStatus status = getEncryptionStatus();
     return (status == Unencrypted || status == Unlocked);
@@ -212,7 +212,7 @@ bool WalletModel::isWalletLocked(bool fFullUnlocked) const
     return (status == Locked || (!fFullUnlocked && status == UnlockedForStaking));
 }
 
-bool IsImportingOrReindexing() 
+bool IsImportingOrReindexing()
 {
     return fImporting || fReindex;
 }
@@ -875,12 +875,12 @@ PairResult WalletModel::getNewStakingAddress(Destination& ret,std::string label)
     return res;
 }
 
-bool WalletModel::whitelistAddressFromColdStaking(const QString &addressStr) 
+bool WalletModel::whitelistAddressFromColdStaking(const QString &addressStr)
 {
     return updateAddressBookPurpose(addressStr, AddressBook::AddressBookPurpose::DELEGATOR);
 }
 
-bool WalletModel::blacklistAddressFromColdStaking(const QString &addressStr) 
+bool WalletModel::blacklistAddressFromColdStaking(const QString &addressStr)
 {
     return updateAddressBookPurpose(addressStr, AddressBook::AddressBookPurpose::DELEGABLE);
 }

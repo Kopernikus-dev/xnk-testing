@@ -230,7 +230,7 @@ void SettingsBitToolWidget::onAddressesClicked()
 
 void SettingsBitToolWidget::resizeMenu()
 {
-    if(menuContacts && menuContacts->isVisible()) {
+    if (menuContacts && menuContacts->isVisible()) {
         int width = ui->containerAddress->width();
         menuContacts->resizeList(width, menuContacts->height());
         menuContacts->resize(width, menuContacts->height());

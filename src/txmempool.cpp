@@ -34,7 +34,7 @@ CTxMemPoolEntry::CTxMemPoolEntry(const CTransaction& _tx, const CAmount& _nFee,
     nCountWithDescendants = 1;
     nSizeWithDescendants = nTxSize;
     nFeesWithDescendants = nFee;
-    CAmount nValueIn = tx.GetValueOut()+nFee;
+    CAmount nValueIn = tx.GetValueOut() + nFee;
     assert(inChainInputValue <= nValueIn);
 }
 
@@ -374,7 +374,7 @@ bool CTxMemPool::addUnchecked(const uint256& hash, const CTxMemPoolEntry &entry,
 
     const CTransaction& tx = newit->GetTx();
     std::set<uint256> setParentTransactions;
-    if(!tx.HasZerocoinSpendInputs()) {
+    if (!tx.HasZerocoinSpendInputs()) {
         for (unsigned int i = 0; i < tx.vin.size(); i++) {
             mapNextTx[tx.vin[i].prevout] = CInPoint(&tx, i);
             setParentTransactions.insert(tx.vin[i].prevout.hash);
@@ -892,7 +892,7 @@ void CTxMemPool::UpdateParent(txiter entry, txiter parent, bool add)
 
 const CTxMemPool::setEntries & CTxMemPool::GetMemPoolParents(txiter entry) const
 {
-    assert (entry != mapTx.end());
+    assert(entry != mapTx.end());
     txlinksMap::const_iterator it = mapLinks.find(entry);
     assert(it != mapLinks.end());
     return it->second.parents;
@@ -900,7 +900,7 @@ const CTxMemPool::setEntries & CTxMemPool::GetMemPoolParents(txiter entry) const
 
 const CTxMemPool::setEntries & CTxMemPool::GetMemPoolChildren(txiter entry) const
 {
-    assert (entry != mapTx.end());
+    assert(entry != mapTx.end());
     txlinksMap::const_iterator it = mapLinks.find(entry);
     assert(it != mapLinks.end());
     return it->second.children;

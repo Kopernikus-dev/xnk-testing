@@ -138,7 +138,7 @@
             <string notr="true"/>
            </property>
            <property name="text">
-              <string notr="true">N/A</string>
+            <string notr="true">N/A</string>
            </property>
           </widget>
          </item>

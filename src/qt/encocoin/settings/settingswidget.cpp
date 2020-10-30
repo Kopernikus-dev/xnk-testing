@@ -206,8 +206,8 @@ void SettingsWidget::loadClientModel()
 void SettingsWidget::loadWalletModel()
 {
     this->settingsBackupWallet->setWalletModel(this->walletModel);
-    this->settingsSingMessageWidgets->setWalletModel(this->walletModel);
     this->settingsExportCsvWidget->setWalletModel(this->walletModel);
+    this->settingsSingMessageWidgets->setWalletModel(this->walletModel);
     this->settingsBitToolWidget->setWalletModel(this->walletModel);
     //this->settingsMultisendWidget->setWalletModel(this->walletModel); no visible for now
     this->settingsDisplayOptionsWidget->setWalletModel(this->walletModel);

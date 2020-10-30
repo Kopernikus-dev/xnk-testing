@@ -123,7 +123,7 @@ void OptionsModel::setMainDefaultOptions(QSettings& settings, bool reset)
 
 void OptionsModel::setWalletDefaultOptions(QSettings& settings, bool reset)
 {
-    if (reset || !settings.contains("bSpendZeroConfChange"))
+    if (!settings.contains("bSpendZeroConfChange") || reset)
         settings.setValue("bSpendZeroConfChange", false);
     if (!SoftSetBoolArg("-spendzeroconfchange", settings.value("bSpendZeroConfChange").toBool()))
         addOverriddenOption("-spendzeroconfchange");

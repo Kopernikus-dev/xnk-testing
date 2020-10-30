@@ -1,5 +1,8 @@
-// Copyright (c) 2020 The PIVX Core developers
+// Copyright (c) 2020 The PIVX developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #ifndef ENCOCOIN_HDCHAIN_H
 #define ENCOCOIN_HDCHAIN_H
 

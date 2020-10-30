@@ -2,6 +2,7 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "qt/encocoin/settings/settingsmainoptionswidget.h"
 #include "qt/encocoin/settings/forms/ui_settingsmainoptionswidget.h"
 #include "QListView"

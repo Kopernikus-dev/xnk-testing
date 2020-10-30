@@ -4,6 +4,7 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "rpcconsole.h"
 #include "ui_rpcconsole.h"
 
@@ -92,8 +93,7 @@ public:
         timer.start(millis);
     }
     ~QtRPCTimerBase() {}
-private Q_SLOTS:
-    void timeout() { func(); }
+
 private:
     QTimer timer;
     std::function<void(void)> func;

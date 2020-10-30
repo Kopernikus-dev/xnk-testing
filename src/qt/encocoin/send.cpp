@@ -2,6 +2,7 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "qt/encocoin/send.h"
 #include "qt/encocoin/forms/ui_send.h"
 #include "qt/encocoin/addnewcontactdialog.h"
@@ -143,8 +144,7 @@ void SendWidget::refreshAmounts()
     ui->labelAmountRemaining->setText(
             GUIUtil::formatBalance(
                     totalAmount,
-                    nDisplayUnit
-                    
+                    nDisplayUnit                    
                     )
     );
     // show or hide delegations checkbox if need be
@@ -160,7 +160,7 @@ void SendWidget::loadClientModel()
     }
 }
 
-void SendWidget::loadWalletModel() 
+void SendWidget::loadWalletModel()
 {
     if (walletModel) {
         coinControlDialog->setModel(walletModel);
@@ -442,6 +442,7 @@ void SendWidget::updateEntryLabels(QList<SendCoinsRecipient> recipients)
     }
 }
 
+
 void SendWidget::onChangeAddressClicked()
 {
     showHideOp(true);
@@ -449,7 +450,6 @@ void SendWidget::onChangeAddressClicked()
     if (IsValidDestination(coinControlDialog->coinControl->destChange)) {
         dialog->setAddress(QString::fromStdString(EncodeDestination(coinControlDialog->coinControl->destChange)));
     }
-
     CTxDestination destChange = (openDialogWithOpaqueBackgroundY(dialog, window, 3, 5) ?
                                  dialog->getDestination() : CNoDestination());
 
@@ -465,7 +465,6 @@ void SendWidget::onChangeAddressClicked()
         }
         ui->btnChangeAddress->setActive(true);
     }
-
     // save change address in coin control
     coinControlDialog->coinControl->destChange = destChange;
     dialog->deleteLater();

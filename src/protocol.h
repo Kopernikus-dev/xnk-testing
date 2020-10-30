@@ -5,6 +5,7 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #ifndef __cplusplus
 #error This header can only be compiled as C++.
 #endif

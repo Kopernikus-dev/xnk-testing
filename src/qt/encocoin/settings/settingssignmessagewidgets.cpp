@@ -143,7 +143,7 @@ void SettingsSignMessageWidgets::onPasteButtonSMClicked()
     setAddress_SM(QApplication::clipboard()->text());
 }
 
-void SettingsSignMessageWidgets::onClearAll() 
+void SettingsSignMessageWidgets::onClearAll()
 {
     ui->addressIn_SM->clear();
     ui->signatureOut_SM->clear();
@@ -263,7 +263,7 @@ void SettingsSignMessageWidgets::onVerifyMessage()
 void SettingsSignMessageWidgets::onAddressesClicked()
 {
     int addressSize = walletModel->getAddressTableModel()->sizeRecv();
-    if(addressSize == 0) {
+    if (addressSize == 0) {
         inform(tr("No addresses available, you can go to the receive screen and add some there!"));
         return;
     }
@@ -301,7 +301,7 @@ void SettingsSignMessageWidgets::onAddressesClicked()
 
 void SettingsSignMessageWidgets::resizeMenu()
 {
-    if(menuContacts && menuContacts->isVisible()) {
+    if (menuContacts && menuContacts->isVisible()) {
         int width = ui->containerAddress->width();
         menuContacts->resizeList(width, menuContacts->height());
         menuContacts->resize(width, menuContacts->height());

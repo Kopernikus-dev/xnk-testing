@@ -5,6 +5,7 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #if defined(HAVE_CONFIG_H)
 #include "config/encocoin-config.h"
 #endif
@@ -982,7 +983,7 @@ static bool AttemptToEvictConnection(bool fPreferNewConnection) {
                 continue;
             if (node->fDisconnect)
                 continue;
-            NodeEvictionCandidate candidate = {node->id, node->nTimeConnected, node->nMinPingUsecTime, node->addr};
+            NodeEvictionCandidate candidate = { node->id, node->nTimeConnected, node->nMinPingUsecTime, node->addr };
             vEvictionCandidates.push_back(candidate);
         }
     }
@@ -1043,7 +1044,7 @@ static bool AttemptToEvictConnection(bool fPreferNewConnection) {
     // Disconnect from the network group with the most connections
     NodeId evicted = vEvictionCandidates.front().id;
     LOCK(cs_vNodes);
-    for(std::vector<CNode*>::const_iterator it(vNodes.begin()); it != vNodes.end(); ++it) {
+    for (std::vector<CNode*>::const_iterator it(vNodes.begin()); it != vNodes.end(); ++it) {
         if ((*it)->GetId() == evicted) {
             (*it)->fDisconnect = true;
             return true;
@@ -1622,6 +1623,7 @@ void ThreadOpenConnections()
                 }
             }
         }
+
         assert(nOutbound <= (MAX_OUTBOUND_CONNECTIONS + MAX_FEELER_CONNECTIONS));
 
         // Feeler Connections

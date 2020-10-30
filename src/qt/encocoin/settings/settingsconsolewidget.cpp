@@ -2,6 +2,7 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "qt/encocoin/settings/settingsconsolewidget.h"
 #include "qt/encocoin/settings/forms/ui_settingsconsolewidget.h"
 #include "QGraphicsDropShadowEffect"
@@ -332,7 +333,7 @@ bool SettingsConsoleWidget::eventFilter(QObject* obj, QEvent* event)
             case Qt::Key_Return:
             case Qt::Key_Enter:
                 // forward these events to lineEdit
-                if(obj == autoCompleter->popup()) {
+                if (obj == autoCompleter->popup()) {
                     QApplication::postEvent(ui->lineEdit, new QKeyEvent(*keyevt));
                     return true;
                 }

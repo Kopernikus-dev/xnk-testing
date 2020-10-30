@@ -158,7 +158,7 @@ This option creates a wallet.dat file that can be used to recover your whole bal
         <item>
          <widget class="QLabel" name="labelTitle_2">
           <property name="text">
-           <string>TextLabel</string>
+           <string>Change Wallet Passphrase</string>
           </property>
          </widget>
         </item>

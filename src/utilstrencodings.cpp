@@ -630,10 +630,10 @@ static const int64_t UPPER_BOUND = 1000000000000000000LL - 1LL;
 /** Helper function for ParseFixedPoint */
 static inline bool ProcessMantissaDigit(char ch, int64_t &mantissa, int &mantissa_tzeros)
 {
-    if(ch == '0')
+    if (ch == '0')
         ++mantissa_tzeros;
     else {
-        for (int i=0; i<=mantissa_tzeros; ++i) {
+        for (int i = 0; i <= mantissa_tzeros; ++i) {
             if (mantissa > (UPPER_BOUND / 10LL))
                 return false; /* overflow */
             mantissa *= 10;
