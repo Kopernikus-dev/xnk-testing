@@ -370,8 +370,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
             if (!CheckInputs(tx, state, view, true, MANDATORY_SCRIPT_VERIFY_FLAGS, true))
                 continue;
 
-            CTxUndo txundo;
-            UpdateCoins(tx, view, txundo, nHeight);
+            UpdateCoins(tx, view, nHeight);
 
             // Added
             pblock->vtx.push_back(tx);
@@ -572,7 +571,6 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
         opReservekey = CReserveKey(pwallet);
 
     }
-
     unsigned int nExtraNonce = 0;
 
     while (fGenerateBitcoins || fProofOfStake) {
@@ -711,6 +709,7 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
                 // Changing pblock->nTime can change work required on testnet:
                 hashTarget.SetCompact(pblock->nBits);
             }
+
         }
     }
 }
