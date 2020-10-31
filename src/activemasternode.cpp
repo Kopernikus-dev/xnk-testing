@@ -13,7 +13,6 @@
 #include "messagesigner.h"
 #include "netbase.h"
 #include "protocol.h"
-#include "collateral.h"
 
 // Bootup the Masternode, look for a 10000 EncoCoin input and register on the network
 //

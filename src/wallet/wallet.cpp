@@ -19,7 +19,6 @@
 #include "util.h"
 #include "utilmoneystr.h"
 #include "zxnkchain.h"
-#include "collateral.h"
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/thread.hpp>
 
@@ -1400,7 +1399,7 @@ CAmount CWalletTx::GetUnlockedCredit() const
         const CTxOut& txout = vout[i];
 
         if (pwallet->IsSpent(hashTx, i) || pwallet->IsLockedCoin(hashTx, i)) continue;
-        if (fMasterNode && IsValidCollateral(vout[i].nValue, chainActive.Height())) continue; // do not count MN-like outputs
+        if (fMasterNode && vout[i].nValue == 50000 * COIN) continue; // do not count MN-like outputs, to edit use -> if (fMasterNode && vout[i].nValue == GetMNCollateral() * COIN) continue;
 
         nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
         if (!Params().GetConsensus().MoneyRange(nCredit))
@@ -1434,7 +1433,7 @@ CAmount CWalletTx::GetLockedCredit() const
         }
 
         // Add masternode collaterals which are handled like locked coins
-        else if (fMasterNode && IsValidCollateral(vout[i].nValue, chainActive.Height())) {
+        else if (fMasterNode && vout[i].nValue == 50000 * COIN) { // else if (fMasterNode && vout[i].nValue == GetMNCollateral() * COIN) {
             nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
         }
 
@@ -1509,7 +1508,7 @@ CAmount CWalletTx::GetLockedWatchOnlyCredit() const
         }
 
         // Add masternode collaterals which are handled likc locked coins
-        else if (fMasterNode && IsValidCollateral(vout[i].nValue, chainActive.Height())) {
+        else if (fMasterNode && vout[i].nValue == 50000 * COIN) {  //else if (fMasterNode && vout[i].nValue == GetMNCollateral() * COIN) {
             nCredit += pwallet->GetCredit(txout, ISMINE_WATCH_ONLY);
         }
 
@@ -2031,8 +2030,8 @@ bool CWallet::GetMasternodeVinAndKeys(CTxIn& txinRet, CPubKey& pubKeyRet, CKey& 
     CTxOut txOut = wtx.vout[nOutputIndex];
 
     // Masternode collateral value
-    if (IsValidCollateral(txOut.nValue != txOut.nValue, chainActive.Height())) {
-        strError = "Invalid collateral tx value";
+    if (txOut.nValue != 50000 * COIN) {  // if (txOut.nValue != GetMNCollateral() * COIN) {
+        strError = "Invalid collateral tx value, must be 50,000 XNK";  // 50,000 -> Current collateral in XNK
         return error("%s: tx %s, index %d not a masternode collateral", __func__, strTxHash, nOutputIndex);
     }
 
@@ -2105,7 +2104,7 @@ bool CWallet::AvailableCoins(std::vector<COutput>* pCoins,      // --> populates
             for (unsigned int i = 0; i < pcoin->vout.size(); i++) {
                 bool found = false;
                 if (nCoinType == ONLY_10000) {
-                    found = IsValidCollateral(pcoin->vout[i].nValue, chainActive.Height());
+                    found = pcoin->vout[i].nValue == 50000 * COIN; //found = pcoin->vout[i].nValue == GetMNCollateral() * COIN;
                 } else {
                     found = true;
                 }

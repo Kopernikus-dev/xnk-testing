@@ -42,7 +42,6 @@
 #include "utilmoneystr.h"
 #include "validationinterface.h"
 #include "zxnkchain.h"
-#include "collateral.h"
 
 #include "invalid.h"
 #include "legacy/validation_zerocoin_legacy.h"
@@ -3384,7 +3383,7 @@ bool CheckColdStakeFreeOutput(const CTransaction& tx, const int nHeight)
 
     const unsigned int outs = tx.vout.size();
     const CTxOut& lastOut = tx.vout[outs-1];
-    if (outs >=3 && lastOut.scriptPubKey != tx.vout[outs-2].scriptPubKey) {
+    if (outs >= 3 && lastOut.scriptPubKey != tx.vout[outs - 2].scriptPubKey) {
         // last output can either be a mn reward or a budget payment
         // cold staking is active much after height_start_ZC_PublicSpends so GetMasternodePayment is always 3 XNK.
         // TODO: double check this if/when MN rewards change

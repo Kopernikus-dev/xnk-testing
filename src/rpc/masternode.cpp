@@ -14,7 +14,6 @@
 #include "netbase.h"
 #include "rpc/server.h"
 #include "utilmoneystr.h"
-#include "collateral.h"
 
 #include <univalue.h>
 #include <boost/tokenizer.hpp>

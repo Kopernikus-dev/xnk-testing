@@ -13,7 +13,6 @@
 
 #include "activemasternode.h"
 #include "clientmodel.h"
-#include "collateral.h"
 #include "fs.h"
 #include "guiutil.h"
 #include "init.h"
@@ -478,8 +477,8 @@ void MasterNodesWidget::onCreateMNClicked()
         return;
     }
 
-    if (walletModel->getBalance() <= CollateralRequired(chainActive.Height())) {
-        inform(tr("Not enough balance to create a masternode")); //, 10,000 %1 required.").arg(CURRENCY_UNIT.c_str()));
+    if (walletModel->getBalance() <= (COIN * 50000)) { // if (walletModel->getBalance() <= (COIN * GetMNCollateral())) {
+        inform(tr("Not enough balance to create a masternode, 50,000 %1 required.").arg(CURRENCY_UNIT.c_str())); // inform(tr("Not enough balance to create a masternode, %1 %2 required.").arg(GetMNCollateral()).arg(CURRENCY_UNIT.c_str()));
         return;
     }
     showHideOp(true);
