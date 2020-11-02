@@ -739,7 +739,7 @@ bool CTxMemPool::WriteFeeEstimates(CAutoFile& fileout) const
 {
     try {
         LOCK(cs);
-        fileout << 3009900;         // version required to read: 3.0.99
+        fileout << 3000090;         // version required to read: 3.0.0.90
         fileout << CLIENT_VERSION;  // version that wrote the file
         minerPolicyEstimator->Write(fileout);
     } catch (const std::exception&) {

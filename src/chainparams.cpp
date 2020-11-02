@@ -67,13 +67,30 @@ static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
     (0, uint256S("0x00000ae5d77e5eb3010a53e731688304019cdada4fee60dfa6b5bc424d87b2a1"))
-    (500, uint256S("0x0000042ff28adc30c4ebe9faa16e8a014bd9e327866413e0e536687e7c789c65"));// genesis
+    (500, uint256S("0x0000042ff28adc30c4ebe9faa16e8a014bd9e327866413e0e536687e7c789c65")) // genesis
+    (2001, uint256S("0x034f2fbbdb4654d8796f2dc30826605861616ffe5880c6f228f7f0d115255e8e")) //new collatral
+    (10001, uint256S("0x8cdd558c63de28aaf6dcb40b6409968081a004348aa7ef1daf53412ffa7c9161")) //new collatral
+    (16373, uint256S("0x3a066d10c877c40f9b27fde2c51363074e54429abc1ac414f80c3fff4f8ab4ab")) // ntworksplit here? peer asking for block bed2e290edbe8c0f36ff3817a64d660c45d1873a4764bc50a2b459381844843b
+    (20001, uint256S("0xf39f388b55aa469a3d8dd7582fdc1271b80743aa0b72b63b1518776ebfcf09aa")) //new collatral
+    (30001, uint256S("0x697b2ab9411fa49f20d62bb25ee2fd6e09f5a08871c8e13d380c9b495e9dd9e8")) //new collatral
+    (40001, uint256S("0xaa5db40ccfc839bea65c08268dd242e8508ef559b272e17729d20a75fe7f2478")) //new collatral
+    (50001, uint256S("0xbd13a59a139f094aad587f191dd050b4f0853c78c88a704adeaf3fbe321608a7")) //new collatral
+    (70001, uint256S("0x89b21413ba25ff759535b27324f185cf0005faf99a9bd66325dedf7e5c6ff506")) //new collatral
+    (80001, uint256S("0xa2e800989a13a7f6a291a1477b57237d32520aadc1fec546d3b5506aac6e8ab8")) //new collatral
+    (90001, uint256S("0x078b598b43257ee0b7e33b63458eb39623554b0130a4affbcefe4860e0072f62")) //new collatral
+    (100001, uint256S("0xe0578f9a19bca0bf16f19bb9e84a28230ff505707a07fef1b69f9706af7addf3")) //new collatral
+    (120001, uint256S("0x03dd81f003126e362559822d78c4d6c4fa17d19cb82aa2890bfbf5a1f8131a8d")) //new collatral
+    (140001, uint256S("0x3ae4595300544e43c07b7e07de3d7103a25e392ed76ce3bc7fb8afd428107c20")) //new collatral
+    (150001, uint256S("0xd2c77bec94601ef35e978774c89a3213df61bba2b27d4cfa2b4744a7842ec0a6")) //new collatral
+    (182881, uint256S("0xb638593545e9c0d6460d2eab9c5ff8cef133baa95e803a0c306fc9193a571185")) // networksplit here? wallet break by Crypos and Midas
+    (183002, uint256S("0x5e29fcf20d2efbcb8bc1ab7a41e87425f515d4c67277ea04f4e8b8d781701be9")) // or here Wallet was stuck by user
+    (200000, uint256S("0x90784a8df844a7aa590f4ce86004ab56da0aea466bb02f4c896f1c4d6614d65b")); // additional Checkpoint
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1546711076, // * UNIX timestamp of last checkpoint block
-    0,          // * total number of transactions between genesis and last checkpoint
+    1601693520, // * UNIX timestamp of last checkpoint block
+    430162,          // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
-    0           // * estimated number of transactions per day after checkpoint
+    3000           // * estimated number of transactions per day after checkpoint
 };
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
