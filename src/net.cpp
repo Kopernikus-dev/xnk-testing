@@ -1226,8 +1226,8 @@ void ThreadSocketHandler()
                 // * We wait for data to be received (and disconnect after timeout).
                 // * We process a message in the buffer (message handler thread).
                 {
-                    TRY_LOCK(pnode->cs_vSend, lockSend);
-                    if (lockSend && !pnode->vSendMsg.empty()) {
+                    LOCK(pnode->cs_vSend);
+                    if (!pnode->vSendMsg.empty()) {
                         FD_SET(pnode->hSocket, &fdsetSend);
                         continue;
                     }
@@ -1321,9 +1321,8 @@ void ThreadSocketHandler()
             if (pnode->hSocket == INVALID_SOCKET)
                 continue;
             if (FD_ISSET(pnode->hSocket, &fdsetSend)) {
-                TRY_LOCK(pnode->cs_vSend, lockSend);
-                if (lockSend)
-                    SocketSendData(pnode);
+                LOCK(pnode->cs_vSend);
+                SocketSendData(pnode);
             }
 
             //
@@ -1843,9 +1842,8 @@ void ThreadMessageHandler()
 
             // Send messages
             {
-                TRY_LOCK(pnode->cs_vSend, lockSend);
-                if (lockSend)
-                    GetNodeSignals().SendMessages(pnode);
+                LOCK(pnode->cs_sendProcessing);
+                GetNodeSignals().SendMessages(pnode);
             }
             boost::this_thread::interruption_point();
         }
