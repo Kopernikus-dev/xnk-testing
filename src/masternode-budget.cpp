@@ -1083,6 +1083,7 @@ void CBudgetManager::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
             if (nProp.IsNull()) {
                 if (pfrom->HasFulfilledRequest("budgetvotesync")) {
                     LogPrint(BCLog::MNBUDGET,"mnvs - peer already asked me for the list\n");
+                    LOCK(cs_main);
                     Misbehaving(pfrom->GetId(), 20);
                     return;
                 }
@@ -1152,6 +1153,7 @@ void CBudgetManager::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
         if (!vote.CheckSignature()) {
             if (masternodeSync.IsSynced()) {
                 LogPrintf("CBudgetManager::ProcessMessage() : mvote - signature invalid\n");
+                LOCK(cs_main);
                 Misbehaving(pfrom->GetId(), 20);
             }
             // it could just be a non-synced masternode
@@ -1226,6 +1228,7 @@ void CBudgetManager::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
         if (!vote.CheckSignature()) {
             if (masternodeSync.IsSynced()) {
                 LogPrintf("CBudgetManager::ProcessMessage() : fbvote - signature from masternode %s invalid\n", HexStr(pmn->pubKeyMasternode));
+                LOCK(cs_main);
                 Misbehaving(pfrom->GetId(), 20);
             }
             // it could just be a non-synced masternode
