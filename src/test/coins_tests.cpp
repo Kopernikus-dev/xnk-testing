@@ -5,6 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "coins.h"
+#include "main.h"
 #include "script/standard.h"
 #include "uint256.h"
 #include "utilstrencodings.h"
@@ -62,8 +63,6 @@ public:
             hashBestBlock_ = hashBlock;
         return true;
     }
-
-    bool GetStats(CCoinsStats& stats) const { return false; }
 };
 
 class CCoinsViewCacheTest : public CCoinsViewCache
