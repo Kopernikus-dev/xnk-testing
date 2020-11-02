@@ -131,7 +131,6 @@ cache/*
 /nbproject/
 libbitcoinconsensus.pc
 .idea
-CMakeLists.txt
 cmake-build-debug
 
 moc_*
