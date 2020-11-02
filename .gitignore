@@ -89,6 +89,11 @@ encocoin-qt
 EncoCoin-Qt.app
 background.tiff*
 
+# Rust
+.cargo/.configured-for-*
+.cargo/config
+target/
+
 # Unit-tests
 Makefile.test
 encocoin-qt_test

@@ -217,15 +217,16 @@ QT5_ADD_RESOURCES(QRC_RESOURCE encocoin.qrc)
 QT5_ADD_RESOURCES(QRC_LOCALE_RESOURCE encocoin_locale.qrc)
 
 add_executable(encocoin-qt encocoin.cpp ${QM} ${QRC_RESOURCE} ${QRC_LOCALE_RESOURCE})
-add_dependencies(encocoin-qt translations_target libunivalue libsecp256k1 leveldb crc32c)
+add_dependencies(encocoin-qt translations_target libunivalue libsecp256k1 libzcashrust leveldb crc32c)
 target_include_directories(encocoin-qt PUBLIC ${ENDIAN_INCLUDES})
 target_link_libraries(encocoin-qt
         qt_stuff
         univalue
-        SERVER_A UTIL_A WALLET_A CLI_A COMMON_A BITCOIN_CRYPTO_A ZEROCOIN_A
-        leveldb crc32c secp256k1
+        SERVER_A UTIL_A WALLET_A CLI_A COMMON_A BITCOIN_CRYPTO_A ZEROCOIN_A SAPLING_A
+        leveldb crc32c secp256k1 rustzcash
         ${BerkeleyDB_LIBRARIES} ${OPENSSL_LIBRARIES} ${Boost_LIBRARIES} ${PROTOBUF_LIBRARIES} ${LIBEVENT_LIB}
-        pthread
+        ${sodium_LIBRARY_RELEASE}
+        -ldl pthread
         )
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     target_link_libraries(encocoin-qt "-framework Cocoa")

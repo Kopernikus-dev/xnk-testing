@@ -6,8 +6,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIVX_BLOB_UINT256_H
-#define PIVX_BLOB_UINT256_H
+#ifndef ENCOCOIN_BLOB_UINT256_H
+#define ENCOCOIN_BLOB_UINT256_H
 
 #include <assert.h>
 #include <cstring>
@@ -105,6 +105,15 @@ public:
     }
 };
 
+/** 88-bit opaque blob.
+ */
+class blob88 : public base_blob<88> {
+public:
+    blob88() {}
+    blob88(const base_blob<88>& b) : base_blob<88>(b) {}
+    explicit blob88(const std::vector<unsigned char>& vch) : base_blob<88>(vch) {}
+};
+
 /** 160-bit opaque blob.
  * @note This type is called uint160 for historical reasons only. It is an opaque
  * blob of 160 bits and has no integer operations.
@@ -165,4 +174,4 @@ inline blob_uint256 blob_uint256S(const std::string& str)
 const blob_uint256 BLOB_UINT256_ZERO = blob_uint256();
 const blob_uint256 BLOB_UINT256_ONE = blob_uint256S("0000000000000000000000000000000000000000000000000000000000000001");
 
-#endif // PIVX_BLOB_UINT256_H
+#endif // ENCOCOIN_BLOB_UINT256_H
