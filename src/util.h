@@ -33,7 +33,10 @@
 #include <boost/thread/exceptions.hpp>
 #include <boost/thread/condition_variable.hpp> // for boost::thread_interrupted
 
-extern const char * const DEFAULT_DEBUGLOGFILE;
+extern const char * const EncoCoin_CONF_FILENAME;
+extern const char * const EncoCoin_PID_FILENAME;
+extern const char * const EncoCoin_MASTERNODE_CONF_FILENAME;
+extern const char * const EncoCoin_DEBUGLOGFILE;
 
 //EncoCoin only features
 

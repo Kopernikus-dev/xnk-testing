@@ -19,8 +19,6 @@ namespace boost
 class thread_group;
 } // namespace boost
 
-extern CzXNKWallet* zwalletMain;
-
 void StartShutdown();
 bool ShutdownRequested();
 /** Interrupt threads */
