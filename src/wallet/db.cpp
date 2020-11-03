@@ -24,9 +24,6 @@
 
 
 
-unsigned int nWalletDBUpdated;
-
-
 //
 // CDB
 //
