@@ -12,6 +12,7 @@
 #include "consensus/upgrades.h"
 #include "kernel.h"
 #include "main.h"
+#include "policy/policy.h"
 #include "rpc/server.h"
 #include "sync.h"
 #include "txdb.h"
