@@ -101,8 +101,8 @@ QT_MOC_CPP = \
   qt/moc_utilitydialog.cpp \
   qt/moc_walletmodel.cpp \
   qt/encocoin/moc_loadingdialog.cpp \
-  qt/encocoin/moc_focuseddialog.cpp \
   qt/encocoin/moc_pwidget.cpp \
+  qt/encocoin/moc_focuseddialog.cpp \
   qt/encocoin/moc_snackbar.cpp \
   qt/encocoin/moc_navmenuwidget.cpp \
   qt/encocoin/moc_lockunlock.cpp \
@@ -139,8 +139,8 @@ QT_MOC_CPP = \
   qt/encocoin/moc_addresseswidget.cpp \
   qt/encocoin/moc_defaultdialog.cpp \
   qt/encocoin/moc_coldstakingwidget.cpp \
-  qt/encocoin/settings/moc_settingsexportcsv.cpp \
   qt/encocoin/settings/moc_settingsbackupwallet.cpp \
+  qt/encocoin/settings/moc_settingsexportcsv.cpp \
   qt/encocoin/settings/moc_settingsbittoolwidget.cpp \
   qt/encocoin/settings/moc_settingsconsolewidget.cpp \
   qt/encocoin/settings/moc_settingsdisplayoptionswidget.cpp \
@@ -611,6 +611,7 @@ endif
 RES_IMAGES = \
   qt/res/images/about.png \
   qt/res/images/splash.png \
+  qt/res/images/splash_testnet.png \
   qt/res/images/splash_regtest.png
 
 RES_CSS = \

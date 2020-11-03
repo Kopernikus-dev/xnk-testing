@@ -184,6 +184,7 @@ source_group("BitcoinHeaders" FILES
         )
 
 set(SERVER_SOURCES
+        ./src/addrdb.cpp
         ./src/addrman.cpp
         ./src/bloom.cpp
         ./src/blocksignature.cpp
@@ -201,7 +202,7 @@ set(SERVER_SOURCES
         ./src/net.cpp
         ./src/noui.cpp
         ./src/policy/fees.cpp
-		./src/policy/policy.cpp
+        ./src/policy/policy.cpp
         ./src/pow.cpp
         ./src/rest.cpp
         ./src/rpc/blockchain.cpp
@@ -261,7 +262,7 @@ set(WALLET_SOURCES
         ./src/masternodeman.cpp
         ./src/messagesigner.cpp
         ./src/zxnk/mintpool.cpp
-        ./src/wallet/hdchain.cpp 
+        ./src/wallet/hdchain.cpp
         ./src/wallet/rpcdump.cpp
         ./src/zxnk/deterministicmint.cpp
         ./src/zxnk/zerocoin.cpp
@@ -415,6 +416,7 @@ set(UTIL_SOURCES
         ./src/random.cpp
         ./src/rpc/protocol.cpp
         ./src/sync.cpp
+        ./src/threadinterrupt.cpp
         ./src/blob_uint256.cpp
         ./src/arith_uint256.cpp
         ./src/uint256.cpp

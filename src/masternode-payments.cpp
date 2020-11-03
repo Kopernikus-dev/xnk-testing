@@ -22,6 +22,7 @@ CMasternodePayments masternodePayments;
 RecursiveMutex cs_vecPayments;
 RecursiveMutex cs_mapMasternodeBlocks;
 RecursiveMutex cs_mapMasternodePayeeVotes;
+
 //
 // CMasternodePaymentDB
 //
@@ -195,7 +196,7 @@ bool CMasternodePaymentWinner::IsValid(CNode* pnode, std::string& strError)
 void CMasternodePaymentWinner::Relay()
 {
     CInv inv(MSG_MASTERNODE_WINNER, GetHash());
-    RelayInv(inv);
+    g_connman->RelayInv(inv);
 }
 
 void DumpMasternodePayments()
