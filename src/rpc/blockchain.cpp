@@ -1162,7 +1162,7 @@ UniValue invalidateblock(const JSONRPCRequest& request)
     }
 
     if (state.IsValid()) {
-        ActivateBestChain(state, NULL, g_connman.get());
+        ActivateBestChain(state, nullptr, false, g_connman.get());
     }
 
     if (!state.IsValid()) {
