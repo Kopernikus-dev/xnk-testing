@@ -426,7 +426,7 @@ UniValue setban(const JSONRPCRequest& request)
     if (!g_connman)
         throw JSONRPCError(RPC_CLIENT_P2P_DISABLED, "Error: Peer-to-peer functionality missing or disabled");
 
-    CSubNet subNet
+    CSubNet subNet;
     CNetAddr netAddr;
     bool isSubnet = false;
 

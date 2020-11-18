@@ -1238,8 +1238,8 @@ void CConnman::ThreadSocketHandler()
                                 condMsgProc.notify_one();
                             pnode->nLastRecv = GetTime();
                             pnode->nRecvBytes += nBytes;
-                            pnode->RecordBytesRecv(nBytes);
                             RecordBytesRecv(nBytes);
+							} else if (nBytes == 0) {
                             // socket closed gracefully
                             if (!pnode->fDisconnect)
                                 LogPrint(BCLog::NET, "socket closed\n");
@@ -1500,7 +1500,7 @@ void CConnman::DumpData()
     DumpBanlist();
 }
 
-void static ProcessOneShot()
+void CConnman::ProcessOneShot()
 {
     std::string strDest;
     {
