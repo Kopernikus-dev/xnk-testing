@@ -165,7 +165,7 @@ std::string CWallet::MintZerocoin(CAmount nValue, CWalletTx& wtxNew, std::vector
     if (nValue <= 0)
         return _("Invalid amount");
 
-    CAmount nBalance = GetBalance();
+    CAmount nBalance = GetAvailableBalance();
     const CAmount& nFee = Params().GetConsensus().ZC_MinMintFee;
     if (nValue + nFee > nBalance) {
         LogPrintf("%s: balance=%s fee=%s nValue=%s\n", __func__, FormatMoney(nBalance), FormatMoney(nFee), FormatMoney(nValue));
