@@ -464,6 +464,7 @@ QT_TRANSLATE_NOOP("encocoin-core", "Unable to start HTTP server. See debug log f
 QT_TRANSLATE_NOOP("encocoin-core", "Unknown network specified in -onlynet: '%s'"),
 QT_TRANSLATE_NOOP("encocoin-core", "Unsupported logging category %s=%s."),
 QT_TRANSLATE_NOOP("encocoin-core", "Upgrade wallet to latest format"),
+QT_TRANSLATE_NOOP("encocoin-core", "Upgrading coins database..."),
 QT_TRANSLATE_NOOP("encocoin-core", "Use UPnP to map the listening port (default: %u)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Use UPnP to map the listening port (default: 1 when listening)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Use a custom max chain reorganization depth (default: %u)"),
