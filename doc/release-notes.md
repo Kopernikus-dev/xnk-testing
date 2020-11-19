@@ -1,4 +1,4 @@
-EncoCoin Core *version* is now available from:  <https://github.com/encocoin-project/encocoin/releases>
+EncoCoin Core *3.2.0* is now available from:  <https://github.com/encocoin-project/encocoin/releases>
 
 This is a new revision version release, including various bug fixes and performance improvements, as well as updated translations.
 
@@ -8,12 +8,17 @@ Please report bugs using the issue tracker at github: <https://github.com/encoco
 Recommended Update
 ==============
 
-
+This version is an optional, but recommended, update for all users and services.
 
 How to Upgrade
 ==============
 
 If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/EncoCoin-Qt (on Mac) or encocoind/encocoin-qt (on Linux).
+
+Downgrading warning
+-------------------
+
+The chainstate database for this release is not compatible with previous releases, so if you run 4.3.0 and then decide to switch back to any older version, you will need to run the old release with the -reindex option to rebuild the chainstate data structures in the old format.
 
 
 Compatibility
@@ -31,143 +36,164 @@ EncoCoin Core should also work on most other Unix-like systems but is not freque
 Notable Changes
 ==============
 
-### Removed zerocoin GUI
+Performance Improvements
+------------------------
 
-Spending zXNK and getting zXNK balance information is no longer available in the graphical interface. The feature remains accessible through the RPC interface: `getzerocoinbalance`, `listmintedzerocoins`, `listzerocoinamounts`, `spendzerocoin`, `spendzerocoinmints`.
+Version 4.3.0 contains a number of significant performance improvements, which make Initial Block Download, startup, transaction and block validation much faster:
 
+- The chainstate database (which is used for tracking UTXOs) has been changed from a per-transaction model to a per-output model ([See PR 1801](https://github.com/PIVX-Project/PIVX/pull/1801)). Advantages of this model are that it:
+  - avoids the CPU overhead of deserializing and serializing the unused outputs;
+  - has more predictable memory usage;
+  - uses simpler code;
+  - is adaptable to various future cache flushing strategies.
 
-### Memory pool limiting
+  As a result, validating the blockchain during Initial Block Download (IBD) and reindex is ~30-40% faster, uses 10-20% less memory, and flushes to disk far less frequently. The only downside is that the on-disk database is 15% larger. During the conversion from the previous format a few extra gigabytes may be used.
 
-Previous versions of EncoCoin Core had their mempool limited by checking a transaction's fees against the node's minimum relay fee. There was no upper bound on the size of the mempool and attackers could send a large number of transactions paying just slighly more than the default minimum relay fee to crash nodes with relatively low RAM.
+- LevelDB has been upgraded to version 1.22 ([See PR 1738](https://github.com/PIVX-Project/PIVX/pull/1738)). This version contains hardware acceleration for CRC on architectures supporting SSE 4.2. As a result, synchronization and block validation are now faster.
 
-EncoCoin Core 3.1.0 will have a strict maximum size on the mempool. The default value is 300 MB and can be configured with the `-maxmempool` parameter. Whenever a transaction would cause the mempool to exceed its maximum size, the transaction that (along with in-mempool descendants) has the lowest total feerate (as a package) will be evicted and the node's effective minimum relay feerate will be increased to match this feerate plus the initial minimum relay feerate. The initial minimum relay feerate is set to 1000 satoshis per kB.
+Removal of Priority Estimation
+------------------------------
 
-EncoCoin Core 3.1.0 also introduces new default policy limits on the length and size of unconfirmed transaction chains that are allowed in the mempool (generally limiting the length of unconfirmed chains to 25 transactions, with a total size of 101 KB). These limits can be overridden using command line arguments
+- Estimation of "priority" needed for a transaction to be included within a target number of blocks has been removed.  The rpc calls are deprecated and will either return -1 or 1e24 appropriately. 
 
-### Benchmarking Framework
+The format for fee_estimates.dat has also changed to no longer save these priority estimates. It will automatically be converted to the new format which is not readable by prior versions of the software.
 
-EncoCoin Core 3.1.0 backports  the internal benchmarking framework from Bitcoin Core, which can be used to benchmark cryptographic algorithms (e.g. SHA1, SHA256, SHA512, RIPEMD160, Poly1305, ChaCha20), Base58 encoding and decoding and thread queue. More tests are needed for script validation, coin selection and coins database, cuckoo cache, p2p throughtput
+Dedicated mnping logging category
+---------------------------------
 
-The binary file is compiled with encocoin-core, unless configured with `--disable-bench`.<br>
-After compiling encocoin-core, the benchmarks can be run with:
-```
-src/bench/bench_encocoin
-```
-The output will be similar to:
-```
-#Benchmark,count,min(ns),max(ns),average(ns),min_cycles,max_cycles,average_cycles
-Base58CheckEncode,131072,7697,8065,7785,20015,20971,20242
-```
-
-'label' and 'account' APIs for wallet
--------------------------------------
-
-A new 'label' API has been introduced for the wallet. This is intended as a
-replacement for the deprecated 'account' API. The 'account' can continue to
-be used in v3.1 by starting encocoind with the '-deprecatedrpc=accounts'
-argument, and will be fully removed in v5.0.
-
-The label RPC methods mirror the account functionality, with the following functional differences:
-
-- Labels can be set on any address, not just receiving addresses. This functionality was previously only available through the GUI.
-- Labels can be deleted by reassigning all addresses using the `setlabel` RPC method.
-- There isn't support for sending transactions _from_ a label, or for determining which label a transaction was sent from.
-- Labels do not have a balance.
-
-Here are the changes to RPC methods:
-
-| Deprecated Method       | New Method            | Notes       |
-| :---------------------- | :-------------------- | :-----------|
-| `getaccount`            | `getaddressinfo`      | `getaddressinfo` returns a json object with address information instead of just the name of the account as a string. |
-| `getaccountaddress`     | n/a                   | There is no replacement for `getaccountaddress` since labels do not have an associated receive address. |
-| `getaddressesbyaccount` | `getaddressesbylabel` | `getaddressesbylabel` returns a json object with the addresses as keys, instead of a list of strings. |
-| `getreceivedbyaccount`  | `getreceivedbylabel`  | _no change in behavior_ |
-| `listaccounts`          | `listlabels`          | `listlabels` does not return a balance or accept `minconf` and `watchonly` arguments. |
-| `listreceivedbyaccount` | `listreceivedbylabel` | Both methods return new `label` fields, along with `account` fields for backward compatibility. |
-| `move`                  | n/a                   | _no replacement_ |
-| `sendfrom`              | n/a                   | _no replacement_ |
-| `setaccount`            | `setlabel`            | Both methods now: <ul><li>allow assigning labels to any address, instead of raising an error if the address is not receiving address.<li>delete the previous label associated with an address when the final address using that label is reassigned to a different label, instead of making an implicit `getaccountaddress` call to ensure the previous label still has a receiving address. |
-
-| Changed Method         | Notes   |
-| :--------------------- | :------ |
-| `listunspent`          | Returns new `label` fields, along with `account` fields for backward compatibility if running with the `-deprecatedrpc=accounts` argument |
-| `sendmany`             | The first parameter has been renamed to `dummy`, and must be set to an empty string, unless running with the `-deprecatedrpc=accounts` argument (in which case functionality is unchanged). |
-| `listtransactions`     | The first parameter has been renamed to `dummy`, and must be set to the string `*`, unless running with the `-deprecatedrpc=accounts` argument (in which case functionality is unchanged). |
-| `getbalance`           | `account`, `minconf` and `include_watchonly` parameters are deprecated, and can only be used if running with the `-deprecatedrpc=accounts` argument |
-| `getcoldstakingbalance`| The `account` parameter is deprecated, and can only be used if running with the `-deprecatedrpc=accounts` argument (in which case functionality is unchanged) |
-| `getdelegatedbalance`  | The `account` parameter is deprecated, and can only be used if running with the `-deprecatedrpc=accounts` argument (in which case functionality is unchanged) |
-
-GUI Changes
-----------
-
-### Topbar navigation
-
-- The "sync" button in the GUI topbar can be clicked to go directly to the Settings --> Information panel (where the current block number and hash is shown).
-
-- The "connections" button in the GUI topbar can be clicked to open the network monitor dialog
-
-Functional Changes
-----------
-
-### Stake-Split threshold
-
-If the stake split is active (threshold > 0), then stake split threshold value must be greater than a minimum, set by default at 100 XNK. The minimum value can be changed using the `-minstakesplit` startup flag . A value `0` is still allowed, regardless of the minimum set, and, as before, can be used to disable the stake splitting functionality.
-
-### Changed command-line options
-
-- new command `-minstakesplit` to modify the minimum allowed for  the stake split threshold
-
-- new commands `-maxmempool`, to customize  the memory pool size limit, and `-checkmempool=N`, to customize the frequency of the mempool check
-
-- new commands `-limitancestorcount=N` and `limitancestorsize=N`, to limit the number and total size of all in-mempool ancestors for a transaction
-
-- new commands `-limitdescendantcount=N` and `limitdescendantsize=N`, to limit the number and total size of all in-mempool descendants for a transaction
+`mnping` related debug log messages have been moved to their own category of the same name. This is to reduce log spam when debugging with the `masternode` category enabled.
 
 RPC Changes
 ------------
 
-In addition to the afore mentioned 'label' and 'account' API changes, other RPC changes are as follows:
-
-### Low-level API changes
-
-- The `asm` property of each scriptSig now contains the decoded signature hash type for each signature that provides a valid defined hash type.<br>
-The following items contain assembly representations of scriptSig signatures
-and are affected by this change: RPC `getrawtransaction`, RPC `decoderawtransaction`, REST `/rest/tx/` (JSON format), REST `/rest/block/` (JSON format when including extended tx details), `encocoin-tx -json`
-
 ### Modified input/output for existing commands
 
-- new "usage" field in the output of `getmempoolinfo`, displaying the total memory usage for the mempool
+- The new database model no longer stores information about transaction
+  versions of unspent outputs. This means that:
+  - The `gettxout` RPC no longer has a `version` field in the response.
+  - The `gettxoutsetinfo` RPC reports `hash_serialized_2` instead of `hash_serialized`,
+    which does not commit to the transaction versions of unspent outputs, but does
+    commit to the height and coinbase/coinstake information.
+  - The `getutxos` REST path no longer reports the `txvers` field in JSON format,
+    and always reports 0 for transaction versions in the binary format
+- Three filtering options for the `getbalance` command have been reinstated:
+  - `minconf` (numeric) Only include transactions confirmed at least this many times.
+  - `includeWatchonly` (bool) Also include balance in watchonly addresses.
+  - `includeDelegated` (bool) Also include balance delegated to cold stakers.
+- `estimatefee` is now deprecated and replaced by `estimatesmartfee`:
+  - Input argument is the same for `estimatesmartfee`.
+  - Output is now a JSON object with 2 fields: `feerate` and `blocks`
+- The `getrawmempool` RPC command now includes an additional output field:
+  - `modifiedfee` (numeric) transaction fee with fee deltas used for mining priority.::ZZZZexit
 
-- new "upgrades" field in the output of `getblockchaininfo`, showing upcoming and active network upgrades
 
 ### Removed commands
 
-- `masternodedebug`. Use `getmasternodestatus` instead.
+The following commands have been removed from the interface:
+- `estimatepriority`
 
-### Newly introduced commands
-
-
-*3.1.0* Change log
+*3.2.0* Change log
 ==============
 
 Detailed release notes follow. This overview includes changes that affect behavior, not code moves, refactors and string updates. For convenience in locating the code changes and accompanying discussion, both the pull request and git merge commit are mentioned.
 
 ### Core Features
-
-### Build System
-
-### P2P Protocol and Network Code
+ - #1666 `5a092159f6` [Core] Base work for the Sapling signatureHash (furszy)
+ - #1746 `128978d45b` [Core] Only include undo.h from main.cpp (random-zebra)
+ - #1768 `6881e1063f` [Core] Use SipHash-2-4 for various non-cryptographic hashes (Pieter Wuille)
+ - #1771 `bda654c5f3` [Core] Use SipHash for node eviction (Pieter Wuille)
+ - #1773 `90ffc6683b` [Core] per-txout model preparation (random-zebra)
+ - #1774 `68df9a7d5b` [Core] Alter assumptions in CCoinsViewCache::BatchWrite (random-zebra)
+ - #1775 `85b5f2eb83` [Core] Remove BIP30 check (random-zebra)
+ - #1777 `3c767c46b5` [Core] ModifyNewCoins saves database lookups (random-zebra)
+ - #1788 `823ba8e334` [Core] Remove priority estimation (random-zebra)
+ - #1793 `af793b7bb9` [Core] Safer modify new coins (Russell Yanofsky)
+ - #1795 `afafd7f6a9` [Core] Use unordered_map for CCoinsMap and fix empty vectors in streams (Pieter Wuille)
+ - #1799 `fcb546ad05` [Core] Remove UTXO cache entries when the tx they were added for is removed (Pieter Wuille)
+ - #1801 `30d353edab` [Core] Per-txout model for chainstate database (random-zebra)
+ - #1804 `5c8b992033` [Core] Use std::unordered_{map,set} (C++11) instead of boost::unordered_* (random-zebra)
 
 ### GUI
-
-### RPC/REST
+ - #1754 `93d574170d` [Model] Wallet interface refactor + code cleanup. (furszy)
+ - #1776 `2ad27b1407` [Model] TransactionRecord decomposeTransaction refactoring (furszy)
+ - #1782 `ada4462782` [GUI] Start masternodes polling timer only when is needed. (furszy)
+ - #1805 `f0cc6fcc38` [BUG][GUI] Don't append cold-stake records twice (random-zebra)
+ - #1863 `ad15bce2f5` [Trivial][GUI] Fix init messages (random-zebra)
 
 ### Wallet
+ - #1752 `2e32285a70` [Wallet] Simple unused methods cleanup. (furszy)
+ - #1755 `eeb129b477` [wallet] List COutput solvability + wallet_ismine refactoring. (furszy)
+ - #1757 `e2cc4aa411` [Wallet] add cacheable amounts for caching credit/debit values (furszy)
+ - #1759 `dcc92f8157` [Wallet] AvailableCoins remove duplicated watchonly config argument. (furszy)
+ - #1760 `3b030f9978` [Wallet] AvailableCoins code readability improved (furszy)
+ - #1764 `6847d0d648` [Wallet] Securely erase potentially sensitive keys/values (Thomas Snider)
+ - #1767 `8ab63d3e5b` [Wallet] Ignore MarkConflict if block hash is not known (random-zebra)
+ - #1781 `4715915d4c` [Wallet] Acquire cs_main lock before cs_wallet during wallet initialization (random-zebra)
+ - #1783 `abf7c62934` [Wallet] Do not try to resend transactions if the node is importing or in IBD (furszy)
+ - #1787 `4b1f3eb792` [Wallet] Improve usage of fee estimation code (random-zebra)
+ - #1802 `7db7724cff` [Wallet] Make nWalletDBUpdated atomic to avoid a potential race (furszy)
+ - #1810 `49bd99929d` [Wallet] wtx cached balances test coverage + getAvailableCredit problem fix. (furszy)
+ - #1811 `e89e20eca1` [Wallet][Refactoring] wallet/init refactoring backports (random-zebra)
+ - #1817 `6480c7d9bf` [Wallet] Speedup coinstake creation removing redundancies. (furszy)
+ - #1832 `c14d130b48` [Wallet] Cleanup getbalance methods that are not fulfilling any purpose. (furszy)
+
+### P2P Protocol and Network Code
+ - #1769 `1e334200bb` [Net] Remove bogus assert on number of oubound connections. (Matt Corallo)
+ - #1780 `5fcad0c139` [Net] cs_vSend-cs_main deadlock detection fixed. (furszy)
+ - #1800 `616b102f8b` [P2P] Improve AlreadyHave (Alex Morcos)
+ - #1812 `777638e7bc` [P2P] Begin Network Encapsulation (random-zebra)
+ - #1835 `cbd9271afb` [Net] Massive network refactoring and speedup (Fuzzbawls)
+
+### RPC/REST
+ - #1753 `e288a4508b` [Trivial] [RPC] Fix listcoldutxos help text (JSKitty)
+ - #1828 `4fc36b59ee` [RPC][BUG] Fix ActivateBestChain calls in reconsider(invalidate)block (random-zebra)
+ - #1831 `28509bf9e8` [RPC] re introducing filtering args in getbalance (furszy)
+
+### Build Systems
+ - #1553 `fddf765132` [Build] Sapling Foundations (Build System + ZIP32) (furszy)
+ - #1703 `2e11030e8b` [Build] Require minimum boost version 1.57.0 (Fuzzbawls)
+ - #1738 `21c467b1eb` [Build] Update leveldb to 1.22+ (Fuzzbawls)
+ - #1750 `544e619ebe` [Trivial] openssl.org dependency download link changed (CryptoDev-Project)
+ - #1770 `32a2e8a031` [Build] Bump minimum libc to 2.17 for release binaries (Fuzzbawls)
+ - #1790 `6e7b9b2a82` [Build] Fix glibc compat (Fuzzbawls)
+ - #1792 `a3da3aa9f5` [Build] allow for empty RUST_TARGET in offline builds (Fuzzbawls)
+ - #1794 `760f426430` [Build] Use syslibs for nightly snap builds (Fuzzbawls)
+ - #1813 `259523cdc2` [CMake] Define MAC_OSX for cmake builds on macOS (Fuzzbawls)
+ - #1823 `d675fa3a1a` [Travis] Lower the build timeout for the functional tests job (random-zebra)
+
+### Layer 2 (MN/Budget)
+ - #1791 `6162df962b` [Masternodes] Missing cs main locks in CalculateScore and GetMasternodeInputAge (furszy)
+ - #1803 `69ec4a3fdf` [Cleanup] masternode-budget tiny cleanup. (furszy)
+ - #1825 `a06c0fd993` [MN] more cleanup over the tier two area. (furszy)
+ - #1826 `961f5373bf` [Refactor] Masternode Budget first refactoring and cleanup (random-zebra)
+ - #1843 `f4d5d34bed` [Bug] Update budget manager best height even if mnSync is incomplete (random-zebra)
+
+### Miner/Block Generation
+ - #1700 `40742084de` [Miner] Move coinbase & coinstake to P2PKH (furszy)
+ - #1809 `959d707bc9` [Miner] decouple zPIV duplicated serials checks from CreateNewBlock (furszy)
+ - #1816 `0fa40d7695` [Miner] Unifying the disperse coinbase tx flow + further clean up. (furszy)
+ - #1818 `242356d012` [Miner] PoS process (furszy)
 
 ### Miscellaneous
+ - #1694 `0604a98bd0` [Backport] Test LowS in standardness (furszy)
+ - #1721 `8e19562dc4` [Validation] Reduce cs_main locks during ConnectTip/SyncWithWallets (furszy)
+ - #1725 `e59d8e59fa` [Backport] mempool score index. (Alex Morcos)
+ - #1735 `ee749c5b9c` [Validation] DisconnectBlock updates. (furszy)
+ - #1785 `277b1114d9` [Bug] lock cs_main for Misbehaving (furszy)
+ - #1796 `6d62df529b` [BUG] Properly copy fCoinStake memeber between CTxInUndo and CCoins (random-zebra)
+ - #1797 `b909e96121` [Refactoring] Break circular dependency main ↔ txdb (random-zebra)
+ - #1806 `b9f30f65f2` [Refactor] Cleanup access to chainActive in a few places (random-zebra)
+ - #1808 `948e1a99c0` [Tests][Trivial] Remove mining in rpc_deprecated test (random-zebra)
+ - #1820 `846dca7b83` [Cleanup] remove unneeded chainActive access. (furszy)
+ - #1821 `4b3fb02dc3` [Cleanup] removing unused GetMasternodeByRank method (furszy)
+ - #1822 `48d7475bd4` [Refactor] Dedicated logging category for masternode pings (random-zebra)
+ - #1824 `6ec609f93d` [Cleanup] IsBlockValueValid refactored properly. (furszy)
+ - #1827 `70bf7203ee` [Cleanup] removed null check comparison against a new object. (furszy)
+ - #1833 `9c06e5d7ce` [Refactor] Remove GetInputAge and GetMasternodeInputAge (random-zebra)
+ - #1853 `e8d13ef4b0` [Cleanup] Removing unused and unneeded functions and members (furszy)
+ - #1855 `3cd52771f2` [Bug] wrong reserveKey when committing budget/proposal collaterals (random-zebra)
+ - #1860 `5aed03f6fe` [Bug] Missing mnping category added to logcategories (furszy)
 
 ## Credits
 
 Thanks to everyone who directly contributed to this release:
-
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/encocoin-project-translations/), the QA team during Testing and the Node hosts supporting our Testnet.
