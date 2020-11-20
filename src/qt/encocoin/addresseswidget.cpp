@@ -182,14 +182,15 @@ void AddressesWidget::onStoreContactClicked()
         QString label = ui->lineEditName->text();
         QString address = ui->lineEditAddress->text();
 
-        if (!walletModel->validateAddress(address)) {
+        bool isStakingAddress = false;
+        auto xnkAdd = DecodeDestination(address.toUtf8().constData(), isStakingAddress);
+
+        if (!IsValidDestination(xnkAdd) || isStakingAddress) {
             setCssEditLine(ui->lineEditAddress, false, true);
             inform(tr("Invalid Contact Address"));
             return;
         }
 
-        bool isStakingAddress = false;
-        CTxDestination xnkAdd = DecodeDestination(address.toUtf8().constData(), isStakingAddress);
         if (walletModel->isMine(xnkAdd)) {
             setCssEditLine(ui->lineEditAddress, false, true);
             inform(tr("Cannot store your own address as contact"));
