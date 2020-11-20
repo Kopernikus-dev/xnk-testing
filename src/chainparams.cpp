@@ -217,10 +217,10 @@ public:
         nDefaultPort = 43013;
 
         // Note that of those with the service bits flag, most only support a subset of possible options
-        vSeeds.push_back(CDNSSeedData("45.77.111.105", "45.77.111.105", true));
-        vSeeds.push_back(CDNSSeedData("173.199.114.235", "173.199.114.235", true));
-        vSeeds.push_back(CDNSSeedData("45.63.11.20", "45.63.11.20", true));
-        vSeeds.push_back(CDNSSeedData("149.28.227.4", "149.28.227.4", true));
+        vSeeds.emplace_back("45.77.111.105", "45.77.111.105", true);
+        vSeeds.emplace_back("173.199.114.235", "173.199.114.235", true);
+        vSeeds.emplace_back("45.63.11.20", "45.63.11.20", true);
+        vSeeds.emplace_back("149.28.227.4", "149.28.227.4", true);
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 9);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 93);
@@ -358,9 +358,9 @@ public:
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        vSeeds.push_back(CDNSSeedData("fuzzbawls.pw", "encocoin-testnet.seed.fuzzbawls.pw"));
-        vSeeds.push_back(CDNSSeedData("fuzzbawls.pw", "encocoin-testnet.seed2.fuzzbawls.pw"));
-        vSeeds.push_back(CDNSSeedData("warrows.dev", "testnet.dnsseed.encocoin.warrows.dev"));
+        // nodes with support for servicebits filtering should be at the top
+        vSeeds.emplace_back("fuzzbawls.pw", "encocoin-testnet.seed.fuzzbawls.pw", true);
+        vSeeds.emplace_back("fuzzbawls.pw", "encocoin-testnet.seed2.fuzzbawls.pw", true);
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 139); // Testnet encocoin addresses start with 'x' or 'y'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);  // Testnet encocoin script addresses start with '8' or '9'

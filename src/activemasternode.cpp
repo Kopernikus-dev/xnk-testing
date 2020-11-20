@@ -14,6 +14,7 @@
 #include "netbase.h"
 #include "protocol.h"
 
+//
 // Bootup the Masternode, look for a 10000 EncoCoin input and register on the network
 //
 void CActiveMasternode::ManageStatus()
@@ -152,7 +153,7 @@ bool CActiveMasternode::SendMasternodePing(std::string& errorMessage)
         }
 
         pmn->lastPing = mnp;
-        mnodeman.mapSeenMasternodePing.insert(std::make_pair(mnp.GetHash(), mnp));
+        mnodeman.mapSeenMasternodePing.emplace(mnp.GetHash(), mnp);
 
         //mnodeman.mapSeenMasternodeBroadcast.lastPing is probably outdated, so we'll update it
         CMasternodeBroadcast mnb(*pmn);
