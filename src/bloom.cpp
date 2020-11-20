@@ -262,7 +262,6 @@ void CBloomFilter::UpdateEmptyFull()
     isEmpty = empty;
 }
 
-
 CRollingBloomFilter::CRollingBloomFilter(unsigned int nElements, double fpRate) :
     b1(nElements * 2, fpRate, 0), b2(nElements * 2, fpRate, 0)
 {

@@ -87,7 +87,7 @@
 #include <openssl/rand.h>
 
 const char * const EncoCoin_CONF_FILENAME = "encocoin.conf";
-const char * const PEncoCoin_PID_FILENAME = "encocoin.pid";
+const char * const EncoCoin_PID_FILENAME = "encocoin.pid";
 const char * const EncoCoin_MASTERNODE_CONF_FILENAME = "masternode.conf";
 
 
@@ -343,7 +343,7 @@ static fs::path ZC_GetBaseParamsDir()
     // Mac
     pathRet /= "Library/Application Support";
     TryCreateDirectory(pathRet);
-    return pathRet / EncoCoinParams";
+    return pathRet / "EncoCoinParams";
 #else
     // Unix
     return pathRet / ".encocoin-params";

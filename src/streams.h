@@ -32,7 +32,7 @@ template<typename SerializeType>
 class CBaseDataStream
 {
 protected:
-    typedef CSerializeData vector_type;
+    typedef SerializeType vector_type;
     vector_type vch;
     unsigned int nReadPos;
     int nType;

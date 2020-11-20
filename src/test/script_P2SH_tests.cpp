@@ -1,4 +1,4 @@
-1// Copyright (c) 2012-2013 The Bitcoin Core developers
+// Copyright (c) 2012-2013 The Bitcoin Core developers
 // Copyright (c) 2019-2020 The PIVX developers
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying

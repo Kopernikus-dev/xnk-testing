@@ -107,7 +107,7 @@ bool TransactionRecord::decomposeZcSpendTx(const CWallet* wallet, const CWalletT
             isminetype mine = wallet->IsMine(txout);
             TransactionRecord sub(hash, nTime, wtx.GetTotalSize());
             sub.involvesWatchAddress = mine & ISMINE_WATCH_ONLY;
-            sub.type = TransactionRecord::ZerocoinSpend_Change_zXNK;
+            sub.type = TransactionRecord::ZerocoinSpend_Change_zXnk;
             sub.address = getValueOrReturnEmpty(wtx.mapValue, "zerocoinmint");
             if (!fFeeAssigned) {
                 sub.debit -= (wtx.GetZerocoinSpent() - wtx.GetValueOut());
@@ -428,8 +428,6 @@ void TransactionRecord::loadHotOrColdStakeOrContract(
     // Get the p2cs
     CTxOut p2csUtxo;
     for (const auto & txout : wtx.vout) {
-        if (txout.scriptPubKey.IsPayToColdStaking()) {
-        const CTxOut &txout = wtx.vout[nOut];
         if (txout.scriptPubKey.IsPayToColdStaking()) {
             p2csUtxo = txout;
             break;

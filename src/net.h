@@ -317,8 +317,6 @@ private:
     void DumpData();
     void DumpBanlist();
 
-    unsigned int GetReceiveFloodSize() const;
-
     // Network stats
     void RecordBytesRecv(uint64_t bytes);
     void RecordBytesSent(uint64_t bytes);

@@ -899,7 +899,6 @@ bool CWallet::AddToWallet(const CWalletTx& wtxIn, bool fFlushOnClose)
     if (fInsertedNew || fUpdated) {
         if (!walletdb.WriteTx(wtx))
             return false;
-
     }
 
     // Break debit/credit balance caches:
@@ -1226,7 +1225,7 @@ void CWalletTx::UpdateTimeSmart()
     }
 }
 
- CAmount CWalletTx::GetCachableAmount(AmountType type, const isminefilter& filter, bool recalculate) const
+CAmount CWalletTx::GetCachableAmount(AmountType type, const isminefilter& filter, bool recalculate) const
 {
     auto& amount = m_amounts[type];
     if (recalculate || !amount.m_cached[filter]) {
@@ -1285,7 +1284,6 @@ CAmount CWalletTx::GetCredit(const isminefilter& filter, bool recalculate) const
         credit += GetCachableAmount(CREDIT, ISMINE_COLD, recalculate);
     }
     if (filter & ISMINE_SPENDABLE_DELEGATED) {
-        if (fDelegatedCreditCached)
         credit += GetCachableAmount(CREDIT, ISMINE_SPENDABLE_DELEGATED, recalculate);
     }
     return credit;
@@ -1342,7 +1340,7 @@ CAmount CWalletTx::GetColdStakingCredit(bool fUseCache) const
 
 CAmount CWalletTx::GetStakeDelegationCredit(bool fUseCache) const
 {
-     return GetAvailableCredit(fUseCache, ISMINE_SPENDABLE_DELEGATED);
+    return GetAvailableCredit(fUseCache, ISMINE_SPENDABLE_DELEGATED);
 }
 
 // Return sum of locked coins
@@ -1904,6 +1902,7 @@ void CWallet::GetAvailableP2CSCoins(std::vector<COutput>& vCoins) const {
 
                     if (utxo.scriptPubKey.IsPayToColdStaking()) {
                         isminetype mine = IsMine(utxo);
+                        bool isMineSpendable = mine & ISMINE_SPENDABLE_DELEGATED;
                         if (mine & ISMINE_COLD || isMineSpendable)
                             // Depth and solvability members are not used, no need waste resources and set them for now.
                             vCoins.emplace_back(COutput(pcoin, i, 0, isMineSpendable, true));
@@ -2042,17 +2041,18 @@ bool CWallet::AvailableCoins(std::vector<COutput>* pCoins,      // --> populates
             if (nCoinType == STAKEABLE_COINS && nDepth < Params().GetConsensus().nStakeMinDepth) continue;
 
             for (unsigned int i = 0; i < pcoin->vout.size(); i++) {
+
                 // Check for only 10k utxo
                 if (nCoinType == ONLY_10000 && pcoin->vout[i].nValue != 50000 * COIN) continue; //!= GetMNCollateral() * COIN;
 
                 // Check for stakeable utxo
-
                 if (nCoinType == STAKEABLE_COINS && pcoin->vout[i].IsZerocoinMint()) continue;
 
                 // Check if the utxo was spent.
                 if (IsSpent(wtxid, i)) continue;
 
                 isminetype mine = IsMine(pcoin->vout[i]);
+
                 // Check If not mine
                 if (mine == ISMINE_NO) continue;
 
@@ -2703,7 +2703,7 @@ bool CWallet::CreateCoinStake(
     bool fKernelFound = false;
     int nAttempts = 0;
     for (const COutput &out : *availableCoins) {
-        CPivStake stakeInput;
+        CXnkStake stakeInput;
         stakeInput.SetPrevout((CTransaction) *out.tx, out.i);
 
         //new block came in, move on
@@ -4209,7 +4209,7 @@ CAmount CWallet::GetDebit(const CTransaction& tx, const isminefilter& filter) co
     return nDebit;
 }
 
- CAmount CWallet::GetCredit(const CTransaction& tx, const isminefilter& filter) const
+CAmount CWallet::GetCredit(const CTransaction& tx, const isminefilter& filter) const
 {
     CAmount nCredit = 0;
     for (unsigned int i = 0; i < tx.vout.size(); i++) {
@@ -4276,8 +4276,6 @@ bool CWallet::LoadSaplingPaymentAddress(
 
 ///////////////// End Sapling Methods //////////////////////
 ////////////////////////////////////////////////////////////
-
-CWalletTx::CWalletTx()
 
 CWalletTx::CWalletTx()
 {

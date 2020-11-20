@@ -51,9 +51,9 @@ public:
     /** Pull a full list of banned nodes from CNode into our cache */
     void refreshBanlist()
     {
+        banmap_t banMap;
         if(g_connman)
             g_connman->GetBanned(banMap);
-        CNode::GetBanned(banMap);
 
         cachedBanlist.clear();
         cachedBanlist.reserve(banMap.size());

@@ -93,7 +93,7 @@ void AddCoins(CCoinsViewCache& cache, const CTransaction& tx, int nHeight)
     }
 }
 
-const CCoins* CCoinsViewCache::AccessCoins(const uint256& txid) const
+void CCoinsViewCache::SpendCoin(const COutPoint& outpoint, Coin* moveout)
 {
     CCoinsMap::iterator it = FetchCoin(outpoint);
     if (it == cacheCoins.end()) return;

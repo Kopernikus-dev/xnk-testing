@@ -202,7 +202,7 @@ UniValue getaddressinfo(const JSONRPCRequest& request)
     ret.pushKV("ismine", bool(mine & ISMINE_SPENDABLE_ALL));
     ret.pushKV("iswatchonly", bool(mine & ISMINE_WATCH_ONLY));
 
-   // Return label field if existing. Currently only one label can be
+    // Return label field if existing. Currently only one label can be
     // associated with an address, so the label should be equivalent to the
     // value of the name key/value pair in the labels array below.
     if (pwallet->mapAddressBook.count(dest)) {
@@ -419,7 +419,7 @@ UniValue sethdseed(const JSONRPCRequest& request)
     if (request.fHelp || request.params.size() > 2)
         throw std::runtime_error("sethdseed ( newkeypool \"seed\" )\n"
                "Set or generate a new HD wallet seed. Non-HD wallets will not be upgraded to being a HD wallet. Wallets that are already\n"
-              "HD will have a new HD seed set so that new keys added to the keypool will be derived from this new seed.\n"
+               "HD will have a new HD seed set so that new keys added to the keypool will be derived from this new seed.\n"
                "\nNote that you will need to MAKE A NEW BACKUP of your wallet after setting the HD wallet seed.\n\n"
                "\nArguments:\n"
                "1. newkeypool (boolean, optional, default true): Whether to flush old unused addresses, including change addresses, from the keypool and regenerate it.\n"
@@ -447,7 +447,7 @@ UniValue sethdseed(const JSONRPCRequest& request)
 
     EnsureWalletIsUnlocked(pwallet);
 
-     bool flush_key_pool = true;
+    bool flush_key_pool = true;
     if (!request.params[0].isNull()) {
         flush_key_pool = request.params[0].get_bool();
     }
@@ -1505,7 +1505,7 @@ UniValue getreceivedbylabel(const JSONRPCRequest& request)
     return (double)nAmount / (double)COIN;
 }
 
-UniValue GetAvailableBalance(const JSONRPCRequest& request)
+UniValue getbalance(const JSONRPCRequest& request)
 {
     if (request.fHelp ||
         (request.params.size() > 4 && IsDeprecatedRPCEnabled("accounts")) ||
@@ -1806,7 +1806,7 @@ UniValue sendfrom(const JSONRPCRequest& request)
 }
 
 
-UniValue sendmany(const  JSONRPCRequest& request)
+UniValue sendmany(const JSONRPCRequest& request)
 {
     std::string help_text;
     if (!IsDeprecatedRPCEnabled("accounts")) {
@@ -1900,7 +1900,7 @@ UniValue sendmany(const  JSONRPCRequest& request)
         if (!IsValidDestination(dest) || isStaking)
             throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid EncoCoin address: ")+name_);
 
-       if (setAddress.count(dest))
+        if (setAddress.count(dest))
             throw JSONRPCError(RPC_INVALID_PARAMETER, std::string("Invalid parameter, duplicated address: ")+name_);
         setAddress.insert(dest);
 
@@ -2387,7 +2387,7 @@ void AcentryToJSON(const CAccountingEntry& acentry, const std::string& strAccoun
     }
 }
 
-UniValue listtransactions(const  JSONRPCRequest& request)
+UniValue listtransactions(const JSONRPCRequest& request)
 {
     std::string help_text {};
     if (!IsDeprecatedRPCEnabled("accounts")) {
@@ -2577,7 +2577,7 @@ UniValue listtransactions(const  JSONRPCRequest& request)
 
 UniValue listaccounts(const JSONRPCRequest& request)
 {
-if (!IsDeprecatedRPCEnabled("accounts")) {
+	if (!IsDeprecatedRPCEnabled("accounts")) {
         if (request.fHelp) {
             throw std::runtime_error("listaccounts (Deprecated, will be removed in v4.0. To use this command, start encocoind with -deprecatedrpc=accounts)");
         }
@@ -2709,7 +2709,7 @@ UniValue listsinceblock(const JSONRPCRequest& request)
     if (request.params.size() > 0) {
         uint256 blockId;
 
-    blockId.SetHex(request.params[0].get_str());
+			blockId.SetHex(request.params[0].get_str());
         BlockMap::iterator it = mapBlockIndex.find(blockId);
         if (it != mapBlockIndex.end())
             pindex = it->second;
@@ -2823,7 +2823,7 @@ UniValue gettransaction(const JSONRPCRequest& request)
     return entry;
 }
 
-UniValue abandontransaction(const  JSONRPCRequest& request)
+UniValue abandontransaction(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() != 1)
         throw std::runtime_error(
@@ -3149,7 +3149,7 @@ UniValue listunspent(const JSONRPCRequest& request)
                 "      \"address\"   (string) encocoin address\n"
                 "      ,...\n"
                 "    ]\n"
-                 "4. watchonlyconfig  (numeric, optional, default=1) 1 = list regular unspent transactions,  2 = list all unspent transactions (including watchonly)\n"
+                "4. watchonlyconfig  (numeric, optional, default=1) 1 = list regular unspent transactions,  2 = list all unspent transactions (including watchonly)\n"
 
                 "\nResult\n"
                 "[                   (array of json object)\n"
@@ -3165,7 +3165,6 @@ UniValue listunspent(const JSONRPCRequest& request)
                 "    \"confirmations\" : n,      (numeric) The number of confirmations\n"
                 "    \"spendable\" : true|false  (boolean) Whether we have the private keys to spend this output\n"
                 "    \"solvable\" : xxx          (bool) Whether we know how to spend this output, ignoring the lack of keys\n"
-                "  }\n"
                 "  }\n"
                 "  ,...\n"
                 "]\n"
@@ -3957,7 +3956,7 @@ UniValue listmintedzerocoins(const JSONRPCRequest& request)
     return jsonList;
 }
 
-UniValue listzerocoinamounts(const  JSONRPCRequest& request)
+UniValue listzerocoinamounts(const JSONRPCRequest& request)
 {
 
     if (request.fHelp || request.params.size() != 0)
@@ -4285,7 +4284,6 @@ UniValue spendzerocoinmints(const JSONRPCRequest& request)
 
 extern UniValue DoZxnkSpend(const CAmount nAmount, std::vector<CZerocoinMint>& vMintsSelected, std::string address_str)
 {
-
     int64_t nTimeStart = GetTimeMillis();
     CTxDestination address{CNoDestination()}; // Optional sending address. Dummy initialization here.
     CWalletTx wtx;
@@ -4349,7 +4347,7 @@ extern UniValue DoZxnkSpend(const CAmount nAmount, std::vector<CZerocoinMint>& v
 }
 
 
-UniValue resetmintzerocoin(const  JSONRPCRequest& request)
+UniValue resetmintzerocoin(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() > 1)
         throw std::runtime_error(

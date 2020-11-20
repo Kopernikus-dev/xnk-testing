@@ -95,12 +95,12 @@ BOOST_AUTO_TEST_CASE(BlockPolicyEstimates)
     // Highest feerate is 10*baseRate and gets in all blocks,
     // second highest feerate is 9*baseRate and gets in 9/10 blocks = 90%,
     // third highest feerate is 8*base rate, and gets in 8/10 blocks = 80%,
-    // so estimateFee(1) should return 9*baseRate.
-    // Third highest feerate has 90% chance of being included by 2 blocks,
-    // so estimateFee(2) should return 8*baseRate etc...
+    // so estimateFee(1) should return 10*baseRate.
+    // Second highest feerate has 100% chance of being included by 2 blocks,
+    // so estimateFee(2) should return 9*baseRate etc...
     for (int i = 1; i < 10;i++) {
         origFeeEst.push_back(mpool.estimateFee(i).GetFeePerK());
-        origPriEst.push_back(mpool.estimatePriority(i));
+        if (i > 1) { // Fee estimates should be monotonically decreasing
             BOOST_CHECK(origFeeEst[i-1] <= origFeeEst[i-2]);
         }
         int mult = 11-i;
