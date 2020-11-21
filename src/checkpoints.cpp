@@ -4,12 +4,12 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #include "checkpoints.h"
 
+#include "chain.h"
 #include "chainparams.h"
-#include "main.h"
 #include "uint256.h"
+#include "validation.h"
 
 #include <stdint.h>
 

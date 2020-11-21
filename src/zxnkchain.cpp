@@ -7,7 +7,6 @@
 
 #include "guiinterface.h"
 #include "invalid.h"
-#include "main.h"
 #include "txdb.h"
 #include "wallet/wallet.h"
 #include "zxnk/zxnkmodule.h"

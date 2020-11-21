@@ -2,17 +2,16 @@
 // Copyright (c) 2020	   The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+#include "test/test_encocoin.h"
 
 #include "amount.h"
 #include "chainparams.h"
 #include "coincontrol.h"
 #include "consensus/zerocoin_verify.h"
 #include "denomination_functions.h"
-#include "main.h"
 #include "txdb.h"
 #include "wallet/wallet.h"
 #include "wallet/walletdb.h"
-#include "test/test_encocoin.h"
 #include <boost/test/unit_test.hpp>
 #include <iostream>
 

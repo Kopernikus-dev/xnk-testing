@@ -3,7 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include "blocksignature.h"
-#include "main.h"
+
+#include "script/standard.h"
 #include "zxnkchain.h"
 
 bool SignBlockWithKey(CBlock& block, const CKey& key)

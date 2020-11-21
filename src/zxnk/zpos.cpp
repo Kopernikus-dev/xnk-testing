@@ -3,7 +3,9 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "zxnk/zpos.h"
+#include "zpiv/zpos.h"
+
+#include "validation.h"
 #include "zxnkchain.h"
 /*
  * LEGACY: Kept for IBD in order to verify zerocoin stakes occurred when zPoS was active

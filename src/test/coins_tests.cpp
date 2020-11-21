@@ -3,14 +3,13 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+#include "test/test_encocoin.h"
 
 #include "coins.h"
-#include "main.h"
 #include "script/standard.h"
 #include "uint256.h"
 #include "undo.h"
 #include "utilstrencodings.h"
-#include "test/test_encocoin.h"
 
 #include <vector>
 #include <map>

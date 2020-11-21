@@ -10,14 +10,13 @@
 
 #include "addresstablemodel.h"
 #include "bitcoinunits.h"
+#include "coincontrol.h"
 #include "guiutil.h"
 #include "init.h"
 #include "optionsmodel.h"
-#include "walletmodel.h"
-
-#include "coincontrol.h"
-#include "main.h"
+#include "txmempool.h"
 #include "wallet/wallet.h"
+#include "walletmodel.h"
 
 #include "qt/encocoin/qtutils.h"
 

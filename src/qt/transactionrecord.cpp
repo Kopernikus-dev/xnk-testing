@@ -12,7 +12,6 @@
 #include "timedata.h"
 #include "wallet/wallet.h"
 #include "zxnkchain.h"
-#include "main.h"
 
 #include <algorithm>
 #include <stdint.h>

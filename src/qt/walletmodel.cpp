@@ -16,7 +16,6 @@
 #include "base58.h"
 #include "db.h"
 #include "keystore.h"
-#include "main.h"
 #include "spork.h"
 #include "sync.h"
 #include "guiinterface.h"

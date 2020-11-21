@@ -6,7 +6,6 @@
 #define ENCOCOIN_LEGACY_ZPOS_H
 
 #include "stakeinput.h"
-#include "main.h"
 #include "txdb.h"
 
 class CLegacyZXnkStake : public CStakeInput

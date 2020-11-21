@@ -6,7 +6,6 @@
 #include "zxnktracker.h"
 #include "util.h"
 #include "sync.h"
-#include "main.h"
 #include "txdb.h"
 #include "wallet/wallet.h"
 #include "wallet/walletdb.h"

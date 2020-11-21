@@ -11,7 +11,6 @@
 #include "chainparams.h"
 #include "core_io.h"
 #include "init.h"
-#include "main.h"
 #include "miner.h"
 #include "net.h"
 #include "pow.h"

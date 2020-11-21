@@ -9,7 +9,6 @@
 #ifndef ENCOCOIN_KERNEL_H
 #define ENCOCOIN_KERNEL_H
 
-#include "main.h"
 #include "stakeinput.h"
 
 class CStakeKernel {

@@ -7,7 +7,6 @@
 #define ENCOCOIN_CONSENSUS_ZEROCOIN_VERIFY_H
 
 #include "consensus/consensus.h"
-#include "main.h"
 #include "script/interpreter.h"
 #include "zxnkchain.h"
 

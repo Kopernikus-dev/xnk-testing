@@ -6,7 +6,6 @@
 
 #include "base58.h"
 #include "hash.h"
-#include "main.h" // For strMessageMagic
 #include "messagesigner.h"
 #include "masternodeman.h"  // For GetPublicKey (of MN from its vin)
 #include "tinyformat.h"

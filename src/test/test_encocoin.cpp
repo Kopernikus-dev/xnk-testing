@@ -6,13 +6,15 @@
 
 #define BOOST_TEST_MODULE EncoCoin Test Suite
 
-#include "test_encocoin.h"
+#include "test/test_encocoin.h"
 
-#include "main.h"
+#include "guiinterface.h"
+#include "net_processing.h"
 #include "random.h"
 #include "script/sigcache.h"
+#include "txmempool.h"
 #include "txdb.h"
-#include "guiinterface.h"
+#include "validation.h"
 
 #include <boost/test/unit_test.hpp>
 

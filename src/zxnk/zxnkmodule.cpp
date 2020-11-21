@@ -3,12 +3,12 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include "zxnk/zxnkmodule.h"
-#include "zxnkchain.h"
+
+#include "hash.h"
 #include "libzerocoin/Commitment.h"
 #include "libzerocoin/Coin.h"
-#include "hash.h"
-#include "main.h"
-#include "iostream"
+#include "validation.h"
+#include "zxnkchain.h"
 
 PublicCoinSpend::PublicCoinSpend(libzerocoin::ZerocoinParams* params, const uint8_t version,
         const CBigNum& serial, const CBigNum& randomness, const uint256& ptxHash, CPubKey* pubkey):
