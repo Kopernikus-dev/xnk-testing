@@ -1252,7 +1252,6 @@ void CBudgetManager::SetSynced(bool synced)
 
 void CBudgetManager::Sync(CNode* pfrom, const uint256& nProp, bool fPartial)
 {
-    LOCK(cs);
     CNetMsgMaker msgMaker(pfrom->GetSendVersion());
     int nInvCount = 0;
     {

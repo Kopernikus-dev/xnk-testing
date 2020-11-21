@@ -3,7 +3,7 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "zpiv/zpos.h"
+#include "zxnk/zpos.h"
 
 #include "validation.h"
 #include "zxnkchain.h"
