@@ -16,7 +16,6 @@
 #include "guiinterface.h"
 #include "qt/encocoin/qtutils.h"
 #include "qt/encocoin/defaultdialog.h"
-#include "qt/encocoin/settings/settingsfaqwidget.h"
 
 #include "init.h"
 #include "util.h"
@@ -587,11 +586,11 @@ int EncoCoinGUI::getNavWidth()
     return this->navMenu->width();
 }
 
-void EncoCoinGUI::openFAQ(int section)
+void PIVXGUI::openFAQ(SettingsFaqWidget::Section section)
 {
     showHide(true);
     SettingsFaqWidget* dialog = new SettingsFaqWidget(this);
-    if (section > 0) dialog->setSection(section);
+    dialog->setSection(section);
     openDialogWithOpaqueBackgroundFullScreen(dialog, this);
     dialog->deleteLater();
 }

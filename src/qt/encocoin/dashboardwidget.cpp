@@ -204,8 +204,8 @@ void DashboardWidget::loadWalletModel()
             ui->comboBoxSort->setVisible(false);
         }
 
-        connect(ui->pushImgEmpty, &QPushButton::clicked, window, &EncoCoinGUI::openFAQ);
-        connect(ui->btnHowTo, &QPushButton::clicked, window, &EncoCoinGUI::openFAQ);
+        connect(ui->pushImgEmpty, &QPushButton::clicked, [this](){window->openFAQ();});
+        connect(ui->btnHowTo, &QPushButton::clicked, [this](){window->openFAQ();});
         connect(txModel, &TransactionTableModel::txArrived, this, &DashboardWidget::onTxArrived);
 
         // Notification pop-up for new transaction

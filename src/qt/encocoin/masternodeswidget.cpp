@@ -127,8 +127,8 @@ MasterNodesWidget::MasterNodesWidget(EncoCoinGUI *parent) :
         onStartAllClicked(REQUEST_START_MISSING);
     });
     connect(ui->listMn, &QListView::clicked, this, &MasterNodesWidget::onMNClicked);
-    connect(ui->btnAbout, &OptionButton::clicked, [this](){window->openFAQ(5);});
-    connect(ui->btnAboutController, &OptionButton::clicked, [this](){window->openFAQ(6);});
+    connect(ui->btnAbout, &OptionButton::clicked, [this](){window->openFAQ(SettingsFaqWidget::Section::MASTERNODE);});
+    connect(ui->btnAboutController, &OptionButton::clicked, [this](){window->openFAQ(SettingsFaqWidget::Section::MNCONTROLLER);});
 }
 
 void MasterNodesWidget::showEvent(QShowEvent *event)
