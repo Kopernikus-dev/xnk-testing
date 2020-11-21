@@ -119,7 +119,7 @@ enum WalletFeature {
 
     FEATURE_SAPLING = 170000, // Upgraded to Saplings key manager.
 
-    FEATURE_LATEST = FEATURE_PRE_SPLIT_KEYPOOL
+    FEATURE_LATEST = FEATURE_SAPLING
 };
 
 enum AvailableCoinsType {

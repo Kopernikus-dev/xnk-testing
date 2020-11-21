@@ -80,17 +80,14 @@ bool WalletModel::isHDEnabled() const
 
 bool WalletModel::upgradeWallet(std::string& upgradeError)
 {
-    // For now, Sapling features are locked to regtest.
-    WalletFeature features = Params().IsRegTestNet() ? FEATURE_SAPLING : FEATURE_PRE_SPLIT_KEYPOOL;
-
     // This action must be performed in a separate thread and not the main one.
     LOCK2(cs_main, wallet->cs_wallet);
 
     // Get version
     int prev_version = wallet->GetVersion();
     // Upgrade wallet's version
-    wallet->SetMinVersion(features);
-    wallet->SetMaxVersion(features);
+    wallet->SetMinVersion(FEATURE_LATEST);
+    wallet->SetMaxVersion(FEATURE_LATEST);
 
     // Upgrade to HD
     return wallet->Upgrade(upgradeError, prev_version);
