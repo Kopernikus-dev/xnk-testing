@@ -6,6 +6,7 @@
 #include "coins.h"
 
 #include "consensus/consensus.h"
+#include "invalid.h"
 #include "memusage.h"
 #include "random.h"
 
@@ -65,6 +66,7 @@ bool CCoinsViewCache::GetCoin(const COutPoint& outpoint, Coin& coin) const
 void CCoinsViewCache::AddCoin(const COutPoint& outpoint, Coin&& coin, bool possible_overwrite) {
     assert(!coin.IsSpent());
     if (coin.out.scriptPubKey.IsUnspendable()) return;
+    if (coin.out.IsZerocoinMint()) return;
     CCoinsMap::iterator it;
     bool inserted;
     std::tie(it, inserted) = cacheCoins.emplace(std::piecewise_construct, std::forward_as_tuple(outpoint), std::tuple<>());
@@ -274,6 +276,37 @@ int CCoinsViewCache::GetCoinDepthAtHeight(const COutPoint& output, int nHeight) 
     if (!coin.IsSpent())
         return nHeight - coin.nHeight + 1;
     return -1;
+}
+
+CAmount CCoinsViewCache::GetTotalAmount() const
+{
+    CAmount nTotal = 0;
+
+    std::unique_ptr<CCoinsViewCursor> pcursor(Cursor());
+    while (pcursor->Valid()) {
+        Coin coin;
+        if (pcursor->GetValue(coin) && !coin.IsSpent()) {
+            nTotal += coin.out.nValue;
+        }
+        pcursor->Next();
+    }
+
+    return nTotal;
+}
+
+void CCoinsViewCache::PruneInvalidEntries()
+{
+    // Prune zerocoin Mints and fraudulent/frozen outputs
+    std::unique_ptr<CCoinsViewCursor> pcursor(Cursor());
+    while (pcursor->Valid()) {
+        COutPoint key;
+        Coin coin;
+        if (pcursor->GetKey(key) && pcursor->GetValue(coin)) {
+            if (coin.out.IsZerocoinMint() || invalid_out::ContainsOutPoint(key))
+                SpendCoin(key);
+        }
+        pcursor->Next();
+    }
 }
 
 static const size_t MAX_OUTPUTS_PER_BLOCK = MAX_BLOCK_SIZE_CURRENT /  ::GetSerializeSize(CTxOut(), SER_NETWORK, PROTOCOL_VERSION); // TODO: merge with similar definition in undo.h.

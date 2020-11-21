@@ -20,7 +20,5 @@ int CurrentPublicCoinSpendVersion();
 bool CheckPublicCoinSpendVersion(int version);
 bool ContextualCheckZerocoinSpend(const CTransaction& tx, const libzerocoin::CoinSpend* spend, int nHeight, const uint256& hashBlock);
 bool ContextualCheckZerocoinSpendNoSerialCheck(const CTransaction& tx, const libzerocoin::CoinSpend* spend, int nHeight, const uint256& hashBlock);
-bool RecalculateXNKSupply(int nHeightStart, bool fSkipZxnk = true);
-CAmount GetInvalidUTXOValue();
 
 #endif //ENCOCOIN_CONSENSUS_ZEROCOIN_VERIFY_H
