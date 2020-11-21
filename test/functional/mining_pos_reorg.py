@@ -53,12 +53,15 @@ class ReorgStakeTest(EncoCoinTestFramework):
         return wi['balance'] + wi['immature_balance']
 
     def check_money_supply(self, expected_xnk, expected_zxnk):
-        g_info = [self.nodes[i].getinfo() for i in range(self.num_nodes)]
         # verify that nodes have the expected XNK and zXNK supply
-        for node in g_info:
-            assert_equal(node['moneysupply'], DecimalAmt(expected_xnk))
-            for denom in node['zXNKsupply']:
-                assert_equal(node['zXNKsupply'][denom], DecimalAmt(expected_zxnk[denom]))
+        xnk_supply = [self.nodes[i].getsupplyinfo(True)['supply']
+                      for i in range(self.num_nodes)]
+        assert_equal(xnk_supply, [DecimalAmt(expected_xnk)] * self.num_nodes)
+        zxnk_supply = [self.nodes[i].getinfo()['zXNKsupply']
+                       for i in range(self.num_nodes)]
+        for s in zxnk_supply:
+            for denom in s:
+                assert_equal(s[denom], DecimalAmt(expected_zxnk[denom]))
 
     def run_test(self):
 
