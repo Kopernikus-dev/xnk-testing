@@ -118,7 +118,7 @@ CAmount WalletModel::getBalance(const CCoinControl* coinControl, bool fIncludeDe
 CAmount WalletModel::getUnlockedBalance(const CCoinControl* coinControl, bool fIncludeDelegated) const
 {
     return getBalance(coinControl, fIncludeDelegated, true);
-}-
+}
 
 CAmount WalletModel::getMinColdStakingAmount() const
 {
