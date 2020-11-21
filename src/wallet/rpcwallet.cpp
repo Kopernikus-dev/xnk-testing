@@ -705,12 +705,12 @@ UniValue listshieldedaddresses(const JSONRPCRequest& request)
     std::set<libzcash::SaplingPaymentAddress> addresses;
     pwalletMain->GetSaplingPaymentAddresses(addresses);
     libzcash::SaplingIncomingViewingKey ivk;
-    libzcash::SaplingFullViewingKey fvk;
+    libzcash::SaplingExtendedFullViewingKey extfvk;
     for (libzcash::SaplingPaymentAddress addr : addresses) {
         if (fIncludeWatchonly || (
                 pwalletMain->GetSaplingIncomingViewingKey(addr, ivk) &&
-                pwalletMain->GetSaplingFullViewingKey(ivk, fvk) &&
-                pwalletMain->HaveSaplingSpendingKey(fvk)
+                pwalletMain->GetSaplingFullViewingKey(ivk, extfvk) &&
+                pwalletMain->HaveSaplingSpendingKey(extfvk)
         )) {
             ret.push_back(KeyIO::EncodePaymentAddress(addr));
         }
@@ -5043,6 +5043,11 @@ extern UniValue importpubkey(const JSONRPCRequest& request);
 extern UniValue dumpwallet(const JSONRPCRequest& request);
 extern UniValue importwallet(const JSONRPCRequest& request);
 
+extern UniValue exportsaplingkey(const JSONRPCRequest& request);
+extern UniValue importsaplingkey(const JSONRPCRequest& request);
+extern UniValue importsaplingviewingkey(const JSONRPCRequest& request);
+extern UniValue exportsaplingviewingkey(const JSONRPCRequest& request);
+
 const CRPCCommand vWalletRPCCommands[] =
 {       //  category              name                        actor (function)           okSafeMode
         //  --------------------- ------------------------    -----------------------    ----------
@@ -5099,6 +5104,10 @@ const CRPCCommand vWalletRPCCommands[] =
         /** Sapling functions */
         { "wallet",             "getnewshieldedaddress",     &getnewshieldedaddress,     true  },
         { "wallet",             "listshieldedaddresses",     &listshieldedaddresses,     false },
+        { "wallet",             "exportsaplingkey",          &exportsaplingkey,          true  },
+        { "wallet",             "importsaplingkey",          &importsaplingkey,          true  },
+        { "wallet",             "importsaplingviewingkey",   &importsaplingviewingkey,   true  },
+        { "wallet",             "exportsaplingviewingkey",   &exportsaplingviewingkey,   true  },
 
         /** Account functions (deprecated) */
         { "wallet",             "getaccountaddress",        &getaccountaddress,        true  },
