@@ -381,6 +381,7 @@ static const CRPCCommand vRPCCommands[] =
         {"masternodes", "getbudgetinfo", &getbudgetinfo, true },
         {"masternodes", "mnbudgetrawvote", &mnbudgetrawvote, true },
         {"masternodes", "mnfinalbudget", &mnfinalbudget, true },
+        {"masternodes", "mnfinalbudgetsuggest", &mnfinalbudgetsuggest, true},
         {"masternodes", "checkbudgets", &checkbudgets, true },
         {"masternodes", "mnsync", &mnsync, true },
         {"masternodes", "spork", &spork, true },
