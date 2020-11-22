@@ -3,7 +3,6 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #ifndef EncoCoin_SAPLING_TRANSACTION_H
 #define EncoCoin_SAPLING_TRANSACTION_H
 
@@ -147,6 +146,12 @@ public:
 
     explicit SaplingTxData() : valueBalance(0), vShieldedSpend(), vShieldedOutput() { }
     explicit SaplingTxData(const SaplingTxData& from) : valueBalance(from.valueBalance), vShieldedSpend(from.vShieldedSpend), vShieldedOutput(from.vShieldedOutput), bindingSig(from.bindingSig) {}
+
+    bool hasBindingSig() const
+    {
+        return std::any_of(bindingSig.begin(), bindingSig.end(),
+                          [](const unsigned char& c){ return c != 0; });
+    }
 };
 
 
