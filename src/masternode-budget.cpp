@@ -2225,7 +2225,6 @@ std::string CBudgetManager::ToString() const
 {
     unsigned int nProposals = WITH_LOCK(cs_proposals, return mapProposals.size(); );
     unsigned int nBudgets = WITH_LOCK(cs_budgets, return mapFinalizedBudgets.size(); );
-    }
 
     unsigned int nSeenVotes = 0, nOrphanVotes = 0;
     {
