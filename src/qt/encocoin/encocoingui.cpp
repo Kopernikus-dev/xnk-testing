@@ -586,7 +586,7 @@ int EncoCoinGUI::getNavWidth()
     return this->navMenu->width();
 }
 
-void PIVXGUI::openFAQ(SettingsFaqWidget::Section section)
+void EncoCoinGUI::openFAQ(SettingsFaqWidget::Section section)
 {
     showHide(true);
     SettingsFaqWidget* dialog = new SettingsFaqWidget(this);

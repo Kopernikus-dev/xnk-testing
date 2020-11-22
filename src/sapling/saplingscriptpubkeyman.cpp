@@ -252,8 +252,8 @@ bool SaplingScriptPubKeyMan::HaveSpendingKeyForPaymentAddress(const libzcash::Sa
     libzcash::SaplingExtendedFullViewingKey extfvk;
 
     return wallet->GetSaplingIncomingViewingKey(zaddr, ivk) &&
-           wallet->GetSaplingFullViewingKey(ivk, fvk) &&
-           wallet->HaveSaplingSpendingKey(fvk);
+           wallet->GetSaplingFullViewingKey(ivk, extfvk) &&
+           wallet->HaveSaplingSpendingKey(extfvk);
 }
 
 ///////////////////// Load ////////////////////////////////////////

@@ -25,7 +25,7 @@
 #include "qt/encocoin/masternodeswidget.h"
 #include "qt/encocoin/snackbar.h"
 #include "qt/encocoin/settings/settingswidget.h"
-#include "qt/pivx/settings/settingsfaqwidget.h"
+#include "qt/encocoin/settings/settingsfaqwidget.h"
 #include "qt/rpcconsole.h"
 
 

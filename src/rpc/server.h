@@ -249,7 +249,6 @@ extern UniValue signrawtransaction(const JSONRPCRequest& request);
 extern UniValue sendrawtransaction(const JSONRPCRequest& request);
 extern UniValue createrawzerocoinspend(const JSONRPCRequest& request);
 
-extern UniValue getsupply(const JSONRPCRequest& request); // in rpc/blockchain.cpp
 extern UniValue findserial(const JSONRPCRequest& request); // in rpc/blockchain.cpp
 extern UniValue getblockcount(const JSONRPCRequest& request);
 extern UniValue getbestblockhash(const JSONRPCRequest& request);
