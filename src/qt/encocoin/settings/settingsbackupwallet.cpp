@@ -2,15 +2,16 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #include "qt/encocoin/settings/settingsbackupwallet.h"
+
 #include "qt/encocoin/settings/forms/ui_settingsbackupwallet.h"
-#include <QFile>
-#include <QGraphicsDropShadowEffect>
+
+#include "guiinterface.h"
 #include "guiutil.h"
 #include "qt/encocoin/qtutils.h"
-#include "guiinterface.h"
-#include "qt/encocoin/qtutils.h"
+
+#include <QGraphicsDropShadowEffect>
+
 SettingsBackupWallet::SettingsBackupWallet(EncoCoinGUI* _window, QWidget *parent) :
     PWidget(_window, parent),
     ui(new Ui::SettingsBackupWallet)

@@ -2,10 +2,9 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #include "qt/encocoin/settings/settingsconsolewidget.h"
 #include "qt/encocoin/settings/forms/ui_settingsconsolewidget.h"
-#include "QGraphicsDropShadowEffect"
+
 #include "qt/encocoin/qtutils.h"
 
 #include "clientmodel.h"
@@ -15,6 +14,8 @@
 #include "rpc/client.h"
 #include "rpc/server.h"
 #include "util.h"
+#include "utilitydialog.h"
+
 #ifdef ENABLE_WALLET
 #include "wallet/wallet.h"
 #endif // ENABLE_WALLET
@@ -28,6 +29,7 @@
 #endif
 
 #include <QDir>
+#include <QGraphicsDropShadowEffect>
 #include <QKeyEvent>
 #include <QMenu>
 #include <QScrollBar>
@@ -36,8 +38,6 @@
 #include <QTime>
 #include <QTimer>
 #include <QStringList>
-#include "qt/encocoin/qtutils.h"
-#include "utilitydialog.h"
 
 const int CONSOLE_HISTORY = 50;
 

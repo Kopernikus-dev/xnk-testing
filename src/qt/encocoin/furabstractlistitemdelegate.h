@@ -9,13 +9,12 @@
 #include "qt/encocoin/furlistrow.h"
 
 #include <QAbstractItemDelegate>
-#include <QPainter>
-#include <QObject>
-#include <QWidget>
 #include <QColor>
 #include <QModelIndex>
 #include <QObject>
 #include <QPaintEngine>
+#include <QPainter>
+#include <QWidget>
 
 QT_BEGIN_NAMESPACE
 class QModelIndex;
