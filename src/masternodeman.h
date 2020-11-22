@@ -3,12 +3,12 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #ifndef MASTERNODEMAN_H
 #define MASTERNODEMAN_H
 
 #include "activemasternode.h"
 #include "base58.h"
+#include "cyclingvector.h"
 #include "key.h"
 #include "masternode.h"
 #include "net.h"
@@ -18,6 +18,8 @@
 #define MASTERNODES_DUMP_SECONDS (15 * 60)
 #define MASTERNODES_DSEG_SECONDS (3 * 60 * 60)
 
+/** Maximum number of block hashes to cache */
+static const unsigned int CACHED_BLOCK_HASHES = 200;
 
 class CMasternodeMan;
 class CActiveMasternode;
@@ -70,6 +72,12 @@ private:
     // which Masternodes we've asked for
     std::map<COutPoint, int64_t> mWeAskedForMasternodeListEntry;
 
+    // Memory Only. Updated in NewBlock (blocks arrive in order)
+    std::atomic<int> nBestHeight;
+
+    // Memory Only. Cache last block hashes. Used to verify mn pings and winners.
+    CyclingVector<uint256> cvLastBlockHashes;
+
 public:
     // Keep track of all broadcasts I've seen
     std::map<uint256, CMasternodeBroadcast> mapSeenMasternodeBroadcast;
@@ -112,6 +120,9 @@ public:
 
     /// Clear Masternode vector
     void Clear();
+
+    void SetBestHeight(int height) { nBestHeight.store(height, std::memory_order_release); };
+    int GetBestHeight() const { return nBestHeight.load(std::memory_order_acquire); }
 
     int CountEnabled(int protocolVersion = -1);
 
@@ -156,6 +167,14 @@ public:
 
     /// Update masternode list and maps using provided CMasternodeBroadcast
     void UpdateMasternodeList(CMasternodeBroadcast mnb);
+
+    // Block hashes cycling vector management
+    void CacheBlockHash(const CBlockIndex* pindex);
+    void UncacheBlockHash(const CBlockIndex* pindex);
+    uint256 GetHashAtHeight(int nHeight) const;
+    bool IsWithinDepth(const uint256& nHash, int depth) const;
+    uint256 GetBlockHashToPing() const { return GetHashAtHeight(GetBestHeight() - MNPING_DEPTH); }
+    std::vector<uint256> GetCachedBlocks() const { return cvLastBlockHashes.GetCache(); }
 };
 
 void ThreadCheckMasternodes();

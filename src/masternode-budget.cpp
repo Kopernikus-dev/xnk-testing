@@ -1161,6 +1161,7 @@ void CBudgetManager::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
         }
 
         AddSeenFinalizedBudgetVote(vote);
+
         if (!vote.CheckSignature()) {
             if (masternodeSync.IsSynced()) {
                 LogPrintf("fbvote - signature from masternode %s invalid\n", HexStr(pmn->pubKeyMasternode));
@@ -1694,7 +1695,7 @@ CFinalizedBudget::CFinalizedBudget() :
         strBudgetName(""),
         nBlockStart(0),
         vecBudgetPayments(),
-        nFeeTXHash(0),
+        nFeeTXHash(),
         strProposals(""),
         nTime(0)
 { }

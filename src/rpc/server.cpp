@@ -360,6 +360,7 @@ static const CRPCCommand vRPCCommands[] =
 
         /* Masternode features */
         {"masternodes", "listmasternodes", &listmasternodes, true },
+        {"masternodes", "getcachedblockhashes", &getcachedblockhashes, true },
         {"masternodes", "getmasternodecount", &getmasternodecount, true },
         {"masternodes", "createmasternodebroadcast", &createmasternodebroadcast, true },
         {"masternodes", "decodemasternodebroadcast", &decodemasternodebroadcast, true },
