@@ -128,6 +128,8 @@ class EncoCoinTestFramework():
         parser.add_option('--legacywallet', dest="legacywallet", default=False, action="store_true",
         parser.add_option('--tiertwo', dest="tiertwo", default=False, action="store_true",
                           help='run tier two tests only')
+        parser.add_option('--sapling', dest="sapling", default=False, action="store_true",
+                          help='run tier two tests only')
         parser.add_option("--pdbonfailure", dest="pdbonfailure", default=False, action="store_true",
                           help="Attach a python debugger if test fails")
         parser.add_option("--usecli", dest="usecli", default=False, action="store_true",

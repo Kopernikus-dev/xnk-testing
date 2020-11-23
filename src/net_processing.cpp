@@ -17,7 +17,6 @@
 #include "primitives/block.h"
 #include "primitives/transaction.h"
 #include "sporkdb.h"
-#include "swifttx.h"
 
 int64_t nTimeBestReceived = 0;  // Used only to inform the wallet of when we last received a block
 

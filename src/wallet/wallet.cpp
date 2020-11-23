@@ -2941,7 +2941,7 @@ bool CWallet::CreateCoinStake(
     int nAttempts = 0;
     for (auto it = availableCoins->begin(); it != availableCoins->end();) {
         COutPoint outPoint = COutPoint(it->tx->GetHash(), it->i);
-        CPivStake stakeInput(it->tx->vout[it->i],
+        CXnkStake stakeInput(it->tx->vout[it->i],
                              outPoint,
                              it->pindex);
 
