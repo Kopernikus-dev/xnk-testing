@@ -24,8 +24,6 @@
 #include "wallet/wallet.h" // for CWallet::minTxFee
 #endif
 
-#include <boost/thread.hpp>
-
 #include <QDataWidgetMapper>
 #include <QIntValidator>
 #include <QLocale>

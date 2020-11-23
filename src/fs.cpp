@@ -6,8 +6,6 @@
 
 #include "fs.h"
 
-#include <boost/filesystem.hpp>
-
 namespace fsbridge {
 
 FILE *fopen(const fs::path& p, const char *mode)

@@ -4,7 +4,6 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #ifndef BITCOIN_VALIDATIONINTERFACE_H
 #define BITCOIN_VALIDATIONINTERFACE_H
 
@@ -12,7 +11,6 @@
 #include "sapling/incrementalmerkletree.hpp"
 
 #include <boost/signals2/signal.hpp>
-#include <boost/shared_ptr.hpp>
 
 class CBlock;
 struct CBlockLocator;

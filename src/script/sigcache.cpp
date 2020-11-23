@@ -7,14 +7,14 @@
 
 #include "sigcache.h"
 
+#include "cuckoocache.h"
 #include "memusage.h"
 #include "pubkey.h"
 #include "random.h"
 #include "uint256.h"
 #include "util.h"
 
-#include "cuckoocache.h"
-#include <boost/thread.hpp>
+#include <boost/thread/thread.hpp>
 
 namespace {
 /**
