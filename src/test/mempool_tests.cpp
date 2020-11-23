@@ -4,6 +4,7 @@
 
 #include "test/test_encocoin.h"
 
+#include "policy/feerate.h"
 #include "txmempool.h"
 #include "util.h"
 

@@ -6,7 +6,7 @@
 #ifndef SENDCUSTOMFEEDIALOG_H
 #define SENDCUSTOMFEEDIALOG_H
 
-#include "amount.h"
+#include "policy/feerate.h"
 #include "qt/encocoin/focuseddialog.h"
 #include "qt/encocoin/snackbar.h"
 
