@@ -98,9 +98,6 @@ public:
 
     CTransaction getFinalTx() { return finalTx; }
 
-    // Public only for unit test coverage
-    bool getMemoFromHexString(const std::string& s, std::array<unsigned char, ZC_MEMO_SIZE> memoRet, std::string& error);
-
 private:
     FromAddress fromAddress;
     // In case of no addressFrom filter selected, it will accept any utxo in the wallet as input.
@@ -126,4 +123,6 @@ private:
     OperationResult checkTxValues(TxValues& txValues, bool isFromtAddress, bool isFromShielded);
 };
 
-#endif //EncoCoin_SAPLING_OPERATION_H
+OperationResult GetMemoFromString(const std::string& s, std::array<unsigned char, ZC_MEMO_SIZE>& memoRet);
+
+#endif //PIVX_SAPLING_OPERATION_H
