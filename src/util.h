@@ -42,7 +42,7 @@ extern const char * const DEFAULT_DEBUGLOGFILE;
 
 //EncoCoin only features
 
-extern bool fMasterNode;
+extern std::atomic<bool> fMasterNode;
 extern bool fLiteMode;
 extern int64_t enforceMasternodePaymentsTime;
 extern std::string strMasterNodeAddr;

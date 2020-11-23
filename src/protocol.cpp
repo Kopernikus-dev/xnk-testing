@@ -59,6 +59,8 @@ static const char* ppszTypeName[] = {
     NetMsgType::TX,
     NetMsgType::BLOCK,
     "filtered block", // Should never occur
+    "ix",   // deprecated
+    "txlvote", // deprecated
     NetMsgType::SPORK,
     NetMsgType::GETSPORKS,
     NetMsgType::MNBROADCAST,
