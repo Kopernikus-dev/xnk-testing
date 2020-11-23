@@ -1391,8 +1391,10 @@ DisconnectResult DisconnectBlock(CBlock& block, CBlockIndex* pindex, CCoinsViewC
             return DISCONNECT_FAILED;
 
         nValueOut += tx.GetValueOut();
-        uint256 hash = tx.GetHash();
+        const uint256& hash = tx.GetHash();
 
+        // if tx is a budget collateral tx, remove relative object
+        budget.RemoveByFeeTxId(hash);
 
         // Check that all outputs are available and match the outputs in the block itself
         // exactly.
