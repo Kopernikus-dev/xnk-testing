@@ -6,11 +6,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://www.opensource.org/licenses/mit-license.php.
 #include "base58.h"
+#include "budget/budgetmanager.h"
 #include "checkpoints.h"
 #include "clientversion.h"
 #include "consensus/upgrades.h"
 #include "kernel.h"
-#include "masternode-budget.h"
 #include "masternodeman.h"
 #include "policy/feerate.h"
 #include "policy/policy.h"

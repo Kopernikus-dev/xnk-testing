@@ -5,9 +5,9 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 // clang-format off
 #include "activemasternode.h"
+#include "budget/budgetmanager.h"
 #include "masternode-sync.h"
 #include "masternode-payments.h"
-#include "masternode-budget.h"
 #include "masternode.h"
 #include "masternodeman.h"
 #include "netmessagemaker.h"

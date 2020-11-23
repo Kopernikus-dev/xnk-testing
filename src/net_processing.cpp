@@ -6,10 +6,10 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include "net_processing.h"
 
+#include "budget/budgetmanager.h"
 #include "chain.h"
 #include "masternodeman.h"
 #include "masternode-payments.h"
-#include "masternode-budget.h"
 #include "masternode-sync.h"
 #include "merkleblock.h"
 #include "netbase.h"
