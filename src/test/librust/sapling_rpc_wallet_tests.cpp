@@ -333,9 +333,9 @@ BOOST_AUTO_TEST_CASE(saplingOperationTests) {
     // there are no utxos to spend
     {
         std::vector<SendManyRecipient> recipients = { SendManyRecipient(zaddr1, COIN, "DEADBEEF") };
+        SaplingOperation operation(consensusParams, 1);
         operation.setFromAddress(taddr1);
         auto res = operation.setRecipients(recipients)->buildAndSend(ret);
-        auto res = operation.setShieldedRecipients(recipients)->buildAndSend(ret);
         BOOST_CHECK(!res);
         BOOST_CHECK(res.getError().find("Insufficient funds, no available UTXO to spend") != std::string::npos);
     }
