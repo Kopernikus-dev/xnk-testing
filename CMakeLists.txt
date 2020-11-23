@@ -273,6 +273,7 @@ set(WALLET_SOURCES
         ./src/zxnk/zerocoin.cpp
         ./src/wallet/scriptpubkeyman.cpp
         ./src/wallet/rpcwallet.cpp
+        ./src/wallet/rpczxnk.cpp
         ./src/kernel.cpp
         ./src/legacy/stakemodifier.cpp
         ./src/wallet/wallet.cpp

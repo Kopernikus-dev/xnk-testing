@@ -922,3 +922,32 @@ UniValue getcollateral(const JSONRPCRequest& request)
 
     return ValueFromAmount(50000 * COIN); // return ValueFromAmount(GetMNCollateral())
 }
+
+static const CRPCCommand commands[] =
+{ //  category              name                         actor (function)            okSafeMode
+  //  --------------------- ---------------------------  --------------------------  ----------
+    { "masternode",         "listmasternodes",           &listmasternodes,           true  },
+    { "masternode",         "getmasternodecount",        &getmasternodecount,        true  },
+    { "masternode",         "masternodecurrent",         &masternodecurrent,         true  },
+    { "masternode",         "startmasternode",           &startmasternode,           true  },
+    { "masternode",         "createmasternodekey",       &createmasternodekey,       true  },
+    { "masternode",         "getmasternodeoutputs",      &getmasternodeoutputs,      true  },
+    { "masternode",         "listmasternodeconf",        &listmasternodeconf,        true  },
+    { "masternode",         "getmasternodestatus",       &getmasternodestatus,       true  },
+    { "masternode",         "getmasternodewinners",      &getmasternodewinners,      true  },
+    { "masternode",         "getmasternodescores",       &getmasternodescores,       true  },
+    { "masternode",         "createmasternodebroadcast", &createmasternodebroadcast, true  },
+    { "masternode",         "decodemasternodebroadcast", &decodemasternodebroadcast, true  },
+    { "masternode",         "relaymasternodebroadcast",  &relaymasternodebroadcast,  true  },
+	{"masternodes",			"getcollateral",			 &getcollateral,			 true   },
+
+    /* Not shown in help */
+    { "hidden",             "getcachedblockhashes",      &getcachedblockhashes,      true  },
+};
+
+void RegisterMasternodeRPCCommands(CRPCTable &tableRPC)
+{
+    for (unsigned int vcidx = 0; vcidx < ARRAYLEN(commands); vcidx++)
+        tableRPC.appendCommand(commands[vcidx].name, &commands[vcidx]);
+}
+
