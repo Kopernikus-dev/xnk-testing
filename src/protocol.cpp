@@ -39,8 +39,6 @@ const char* FILTERADD = "filteradd";
 const char* FILTERCLEAR = "filterclear";
 const char* REJECT = "reject";
 const char* SENDHEADERS = "sendheaders";
-const char* IX = "ix";
-const char* IXLOCKVOTE = "txlvote";
 const char* SPORK = "spork";
 const char* GETSPORKS = "getsporks";
 const char* MNBROADCAST = "mnb";
@@ -61,8 +59,6 @@ static const char* ppszTypeName[] = {
     NetMsgType::TX,
     NetMsgType::BLOCK,
     "filtered block", // Should never occur
-    NetMsgType::IX,
-    NetMsgType::IXLOCKVOTE,
     NetMsgType::SPORK,
     NetMsgType::GETSPORKS,
     NetMsgType::MNBROADCAST,
@@ -102,8 +98,6 @@ const static std::string allNetMessageTypes[] = {
     NetMsgType::FILTERCLEAR,
     NetMsgType::REJECT,
     NetMsgType::SENDHEADERS,
-    NetMsgType::IX,
-    NetMsgType::IXLOCKVOTE,
     NetMsgType::SPORK,
     NetMsgType::GETSPORKS,
     NetMsgType::MNBROADCAST,
