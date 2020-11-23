@@ -2222,6 +2222,7 @@ CWallet::OutputAvailabilityResult CWallet::CheckOutputAvailability(
  * populate vCoins with vector of available COutputs.
  */
 bool CWallet::AvailableCoins(std::vector<COutput>* pCoins,      // --> populates when != nullptr
+                             const CCoinControl* coinControl,   // Default: nullptr
                              AvailableCoinsFilter coinsFilter) const
 {
     if (pCoins) pCoins->clear();
@@ -2282,14 +2283,13 @@ bool CWallet::AvailableCoins(std::vector<COutput>* pCoins,      // --> populates
     }
 }
 
-std::map<CTxDestination, std::vector<COutput> > CWallet::AvailableCoinsByAddress(bool fConfirmed, CAmount maxCoinValue)
+std::map<CTxDestination , std::vector<COutput> > CWallet::AvailableCoinsByAddress(bool fConfirmed, CAmount maxCoinValue)
 {
     CWallet::AvailableCoinsFilter coinFilter;
     coinFilter.fIncludeColdStaking = true;
     coinFilter.fOnlyConfirmed = fConfirmed;
     std::vector<COutput> vCoins;
     // include cold
-    AvailableCoins(&vCoins,
     AvailableCoins(&vCoins, nullptr, coinFilter);
 
     std::map<CTxDestination, std::vector<COutput> > mapCoins;
