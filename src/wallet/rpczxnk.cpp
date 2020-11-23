@@ -20,7 +20,7 @@
 
 #include <univalue.h>
 
-UniValue getzerocoinbalance(const JSONRPCRequest& request)
+/*UniValue getzerocoinbalance(const JSONRPCRequest& request)
 {
 
     if (request.fHelp || request.params.size() != 0)
@@ -39,12 +39,13 @@ UniValue getzerocoinbalance(const JSONRPCRequest& request)
 
     EnsureWalletIsUnlocked(true);
 
-        UniValue ret(UniValue::VOBJ);
-        ret.pushKV("Total", ValueFromAmount(pwalletMain->GetZerocoinBalance(false)));
-        ret.pushKV("Mature", ValueFromAmount(pwalletMain->GetZerocoinBalance(true)));
-        ret.pushKV("Unconfirmed", ValueFromAmount(pwalletMain->GetUnconfirmedZerocoinBalance()));
-        ret.pushKV("Immature", ValueFromAmount(pwalletMain->GetImmatureZerocoinBalance()));
-        return ret;
+    UniValue ret(UniValue::VOBJ);
+    const UniValue& zcBalance = ValueFromAmount(pwalletMain->GetZerocoinBalance());
+    ret.pushKV("Total", zcBalance);
+    ret.pushKV("Mature", zcBalance);
+    ret.pushKV("Unconfirmed", 0);
+    ret.pushKV("Immature", 0);
+    return ret;
 
 }
 
@@ -1218,11 +1219,11 @@ UniValue spendrawzerocoin(const JSONRPCRequest& request)
     std::vector<CZerocoinMint> vMintsSelected = {mint};
     return DoZxnkSpend(mint.GetDenominationAsAmount(), vMintsSelected, address_str);
 }
-
+*/
 static const CRPCCommand commands[] =
 { //  category              name                        actor (function)           okSafeMode
   //  --------------------- ------------------------    -----------------------    ----------
-    { "zerocoin",           "getzerocoinbalance",       &getzerocoinbalance,       false },
+/*    { "zerocoin",           "getzerocoinbalance",       &getzerocoinbalance,       false },
     { "zerocoin",           "listmintedzerocoins",      &listmintedzerocoins,      false },
     { "zerocoin",           "listspentzerocoins",       &listspentzerocoins,       false },
     { "zerocoin",           "listzerocoinamounts",      &listzerocoinamounts,      false },
@@ -1240,9 +1241,9 @@ static const CRPCCommand commands[] =
     { "zerocoin",           "generatemintlist",         &generatemintlist,         false },
     { "zerocoin",           "searchdzxnk",              &searchdzxnk,              false },
     { "zerocoin",           "dzxnkstate",               &dzxnkstate,               false },
-
+*/
     /* Not shown in help */
-    { "hidden",             "mintzerocoin",             &mintzerocoin,             false },
+ //   { "hidden",             "mintzerocoin",             &mintzerocoin,             false },
 };
 
 void RegisterZXNKRPCCommands(CRPCTable &tableRPC)
