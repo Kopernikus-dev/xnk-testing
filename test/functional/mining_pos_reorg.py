@@ -54,7 +54,7 @@ class ReorgStakeTest(EncoCoinTestFramework):
 
     def check_money_supply(self, expected_xnk):
         # verify that nodes have the expected XNK supply
-        xnk_supply = [self.nodes[i].getsupplyinfo(True)['supply']
+        piv_supply = [self.nodes[i].getsupplyinfo(True)['transparentsupply']
                       for i in range(self.num_nodes)]
         assert_equal(xnk_supply, [DecimalAmt(expected_xnk)] * self.num_nodes)
 
