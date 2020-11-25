@@ -2,7 +2,7 @@
 # Copyright (c) 2019 The EncoCoin developers
 name: encocoin-core
 base: core18
-version: 3.0.1
+version: 3.0.2
 summary:   EncoCoin (Private – Instant – Verified – Transaction)
 description: |
   EncoCoin is an MIT licensed,
