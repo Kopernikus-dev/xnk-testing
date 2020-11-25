@@ -7,13 +7,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   id="ic_empty_Dark_transactions"
-   width="100"
-   height="100"
-   viewBox="0 0 100 100"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="img-empty-dark-transactions1.svg"
    version="1.1"
-   sodipodi:docname="img-empty-dark-transactions.svg"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)">
+   viewBox="0 0 100 100"
+   height="100"
+   width="100"
+   id="ic_empty_Dark_transactions">
   <metadata
      id="metadata4782">
     <rdf:RDF>
@@ -22,104 +22,97 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <sodipodi:namedview
-     inkscape:document-rotation="0"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1920"
-     inkscape:window-height="1017"
-     id="namedview4780"
-     showgrid="false"
-     inkscape:zoom="8.5"
-     inkscape:cx="50"
+     inkscape:current-layer="Group_9035"
+     inkscape:window-maximized="0"
+     inkscape:window-y="113"
+     inkscape:window-x="652"
      inkscape:cy="50"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="Group_9035" />
+     inkscape:cx="50"
+     inkscape:zoom="8.5"
+     showgrid="false"
+     id="namedview4780"
+     inkscape:window-height="1040"
+     inkscape:window-width="1256"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     inkscape:document-rotation="0" />
   <defs
      id="defs4762">
     <style
-       type="text/css"
-       id="style4760">
+       id="style4760"
+       type="text/css">
             .cls-1{fill:#736412}.cls-2{fill:#c9b970}.cls-3{fill:none}
         </style>
   </defs>
   <g
-     id="Group_9036"
-     data-name="Group 9036">
+     data-name="Group 9036"
+     id="Group_9036">
     <path
-       id="Path_18988"
-       d="M50 26a24 24 0 1 0 24 24 24 24 0 0 0-24-24zm0 42a18 18 0 1 1 18-18 18 18 0 0 1-18 18z"
+       data-name="Path 18988"
        class="cls-1"
-       data-name="Path 18988" />
+       d="M50 26a24 24 0 1 0 24 24 24 24 0 0 0-24-24zm0 42a18 18 0 1 1 18-18 18 18 0 0 1-18 18z"
+       id="Path_18988" />
     <g
-       id="Group_9035"
-       data-name="Group 9035">
+       data-name="Group 9035"
+       id="Group_9035">
       <g
-         id="Group_9034"
-         data-name="Group 9034">
+         data-name="Group 9034"
+         id="Group_9034">
         <path
-           id="Path_18990"
+           data-name="Path 18990"
+           class="cls-2"
            d="M50 31a19 19 0 1 0 19 19 19.021 19.021 0 0 0-19-19zm0 36a17 17 0 1 1 17-17 17.019 17.019 0 0 1-17 17z"
-           class="cls-2"
-           data-name="Path 18990" />
+           id="Path_18990" />
         <path
-           id="Rectangle_4693"
-           d="M0 0h2v4H0z"
-           class="cls-2"
+           transform="translate(83 56)"
            data-name="Rectangle 4693"
-           transform="translate(83 56)" />
-        <path
-           id="Rectangle_4694"
-           d="M0 0h2v8H0z"
            class="cls-2"
-           data-name="Rectangle 4694"
-           transform="translate(83 44)" />
-        <path
-           id="Rectangle_4695"
-           d="M0 0h2v8H0z"
-           class="cls-2"
-           data-name="Rectangle 4695"
-           transform="translate(15 48)" />
-        <path
-           id="Rectangle_4696"
            d="M0 0h2v4H0z"
-           class="cls-2"
-           data-name="Rectangle 4696"
-           transform="translate(15 40)" />
+           id="Rectangle_4693" />
         <path
-           id="Path_18991"
-           d="M95.162 71H85v-7h-2v9h7.838L76 90.456 61.162 73H68v-2h-4.461a24.989 24.989 0 0 0-22.4-44.374L24 6.456 4.838 29H15v7h2v-9H9.162L24 9.544 38.838 27H32v2h4.461a24.989 24.989 0 0 0 22.4 44.374L76 93.544zM27 50a23 23 0 1 1 23 23 23.026 23.026 0 0 1-23-23z"
+           transform="translate(83 44)"
+           data-name="Rectangle 4694"
            class="cls-2"
-           data-name="Path 18991" />
+           d="M0 0h2v8H0z"
+           id="Rectangle_4694" />
+        <path
+           transform="translate(15 48)"
+           data-name="Rectangle 4695"
+           class="cls-2"
+           d="M0 0h2v8H0z"
+           id="Rectangle_4695" />
+        <path
+           transform="translate(15 40)"
+           data-name="Rectangle 4696"
+           class="cls-2"
+           d="M0 0h2v4H0z"
+           id="Rectangle_4696" />
+        <path
+           data-name="Path 18991"
+           class="cls-2"
+           d="M95.162 71H85v-7h-2v9h7.838L76 90.456 61.162 73H68v-2h-4.461a24.989 24.989 0 0 0-22.4-44.374L24 6.456 4.838 29H15v7h2v-9H9.162L24 9.544 38.838 27H32v2h4.461a24.989 24.989 0 0 0 22.4 44.374L76 93.544zM27 50a23 23 0 1 1 23 23 23.026 23.026 0 0 1-23-23z"
+           id="Path_18991" />
       </g>
-      <text
-         transform="scale(0.91316996,1.0950864)"
-         id="text851"
-         y="52.519306"
-         x="39.317616"
-         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.6667px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold Italic';fill:#c9b970;fill-opacity:1;stroke-width:2.95465;"
-         xml:space="preserve"><tspan
-           style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.6667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold Italic';fill:#c9b970;fill-opacity:1;stroke-width:2.95465;"
-           y="52.519306"
-           x="39.317616"
-           id="tspan849"
-           sodipodi:role="line">Xnk</tspan></text>
+      <path
+         style="fill:#c9b970;fill-opacity:1;stroke-width:0.123305"
+         d="m 47.992399,62.516934 -0.008,-1.260038 -1.256707,-0.670911 c -5.94631,-3.174529 -7.900363,-10.814207 -4.297182,-16.800511 1.076935,-1.789212 2.715999,-3.33189 4.658124,-4.384201 l 0.911764,-0.494026 V 37.578623 36.25 h 2.058824 2.058824 v 0.823114 0.823117 l 0.441177,0.0801 c 0.242647,0.04406 0.666176,0.08074 0.941176,0.08154 l 0.5,0.0014 v 1.273389 c 0,0.700363 0.03401,1.630853 0.07558,2.067754 l 0.07558,0.794365 -1.281464,0.0018 c -1.577372,0.0023 -2.506038,0.230006 -3.810879,0.934206 -1.725085,0.930999 -3.406303,3.069568 -3.861328,4.91175 l -0.119706,0.484629 h 2.87287 2.872871 v 1.608679 1.608679 l -2.700234,0.03906 c -1.764583,0.02553 -2.74508,0.08842 -2.829661,0.181494 -0.277114,0.304955 0.629254,2.245376 1.584958,3.393196 0.570084,0.684683 1.180365,1.155733 2.289612,1.767257 1.087145,0.599338 2.113635,0.830733 3.697559,0.833516 l 1.277529,0.0022 -0.04329,1.949786 c -0.05105,2.299024 -0.05958,2.31495 -1.240135,2.31495 h -0.74222 v 0.775409 0.775407 h -2.058824 -2.058824 l -0.008,-1.260037 z"
+         id="path2277" />
     </g>
   </g>
   <path
-     id="Rectangle_4697"
-     d="M0 0h100v100H0z"
+     data-name="Rectangle 4697"
      class="cls-3"
-     data-name="Rectangle 4697" />
+     d="M0 0h100v100H0z"
+     id="Rectangle_4697" />
 </svg>

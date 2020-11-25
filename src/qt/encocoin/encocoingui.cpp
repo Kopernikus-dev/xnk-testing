@@ -1,7 +1,7 @@
-// Copyright (c) 2019-2020 The EncoCoin developers
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #include "qt/encocoin/encocoingui.h"
 
 #ifdef Q_OS_MAC
@@ -21,13 +21,12 @@
 #include "init.h"
 #include "util.h"
 
-#include <QDesktopWidget>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
 #include <QApplication>
 #include <QColor>
-#include <QShortcut>
+#include <QHBoxLayout>
 #include <QKeySequence>
+#include <QScreen>
+#include <QShortcut>
 #include <QWindowStateChangeEvent>
 
 
@@ -49,7 +48,7 @@ EncoCoinGUI::EncoCoinGUI(const NetworkStyle* networkStyle, QWidget* parent) :
 
 
     // Adapt screen size
-    QRect rec = QApplication::desktop()->screenGeometry();
+    QRect rec = QGuiApplication::primaryScreen()->geometry();
     int adaptedHeight = (rec.height() < BASE_WINDOW_HEIGHT) ?  BASE_WINDOW_MIN_HEIGHT : BASE_WINDOW_HEIGHT;
     int adaptedWidth = (rec.width() < BASE_WINDOW_WIDTH) ?  BASE_WINDOW_MIN_WIDTH : BASE_WINDOW_WIDTH;
     GUIUtil::restoreWindowGeometry(
@@ -78,8 +77,7 @@ EncoCoinGUI::EncoCoinGUI(const NetworkStyle* networkStyle, QWidget* parent) :
 
 #ifdef ENABLE_WALLET
     // Create wallet frame
-    if(enableWallet){
-
+    if (enableWallet) {
         QFrame* centralWidget = new QFrame(this);
         this->setMinimumWidth(BASE_WINDOW_MIN_WIDTH);
         this->setMinimumHeight(BASE_WINDOW_MIN_HEIGHT);
@@ -126,7 +124,6 @@ EncoCoinGUI::EncoCoinGUI(const NetworkStyle* networkStyle, QWidget* parent) :
         sendWidget = new SendWidget(this);
         receiveWidget = new ReceiveWidget(this);
         addressesWidget = new AddressesWidget(this);
-        privacyWidget = new PrivacyWidget(this);
         masterNodesWidget = new MasterNodesWidget(this);
         coldStakingWidget = new ColdStakingWidget(this);
         settingsWidget = new SettingsWidget(this);
@@ -136,7 +133,6 @@ EncoCoinGUI::EncoCoinGUI(const NetworkStyle* networkStyle, QWidget* parent) :
         stackedContainer->addWidget(sendWidget);
         stackedContainer->addWidget(receiveWidget);
         stackedContainer->addWidget(addressesWidget);
-        stackedContainer->addWidget(privacyWidget);
         stackedContainer->addWidget(masterNodesWidget);
         stackedContainer->addWidget(coldStakingWidget);
         stackedContainer->addWidget(settingsWidget);
@@ -169,7 +165,8 @@ EncoCoinGUI::EncoCoinGUI(const NetworkStyle* networkStyle, QWidget* parent) :
 
 }
 
-void EncoCoinGUI::createActions(const NetworkStyle* networkStyle){
+void EncoCoinGUI::createActions(const NetworkStyle* networkStyle)
+{
     toggleHideAction = new QAction(networkStyle->getAppIcon(), tr("&Show / Hide"), this);
     toggleHideAction->setStatusTip(tr("Show or hide the main Window"));
 
@@ -185,7 +182,8 @@ void EncoCoinGUI::createActions(const NetworkStyle* networkStyle){
 /**
  * Here add every event connection
  */
-void EncoCoinGUI::connectActions() {
+void EncoCoinGUI::connectActions()
+{
     QShortcut *consoleShort = new QShortcut(this);
     consoleShort->setKey(QKeySequence(SHORT_KEY + Qt::Key_C));
     connect(consoleShort, &QShortcut::activated, [this](){
@@ -200,7 +198,6 @@ void EncoCoinGUI::connectActions() {
     connect(sendWidget, &SendWidget::showHide, this, &EncoCoinGUI::showHide);
     connect(receiveWidget, &ReceiveWidget::showHide, this, &EncoCoinGUI::showHide);
     connect(addressesWidget, &AddressesWidget::showHide, this, &EncoCoinGUI::showHide);
-    connect(privacyWidget, &PrivacyWidget::showHide, this, &EncoCoinGUI::showHide);
     connect(masterNodesWidget, &MasterNodesWidget::showHide, this, &EncoCoinGUI::showHide);
     connect(masterNodesWidget, &MasterNodesWidget::execDialog, this, &EncoCoinGUI::execDialog);
     connect(coldStakingWidget, &ColdStakingWidget::showHide, this, &EncoCoinGUI::showHide);
@@ -208,7 +205,9 @@ void EncoCoinGUI::connectActions() {
     connect(settingsWidget, &SettingsWidget::execDialog, this, &EncoCoinGUI::execDialog);
 }
 
-void EncoCoinGUI::createTrayIcon(const NetworkStyle* networkStyle) {
+
+void EncoCoinGUI::createTrayIcon(const NetworkStyle* networkStyle)
+{
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
     QString toolTip = tr("EncoCoin Core client") + " " + networkStyle->getTitleAddText();
@@ -219,8 +218,8 @@ void EncoCoinGUI::createTrayIcon(const NetworkStyle* networkStyle) {
     notificator = new Notificator(QApplication::applicationName(), trayIcon, this);
 }
 
-//
-EncoCoinGUI::~EncoCoinGUI() {
+EncoCoinGUI::~EncoCoinGUI()
+{
     // Unsubscribe from notifications from core
     unsubscribeFromCoreSignals();
 
@@ -232,16 +231,19 @@ EncoCoinGUI::~EncoCoinGUI() {
 #endif
 }
 
+
 /** Get restart command-line parameters and request restart */
-void EncoCoinGUI::handleRestart(QStringList args){
+void EncoCoinGUI::handleRestart(QStringList args)
+{
     if (!ShutdownRequested())
         Q_EMIT requestedRestart(args);
 }
 
-void EncoCoinGUI::setClientModel(ClientModel* clientModel) {
-    this->clientModel = clientModel;
-    if(this->clientModel) {
 
+void EncoCoinGUI::setClientModel(ClientModel* clientModel)
+{
+    this->clientModel = clientModel;
+    if (this->clientModel) {
         // Create system tray menu (or setup the dock menu) that late to prevent users from calling actions,
         // while the client has not yet fully loaded
         createTrayIconMenu();
@@ -276,7 +278,8 @@ void EncoCoinGUI::setClientModel(ClientModel* clientModel) {
     }
 }
 
-void EncoCoinGUI::createTrayIconMenu() {
+void EncoCoinGUI::createTrayIconMenu()
+{
 #ifndef Q_OS_MAC
     // return if trayIcon is unset (only on non-macOSes)
     if (!trayIcon)
@@ -289,7 +292,7 @@ void EncoCoinGUI::createTrayIconMenu() {
 #else
     // Note: On macOS, the Dock icon is used to provide the tray's functionality.
     MacDockIconHandler* dockIconHandler = MacDockIconHandler::instance();
-    connect(dockIconHandler, &MacDockIconHandler::dockIconClicked, this, &PIVXGUI::macosDockIconActivated);
+    connect(dockIconHandler, &MacDockIconHandler::dockIconClicked, this, &EncoCoinGUI::macosDockIconActivated);
 
     trayIconMenu = new QMenu(this);
     trayIconMenu->setAsDockMenu();
@@ -314,7 +317,7 @@ void EncoCoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
     }
 }
 #else
-void PIVXGUI::macosDockIconActivated()
+void EncoCoinGUI::macosDockIconActivated()
  {
      show();
      activateWindow();
@@ -350,15 +353,17 @@ void EncoCoinGUI::closeEvent(QCloseEvent* event)
 }
 
 
-void EncoCoinGUI::messageInfo(const QString& text){
-    if(!this->snackBar) this->snackBar = new SnackBar(this, this);
+void EncoCoinGUI::messageInfo(const QString& text)
+{
+    if (!this->snackBar) this->snackBar = new SnackBar(this, this);
     this->snackBar->setText(text);
     this->snackBar->resize(this->width(), snackBar->height());
     openDialog(this->snackBar, this);
 }
 
 
-void EncoCoinGUI::message(const QString& title, const QString& message, unsigned int style, bool* ret) {
+void EncoCoinGUI::message(const QString& title, const QString& message, unsigned int style, bool* ret)
+{
     QString strTitle =  tr("EncoCoin Core"); // default title
     // Default to information icon
     int nNotifyIcon = Notificator::Information;
@@ -397,18 +402,18 @@ void EncoCoinGUI::message(const QString& title, const QString& message, unsigned
         // Check for buttons, use OK as default, if none was supplied
         int r = 0;
         showNormalIfMinimized();
-        if(style & CClientUIInterface::BTN_MASK){
+        if (style & CClientUIInterface::BTN_MASK) {
             r = openStandardDialog(
                     (title.isEmpty() ? strTitle : title), message, "OK", "CANCEL"
                 );
-        }else{
+        } else {
             r = openStandardDialog((title.isEmpty() ? strTitle : title), message, "OK");
         }
         if (ret != NULL)
             *ret = r;
-    } else if(style & CClientUIInterface::MSG_INFORMATION_SNACK){
+    } else if (style & CClientUIInterface::MSG_INFORMATION_SNACK) {
         messageInfo(message);
-    }else {
+    } else {
         // Append title to "EncoCoin - "
         if (!msgType.isEmpty())
             strTitle += " - " + msgType;
@@ -416,7 +421,8 @@ void EncoCoinGUI::message(const QString& title, const QString& message, unsigned
     }
 }
 
-bool EncoCoinGUI::openStandardDialog(QString title, QString body, QString okBtn, QString cancelBtn){
+bool EncoCoinGUI::openStandardDialog(QString title, QString body, QString okBtn, QString cancelBtn)
+{
     DefaultDialog *dialog;
     if (isVisible()) {
         showHide(true);
@@ -438,7 +444,8 @@ bool EncoCoinGUI::openStandardDialog(QString title, QString body, QString okBtn,
 }
 
 
-void EncoCoinGUI::showNormalIfMinimized(bool fToggleHidden) {
+void EncoCoinGUI::showNormalIfMinimized(bool fToggleHidden)
+{
     if (!clientModel)
         return;
     if (!isHidden() && !isMinimized() && !GUIUtil::isObscured(this) && fToggleHidden) {
@@ -448,11 +455,13 @@ void EncoCoinGUI::showNormalIfMinimized(bool fToggleHidden) {
     }
 }
 
-void EncoCoinGUI::toggleHidden() {
+void EncoCoinGUI::toggleHidden()
+{
     showNormalIfMinimized(true);
 }
 
-void EncoCoinGUI::detectShutdown() {
+void EncoCoinGUI::detectShutdown()
+{
     if (ShutdownRequested()) {
         if (rpcConsole)
             rpcConsole->hide();
@@ -460,30 +469,31 @@ void EncoCoinGUI::detectShutdown() {
     }
 }
 
-void EncoCoinGUI::goToDashboard(){
-    if(stackedContainer->currentWidget() != dashboard){
+void EncoCoinGUI::goToDashboard()
+{
+    if (stackedContainer->currentWidget() != dashboard) {
         stackedContainer->setCurrentWidget(dashboard);
         topBar->showBottom();
     }
 }
 
-void EncoCoinGUI::goToSend(){
+void EncoCoinGUI::goToSend()
+{
     showTop(sendWidget);
 }
 
-void EncoCoinGUI::goToAddresses(){
+void EncoCoinGUI::goToAddresses()
+{
     showTop(addressesWidget);
 }
 
-void EncoCoinGUI::goToPrivacy(){
-    showTop(privacyWidget);
-}
-
-void EncoCoinGUI::goToMasterNodes(){
+void EncoCoinGUI::goToMasterNodes()
+{
     showTop(masterNodesWidget);
 }
 
-void EncoCoinGUI::goToColdStaking(){
+void EncoCoinGUI::goToColdStaking()
+{
     showTop(coldStakingWidget);
 }
 
@@ -491,18 +501,33 @@ void EncoCoinGUI::goToSettings(){
     showTop(settingsWidget);
 }
 
-void EncoCoinGUI::goToReceive(){
+void EncoCoinGUI::goToSettingsInfo()
+{
+    navMenu->selectSettings();
+    settingsWidget->showInformation();
+    goToSettings();
+}
+
+void EncoCoinGUI::goToReceive()
+{
     showTop(receiveWidget);
 }
 
-void EncoCoinGUI::showTop(QWidget* view){
-    if(stackedContainer->currentWidget() != view){
+void EncoCoinGUI::openNetworkMonitor()
+{
+    settingsWidget->openNetworkMonitor();
+}
+
+void EncoCoinGUI::showTop(QWidget* view)
+{
+    if (stackedContainer->currentWidget() != view) {
         stackedContainer->setCurrentWidget(view);
         topBar->showTop();
     }
 }
 
-void EncoCoinGUI::changeTheme(bool isLightTheme){
+void EncoCoinGUI::changeTheme(bool isLightTheme)
+{
 
     QString css = GUIUtil::loadStyleSheet();
     this->setStyleSheet(css);
@@ -514,7 +539,8 @@ void EncoCoinGUI::changeTheme(bool isLightTheme){
     updateStyle(this);
 }
 
-void EncoCoinGUI::resizeEvent(QResizeEvent* event){
+void EncoCoinGUI::resizeEvent(QResizeEvent* event)
+{
     // Parent..
     QMainWindow::resizeEvent(event);
     // background
@@ -523,19 +549,21 @@ void EncoCoinGUI::resizeEvent(QResizeEvent* event){
     Q_EMIT windowResizeEvent(event);
 }
 
-bool EncoCoinGUI::execDialog(QDialog *dialog, int xDiv, int yDiv){
+bool EncoCoinGUI::execDialog(QDialog *dialog, int xDiv, int yDiv)
+{
     return openDialogWithOpaqueBackgroundY(dialog, this);
 }
 
-void EncoCoinGUI::showHide(bool show){
-    if(!op) op = new QLabel(this);
-    if(!show){
+void EncoCoinGUI::showHide(bool show)
+{
+    if (!op) op = new QLabel(this);
+    if (!show) {
         op->setVisible(false);
         opEnabled = false;
-    }else{
+    } else {
         QColor bg("#000000");
         bg.setAlpha(200);
-        if(!isLightTheme()){
+        if (!isLightTheme()) {
             bg = QColor("#00000000");
             bg.setAlpha(150);
         }
@@ -554,11 +582,13 @@ void EncoCoinGUI::showHide(bool show){
     }
 }
 
-int EncoCoinGUI::getNavWidth(){
+int EncoCoinGUI::getNavWidth()
+{
     return this->navMenu->width();
 }
 
-void EncoCoinGUI::openFAQ(int section){
+void EncoCoinGUI::openFAQ(int section)
+{
     showHide(true);
     SettingsFaqWidget* dialog = new SettingsFaqWidget(this);
     if (section > 0) dialog->setSection(section);
@@ -571,7 +601,7 @@ void EncoCoinGUI::openFAQ(int section){
 bool EncoCoinGUI::addWallet(const QString& name, WalletModel* walletModel)
 {
     // Single wallet supported for now..
-    if(!stackedContainer || !clientModel || !walletModel)
+    if (!stackedContainer || !clientModel || !walletModel)
         return false;
 
     // set the model for every view
@@ -581,13 +611,12 @@ bool EncoCoinGUI::addWallet(const QString& name, WalletModel* walletModel)
     receiveWidget->setWalletModel(walletModel);
     sendWidget->setWalletModel(walletModel);
     addressesWidget->setWalletModel(walletModel);
-    privacyWidget->setWalletModel(walletModel);
     masterNodesWidget->setWalletModel(walletModel);
     coldStakingWidget->setWalletModel(walletModel);
     settingsWidget->setWalletModel(walletModel);
 
     // Connect actions..
-    connect(privacyWidget, &PrivacyWidget::message, this, &EncoCoinGUI::message);
+    connect(walletModel, &WalletModel::message, this, &EncoCoinGUI::message);
     connect(masterNodesWidget, &MasterNodesWidget::message, this, &EncoCoinGUI::message);
     connect(coldStakingWidget, &ColdStakingWidget::message, this, &EncoCoinGUI::message);
     connect(topBar, &TopBar::message, this, &EncoCoinGUI::message);
@@ -602,18 +631,21 @@ bool EncoCoinGUI::addWallet(const QString& name, WalletModel* walletModel)
     return true;
 }
 
-bool EncoCoinGUI::setCurrentWallet(const QString& name) {
+bool EncoCoinGUI::setCurrentWallet(const QString& name)
+{
     // Single wallet supported.
     return true;
 }
 
-void EncoCoinGUI::removeAllWallets() {
+void EncoCoinGUI::removeAllWallets()
+{
     // Single wallet supported.
 }
 
-void EncoCoinGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address) {
+void EncoCoinGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address)
+{
     // Only send notifications when not disabled
-    if(!bdisableSystemnotifications){
+    if (!bdisableSystemnotifications) {
         // On new transaction, make an info balloon
         message((amount) < 0 ? (pwalletMain->fMultiSendNotify == true ? tr("Sent MultiSend transaction") : tr("Sent transaction")) : tr("Incoming transaction"),
             tr("Date: %1\n"

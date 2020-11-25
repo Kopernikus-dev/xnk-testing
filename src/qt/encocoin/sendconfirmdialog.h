@@ -2,11 +2,12 @@
 // Copyright (c) 2020	   The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #ifndef SENDCONFIRMDIALOG_H
 #define SENDCONFIRMDIALOG_H
 
-#include <QDialog>
 #include "walletmodeltransaction.h"
+#include "qt/encocoin/focuseddialog.h"
 #include "qt/encocoin/snackbar.h"
 
 class WalletModelTransaction;
@@ -20,7 +21,7 @@ QT_BEGIN_NAMESPACE
 class QModelIndex;
 QT_END_NAMESPACE
 
-class TxDetailDialog : public QDialog
+class TxDetailDialog : public FocusedDialog
 {
     Q_OBJECT
 
@@ -28,20 +29,18 @@ public:
     explicit TxDetailDialog(QWidget *parent = nullptr, bool isConfirmDialog = true, const QString& warningStr = QString());
     ~TxDetailDialog();
 
-    void showEvent(QShowEvent *event) override;
     bool isConfirm() { return this->confirm;}
     WalletModel::SendCoinsReturn getStatus() { return this->sendStatus;}
 
     void setData(WalletModel *model, WalletModelTransaction& tx);
-    
     void setData(WalletModel *model, const QModelIndex &index);
     void setDisplayUnit(int unit){this->nDisplayUnit = unit;};
 
 public Q_SLOTS:
-    void acceptTx();
+    void accept() override;
+    void reject() override;
     void onInputsClicked();
     void onOutputsClicked();
-    void closeDialog();
 
 private:
     Ui::TxDetailDialog *ui;
@@ -56,9 +55,6 @@ private:
 
     bool inputsLoaded = false;
     bool outputsLoaded = false;
-
-protected:
-    void keyPressEvent(QKeyEvent *e) override;
 };
 
 #endif // SENDCONFIRMDIALOG_H

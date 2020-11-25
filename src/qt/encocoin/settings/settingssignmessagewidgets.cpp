@@ -1,4 +1,5 @@
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -32,24 +33,16 @@ SettingsSignMessageWidgets::SettingsSignMessageWidgets(EncoCoinGUI* _window, QWi
     ui->left->setContentsMargins(10,10,10,10);
 
     // Title
-    ui->labelTitle->setText(tr("Sign/Verify Message"));
     ui->labelTitle->setProperty("cssClass", "text-title-screen");
-
-    // Subtitle
     ui->labelSubtitle1->setProperty("cssClass", "text-subtitle");
 
     // Address
-    ui->labelSubtitleAddress->setText(tr("EncoCoin address or contact label"));
     ui->labelSubtitleAddress->setProperty("cssClass", "text-title");
-
-    ui->addressIn_SM->setPlaceholderText(tr("Enter address"));
     ui->addressIn_SM->setProperty("cssClass", "edit-primary-multi-book");
     ui->addressIn_SM->setAttribute(Qt::WA_MacShowFocusRect, 0);
     setShadow(ui->addressIn_SM);
 
     /* Button Group */
-    ui->pushSign->setText(tr("Sign"));
-    ui->pushVerify->setText(tr("Verify"));
     setCssProperty(ui->pushSign, "btn-check-right");
     setCssProperty(ui->pushVerify, "btn-check-right");
     ui->labelSubtitleSwitch->setText(tr("Select mode"));
@@ -58,17 +51,13 @@ SettingsSignMessageWidgets::SettingsSignMessageWidgets(EncoCoinGUI* _window, QWi
     updateMode();
 
     // Message
-    ui->labelSubtitleMessage->setText(tr("Message"));
     ui->labelSubtitleMessage->setProperty("cssClass", "text-title");
-
-    ui->messageIn_SM->setPlaceholderText(tr("Write message"));
     ui->messageIn_SM->setProperty("cssClass","edit-primary");
     setShadow(ui->messageIn_SM);
     ui->messageIn_SM->setAttribute(Qt::WA_MacShowFocusRect, 0);
 
-    ui->labelSubtitleSignature->setText(tr("Signature"));
+    // Signature
     ui->labelSubtitleSignature->setProperty("cssClass", "text-title");
-    ui->signatureOut_SM->setPlaceholderText(tr("Signature"));
     ui->signatureOut_SM->setAttribute(Qt::WA_MacShowFocusRect, 0);
 
     initCssEditLine(ui->signatureOut_SM);
@@ -77,8 +66,6 @@ SettingsSignMessageWidgets::SettingsSignMessageWidgets(EncoCoinGUI* _window, QWi
     // Buttons
     btnContact = ui->addressIn_SM->addAction(QIcon("://ic-contact-arrow-down"), QLineEdit::TrailingPosition);
 
-    ui->pushButtonSave->setText(tr("SIGN"));
-    ui->pushButtonClear->setText(tr("CLEAR ALL"));
     setCssBtnPrimary(ui->pushButtonSave);
     setCssBtnSecondary(ui->pushButtonClear);
 
@@ -156,7 +143,7 @@ void SettingsSignMessageWidgets::onPasteButtonSMClicked()
     setAddress_SM(QApplication::clipboard()->text());
 }
 
-void SettingsSignMessageWidgets::onClearAll() 
+void SettingsSignMessageWidgets::onClearAll()
 {
     ui->addressIn_SM->clear();
     ui->signatureOut_SM->clear();
@@ -172,14 +159,14 @@ void SettingsSignMessageWidgets::onSignMessageButtonSMClicked()
     /* Clear old signature to ensure users don't get confused on error with an old signature displayed */
     ui->signatureOut_SM->clear();
 
-    CBitcoinAddress addr(ui->addressIn_SM->text().toStdString());
-    if (!addr.IsValid()) {
+    CTxDestination addr = DecodeDestination(ui->addressIn_SM->text().toStdString());
+    if (!IsValidDestination(addr)) {
         ui->statusLabel_SM->setStyleSheet("QLabel { color: red; }");
         ui->statusLabel_SM->setText(tr("The entered address is invalid.") + QString(" ") + tr("Please check the address and try again."));
         return;
     }
-    CKeyID keyID;
-    if (!addr.GetKeyID(keyID)) {
+    const CKeyID* keyID = boost::get<CKeyID>(&addr);
+    if (!keyID) {
         // TODO: change css..
         //ui->addressIn_SM->setValid(false);
         ui->statusLabel_SM->setStyleSheet("QLabel { color: red; }");
@@ -195,7 +182,7 @@ void SettingsSignMessageWidgets::onSignMessageButtonSMClicked()
     }
 
     CKey key;
-    if (!pwalletMain->GetKey(keyID, key)) {
+    if (!pwalletMain->GetKey(*keyID, key)) {
         ui->statusLabel_SM->setStyleSheet("QLabel { color: red; }");
         ui->statusLabel_SM->setText(tr("Private key for the entered address is not available."));
         return;
@@ -227,14 +214,14 @@ void SettingsSignMessageWidgets::onVerifyMessage()
     ui->statusLabel_SM->setStyleSheet("QLabel { color: transparent; }");
      */
 
-    CBitcoinAddress addr(ui->addressIn_SM->text().toStdString());
-    if (!addr.IsValid()) {
+    CTxDestination addr = DecodeDestination(ui->addressIn_SM->text().toStdString());
+    if (!IsValidDestination(addr)) {
         ui->statusLabel_SM->setStyleSheet("QLabel { color: red; }");
         ui->statusLabel_SM->setText(tr("The entered address is invalid.") + QString(" ") + tr("Please check the address and try again."));
         return;
     }
-    CKeyID keyID;
-    if (!addr.GetKeyID(keyID)) {
+    const CKeyID* keyID = boost::get<CKeyID>(&addr);
+    if (!keyID) {
         //ui->addressIn_SM->setValid(false);
         ui->statusLabel_SM->setStyleSheet("QLabel { color: red; }");
         ui->statusLabel_SM->setText(tr("The entered address does not refer to a key.") + QString(" ") + tr("Please check the address and try again."));
@@ -263,7 +250,7 @@ void SettingsSignMessageWidgets::onVerifyMessage()
         return;
     }
 
-    if (!(CBitcoinAddress(pubkey.GetID()) == addr)) {
+    if (!(pubkey.GetID() == *keyID)) {
         ui->statusLabel_SM->setStyleSheet("QLabel { color: red; }");
         ui->statusLabel_SM->setText(QString("<nobr>") + tr("Message verification failed.") + QString("</nobr>"));
         return;
@@ -276,7 +263,7 @@ void SettingsSignMessageWidgets::onVerifyMessage()
 void SettingsSignMessageWidgets::onAddressesClicked()
 {
     int addressSize = walletModel->getAddressTableModel()->sizeRecv();
-    if(addressSize == 0) {
+    if (addressSize == 0) {
         inform(tr("No addresses available, you can go to the receive screen and add some there!"));
         return;
     }
@@ -314,7 +301,7 @@ void SettingsSignMessageWidgets::onAddressesClicked()
 
 void SettingsSignMessageWidgets::resizeMenu()
 {
-    if(menuContacts && menuContacts->isVisible()) {
+    if (menuContacts && menuContacts->isVisible()) {
         int width = ui->containerAddress->width();
         menuContacts->resizeList(width, menuContacts->height());
         menuContacts->resize(width, menuContacts->height());

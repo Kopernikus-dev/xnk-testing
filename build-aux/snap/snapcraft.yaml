@@ -1,8 +1,9 @@
 # Copyright (c) 2018-2019 The Ion developers
-# Copyright (c) 2019 The EncoCoin developers
+# Copyright (c) 2019-2020 The PIVX developers
+# Copyright (c) 2020 The EncoCoin developers
 name: encocoin-core
 base: core18
-version: 3.0.2
+version: 3.1.0
 summary:   EncoCoin (Private – Instant – Verified – Transaction)
 description: |
   EncoCoin is an MIT licensed,

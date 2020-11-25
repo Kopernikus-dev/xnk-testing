@@ -1,6 +1,7 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2020 The EncoCoin developers
+// Copyright (c) 2015-2020 The PIVX developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -66,7 +67,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
                 // XNK stake reward
                 sub.involvesWatchAddress = mine & ISMINE_WATCH_ONLY;
                 sub.type = TransactionRecord::StakeMint;
-                sub.address = CBitcoinAddress(address).ToString();
+                sub.address = EncodeDestination(address);
                 sub.credit = nNet;
             }
         } else {
@@ -77,7 +78,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
                 isminetype mine = wallet->IsMine(wtx.vout[nIndexMN]);
                 sub.involvesWatchAddress = mine & ISMINE_WATCH_ONLY;
                 sub.type = TransactionRecord::MNReward;
-                sub.address = CBitcoinAddress(destMN).ToString();
+                sub.address = EncodeDestination(destMN);
                 sub.credit = wtx.vout[nIndexMN].nValue;
             }
         }
@@ -111,7 +112,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
             std::string strAddress = "";
             CTxDestination address;
             if (ExtractDestination(txout.scriptPubKey, address))
-                strAddress = CBitcoinAddress(address).ToString();
+                strAddress = EncodeDestination(address);
 
             // a zerocoinspend that was sent to an address held by this wallet
             isminetype mine = wallet->IsMine(txout);
@@ -177,7 +178,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
                 if (ExtractDestination(txout.scriptPubKey, address) && IsMine(*wallet, address)) {
                     // Received by EncoCoin Address
                     sub.type = TransactionRecord::RecvWithAddress;
-                    sub.address = CBitcoinAddress(address).ToString();
+                    sub.address = EncodeDestination(address);
                 } else {
                     // Received by IP connection (deprecated features), or a multisignature or other non-simple transaction
                     sub.type = TransactionRecord::RecvFromOther;
@@ -228,7 +229,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
             // Label for payment to self
             CTxDestination address;
             if (ExtractDestination(wtx.vout[0].scriptPubKey, address)) {
-                sub.address = CBitcoinAddress(address).ToString();
+                sub.address = EncodeDestination(address);
             }
 
             CAmount nChange = wtx.GetChange();
@@ -263,7 +264,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
                         continue;
                     // Sent to EncoCoin Address
                     sub.type = TransactionRecord::SendToAddress;
-                    sub.address = CBitcoinAddress(address).ToString();
+                    sub.address = EncodeDestination(address);
                 } else if (txout.IsZerocoinMint()){
                     sub.type = TransactionRecord::ZerocoinMint;
                     sub.address = mapValue["zerocoinmint"];
@@ -385,10 +386,10 @@ bool TransactionRecord::ExtractAddress(const CScript& scriptPubKey, bool fColdSt
         addressStr = "No available address";
         return false;
     } else {
-        addressStr = CBitcoinAddress(
+        addressStr = EncodeDestination(
                 address,
                 (fColdStake ? CChainParams::STAKING_ADDRESS : CChainParams::PUBKEY_ADDRESS)
-        ).ToString();
+        );
         return true;
     }
 }

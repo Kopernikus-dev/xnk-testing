@@ -1,7 +1,7 @@
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #include "qt/encocoin/settings/settingswidget.h"
 #include "qt/encocoin/settings/forms/ui_settingswidget.h"
 #include "qt/encocoin/qtutils.h"
@@ -169,6 +169,7 @@ SettingsWidget::SettingsWidget(EncoCoinGUI* parent) :
     mapper = new QDataWidgetMapper(this);
     mapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
     mapper->setOrientation(Qt::Vertical);
+
     // scroll area
     ui->scrollArea->setWidgetResizable(true);
     QSizePolicy scrollAreaPolicy = ui->scrollArea->sizePolicy();
@@ -185,35 +186,35 @@ SettingsWidget::SettingsWidget(EncoCoinGUI* parent) :
 
 void SettingsWidget::loadClientModel()
 {
-    if(clientModel) {
+    if (clientModel) {
         this->settingsInformationWidget->setClientModel(this->clientModel);
         this->settingsConsoleWidget->setClientModel(this->clientModel);
 
         OptionsModel *optionsModel = this->clientModel->getOptionsModel();
         if (optionsModel) {
+            settingsDisplayOptionsWidget->setClientModel(clientModel);
+            settingsMainOptionsWidget->setClientModel(clientModel);
+            settingsWalletOptionsWidget->setClientModel(clientModel);
+
             mapper->setModel(optionsModel);
             setMapper();
             mapper->toFirst();
-            settingsMainOptionsWidget->setClientModel(clientModel);
-            settingsDisplayOptionsWidget->setClientModel(clientModel);
-            settingsWalletOptionsWidget->setClientModel(clientModel);
-            /* keep consistency for action triggered elsewhere */
-
-            // TODO: Connect show restart needed and apply changes.
         }
     }
 }
 
-void SettingsWidget::loadWalletModel(){
+void SettingsWidget::loadWalletModel()
+{
     this->settingsBackupWallet->setWalletModel(this->walletModel);
-    this->settingsSingMessageWidgets->setWalletModel(this->walletModel);
     this->settingsExportCsvWidget->setWalletModel(this->walletModel);
+    this->settingsSingMessageWidgets->setWalletModel(this->walletModel);
     this->settingsBitToolWidget->setWalletModel(this->walletModel);
     //this->settingsMultisendWidget->setWalletModel(this->walletModel); no visible for now
     this->settingsDisplayOptionsWidget->setWalletModel(this->walletModel);
 }
 
-void SettingsWidget::onResetAction(){
+void SettingsWidget::onResetAction()
+{
     if (walletModel) {
         // confirmation dialog
         if (!ask(tr("Confirm options reset"), tr("Client restart required to activate changes.") + "<br><br>" + tr("Client will be shutdown, do you want to proceed?")))
@@ -225,10 +226,18 @@ void SettingsWidget::onResetAction(){
     }
 }
 
-void SettingsWidget::onSaveOptionsClicked(){
-    if(mapper->submit()) {
+void SettingsWidget::onSaveOptionsClicked()
+{
+    if (mapper->submit()) {
+        OptionsModel* optionsModel = this->clientModel->getOptionsModel();
+        if (optionsModel->isSSTChanged() && !optionsModel->isSSTValid()) {
+            const double stakeSplitMinimum = optionsModel->getSSTMinimum();
+            settingsWalletOptionsWidget->setSpinBoxStakeSplitThreshold(stakeSplitMinimum);
+            inform(tr("Stake Split too low, it shall be either >= %1 or equal to 0 (to disable stake splitting)").arg(stakeSplitMinimum));
+            return;
+        }
         pwalletMain->MarkDirty();
-        if (this->clientModel->getOptionsModel()->isRestartRequired()) {
+        if (optionsModel->isRestartRequired()) {
             bool fAcceptRestart = openStandardDialog(tr("Restart required"), tr("Your wallet needs to be restarted to apply the changes\n"), tr("Restart Now"), tr("Restart Later"));
 
             if (fAcceptRestart) {
@@ -272,92 +281,118 @@ void SettingsWidget::selectMenu(QPushButton* btn)
         subMenuSelected->setVisible(false);
     }
 }
+
 void SettingsWidget::onFileClicked()
 {
     selectMenu(ui->pushButtonFile);
 }
 
-void SettingsWidget::onBackupWalletClicked() {
+void SettingsWidget::onBackupWalletClicked()
+{
     ui->stackedWidgetContainer->setCurrentWidget(settingsBackupWallet);
     selectOption(ui->pushButtonFile2);
 }
 
-void SettingsWidget::onSignMessageClicked() {
+void SettingsWidget::onSignMessageClicked()
+{
     ui->stackedWidgetContainer->setCurrentWidget(settingsSingMessageWidgets);
     selectOption(ui->pushButtonConfiguration4);
 }
 
-void SettingsWidget::onConfigurationClicked() {
+void SettingsWidget::onConfigurationClicked()
+{
     selectMenu(ui->pushButtonConfiguration);
 }
 
-void SettingsWidget::onBipToolClicked() {
+void SettingsWidget::onBipToolClicked()
+{
     ui->stackedWidgetContainer->setCurrentWidget(settingsBitToolWidget);
     selectOption(ui->pushButtonConfiguration3);
 }
 
-void SettingsWidget::onMultisendClicked() {
+void SettingsWidget::onMultisendClicked()
+{
     ui->stackedWidgetContainer->setCurrentWidget(settingsMultisendWidget);
     selectOption(ui->pushButtonFile3);
 }
 
-void SettingsWidget::onExportCSVClicked() {
+void SettingsWidget::onExportCSVClicked()
+{
     ui->stackedWidgetContainer->setCurrentWidget(settingsExportCsvWidget);
     selectOption(ui->pushButtonExportCsv);
 }
 
-void SettingsWidget::onOptionsClicked() {
+void SettingsWidget::onOptionsClicked()
+{
     selectMenu(ui->pushButtonOptions);
 }
 
-void SettingsWidget::onMainOptionsClicked() {
+void SettingsWidget::onMainOptionsClicked()
+{
     ui->stackedWidgetContainer->setCurrentWidget(settingsMainOptionsWidget);
     selectOption(ui->pushButtonOptions1);
 }
 
-void SettingsWidget::onWalletOptionsClicked() {
+void SettingsWidget::onWalletOptionsClicked()
+{
     ui->stackedWidgetContainer->setCurrentWidget(settingsWalletOptionsWidget);
     selectOption(ui->pushButtonOptions2);
 }
 
-void SettingsWidget::onDisplayOptionsClicked() {
+void SettingsWidget::onDisplayOptionsClicked()
+{
     ui->stackedWidgetContainer->setCurrentWidget(settingsDisplayOptionsWidget);
     selectOption(ui->pushButtonOptions5);
 }
 
 
-void SettingsWidget::onToolsClicked() {
+void SettingsWidget::onToolsClicked()
+{
     selectMenu(ui->pushButtonTools);
 }
 
-void SettingsWidget::onInformationClicked() {
+void SettingsWidget::onInformationClicked()
+{
     ui->stackedWidgetContainer->setCurrentWidget(settingsInformationWidget);
     selectOption(ui->pushButtonTools1);
 }
 
-void SettingsWidget::showDebugConsole(){
+void SettingsWidget::showDebugConsole()
+{
     ui->pushButtonTools->setChecked(true);
     onToolsClicked();
     ui->pushButtonTools2->setChecked(true);
     onDebugConsoleClicked();
 }
 
-void SettingsWidget::onDebugConsoleClicked() {
+void SettingsWidget::showInformation()
+{
+    ui->pushButtonTools->setChecked(true);
+    onToolsClicked();
+    ui->pushButtonTools1->setChecked(true);
+    onInformationClicked();
+}
+
+void SettingsWidget::onDebugConsoleClicked()
+{
     ui->stackedWidgetContainer->setCurrentWidget(settingsConsoleWidget);
     selectOption(ui->pushButtonTools2);
 }
 
-void SettingsWidget::onWalletRepairClicked() {
+void SettingsWidget::onWalletRepairClicked()
+{
     ui->stackedWidgetContainer->setCurrentWidget(settingsWalletRepairWidget);
     selectOption(ui->pushButtonTools5);
 }
 
 
-void SettingsWidget::onHelpClicked() {
+void SettingsWidget::onHelpClicked()
+{
     selectMenu(ui->pushButtonHelp);
 }
 
-void SettingsWidget::onAboutClicked() {
+void SettingsWidget::onAboutClicked()
+{
     if (!clientModel)
         return;
 
@@ -366,21 +401,29 @@ void SettingsWidget::onAboutClicked() {
 
 }
 
-void SettingsWidget::selectOption(QPushButton* option){
+void SettingsWidget::openNetworkMonitor()
+{
+    settingsInformationWidget->openNetworkMonitor();
+}
+
+void SettingsWidget::selectOption(QPushButton* option)
+{
     for (QPushButton* wid : options) {
-        if(wid) wid->setChecked(wid == option);
+        if (wid) wid->setChecked(wid == option);
     }
 }
 
-void SettingsWidget::onDiscardChanges(){
-    if(clientModel) {
+void SettingsWidget::onDiscardChanges()
+{
+    if (clientModel) {
         if (!ask(tr("Discard Unsaved Changes"), tr("You are just about to discard all of your unsaved options.\n\nAre you sure?\n")))
             return;
         clientModel->getOptionsModel()->refreshDataView();
     }
 }
 
-void SettingsWidget::setMapper(){
+void SettingsWidget::setMapper()
+{
     settingsMainOptionsWidget->setMapper(mapper);
     settingsWalletOptionsWidget->setMapper(mapper);
     settingsDisplayOptionsWidget->setMapper(mapper);
@@ -397,6 +440,7 @@ bool SettingsWidget::openStandardDialog(const QString& title, const QString& bod
     return confirmDialog->isOk;
 }
 
-SettingsWidget::~SettingsWidget(){
+SettingsWidget::~SettingsWidget()
+{
     delete ui;
 }

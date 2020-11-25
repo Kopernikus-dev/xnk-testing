@@ -1,4 +1,5 @@
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -27,12 +28,7 @@ public Q_SLOTS:
    void windowResizeEvent(QResizeEvent* event);
    void setSection(int num);
 private Q_SLOTS:
-    void onFaq1Clicked();
-    void onFaq2Clicked();
-    void onFaq3Clicked();
-    void onFaq4Clicked();
-    void onFaq5Clicked();
-    void onFaq6Clicked();
+    void onFaqClicked(const QWidget* const widget);
 private:
     Ui::SettingsFaqWidget *ui;
     int pos = 0;

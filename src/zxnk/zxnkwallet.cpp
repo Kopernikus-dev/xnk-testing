@@ -1,5 +1,5 @@
-// Copyright (c) 2017-2020	The PIVX developers
-// Copyright (c) 2020		The EncoCoin developers
+// Copyright (c) 2017-2020 The PIVX developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -267,7 +267,7 @@ void CzXNKWallet::SyncWithChain(bool fGenerateMintPool)
 
                     //Fill out wtx so that a transaction record can be created
                     wtx.nTimeReceived = pindex->GetBlockTime();
-                    wallet->AddToWallet(wtx, false, &walletdb);
+                    wallet->AddToWallet(wtx, &walletdb);
                     setAddedTx.insert(txHash);
                 }
 
@@ -324,7 +324,7 @@ bool CzXNKWallet::SetMintSeen(const CBigNum& bnValue, const int& nHeight, const 
 
         wtx.nTimeReceived = pindex->nTime;
         CWalletDB walletdb(wallet->strWalletFile);
-        wallet->AddToWallet(wtx, false, &walletdb);
+        wallet->AddToWallet(wtx, &walletdb);
     }
 
     // Add to zxnkTracker which also adds to database

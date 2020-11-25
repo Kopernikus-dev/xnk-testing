@@ -11,6 +11,7 @@ src/encocoin
 src/encocoind
 src/encocoin-cli
 src/encocoin-tx
+src/bench/bench_encocoin
 src/test/test_encocoin
 src/qt/test/test_encocoin-qt
 

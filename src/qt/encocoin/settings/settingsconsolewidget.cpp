@@ -1,4 +1,5 @@
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -71,7 +72,7 @@ class QtRPCTimerBase: public QObject, public RPCTimerBase
 {
     Q_OBJECT
 public:
-    QtRPCTimerBase(boost::function<void(void)>& _func, int64_t millis):
+    QtRPCTimerBase(std::function<void(void)>& _func, int64_t millis):
             func(_func)
     {
         timer.setSingleShot(true);
@@ -79,8 +80,7 @@ public:
         timer.start(millis);
     }
     ~QtRPCTimerBase() {}
-private Q_SLOTS:
-            void timeout() { func(); }
+
 private:
     QTimer timer;
     std::function<void(void)> func;
@@ -91,7 +91,7 @@ class QtRPCTimerInterface: public RPCTimerInterface
 public:
     ~QtRPCTimerInterface() {}
     const char *Name() { return "Qt"; }
-    RPCTimerBase* NewTimer(boost::function<void(void)>& func, int64_t millis)
+    RPCTimerBase* NewTimer(std::function<void(void)>& func, int64_t millis)
     {
         return new QtRPCTimerBase(func, millis);
     }
@@ -210,9 +210,10 @@ void RPCExecutor::requestCommand(const QString& command)
         std::string strPrint;
         // Convert argument list to JSON objects in method-dependent way,
         // and pass it along with the method name to the dispatcher.
-        UniValue result = tableRPC.execute(
-                args[0],
-                RPCConvertValues(args[0], std::vector<std::string>(args.begin() + 1, args.end())));
+        JSONRPCRequest req;
+        req.params = RPCConvertValues(args[0], std::vector<std::string>(args.begin() + 1, args.end()));
+        req.strMethod = args[0];
+        UniValue result = tableRPC.execute(req);
 
         // Format result reply
         if (result.isNull())
@@ -249,9 +250,10 @@ SettingsConsoleWidget::SettingsConsoleWidget(EncoCoinGUI* _window, QWidget *pare
     // Containers
     setCssProperty({ui->left, ui->messagesWidget}, "container");
     ui->left->setContentsMargins(10,10,10,10);
+    ui->messagesWidget->setReadOnly(true);
+    ui->messagesWidget->setTextInteractionFlags(Qt::TextInteractionFlag::TextSelectableByMouse);
 
     // Title
-    ui->labelTitle->setText(tr("Console"));
     setCssTitleScreen(ui->labelTitle);
 
     // Console container
@@ -264,17 +266,14 @@ SettingsConsoleWidget::SettingsConsoleWidget(EncoCoinGUI* _window, QWidget *pare
 
     // Buttons
     ui->pushButton->setProperty("cssClass", "ic-arrow");
-    ui->pushButtonCommandOptions->setText(tr("Command Line Options "));
-    ui->pushButtonOpenDebug->setText(tr("Open Debug File"));
     setCssBtnSecondary(ui->pushButtonOpenDebug);
     setCssBtnSecondary(ui->pushButtonClear);
     setCssBtnSecondary(ui->pushButtonCommandOptions);
 
     setShadow(ui->pushButtonClear);
-    ui->pushButtonClear->setToolTip(tr("Clear history"));
     connect(ui->pushButtonClear, &QPushButton::clicked, [this]{ clear(false); });
     connect(ui->pushButtonOpenDebug, &QPushButton::clicked, [this](){
-        if(!GUIUtil::openDebugLogfile()){
+        if (!GUIUtil::openDebugLogfile()) {
             inform(tr("Cannot open debug file.\nVerify that you have installed a predetermined text editor."));
         }
     });
@@ -334,7 +333,7 @@ bool SettingsConsoleWidget::eventFilter(QObject* obj, QEvent* event)
             case Qt::Key_Return:
             case Qt::Key_Enter:
                 // forward these events to lineEdit
-                if(obj == autoCompleter->popup()) {
+                if (obj == autoCompleter->popup()) {
                     QApplication::postEvent(ui->lineEdit, new QKeyEvent(*keyevt));
                     return true;
                 }
@@ -349,12 +348,15 @@ bool SettingsConsoleWidget::eventFilter(QObject* obj, QEvent* event)
                     QApplication::postEvent(ui->lineEdit, new QKeyEvent(*keyevt));
                     return true;
                 }
+                if (mod == Qt::ControlModifier && key == Qt::Key_L)
+                    clear(false);
         }
     }
     return QWidget::eventFilter(obj, event);
 }
 
-void SettingsConsoleWidget::loadClientModel() {
+void SettingsConsoleWidget::loadClientModel()
+{
     if (clientModel){
 
         //Setup autocomplete and attach it
@@ -392,7 +394,8 @@ static QString categoryClass(int category)
     }
 }
 
-void SettingsConsoleWidget::clear(bool clearHistory){
+void SettingsConsoleWidget::clear(bool clearHistory)
+{
     ui->messagesWidget->clear();
     if (clearHistory) {
         history.clear();
@@ -536,7 +539,8 @@ void SettingsConsoleWidget::changeTheme(bool isLightTheme, QString &theme)
     updateStyle(ui->messagesWidget);
 }
 
-void SettingsConsoleWidget::onCommandsClicked() {
+void SettingsConsoleWidget::onCommandsClicked()
+{
     if (!clientModel)
         return;
 

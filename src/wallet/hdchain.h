@@ -1,5 +1,8 @@
-// Copyright (c) 2020 The PIVX Core developers
+// Copyright (c) 2020 The PIVX developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #ifndef ENCOCOIN_HDCHAIN_H
 #define ENCOCOIN_HDCHAIN_H
 
@@ -31,9 +34,9 @@ public:
 
     ADD_SERIALIZE_METHODS;
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
+    inline void SerializationOp(Stream& s, Operation ser_action)
     {
-        READWRITE(this->nVersion);
+        READWRITE(nVersion);
         READWRITE(seed_id);
         // Single account counters.
         READWRITE(nExternalChainCounter);

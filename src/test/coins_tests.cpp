@@ -1,5 +1,6 @@
 // Copyright (c) 2014 The Bitcoin Core developers
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -61,6 +62,24 @@ public:
 
     bool GetStats(CCoinsStats& stats) const { return false; }
 };
+
+class CCoinsViewCacheTest : public CCoinsViewCache
+{
+public:
+    CCoinsViewCacheTest(CCoinsView* base) : CCoinsViewCache(base) {}
+
+    void SelfTest() const
+    {
+        // Manually recompute the dynamic usage of the whole data, and compare it.
+        size_t ret = memusage::DynamicUsage(cacheCoins);
+        for (CCoinsMap::iterator it = cacheCoins.begin(); it != cacheCoins.end(); it++) {
+            ret += memusage::DynamicUsage(it->second.coins);
+        }
+        BOOST_CHECK_EQUAL(memusage::DynamicUsage(*this), ret);
+    }
+
+};
+
 }
 
 BOOST_FIXTURE_TEST_SUITE(coins_tests, BasicTestingSetup)

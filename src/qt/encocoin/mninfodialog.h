@@ -1,11 +1,12 @@
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef MNINFODIALOG_H
 #define MNINFODIALOG_H
 
-#include <QDialog>
+#include "qt/encocoin/focuseddialog.h"
 #include "qt/encocoin/snackbar.h"
 
 class WalletModel;
@@ -14,7 +15,7 @@ namespace Ui {
 class MnInfoDialog;
 }
 
-class MnInfoDialog : public QDialog
+class MnInfoDialog : public FocusedDialog
 {
     Q_OBJECT
 
@@ -27,7 +28,7 @@ public:
     void setData(QString privKey, QString name, QString address, QString txId, QString outputIndex, QString status);
 
 public Q_SLOTS:
-    void closeDialog();
+    void reject() override;
 
 private:
     Ui::MnInfoDialog *ui;

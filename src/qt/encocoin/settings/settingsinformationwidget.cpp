@@ -1,4 +1,5 @@
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -153,7 +154,7 @@ void SettingsInformationWidget::setMasternodeCount(const QString& strMasternodes
 
 void SettingsInformationWidget::openNetworkMonitor()
 {
-    if(!rpcConsole){
+    if (!rpcConsole) {
         rpcConsole = new RPCConsole(0);
         rpcConsole->setClientModel(clientModel);
     }

@@ -4,6 +4,7 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "clientmodel.h"
 
 #include "bantablemodel.h"
@@ -309,9 +310,9 @@ bool ClientModel::getTorInfo(std::string& ip_port) const
             LOCK(cs_mapLocalHost);
             for (const std::pair<const CNetAddr, LocalServiceInfo>& item : mapLocalHost) {
                 if (item.first.IsTor()) {
-                     CService addrOnion = CService(item.first.ToString(), item.second.nPort);
-                     ip_port = addrOnion.ToStringIPPort();
-                     return true;
+                    CService addrOnion(LookupNumeric(item.first.ToString().c_str(), item.second.nPort));
+                    ip_port = addrOnion.ToStringIPPort();
+                    return true;
                 }
             }
         }

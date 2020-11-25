@@ -157,17 +157,6 @@ jobs:
         BUILD_TIMEOUT=800
 
     - stage: test
-      name: 'x86_64 Linux  [GOAL: install]  [trusty]  [no functional tests, no depends, no GUI, only system libs]'
-      env: >-
-        HOST=x86_64-unknown-linux-gnu
-        DOCKER_NAME_TAG=ubuntu:14.04
-        PACKAGES="python3-zmq libicu-dev libssl-dev libevent-dev bsdmainutils libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev libdb5.1++-dev libminiupnpc-dev libzmq3-dev libprotobuf-dev protobuf-compiler libgmp-dev"
-        NO_DEPENDS=1
-        RUN_FUNCTIONAL_TESTS=false
-        GOAL="install"
-        BITCOIN_CONFIG="--enable-zmq --with-incompatible-bdb --with-gui=no"
-
-    - stage: test
       name: 'x86_64 Linux  [GOAL: install]  [xenial]  [no depends, only system libs]'
       env: >-
         HOST=x86_64-unknown-linux-gnu
@@ -238,7 +227,7 @@ jobs:
     - stage: cmake
       name: 'CMake macOS'
       os: osx
-      osx_image: xcode10.2
+      osx_image: xcode11.1
       language: cpp
       compiler:
         - clang
@@ -261,9 +250,7 @@ jobs:
             - libevent
             - qrencode
             - gmp
-#         Set 'update: true' below until TravisCI updates their macOS build images.
-#         See https://travis-ci.community/t/macos-build-fails-because-of-homebrew-bundle-unknown-command/7296/16
-          update: true
+          update: false
       before_install:
       install:
       before_script:

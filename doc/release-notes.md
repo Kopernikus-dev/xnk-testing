@@ -31,133 +31,123 @@ EncoCoin Core should also work on most other Unix-like systems but is not freque
 Notable Changes
 ==============
 
-(Developers: add your notes here as part of your pull requests whenever possible)
+### Removed zerocoin GUI
 
-### Hierarchical Deterministic Wallet (HD Wallet)
-
-Wallets under a tree derivation structure in which keypairs are generated deterministically from a single seed, which can be shared partially or entirely with different systems, each with or without the ability to spend coins, [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki).
-
-Enabling major improvements over the keystore management, the PIVX wallet doesn't require regular backups as before, keys are following a deterministic creation path that can be verified at any time (before HD Wallet, every keypair was randomly created and added to the keypool, forcing the user to backup the wallet every certain amount of time or could end up loosing coins forever if the latest `wallet.dat` was not being used).
-As well as new possibilities like the account extended public key that enables deterministic public keys creation without the private keys requisite inside the wallet (A good use case could be online stores generating fresh addresses).
-
-This work includes a customization/extension to the [BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki) standard. We have included an unique staking keys derivation path which introduced the deterministic generation/recovery of staking addresses.
-
-An extended description of this large work can be found in the PR [here](https://github.com/PIVX-Project/PIVX/pull/1327).
-
-#### HD Wallet FAQ
-
- - How do i upgrade to HD Wallet?
-
-    GUI:
-    1) A dialog will appear on every wallet startup notifying you that you are running a pre-HD wallet and letting you upgrade it from there.
-    2) If you haven't upgraded your wallet, the topbar (bar with icons that appears at the top of your wallet) will have an "HD" icon. Click it and the upgrade dialog will be launched.
-
-    RPC:
-    1) If your wallet is unlocked, use the `-upgradewallet` flag at startup and will automatically upgrade your wallet.
-    2) If your wallet is encrypted, use the `upgradewallet` rpc command. It will upgrade your wallet to the latest wallet version.
-
- - How do i know if i'm already running an HD Wallet?
-
-    1) GUI: Go to settings, press on the Debug option, then Information.
-    2) RPC: call `getwalletinfo`, the `walletversion` field must be `169900` (HD Wallet Feature).
+Spending zXNK and getting zXNK balance information is no longer available in the graphical interface. The feature remains accessible through the RPC interface: `getzerocoinbalance`, `listmintedzerocoins`, `listzerocoinamounts`, `spendzerocoin`, `spendzerocoinmints`.
 
 
-### Functional Changes
+### Memory pool limiting
 
-Automatic zXNK backup has been disabled. Thus, the following configuration options have been removed  (either as entries in the encocoin.conf file or as startup flags):
-- `autozxnkbackup`
-- `backupzxnk`
-- `zxnkbackuppath`
+Previous versions of EncoCoin Core had their mempool limited by checking a transaction's fees against the node's minimum relay fee. There was no upper bound on the size of the mempool and attackers could send a large number of transactions paying just slighly more than the default minimum relay fee to crash nodes with relatively low RAM.
+
+EncoCoin Core 3.1.0 will have a strict maximum size on the mempool. The default value is 300 MB and can be configured with the `-maxmempool` parameter. Whenever a transaction would cause the mempool to exceed its maximum size, the transaction that (along with in-mempool descendants) has the lowest total feerate (as a package) will be evicted and the node's effective minimum relay feerate will be increased to match this feerate plus the initial minimum relay feerate. The initial minimum relay feerate is set to 1000 satoshis per kB.
+
+EncoCoin Core 3.1.0 also introduces new default policy limits on the length and size of unconfirmed transaction chains that are allowed in the mempool (generally limiting the length of unconfirmed chains to 25 transactions, with a total size of 101 KB). These limits can be overridden using command line arguments
+
+### Benchmarking Framework
+
+EncoCoin Core 3.1.0 backports  the internal benchmarking framework from Bitcoin Core, which can be used to benchmark cryptographic algorithms (e.g. SHA1, SHA256, SHA512, RIPEMD160, Poly1305, ChaCha20), Base58 encoding and decoding and thread queue. More tests are needed for script validation, coin selection and coins database, cuckoo cache, p2p throughtput
+
+The binary file is compiled with encocoin-core, unless configured with `--disable-bench`.<br>
+After compiling encocoin-core, the benchmarks can be run with:
+```
+src/bench/bench_encocoin
+```
+The output will be similar to:
+```
+#Benchmark,count,min(ns),max(ns),average(ns),min_cycles,max_cycles,average_cycles
+Base58CheckEncode,131072,7697,8065,7785,20015,20971,20242
+```
+
+'label' and 'account' APIs for wallet
+-------------------------------------
+
+A new 'label' API has been introduced for the wallet. This is intended as a
+replacement for the deprecated 'account' API. The 'account' can continue to
+be used in v3.1 by starting encocoind with the '-deprecatedrpc=accounts'
+argument, and will be fully removed in v5.0.
+
+The label RPC methods mirror the account functionality, with the following functional differences:
+
+- Labels can be set on any address, not just receiving addresses. This functionality was previously only available through the GUI.
+- Labels can be deleted by reassigning all addresses using the `setlabel` RPC method.
+- There isn't support for sending transactions _from_ a label, or for determining which label a transaction was sent from.
+- Labels do not have a balance.
+
+Here are the changes to RPC methods:
+
+| Deprecated Method       | New Method            | Notes       |
+| :---------------------- | :-------------------- | :-----------|
+| `getaccount`            | `getaddressinfo`      | `getaddressinfo` returns a json object with address information instead of just the name of the account as a string. |
+| `getaccountaddress`     | n/a                   | There is no replacement for `getaccountaddress` since labels do not have an associated receive address. |
+| `getaddressesbyaccount` | `getaddressesbylabel` | `getaddressesbylabel` returns a json object with the addresses as keys, instead of a list of strings. |
+| `getreceivedbyaccount`  | `getreceivedbylabel`  | _no change in behavior_ |
+| `listaccounts`          | `listlabels`          | `listlabels` does not return a balance or accept `minconf` and `watchonly` arguments. |
+| `listreceivedbyaccount` | `listreceivedbylabel` | Both methods return new `label` fields, along with `account` fields for backward compatibility. |
+| `move`                  | n/a                   | _no replacement_ |
+| `sendfrom`              | n/a                   | _no replacement_ |
+| `setaccount`            | `setlabel`            | Both methods now: <ul><li>allow assigning labels to any address, instead of raising an error if the address is not receiving address.<li>delete the previous label associated with an address when the final address using that label is reassigned to a different label, instead of making an implicit `getaccountaddress` call to ensure the previous label still has a receiving address. |
+
+| Changed Method         | Notes   |
+| :--------------------- | :------ |
+| `listunspent`          | Returns new `label` fields, along with `account` fields for backward compatibility if running with the `-deprecatedrpc=accounts` argument |
+| `sendmany`             | The first parameter has been renamed to `dummy`, and must be set to an empty string, unless running with the `-deprecatedrpc=accounts` argument (in which case functionality is unchanged). |
+| `listtransactions`     | The first parameter has been renamed to `dummy`, and must be set to the string `*`, unless running with the `-deprecatedrpc=accounts` argument (in which case functionality is unchanged). |
+| `getbalance`           | `account`, `minconf` and `include_watchonly` parameters are deprecated, and can only be used if running with the `-deprecatedrpc=accounts` argument |
+| `getcoldstakingbalance`| The `account` parameter is deprecated, and can only be used if running with the `-deprecatedrpc=accounts` argument (in which case functionality is unchanged) |
+| `getdelegatedbalance`  | The `account` parameter is deprecated, and can only be used if running with the `-deprecatedrpc=accounts` argument (in which case functionality is unchanged) |
+
+GUI Changes
+----------
+
+### Topbar navigation
+
+- The "sync" button in the GUI topbar can be clicked to go directly to the Settings --> Information panel (where the current block number and hash is shown).
+
+- The "connections" button in the GUI topbar can be clicked to open the network monitor dialog
+
+Functional Changes
+----------
 
 ### Stake-Split threshold
-The stake split threshold is no longer required to be integer. It can be a fractional amount. A threshold value of 0 disables the stake-split functionality.
-The default value for the stake-split threshold has been lowered from 2000 XNK, down  to 500 XNK.
 
-Dependencies
-------------
+If the stake split is active (threshold > 0), then stake split threshold value must be greater than a minimum, set by default at 100 XNK. The minimum value can be changed using the `-minstakesplit` startup flag . A value `0` is still allowed, regardless of the minimum set, and, as before, can be used to disable the stake splitting functionality.
 
-The minimum required version of QT has been increased from 5.0 to 5.5.1 (the [depends system](https://github.com/encocoin/xnk/blob/master/depends/README.md) provides 5.9.7)
+### Changed command-line options
 
+- new command `-minstakesplit` to modify the minimum allowed for  the stake split threshold
 
+- new commands `-maxmempool`, to customize  the memory pool size limit, and `-checkmempool=N`, to customize the frequency of the mempool check
+
+- new commands `-limitancestorcount=N` and `limitancestorsize=N`, to limit the number and total size of all in-mempool ancestors for a transaction
+
+- new commands `-limitdescendantcount=N` and `limitdescendantsize=N`, to limit the number and total size of all in-mempool descendants for a transaction
 
 RPC Changes
---------------
+------------
+
+In addition to the afore mentioned 'label' and 'account' API changes, other RPC changes are as follows:
+
+### Low-level API changes
+
+- The `asm` property of each scriptSig now contains the decoded signature hash type for each signature that provides a valid defined hash type.<br>
+The following items contain assembly representations of scriptSig signatures
+and are affected by this change: RPC `getrawtransaction`, RPC `decoderawtransaction`, REST `/rest/tx/` (JSON format), REST `/rest/block/` (JSON format when including extended tx details), `encocoin-tx -json`
 
 ### Modified input/output for existing commands
 
- "CoinStake" JSON object in `getblock` output is removed, and replaced with the strings "stakeModifier" and "hashProofOfStake"
-- "obfcompat" JSON field in `getmasternodecount` output is removed as it is/was redundant with the `enabled` field.
+- new "usage" field in the output of `getmempoolinfo`, displaying the total memory usage for the mempool
 
+- new "upgrades" field in the output of `getblockchaininfo`, showing upcoming and active network upgrades
 
-- "moneysupply" and "zpivSupply" attributes in `getblock` output are removed.
-
-
-- "isPublicSpend" boolean (optional) input parameter is removed from the following commands:
- - `createrawzerocoinspend`
- - `spendzerocoin`
- - `spendzerocoinmints`
- - `spendrawzerocoin`
-
- These commands are now able to create only *public* spends (private spends were already enabled only on regtest).
-
-
-- "mintchange" and "minimizechange" boolean input parameters are removed from the following commands:
- - `spendzerocoin`
-
- Mints are disabled, therefore it is no longer possible to mint the change of a zerocoin spend. The change is minimized by default.
-
-
-- `setstakesplitthreshold` now accepts decimal amounts. If the provided value is `0`, split staking gets disabled. `getstakesplitthreshold` returns a double.
-
-- `dumpwallet` no longer allows overwriting files. This is a security measure
-   as well as prevents dangerous user mistakes.
-
-- The output of `getstakingstatus` was reworked. It now shows the following information:
-  ```
-  {
-     "staking_status": true|false,       (boolean) whether the wallet is staking or not
-     "staking_enabled": true|false,      (boolean) whether staking is enabled/disabled in pivx.conf
-     "coldstaking_enabled": true|false,  (boolean) whether cold-staking is enabled/disabled in pivx.conf
-     "haveconnections": true|false,      (boolean) whether network connections are present
-     "mnsync": true|false,               (boolean) whether masternode data is synced
-     "walletunlocked": true|false,       (boolean) whether the wallet is unlocked
-     "stakeablecoins": n,                (numeric) number of stakeable UTXOs
-     "stakingbalance": d,                (numeric) PIV value of the stakeable coins (minus reserve balance, if any)
-     "stakesplitthreshold": d,           (numeric) value of the current threshold for stake split
-     "lastattempt_age": n,               (numeric) seconds since last stake attempt
-     "lastattempt_depth": n,             (numeric) depth of the block on top of which the last stake attempt was made
-     "lastattempt_hash": xxx,            (hex string) hash of the block on top of which the last stake attempt was made
-     "lastattempt_coins": n,             (numeric) number of stakeable coins available during last stake attempt
-     "lastattempt_tries": n,             (numeric) number of stakeable coins checked during last stake attempt
-   }
-   ```
-   
-   
 ### Removed commands
 
-The following commands have been removed from the RPC interface:
-- `createrawzerocoinstake`
-- `getmintsinblocks`
-- `reservebalance`
-
-- `getpoolinfo`
+- `masternodedebug`. Use `getmasternodestatus` instead.
 
 ### Newly introduced commands
 
-The following new commands have been added to the RPC interface:
 
-- `logging` <br>Gets and sets the logging configuration.<br>
-When called without an argument, returns the list of categories that are currently being debug logged.<br>
-When called with arguments, adds or removes categories from debug logging.<br>
-E.g. `logging "[\"all\"]" "[\"http\"]""`
-
-Details about each new command can be found below.
-
-
-- `-debuglogfile=<file>` can be used to specify an alternative debug logging file. This can be an absolute path or a path relative to the data directory
-
-
-*version* Change log
+*3.1.0* Change log
 ==============
 
 Detailed release notes follow. This overview includes changes that affect behavior, not code moves, refactors and string updates. For convenience in locating the code changes and accompanying discussion, both the pull request and git merge commit are mentioned.
@@ -168,38 +158,11 @@ Detailed release notes follow. This overview includes changes that affect behavi
 
 ### P2P Protocol and Network Code
 
-The p2p alert system has been removed and the 'alert' message is no longer supported.
-
 ### GUI
-
-**Keyboard navigation**: dialogs can now be accepted with the `ENTER` (`RETURN`) key, and dismissed with the `ESC` key
-
-**Address sorting**: address sorting in "My Addresses" / "Contacts" / "Cold Staking" can now be customized, setting it either by label (default), by address, or by creation date, ascending (default) or descending order.
-Addresses in the dropdown of the "Send Transaction" and "Send Delegation" widgets are now automatically sorted by label with ascending order
-
-**Custom Fee**: The custom fee selected when sending a transaction is now saved in the wallet database and persisted across multiple sends and wallet's restarts
-
-
-**Staking Charts**: can now be hidden at startup (with a flag `--hidecharts`) or at runtime with a checkbox in settings --> options --> display
-
-
-**Include delegations in send**: The send and cold-staking page present a checkbox to make the automatic input selection algorithm include delegated (P2CS) utxos if needed. The option is unchecked by default.
-
 
 ### RPC/REST
 
 ### Wallet
-
-
-__Context Lock/Unlock__:
-Present the unlock dialog directly (instead of an error message), whenever an action on encrypted/locked wallet requires full unlock.<br>
-Restore the previous locking state ("locked" or "locked for staking only") when the action is completed.
-
-
-__Configuration Options__:
-
-The `-reservebalance` configuration/startup option has been removed
-
 
 ### Miscellaneous
 

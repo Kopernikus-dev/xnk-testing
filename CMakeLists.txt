@@ -271,6 +271,7 @@ file(GLOB SCRIPT_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/src/script/*.h)
 file(GLOB RPC_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/src/rpc/*.h)
 file(GLOB COMPAT_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/src/compat/*.h)
 file(GLOB CONSENSUS_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/src/consensus/*.h)
+file(GLOB CTAES_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/src/crypto/ctaes/*.h)
 
 source_group("BitcoinHeaders" FILES
         ${HEADERS}
@@ -281,6 +282,7 @@ source_group("BitcoinHeaders" FILES
         ${RPC_HEADERS}
         ${COMPAT_HEADERS}
         ${CONSENSUS_HEADERS}
+        ${CTAES_HEADERS}
         ./src/support/cleanse.h
         )
 
@@ -293,12 +295,16 @@ set(SERVER_SOURCES
         ./src/httprpc.cpp
         ./src/httpserver.cpp
         ./src/init.cpp
-        ./src/leveldbwrapper.cpp
+        ./src/interface/wallet.cpp
+        ./src/dbwrapper.cpp
+        ./src/legacy/validation_zerocoin_legacy.cpp
         ./src/main.cpp
         ./src/merkleblock.cpp
         ./src/miner.cpp
         ./src/net.cpp
         ./src/noui.cpp
+        ./src/policy/fees.cpp
+		./src/policy/policy.cpp
         ./src/pow.cpp
         ./src/rest.cpp
         ./src/rpc/blockchain.cpp
@@ -384,6 +390,7 @@ target_include_directories(WALLET_A PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src
         )
 
 set(BITCOIN_CRYPTO_SOURCES
+        ./src/crypto/aes.cpp
         ./src/crypto/sha1.cpp
         ./src/crypto/sha256.cpp
         ./src/crypto/sha512.cpp
@@ -457,6 +464,8 @@ set(COMMON_SOURCES
         ./src/amount.cpp
         ./src/base58.cpp
         ./src/bip38.cpp
+        ./src/consensus/params.cpp
+        ./src/consensus/upgrades.cpp
         ./src/chainparams.cpp
         ./src/coins.cpp
         ./src/key_io.cpp
@@ -474,6 +483,7 @@ set(COMMON_SOURCES
         ./src/invalid.cpp
         ./src/key.cpp
         ./src/keystore.cpp
+        ./src/netaddress.cpp
         ./src/netbase.cpp
         ./src/protocol.cpp
         ./src/pubkey.cpp
@@ -502,10 +512,13 @@ set(UTIL_SOURCES
         ./src/compat/glibcxx_sanity.cpp
         ./src/chainparamsbase.cpp
         ./src/clientversion.cpp
+        ./src/fs.cpp
         ./src/logging.cpp
         ./src/random.cpp
         ./src/rpc/protocol.cpp
         ./src/sync.cpp
+        ./src/blob_uint256.cpp
+        ./src/arith_uint256.cpp
         ./src/uint256.cpp
         ./src/util/threadnames.cpp
         ./src/util.cpp

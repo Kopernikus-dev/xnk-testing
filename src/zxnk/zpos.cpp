@@ -1,5 +1,5 @@
 // Copyright (c) 2017-2020 The PIVX developers
-// Copyright (c) 2020	   The EncoCoin developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -24,7 +24,7 @@ bool CLegacyZXnkStake::InitFromTxIn(const CTxIn& txin)
 {
     // Construct the stakeinput object
     if (!txin.IsZerocoinSpend())
-        return error("%s: unable to initialize CLegacyZXnkStake from non zc-spend");
+        return error("%s: unable to initialize CLegacyZXnkStake from non zc-spend", __func__);
 
     // Check spend type
     libzerocoin::CoinSpend spend = TxInToZerocoinSpend(txin);
@@ -59,7 +59,7 @@ CBlockIndex* CLegacyZXnkStake::GetIndexFrom()
 
     // Not found. Scan the chain.
     const Consensus::Params& consensus = Params().GetConsensus();
-    CBlockIndex* pindex = chainActive[consensus.height_start_ZC];
+    CBlockIndex* pindex = chainActive[consensus.vUpgrades[Consensus::UPGRADE_ZC].nActivationHeight];
     if (!pindex) return nullptr;
     while (pindex && pindex->nHeight <= consensus.height_last_ZC_AccumCheckpoint) {
         if (ParseAccChecksum(pindex->nAccumulatorCheckpoint, denom) == nChecksum) {
@@ -93,7 +93,7 @@ CDataStream CLegacyZXnkStake::GetUniqueness() const
 bool CLegacyZXnkStake::ContextCheck(int nHeight, uint32_t nTime)
 {
     const Consensus::Params& consensus = Params().GetConsensus();
-    if (nHeight < consensus.height_start_ZC_SerialsV2 || nHeight >= consensus.height_last_ZC_AccumCheckpoint)
+    if (!consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_ZC_V2) || nHeight >= consensus.height_last_ZC_AccumCheckpoint)
         return error("%s : zXNK stake block: height %d outside range", __func__, nHeight);
 
     // The checkpoint needs to be from 200 blocks ago

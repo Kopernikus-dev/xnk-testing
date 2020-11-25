@@ -1,31 +1,20 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-2014 The Bitcoin developers
+// Copyright (c) 2009-2015 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2020 The PIVX developers
-// Copyright (c) 2020	   The EncoCoin developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#include "libzerocoin/Params.h"
 #include "chainparams.h"
+
+#include "chainparamsseeds.h"
 #include "consensus/merkle.h"
-#include "random.h"
 #include "util.h"
 #include "utilstrencodings.h"
 
-#include <assert.h>
-
 #include <boost/assign/list_of.hpp>
-#include <limits>
 
-#include "chainparamsseeds.h"
-
-std::string CDNSSeedData::getHost(uint64_t requiredServiceBits) const {
-    //use default host for non-filter-capable seeds or if we use the default service bits (NODE_NETWORK)
-    if (!supportsServiceBitsFiltering || requiredServiceBits == NODE_NETWORK)
-        return host;
-
-    return strprintf("x%x.%s", requiredServiceBits, host);
-}
+#include <assert.h>
 
 static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesisOutputScript, uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
@@ -68,62 +57,45 @@ static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits
 /**
  * Main network
  */
-
-bool DoubleCheckProofOfWork(uint256 hash, unsigned int nBits)
-{
-    bool fNegative;
-    bool fOverflow;
-    uint256 bnTarget;
-
-    bnTarget.SetCompact(nBits, &fNegative, &fOverflow);
-
-    // Check range
-    if (fNegative || bnTarget == 0 || fOverflow)
-        return error("DouCheckProofOfWork() : nBits below minimum work");
-
-    // Check proof of work matches claimed amount
-    if (hash > bnTarget)
-        return false;
-
-    return true;
-}
-
-//! Convert the pnSeeds6 array into usable address objects.
-static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data, unsigned int count)
-{
-    // It'll only connect to one or two seed nodes because once it connects,
-    // it'll get a pile of addresses with newer timestamps.
-    // Seed nodes are given a random 'last seen time' of between one and two
-    // weeks ago.
-    const int64_t nOneWeek = 7 * 24 * 60 * 60;
-    for (unsigned int i = 0; i < count; i++) {
-        struct in6_addr ip;
-        memcpy(&ip, data[i].addr, sizeof(ip));
-        CAddress addr(CService(ip, data[i].port));
-        addr.nTime = GetTime() - GetRand(nOneWeek) - nOneWeek;
-        vSeedsOut.push_back(addr);
-    }
-}
-
-//   What makes a good checkpoint block?
-// + Is surrounded by blocks with reasonable timestamps
-//   (no blocks before with a timestamp after, none after with
-//    timestamp before)
-// + Contains no strange transactions
+/**
+ * What makes a good checkpoint block?
+ * + Is surrounded by blocks with reasonable timestamps
+ *   (no blocks before with a timestamp after, none after with
+ *    timestamp before)
+ * + Contains no strange transactions
+ */
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
     (0, uint256S("0x00000ae5d77e5eb3010a53e731688304019cdada4fee60dfa6b5bc424d87b2a1"))
-    (500, uint256S("0x0000042ff28adc30c4ebe9faa16e8a014bd9e327866413e0e536687e7c789c65"));// genesis
+    (500, uint256S("0x0000042ff28adc30c4ebe9faa16e8a014bd9e327866413e0e536687e7c789c65")) // genesis
+    (2001, uint256S("0x034f2fbbdb4654d8796f2dc30826605861616ffe5880c6f228f7f0d115255e8e")) //new collatral
+    (10001, uint256S("0x8cdd558c63de28aaf6dcb40b6409968081a004348aa7ef1daf53412ffa7c9161")) //new collatral
+    (16373, uint256S("0x3a066d10c877c40f9b27fde2c51363074e54429abc1ac414f80c3fff4f8ab4ab")) // ntworksplit here? peer asking for block bed2e290edbe8c0f36ff3817a64d660c45d1873a4764bc50a2b459381844843b
+    (20001, uint256S("0xf39f388b55aa469a3d8dd7582fdc1271b80743aa0b72b63b1518776ebfcf09aa")) //new collatral
+    (30001, uint256S("0x697b2ab9411fa49f20d62bb25ee2fd6e09f5a08871c8e13d380c9b495e9dd9e8")) //new collatral
+    (40001, uint256S("0xaa5db40ccfc839bea65c08268dd242e8508ef559b272e17729d20a75fe7f2478")) //new collatral
+    (50001, uint256S("0xbd13a59a139f094aad587f191dd050b4f0853c78c88a704adeaf3fbe321608a7")) //new collatral
+    (70001, uint256S("0x89b21413ba25ff759535b27324f185cf0005faf99a9bd66325dedf7e5c6ff506")) //new collatral
+    (80001, uint256S("0xa2e800989a13a7f6a291a1477b57237d32520aadc1fec546d3b5506aac6e8ab8")) //new collatral
+    (90001, uint256S("0x078b598b43257ee0b7e33b63458eb39623554b0130a4affbcefe4860e0072f62")) //new collatral
+    (100001, uint256S("0xe0578f9a19bca0bf16f19bb9e84a28230ff505707a07fef1b69f9706af7addf3")) //new collatral
+    (120001, uint256S("0x03dd81f003126e362559822d78c4d6c4fa17d19cb82aa2890bfbf5a1f8131a8d")) //new collatral
+    (140001, uint256S("0x3ae4595300544e43c07b7e07de3d7103a25e392ed76ce3bc7fb8afd428107c20")) //new collatral
+    (150001, uint256S("0xd2c77bec94601ef35e978774c89a3213df61bba2b27d4cfa2b4744a7842ec0a6")) //new collatral
+    (182881, uint256S("0xb638593545e9c0d6460d2eab9c5ff8cef133baa95e803a0c306fc9193a571185")) // networksplit here? wallet break by Crypos and Midas
+    (183002, uint256S("0x5e29fcf20d2efbcb8bc1ab7a41e87425f515d4c67277ea04f4e8b8d781701be9")) // or here Wallet was stuck by user
+    (200000, uint256S("0x90784a8df844a7aa590f4ce86004ab56da0aea466bb02f4c896f1c4d6614d65b")); // additional Checkpoint
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1546711076, // * UNIX timestamp of last checkpoint block
-    0,          // * total number of transactions between genesis and last checkpoint
+    1601693520, // * UNIX timestamp of last checkpoint block
+    430162,          // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
-    0           // * estimated number of transactions per day after checkpoint
+    3000           // * estimated number of transactions per day after checkpoint
 };
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
-    boost::assign::map_list_of(0, uint256S("0x001"));
+    boost::assign::map_list_of
+    (0, uint256S("0x001"));
 static const Checkpoints::CCheckpointData dataTestnet = {
     &mapCheckpointsTestnet,
     1740710,
@@ -178,20 +150,11 @@ public:
         consensus.nTime_RejectOldSporkKey = 4070908800;  		   //!> Fully reject old spork key after Thursday, September 26, 2019 11:00:00 PM GMT
 
         // height-based activations
-        consensus.height_last_PoW = 500;
         consensus.height_last_ZC_AccumCheckpoint = 502;
         consensus.height_last_ZC_WrappedSerials = 15000000;
-        consensus.height_start_BIP65 = 503; 									// Block v5:  82629b7a9978f5c7ea3f70a12db92633a7d2e436711500db28b97efd48b1e527
         consensus.height_start_InvalidUTXOsCheck = 999999999; 					//Start enforcing the invalid UTXO's
-        consensus.height_start_MessSignaturesV2 = 530;		  					// height_start_TimeProtoV2
-        consensus.height_start_StakeModifierNewSelection = 495;
-        consensus.height_start_StakeModifierV2 = 501;							// Block v6: consensus.height_last_PoW + 1;
-        consensus.height_start_TimeProtoV2 = 530; 								// Block v7: TimeProtocolV2, Blocks V7 and newMessageSignatures
-        consensus.height_start_ZC = 999999999;									// Block v4: 
         consensus.height_start_ZC_InvalidSerials = 999999999;					//First block that bad serials emerged
-        consensus.height_start_ZC_PublicSpends = 15000000;						//Public coin spend enforcement
         consensus.height_start_ZC_SerialRangeCheck = 840;						//Enforce serial range starting this block
-        consensus.height_start_ZC_SerialsV2 = 999999999;
         consensus.height_ZC_RecalcAccumulators = 999999999;						//Trigger a recalculation of accumulators
 
         // validation by-pass
@@ -212,6 +175,35 @@ public:
         consensus.ZC_MinStakeDepth = 200;
         consensus.ZC_TimeStart = 4070908800;							        // October 17, 2017 4:30:00 AM
         consensus.ZC_WrappedSerialsSupply = 0;									// zerocoin supply at height_last_ZC_WrappedSerials
+
+        // Network upgrades
+        consensus.vUpgrades[Consensus::BASE_NETWORK].nActivationHeight =
+                Consensus::NetworkUpgrade::ALWAYS_ACTIVE;
+        consensus.vUpgrades[Consensus::UPGRADE_TESTDUMMY].nActivationHeight =
+                Consensus::NetworkUpgrade::NO_ACTIVATION_HEIGHT;
+        consensus.vUpgrades[Consensus::UPGRADE_POS].nActivationHeight           = 501;
+        consensus.vUpgrades[Consensus::UPGRADE_POS_V2].nActivationHeight        = 495;
+        consensus.vUpgrades[Consensus::UPGRADE_ZC].nActivationHeight            = 999999999;
+        consensus.vUpgrades[Consensus::UPGRADE_ZC_V2].nActivationHeight         = 999999999;
+        consensus.vUpgrades[Consensus::UPGRADE_BIP65].nActivationHeight         = 503;
+        consensus.vUpgrades[Consensus::UPGRADE_ZC_PUBLIC].nActivationHeight     = 15000000;
+        consensus.vUpgrades[Consensus::UPGRADE_V3_4].nActivationHeight          = 501;
+        consensus.vUpgrades[Consensus::UPGRADE_V4_0].nActivationHeight          = 530;
+        consensus.vUpgrades[Consensus::UPGRADE_V5_DUMMY].nActivationHeight =
+                Consensus::NetworkUpgrade::NO_ACTIVATION_HEIGHT;
+
+        consensus.vUpgrades[Consensus::UPGRADE_ZC].hashActivationBlock =
+                uint256S("0x");
+        consensus.vUpgrades[Consensus::UPGRADE_ZC_V2].hashActivationBlock =
+                uint256S("0x");
+        consensus.vUpgrades[Consensus::UPGRADE_BIP65].hashActivationBlock =
+                uint256S("0xc2563e46a176297f088b89fb55cf3e1fe66a9afb0651f23b114f99b12010c2b0");
+        consensus.vUpgrades[Consensus::UPGRADE_ZC_PUBLIC].hashActivationBlock =
+                uint256S("0x");
+        consensus.vUpgrades[Consensus::UPGRADE_V3_4].hashActivationBlock =
+                uint256S("0x9900804cd430082d408530938d0fd3c074896981ee7f216a308f346631377e42");
+        consensus.vUpgrades[Consensus::UPGRADE_V4_0].hashActivationBlock =
+                uint256S("0x46acb0b0a7303835911115e617f366e02a3d9b2fe7f441df1e45f1644fb08aea");
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -239,7 +231,7 @@ public:
         // BIP44 coin type is from https://github.com/satoshilabs/slips/blob/master/slip-0044.md
         base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x00)(0x77).convert_to_container<std::vector<unsigned char> >();
 
-        convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
+        vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const
@@ -293,20 +285,11 @@ public:
         consensus.nTime_RejectOldSporkKey = 1569538800;     //!> September 26, 2019 11:00:00 PM GMT
 
         // height based activations
-        consensus.height_last_PoW = 200;
         consensus.height_last_ZC_AccumCheckpoint = 1106090;
         consensus.height_last_ZC_WrappedSerials = -1;
-        consensus.height_start_BIP65 = 851019;					// Block v5: 
         consensus.height_start_InvalidUTXOsCheck = 999999999;
-        consensus.height_start_MessSignaturesV2 = 1347000;      // height_start_TimeProtoV2, Blocks V7 and newMessageSignatures
-        consensus.height_start_StakeModifierNewSelection = 51197;
-        consensus.height_start_StakeModifierV2 = 1214000;		// Block v6: 
-        consensus.height_start_TimeProtoV2 = 1347000; 			// Block v7: TimeProtocolV2, Blocks V7 and newMessageSignatures
-        consensus.height_start_ZC = 201576;						// Block v4: 
         consensus.height_start_ZC_InvalidSerials = 999999999;
-        consensus.height_start_ZC_PublicSpends = 1106100;
         consensus.height_start_ZC_SerialRangeCheck = 1;			//Enforce serial range starting this block
-        consensus.height_start_ZC_SerialsV2 = 444020;
         consensus.height_ZC_RecalcAccumulators = 999999999;
 
         // validation by-pass
@@ -327,6 +310,33 @@ public:
         consensus.ZC_MinStakeDepth = 200;
         consensus.ZC_TimeStart = 1501776000;
         consensus.ZC_WrappedSerialsSupply = 0;   				// WrappedSerials only on main net
+
+        // Network upgrades
+        consensus.vUpgrades[Consensus::BASE_NETWORK].nActivationHeight =
+                Consensus::NetworkUpgrade::ALWAYS_ACTIVE;
+        consensus.vUpgrades[Consensus::UPGRADE_TESTDUMMY].nActivationHeight =
+                Consensus::NetworkUpgrade::NO_ACTIVATION_HEIGHT;
+        consensus.vUpgrades[Consensus::UPGRADE_POS].nActivationHeight           = 201;
+        consensus.vUpgrades[Consensus::UPGRADE_POS_V2].nActivationHeight        = 51197;
+        consensus.vUpgrades[Consensus::UPGRADE_ZC].nActivationHeight            = 201576;
+        consensus.vUpgrades[Consensus::UPGRADE_ZC_V2].nActivationHeight         = 444020;
+        consensus.vUpgrades[Consensus::UPGRADE_BIP65].nActivationHeight         = 851019;
+        consensus.vUpgrades[Consensus::UPGRADE_ZC_PUBLIC].nActivationHeight     = 1106100;
+        consensus.vUpgrades[Consensus::UPGRADE_V3_4].nActivationHeight          = 1214000;
+        consensus.vUpgrades[Consensus::UPGRADE_V4_0].nActivationHeight          = 1347000;
+        consensus.vUpgrades[Consensus::UPGRADE_V5_DUMMY].nActivationHeight =
+                Consensus::NetworkUpgrade::NO_ACTIVATION_HEIGHT;
+
+        consensus.vUpgrades[Consensus::UPGRADE_ZC].hashActivationBlock =
+                uint256S("0x258c489f42f03cb97db2255e47938da4083eee4e242853c2d48bae2b1d0110a6");
+        consensus.vUpgrades[Consensus::UPGRADE_ZC_V2].hashActivationBlock =
+                uint256S("0xfcc6a4c1da22e4db2ada87d257d6eef5e6922347ca1bb7879edfee27d24f64b5");
+        consensus.vUpgrades[Consensus::UPGRADE_BIP65].hashActivationBlock =
+                uint256S("0xc54b3e7e8b710e4075da1806adf2d508ae722627d5bcc43f594cf64d5eef8b30");
+        consensus.vUpgrades[Consensus::UPGRADE_V3_4].hashActivationBlock =
+                uint256S("0x1822577176173752aea33d1f60607cefe9e0b1c54ebaa77eb40201a385506199");
+        consensus.vUpgrades[Consensus::UPGRADE_V4_0].hashActivationBlock =
+                uint256S("0x30c173ffc09a13f288bf6e828216107037ce5b79536b1cebd750a014f4939882");
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -357,7 +367,7 @@ public:
         // Testnet encocoin BIP44 coin type is '1' (All coin's testnet default)
         base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x00)(0x01).convert_to_container<std::vector<unsigned char> >();
 
-        convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
+        vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const
@@ -414,20 +424,11 @@ public:
         consensus.nTime_RejectOldSporkKey = 0;
 
         // height based activations
-        consensus.height_last_PoW = 250;
         consensus.height_last_ZC_AccumCheckpoint = 310;     // no checkpoints on regtest
         consensus.height_last_ZC_WrappedSerials = -1;
-        consensus.height_start_BIP65 = 1808634; 			// 851019 Not defined for regtest. Inherit TestNet value.
         consensus.height_start_InvalidUTXOsCheck = 999999999;
-        consensus.height_start_MessSignaturesV2 = 1;
-        consensus.height_start_StakeModifierNewSelection = 0;
-        consensus.height_start_StakeModifierV2 = 251;       // start with modifier V2 on regtest
-        consensus.height_start_TimeProtoV2 = 999999999;
-        consensus.height_start_ZC = 300;
         consensus.height_start_ZC_InvalidSerials = 999999999;
-        consensus.height_start_ZC_PublicSpends = 400;
         consensus.height_start_ZC_SerialRangeCheck = 300;
-        consensus.height_start_ZC_SerialsV2 = 300;
         consensus.height_ZC_RecalcAccumulators = 999999999;
 
         // Zerocoin-related params
@@ -444,6 +445,23 @@ public:
         consensus.ZC_MinStakeDepth = 10;
         consensus.ZC_TimeStart = 0;                 // not implemented on regtest
         consensus.ZC_WrappedSerialsSupply = 0;		// WrappedSerials only on main net
+
+        // Network upgrades
+        consensus.vUpgrades[Consensus::BASE_NETWORK].nActivationHeight =
+                Consensus::NetworkUpgrade::ALWAYS_ACTIVE;
+        consensus.vUpgrades[Consensus::UPGRADE_TESTDUMMY].nActivationHeight =
+                Consensus::NetworkUpgrade::NO_ACTIVATION_HEIGHT;
+        consensus.vUpgrades[Consensus::UPGRADE_POS].nActivationHeight           = 251;
+        consensus.vUpgrades[Consensus::UPGRADE_POS_V2].nActivationHeight        = 251;
+        consensus.vUpgrades[Consensus::UPGRADE_ZC].nActivationHeight            = 300;
+        consensus.vUpgrades[Consensus::UPGRADE_ZC_V2].nActivationHeight         = 300;
+        consensus.vUpgrades[Consensus::UPGRADE_BIP65].nActivationHeight         =
+                Consensus::NetworkUpgrade::ALWAYS_ACTIVE;
+        consensus.vUpgrades[Consensus::UPGRADE_ZC_PUBLIC].nActivationHeight     = 400;
+        consensus.vUpgrades[Consensus::UPGRADE_V3_4].nActivationHeight          = 251;
+        consensus.vUpgrades[Consensus::UPGRADE_V4_0].nActivationHeight          =
+                Consensus::NetworkUpgrade::ALWAYS_ACTIVE;
+        consensus.vUpgrades[Consensus::UPGRADE_V5_DUMMY].nActivationHeight       = 300;
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -465,8 +483,13 @@ public:
     {
         return dataRegtest;
     }
-};
 
+    void UpdateNetworkUpgradeParameters(Consensus::UpgradeIndex idx, int nActivationHeight)
+    {
+        assert(idx > Consensus::BASE_NETWORK && idx < Consensus::MAX_NETWORK_UPGRADES);
+        consensus.vUpgrades[idx].nActivationHeight = nActivationHeight;
+    }
+};
 static CRegTestParams regTestParams;
 
 static CChainParams* pCurrentParams = 0;
@@ -506,4 +529,9 @@ bool SelectParamsFromCommandLine()
 
     SelectParams(network);
     return true;
+}
+
+void UpdateNetworkUpgradeParameters(Consensus::UpgradeIndex idx, int nActivationHeight)
+{
+    regTestParams.UpdateNetworkUpgradeParameters(idx, nActivationHeight);
 }

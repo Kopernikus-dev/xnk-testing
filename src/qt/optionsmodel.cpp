@@ -1,7 +1,7 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2020 The PIVX developers
-// Copyright (c) 2020	   The EncoCoin developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #if defined(HAVE_CONFIG_H)
@@ -17,6 +17,7 @@
 #include "init.h"
 #include "main.h"
 #include "net.h"
+#include "netbase.h"
 #include "txdb.h" // for -dbcache defaults
 #include "util.h"
 
@@ -47,6 +48,7 @@ void OptionsModel::Init()
 
     // Ensure restart flag is unset on client startup
     setRestartRequired(false);
+    setSSTChanged(false);
 
     // These are Qt-only settings:
 
@@ -121,7 +123,7 @@ void OptionsModel::setMainDefaultOptions(QSettings& settings, bool reset)
 
 void OptionsModel::setWalletDefaultOptions(QSettings& settings, bool reset)
 {
-    if (reset || !settings.contains("bSpendZeroConfChange"))
+    if (!settings.contains("bSpendZeroConfChange") || reset)
         settings.setValue("bSpendZeroConfChange", false);
     if (!SoftSetBoolArg("-spendzeroconfchange", settings.value("bSpendZeroConfChange").toBool()))
         addOverriddenOption("-spendzeroconfchange");
@@ -177,7 +179,7 @@ void OptionsModel::setWindowDefaultOptions(QSettings& settings, bool reset)
 void OptionsModel::setDisplayDefaultOptions(QSettings& settings, bool reset)
 {
     if (!settings.contains("nDisplayUnit") || reset)
-         settings.setValue("nDisplayUnit", BitcoinUnits::XNK);
+        settings.setValue("nDisplayUnit", BitcoinUnits::XNK);
     nDisplayUnit = settings.value("nDisplayUnit").toInt();
     if (!settings.contains("digits") || reset)
         settings.setValue("digits", "2");
@@ -261,7 +263,7 @@ QVariant OptionsModel::data(const QModelIndex& index, int role) const
         case ShowMasternodesTab:
             return settings.value("fShowMasternodesTab");
         case StakeSplitThreshold:
-		{
+			{
             // Return CAmount/qlonglong as double
             const CAmount nStakeSplitThreshold = (pwalletMain) ? pwalletMain->nStakeSplitThreshold : CWallet::DEFAULT_STAKE_SPLIT_THRESHOLD;
             return QVariant(static_cast<double>(nStakeSplitThreshold / static_cast<double>(COIN)));
@@ -269,7 +271,7 @@ QVariant OptionsModel::data(const QModelIndex& index, int role) const
         case fUseCustomFee:
             return QVariant((pwalletMain) ? pwalletMain->fUseCustomFee : false);
         case nCustomFee:
-            return QVariant(static_cast<qlonglong>((pwalletMain) ? pwalletMain->nCustomFee : CWallet::minTxFee.GetFeePerK()));
+            return QVariant(static_cast<qlonglong>((pwalletMain) ? pwalletMain->nCustomFee : CWallet::GetRequiredFee(1000)));
 #endif
         case DisplayUnit:
             return nDisplayUnit;
@@ -379,6 +381,7 @@ bool OptionsModel::setData(const QModelIndex& index, const QVariant& value, int 
         case StakeSplitThreshold:
             // Write double as qlonglong/CAmount
             setStakeSplitThreshold(static_cast<CAmount>(value.toDouble() * COIN));
+            setSSTChanged(true);
             break;
         case DisplayUnit:
             setDisplayUnit(value);
@@ -485,6 +488,23 @@ void OptionsModel::setStakeSplitThreshold(const CAmount nStakeSplitThreshold)
     }
 }
 
+/* returns default minimum value for stake split threshold as doulbe */
+double OptionsModel::getSSTMinimum() const
+{
+    return static_cast<double>(CWallet::minStakeSplitThreshold / COIN);
+}
+
+/* Verify that StakeSplitThreshold's value is either 0 or above the min. Else reset */
+bool OptionsModel::isSSTValid()
+{
+    if (pwalletMain && pwalletMain->nStakeSplitThreshold &&
+            pwalletMain->nStakeSplitThreshold < CWallet::minStakeSplitThreshold) {
+        setStakeSplitThreshold(CWallet::minStakeSplitThreshold);
+        return false;
+    }
+    return true;
+}
+
 /* Update Custom Fee value in wallet */
 void OptionsModel::setUseCustomFee(bool fUse)
 {
@@ -539,4 +559,16 @@ bool OptionsModel::isRestartRequired()
 {
     QSettings settings;
     return settings.value("fRestartRequired", false).toBool();
+}
+
+void OptionsModel::setSSTChanged(bool fChanged)
+{
+    QSettings settings;
+    return settings.setValue("fSSTChanged", fChanged);
+}
+
+bool OptionsModel::isSSTChanged()
+{
+    QSettings settings;
+    return settings.value("fSSTChanged", false).toBool();
 }

@@ -1,18 +1,20 @@
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "qt/encocoin/sendchangeaddressdialog.h"
 #include "qt/encocoin/forms/ui_sendchangeaddressdialog.h"
-
-#include "coincontrol.h"
 #include "qt/encocoin/qtutils.h"
 
 SendChangeAddressDialog::SendChangeAddressDialog(QWidget* parent, WalletModel* model) :
-    QDialog(parent),
+    FocusedDialog(parent),
     walletModel(model),
     ui(new Ui::SendChangeAddressDialog)
 {
+    // Change address
+    dest = CNoDestination();
+
     if (!walletModel) {
         throw std::runtime_error(strprintf("%s: No wallet model set", __func__));
     }
@@ -23,13 +25,9 @@ SendChangeAddressDialog::SendChangeAddressDialog(QWidget* parent, WalletModel* m
     ui->frame->setProperty("cssClass", "container-dialog");
 
     // Text
-    ui->labelTitle->setText(tr("Custom Change Address"));
     ui->labelTitle->setProperty("cssClass", "text-title-dialog");
-
-    ui->labelMessage->setText(tr("The remainder of the value resultant from the inputs minus the outputs value goes to the \"change\" EncoCoin address"));
     ui->labelMessage->setProperty("cssClass", "text-main-grey");
 
-    ui->lineEditAddress->setPlaceholderText("Enter EncoCoin address (e.g D7VFR83SQbiezrW72hjc… ");
     initCssEditLine(ui->lineEditAddress, true);
 
     // Buttons
@@ -37,12 +35,11 @@ SendChangeAddressDialog::SendChangeAddressDialog(QWidget* parent, WalletModel* m
     ui->btnEsc->setProperty("cssClass", "ic-close");
 
     ui->btnCancel->setProperty("cssClass", "btn-dialog-cancel");
-    ui->btnSave->setText(tr("SAVE"));
     setCssBtnPrimary(ui->btnSave);
 
     connect(ui->btnEsc, &QPushButton::clicked, this, &SendChangeAddressDialog::close);
     connect(ui->btnCancel, &QPushButton::clicked, this, &SendChangeAddressDialog::reset);
-    connect(ui->btnSave, &QPushButton::clicked, this, &SendChangeAddressDialog::save);
+    connect(ui->btnSave, &QPushButton::clicked, this, &SendChangeAddressDialog::accept);
 }
 
 void SendChangeAddressDialog::setAddress(QString address)
@@ -51,9 +48,9 @@ void SendChangeAddressDialog::setAddress(QString address)
     ui->btnCancel->setText(tr("RESET"));
 }
 
-QString SendChangeAddressDialog::getAddress() const
+CTxDestination SendChangeAddressDialog::getDestination() const
 {
-    return ui->lineEditAddress->text();
+    return dest;
 }
 
 void SendChangeAddressDialog::showEvent(QShowEvent *event)
@@ -66,18 +63,27 @@ void SendChangeAddressDialog::reset()
     if (!ui->lineEditAddress->text().isEmpty()) {
         ui->lineEditAddress->clear();
         ui->btnCancel->setText(tr("CANCEL"));
-        CoinControlDialog::coinControl->destChange = CNoDestination();
     }
     close();
 }
 
-void SendChangeAddressDialog::save()
+void SendChangeAddressDialog::accept()
 {
-    // validate address
-    if (!walletModel->validateAddress(ui->lineEditAddress->text())) {
-        inform(tr("Invalid address"));
+    if (ui->lineEditAddress->text().isEmpty()) {
+        // no custom change address set
+        dest = CNoDestination();
+        QDialog::accept();
     } else {
-        accept();
+        // validate address
+        bool isStakingAddr;
+        dest = DecodeDestination(ui->lineEditAddress->text().toStdString(), isStakingAddr);
+        if (!IsValidDestination(dest)) {
+            inform(tr("Invalid address"));
+        } else if (isStakingAddr) {
+            inform(tr("Cannot use cold staking addresses for change"));
+        } else {
+            QDialog::accept();
+        }
     }
 }
 

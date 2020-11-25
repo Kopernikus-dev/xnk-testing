@@ -2,6 +2,7 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "qt/encocoin/pwidget.h"
 #include "qt/encocoin/qtutils.h"
 #include "qt/encocoin/loadingdialog.h"
@@ -13,7 +14,7 @@ PWidget::PWidget(PWidget* parent) : QWidget(parent), window(parent->getWindow())
 
 void PWidget::init()
 {
-    if(window)
+    if (window)
         connect(window, &EncoCoinGUI::themeChanged, this, &PWidget::onChangeTheme);
 }
 

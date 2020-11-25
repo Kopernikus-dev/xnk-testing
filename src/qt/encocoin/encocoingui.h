@@ -1,4 +1,5 @@
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -20,7 +21,6 @@
 #include "qt/encocoin/send.h"
 #include "qt/encocoin/receivewidget.h"
 #include "qt/encocoin/addresseswidget.h"
-#include "qt/encocoin/privacywidget.h"
 #include "qt/encocoin/coldstakingwidget.h"
 #include "qt/encocoin/masternodeswidget.h"
 #include "qt/encocoin/snackbar.h"
@@ -66,10 +66,11 @@ public Q_SLOTS:
     void goToSend();
     void goToReceive();
     void goToAddresses();
-    void goToPrivacy();
     void goToMasterNodes();
     void goToColdStaking();
     void goToSettings();
+    void goToSettingsInfo();
+    void openNetworkMonitor();
 
     void connectActions();
 
@@ -130,7 +131,6 @@ private:
     SendWidget *sendWidget = nullptr;
     ReceiveWidget *receiveWidget = nullptr;
     AddressesWidget *addressesWidget = nullptr;
-    PrivacyWidget *privacyWidget = nullptr;
     MasterNodesWidget *masterNodesWidget = nullptr;
     ColdStakingWidget *coldStakingWidget = nullptr;
     SettingsWidget* settingsWidget = nullptr;

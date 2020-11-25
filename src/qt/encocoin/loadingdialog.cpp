@@ -2,6 +2,7 @@
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "qt/encocoin/loadingdialog.h"
 #include "qt/encocoin/forms/ui_loadingdialog.h"
 #include <QMovie>
@@ -40,7 +41,6 @@ LoadingDialog::LoadingDialog(QWidget *parent) :
     ui->labelMovie->setMovie(movie);
     movie->start();
 
-    ui->labelMessage->setText(tr("Loading"));
     ui->labelMessage->setProperty("cssClass", "text-loading");
     ui->labelDots->setProperty("cssClass", "text-loading");
 }

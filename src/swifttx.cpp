@@ -1,5 +1,6 @@
 // Copyright (c) 2014-2016 The Dash developers
-// Copyright (c) 2016-2019 The EncoCoin developers
+// Copyright (c) 2016-2020 The PIVX developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -41,7 +42,7 @@ void ProcessMessageSwiftTX(CNode* pfrom, std::string& strCommand, CDataStream& v
     if (!sporkManager.IsSporkActive(SPORK_2_SWIFTTX)) return;
     if (!masternodeSync.IsBlockchainSynced()) return;
 
-    if (strCommand == "ix") {
+    if (strCommand == NetMsgType::IX) {
         //LogPrintf("ProcessMessageSwiftTX::ix\n");
         CDataStream vMsg(vRecv);
         CTransaction tx;
@@ -127,7 +128,7 @@ void ProcessMessageSwiftTX(CNode* pfrom, std::string& strCommand, CDataStream& v
 
             return;
         }
-    } else if (strCommand == "txlvote") // SwiftX Lock Consensus Votes
+    } else if (strCommand == NetMsgType::IXLOCKVOTE) // SwiftX Lock Consensus Votes
     {
         CConsensusVote ctx;
         vRecv >> ctx;
@@ -264,7 +265,11 @@ void DoConsensusVote(CTransaction& tx, int64_t nBlockHeight)
 {
     if (!fMasterNode) return;
 
-    int n = mnodeman.GetMasternodeRank(activeMasternode.vin, nBlockHeight, MIN_SWIFTTX_PROTO_VERSION);
+    if (activeMasternode.vin == nullopt)
+        LogPrint(BCLog::MASTERNODE, "%s: Active Masternode not initialized.", __func__);
+        return;
+
+    int n = mnodeman.GetMasternodeRank(*(activeMasternode.vin), nBlockHeight, MIN_SWIFTTX_PROTO_VERSION);
 
     if (n == -1) {
         LogPrint(BCLog::MASTERNODE, "%s : Unknown Masternode\n", __func__);
@@ -282,15 +287,11 @@ void DoConsensusVote(CTransaction& tx, int64_t nBlockHeight)
     LogPrint(BCLog::MASTERNODE, "%s : In the top %d (%d)\n", __func__, SWIFTTX_SIGNATURES_TOTAL, n);
 
     CConsensusVote ctx;
-    ctx.vinMasternode = activeMasternode.vin;
+    ctx.vinMasternode = *(activeMasternode.vin);
     ctx.txHash = tx.GetHash();
     ctx.nBlockHeight = nBlockHeight;
-    bool fNewSigs = false;
-    {
-        LOCK(cs_main);
-        fNewSigs = chainActive.NewSigsActive();
-    }
-    if (!ctx.Sign(strMasterNodePrivKey, fNewSigs)) {
+
+   if (!ctx.Sign(strMasterNodePrivKey)) {
         LogPrintf("%s : Failed to sign consensus vote\n", __func__);
         return;
     }

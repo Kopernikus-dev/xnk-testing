@@ -9,7 +9,8 @@
  * @copyright  Copyright 2013 Ian Miers, Christina Garman and Matthew Green
  * @license    This project is released under the MIT license.
  **/
-// Copyright (c) 2017-2019 The EncoCoin developers
+// Copyright (c) 2017-2020 The PIVX developers
+// Copyright (c) 2020 The EncoCoin developers
 
 #ifndef ACCUMULATOR_H_
 #define ACCUMULATOR_H_
@@ -41,7 +42,7 @@ public:
     Accumulator(const ZerocoinParams* p, const CoinDenomination d, CBigNum bnValue = 0);
     ADD_SERIALIZE_METHODS;
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
+    inline void SerializationOp(Stream& s, Operation ser_action)
     {
         READWRITE(value);
         READWRITE(denomination);

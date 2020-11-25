@@ -10,50 +10,48 @@ The goal of EncoCoin is to achieve a decentralized sustainable crypto currency w
 - Fast transactions featuring guaranteed zero confirmation transactions, we call it _SwiftX_.
 - Decentralized blockchain voting utilizing Masternode technology to form a DAO. The blockchain will distribute monthly treasury funds based on successful proposals submitted by the community and voted on by the DAO.
 
-More information at [encocoin.org](http://www.encocoin.org) Visit our ANN thread at [BitcoinTalk](http://www.bitcointalk.org/index.php?topic=1262920)
+More information at [encocoin.net](http://www.encocoin.net) Visit our ANN thread at [BitcoinTalk](https://bitcointalk.org/index.php?topic=5028776.0). Join the community at [PIVX Discord](https://discord.gg/JFnYdyv).
 
 ### Coin Specs
 <table>
-<tr><td>Algo</td><td>Quark</td></tr>
+<tr><td>Algorithm</td><td>Quark</td></tr>
+<tr><td>Block type</td><td>PoS/MN</tr>
 <tr><td>Block Time</td><td>60 Seconds</td></tr>
-<tr><td>Difficulty Retargeting</td><td>Every Block</td></tr>
-<tr><td>Max Coin Supply (PoW Phase)</td><td>43,199,500 XNK</td></tr>
-<tr><td>Max Coin Supply (PoS Phase)</td><td>Infinite</td></tr>
-<tr><td>Premine</td><td>60,000 XNK*</td></tr>
+<tr><td>Coin Ticker</td><td>XNK</td></tr>
+<tr><td>P2P Port</td><td>43013</td></tr>
+<tr><td>RPC Port</td><td>43014</td></tr>
+<tr><td>Address Prefixes</td><td>4 or 5</td></tr>
+<tr><td>Total Coin Supply</td><td>60000000</td></tr>
+<tr><td>Premine</td><td>6%</td></tr>
+<tr><td>MN confirmations</td>15 blocks<td></td></tr>
+<tr><td>TXN confirmations</td>6 blocks<td></td></tr>
 </table>
 
-*60,000 XNK Premine was burned in block [279917](http://www.presstab.pw/phpexplorer/EncoCoin/block.php?blockhash=206d9cfe859798a0b0898ab00d7300be94de0f5469bb446cecb41c3e173a57e0)
+MN Rewards needs 100(+ 1) confirmations to mature
+Staking begins with 200(+ 1) confirmations
+
 
 ### Reward Distribution
 
 <table>
-<th colspan=4>Genesis Block</th>
-<tr><th>Block Height</th><th>Reward Amount</th><th>Notes</th></tr>
-<tr><td>1</td><td>60,000 XNK</td><td>Initial Pre-mine, burnt in block <a href="http://www.presstab.pw/phpexplorer/EncoCoin/block.php?blockhash=206d9cfe859798a0b0898ab00d7300be94de0f5469bb446cecb41c3e173a57e0">279917</a></td></tr>
+<th>Phase</th><th>Block Height</th><th>MN Collateral</th><th>Block Reward</th><th>MN Reward</th><th>Stake Reward</th>
+<tr><td>Phase 1</td><td>0-500</td><td>0</td><td><0.5/td><td>0</td><td>0</td></tr>
+<tr><td>Phase 2</td><td>501-2000</td><td>9000</td><td>0.1</td><td>0.0999</td><td>0.0001</td></tr>
+<tr><td>Phase 3</td><td>2001-10000</td><td><15000/td><td>0.15</td><td>0.1499</td><td>0.0001</td></tr>
+<tr><td>Phase 4</td><td>10001-20000</td><td>20000</td><td>0.3</td><td>0.2999</td><td>0.0001</td></tr>
+<tr><td>Phase 5</td><td>20001-30000</td><td>21000</td><td>0.6</td><td>0.5999</td><td>0.0001</td></tr>
+<tr><td>Phase 6</td><td>30001-40000</td><td>22000</td><td>1.2</td><td>1.1999</td><td>0.0001</td></tr>
+<tr><td>Phase 7</td><td>40001-50000</td><td>25000</td><td>1.5</td><td>1.4999</td><td>0.0001</td></tr>
+<tr><td>Phase 8</td><td>50001-70000</td><td>28000</td><td>3.0</td><td>2.9999</td><td>0.0001</td></tr>
+<tr><td>Phase 9</td><td>70001-80000</td><td>30000</td><td>6.0</td><td>5.9999</td><td>0.0001</td></tr>
+<tr><td>Phase 10</td><td>80001-90000</td><td>35000</td><td>7.0</td><td>6.9999</td><td>0.0001</td></tr>
+<tr><td>Phase 11</td><td>90001-100000></td><td>36000</td><td>7.5</td><td>7.4999</td><td>0.0001</td></tr>
+<tr><td>Phase 12</td><td>100001-120000</td><td>40000</td><td>15.0</td><td>14.9999</td><td>0.0001</td></tr>
+<tr><td>Phase 13</td><td>120001-140000</td><td>45000</td><td>16.5</td><td>16.4999</td><td>0.0001</td></tr>
+<tr><td>Phase 14</td><td>140001-150000</td><td>46000</td><td>17.0</td><td>16.9999</td><td>0.0001</td></tr>
+<tr><td>Phase 15</td><td>150001-∞</td><td>50000</td><td>20.0</td><td>19.995</td><td>0.005</td></tr>
 </table>
 
-### PoW Rewards Breakdown
+## Masternode Setup
 
-<table>
-<th>Block Height</th><th>Masternodes</th><th>Miner</th><th>Budget</th>
-<tr><td>2-43200</td><td>20% (50 XNK)</td><td>80% (200 XNK)</td><td>N/A</td></tr>
-<tr><td>43201-151200</td><td>20% (50 XNK)</td><td>70% (200 XNK)</td><td>10% (25 XNK)</td></tr>
-<tr><td>151201-259200</td><td>45% (22.5 XNK)</td><td>45% (22.5 XNK)</td><td>10% (5 XNK)</td></tr>
-</table>
-
-### PoS Rewards Breakdown
-
-<table>
-<th>Phase</th><th>Block Height</th><th>Reward</th><th>Masternodes & Stakers</th><th>Budget</th>
-<tr><td>Phase 0</td><td>259201-302399</td><td>50 XNK</td><td>90% (45 XNK)</td><td>10% (5 XNK)</td></tr>
-<tr><td>Phase 1</td><td>302400-345599</td><td>45 XNK</td><td>90% (40.5 XNK)</td><td>10% (4.5 XNK)</td></tr>
-<tr><td>Phase 2</td><td>345600-388799</td><td>40 XNK</td><td>90% (36 XNK)</td><td>10% (4 XNK)</td></tr>
-<tr><td>Phase 3</td><td>388800-431999</td><td>35 XNK</td><td>90% (31.5 XNK)</td><td>10% (3.5 XNK)</td></tr>
-<tr><td>Phase 4</td><td>432000-475199</td><td>30 XNK</td><td>90% (27 XNK)</td><td>10% (3 XNK)</td></tr>
-<tr><td>Phase 5</td><td>475200-518399</td><td>25 XNK</td><td>90% (22.5 XNK)</td><td>10% (2.5 XNK)</td></tr>
-<tr><td>Phase 6</td><td>518400-561599</td><td>20 XNK</td><td>90% (18 XNK)</td><td>10% (2 XNK)</td></tr>
-<tr><td>Phase 7</td><td>561600-604799</td><td>15 XNK</td><td>90% (13.5 XNK)</td><td>10% (1.5 XNK)</td></tr>
-<tr><td>Phase 8</td><td>604800-647999</td><td>10 XNK</td><td>90% (9 XNK)</td><td>10% (1 XNK)</td></tr>
-<tr><td>Phase 9</td><td>648000-1154203</td><td>5 XNK</td><td>90% (4.5 XNK)</td><td>10% (0.5 XNK)</td></tr>
-<tr><td>Phase X</td><td>1154203-∞</td><td>6 XNK</td><td>84% (5 XNK/zXNK)</td><td>16% (1 XNK)</td></tr>
-</table>
+If you like to create a Masternode, [click here] (https://github.com/Encocoin/xnk-mn-install) for more Informations

@@ -904,7 +904,7 @@ background:transparent;
                      <property name="text">
                       <string>May 25, 2017</string>
                      </property>
-                      <property name="alignment">
+                     <property name="alignment">
                       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                      </property>
                     </widget>

@@ -1,4 +1,5 @@
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -61,10 +62,10 @@ Q_SIGNALS:
 };
 
 enum SortTx {
-    DATE_ASC = 0,
-    DATE_DESC = 1,
-    AMOUNT_ASC = 2,
-    AMOUNT_DESC = 3
+    DATE_DESC = 0,
+    DATE_ASC = 1,
+    AMOUNT_DESC = 2,
+    AMOUNT_ASC = 3
 };
 
 enum ChartShowType {
@@ -140,6 +141,7 @@ private:
     TransactionTableModel* txModel;
     int nDisplayUnit = -1;
     bool isSync = false;
+    void changeSort(int nSortIndex);
 
 #ifdef USE_QTCHARTS
 
