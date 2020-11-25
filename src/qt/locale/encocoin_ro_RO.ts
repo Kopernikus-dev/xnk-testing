@@ -88,7 +88,7 @@
     <name>CoinControlDialog</name>
     </context>
 <context>
-    <name>CoinControlPivWidget</name>
+    <name>CoinControlXnkWidget</name>
     </context>
 <context>
     <name>ColdStakingWidget</name>
@@ -286,7 +286,7 @@
     <name>WelcomeContentWidget</name>
     </context>
 <context>
-    <name>ZPivControlDialog</name>
+    <name>ZXnkControlDialog</name>
     </context>
 <context>
     <name>encocoin-core</name>

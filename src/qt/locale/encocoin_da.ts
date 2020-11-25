@@ -698,8 +698,8 @@ For Staking</translation>
         <translation>Denne tekstmarkør bliver rød, hvis en modtageradresse modtager et beløb mindre end %1.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 upiv per input.</source>
-        <translation>Kan variere +/- %1 opiv pr input.</translation>
+        <source>Can vary +/- %1 uxnk per input.</source>
+        <translation>Kan variere +/- %1 oxnk pr input.</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -715,7 +715,7 @@ For Staking</translation>
     </message>
 </context>
 <context>
-    <name>CoinControlPivWidget</name>
+    <name>CoinControlXnkWidget</name>
     <message>
         <source>Dialog</source>
         <translation>Dialog</translation>
@@ -3283,11 +3283,11 @@ Enten mint højere nomineringer (så færre input er nødvendige) eller reducere
     </message>
     <message>
         <source>Spent zXNK</source>
-        <translation>Brugt zPiv</translation>
+        <translation>Brugt zXnk</translation>
     </message>
     <message>
         <source>Received XNK from zXNK</source>
-        <translation>Modtaget Piv fra zPiv</translation>
+        <translation>Modtaget Xnk fra zXnk</translation>
     </message>
     <message>
         <source>Minted Change as zXNK from zXNK Spend</source>
@@ -3442,7 +3442,7 @@ Enten mint højere nomineringer (så færre input er nødvendige) eller reducere
     </message>
 </context>
 <context>
-    <name>ZPivControlDialog</name>
+    <name>ZXnkControlDialog</name>
     <message>
         <source>Select zXNK to Spend</source>
         <translation>Vælg zXNK for at bruge</translation>
@@ -3456,8 +3456,8 @@ Enten mint højere nomineringer (så færre input er nødvendige) eller reducere
         <translation>Tryk på Knappen</translation>
     </message>
     <message>
-        <source>zPiv</source>
-        <translation>zPiv</translation>
+        <source>zXnk</source>
+        <translation>zXnk</translation>
     </message>
     <message>
         <source>Quantity:</source>
@@ -3533,7 +3533,7 @@ Enten mint højere nomineringer (så færre input er nødvendige) eller reducere
     </message>
     <message>
         <source>Enable automatic wallet backups triggered after each zXNK minting (0-1, default: %u)</source>
-        <translation>Aktivér automatiske wallet-sikkerhedskopier udløst efter hver zPiv-mintning (0-1, standard: %u)</translation>
+        <translation>Aktivér automatiske wallet-sikkerhedskopier udløst efter hver zXnk-mintning (0-1, standard: %u)</translation>
     </message>
     <message>
         <source>Enable or disable staking functionality for XNK inputs (0-1, default: %u)</source>

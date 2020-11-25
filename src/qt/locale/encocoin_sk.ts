@@ -332,7 +332,7 @@
     </message>
     </context>
 <context>
-    <name>CoinControlPivWidget</name>
+    <name>CoinControlXnkWidget</name>
     <message>
         <source>TextLabel</source>
         <translation>TextLabel</translation>
@@ -934,7 +934,7 @@ Adresa: %4
     <name>WelcomeContentWidget</name>
     </context>
 <context>
-    <name>ZPivControlDialog</name>
+    <name>ZXnkControlDialog</name>
     <message>
         <source>Quantity:</source>
         <translation>Množstvo:</translation>

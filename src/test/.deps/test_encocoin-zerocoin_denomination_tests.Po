@@ -1100,7 +1100,7 @@ test/test_encocoin-zerocoin_denomination_tests.o: \
  /usr/include/boost/variant/detail/element_index.hpp \
  /usr/include/boost/variant/visitor_ptr.hpp \
  /usr/include/boost/variant/bad_visit.hpp denomination_functions.h \
- reverse_iterate.h util.h zpiv/zerocoin.h libzerocoin/bignum.h \
+ reverse_iterate.h util.h zxnk/zerocoin.h libzerocoin/bignum.h \
  libzerocoin/Denominations.h main.h amount.h chain.h chainparams.h pow.h \
  timedata.h coins.h compressor.h script/script.h undo.h \
  /usr/include/boost/unordered_map.hpp \
@@ -1130,13 +1130,13 @@ test/test_encocoin-zerocoin_denomination_tests.o: \
  /usr/include/boost/unordered/detail/fwd.hpp \
  /usr/include/boost/unordered/unordered_map_fwd.hpp net.h bloom.h \
  libzerocoin/bignum.h limitedmap.h mruset.h random.h streams.h \
- utilstrencodings.h zpiv/zpivmodule.h libzerocoin/Coin.h \
+ utilstrencodings.h zxnk/zxnkmodule.h libzerocoin/Coin.h \
  libzerocoin/CoinRandomnessSchnorrSignature.h libzerocoin/SpendType.h \
- zpiv/zerocoin.h script/sigcache.h txmempool.h libzerocoin/CoinSpend.h \
- lightzpivthread.h genwit.h zpiv/accumulators.h libzerocoin/Accumulator.h \
- zpiv/accumulatormap.h zpiv/accumulatorcheckpoints.h \
- univalue/include/univalue.h chain.h bloom.h zpiv/witness.h \
- zpiv/zerocoin.h concurrentqueue.h /usr/include/boost/thread.hpp \
+ zxnk/zerocoin.h script/sigcache.h txmempool.h libzerocoin/CoinSpend.h \
+ lightzxnkthread.h genwit.h zxnk/accumulators.h libzerocoin/Accumulator.h \
+ zxnk/accumulatormap.h zxnk/accumulatorcheckpoints.h \
+ univalue/include/univalue.h chain.h bloom.h zxnk/witness.h \
+ zxnk/zerocoin.h concurrentqueue.h /usr/include/boost/thread.hpp \
  /usr/include/boost/thread/thread.hpp \
  /usr/include/boost/thread/thread_only.hpp \
  /usr/include/boost/thread/detail/thread.hpp \
@@ -1233,8 +1233,8 @@ test/test_encocoin-zerocoin_denomination_tests.o: \
  /usr/include/boost/signals2/last_value.hpp validationinterface.h \
  wallet/wallet_ismine.h script/standard.h wallet/walletdb.h wallet/db.h \
  clientversion.h sync.h /usr/include/db_cxx.h /usr/include/db.h \
- /usr/include/inttypes.h zpiv/zpivtracker.h zpiv/zpivmodule.h \
- zpiv/zpivwallet.h zpiv/mintpool.h test/test_encocoin.h \
+ /usr/include/inttypes.h zxnk/zxnktracker.h zxnk/zxnkmodule.h \
+ zxnk/zxnkwallet.h zxnk/mintpool.h test/test_encocoin.h \
  /usr/include/boost/filesystem.hpp \
  /usr/include/boost/filesystem/exception.hpp \
  /usr/include/boost/smart_ptr/intrusive_ptr.hpp \
@@ -3953,7 +3953,7 @@ reverse_iterate.h:
 
 util.h:
 
-zpiv/zerocoin.h:
+zxnk/zerocoin.h:
 
 libzerocoin/bignum.h:
 
@@ -4051,7 +4051,7 @@ streams.h:
 
 utilstrencodings.h:
 
-zpiv/zpivmodule.h:
+zxnk/zxnkmodule.h:
 
 libzerocoin/Coin.h:
 
@@ -4059,7 +4059,7 @@ libzerocoin/CoinRandomnessSchnorrSignature.h:
 
 libzerocoin/SpendType.h:
 
-zpiv/zerocoin.h:
+zxnk/zerocoin.h:
 
 script/sigcache.h:
 
@@ -4067,17 +4067,17 @@ txmempool.h:
 
 libzerocoin/CoinSpend.h:
 
-lightzpivthread.h:
+lightzxnkthread.h:
 
 genwit.h:
 
-zpiv/accumulators.h:
+zxnk/accumulators.h:
 
 libzerocoin/Accumulator.h:
 
-zpiv/accumulatormap.h:
+zxnk/accumulatormap.h:
 
-zpiv/accumulatorcheckpoints.h:
+zxnk/accumulatorcheckpoints.h:
 
 univalue/include/univalue.h:
 
@@ -4085,9 +4085,9 @@ chain.h:
 
 bloom.h:
 
-zpiv/witness.h:
+zxnk/witness.h:
 
-zpiv/zerocoin.h:
+zxnk/zerocoin.h:
 
 concurrentqueue.h:
 
@@ -4331,13 +4331,13 @@ sync.h:
 
 /usr/include/inttypes.h:
 
-zpiv/zpivtracker.h:
+zxnk/zxnktracker.h:
 
-zpiv/zpivmodule.h:
+zxnk/zxnkmodule.h:
 
-zpiv/zpivwallet.h:
+zxnk/zxnkwallet.h:
 
-zpiv/mintpool.h:
+zxnk/mintpool.h:
 
 test/test_encocoin.h:
 

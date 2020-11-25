@@ -503,8 +503,8 @@
         <translation>Ši etiketė taps raudona, jei gavėjas gaus sumą mažesnę už %1</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 upiv per input.</source>
-        <translation>Gali skirtis +/- %1 upiv kiekvienoje įvestyje.</translation>
+        <source>Can vary +/- %1 uxnk per input.</source>
+        <translation>Gali skirtis +/- %1 uxnk kiekvienoje įvestyje.</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -520,7 +520,7 @@
     </message>
 </context>
 <context>
-    <name>CoinControlPivWidget</name>
+    <name>CoinControlXnkWidget</name>
     <message>
         <source>XNK:</source>
         <translation>XNK:</translation>
@@ -2060,7 +2060,7 @@ Adresas: %4
     </message>
 </context>
 <context>
-    <name>ZPivControlDialog</name>
+    <name>ZXnkControlDialog</name>
     <message>
         <source>Coin Control</source>
         <translation>Monetų Kontrolė</translation>

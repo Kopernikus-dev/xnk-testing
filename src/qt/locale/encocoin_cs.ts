@@ -508,7 +508,7 @@
     </message>
 </context>
 <context>
-    <name>CoinControlPivWidget</name>
+    <name>CoinControlXnkWidget</name>
     <message>
         <source>TextLabel</source>
         <translation>TextPopisku</translation>
@@ -1802,7 +1802,7 @@ Adresa: %4
     </message>
     </context>
 <context>
-    <name>ZPivControlDialog</name>
+    <name>ZXnkControlDialog</name>
     <message>
         <source>Quantity:</source>
         <translation>Množství:</translation>

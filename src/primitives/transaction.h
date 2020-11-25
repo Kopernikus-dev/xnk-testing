@@ -36,7 +36,6 @@ public:
 
     void SetNull() { hash.SetNull(); n = (uint32_t) -1; }
     bool IsNull() const { return (hash.IsNull() && n == (uint32_t) -1); }
-    bool IsMasternodeReward(const CTransaction* tx) const;
 
     friend bool operator<(const COutPoint& a, const COutPoint& b)
     {
@@ -79,7 +78,6 @@ public:
 
     explicit CTxIn(COutPoint prevoutIn, CScript scriptSigIn=CScript(), uint32_t nSequenceIn=std::numeric_limits<unsigned int>::max());
     CTxIn(uint256 hashPrevTx, uint32_t nOut, CScript scriptSigIn=CScript(), uint32_t nSequenceIn=std::numeric_limits<uint32_t>::max());
-    CTxIn(const libzerocoin::CoinSpend& spend, libzerocoin::CoinDenomination denom);
 
     ADD_SERIALIZE_METHODS;
 
@@ -162,16 +160,17 @@ public:
     }
 
     uint256 GetHash() const;
+    bool GetKeyIDFromUTXO(CKeyID& keyIDRet) const;
 
     bool IsDust(CFeeRate minRelayTxFee) const
     {
-        // "Dust" is defined in terms of CTransaction::minRelayTxFee, which has units upiv-per-kilobyte.
+        // "Dust" is defined in terms of CTransaction::minRelayTxFee, which has units uxnk-per-kilobyte.
         // If you'd pay more than 1/3 in fees to spend something, then we consider it dust.
         // A typical txout is 34 bytes big, and will need a CTxIn of at least 148 bytes to spend
-        // i.e. total is 148 + 32 = 182 bytes. Default -minrelaytxfee is 10000 upiv per kB
-        // and that means that fee per txout is 182 * 10000 / 1000 = 1820 upiv.
-        // So dust is a txout less than 1820 *3 = 5460 upiv
-        // with default -minrelaytxfee = minRelayTxFee = 10000 upiv per kB.
+        // i.e. total is 148 + 32 = 182 bytes. Default -minrelaytxfee is 10000 uxnk per kB
+        // and that means that fee per txout is 182 * 10000 / 1000 = 1820 uxnk.
+        // So dust is a txout less than 1820 *3 = 5460 uxnk
+        // with default -minrelaytxfee = minRelayTxFee = 10000 uxnk per kB.
         size_t nSize = GetSerializeSize(SER_DISK,0)+148u;
         return (nValue < 3*minRelayTxFee.GetFee(nSize));
     }

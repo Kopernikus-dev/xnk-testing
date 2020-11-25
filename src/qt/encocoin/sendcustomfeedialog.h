@@ -7,8 +7,10 @@
 
 #include <QDialog>
 #include "amount.h"
+#include "qt/encocoin/snackbar.h"
 
 class WalletModel;
+class EncoCoinGUI;
 
 namespace Ui {
 class SendCustomFeeDialog;
@@ -19,23 +21,29 @@ class SendCustomFeeDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit SendCustomFeeDialog(QWidget *parent = nullptr);
+    explicit SendCustomFeeDialog(EncoCoinGUI* parent, WalletModel* model);
     ~SendCustomFeeDialog();
 
-    void setWalletModel(WalletModel* model);
-    void showEvent(QShowEvent *event) override;
+    void showEvent(QShowEvent* event) override;
     CFeeRate getFeeRate();
+    bool isCustomFeeChecked();
     void clear();
 
-public slots:
+public Q_SLOTS:
     void onRecommendedChecked();
     void onCustomChecked();
     void updateFee();
     void onChangeTheme(bool isLightTheme, QString& theme);
+
+protected Q_SLOTS:
+    void accept() override;
+
 private:
-    Ui::SendCustomFeeDialog *ui;
+    Ui::SendCustomFeeDialog* ui;
     WalletModel* walletModel = nullptr;
     CFeeRate feeRate;
+    SnackBar* snackBar = nullptr;
+    void inform(const QString& text);
 };
 
 #endif // SENDCUSTOMFEEDIALOG_H

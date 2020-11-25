@@ -28,10 +28,10 @@ def assert_fee_amount(fee, tx_size, fee_per_kB):
     """Assert the fee was in range"""
     target_fee = round(tx_size * fee_per_kB / 1000, 8)
     if fee < target_fee:
-        raise AssertionError("Fee of %s BTC too low! (Should be %s BTC)" % (str(fee), str(target_fee)))
+        raise AssertionError("Fee of %s XNK too low! (Should be %s XNK)" % (str(fee), str(target_fee)))
     # allow the wallet's estimation to be at most 2 bytes off
     if fee > (tx_size + 20) * fee_per_kB / 1000:
-        raise AssertionError("Fee of %s BTC too high! (Should be %s BTC)" % (str(fee), str(target_fee)))
+        raise AssertionError("Fee of %s XNK too high! (Should be %s XNK)" % (str(fee), str(target_fee)))
 
 def assert_equal(thing1, thing2, *args):
     if thing1 != thing2 or any(thing1 != arg for arg in args):
@@ -172,7 +172,7 @@ def assert_array_result(object_array, to_match, expected, should_not_find=False)
 ###################
 
 def check_json_precision():
-    """Make sure json library being used does not lose precision converting BTC values"""
+    """Make sure json library being used does not lose precision converting XNK values"""
     n = Decimal("20000000.00000003")
     satoshis = int(json.loads(json.dumps(float(n))) * 1.0e8)
     if satoshis != 2000000000000003:
@@ -294,10 +294,12 @@ def initialize_datadir(dirname, n):
         f.write("rpcpassword=" + rpc_p + "\n")
         f.write("port=" + str(p2p_port(n)) + "\n")
         f.write("rpcport=" + str(rpc_port(n)) + "\n")
+        f.write("server=1\n")
+        f.write("keypool=1\n")
+        f.write("discover=0\n")
         f.write("listenonion=0\n")
-        f.write("enablezeromint=0\n")
-        f.write("staking=0\n")
         f.write("spendzeroconfchange=1\n")
+        f.write("printtoconsole=0\n")
     return datadir
 
 def rpc_auth_pair(n):
@@ -363,15 +365,12 @@ def connect_nodes(from_connection, node_num):
     # with transaction relaying
     wait_until(lambda:  all(peer['version'] != 0 for peer in from_connection.getpeerinfo()))
 
-def connect_nodes_bi(nodes, a, b):
-    connect_nodes(nodes[a], b)
-    connect_nodes(nodes[b], a)
-
 def connect_nodes_clique(nodes):
     l = len(nodes)
     for a in range(l):
         for b in range(a, l):
-            connect_nodes_bi(nodes, a, b)
+            connect_nodes(nodes[a], b)
+            connect_nodes(nodes[b], a)
 
 def sync_blocks(rpc_connections, *, wait=1, timeout=60):
     """

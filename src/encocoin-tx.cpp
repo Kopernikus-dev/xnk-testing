@@ -1,5 +1,6 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2015-2019 The EncoCoin developers
+// Copyright (c) 2015-2020 The PIVX developers
+// Copyright (c) 2020	   The EncoCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -22,7 +23,6 @@
 
 #include <boost/algorithm/string.hpp>
 #include <boost/assign/list_of.hpp>
-
 
 static bool fCreateBlank;
 static std::map<std::string, UniValue> registers;
@@ -311,7 +311,7 @@ static bool findSighashFlags(int& flags, const std::string& flagStr)
 uint256 ParseHashUO(std::map<std::string, UniValue>& o, std::string strKey)
 {
     if (!o.count(strKey))
-        return 0;
+        return UINT256_ZERO;
     return ParseHashUV(o[strKey], strKey);
 }
 
@@ -496,7 +496,7 @@ static void MutateTx(CMutableTransaction& tx, const std::string& command, const 
 static void OutputTxJSON(const CTransaction& tx)
 {
     UniValue entry(UniValue::VOBJ);
-    TxToUniv(tx, 0, entry);
+    TxToUniv(tx, UINT256_ZERO, entry);
 
     std::string jsonOutput = entry.write(4);
     fprintf(stdout, "%s\n", jsonOutput.c_str());

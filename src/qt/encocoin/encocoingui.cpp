@@ -18,6 +18,9 @@
 #include "qt/encocoin/defaultdialog.h"
 #include "qt/encocoin/settings/settingsfaqwidget.h"
 
+#include "init.h"
+#include "util.h"
+
 #include <QDesktopWidget>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
@@ -27,7 +30,6 @@
 #include <QKeySequence>
 #include <QWindowStateChangeEvent>
 
-#include "util.h"
 
 #define BASE_WINDOW_WIDTH 1200
 #define BASE_WINDOW_HEIGHT 740
@@ -63,20 +65,16 @@ EncoCoinGUI::EncoCoinGUI(const NetworkStyle* networkStyle, QWidget* parent) :
     enableWallet = false;
 #endif // ENABLE_WALLET
 
-    QString windowTitle = tr("EncoCoin Core") + " - ";
-    windowTitle += ((enableWallet) ? tr("Wallet") : tr("Node"));
+    QString windowTitle = QString::fromStdString(GetArg("-windowtitle", ""));
+    if (windowTitle.isEmpty()) {
+        windowTitle = tr("EncoCoin Core") + " - ";
+        windowTitle += ((enableWallet) ? tr("Wallet") : tr("Node"));
+    }
     windowTitle += " " + networkStyle->getTitleAddText();
     setWindowTitle(windowTitle);
 
-#ifndef Q_OS_MAC
     QApplication::setWindowIcon(networkStyle->getAppIcon());
     setWindowIcon(networkStyle->getAppIcon());
-#else
-    MacDockIconHandler::instance()->setIcon(networkStyle->getAppIcon());
-#endif
-
-
-
 
 #ifdef ENABLE_WALLET
     // Create wallet frame
@@ -180,8 +178,8 @@ void EncoCoinGUI::createActions(const NetworkStyle* networkStyle){
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
 
-    connect(toggleHideAction, SIGNAL(triggered()), this, SLOT(toggleHidden()));
-    connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
+    connect(toggleHideAction, &QAction::triggered, this, &EncoCoinGUI::toggleHidden);
+    connect(quitAction, &QAction::triggered, qApp, &QApplication::quit);
 }
 
 /**
@@ -210,7 +208,6 @@ void EncoCoinGUI::connectActions() {
     connect(settingsWidget, &SettingsWidget::execDialog, this, &EncoCoinGUI::execDialog);
 }
 
-
 void EncoCoinGUI::createTrayIcon(const NetworkStyle* networkStyle) {
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
@@ -235,13 +232,11 @@ EncoCoinGUI::~EncoCoinGUI() {
 #endif
 }
 
-
 /** Get restart command-line parameters and request restart */
 void EncoCoinGUI::handleRestart(QStringList args){
     if (!ShutdownRequested())
-        emit requestedRestart(args);
+        Q_EMIT requestedRestart(args);
 }
-
 
 void EncoCoinGUI::setClientModel(ClientModel* clientModel) {
     this->clientModel = clientModel;
@@ -257,9 +252,9 @@ void EncoCoinGUI::setClientModel(ClientModel* clientModel) {
         settingsWidget->setClientModel(clientModel);
 
         // Receive and report messages from client model
-        connect(clientModel, SIGNAL(message(QString, QString, unsigned int)), this, SLOT(message(QString, QString, unsigned int)));
-        connect(topBar, SIGNAL(walletSynced(bool)), dashboard, SLOT(walletSynced(bool)));
-        connect(topBar, SIGNAL(walletSynced(bool)), coldStakingWidget, SLOT(walletSynced(bool)));
+        connect(clientModel, &ClientModel::message, this, &EncoCoinGUI::message);
+        connect(topBar, &TopBar::walletSynced, dashboard, &DashboardWidget::walletSynced);
+        connect(topBar, &TopBar::walletSynced, coldStakingWidget, &ColdStakingWidget::walletSynced);
 
         // Get restart command-line parameters and handle restart
         connect(settingsWidget, &SettingsWidget::handleRestart, [this](QStringList arg){handleRestart(arg);});
@@ -283,20 +278,21 @@ void EncoCoinGUI::setClientModel(ClientModel* clientModel) {
 
 void EncoCoinGUI::createTrayIconMenu() {
 #ifndef Q_OS_MAC
-    // return if trayIcon is unset (only on non-Mac OSes)
+    // return if trayIcon is unset (only on non-macOSes)
     if (!trayIcon)
         return;
 
     trayIconMenu = new QMenu(this);
     trayIcon->setContextMenu(trayIconMenu);
 
-    connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
-            this, SLOT(trayIconActivated(QSystemTrayIcon::ActivationReason)));
+    connect(trayIcon, &QSystemTrayIcon::activated, this, &EncoCoinGUI::trayIconActivated);
 #else
-    // Note: On Mac, the dock icon is used to provide the tray's functionality.
+    // Note: On macOS, the Dock icon is used to provide the tray's functionality.
     MacDockIconHandler* dockIconHandler = MacDockIconHandler::instance();
-    dockIconHandler->setMainWindow((QMainWindow*)this);
-    trayIconMenu = dockIconHandler->dockMenu();
+    connect(dockIconHandler, &MacDockIconHandler::dockIconClicked, this, &PIVXGUI::macosDockIconActivated);
+
+    trayIconMenu = new QMenu(this);
+    trayIconMenu->setAsDockMenu();
 #endif
 
     // Configuration of the tray icon (or dock icon) icon menu
@@ -317,6 +313,12 @@ void EncoCoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
         toggleHidden();
     }
 }
+#else
+void PIVXGUI::macosDockIconActivated()
+ {
+     show();
+     activateWindow();
+ }
 #endif
 
 void EncoCoinGUI::changeEvent(QEvent* e)
@@ -327,7 +329,7 @@ void EncoCoinGUI::changeEvent(QEvent* e)
         if (clientModel && clientModel->getOptionsModel() && clientModel->getOptionsModel()->getMinimizeToTray()) {
             QWindowStateChangeEvent* wsevt = static_cast<QWindowStateChangeEvent*>(e);
             if (!(wsevt->oldState() & Qt::WindowMinimized) && isMinimized()) {
-                QTimer::singleShot(0, this, SLOT(hide()));
+                QTimer::singleShot(0, this, &EncoCoinGUI::hide);
                 e->ignore();
             }
         }
@@ -439,18 +441,11 @@ bool EncoCoinGUI::openStandardDialog(QString title, QString body, QString okBtn,
 void EncoCoinGUI::showNormalIfMinimized(bool fToggleHidden) {
     if (!clientModel)
         return;
-    // activateWindow() (sometimes) helps with keyboard focus on Windows
-    if (isHidden()) {
-        show();
-        activateWindow();
-    } else if (isMinimized()) {
-        showNormal();
-        activateWindow();
-    } else if (GUIUtil::isObscured(this)) {
-        raise();
-        activateWindow();
-    } else if (fToggleHidden)
+    if (!isHidden() && !isMinimized() && !GUIUtil::isObscured(this) && fToggleHidden) {
         hide();
+    } else {
+        GUIUtil::bringToFront(this);
+    }
 }
 
 void EncoCoinGUI::toggleHidden() {
@@ -513,7 +508,7 @@ void EncoCoinGUI::changeTheme(bool isLightTheme){
     this->setStyleSheet(css);
 
     // Notify
-    emit themeChanged(isLightTheme, css);
+    Q_EMIT themeChanged(isLightTheme, css);
 
     // Update style
     updateStyle(this);
@@ -525,7 +520,7 @@ void EncoCoinGUI::resizeEvent(QResizeEvent* event){
     // background
     showHide(opEnabled);
     // Notify
-    emit windowResizeEvent(event);
+    Q_EMIT windowResizeEvent(event);
 }
 
 bool EncoCoinGUI::execDialog(QDialog *dialog, int xDiv, int yDiv){
@@ -594,7 +589,7 @@ bool EncoCoinGUI::addWallet(const QString& name, WalletModel* walletModel)
     // Connect actions..
     connect(privacyWidget, &PrivacyWidget::message, this, &EncoCoinGUI::message);
     connect(masterNodesWidget, &MasterNodesWidget::message, this, &EncoCoinGUI::message);
-    connect(coldStakingWidget, &MasterNodesWidget::message, this, &EncoCoinGUI::message);
+    connect(coldStakingWidget, &ColdStakingWidget::message, this, &EncoCoinGUI::message);
     connect(topBar, &TopBar::message, this, &EncoCoinGUI::message);
     connect(sendWidget, &SendWidget::message,this, &EncoCoinGUI::message);
     connect(receiveWidget, &ReceiveWidget::message,this, &EncoCoinGUI::message);
@@ -602,7 +597,7 @@ bool EncoCoinGUI::addWallet(const QString& name, WalletModel* walletModel)
     connect(settingsWidget, &SettingsWidget::message, this, &EncoCoinGUI::message);
 
     // Pass through transaction notifications
-    connect(dashboard, SIGNAL(incomingTransaction(QString, int, CAmount, QString, QString)), this, SLOT(incomingTransaction(QString, int, CAmount, QString, QString)));
+    connect(dashboard, &DashboardWidget::incomingTransaction, this, &EncoCoinGUI::incomingTransaction);
 
     return true;
 }

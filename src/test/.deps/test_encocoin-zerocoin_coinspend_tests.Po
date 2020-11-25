@@ -831,7 +831,7 @@ test/test_encocoin-zerocoin_coinspend_tests.o: \
  libzerocoin/AccumulatorProofOfKnowledge.h libzerocoin/Commitment.h \
  libzerocoin/SerialNumberSignatureOfKnowledge.h \
  /usr/include/c++/9.3.0/bitset hash.h libzerocoin/SpendType.h pubkey.h \
- libzerocoin/Accumulator.h zpiv/zerocoin.h chainparams.h \
+ libzerocoin/Accumulator.h zxnk/zerocoin.h chainparams.h \
  chainparamsbase.h checkpoints.h primitives/block.h \
  primitives/transaction.h script/script.h keystore.h key.h sync.h \
  threadsafety.h /usr/include/c++/9.3.0/condition_variable \
@@ -1091,8 +1091,8 @@ test/test_encocoin-zerocoin_coinspend_tests.o: \
  /usr/include/boost/type_traits/function_traits.hpp \
  /usr/include/boost/signals2/detail/signal_template.hpp protocol.h \
  netbase.h libzerocoin/Params.h libzerocoin/bignum.h \
- zpiv/deterministicmint.h zpiv/zpivwallet.h libzerocoin/Coin.h \
- zpiv/mintpool.h zpiv/zerocoin.h coincontrol.h primitives/transaction.h \
+ zxnk/deterministicmint.h zxnk/zxnkwallet.h libzerocoin/Coin.h \
+ zxnk/mintpool.h zxnk/zerocoin.h coincontrol.h primitives/transaction.h \
  script/standard.h script/interpreter.h script/script_error.h \
  /usr/include/boost/variant.hpp \
  /usr/include/boost/variant/recursive_variant.hpp \
@@ -1132,12 +1132,12 @@ test/test_encocoin-zerocoin_coinspend_tests.o: \
  /usr/include/boost/unordered/detail/fwd.hpp \
  /usr/include/boost/unordered/unordered_map_fwd.hpp net.h bloom.h \
  libzerocoin/bignum.h limitedmap.h mruset.h random.h streams.h \
- utilstrencodings.h zpiv/zerocoin.h zpiv/zpivmodule.h \
+ utilstrencodings.h zxnk/zerocoin.h zxnk/zxnkmodule.h \
  libzerocoin/CoinRandomnessSchnorrSignature.h libzerocoin/SpendType.h \
- script/sigcache.h txmempool.h libzerocoin/CoinSpend.h lightzpivthread.h \
- genwit.h zpiv/accumulators.h zpiv/accumulatormap.h \
- zpiv/accumulatorcheckpoints.h univalue/include/univalue.h chain.h \
- bloom.h zpiv/witness.h concurrentqueue.h /usr/include/boost/thread.hpp \
+ script/sigcache.h txmempool.h libzerocoin/CoinSpend.h lightzxnkthread.h \
+ genwit.h zxnk/accumulators.h zxnk/accumulatormap.h \
+ zxnk/accumulatorcheckpoints.h univalue/include/univalue.h chain.h \
+ bloom.h zxnk/witness.h concurrentqueue.h /usr/include/boost/thread.hpp \
  /usr/include/boost/thread/thread.hpp \
  /usr/include/boost/thread/thread_only.hpp \
  /usr/include/boost/thread/detail/thread.hpp \
@@ -1230,7 +1230,7 @@ test/test_encocoin-zerocoin_coinspend_tests.o: \
  /usr/include/boost/signals2/last_value.hpp validationinterface.h \
  wallet/wallet_ismine.h script/standard.h wallet/walletdb.h wallet/db.h \
  clientversion.h sync.h /usr/include/db_cxx.h /usr/include/db.h \
- /usr/include/inttypes.h zpiv/zpivtracker.h zpiv/zpivmodule.h txdb.h \
+ /usr/include/inttypes.h zxnk/zxnktracker.h zxnk/zxnkmodule.h txdb.h \
  leveldbwrapper.h clientversion.h leveldb/include/leveldb/db.h \
  leveldb/include/leveldb/iterator.h leveldb/include/leveldb/slice.h \
  leveldb/include/leveldb/status.h leveldb/include/leveldb/options.h \
@@ -3351,7 +3351,7 @@ pubkey.h:
 
 libzerocoin/Accumulator.h:
 
-zpiv/zerocoin.h:
+zxnk/zerocoin.h:
 
 chainparams.h:
 
@@ -3923,15 +3923,15 @@ libzerocoin/Params.h:
 
 libzerocoin/bignum.h:
 
-zpiv/deterministicmint.h:
+zxnk/deterministicmint.h:
 
-zpiv/zpivwallet.h:
+zxnk/zxnkwallet.h:
 
 libzerocoin/Coin.h:
 
-zpiv/mintpool.h:
+zxnk/mintpool.h:
 
-zpiv/zerocoin.h:
+zxnk/zerocoin.h:
 
 coincontrol.h:
 
@@ -4059,9 +4059,9 @@ streams.h:
 
 utilstrencodings.h:
 
-zpiv/zerocoin.h:
+zxnk/zerocoin.h:
 
-zpiv/zpivmodule.h:
+zxnk/zxnkmodule.h:
 
 libzerocoin/CoinRandomnessSchnorrSignature.h:
 
@@ -4073,15 +4073,15 @@ txmempool.h:
 
 libzerocoin/CoinSpend.h:
 
-lightzpivthread.h:
+lightzxnkthread.h:
 
 genwit.h:
 
-zpiv/accumulators.h:
+zxnk/accumulators.h:
 
-zpiv/accumulatormap.h:
+zxnk/accumulatormap.h:
 
-zpiv/accumulatorcheckpoints.h:
+zxnk/accumulatorcheckpoints.h:
 
 univalue/include/univalue.h:
 
@@ -4089,7 +4089,7 @@ chain.h:
 
 bloom.h:
 
-zpiv/witness.h:
+zxnk/witness.h:
 
 concurrentqueue.h:
 
@@ -4315,9 +4315,9 @@ sync.h:
 
 /usr/include/inttypes.h:
 
-zpiv/zpivtracker.h:
+zxnk/zxnktracker.h:
 
-zpiv/zpivmodule.h:
+zxnk/zxnkmodule.h:
 
 txdb.h:
 

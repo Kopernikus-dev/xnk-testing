@@ -229,7 +229,6 @@ Create (and optionally verify) the signed Windows binaries:
     ./bin/gsign --signer "$SIGNER" --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../encocoin/contrib/gitian-descriptors/gitian-win-signer.yml
     ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-signed ../encocoin/contrib/gitian-descriptors/gitian-win-signer.yml
     mv build/out/encocoin-*win64-setup.exe ../encocoin-${VERSION}-win64-setup.exe
-    mv build/out/encocoin-*win32-setup.exe ../encocoin-${VERSION}-win32-setup.exe
     popd
 
 Commit your signature for the signed macOS/Windows binaries:
@@ -259,8 +258,6 @@ encocoin-${VERSION}-x86_64-linux-gnu.tar.gz
 encocoin-${VERSION}-osx64.tar.gz
 encocoin-${VERSION}-osx.dmg
 encocoin-${VERSION}.tar.gz
-encocoin-${VERSION}-win32-setup.exe
-encocoin-${VERSION}-win32.zip
 encocoin-${VERSION}-win64-setup.exe
 encocoin-${VERSION}-win64.zip
 ```

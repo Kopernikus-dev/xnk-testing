@@ -1,7 +1,7 @@
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020	   The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #ifndef SENDCONFIRMDIALOG_H
 #define SENDCONFIRMDIALOG_H
 
@@ -25,17 +25,19 @@ class TxDetailDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit TxDetailDialog(QWidget *parent = nullptr, bool isConfirmDialog = true, QString warningStr = QString());
+    explicit TxDetailDialog(QWidget *parent = nullptr, bool isConfirmDialog = true, const QString& warningStr = QString());
     ~TxDetailDialog();
 
+    void showEvent(QShowEvent *event) override;
     bool isConfirm() { return this->confirm;}
     WalletModel::SendCoinsReturn getStatus() { return this->sendStatus;}
 
-    void setData(WalletModel *model, WalletModelTransaction &tx);
+    void setData(WalletModel *model, WalletModelTransaction& tx);
+    
     void setData(WalletModel *model, const QModelIndex &index);
     void setDisplayUnit(int unit){this->nDisplayUnit = unit;};
 
-public slots:
+public Q_SLOTS:
     void acceptTx();
     void onInputsClicked();
     void onOutputsClicked();
@@ -45,14 +47,18 @@ private:
     Ui::TxDetailDialog *ui;
     SnackBar *snackBar = nullptr;
     int nDisplayUnit = 0;
+    bool isConfirmDialog = false;
     bool confirm = false;
     WalletModel *model = nullptr;
     WalletModel::SendCoinsReturn sendStatus;
     WalletModelTransaction *tx = nullptr;
-    uint256 txHash = 0;
+    uint256 txHash;
 
     bool inputsLoaded = false;
     bool outputsLoaded = false;
+
+protected:
+    void keyPressEvent(QKeyEvent *e) override;
 };
 
 #endif // SENDCONFIRMDIALOG_H

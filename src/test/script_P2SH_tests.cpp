@@ -1,8 +1,10 @@
 // Copyright (c) 2012-2013 The Bitcoin Core developers
-// Copyright (c) 2019 The EncoCoin developers
+// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2020	   The EncoCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "consensus/tx_verify.h"
 #include "key.h"
 #include "keystore.h"
 #include "main.h"
@@ -18,7 +20,6 @@
 #include <vector>
 
 #include <boost/test/unit_test.hpp>
-
 
 // Helpers:
 static std::vector<unsigned char>
@@ -210,7 +211,7 @@ BOOST_AUTO_TEST_CASE(set)
 BOOST_AUTO_TEST_CASE(is)
 {
     // Test CScript::IsPayToScriptHash()
-    uint160 dummy(0);
+    uint160 dummy;
     CScript p2sh;
     p2sh << OP_HASH160 << ToByteVector(dummy) << OP_EQUAL;
     BOOST_CHECK(p2sh.IsPayToScriptHash());

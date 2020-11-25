@@ -4,7 +4,15 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 from test_framework.test_framework import EncoCoinTestFramework
-from test_framework.util import *
+from test_framework.util import (
+    assert_equal,
+    assert_fee_amount,
+    assert_greater_than,
+    count_bytes,
+    connect_nodes,
+    Decimal,
+    JSONRPCException,
+)
 
 
 def get_unspent(listunspent, amount):
@@ -22,12 +30,12 @@ class RawTransactionsTest(EncoCoinTestFramework):
         self.num_nodes = 4
 
     def setup_network(self, split=False):
-        self.nodes = start_nodes(self.num_nodes, self.options.tmpdir)
+        self.nodes = self.start_nodes()
 
-        connect_nodes_bi(self.nodes,0,1)
-        connect_nodes_bi(self.nodes,1,2)
-        connect_nodes_bi(self.nodes,0,2)
-        connect_nodes_bi(self.nodes,0,3)
+        connect_nodes(self.nodes[0], 1)
+        connect_nodes(self.nodes[1], 2)
+        connect_nodes(self.nodes[0], 2)
+        connect_nodes(self.nodes[0], 3)
 
         self.is_network_split=False
         self.sync_all()
@@ -469,7 +477,7 @@ class RawTransactionsTest(EncoCoinTestFramework):
         # locked wallet test
         self.nodes[1].encryptwallet("test")
         self.nodes.pop(1)
-        stop_nodes(self.nodes)
+        self.stop_nodes()
 
         self.nodes = start_nodes(self.num_nodes, self.options.tmpdir)
         # This test is not meant to test fee estimation and we'd like
@@ -477,10 +485,10 @@ class RawTransactionsTest(EncoCoinTestFramework):
         for node in self.nodes:
             node.settxfee(min_relay_tx_fee)
 
-        connect_nodes_bi(self.nodes,0,1)
-        connect_nodes_bi(self.nodes,1,2)
-        connect_nodes_bi(self.nodes,0,2)
-        connect_nodes_bi(self.nodes,0,3)
+        connect_nodes(self.nodes[0], 1)
+        connect_nodes(self.nodes[1], 2)
+        connect_nodes(self.nodes[0], 2)
+        connect_nodes(self.nodes[0], 3)
         self.is_network_split=False
         self.sync_all()
 

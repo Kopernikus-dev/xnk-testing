@@ -196,6 +196,10 @@
         <translation>Date</translation>
     </message>
     <message>
+        <source>Type</source>
+        <translation>Type</translation>
+    </message>
+    <message>
         <source>(no label)</source>
         <translation>(no label)</translation>
     </message>
@@ -368,6 +372,18 @@ for staking</translation>
         <translation>Confirm wallet encryption</translation>
     </message>
     <message>
+        <source>WARNING</source>
+        <translation>WARNING</translation>
+    </message>
+    <message>
+        <source>If you encrypt your wallet and lose your passphrase, you will</source>
+        <translation>If you encrypt your wallet and lose your passphrase, you will</translation>
+    </message>
+    <message>
+        <source>LOSE ALL OF YOUR XNK</source>
+        <translation>LOSE ALL OF YOUR XNK</translation>
+    </message>
+    <message>
         <source>ENCRYPT</source>
         <translation>ENCRYPT</translation>
     </message>
@@ -376,16 +392,16 @@ for staking</translation>
         <translation>CANCEL</translation>
     </message>
     <message>
+        <source>WARNING: The Caps Lock key is on!</source>
+        <translation>WARNING: The Caps Lock key is on!</translation>
+    </message>
+    <message>
         <source>EncoCoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your XNKs from being stolen by malware infecting your computer.</source>
         <translation>EncoCoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your XNKs from being stolen by malware infecting your computer.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Are you sure you wish to encrypt your wallet?</translation>
-    </message>
-    <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR XNK&lt;/b&gt;!</source>
-        <translation>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR XNK&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -427,10 +443,6 @@ for staking</translation>
         <source>Wallet passphrase was successfully changed.</source>
         <translation>Wallet passphrase was successfully changed.</translation>
     </message>
-    <message>
-        <source>Warning: The Caps Lock key is on!</source>
-        <translation>Warning: The Caps Lock key is on!</translation>
-    </message>
 </context>
 <context>
     <name>BanTableModel</name>
@@ -441,37 +453,6 @@ for staking</translation>
     <message>
         <source>Banned Until</source>
         <translation>Banned Until</translation>
-    </message>
-</context>
-<context>
-    <name>BlockExplorer</name>
-    <message>
-        <source>Blockchain Explorer</source>
-        <translation>Blockchain Explorer</translation>
-    </message>
-    <message>
-        <source>Back</source>
-        <translation>Back</translation>
-    </message>
-    <message>
-        <source>Forward</source>
-        <translation>Forward</translation>
-    </message>
-    <message>
-        <source>Address / Block / Transaction</source>
-        <translation>Address / Block / Transaction</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation>Search</translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation>TextLabel</translation>
-    </message>
-    <message>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (encocoin.conf).</source>
-        <translation>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (encocoin.conf).</translation>
     </message>
 </context>
 <context>
@@ -507,10 +488,6 @@ for staking</translation>
         <source>Total: %1 (IPv4: %2 / IPv6: %3 / Tor: %4 / Unknown: %5)</source>
         <translation>Total: %1 (IPv4: %2 / IPv6: %3 / Tor: %4 / Unknown: %5)</translation>
     </message>
-    <message>
-        <source>Network Alert</source>
-        <translation>Network Alert</translation>
-    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -529,6 +506,10 @@ for staking</translation>
     <message>
         <source>Coin Selection</source>
         <translation>Coin Selection</translation>
+    </message>
+    <message>
+        <source>Select XNK Outputs to Spend</source>
+        <translation>Select XNK Outputs to Spend</translation>
     </message>
     <message>
         <source>Dust:</source>
@@ -553,14 +534,6 @@ for staking</translation>
     <message>
         <source>Amount</source>
         <translation>Amount</translation>
-    </message>
-    <message>
-        <source>Transaction Details</source>
-        <translation>Transaction Details</translation>
-    </message>
-    <message>
-        <source>PushButton</source>
-        <translation>PushButton</translation>
     </message>
     <message>
         <source>0.00 XNK</source>
@@ -631,40 +604,40 @@ for staking</translation>
         <translation>Unlock unspent</translation>
     </message>
     <message>
-        <source>Copy quantity</source>
-        <translation>Copy quantity</translation>
-    </message>
-    <message>
-        <source>Copy fee</source>
-        <translation>Copy fee</translation>
-    </message>
-    <message>
-        <source>Copy after fee</source>
-        <translation>Copy after fee</translation>
-    </message>
-    <message>
-        <source>Copy bytes</source>
-        <translation>Copy bytes</translation>
-    </message>
-    <message>
-        <source>Copy priority</source>
-        <translation>Copy priority</translation>
-    </message>
-    <message>
-        <source>Copy dust</source>
-        <translation>Copy dust</translation>
-    </message>
-    <message>
-        <source>Copy change</source>
-        <translation>Copy change</translation>
-    </message>
-    <message>
         <source>Unselect all</source>
         <translation>Unselect all</translation>
     </message>
     <message>
         <source>Please switch to "List mode" to use this function.</source>
         <translation>Please switch to "List mode" to use this function.</translation>
+    </message>
+    <message>
+        <source>Quantity Copied</source>
+        <translation>Quantity Copied</translation>
+    </message>
+    <message>
+        <source>Amount Copied</source>
+        <translation>Amount Copied</translation>
+    </message>
+    <message>
+        <source>Fee Copied</source>
+        <translation>Fee Copied</translation>
+    </message>
+    <message>
+        <source>After Fee Copied</source>
+        <translation>After Fee Copied</translation>
+    </message>
+    <message>
+        <source>Bytes Copied</source>
+        <translation>Bytes Copied</translation>
+    </message>
+    <message>
+        <source>Dust Copied</source>
+        <translation>Dust Copied</translation>
+    </message>
+    <message>
+        <source>Change Copied</source>
+        <translation>Change Copied</translation>
     </message>
     <message>
         <source>highest</source>
@@ -715,6 +688,10 @@ for staking</translation>
         <translation>yes</translation>
     </message>
     <message>
+        <source>delegated to %1 for cold staking</source>
+        <translation>delegated to %1 for cold staking</translation>
+    </message>
+    <message>
         <source>no</source>
         <translation>no</translation>
     </message>
@@ -743,8 +720,8 @@ for staking</translation>
         <translation>This label turns red, if any recipient receives an amount smaller than %1.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 upiv per input.</source>
-        <translation>Can vary +/- %1 upiv per input.</translation>
+        <source>Can vary +/- %1 uxnk per input.</source>
+        <translation>Can vary +/- %1 uxnk per input.</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -757,89 +734,6 @@ for staking</translation>
     <message>
         <source>(change)</source>
         <translation>(change)</translation>
-    </message>
-</context>
-<context>
-    <name>CoinControlPivWidget</name>
-    <message>
-        <source>Dialog</source>
-        <translation>Dialog</translation>
-    </message>
-    <message>
-        <source>Transaction Details</source>
-        <translation>Transaction Details</translation>
-    </message>
-    <message>
-        <source>PushButton</source>
-        <translation>PushButton</translation>
-    </message>
-    <message>
-        <source>XNK:</source>
-        <translation>XNK:</translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation>TextLabel</translation>
-    </message>
-    <message>
-        <source>Quantity:</source>
-        <translation>Quantity:</translation>
-    </message>
-    <message>
-        <source>Fee:</source>
-        <translation>Fee:</translation>
-    </message>
-    <message>
-        <source>Amount</source>
-        <translation>Amount</translation>
-    </message>
-    <message>
-        <source>Label</source>
-        <translation>Label</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation>Address</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation>Type</translation>
-    </message>
-    <message>
-        <source>Date</source>
-        <translation>Date</translation>
-    </message>
-    <message>
-        <source>Confirmations</source>
-        <translation>Confirmations</translation>
-    </message>
-    <message>
-        <source>CheckBox</source>
-        <translation>CheckBox</translation>
-    </message>
-    <message>
-        <source>Bytes:</source>
-        <translation>Bytes:</translation>
-    </message>
-    <message>
-        <source>Dust:</source>
-        <translation>Dust:</translation>
-    </message>
-    <message>
-        <source>Change:</source>
-        <translation>Change:</translation>
-    </message>
-    <message>
-        <source>After Fee: </source>
-        <translation>After Fee: </translation>
-    </message>
-    <message>
-        <source>CANCEL</source>
-        <translation>CANCEL</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation>OK</translation>
     </message>
 </context>
 <context>
@@ -935,6 +829,10 @@ stake on your behalf, while you keep the keys securely offline.</translation>
         <translation>No contacts available, you can go to the contacts screen and add some there!</translation>
     </message>
     <message>
+        <source>Cannot send delegation, wallet locked</source>
+        <translation>Cannot send delegation, wallet locked</translation>
+    </message>
+    <message>
         <source>Cold staking is networkely disabled</source>
         <translation>Cold staking is networkely disabled</translation>
     </message>
@@ -985,6 +883,10 @@ Do you wish to proceed?</translation>
     <message>
         <source>You don't have any XNK to select.</source>
         <translation>You don't have any XNK to select.</translation>
+    </message>
+    <message>
+        <source>Cannot perform operation, wallet locked</source>
+        <translation>Cannot perform operation, wallet locked</translation>
     </message>
     <message>
         <source>URI copied to clipboard</source>
@@ -1151,50 +1053,6 @@ address</translation>
         <translation>Amount of XNK and zXNK staked.</translation>
     </message>
     <message>
-        <source>All</source>
-        <translation>All</translation>
-    </message>
-    <message>
-        <source>Received</source>
-        <translation>Received</translation>
-    </message>
-    <message>
-        <source>Sent</source>
-        <translation>Sent</translation>
-    </message>
-    <message>
-        <source>Mined</source>
-        <translation>Mined</translation>
-    </message>
-    <message>
-        <source>Minted</source>
-        <translation>Minted</translation>
-    </message>
-    <message>
-        <source>MN reward</source>
-        <translation>MN reward</translation>
-    </message>
-    <message>
-        <source>To yourself</source>
-        <translation>To yourself</translation>
-    </message>
-    <message>
-        <source>Cold stakes</source>
-        <translation>Cold stakes</translation>
-    </message>
-    <message>
-        <source>Hot stakes</source>
-        <translation>Hot stakes</translation>
-    </message>
-    <message>
-        <source>Delegated</source>
-        <translation>Delegated</translation>
-    </message>
-    <message>
-        <source>Delegations</source>
-        <translation>Delegations</translation>
-    </message>
-    <message>
         <source>Please wait until the wallet is fully synced to see your correct balance</source>
         <translation>Please wait until the wallet is fully synced to see your correct balance</translation>
     </message>
@@ -1250,65 +1108,6 @@ It will start automatically as soon as the wallet has enough confirmations on an
     <message>
         <source>Text Label</source>
         <translation>Text Label</translation>
-    </message>
-    <message>
-        <source>CANCEL</source>
-        <translation>CANCEL</translation>
-    </message>
-    <message>
-        <source>SAVE</source>
-        <translation>SAVE</translation>
-    </message>
-</context>
-<context>
-    <name>DenomGenerationDialog</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
-        <source>Transaction Details</source>
-        <translation>Transaction Details</translation>
-    </message>
-    <message>
-        <source>This will unlock your wallet fully, so that anyone with access to it can spend until the wallet is closed or locked again.</source>
-        <translation>This will unlock your wallet fully, so that anyone with access to it can spend until the wallet is closed or locked again.</translation>
-    </message>
-    <message>
-        <source>5000</source>
-        <translation>5000</translation>
-    </message>
-    <message>
-        <source>100</source>
-        <translation>100</translation>
-    </message>
-    <message>
-        <source>10</source>
-        <translation>10</translation>
-    </message>
-    <message>
-        <source>1000</source>
-        <translation>1000</translation>
-    </message>
-    <message>
-        <source>50</source>
-        <translation>50</translation>
-    </message>
-    <message>
-        <source>500</source>
-        <translation>500</translation>
-    </message>
-    <message>
-        <source>5</source>
-        <translation>5</translation>
-    </message>
-    <message>
-        <source>1</source>
-        <translation>1</translation>
-    </message>
-    <message>
-        <source>Select All</source>
-        <translation>Select All</translation>
     </message>
     <message>
         <source>CANCEL</source>
@@ -1405,49 +1204,6 @@ It will start automatically as soon as the wallet has enough confirmations on an
     </message>
 </context>
 <context>
-    <name>GovernancePage</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
-        <source>GOVERNANCE</source>
-        <translation>GOVERNANCE</translation>
-    </message>
-    <message>
-        <source>Update Proposals</source>
-        <translation>Update Proposals</translation>
-    </message>
-    <message>
-        <source>Next super block:</source>
-        <translation>Next super block:</translation>
-    </message>
-    <message>
-        <source>0</source>
-        <translation>0</translation>
-    </message>
-    <message>
-        <source>Blocks to next super block:</source>
-        <translation>Blocks to next super block:</translation>
-    </message>
-    <message>
-        <source>Days to budget payout (estimate):</source>
-        <translation>Days to budget payout (estimate):</translation>
-    </message>
-    <message>
-        <source>Allotted budget:</source>
-        <translation>Allotted budget:</translation>
-    </message>
-    <message>
-        <source>Budget left:</source>
-        <translation>Budget left:</translation>
-    </message>
-    <message>
-        <source>Masternodes count:</source>
-        <translation>Masternodes count:</translation>
-    </message>
-</context>
-<context>
     <name>HelpMessageDialog</name>
     <message>
         <source>version</source>
@@ -1488,6 +1244,10 @@ It will start automatically as soon as the wallet has enough confirmations on an
     <message>
         <source>Show splash screen on startup (default: %u)</source>
         <translation>Show splash screen on startup (default: %u)</translation>
+    </message>
+    <message>
+        <source>Hide QT staking charts on startup (default: %u)</source>
+        <translation>Hide QT staking charts on startup (default: %u)</translation>
     </message>
     <message>
         <source>Set language, for example "de_DE" (default: system locale)</source>
@@ -1605,18 +1365,6 @@ It will start automatically as soon as the wallet has enough confirmations on an
         <source>Form</source>
         <translation>Form</translation>
     </message>
-    <message>
-        <source>user_masternode</source>
-        <translation>user_masternode</translation>
-    </message>
-    <message>
-        <source>Address: 88.26.164.88:51474</source>
-        <translation>Address: 88.26.164.88:51474</translation>
-    </message>
-    <message>
-        <source>Jan. 19, 2019</source>
-        <translation>Jan. 19, 2019</translation>
-    </message>
 </context>
 <context>
     <name>MasterNodeWizardDialog</name>
@@ -1653,6 +1401,10 @@ It will start automatically as soon as the wallet has enough confirmations on an
         <translation>Create New Masternode Controller</translation>
     </message>
     <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;To create a EncoCoin Masternode you must dedicate 10,000 XNK (the unit of EncoCoin) to the network (however, these coins are still yours and will never leave your possession). &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;You can deactivate the node and unlock the coins at any time.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;To create a EncoCoin Masternode you must dedicate 10,000 XNK (the unit of EncoCoin) to the network (however, these coins are still yours and will never leave your possession). &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;You can deactivate the node and unlock the coins at any time.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
         <source>Set Masternode Name</source>
         <translation>Set Masternode Name</translation>
     </message>
@@ -1663,10 +1415,6 @@ It will start automatically as soon as the wallet has enough confirmations on an
     <message>
         <source>Enter port</source>
         <translation>Enter port</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;To create a EncoCoin Masternode you must dedicate 10.000 XNK (the unit of EncoCoin) to the network (however, these coins are still yours and will never leave your possession). &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;You can deactivate the node and unlock the coins at any time.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;To create a EncoCoin Masternode you must dedicate 10.000 XNK (the unit of EncoCoin) to the network (however, these coins are still yours and will never leave your possession). &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;You can deactivate the node and unlock the coins at any time.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Make sure you have this amount of coins.</source>
@@ -1713,8 +1461,8 @@ It will start automatically as soon as the wallet has enough confirmations on an
         <translation>IP or port cannot be empty</translation>
     </message>
     <message>
-        <source>Invalid port number</source>
-        <translation>Invalid port number</translation>
+        <source>Invalid IP address</source>
+        <translation>Invalid IP address</translation>
     </message>
     <message>
         <source>Prepare master node failed.
@@ -1731,6 +1479,10 @@ It will start automatically as soon as the wallet has enough confirmations on an
         <translation>Invalid collateral output index</translation>
     </message>
     <message>
+        <source>Master node created! Wait %1 confirmations before starting it.</source>
+        <translation>Master node created! Wait %1 confirmations before starting it.</translation>
+    </message>
+    <message>
         <source>Cannot send collateral transaction.
 
 %1</source>
@@ -1745,10 +1497,6 @@ It will start automatically as soon as the wallet has enough confirmations on an
     <message>
         <source>Error parsing masternode.conf file</source>
         <translation>Error parsing masternode.conf file</translation>
-    </message>
-    <message>
-        <source>Master node created!</source>
-        <translation>Master node created!</translation>
     </message>
     <message>
         <source>masternode.conf file doesn't exists</source>
@@ -1822,18 +1570,30 @@ and vote on the treasury system receiving a periodic reward.</translation>
 </translation>
     </message>
     <message>
-        <source>Cannot start masternode, the collateral transaction has not been accepted by the network.
-Please wait few more minutes.</source>
-        <translation>Cannot start masternode, the collateral transaction has not been accepted by the network.
-Please wait few more minutes.</translation>
+        <source>Cannot edit masternode, wallet locked</source>
+        <translation>Cannot edit masternode, wallet locked</translation>
+    </message>
+    <message>
+        <source>Cannot start masternode, the collateral transaction has not been confirmed by the network yet.
+Please wait few more minutes (masternode collaterals require %1 confirmations).</source>
+        <translation>Cannot start masternode, the collateral transaction has not been confirmed by the network yet.
+Please wait few more minutes (masternode collaterals require %1 confirmations).</translation>
     </message>
     <message>
         <source>Background task is being executed, please wait</source>
         <translation>Background task is being executed, please wait</translation>
     </message>
     <message>
-        <source>Cannot perform Mastenodes start</source>
-        <translation>Cannot perform Mastenodes start</translation>
+        <source>Start ALL masternodes failed</source>
+        <translation>Start ALL masternodes failed</translation>
+    </message>
+    <message>
+        <source>Wallet unlock cancelled</source>
+        <translation>Wallet unlock cancelled</translation>
+    </message>
+    <message>
+        <source>Cannot perform Masternodes start</source>
+        <translation>Cannot perform Masternodes start</translation>
     </message>
     <message>
         <source>%1 Masternodes failed to start, %2 started</source>
@@ -1842,6 +1602,14 @@ Please wait few more minutes.</translation>
     <message>
         <source>All Masternodes started!</source>
         <translation>All Masternodes started!</translation>
+    </message>
+    <message>
+        <source>Cannot show Masternode information, wallet locked</source>
+        <translation>Cannot show Masternode information, wallet locked</translation>
+    </message>
+    <message>
+        <source>Masternode data copied to the clipboard.</source>
+        <translation>Masternode data copied to the clipboard.</translation>
     </message>
     <message>
         <source>Remote Masternode Data</source>
@@ -1864,10 +1632,6 @@ You will only have to paste the data in the encocoin.conf file
 of your remote server and start it, then start the Masternode using
 this controller wallet (select the Masternode in the list and press "start").
 </translation>
-    </message>
-    <message>
-        <source>Masternode exported!, check your clipboard</source>
-        <translation>Masternode exported!, check your clipboard</translation>
     </message>
     <message>
         <source>Delete Masternode</source>
@@ -1894,6 +1658,10 @@ Are you sure?</translation>
     <message>
         <source>masternode.conf file doesn't exists</source>
         <translation>masternode.conf file doesn't exists</translation>
+    </message>
+    <message>
+        <source>Cannot create Masternode controller, wallet locked</source>
+        <translation>Cannot create Masternode controller, wallet locked</translation>
     </message>
     <message>
         <source>Not enough balance to create a masternode, 10,000 XNK required.</source>
@@ -2404,13 +2172,6 @@ Address: %4
     </message>
 </context>
 <context>
-    <name>PWidget</name>
-    <message>
-        <source>Wallet locked, you need to unlock it to perform this action</source>
-        <translation>Wallet locked, you need to unlock it to perform this action</translation>
-    </message>
-</context>
-<context>
     <name>PaymentServer</name>
     <message>
         <source>Payment request error</source>
@@ -2642,75 +2403,6 @@ transaction history, making transactions untraceable </translation>
     </message>
 </context>
 <context>
-    <name>ProposalFrame</name>
-    <message>
-        <source>Open proposal page in browser</source>
-        <translation>Open proposal page in browser</translation>
-    </message>
-    <message>
-        <source> remaining payment(s).</source>
-        <translation> remaining payment(s).</translation>
-    </message>
-    <message>
-        <source>Yes:</source>
-        <translation>Yes:</translation>
-    </message>
-    <message>
-        <source>Abstain:</source>
-        <translation>Abstain:</translation>
-    </message>
-    <message>
-        <source>No:</source>
-        <translation>No:</translation>
-    </message>
-    <message>
-        <source>A proposal URL can be used for phishing, scams and computer viruses. Open this link only if you trust the following URL.
-</source>
-        <translation>A proposal URL can be used for phishing, scams and computer viruses. Open this link only if you trust the following URL.
-</translation>
-    </message>
-    <message>
-        <source>Open link</source>
-        <translation>Open link</translation>
-    </message>
-    <message>
-        <source>Copy link</source>
-        <translation>Copy link</translation>
-    </message>
-    <message>
-        <source>Wallet Locked</source>
-        <translation>Wallet Locked</translation>
-    </message>
-    <message>
-        <source>You must unlock your wallet to vote.</source>
-        <translation>You must unlock your wallet to vote.</translation>
-    </message>
-    <message>
-        <source>Do you want to vote %1 on</source>
-        <translation>Do you want to vote %1 on</translation>
-    </message>
-    <message>
-        <source>using all your masternodes?</source>
-        <translation>using all your masternodes?</translation>
-    </message>
-    <message>
-        <source>Proposal Hash:</source>
-        <translation>Proposal Hash:</translation>
-    </message>
-    <message>
-        <source>Proposal URL:</source>
-        <translation>Proposal URL:</translation>
-    </message>
-    <message>
-        <source>Confirm Vote</source>
-        <translation>Confirm Vote</translation>
-    </message>
-    <message>
-        <source>Vote Results</source>
-        <translation>Vote Results</translation>
-    </message>
-</context>
-<context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
@@ -2743,10 +2435,6 @@ transaction history, making transactions untraceable </translation>
     <message>
         <source>BLOOM</source>
         <translation>BLOOM</translation>
-    </message>
-    <message>
-        <source>ZK_BLOOM</source>
-        <translation>ZK_BLOOM</translation>
     </message>
     <message>
         <source>UNKNOWN</source>
@@ -2787,6 +2475,118 @@ transaction history, making transactions untraceable </translation>
     <message>
         <source>EncoCoin Core didn't yet exit safely...</source>
         <translation>EncoCoin Core didn't yet exit safely...</translation>
+    </message>
+    <message>
+        <source>Contact</source>
+        <translation>Contact</translation>
+    </message>
+    <message>
+        <source>Receiving</source>
+        <translation>Receiving</translation>
+    </message>
+    <message>
+        <source>Delegator</source>
+        <translation>Delegator</translation>
+    </message>
+    <message>
+        <source>Cold Staking</source>
+        <translation>Cold Staking</translation>
+    </message>
+    <message>
+        <source>Cold Staking Contact</source>
+        <translation>Cold Staking Contact</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>Hidden</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Unknown</translation>
+    </message>
+    <message>
+        <source>All</source>
+        <translation>All</translation>
+    </message>
+    <message>
+        <source>Contacts</source>
+        <translation>Contacts</translation>
+    </message>
+    <message>
+        <source>Delegators</source>
+        <translation>Delegators</translation>
+    </message>
+    <message>
+        <source>Staking Contacts</source>
+        <translation>Staking Contacts</translation>
+    </message>
+    <message>
+        <source>Date desc</source>
+        <translation>Date desc</translation>
+    </message>
+    <message>
+        <source>Date asc</source>
+        <translation>Date asc</translation>
+    </message>
+    <message>
+        <source>Amount desc</source>
+        <translation>Amount desc</translation>
+    </message>
+    <message>
+        <source>Amount asc</source>
+        <translation>Amount asc</translation>
+    </message>
+    <message>
+        <source>Received</source>
+        <translation>Received</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Sent</translation>
+    </message>
+    <message>
+        <source>Mined</source>
+        <translation>Mined</translation>
+    </message>
+    <message>
+        <source>Minted</source>
+        <translation>Minted</translation>
+    </message>
+    <message>
+        <source>MN reward</source>
+        <translation>MN reward</translation>
+    </message>
+    <message>
+        <source>To yourself</source>
+        <translation>To yourself</translation>
+    </message>
+    <message>
+        <source>Cold stakes</source>
+        <translation>Cold stakes</translation>
+    </message>
+    <message>
+        <source>Hot stakes</source>
+        <translation>Hot stakes</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Delegated</translation>
+    </message>
+    <message>
+        <source>Delegations</source>
+        <translation>Delegations</translation>
+    </message>
+    <message>
+        <source>by Label</source>
+        <translation>by Label</translation>
+    </message>
+    <message>
+        <source>by Address</source>
+        <translation>by Address</translation>
+    </message>
+    <message>
+        <source>by Date</source>
+        <translation>by Date</translation>
     </message>
 </context>
 <context>
@@ -3282,12 +3082,20 @@ transaction history, making transactions untraceable </translation>
         <translation>Error storing address label</translation>
     </message>
     <message>
+        <source>Cannot create new address, wallet locked</source>
+        <translation>Cannot create new address, wallet locked</translation>
+    </message>
+    <message>
         <source>New address created</source>
         <translation>New address created</translation>
     </message>
     <message>
         <source>Address copied</source>
         <translation>Address copied</translation>
+    </message>
+    <message>
+        <source>Cannot perform operation, wallet locked</source>
+        <translation>Cannot perform operation, wallet locked</translation>
     </message>
     <message>
         <source>URI copied to clipboard</source>
@@ -3454,6 +3262,18 @@ transaction history, making transactions untraceable </translation>
         <source>The remainder of the value resultant from the inputs minus the outputs value goes to the "change" EncoCoin address</source>
         <translation>The remainder of the value resultant from the inputs minus the outputs value goes to the "change" EncoCoin address</translation>
     </message>
+    <message>
+        <source>SAVE</source>
+        <translation>SAVE</translation>
+    </message>
+    <message>
+        <source>RESET</source>
+        <translation>RESET</translation>
+    </message>
+    <message>
+        <source>Invalid address</source>
+        <translation>Invalid address</translation>
+    </message>
 </context>
 <context>
     <name>SendCustomFeeDialog</name>
@@ -3470,8 +3290,12 @@ transaction history, making transactions untraceable </translation>
         <translation>Customize the transaction fee at your to your liking, depending on the fee value your transaction will be included or not in the blockchain.</translation>
     </message>
     <message>
-        <source>Recomended</source>
-        <translation>Recomended</translation>
+        <source>Recommended</source>
+        <translation>Recommended</translation>
+    </message>
+    <message>
+        <source>XNK/kilobyte</source>
+        <translation>XNK/kilobyte</translation>
     </message>
     <message>
         <source>0.00 KB</source>
@@ -3480,10 +3304,6 @@ transaction history, making transactions untraceable </translation>
     <message>
         <source>Custom</source>
         <translation>Custom</translation>
-    </message>
-    <message>
-        <source>Per kilobyte</source>
-        <translation>Per kilobyte</translation>
     </message>
     <message>
         <source>CANCEL</source>
@@ -3498,8 +3318,8 @@ transaction history, making transactions untraceable </translation>
         <translation>Customize Fee</translation>
     </message>
     <message>
-        <source>Customize the transaction fee, depending on the fee value your transaction will be included or not in the blockchain.</source>
-        <translation>Customize the transaction fee, depending on the fee value your transaction will be included or not in the blockchain.</translation>
+        <source>Customize the transaction fee, depending on the fee value your transaction might be included faster in the blockchain.</source>
+        <translation>Customize the transaction fee, depending on the fee value your transaction might be included faster in the blockchain.</translation>
     </message>
     <message>
         <source>Normal</source>
@@ -3516,6 +3336,14 @@ transaction history, making transactions untraceable </translation>
     <message>
         <source>SAVE</source>
         <translation>SAVE</translation>
+    </message>
+    <message>
+        <source>Fee too high. Must be below: %1</source>
+        <translation>Fee too high. Must be below: %1</translation>
+    </message>
+    <message>
+        <source>Fee too low. Must be at least: %1</source>
+        <translation>Fee too low. Must be at least: %1</translation>
     </message>
 </context>
 <context>
@@ -3550,10 +3378,6 @@ transaction history, making transactions untraceable </translation>
     <message>
         <source>Select coin type to spend</source>
         <translation>Select coin type to spend</translation>
-    </message>
-    <message>
-        <source>EncoCoin address or contact label</source>
-        <translation>EncoCoin address or contact label</translation>
     </message>
     <message>
         <source>Amount</source>
@@ -3596,6 +3420,18 @@ transaction history, making transactions untraceable </translation>
         <translation>Total remaining</translation>
     </message>
     <message>
+        <source>Warning!</source>
+        <translation>Warning!</translation>
+    </message>
+    <message>
+        <source>The change address doesn't belong to this wallet.
+
+Do you want to continue?</source>
+        <translation>The change address doesn't belong to this wallet.
+
+Do you want to continue?</translation>
+    </message>
+    <message>
         <source>Customize Fee</source>
         <translation>Customize Fee</translation>
     </message>
@@ -3604,8 +3440,16 @@ transaction history, making transactions untraceable </translation>
         <translation>Maximum amount of outputs reached</translation>
     </message>
     <message>
+        <source>EncoCoin address or contact label</source>
+        <translation>EncoCoin address or contact label</translation>
+    </message>
+    <message>
         <source>Invalid entry, previous entries must be valid before add a new one</source>
         <translation>Invalid entry, previous entries must be valid before add a new one</translation>
+    </message>
+    <message>
+        <source>Possibly spend coins delegated for cold-staking (currently available: %1</source>
+        <translation>Possibly spend coins delegated for cold-staking (currently available: %1</translation>
     </message>
     <message>
         <source>Invalid entry</source>
@@ -3686,10 +3530,6 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     <message>
         <source>Address label update failed for address: %1</source>
         <translation>Address label update failed for address: %1</translation>
-    </message>
-    <message>
-        <source>Invalid change address</source>
-        <translation>Invalid change address</translation>
     </message>
     <message>
         <source>Invalid URI</source>
@@ -3785,10 +3625,6 @@ This option creates a wallet.dat file that can be used to recover your whole bal
     <message>
         <source>Select folder...</source>
         <translation>Select folder...</translation>
-    </message>
-    <message>
-        <source>Backup</source>
-        <translation>Backup</translation>
     </message>
     <message>
         <source>Change Passphrase</source>
@@ -3974,8 +3810,8 @@ This option creates a wallet.dat file that can be used to recover your whole bal
         <translation>Error adding key to the wallet</translation>
     </message>
     <message>
-        <source>Successfully added pivate key to the wallet</source>
-        <translation>Successfully added pivate key to the wallet</translation>
+        <source>Successfully added private key to the wallet</source>
+        <translation>Successfully added private key to the wallet</translation>
     </message>
 </context>
 <context>
@@ -4003,6 +3839,10 @@ This option creates a wallet.dat file that can be used to recover your whole bal
     <message>
         <source>Open Debug File</source>
         <translation>Open Debug File</translation>
+    </message>
+    <message>
+        <source>Clear history</source>
+        <translation>Clear history</translation>
     </message>
     <message>
         <source>Cannot open debug file.
@@ -4036,6 +3876,10 @@ Verify that you have installed a predetermined text editor.</translation>
     <message>
         <source>TextLabel</source>
         <translation>TextLabel</translation>
+    </message>
+    <message>
+        <source>Hide stake charts in the dashboard</source>
+        <translation>Hide stake charts in the dashboard</translation>
     </message>
     <message>
         <source>Reset to default</source>
@@ -4084,6 +3928,109 @@ Verify that you have installed a predetermined text editor.</translation>
     <message>
         <source>Options reset succeed</source>
         <translation>Options reset succeed</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsExportCSV</name>
+    <message>
+        <source>Form</source>
+        <translation>Form</translation>
+    </message>
+    <message>
+        <source>Export Accounting</source>
+        <translation>Export Accounting</translation>
+    </message>
+    <message>
+        <source>Export your wallet's accounting data to a csv file.</source>
+        <translation>Export your wallet's accounting data to a csv file.</translation>
+    </message>
+    <message>
+        <source>Where</source>
+        <translation>Where</translation>
+    </message>
+    <message>
+        <source>Select folder...</source>
+        <translation>Select folder...</translation>
+    </message>
+    <message>
+        <source>Export Address Book</source>
+        <translation>Export Address Book</translation>
+    </message>
+    <message>
+        <source>Export CSV</source>
+        <translation>Export CSV</translation>
+    </message>
+    <message>
+        <source>Export Address List</source>
+        <translation>Export Address List</translation>
+    </message>
+    <message>
+        <source>EncoCoin_tx_csv_export(*.csv)</source>
+        <translation>EncoCoin_tx_csv_export(*.csv)</translation>
+    </message>
+    <message>
+        <source>EncoCoin_addresses_csv_export(*.csv)</source>
+        <translation>EncoCoin_addresses_csv_export(*.csv)</translation>
+    </message>
+    <message>
+        <source>Please select a folder to export the csv file first.</source>
+        <translation>Please select a folder to export the csv file first.</translation>
+    </message>
+    <message>
+        <source>Confirmed</source>
+        <translation>Confirmed</translation>
+    </message>
+    <message>
+        <source>Watch-only</source>
+        <translation>Watch-only</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Date</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Type</translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation>Label</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Address</translation>
+    </message>
+    <message>
+        <source>ID</source>
+        <translation>ID</translation>
+    </message>
+    <message>
+        <source>Exporting Successful
+The transaction history was successfully saved to %1.</source>
+        <translation>Exporting Successful
+The transaction history was successfully saved to %1.</translation>
+    </message>
+    <message>
+        <source>Exporting Failed
+There was an error trying to save the transaction history to %1.</source>
+        <translation>Exporting Failed
+There was an error trying to save the transaction history to %1.</translation>
+    </message>
+    <message>
+        <source>No available addresses to export under the selected filter</source>
+        <translation>No available addresses to export under the selected filter</translation>
+    </message>
+    <message>
+        <source>Exporting Successful
+The address book was successfully saved to %1.</source>
+        <translation>Exporting Successful
+The address book was successfully saved to %1.</translation>
+    </message>
+    <message>
+        <source>Exporting Failed
+There was an error trying to save the address list to %1. Please try again.</source>
+        <translation>Exporting Failed
+There was an error trying to save the address list to %1. Please try again.</translation>
     </message>
 </context>
 <context>
@@ -4222,7 +4169,7 @@ Verify that you have installed a predetermined text editor.</translation>
                            zXNK is an optional privacy-centric method of coin mixing on the
                            EncoCoin blockchain. Basically all your transactions cannot be tracked
                            on to any block explorer. You can read more about the technicals in the
-                           &lt;a style='color: #b088ff' href='https://EncoCoin.org/zpiv/'&gt;
+                           &lt;a style='color: #b088ff' href='https://EncoCoin.org/zxnk/'&gt;
                            "EncoCoin Zerocoin (zXNK) Technical Paper"&lt;/a&gt;.
                            &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                          </source>
@@ -4231,7 +4178,7 @@ Verify that you have installed a predetermined text editor.</translation>
                            zXNK is an optional privacy-centric method of coin mixing on the
                            EncoCoin blockchain. Basically all your transactions cannot be tracked
                            on to any block explorer. You can read more about the technicals in the
-                           &lt;a style='color: #b088ff' href='https://EncoCoin.org/zpiv/'&gt;
+                           &lt;a style='color: #b088ff' href='https://EncoCoin.org/zxnk/'&gt;
                            "EncoCoin Zerocoin (zXNK) Technical Paper"&lt;/a&gt;.
                            &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                          </translation>
@@ -4281,7 +4228,7 @@ Verify that you have installed a predetermined text editor.</translation>
                            marks and restart your wallet to disable automint.&lt;/p&gt;
                            &lt;/p&gt;&lt;p align="justify"&gt;
                            You can read more about zXNK in the
-                           &lt;a style='color: #b088ff' href='https://EncoCoin.org/zpiv/'&gt; "EncoCoin Zerocoin (zXNK) Technical Paper"&lt;/a&gt;.
+                           &lt;a style='color: #b088ff' href='https://EncoCoin.org/zxnk/'&gt; "EncoCoin Zerocoin (zXNK) Technical Paper"&lt;/a&gt;.
                            If you would like to keep and stake your zXNK, please read the "How do I stake"
                            section of the FAQ below.
                            &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -4298,7 +4245,7 @@ Verify that you have installed a predetermined text editor.</translation>
                            marks and restart your wallet to disable automint.&lt;/p&gt;
                            &lt;/p&gt;&lt;p align="justify"&gt;
                            You can read more about zXNK in the
-                           &lt;a style='color: #b088ff' href='https://EncoCoin.org/zpiv/'&gt; "EncoCoin Zerocoin (zXNK) Technical Paper"&lt;/a&gt;.
+                           &lt;a style='color: #b088ff' href='https://EncoCoin.org/zxnk/'&gt; "EncoCoin Zerocoin (zXNK) Technical Paper"&lt;/a&gt;.
                            If you would like to keep and stake your zXNK, please read the "How do I stake"
                            section of the FAQ below.
                            &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -4552,10 +4499,6 @@ Verify that you have installed a predetermined text editor.</translation>
         <translation>Form</translation>
     </message>
     <message>
-        <source>TextLabel</source>
-        <translation>TextLabel</translation>
-    </message>
-    <message>
         <source>Network Monitor</source>
         <translation>Network Monitor</translation>
     </message>
@@ -4568,16 +4511,48 @@ Verify that you have installed a predetermined text editor.</translation>
         <translation>General</translation>
     </message>
     <message>
-        <source>Client Version: </source>
-        <translation>Client Version: </translation>
+        <source>Client Version:</source>
+        <translation>Client Version:</translation>
+    </message>
+    <message>
+        <source>BerkeleyDB version:</source>
+        <translation>BerkeleyDB version:</translation>
+    </message>
+    <message>
+        <source>Datadir:</source>
+        <translation>Datadir:</translation>
+    </message>
+    <message>
+        <source>Startup time:</source>
+        <translation>Startup time:</translation>
+    </message>
+    <message>
+        <source>Connections:</source>
+        <translation>Connections:</translation>
+    </message>
+    <message>
+        <source>Number of Masternodes:</source>
+        <translation>Number of Masternodes:</translation>
+    </message>
+    <message>
+        <source>Current number of blocks:</source>
+        <translation>Current number of blocks:</translation>
+    </message>
+    <message>
+        <source>Last block time:</source>
+        <translation>Last block time:</translation>
+    </message>
+    <message>
+        <source>Last block hash:</source>
+        <translation>Last block hash:</translation>
+    </message>
+    <message>
+        <source>Current number of transactions:</source>
+        <translation>Current number of transactions:</translation>
     </message>
     <message>
         <source>User Agent:</source>
         <translation>User Agent:</translation>
-    </message>
-    <message>
-        <source>Datadir: </source>
-        <translation>Datadir: </translation>
     </message>
     <message>
         <source>Network</source>
@@ -4594,30 +4569,6 @@ Verify that you have installed a predetermined text editor.</translation>
     <message>
         <source>Memory Pool</source>
         <translation>Memory Pool</translation>
-    </message>
-    <message>
-        <source>BerkeleyDB version:</source>
-        <translation>BerkeleyDB version:</translation>
-    </message>
-    <message>
-        <source>Startup time:  </source>
-        <translation>Startup time:  </translation>
-    </message>
-    <message>
-        <source>Connections:</source>
-        <translation>Connections:</translation>
-    </message>
-    <message>
-        <source>Current number of blocks:</source>
-        <translation>Current number of blocks:</translation>
-    </message>
-    <message>
-        <source>Last block time:</source>
-        <translation>Last block time:</translation>
-    </message>
-    <message>
-        <source>Current number of transactions:</source>
-        <translation>Current number of transactions:</translation>
     </message>
     <message>
         <source>Main</source>
@@ -4819,12 +4770,20 @@ Are you sure?
         <translation>CLEAR ALL</translation>
     </message>
     <message>
+        <source>Cannot perform operation, wallet locked</source>
+        <translation>Cannot perform operation, wallet locked</translation>
+    </message>
+    <message>
         <source>Clear succeed</source>
         <translation>Clear succeed</translation>
     </message>
     <message>
         <source>Clear all failed, could not locate address in wallet file</source>
         <translation>Clear all failed, could not locate address in wallet file</translation>
+    </message>
+    <message>
+        <source>Cannot add multisend recipient, wallet locked</source>
+        <translation>Cannot add multisend recipient, wallet locked</translation>
     </message>
     <message>
         <source>The entered address: %1 is invalid.
@@ -5183,10 +5142,6 @@ Check one or both of the check boxes to send on stake and/or masternode rewards<
         <translation>Form</translation>
     </message>
     <message>
-        <source>TextLabel</source>
-        <translation>TextLabel</translation>
-    </message>
-    <message>
         <source>Wallet Data</source>
         <translation>Wallet Data</translation>
     </message>
@@ -5197,6 +5152,10 @@ Check one or both of the check boxes to send on stake and/or masternode rewards<
     <message>
         <source>Multisend</source>
         <translation>Multisend</translation>
+    </message>
+    <message>
+        <source>Export Accounting</source>
+        <translation>Export Accounting</translation>
     </message>
     <message>
         <source>Tools</source>
@@ -5405,14 +5364,6 @@ Are you sure?
         <translation>Form</translation>
     </message>
     <message>
-        <source>480.0685 XNK</source>
-        <translation>480.0685 XNK</translation>
-    </message>
-    <message>
-        <source>1,000 zXNK</source>
-        <translation>1,000 zXNK</translation>
-    </message>
-    <message>
         <source>Available</source>
         <translation>Available</translation>
     </message>
@@ -5421,24 +5372,8 @@ Are you sure?
         <translation>Pending</translation>
     </message>
     <message>
-        <source>6.943 XNK</source>
-        <translation>6.943 XNK</translation>
-    </message>
-    <message>
         <source>Immature</source>
         <translation>Immature</translation>
-    </message>
-    <message>
-        <source>10 XNK</source>
-        <translation>10 XNK</translation>
-    </message>
-    <message>
-        <source>60 zXNK</source>
-        <translation>60 zXNK</translation>
-    </message>
-    <message>
-        <source>10 zXNK</source>
-        <translation>10 zXNK</translation>
     </message>
     <message>
         <source>Wallet Unlocked for staking</source>
@@ -5453,14 +5388,6 @@ Are you sure?
         <translation>Address Copied</translation>
     </message>
     <message>
-        <source>Automint enabled</source>
-        <translation>Automint enabled</translation>
-    </message>
-    <message>
-        <source>Automint disabled</source>
-        <translation>Automint disabled</translation>
-    </message>
-    <message>
         <source>Staking active</source>
         <translation>Staking active</translation>
     </message>
@@ -5473,8 +5400,8 @@ Are you sure?
         <translation><numerusform>%n active connection(s)</numerusform><numerusform>%n active connection(s)</numerusform></translation>
     </message>
     <message>
-        <source>Synchronized</source>
-        <translation>Synchronized</translation>
+        <source>Synchronized - Block: %1</source>
+        <translation>Synchronized - Block: %1</translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
@@ -5497,8 +5424,88 @@ Are you sure?
         <translation><numerusform>%n year</numerusform><numerusform>%n years</numerusform></translation>
     </message>
     <message>
+        <source>Wallet Upgrade</source>
+        <translation>Wallet Upgrade</translation>
+    </message>
+    <message>
+        <source>Upgrading to HD wallet will improve
+the wallet's reliability and security.
+
+
+NOTE: after the upgrade, a new
+backup will be created.
+</source>
+        <translation>Upgrading to HD wallet will improve
+the wallet's reliability and security.
+
+
+NOTE: after the upgrade, a new
+backup will be created.
+</translation>
+    </message>
+    <message>
+        <source>Upgrade Wallet</source>
+        <translation>Upgrade Wallet</translation>
+    </message>
+    <message>
+        <source>Wallet unlock cancelled</source>
+        <translation>Wallet unlock cancelled</translation>
+    </message>
+    <message>
+        <source>Tor Active: %1</source>
+        <translation>Tor Active: %1</translation>
+    </message>
+    <message>
+        <source>Tor Disabled</source>
+        <translation>Tor Disabled</translation>
+    </message>
+    <message>
         <source>Available (Locked included)</source>
         <translation>Available (Locked included)</translation>
+    </message>
+    <message>
+        <source>The wallet has been successfully upgraded to HD.</source>
+        <translation>The wallet has been successfully upgraded to HD.</translation>
+    </message>
+    <message>
+        <source>It is advised to make a backup.</source>
+        <translation>It is advised to make a backup.</translation>
+    </message>
+    <message>
+        <source>Do you wish to backup now?</source>
+        <translation>Do you wish to backup now?</translation>
+    </message>
+    <message>
+        <source>Backup Wallet</source>
+        <translation>Backup Wallet</translation>
+    </message>
+    <message>
+        <source>Wallet Data (*.dat)</source>
+        <translation>Wallet Data (*.dat)</translation>
+    </message>
+    <message>
+        <source>Backup created</source>
+        <translation>Backup created</translation>
+    </message>
+    <message>
+        <source>Backup creation failed</source>
+        <translation>Backup creation failed</translation>
+    </message>
+    <message>
+        <source>no file selected</source>
+        <translation>no file selected</translation>
+    </message>
+    <message>
+        <source>Wallet upgraded successfully, but no backup created.</source>
+        <translation>Wallet upgraded successfully, but no backup created.</translation>
+    </message>
+    <message>
+        <source>WARNING: remember to make a copy of your wallet.dat file!</source>
+        <translation>WARNING: remember to make a copy of your wallet.dat file!</translation>
+    </message>
+    <message>
+        <source>Upgrade Wallet Error</source>
+        <translation>Upgrade Wallet Error</translation>
     </message>
 </context>
 <context>
@@ -5754,10 +5761,6 @@ Are you sure?
         <translation>Received from</translation>
     </message>
     <message>
-        <source>Received via Obfuscation</source>
-        <translation>Received via Obfuscation</translation>
-    </message>
-    <message>
         <source>XNK Stake</source>
         <translation>XNK Stake</translation>
     </message>
@@ -5772,22 +5775,6 @@ Are you sure?
     <message>
         <source>Stake delegation</source>
         <translation>Stake delegation</translation>
-    </message>
-    <message>
-        <source>Obfuscation Denominate</source>
-        <translation>Obfuscation Denominate</translation>
-    </message>
-    <message>
-        <source>Obfuscation Collateral Payment</source>
-        <translation>Obfuscation Collateral Payment</translation>
-    </message>
-    <message>
-        <source>Obfuscation Make Collateral Inputs</source>
-        <translation>Obfuscation Make Collateral Inputs</translation>
-    </message>
-    <message>
-        <source>Obfuscation Create Denominations</source>
-        <translation>Obfuscation Create Denominations</translation>
     </message>
     <message>
         <source>Converted XNK to zXNK</source>
@@ -5826,12 +5813,12 @@ Are you sure?
         <translation>XNK Stake on behalf of</translation>
     </message>
     <message>
-        <source>Mined</source>
-        <translation>Mined</translation>
+        <source>Stake delegation spent by</source>
+        <translation>Stake delegation spent by</translation>
     </message>
     <message>
-        <source>Obfuscated</source>
-        <translation>Obfuscated</translation>
+        <source>Mined</source>
+        <translation>Mined</translation>
     </message>
     <message>
         <source>watch-only</source>
@@ -5885,36 +5872,8 @@ Are you sure?
         <translation>Transaction Details</translation>
     </message>
     <message>
-        <source>ID:</source>
-        <translation>ID:</translation>
-    </message>
-    <message>
-        <source>492526e7fa3c810b35016...40a5df85ee227ab00b1156994</source>
-        <translation>492526e7fa3c810b35016...40a5df85ee227ab00b1156994</translation>
-    </message>
-    <message>
-        <source>Sending to: </source>
-        <translation>Sending to: </translation>
-    </message>
-    <message>
-        <source>D7VFR83SQbiezrW72hjcWJtcfip5krte2Z </source>
-        <translation>D7VFR83SQbiezrW72hjcWJtcfip5krte2Z </translation>
-    </message>
-    <message>
         <source>Total amount</source>
         <translation>Total amount</translation>
-    </message>
-    <message>
-        <source>2 XNK</source>
-        <translation>2 XNK</translation>
-    </message>
-    <message>
-        <source>Coin inputs:</source>
-        <translation>Coin inputs:</translation>
-    </message>
-    <message>
-        <source>1 Inputs</source>
-        <translation>1 Inputs</translation>
     </message>
     <message>
         <source>Previous Transaction</source>
@@ -5925,52 +5884,52 @@ Are you sure?
         <translation>Output Index</translation>
     </message>
     <message>
-        <source>Fee:</source>
-        <translation>Fee:</translation>
-    </message>
-    <message>
-        <source>0.0001 XNK</source>
-        <translation>0.0001 XNK</translation>
-    </message>
-    <message>
-        <source>Change address:</source>
-        <translation>Change address:</translation>
-    </message>
-    <message>
         <source>D7VFR83SQbie…BhjcWJtcfip5krte2Z </source>
         <translation>D7VFR83SQbie…BhjcWJtcfip5krte2Z </translation>
-    </message>
-    <message>
-        <source>Confirmations:</source>
-        <translation>Confirmations:</translation>
-    </message>
-    <message>
-        <source>12</source>
-        <translation>12</translation>
-    </message>
-    <message>
-        <source>Size:</source>
-        <translation>Size:</translation>
-    </message>
-    <message>
-        <source>2 kB</source>
-        <translation>2 kB</translation>
-    </message>
-    <message>
-        <source>Date:</source>
-        <translation>Date:</translation>
     </message>
     <message>
         <source>May 25, 2017</source>
         <translation>May 25, 2017</translation>
     </message>
     <message>
-        <source>Status:</source>
-        <translation>Status:</translation>
+        <source>ID</source>
+        <translation>ID</translation>
+    </message>
+    <message>
+        <source>Sending to</source>
+        <translation>Sending to</translation>
+    </message>
+    <message>
+        <source>Coin inputs</source>
+        <translation>Coin inputs</translation>
+    </message>
+    <message>
+        <source>Fee</source>
+        <translation>Fee</translation>
+    </message>
+    <message>
+        <source>Size</source>
+        <translation>Size</translation>
+    </message>
+    <message>
+        <source>Change address</source>
+        <translation>Change address</translation>
     </message>
     <message>
         <source>Spendable</source>
         <translation>Spendable</translation>
+    </message>
+    <message>
+        <source>Confirmations</source>
+        <translation>Confirmations</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Status</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Date</translation>
     </message>
     <message>
         <source>TextLabel</source>
@@ -6029,29 +5988,6 @@ Are you sure?
     <message>
         <source>SwiftX doesn't support sending values that high yet. Transactions are currently limited to %1 XNK.</source>
         <translation>SwiftX doesn't support sending values that high yet. Transactions are currently limited to %1 XNK.</translation>
-    </message>
-</context>
-<context>
-    <name>WalletPasswordDialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation>Dialog</translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation>TextLabel</translation>
-    </message>
-    <message>
-        <source>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</source>
-        <translation>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</translation>
-    </message>
-    <message>
-        <source>CANCEL</source>
-        <translation>CANCEL</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation>OK</translation>
     </message>
 </context>
 <context>
@@ -6124,7 +6060,7 @@ EncoCoin Core Wallet</translation>
     </message>
 </context>
 <context>
-    <name>ZPivControlDialog</name>
+    <name>ZXnkControlDialog</name>
     <message>
         <source>Select zXNK to Spend</source>
         <translation>Select zXNK to Spend</translation>
@@ -6138,8 +6074,8 @@ EncoCoin Core Wallet</translation>
         <translation>PushButton</translation>
     </message>
     <message>
-        <source>zPiv</source>
-        <translation>zPiv</translation>
+        <source>zXnk</source>
+        <translation>zXnk</translation>
     </message>
     <message>
         <source>0.00 </source>
@@ -6189,10 +6125,6 @@ EncoCoin Core Wallet</translation>
         <translation>Bind to given address to listen for JSON-RPC connections. Use [host]:port notation for IPv6. This option can be specified multiple times (default: bind to all interfaces)</translation>
     </message>
     <message>
-        <source>Calculated accumulator checkpoint is not what is recorded by block index</source>
-        <translation>Calculated accumulator checkpoint is not what is recorded by block index</translation>
-    </message>
-    <message>
         <source>Cannot obtain a lock on data directory %s. EncoCoin Core is probably already running.</source>
         <translation>Cannot obtain a lock on data directory %s. EncoCoin Core is probably already running.</translation>
     </message>
@@ -6219,14 +6151,6 @@ EncoCoin Core Wallet</translation>
     <message>
         <source>Distributed under the MIT software license, see the accompanying file COPYING or &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</source>
         <translation>Distributed under the MIT software license, see the accompanying file COPYING or &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</translation>
-    </message>
-    <message>
-        <source>Enable automatic Zerocoin minting from specific addresses (0-1, default: %u)</source>
-        <translation>Enable automatic Zerocoin minting from specific addresses (0-1, default: %u)</translation>
-    </message>
-    <message>
-        <source>Enable automatic wallet backups triggered after each zXNK minting (0-1, default: %u)</source>
-        <translation>Enable automatic wallet backups triggered after each zXNK minting (0-1, default: %u)</translation>
     </message>
     <message>
         <source>Enable cold staking functionality (0-1, default: %u). Disabled if staking=0</source>
@@ -6259,6 +6183,10 @@ EncoCoin Core Wallet</translation>
     <message>
         <source>Error: Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</source>
         <translation>Error: Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</translation>
+    </message>
+    <message>
+        <source>Exclude debugging information for a category. Can be used in conjunction with -debug=1 to output debug logs for all categories except one or more specified categories.</source>
+        <translation>Exclude debugging information for a category. Can be used in conjunction with -debug=1 to output debug logs for all categories except one or more specified categories.</translation>
     </message>
     <message>
         <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
@@ -6333,10 +6261,6 @@ EncoCoin Core Wallet</translation>
         <translation>Number of seconds to keep misbehaving peers from reconnecting (default: %u)</translation>
     </message>
     <message>
-        <source>Obfuscation uses exact denominated amounts to send funds, you might simply need to anonymize some more coins.</source>
-        <translation>Obfuscation uses exact denominated amounts to send funds, you might simply need to anonymize some more coins.</translation>
-    </message>
-    <message>
         <source>Output debugging information (default: %u, supplying &lt;category&gt; is optional)</source>
         <translation>Output debugging information (default: %u, supplying &lt;category&gt; is optional)</translation>
     </message>
@@ -6393,18 +6317,6 @@ EncoCoin Core Wallet</translation>
         <translation>Unable to bind to %s on this computer. EncoCoin Core is probably already running.</translation>
     </message>
     <message>
-        <source>Unable to locate enough Obfuscation denominated funds for this transaction.</source>
-        <translation>Unable to locate enough Obfuscation denominated funds for this transaction.</translation>
-    </message>
-    <message>
-        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 10000 XNK.</source>
-        <translation>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 10000 XNK.</translation>
-    </message>
-    <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 10000 XNK.</source>
-        <translation>Unable to locate enough funds for this transaction that are not equal 10000 XNK.</translation>
-    </message>
-    <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
         <translation>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</translation>
     </message>
@@ -6415,10 +6327,6 @@ EncoCoin Core Wallet</translation>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
         <translation>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</translation>
-    </message>
-    <message>
-        <source>Warning: Peers are being disconnected due time differences. Please check that your computer's date and time are correct! If your clock is wrong EncoCoin Core will not work properly.</source>
-        <translation>Warning: Peers are being disconnected due time differences. Please check that your computer's date and time are correct! If your clock is wrong EncoCoin Core will not work properly.</translation>
     </message>
     <message>
         <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong EncoCoin Core will not work properly.</source>
@@ -6453,8 +6361,8 @@ EncoCoin Core Wallet</translation>
         <translation>You must specify a masternodeprivkey in the configuration. Please see documentation for help.</translation>
     </message>
     <message>
-        <source>(43013 could be used only on mainnet)</source>
-        <translation>(43013 could be used only on mainnet)</translation>
+        <source>(51472 could be used only on mainnet)</source>
+        <translation>(51472 could be used only on mainnet)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -6465,8 +6373,8 @@ EncoCoin Core Wallet</translation>
         <translation>(default: 1)</translation>
     </message>
     <message>
-        <source>(must be 43013 for mainnet)</source>
-        <translation>(must be 43013 for mainnet)</translation>
+        <source>(must be 51472 for mainnet)</source>
+        <translation>(must be 51472 for mainnet)</translation>
     </message>
     <message>
         <source>Accept command line and JSON-RPC commands</source>
@@ -6483,10 +6391,6 @@ EncoCoin Core Wallet</translation>
     <message>
         <source>Add a node to connect to and attempt to keep the connection open</source>
         <translation>Add a node to connect to and attempt to keep the connection open</translation>
-    </message>
-    <message>
-        <source>Adding Wrapped Serials supply...</source>
-        <translation>Adding Wrapped Serials supply...</translation>
     </message>
     <message>
         <source>Allow DNS lookups for -addnode, -seednode and -connect</source>
@@ -6513,28 +6417,8 @@ EncoCoin Core Wallet</translation>
         <translation>Block creation options:</translation>
     </message>
     <message>
-        <source>Calculating missing accumulators...</source>
-        <translation>Calculating missing accumulators...</translation>
-    </message>
-    <message>
         <source>Cannot downgrade wallet</source>
         <translation>Cannot downgrade wallet</translation>
-    </message>
-    <message>
-        <source>Cannot resolve -bind address: '%s'</source>
-        <translation>Cannot resolve -bind address: '%s'</translation>
-    </message>
-    <message>
-        <source>Cannot resolve -externalip address: '%s'</source>
-        <translation>Cannot resolve -externalip address: '%s'</translation>
-    </message>
-    <message>
-        <source>Cannot resolve -whitebind address: '%s'</source>
-        <translation>Cannot resolve -whitebind address: '%s'</translation>
-    </message>
-    <message>
-        <source>CoinSpend: failed check</source>
-        <translation>CoinSpend: failed check</translation>
     </message>
     <message>
         <source>Connect only to the specified node(s)</source>
@@ -6573,10 +6457,6 @@ EncoCoin Core Wallet</translation>
         <translation>Could not parse masternode.conf</translation>
     </message>
     <message>
-        <source>Couldn't generate the accumulator witness</source>
-        <translation>Couldn't generate the accumulator witness</translation>
-    </message>
-    <message>
         <source>Debugging/Testing options:</source>
         <translation>Debugging/Testing options:</translation>
     </message>
@@ -6607,10 +6487,6 @@ EncoCoin Core Wallet</translation>
     <message>
         <source>Done loading</source>
         <translation>Done loading</translation>
-    </message>
-    <message>
-        <source>Enable automatic Zerocoin minting (0-1, default: %u)</source>
-        <translation>Enable automatic Zerocoin minting (0-1, default: %u)</translation>
     </message>
     <message>
         <source>Enable publish hash transaction (locked via SwiftX) in &lt;address&gt;</source>
@@ -6665,6 +6541,10 @@ EncoCoin Core Wallet</translation>
         <translation>Error</translation>
     </message>
     <message>
+        <source>Error: </source>
+        <translation>Error: </translation>
+    </message>
+    <message>
         <source>Error: A fatal internal error occured, see debug.log for details</source>
         <translation>Error: A fatal internal error occured, see debug.log for details</translation>
     </message>
@@ -6679,10 +6559,6 @@ EncoCoin Core Wallet</translation>
     <message>
         <source>Error: Wallet locked, unable to create transaction!</source>
         <translation>Error: Wallet locked, unable to create transaction!</translation>
-    </message>
-    <message>
-        <source>Failed to calculate accumulator checkpoint</source>
-        <translation>Failed to calculate accumulator checkpoint</translation>
     </message>
     <message>
         <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
@@ -6753,28 +6629,8 @@ EncoCoin Core Wallet</translation>
         <translation>Invalid -onion address or hostname: '%s'</translation>
     </message>
     <message>
-        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s'</source>
-        <translation>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s'</translation>
-    </message>
-    <message>
-        <source>Invalid amount for -minrelaytxfee=&lt;amount&gt;: '%s'</source>
-        <translation>Invalid amount for -minrelaytxfee=&lt;amount&gt;: '%s'</translation>
-    </message>
-    <message>
-        <source>Invalid amount for -mintxfee=&lt;amount&gt;: '%s'</source>
-        <translation>Invalid amount for -mintxfee=&lt;amount&gt;: '%s'</translation>
-    </message>
-    <message>
         <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
         <translation>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</translation>
-    </message>
-    <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s'</source>
-        <translation>Invalid amount for -paytxfee=&lt;amount&gt;: '%s'</translation>
-    </message>
-    <message>
-        <source>Invalid amount for -reservebalance=&lt;amount&gt;</source>
-        <translation>Invalid amount for -reservebalance=&lt;amount&gt;</translation>
     </message>
     <message>
         <source>Invalid amount</source>
@@ -6793,20 +6649,8 @@ EncoCoin Core Wallet</translation>
         <translation>Invalid port detected in masternode.conf</translation>
     </message>
     <message>
-        <source>Percentage of automatically minted Zerocoin  (1-100, default: %u)</source>
-        <translation>Percentage of automatically minted Zerocoin  (1-100, default: %u)</translation>
-    </message>
-    <message>
         <source>Recalculating XNK supply...</source>
         <translation>Recalculating XNK supply...</translation>
-    </message>
-    <message>
-        <source>Recalculating minted ZXNK...</source>
-        <translation>Recalculating minted ZXNK...</translation>
-    </message>
-    <message>
-        <source>Recalculating spent ZXNK...</source>
-        <translation>Recalculating spent ZXNK...</translation>
     </message>
     <message>
         <source>Reindex the XNK and zXNK money supply statistics</source>
@@ -6823,10 +6667,6 @@ EncoCoin Core Wallet</translation>
     <message>
         <source>Selected coins value is less than payment target</source>
         <translation>Selected coins value is less than payment target</translation>
-    </message>
-    <message>
-        <source>Support the zerocoin light node protocol (default: %u)</source>
-        <translation>Support the zerocoin light node protocol (default: %u)</translation>
     </message>
     <message>
         <source>SwiftX options:</source>
@@ -6865,10 +6705,6 @@ EncoCoin Core Wallet</translation>
         <translation>Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</translation>
     </message>
     <message>
-        <source>Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!</source>
-        <translation>Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!</translation>
-    </message>
-    <message>
         <source>Error: Unsupported argument -checklevel found. Checklevel must be level 4.</source>
         <translation>Error: Unsupported argument -checklevel found. Checklevel must be level 4.</translation>
     </message>
@@ -6883,14 +6719,6 @@ EncoCoin Core Wallet</translation>
     <message>
         <source>In rare cases, a spend with 7 coins exceeds our maximum allowable transaction size, please retry spend using 6 or less coins</source>
         <translation>In rare cases, a spend with 7 coins exceeds our maximum allowable transaction size, please retry spend using 6 or less coins</translation>
-    </message>
-    <message>
-        <source>Preferred Denomination for automatically minted Zerocoin  (1/5/10/50/100/500/1000/5000), 0 for no preference. default: %u)</source>
-        <translation>Preferred Denomination for automatically minted Zerocoin  (1/5/10/50/100/500/1000/5000), 0 for no preference. default: %u)</translation>
-    </message>
-    <message>
-        <source>Specify custom backup path to add a copy of any automatic zXNK backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</source>
-        <translation>Specify custom backup path to add a copy of any automatic zXNK backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</translation>
     </message>
     <message>
         <source>Specify custom backup path to add a copy of any wallet backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup.</source>
@@ -6911,10 +6739,6 @@ EncoCoin Core Wallet</translation>
     <message>
         <source>Cannot create public spend input</source>
         <translation>Cannot create public spend input</translation>
-    </message>
-    <message>
-        <source>CoinSpend: Accumulator witness does not verify</source>
-        <translation>CoinSpend: Accumulator witness does not verify</translation>
     </message>
     <message>
         <source>Display the stake modifier calculations in the debug.log file.</source>
@@ -6953,10 +6777,6 @@ EncoCoin Core Wallet</translation>
         <translation>Error: No valid utxo!</translation>
     </message>
     <message>
-        <source>Failed to create mint</source>
-        <translation>Failed to create mint</translation>
-    </message>
-    <message>
         <source>Failed to find Zerocoins in wallet.dat</source>
         <translation>Failed to find Zerocoins in wallet.dat</translation>
     </message>
@@ -6975,6 +6795,10 @@ EncoCoin Core Wallet</translation>
     <message>
         <source>Failed to write coin serial number into wallet</source>
         <translation>Failed to write coin serial number into wallet</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
+        <translation>Invalid amount for -%s=&lt;amount&gt;: '%s'</translation>
     </message>
     <message>
         <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
@@ -7001,6 +6825,10 @@ EncoCoin Core Wallet</translation>
         <translation>Loading addresses...</translation>
     </message>
     <message>
+        <source>Loading banlist...</source>
+        <translation>Loading banlist...</translation>
+    </message>
+    <message>
         <source>Loading block index...</source>
         <translation>Loading block index...</translation>
     </message>
@@ -7021,10 +6849,6 @@ EncoCoin Core Wallet</translation>
         <translation>Loading sporks...</translation>
     </message>
     <message>
-        <source>Loading wallet... (%3.2f %%)</source>
-        <translation>Loading wallet... (%3.2f %%)</translation>
-    </message>
-    <message>
         <source>Loading wallet...</source>
         <translation>Loading wallet...</translation>
     </message>
@@ -7039,6 +6863,10 @@ EncoCoin Core Wallet</translation>
     <message>
         <source>Lookup(): Invalid -proxy address or hostname: '%s'</source>
         <translation>Lookup(): Invalid -proxy address or hostname: '%s'</translation>
+    </message>
+    <message>
+        <source>MNs synchronization pending...</source>
+        <translation>MNs synchronization pending...</translation>
     </message>
     <message>
         <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
@@ -7081,6 +6909,10 @@ EncoCoin Core Wallet</translation>
         <translation>Number of custom location backups to retain (default: %d)</translation>
     </message>
     <message>
+        <source>On first run, create a legacy wallet instead of a HD wallet</source>
+        <translation>On first run, create a legacy wallet instead of a HD wallet</translation>
+    </message>
+    <message>
         <source>Only accept block chain matching built-in checkpoints (default: %u)</source>
         <translation>Only accept block chain matching built-in checkpoints (default: %u)</translation>
     </message>
@@ -7095,6 +6927,10 @@ EncoCoin Core Wallet</translation>
     <message>
         <source>Password for JSON-RPC connections</source>
         <translation>Password for JSON-RPC connections</translation>
+    </message>
+    <message>
+        <source>Peers are being disconnected due time differences.</source>
+        <translation>Peers are being disconnected due time differences.</translation>
     </message>
     <message>
         <source>Unable to find transaction containing mint %s</source>
@@ -7115,6 +6951,22 @@ EncoCoin Core Wallet</translation>
     <message>
         <source>Preparing for resync...</source>
         <translation>Preparing for resync...</translation>
+    </message>
+    <message>
+        <source>Please check that your computer's date and time are correct! If your clock is wrong EncoCoin Core will not work properly.</source>
+        <translation>Please check that your computer's date and time are correct! If your clock is wrong EncoCoin Core will not work properly.</translation>
+    </message>
+    <message>
+        <source>Specify location of debug log file: this can be an absolute path or a path relative to the data directory (default: %s)</source>
+        <translation>Specify location of debug log file: this can be an absolute path or a path relative to the data directory (default: %s)</translation>
+    </message>
+    <message>
+        <source>Cannot resolve -%s address: '%s'</source>
+        <translation>Cannot resolve -%s address: '%s'</translation>
+    </message>
+    <message>
+        <source>Cannot upgrade to HD wallet (already running HD support). Version: %d</source>
+        <translation>Cannot upgrade to HD wallet (already running HD support). Version: %d</translation>
     </message>
     <message>
         <source>Need destination or change address because change is not exact</source>
@@ -7147,14 +6999,6 @@ EncoCoin Core Wallet</translation>
     <message>
         <source>Rebuild block chain index from current blk000??.dat files</source>
         <translation>Rebuild block chain index from current blk000??.dat files</translation>
-    </message>
-    <message>
-        <source>Receive and display P2P network alerts (default: %u)</source>
-        <translation>Receive and display P2P network alerts (default: %u)</translation>
-    </message>
-    <message>
-        <source>Reindex the accumulator database</source>
-        <translation>Reindex the accumulator database</translation>
     </message>
     <message>
         <source>Relay and mine data carrier transactions (default: %u)</source>
@@ -7191,10 +7035,6 @@ EncoCoin Core Wallet</translation>
     <message>
         <source>Send transactions as zero-fee transactions if possible (default: %u)</source>
         <translation>Send transactions as zero-fee transactions if possible (default: %u)</translation>
-    </message>
-    <message>
-        <source>Session timed out.</source>
-        <translation>Session timed out.</translation>
     </message>
     <message>
         <source>Set database cache size in megabytes (%d to %d, default: %d)</source>
@@ -7239,10 +7079,6 @@ EncoCoin Core Wallet</translation>
     <message>
         <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
         <translation>Shrink debug.log file on client startup (default: 1 when no -debug)</translation>
-    </message>
-    <message>
-        <source>Signing timed out.</source>
-        <translation>Signing timed out.</translation>
     </message>
     <message>
         <source>Signing transaction failed</source>
@@ -7301,10 +7137,6 @@ EncoCoin Core Wallet</translation>
         <translation>Synchronization finished</translation>
     </message>
     <message>
-        <source>Synchronization pending...</source>
-        <translation>Synchronization pending...</translation>
-    </message>
-    <message>
         <source>Synchronizing budgets...</source>
         <translation>Synchronizing budgets...</translation>
     </message>
@@ -7323,14 +7155,6 @@ EncoCoin Core Wallet</translation>
     <message>
         <source>Syncing zXNK wallet...</source>
         <translation>Syncing zXNK wallet...</translation>
-    </message>
-    <message>
-        <source>The coin spend has been used</source>
-        <translation>The coin spend has been used</translation>
-    </message>
-    <message>
-        <source>The transaction did not verify</source>
-        <translation>The transaction did not verify</translation>
     </message>
     <message>
         <source>This help message</source>
@@ -7397,6 +7221,10 @@ EncoCoin Core Wallet</translation>
         <translation>Unable to generate initial key</translation>
     </message>
     <message>
+        <source>Unable to generate keys</source>
+        <translation>Unable to generate keys</translation>
+    </message>
+    <message>
         <source>Unable to sign spork message, wrong key?</source>
         <translation>Unable to sign spork message, wrong key?</translation>
     </message>
@@ -7407,6 +7235,10 @@ EncoCoin Core Wallet</translation>
     <message>
         <source>Unknown network specified in -onlynet: '%s'</source>
         <translation>Unknown network specified in -onlynet: '%s'</translation>
+    </message>
+    <message>
+        <source>Unsupported logging category %s=%s.</source>
+        <translation>Unsupported logging category %s=%s.</translation>
     </message>
     <message>
         <source>Upgrade wallet to latest format</source>
@@ -7497,6 +7329,10 @@ EncoCoin Core Wallet</translation>
         <translation>ZeroMQ notification options:</translation>
     </message>
     <message>
+        <source>Zerocoin minting available only on regtest</source>
+        <translation>Zerocoin minting available only on regtest</translation>
+    </message>
+    <message>
         <source>Zerocoin options:</source>
         <translation>Zerocoin options:</translation>
     </message>
@@ -7522,6 +7358,10 @@ EncoCoin Core Wallet</translation>
     <message>
         <source>TextLabel</source>
         <translation>TextLabel</translation>
+    </message>
+    <message>
+        <source>Include delegated</source>
+        <translation>Include delegated</translation>
     </message>
     <message>
         <source>PushButton</source>

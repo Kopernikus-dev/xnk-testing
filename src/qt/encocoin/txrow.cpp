@@ -65,7 +65,6 @@ void TxRow::setType(bool isLightTheme, int type, bool isConfirmed){
             path = "://ic-transaction-staked";
             css = "text-list-amount-receive";
             break;
-        case TransactionRecord::RecvWithObfuscation:
         case TransactionRecord::RecvWithAddress:
         case TransactionRecord::RecvFromOther:
         case TransactionRecord::RecvFromZerocoinSpend:
@@ -75,7 +74,7 @@ void TxRow::setType(bool isLightTheme, int type, bool isConfirmed){
         case TransactionRecord::SendToAddress:
         case TransactionRecord::SendToOther:
         case TransactionRecord::ZerocoinSpend:
-        case TransactionRecord::ZerocoinSpend_Change_zPiv:
+        case TransactionRecord::ZerocoinSpend_Change_zXnk:
         case TransactionRecord::ZerocoinSpend_FromMe:
             path = "://ic-transaction-sent";
             css = "text-list-amount-send";

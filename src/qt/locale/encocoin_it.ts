@@ -196,6 +196,10 @@
         <translation>Data</translation>
     </message>
     <message>
+        <source>Type</source>
+        <translation>Tipo</translation>
+    </message>
+    <message>
         <source>(no label)</source>
         <translation>(nessuna etichetta)</translation>
     </message>
@@ -365,7 +369,7 @@ per lo staking</translation>
     </message>
     <message>
         <source>ENCRYPT</source>
-        <translation>Crittografa</translation>
+        <translation>CRITTOGRAFA</translation>
     </message>
     <message>
         <source>CANCEL</source>
@@ -378,10 +382,6 @@ per lo staking</translation>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Confermi di voler crittografare il portafoglio?</translation>
-    </message>
-    <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR XNK&lt;/b&gt;!</source>
-        <translation>Attenzione: Se crittografi il portafoglio e poi perdi la parola d'ordine, &lt;b&gt;PERDERAI TUTTI I TUOI XNK&lt;7b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -423,10 +423,6 @@ per lo staking</translation>
         <source>Wallet passphrase was successfully changed.</source>
         <translation>La passphrase del portafoglio è stata modificata correttamente.</translation>
     </message>
-    <message>
-        <source>Warning: The Caps Lock key is on!</source>
-        <translation>Attenzione: il tasto Caps Lock è attivo!</translation>
-    </message>
 </context>
 <context>
     <name>BanTableModel</name>
@@ -437,37 +433,6 @@ per lo staking</translation>
     <message>
         <source>Banned Until</source>
         <translation>Bloccato fino a</translation>
-    </message>
-</context>
-<context>
-    <name>BlockExplorer</name>
-    <message>
-        <source>Blockchain Explorer</source>
-        <translation>Esplora catena dei blocchi</translation>
-    </message>
-    <message>
-        <source>Back</source>
-        <translation>Indietro</translation>
-    </message>
-    <message>
-        <source>Forward</source>
-        <translation>Avanti</translation>
-    </message>
-    <message>
-        <source>Address / Block / Transaction</source>
-        <translation>Indirizzo / Blocco / Transazione</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation>Cerca</translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation>Etichetta</translation>
-    </message>
-    <message>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (encocoin.conf).</source>
-        <translation>Non tutte le transazioni verranno visualizzate. Per vedere tutte le transazioni è necessario aggiungere txindex=1 nel file di configurazione (encocoin.conf)</translation>
     </message>
 </context>
 <context>
@@ -502,10 +467,6 @@ per lo staking</translation>
     <message>
         <source>Total: %1 (IPv4: %2 / IPv6: %3 / Tor: %4 / Unknown: %5)</source>
         <translation>Totale: %1 (IPv4: %2 / IPv6: %3 / Tor: %4 / Sconosciuti: %5)</translation>
-    </message>
-    <message>
-        <source>Network Alert</source>
-        <translation>Avviso di rete</translation>
     </message>
 </context>
 <context>
@@ -549,14 +510,6 @@ per lo staking</translation>
     <message>
         <source>Amount</source>
         <translation>Ammontare</translation>
-    </message>
-    <message>
-        <source>Transaction Details</source>
-        <translation>Dettagli della transazione</translation>
-    </message>
-    <message>
-        <source>PushButton</source>
-        <translation>Premi il bottone</translation>
     </message>
     <message>
         <source>0.00 XNK</source>
@@ -625,34 +578,6 @@ per lo staking</translation>
     <message>
         <source>Unlock unspent</source>
         <translation>Sblocca non spesi</translation>
-    </message>
-    <message>
-        <source>Copy quantity</source>
-        <translation>Copia importo</translation>
-    </message>
-    <message>
-        <source>Copy fee</source>
-        <translation>Copia commissione</translation>
-    </message>
-    <message>
-        <source>Copy after fee</source>
-        <translation>Copia importo al netto della commissione</translation>
-    </message>
-    <message>
-        <source>Copy bytes</source>
-        <translation>Copia byte</translation>
-    </message>
-    <message>
-        <source>Copy priority</source>
-        <translation>Copia priorità</translation>
-    </message>
-    <message>
-        <source>Copy dust</source>
-        <translation>Copia polvere</translation>
-    </message>
-    <message>
-        <source>Copy change</source>
-        <translation>Copia resto</translation>
     </message>
     <message>
         <source>Unselect all</source>
@@ -739,7 +664,7 @@ per lo staking</translation>
         <translation>Questa etichetta diventa rossa se uno dei destinatari riceve un importo inferiore a %1.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 upiv per input.</source>
+        <source>Can vary +/- %1 uxnk per input.</source>
         <translation>Può variare di +/- %1 uXNK per input.</translation>
     </message>
     <message>
@@ -753,89 +678,6 @@ per lo staking</translation>
     <message>
         <source>(change)</source>
         <translation>(resto)</translation>
-    </message>
-</context>
-<context>
-    <name>CoinControlPivWidget</name>
-    <message>
-        <source>Dialog</source>
-        <translation>Finestra di dialogo</translation>
-    </message>
-    <message>
-        <source>Transaction Details</source>
-        <translation>Dettagli della transazione</translation>
-    </message>
-    <message>
-        <source>PushButton</source>
-        <translation>Premi il bottone</translation>
-    </message>
-    <message>
-        <source>XNK:</source>
-        <translation>XNK:</translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation>Etichetta</translation>
-    </message>
-    <message>
-        <source>Quantity:</source>
-        <translation>Quantità:</translation>
-    </message>
-    <message>
-        <source>Fee:</source>
-        <translation>Commissione:</translation>
-    </message>
-    <message>
-        <source>Amount</source>
-        <translation>Ammontare</translation>
-    </message>
-    <message>
-        <source>Label</source>
-        <translation>Etichetta</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation>Indirizzo</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation>Tipo</translation>
-    </message>
-    <message>
-        <source>Date</source>
-        <translation>Data</translation>
-    </message>
-    <message>
-        <source>Confirmations</source>
-        <translation>Conferme</translation>
-    </message>
-    <message>
-        <source>CheckBox</source>
-        <translation>CheckBox</translation>
-    </message>
-    <message>
-        <source>Bytes:</source>
-        <translation>Byte:</translation>
-    </message>
-    <message>
-        <source>Dust:</source>
-        <translation>Polvere:</translation>
-    </message>
-    <message>
-        <source>Change:</source>
-        <translation>Differenza:</translation>
-    </message>
-    <message>
-        <source>After Fee: </source>
-        <translation>Al netto della commissione:</translation>
-    </message>
-    <message>
-        <source>CANCEL</source>
-        <translation>CANCELLA</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation>OK</translation>
     </message>
 </context>
 <context>
@@ -1113,50 +955,6 @@ proprietario</translation>
         <translation>Quantità di XNK e zXNK dallo stake.</translation>
     </message>
     <message>
-        <source>All</source>
-        <translation>Tutto</translation>
-    </message>
-    <message>
-        <source>Received</source>
-        <translation>Ricevuto</translation>
-    </message>
-    <message>
-        <source>Sent</source>
-        <translation>Inviato</translation>
-    </message>
-    <message>
-        <source>Mined</source>
-        <translation>Minato</translation>
-    </message>
-    <message>
-        <source>Minted</source>
-        <translation>Forgiato</translation>
-    </message>
-    <message>
-        <source>MN reward</source>
-        <translation>Premio del MN</translation>
-    </message>
-    <message>
-        <source>To yourself</source>
-        <translation>A te stesso</translation>
-    </message>
-    <message>
-        <source>Cold stakes</source>
-        <translation>Cold stakes</translation>
-    </message>
-    <message>
-        <source>Hot stakes</source>
-        <translation>Hot stakes</translation>
-    </message>
-    <message>
-        <source>Delegated</source>
-        <translation>Delegato</translation>
-    </message>
-    <message>
-        <source>Delegations</source>
-        <translation>Deleghe</translation>
-    </message>
-    <message>
         <source>Please wait until the wallet is fully synced to see your correct balance</source>
         <translation>Attendi fino a quando il portafoglio non è completamente sincronizzato per vedere il tuo saldo corretto</translation>
     </message>
@@ -1212,65 +1010,6 @@ Si avvierà automaticamente non appena il portafoglio avrà sufficienti conferme
     <message>
         <source>Text Label</source>
         <translation>Etichetta del testo</translation>
-    </message>
-    <message>
-        <source>CANCEL</source>
-        <translation>CANCELLA</translation>
-    </message>
-    <message>
-        <source>SAVE</source>
-        <translation>SALVA</translation>
-    </message>
-</context>
-<context>
-    <name>DenomGenerationDialog</name>
-    <message>
-        <source>Form</source>
-        <translation>Modulo</translation>
-    </message>
-    <message>
-        <source>Transaction Details</source>
-        <translation>Dettagli della transazione</translation>
-    </message>
-    <message>
-        <source>This will unlock your wallet fully, so that anyone with access to it can spend until the wallet is closed or locked again.</source>
-        <translation>Questo sbloccherà completamente il tuo portafoglio, in modo che chiunque abbia accesso ad esso possa spendere fino a quando il portafoglio non verrà chiuso o nuovamente bloccato.</translation>
-    </message>
-    <message>
-        <source>5000</source>
-        <translation>5000</translation>
-    </message>
-    <message>
-        <source>100</source>
-        <translation>100</translation>
-    </message>
-    <message>
-        <source>10</source>
-        <translation>10</translation>
-    </message>
-    <message>
-        <source>1000</source>
-        <translation>1000</translation>
-    </message>
-    <message>
-        <source>50</source>
-        <translation>50</translation>
-    </message>
-    <message>
-        <source>500</source>
-        <translation>500</translation>
-    </message>
-    <message>
-        <source>5</source>
-        <translation>5</translation>
-    </message>
-    <message>
-        <source>1</source>
-        <translation>1</translation>
-    </message>
-    <message>
-        <source>Select All</source>
-        <translation>Seleziona tutto</translation>
     </message>
     <message>
         <source>CANCEL</source>
@@ -1367,49 +1106,6 @@ Si avvierà automaticamente non appena il portafoglio avrà sufficienti conferme
     </message>
 </context>
 <context>
-    <name>GovernancePage</name>
-    <message>
-        <source>Form</source>
-        <translation>Modulo</translation>
-    </message>
-    <message>
-        <source>GOVERNANCE</source>
-        <translation>GOVERNANCE</translation>
-    </message>
-    <message>
-        <source>Update Proposals</source>
-        <translation>Proposte di aggiornamento</translation>
-    </message>
-    <message>
-        <source>Next super block:</source>
-        <translation>Prossimo super blocco:</translation>
-    </message>
-    <message>
-        <source>0</source>
-        <translation>0</translation>
-    </message>
-    <message>
-        <source>Blocks to next super block:</source>
-        <translation>Blocchi al prossimo super blocco:</translation>
-    </message>
-    <message>
-        <source>Days to budget payout (estimate):</source>
-        <translation>Giorni di pagamento del budget (stima):</translation>
-    </message>
-    <message>
-        <source>Allotted budget:</source>
-        <translation>Budget assegnato:</translation>
-    </message>
-    <message>
-        <source>Budget left:</source>
-        <translation>Budget residuo:</translation>
-    </message>
-    <message>
-        <source>Masternodes count:</source>
-        <translation>Numero dei Masternodes:</translation>
-    </message>
-</context>
-<context>
     <name>HelpMessageDialog</name>
     <message>
         <source>version</source>
@@ -1476,7 +1172,7 @@ Si avvierà automaticamente non appena il portafoglio avrà sufficienti conferme
     </message>
     <message>
         <source>Welcome to EncoCoin Core.</source>
-        <translation>Benvenuto in EncoCoin Core.</translation>
+        <translation>Benvenuto in XNKIX Core.</translation>
     </message>
     <message>
         <source>As this is the first time the program is launched, you can choose where EncoCoin Core will store its data.</source>
@@ -1567,18 +1263,6 @@ Si avvierà automaticamente non appena il portafoglio avrà sufficienti conferme
         <source>Form</source>
         <translation>Modulo</translation>
     </message>
-    <message>
-        <source>user_masternode</source>
-        <translation>user_masternode</translation>
-    </message>
-    <message>
-        <source>Address: 88.26.164.88:51474</source>
-        <translation>Address: 88.26.164.88:51474</translation>
-    </message>
-    <message>
-        <source>Jan. 19, 2019</source>
-        <translation>19 Gennaio 2019</translation>
-    </message>
 </context>
 <context>
     <name>MasterNodeWizardDialog</name>
@@ -1609,10 +1293,6 @@ Si avvierà automaticamente non appena il portafoglio avrà sufficienti conferme
     <message>
         <source>Address</source>
         <translation>Indirizzo</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;To create a EncoCoin Masternode you must dedicate 10.000 XNK (the unit of EncoCoin) to the network (however, these coins are still yours and will never leave your possession). &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;You can deactivate the node and unlock the coins at any time.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Per creare un Masternode EncoCoin devi dedicare 10.000 XNK (l'unità di EncoCoin) alla rete (tuttavia, queste valute sono ancora tue e saranno sempre in tuo possesso). &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Puoi disattivare il nodo e sbloccare le valute in qualsiasi momento.</translation>
     </message>
     <message>
         <source>Make sure you have this amount of coins.</source>
@@ -1659,20 +1339,12 @@ Si avvierà automaticamente non appena il portafoglio avrà sufficienti conferme
         <translation>IP o porta non possono essere vuoti</translation>
     </message>
     <message>
-        <source>Invalid port number</source>
-        <translation>Valore della porta non valido</translation>
-    </message>
-    <message>
         <source>Invalid masternode.conf file</source>
         <translation>Il file masternode.conf non è valido</translation>
     </message>
     <message>
         <source>Error parsing masternode.conf file</source>
         <translation>Errore durante l'analisi del file masternode.conf</translation>
-    </message>
-    <message>
-        <source>Master node created!</source>
-        <translation>Masternode creato!</translation>
     </message>
     <message>
         <source>masternode.conf file doesn't exists</source>
@@ -1734,12 +1406,6 @@ e votano il sistema di tesoreria ricevendo una ricompensa periodica.</translatio
 </translation>
     </message>
     <message>
-        <source>Cannot start masternode, the collateral transaction has not been accepted by the network.
-Please wait few more minutes.</source>
-        <translation>Impossibile avviare il masternode, la transazione collaterale non è stata accettata dalla rete.
-Per favore, attendi qualche minuto.</translation>
-    </message>
-    <message>
         <source>Remote Masternode Data</source>
         <translation>Remote Masternode Data</translation>
     </message>
@@ -1762,10 +1428,6 @@ come controller (selezionare il Masternode nell'elenco e premere "start").
 </translation>
     </message>
     <message>
-        <source>Masternode exported!, check your clipboard</source>
-        <translation>Masternode esportato!, controlla gli appunti</translation>
-    </message>
-    <message>
         <source>Delete Masternode</source>
         <translation>Cancella Masternode</translation>
     </message>
@@ -1781,7 +1443,7 @@ Sei sicuro?</translation>
     </message>
     <message>
         <source>Invalid masternode.conf file</source>
-        <translation>il file masternode.conf non è valido</translation>
+        <translation>Il file masternode.conf non è valido</translation>
     </message>
     <message>
         <source>Error parsing masternode.conf file</source>
@@ -2292,13 +1954,6 @@ Indirizzo: %4
     </message>
 </context>
 <context>
-    <name>PWidget</name>
-    <message>
-        <source>Wallet locked, you need to unlock it to perform this action</source>
-        <translation>Portafoglio bloccato, è necessario sbloccarlo per eseguire questa azione</translation>
-    </message>
-</context>
-<context>
     <name>PaymentServer</name>
     <message>
         <source>Payment request error</source>
@@ -2522,75 +2177,6 @@ cronologia delle transazioni, rendendo le transazioni non rintracciabili</transl
     </message>
 </context>
 <context>
-    <name>ProposalFrame</name>
-    <message>
-        <source>Open proposal page in browser</source>
-        <translation>Apri la pagina della proposta nel browser</translation>
-    </message>
-    <message>
-        <source> remaining payment(s).</source>
-        <translation>pagamenti rimanenti.</translation>
-    </message>
-    <message>
-        <source>Yes:</source>
-        <translation>Si:</translation>
-    </message>
-    <message>
-        <source>Abstain:</source>
-        <translation>Astenersi:</translation>
-    </message>
-    <message>
-        <source>No:</source>
-        <translation>No:</translation>
-    </message>
-    <message>
-        <source>A proposal URL can be used for phishing, scams and computer viruses. Open this link only if you trust the following URL.
-</source>
-        <translation>Un URL proposto può essere utilizzato per phishing, truffe e virus informatici. Apri questo link solo se ti fidi del seguente URL.
-</translation>
-    </message>
-    <message>
-        <source>Open link</source>
-        <translation>Apri link</translation>
-    </message>
-    <message>
-        <source>Copy link</source>
-        <translation>Copia link</translation>
-    </message>
-    <message>
-        <source>Wallet Locked</source>
-        <translation>Portafoglio bloccato</translation>
-    </message>
-    <message>
-        <source>You must unlock your wallet to vote.</source>
-        <translation>Devi sbloccare il portafoglio per votare</translation>
-    </message>
-    <message>
-        <source>Do you want to vote %1 on</source>
-        <translation>Vuoi votare %1 su</translation>
-    </message>
-    <message>
-        <source>using all your masternodes?</source>
-        <translation>utilizzare tutti i masternode?</translation>
-    </message>
-    <message>
-        <source>Proposal Hash:</source>
-        <translation>Hash proposto:</translation>
-    </message>
-    <message>
-        <source>Proposal URL:</source>
-        <translation>URL proposto:</translation>
-    </message>
-    <message>
-        <source>Confirm Vote</source>
-        <translation>Conferma il voto</translation>
-    </message>
-    <message>
-        <source>Vote Results</source>
-        <translation>Risultati del voto</translation>
-    </message>
-</context>
-<context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
@@ -2619,10 +2205,6 @@ cronologia delle transazioni, rendendo le transazioni non rintracciabili</transl
     <message>
         <source>BLOOM</source>
         <translation>BLOOM</translation>
-    </message>
-    <message>
-        <source>ZK_BLOOM</source>
-        <translation>ZK_BLOOM</translation>
     </message>
     <message>
         <source>UNKNOWN</source>
@@ -2664,7 +2246,63 @@ cronologia delle transazioni, rendendo le transazioni non rintracciabili</transl
         <source>EncoCoin Core didn't yet exit safely...</source>
         <translation>EncoCoin Core non è ancora uscito in modo sicuro...</translation>
     </message>
-</context>
+    <message>
+        <source>Cold Staking</source>
+        <translation>Cold Staking</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Sconosciuto</translation>
+    </message>
+    <message>
+        <source>All</source>
+        <translation>Tutto</translation>
+    </message>
+    <message>
+        <source>Contacts</source>
+        <translation>Contatti</translation>
+    </message>
+    <message>
+        <source>Received</source>
+        <translation>Ricevuto</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Inviato</translation>
+    </message>
+    <message>
+        <source>Mined</source>
+        <translation>Minato</translation>
+    </message>
+    <message>
+        <source>Minted</source>
+        <translation>Forgiato</translation>
+    </message>
+    <message>
+        <source>MN reward</source>
+        <translation>Premio del MN</translation>
+    </message>
+    <message>
+        <source>To yourself</source>
+        <translation>A te stesso</translation>
+    </message>
+    <message>
+        <source>Cold stakes</source>
+        <translation>Cold stakes</translation>
+    </message>
+    <message>
+        <source>Hot stakes</source>
+        <translation>Hot stakes</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Delegato</translation>
+    </message>
+    <message>
+        <source>Delegations</source>
+        <translation>Deleghe</translation>
+    </message>
+    </context>
 <context>
     <name>RPCConsole</name>
     <message>
@@ -3310,6 +2948,14 @@ cronologia delle transazioni, rendendo le transazioni non rintracciabili</transl
         <source>The remainder of the value resultant from the inputs minus the outputs value goes to the "change" EncoCoin address</source>
         <translation>Il resto del valore risultante dagli ingressi meno il valore delle uscite va all'indirizzo EncoCoin "cambio"</translation>
     </message>
+    <message>
+        <source>SAVE</source>
+        <translation>SALVA</translation>
+    </message>
+    <message>
+        <source>Invalid address</source>
+        <translation>Indirizzo non valido</translation>
+    </message>
 </context>
 <context>
     <name>SendCustomFeeDialog</name>
@@ -3326,20 +2972,12 @@ cronologia delle transazioni, rendendo le transazioni non rintracciabili</transl
         <translation>Personalizza la commissione di transazione a tuo piacimento; a seconda del valore della commissione, la transazione verrà inclusa o meno nella blockchain.</translation>
     </message>
     <message>
-        <source>Recomended</source>
-        <translation>Raccomandato</translation>
-    </message>
-    <message>
         <source>0.00 KB</source>
         <translation>0.00 KB</translation>
     </message>
     <message>
         <source>Custom</source>
         <translation>Personalizzato</translation>
-    </message>
-    <message>
-        <source>Per kilobyte</source>
-        <translation>Per kilobyte</translation>
     </message>
     <message>
         <source>CANCEL</source>
@@ -3352,10 +2990,6 @@ cronologia delle transazioni, rendendo le transazioni non rintracciabili</transl
     <message>
         <source>Customize Fee</source>
         <translation>Tariffa personalizzata</translation>
-    </message>
-    <message>
-        <source>Customize the transaction fee, depending on the fee value your transaction will be included or not in the blockchain.</source>
-        <translation>Personalizza la commissione di transazione; a seconda del valore della commissione, la transazione verrà inclusa o meno nella blockchain.</translation>
     </message>
     <message>
         <source>Normal</source>
@@ -3373,7 +3007,7 @@ cronologia delle transazioni, rendendo le transazioni non rintracciabili</transl
         <source>SAVE</source>
         <translation>SALVA</translation>
     </message>
-</context>
+    </context>
 <context>
     <name>SendMultiRow</name>
     <message>
@@ -3536,10 +3170,6 @@ Alternativamente forgia denominazioni più alte (quindi sono necessari meno inpu
         <translation>Aggiornamento dell'etichetta dell'indirizzo non riuscito per l'indirizzo: %1</translation>
     </message>
     <message>
-        <source>Invalid change address</source>
-        <translation>Indirizzo di cambio non valido</translation>
-    </message>
-    <message>
         <source>Invalid URI</source>
         <translation>URI non valido</translation>
     </message>
@@ -3623,10 +3253,6 @@ Ricordati di scriverlo e conservarlo in modo sicuro, altrimenti potresti perdere
     <message>
         <source>Where</source>
         <translation>Dove</translation>
-    </message>
-    <message>
-        <source>Backup</source>
-        <translation>Backup</translation>
     </message>
     <message>
         <source>Change Passphrase</source>
@@ -3807,11 +3433,7 @@ Ricordati di scriverlo e conservarlo in modo sicuro, altrimenti potresti perdere
         <source>Error adding key to the wallet</source>
         <translation>Errore nell'inserimento della chiave nel portafoglio</translation>
     </message>
-    <message>
-        <source>Successfully added pivate key to the wallet</source>
-        <translation>Chiave privata inserita correttamente nel portafoglio</translation>
-    </message>
-</context>
+    </context>
 <context>
     <name>SettingsConsoleWidget</name>
     <message>
@@ -3920,6 +3542,41 @@ Verifica di aver installato un editor di testo predeterminato.</translation>
         <translation>Ripristino delle opzioni riuscito</translation>
     </message>
 </context>
+<context>
+    <name>SettingsExportCSV</name>
+    <message>
+        <source>Form</source>
+        <translation>Modulo</translation>
+    </message>
+    <message>
+        <source>Where</source>
+        <translation>Dove</translation>
+    </message>
+    <message>
+        <source>Export Address List</source>
+        <translation>Esporta elenco indirizzi</translation>
+    </message>
+    <message>
+        <source>Confirmed</source>
+        <translation>Confermata</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Data</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Tipo</translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation>Etichetta</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Indirizzo</translation>
+    </message>
+    </context>
 <context>
     <name>SettingsFaqWidget</name>
     <message>
@@ -4048,7 +3705,7 @@ per vedere e spendere i saldi sulla rete.
                            zXNK is an optional privacy-centric method of coin mixing on the
                            EncoCoin blockchain. Basically all your transactions cannot be tracked
                            on to any block explorer. You can read more about the technicals in the
-                           &lt;a style='color: #b088ff' href='https://EncoCoin.org/zpiv/'&gt;
+                           &lt;a style='color: #b088ff' href='https://EncoCoin.org/zxnk/'&gt;
                            "EncoCoin Zerocoin (zXNK) Technical Paper"&lt;/a&gt;.
                            &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                          </source>
@@ -4057,7 +3714,7 @@ per vedere e spendere i saldi sulla rete.
                            zXNK è un metodo opzionale incentrato sulla privacy per la miscelazione delle valute sulla
 Blockchain EncoCoin. Essenzialmente, tutte le tue transazioni non potranno essere tracciate
 su un block explorer. Puoi leggere di più sugli aspetti tecnici nel
-                           &lt;a style='color: #b088ff' href='https://EncoCoin.org/zpiv/'&gt;
+                           &lt;a style='color: #b088ff' href='https://EncoCoin.org/zxnk/'&gt;
                            "EncoCoin Zerocoin (zXNK) Technical Paper"&lt;/a&gt;.
                            &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                          </translation>
@@ -4107,7 +3764,7 @@ per diventare idoneo alla spesa.
                            marks and restart your wallet to disable automint.&lt;/p&gt;
                            &lt;/p&gt;&lt;p align="justify"&gt;
                            You can read more about zXNK in the
-                           &lt;a style='color: #b088ff' href='https://EncoCoin.org/zpiv/'&gt; "EncoCoin Zerocoin (zXNK) Technical Paper"&lt;/a&gt;.
+                           &lt;a style='color: #b088ff' href='https://EncoCoin.org/zxnk/'&gt; "EncoCoin Zerocoin (zXNK) Technical Paper"&lt;/a&gt;.
                            If you would like to keep and stake your zXNK, please read the "How do I stake"
                            section of the FAQ below.
                            &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -4124,7 +3781,7 @@ il tuo file encocoin.conf e aggiungere&lt;i&gt;enablezeromint=0&lt;/i&gt; senza 
 e far ripartire il portafoglio per disabilitare la forgiatura automatica.&lt;/p&gt;
                            &lt;/p&gt;&lt;p align="justify"&gt;
                            Puoi leggere di più su zXNK nel
-                           &lt;a style='color: #b088ff' href='https://EncoCoin.org/zpiv/'&gt; "EncoCoin Zerocoin (zXNK) Technical Paper"&lt;/a&gt;.
+                           &lt;a style='color: #b088ff' href='https://EncoCoin.org/zxnk/'&gt; "EncoCoin Zerocoin (zXNK) Technical Paper"&lt;/a&gt;.
                            Se desideri effettuare lo staking dei tuoi zXNK, leggi "Come faccio ad effettuare lo staking"
 nella sezione delle FAQ di seguito.
                            &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -4286,10 +3943,6 @@ regolarmente. Questi servizi includono:
         <translation>Modulo</translation>
     </message>
     <message>
-        <source>TextLabel</source>
-        <translation>Etichetta</translation>
-    </message>
-    <message>
         <source>Network Monitor</source>
         <translation>Monitor rete</translation>
     </message>
@@ -4302,16 +3955,8 @@ regolarmente. Questi servizi includono:
         <translation>Generale</translation>
     </message>
     <message>
-        <source>Client Version: </source>
-        <translation>Versione del client:</translation>
-    </message>
-    <message>
         <source>User Agent:</source>
         <translation>User Agent:</translation>
-    </message>
-    <message>
-        <source>Datadir: </source>
-        <translation>Datadir: </translation>
     </message>
     <message>
         <source>Network</source>
@@ -4877,10 +4522,6 @@ Seleziona una o entrambe le caselle di controllo per inviare gli stake e/o i pre
         <translation>Modulo</translation>
     </message>
     <message>
-        <source>TextLabel</source>
-        <translation>Etichetta</translation>
-    </message>
-    <message>
         <source>Wallet Data</source>
         <translation>Wallet Data</translation>
     </message>
@@ -5099,14 +4740,6 @@ Sei sicuro?
         <translation>Modulo</translation>
     </message>
     <message>
-        <source>480.0685 XNK</source>
-        <translation>480.0685 XNK</translation>
-    </message>
-    <message>
-        <source>1,000 zXNK</source>
-        <translation>1,000 zXNK</translation>
-    </message>
-    <message>
         <source>Available</source>
         <translation>Disponibile</translation>
     </message>
@@ -5115,24 +4748,8 @@ Sei sicuro?
         <translation>In attesa</translation>
     </message>
     <message>
-        <source>6.943 XNK</source>
-        <translation>6.943 XNK</translation>
-    </message>
-    <message>
         <source>Immature</source>
         <translation>Immaturo</translation>
-    </message>
-    <message>
-        <source>10 XNK</source>
-        <translation>10 XNK</translation>
-    </message>
-    <message>
-        <source>60 zXNK</source>
-        <translation>60 zXNK</translation>
-    </message>
-    <message>
-        <source>10 zXNK</source>
-        <translation>10 zXNK</translation>
     </message>
     <message>
         <source>Wallet Unlocked for staking</source>
@@ -5147,14 +4764,6 @@ Sei sicuro?
         <translation>Indirizzo copiato</translation>
     </message>
     <message>
-        <source>Automint enabled</source>
-        <translation>Forgiatura automatica abilitata</translation>
-    </message>
-    <message>
-        <source>Automint disabled</source>
-        <translation>Forgiatura automatica disabilitata</translation>
-    </message>
-    <message>
         <source>Staking active</source>
         <translation>Stacking attivo</translation>
     </message>
@@ -5162,33 +4771,25 @@ Sei sicuro?
         <source>Staking not active</source>
         <translation>Stacking non attivo</translation>
     </message>
-    <message numerus="yes">
-        <source>%n active connection(s)</source>
-        <translation><numerusform>%n connessioni attive</numerusform><numerusform>%n connessioni attive</numerusform></translation>
-    </message>
-    <message>
-        <source>Synchronized</source>
-        <translation>Sincronizzato</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n hour(s)</source>
-        <translation><numerusform>%n ora</numerusform><numerusform>%n ore</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>%n day(s)</source>
-        <translation><numerusform>%n giorno</numerusform><numerusform>%n giorni</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>%n week(s)</source>
-        <translation><numerusform>%n settimana</numerusform><numerusform>%n settimane</numerusform></translation>
-    </message>
     <message>
         <source>%1 and %2</source>
         <translation>%1 e %2</translation>
     </message>
-    <message numerus="yes">
-        <source>%n year(s)</source>
-        <translation><numerusform>%n anno</numerusform><numerusform>%n anni</numerusform></translation>
+    <message>
+        <source>Backup Wallet</source>
+        <translation>Backup portafoglio</translation>
+    </message>
+    <message>
+        <source>Wallet Data (*.dat)</source>
+        <translation>Wallet Data (*.dat)</translation>
+    </message>
+    <message>
+        <source>Backup created</source>
+        <translation>Backup creato</translation>
+    </message>
+    <message>
+        <source>Backup creation failed</source>
+        <translation>Creazione del backup non riuscita</translation>
     </message>
     </context>
 <context>
@@ -5200,10 +4801,6 @@ Sei sicuro?
 </context>
 <context>
     <name>TransactionDesc</name>
-    <message numerus="yes">
-        <source>Open for %n more block(s)</source>
-        <translation><numerusform>Aperto per altro %n blocco</numerusform><numerusform>Aperto per altri %n blocchi</numerusform></translation>
-    </message>
     <message>
         <source>Open until %1</source>
         <translation>Apri fino a %1</translation>
@@ -5264,10 +4861,6 @@ Sei sicuro?
         <source>, has not been successfully broadcast yet</source>
         <translation>, non è stato ancora trasmesso con successo</translation>
     </message>
-    <message numerus="yes">
-        <source>, broadcast through %n node(s)</source>
-        <translation><numerusform>, trasmesso attraverso %n nodo</numerusform><numerusform>, trasmesso attraverso %n nodi</numerusform></translation>
-    </message>
     <message>
         <source>Date</source>
         <translation>Data</translation>
@@ -5307,10 +4900,6 @@ Sei sicuro?
     <message>
         <source>Credit</source>
         <translation>Credito</translation>
-    </message>
-    <message numerus="yes">
-        <source>matures in %n more block(s)</source>
-        <translation><numerusform>matura in %n blocco</numerusform><numerusform>matura in altri %n blocchi</numerusform></translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -5395,10 +4984,6 @@ Sei sicuro?
         <source>Address</source>
         <translation>Indirizzo</translation>
     </message>
-    <message numerus="yes">
-        <source>Open for %n more block(s)</source>
-        <translation><numerusform>Aperto per %n blocco</numerusform><numerusform>Aperto per altri %n blocchi</numerusform></translation>
-    </message>
     <message>
         <source>Open until %1</source>
         <translation>Apri fino a %1</translation>
@@ -5444,10 +5029,6 @@ Sei sicuro?
         <translation>Ricevuto da</translation>
     </message>
     <message>
-        <source>Received via Obfuscation</source>
-        <translation>Ricevuto tramite offuscamento</translation>
-    </message>
-    <message>
         <source>XNK Stake</source>
         <translation>XNK Stake</translation>
     </message>
@@ -5462,22 +5043,6 @@ Sei sicuro?
     <message>
         <source>Stake delegation</source>
         <translation>Delega allo stake</translation>
-    </message>
-    <message>
-        <source>Obfuscation Denominate</source>
-        <translation>Denominazione Offuscamento</translation>
-    </message>
-    <message>
-        <source>Obfuscation Collateral Payment</source>
-        <translation>Offuscamento del pagamento collaterale</translation>
-    </message>
-    <message>
-        <source>Obfuscation Make Collateral Inputs</source>
-        <translation>L'offuscamento produce input collaterali</translation>
-    </message>
-    <message>
-        <source>Obfuscation Create Denominations</source>
-        <translation>L'offuscamento crea denominazioni</translation>
     </message>
     <message>
         <source>Converted XNK to zXNK</source>
@@ -5514,10 +5079,6 @@ Sei sicuro?
     <message>
         <source>Mined</source>
         <translation>Minato</translation>
-    </message>
-    <message>
-        <source>Obfuscated</source>
-        <translation>Offuscato</translation>
     </message>
     <message>
         <source>watch-only</source>
@@ -5571,36 +5132,8 @@ Sei sicuro?
         <translation>Dettagli della transazione</translation>
     </message>
     <message>
-        <source>ID:</source>
-        <translation>ID:</translation>
-    </message>
-    <message>
-        <source>492526e7fa3c810b35016...40a5df85ee227ab00b1156994</source>
-        <translation>492526e7fa3c810b35016...40a5df85ee227ab00b1156994</translation>
-    </message>
-    <message>
-        <source>Sending to: </source>
-        <translation>Inviando a:</translation>
-    </message>
-    <message>
-        <source>D7VFR83SQbiezrW72hjcWJtcfip5krte2Z </source>
-        <translation>D7VFR83SQbiezrW72hjcWJtcfip5krte2Z </translation>
-    </message>
-    <message>
         <source>Total amount</source>
         <translation>Importo totale</translation>
-    </message>
-    <message>
-        <source>2 XNK</source>
-        <translation>2 XNK</translation>
-    </message>
-    <message>
-        <source>Coin inputs:</source>
-        <translation>Coin inputs:</translation>
-    </message>
-    <message>
-        <source>1 Inputs</source>
-        <translation>1 Input</translation>
     </message>
     <message>
         <source>Previous Transaction</source>
@@ -5611,52 +5144,28 @@ Sei sicuro?
         <translation>Indice di uscita</translation>
     </message>
     <message>
-        <source>Fee:</source>
-        <translation>Commissione:</translation>
-    </message>
-    <message>
-        <source>0.0001 XNK</source>
-        <translation>0.0001 XNK</translation>
-    </message>
-    <message>
-        <source>Change address:</source>
-        <translation>Modifica indirizzo:</translation>
-    </message>
-    <message>
         <source>D7VFR83SQbie…BhjcWJtcfip5krte2Z </source>
         <translation>D7VFR83SQbie…BhjcWJtcfip5krte2Z </translation>
-    </message>
-    <message>
-        <source>Confirmations:</source>
-        <translation>Conferme:</translation>
-    </message>
-    <message>
-        <source>12</source>
-        <translation>12</translation>
-    </message>
-    <message>
-        <source>Size:</source>
-        <translation>Dimensione:</translation>
-    </message>
-    <message>
-        <source>2 kB</source>
-        <translation>2 kB</translation>
-    </message>
-    <message>
-        <source>Date:</source>
-        <translation>Data:</translation>
     </message>
     <message>
         <source>May 25, 2017</source>
         <translation>25 Maggio, 2017</translation>
     </message>
     <message>
-        <source>Status:</source>
-        <translation>Stato:</translation>
-    </message>
-    <message>
         <source>Spendable</source>
         <translation>Spendibile</translation>
+    </message>
+    <message>
+        <source>Confirmations</source>
+        <translation>Conferme</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Stato</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Data</translation>
     </message>
     <message>
         <source>TextLabel</source>
@@ -5715,29 +5224,6 @@ Sei sicuro?
     <message>
         <source>SwiftX doesn't support sending values that high yet. Transactions are currently limited to %1 XNK.</source>
         <translation>SwiftX non supporta ancora l'invio di valori così elevati. Le transazioni sono attualmente limitate a %1 XNK.</translation>
-    </message>
-</context>
-<context>
-    <name>WalletPasswordDialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation>Finestra di dialogo</translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation>Etichetta</translation>
-    </message>
-    <message>
-        <source>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</source>
-        <translation>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</translation>
-    </message>
-    <message>
-        <source>CANCEL</source>
-        <translation>CANCELLA</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation>OK</translation>
     </message>
 </context>
 <context>
@@ -5810,7 +5296,7 @@ Portafoglio EncoCoin Core.</translation>
     </message>
 </context>
 <context>
-    <name>ZPivControlDialog</name>
+    <name>ZXnkControlDialog</name>
     <message>
         <source>Select zXNK to Spend</source>
         <translation>Seleziona zXNK da spendere</translation>
@@ -5824,8 +5310,8 @@ Portafoglio EncoCoin Core.</translation>
         <translation>Premi il bottone</translation>
     </message>
     <message>
-        <source>zPiv</source>
-        <translation>zPiv</translation>
+        <source>zXnk</source>
+        <translation>zXnk</translation>
     </message>
     <message>
         <source>0.00 </source>
@@ -5875,10 +5361,6 @@ Portafoglio EncoCoin Core.</translation>
         <translation>Associa l'indirizzo indicato per ascoltare le connessioni JSON-RPC. Usa la notazione [host]:porta per IPv6. Questa opzione può essere specificata più volte (impostazione predefinita: associa a tutte le interfacce)</translation>
     </message>
     <message>
-        <source>Calculated accumulator checkpoint is not what is recorded by block index</source>
-        <translation>Il punto di controllo dell'accumulatore calcolato non è ciò che viene registrato dall'indice di blocco</translation>
-    </message>
-    <message>
         <source>Cannot obtain a lock on data directory %s. EncoCoin Core is probably already running.</source>
         <translation>Impossibile allocare la directory di dati %s. Probabilmente EncoCoin Core è già in esecuzione.</translation>
     </message>
@@ -5905,14 +5387,6 @@ Portafoglio EncoCoin Core.</translation>
     <message>
         <source>Distributed under the MIT software license, see the accompanying file COPYING or &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</source>
         <translation>Distribuito sotto la licenza del software MIT, consultare il file di accompagnamento COPYING o &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</translation>
-    </message>
-    <message>
-        <source>Enable automatic Zerocoin minting from specific addresses (0-1, default: %u)</source>
-        <translation>Abilita forgiatura automatica Zerocoin da indirizzi specifici (0-1, impostazione predefinita: %u)</translation>
-    </message>
-    <message>
-        <source>Enable automatic wallet backups triggered after each zXNK minting (0-1, default: %u)</source>
-        <translation>Abilita i backup automatici del portafoglio attivati ​​dopo ogni forgiatura zXNK (0-1, impostazione predefinita: %u)</translation>
     </message>
     <message>
         <source>Enable cold staking functionality (0-1, default: %u). Disabled if staking=0</source>
@@ -6019,10 +5493,6 @@ Portafoglio EncoCoin Core.</translation>
         <translation>Numero di secondi per impedire la riconnessione dei peer che si comportano male (impostazione predefinita: %u)</translation>
     </message>
     <message>
-        <source>Obfuscation uses exact denominated amounts to send funds, you might simply need to anonymize some more coins.</source>
-        <translation>L'offuscamento utilizza importi esatti per inviare fondi, potrebbe essere necessario anonimizzare altre valute.</translation>
-    </message>
-    <message>
         <source>Output debugging information (default: %u, supplying &lt;category&gt; is optional)</source>
         <translation>Informazioni sul debug dell'output (impostazione predefinita: %u, fornitura &lt;category&gt; è opzionale)</translation>
     </message>
@@ -6079,18 +5549,6 @@ Portafoglio EncoCoin Core.</translation>
         <translation>Impossibile associare %s su questo computer. Probabilmente EncoCoin Core è già in esecuzione.</translation>
     </message>
     <message>
-        <source>Unable to locate enough Obfuscation denominated funds for this transaction.</source>
-        <translation>Impossibile individuare abbastanza fondi denominati di offuscamento per questa transazione.</translation>
-    </message>
-    <message>
-        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 10000 XNK.</source>
-        <translation>Impossibile individuare fondi non denominati di offuscamento sufficienti per questa transazione non uguali a 10000 XNK.</translation>
-    </message>
-    <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 10000 XNK.</source>
-        <translation>Impossibile individuare fondi per questa transazione non uguali a 10000 XNK.</translation>
-    </message>
-    <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
         <translation>Utilizza un proxy SOCKS5 separato per raggiungere i peer tramite i servizi nascosti Tor (impostazione predefinita: %s)</translation>
     </message>
@@ -6101,10 +5559,6 @@ Portafoglio EncoCoin Core.</translation>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
         <translation>Attenzione: -paytxfee è impostato molto alto! Questa è la commissione di transazione che dovrai pagare se invii una transazione.</translation>
-    </message>
-    <message>
-        <source>Warning: Peers are being disconnected due time differences. Please check that your computer's date and time are correct! If your clock is wrong EncoCoin Core will not work properly.</source>
-        <translation>Avvertenza: i peer vengono disconnessi a causa di differenze temporali. Verifica che la data e l'ora del tuo computer siano corrette! Se l'orologio è sbagliato, EncoCoin Core non funzionerà correttamente.</translation>
     </message>
     <message>
         <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong EncoCoin Core will not work properly.</source>
@@ -6139,8 +5593,8 @@ Portafoglio EncoCoin Core.</translation>
         <translation>È necessario specificare una chiave masternodepriv nella configurazione. Consultare la documentazione per assistenza.</translation>
     </message>
     <message>
-        <source>(43013 could be used only on mainnet)</source>
-        <translation>(43013 potrebbe essere utilizzato solo su mainnet)</translation>
+        <source>(51472 could be used only on mainnet)</source>
+        <translation>(51472 potrebbe essere utilizzato solo su mainnet)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -6151,8 +5605,8 @@ Portafoglio EncoCoin Core.</translation>
         <translation>(default: 1)</translation>
     </message>
     <message>
-        <source>(must be 43013 for mainnet)</source>
-        <translation>(deve essere 43013 per mainnet)</translation>
+        <source>(must be 51472 for mainnet)</source>
+        <translation>(deve essere 51472 per mainnet)</translation>
     </message>
     <message>
         <source>Accept command line and JSON-RPC commands</source>
@@ -6169,10 +5623,6 @@ Portafoglio EncoCoin Core.</translation>
     <message>
         <source>Add a node to connect to and attempt to keep the connection open</source>
         <translation>Aggiungere un nodo a cui connettersi e tentare di mantenere aperta la connessione</translation>
-    </message>
-    <message>
-        <source>Adding Wrapped Serials supply...</source>
-        <translation>Aggiunta la fornitura dei Wrapped Serials...</translation>
     </message>
     <message>
         <source>Allow DNS lookups for -addnode, -seednode and -connect</source>
@@ -6199,28 +5649,8 @@ Portafoglio EncoCoin Core.</translation>
         <translation>Opzioni di creazione del blocco:</translation>
     </message>
     <message>
-        <source>Calculating missing accumulators...</source>
-        <translation>Calcolo degli accumulatori mancanti...</translation>
-    </message>
-    <message>
         <source>Cannot downgrade wallet</source>
         <translation>Impossibile eseguire il downgrade del portafoglio</translation>
-    </message>
-    <message>
-        <source>Cannot resolve -bind address: '%s'</source>
-        <translation>Impossibile risolvere l'indirizzo -bind: '%s'</translation>
-    </message>
-    <message>
-        <source>Cannot resolve -externalip address: '%s'</source>
-        <translation>Impossibile risolvere l'indirizzo -externalip: '%s'</translation>
-    </message>
-    <message>
-        <source>Cannot resolve -whitebind address: '%s'</source>
-        <translation>Impossibile risolvere l'indirizzo -whitebind: '%s'</translation>
-    </message>
-    <message>
-        <source>CoinSpend: failed check</source>
-        <translation>CoinSpend: controllo fallito</translation>
     </message>
     <message>
         <source>Connect only to the specified node(s)</source>
@@ -6259,10 +5689,6 @@ Portafoglio EncoCoin Core.</translation>
         <translation>Impossibile effettuare l'analisi del file masternode.conf</translation>
     </message>
     <message>
-        <source>Couldn't generate the accumulator witness</source>
-        <translation>Impossibile generare il testimone dell'accumulatore</translation>
-    </message>
-    <message>
         <source>Debugging/Testing options:</source>
         <translation>Opzioni di debug / test:</translation>
     </message>
@@ -6293,10 +5719,6 @@ Portafoglio EncoCoin Core.</translation>
     <message>
         <source>Done loading</source>
         <translation>Caricamento completato</translation>
-    </message>
-    <message>
-        <source>Enable automatic Zerocoin minting (0-1, default: %u)</source>
-        <translation>Abilita forgiatura automatica Zerocoin (0-1, impostazione predefinita: %u)</translation>
     </message>
     <message>
         <source>Enable publish hash transaction (locked via SwiftX) in &lt;address&gt;</source>
@@ -6367,10 +5789,6 @@ Portafoglio EncoCoin Core.</translation>
         <translation>Errore: portafoglio bloccato, impossibile creare la transazione!</translation>
     </message>
     <message>
-        <source>Failed to calculate accumulator checkpoint</source>
-        <translation>Calcolo del checkpoint dell'accumulatore non riuscito</translation>
-    </message>
-    <message>
         <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
         <translation>Impossibile ascoltare su qualsiasi porta. Usa -listen=0 se vuoi questo.</translation>
     </message>
@@ -6439,28 +5857,8 @@ Portafoglio EncoCoin Core.</translation>
         <translation>Invalid -proxy address or hostname: '%s'</translation>
     </message>
     <message>
-        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s'</source>
-        <translation>Importo invalido per -maxtxfee=&lt;amount&gt;: '%s'</translation>
-    </message>
-    <message>
-        <source>Invalid amount for -minrelaytxfee=&lt;amount&gt;: '%s'</source>
-        <translation>Invalid amount for -minrelaytxfee=&lt;amount&gt;: '%s'</translation>
-    </message>
-    <message>
-        <source>Invalid amount for -mintxfee=&lt;amount&gt;: '%s'</source>
-        <translation>Importo invalido per -mintxfee=&lt;amount&gt;: '%s'</translation>
-    </message>
-    <message>
         <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
         <translation>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (deve essere almeno %s)</translation>
-    </message>
-    <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s'</source>
-        <translation>Invalid amount for -paytxfee=&lt;amount&gt;: '%s'</translation>
-    </message>
-    <message>
-        <source>Invalid amount for -reservebalance=&lt;amount&gt;</source>
-        <translation>Invalid amount for -reservebalance=&lt;amount&gt;</translation>
     </message>
     <message>
         <source>Invalid amount</source>
@@ -6479,20 +5877,8 @@ Portafoglio EncoCoin Core.</translation>
         <translation>Invalid port detected in masternode.conf</translation>
     </message>
     <message>
-        <source>Percentage of automatically minted Zerocoin  (1-100, default: %u)</source>
-        <translation>Percentuale di Zerocoin forgiati automaticamente (1-100, valore predefinito: %u)</translation>
-    </message>
-    <message>
         <source>Recalculating XNK supply...</source>
         <translation>Ricalcolo della supply XNK...</translation>
-    </message>
-    <message>
-        <source>Recalculating minted ZXNK...</source>
-        <translation>Ricalcolo ZXNK forgiati...</translation>
-    </message>
-    <message>
-        <source>Recalculating spent ZXNK...</source>
-        <translation>Ricalcolo spese ZXNK...</translation>
     </message>
     <message>
         <source>Reindex the XNK and zXNK money supply statistics</source>
@@ -6509,10 +5895,6 @@ Portafoglio EncoCoin Core.</translation>
     <message>
         <source>Selected coins value is less than payment target</source>
         <translation>Il valore delle coin selezionate è inferiore all'obiettivo di pagamento</translation>
-    </message>
-    <message>
-        <source>Support the zerocoin light node protocol (default: %u)</source>
-        <translation>Supporta il protocollo zerocoin light node (impostazione predefinita: %u)</translation>
     </message>
     <message>
         <source>SwiftX options:</source>
@@ -6551,10 +5933,6 @@ Portafoglio EncoCoin Core.</translation>
         <translation>Errore: la transazione è stata rifiutata! Ciò potrebbe accadere se alcune delle coin nel tuo portafoglio fossero già state spese, come se tu avessi usato una copia di wallet.dat e le coin fossero state spese nella copia ma non contrassegnate come spese qui.</translation>
     </message>
     <message>
-        <source>Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!</source>
-        <translation>Errore: questa transazione richiede una commissione di transazione di almeno %s a causa della sua quantità, complessità o utilizzo dei fondi ricevuti di recente!</translation>
-    </message>
-    <message>
         <source>Error: Unsupported argument -checklevel found. Checklevel must be level 4.</source>
         <translation>Errore: argomento non supportato -checklevel trovato. Il livello di controllo deve essere di livello 4.</translation>
     </message>
@@ -6569,14 +5947,6 @@ Portafoglio EncoCoin Core.</translation>
     <message>
         <source>In rare cases, a spend with 7 coins exceeds our maximum allowable transaction size, please retry spend using 6 or less coins</source>
         <translation>In rari casi, una spesa con 7 coin supera la dimensione massima consentita della transazione, riprovare a utilizzare 6 o meno coin</translation>
-    </message>
-    <message>
-        <source>Preferred Denomination for automatically minted Zerocoin  (1/5/10/50/100/500/1000/5000), 0 for no preference. default: %u)</source>
-        <translation>Denominazione preferita per Zerocoin forgiato automaticamente (1/5/10/50/100/500/1000/5000), 0 per nessuna preferenza. impostazione predefinita: %u)</translation>
-    </message>
-    <message>
-        <source>Specify custom backup path to add a copy of any automatic zXNK backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</source>
-        <translation>Specificare il percorso di backup personalizzato per aggiungere una copia di qualsiasi backup zXNK automatico. Se impostato come dir, ogni backup genera un file con data e ora. Se impostato come file, riscriverà su quel file ogni backup. Se viene impostato anche il backuppath, verranno eseguiti 4 backup</translation>
     </message>
     <message>
         <source>Specify custom backup path to add a copy of any wallet backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup.</source>
@@ -6597,10 +5967,6 @@ Portafoglio EncoCoin Core.</translation>
     <message>
         <source>Cannot create public spend input</source>
         <translation>Impossibile creare input di spesa pubblica</translation>
-    </message>
-    <message>
-        <source>CoinSpend: Accumulator witness does not verify</source>
-        <translation>CoinSpend: il testimone dell'accumulatore non verifica</translation>
     </message>
     <message>
         <source>Display the stake modifier calculations in the debug.log file.</source>
@@ -6637,10 +6003,6 @@ Portafoglio EncoCoin Core.</translation>
     <message>
         <source>Error: No valid utxo!</source>
         <translation>Errore: Nessun utxo valido!</translation>
-    </message>
-    <message>
-        <source>Failed to create mint</source>
-        <translation>Errore durante la forgiatura</translation>
     </message>
     <message>
         <source>Failed to find Zerocoins in wallet.dat</source>
@@ -6705,10 +6067,6 @@ Portafoglio EncoCoin Core.</translation>
     <message>
         <source>Loading sporks...</source>
         <translation>Caricamento sporks...</translation>
-    </message>
-    <message>
-        <source>Loading wallet... (%3.2f %%)</source>
-        <translation>Caricamento portafoglio... (%3.2f %%)</translation>
     </message>
     <message>
         <source>Loading wallet...</source>
@@ -6835,14 +6193,6 @@ Portafoglio EncoCoin Core.</translation>
         <translation>Ricostruisce l'indice della blockchain dai file blk000??.dat corrente.</translation>
     </message>
     <message>
-        <source>Receive and display P2P network alerts (default: %u)</source>
-        <translation>Ricevi e visualizza avvisi di rete P2P (default: %u)</translation>
-    </message>
-    <message>
-        <source>Reindex the accumulator database</source>
-        <translation>Reindicizzazione del database accumulatore</translation>
-    </message>
-    <message>
         <source>Relay and mine data carrier transactions (default: %u)</source>
         <translation>Transazioni e operazioni di estrazione dati da mining (default: %u)</translation>
     </message>
@@ -6877,10 +6227,6 @@ Portafoglio EncoCoin Core.</translation>
     <message>
         <source>Send transactions as zero-fee transactions if possible (default: %u)</source>
         <translation>Invia transazioni come transazioni a costo zero, se possibile (default: %u)</translation>
-    </message>
-    <message>
-        <source>Session timed out.</source>
-        <translation>La sessione è scaduta.</translation>
     </message>
     <message>
         <source>Set database cache size in megabytes (%d to %d, default: %d)</source>
@@ -6925,10 +6271,6 @@ Portafoglio EncoCoin Core.</translation>
     <message>
         <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
         <translation>Riduci il file debug.log all'avvio del client (impostazione predefinita: 1 se non -debug)</translation>
-    </message>
-    <message>
-        <source>Signing timed out.</source>
-        <translation>Firma scaduta.</translation>
     </message>
     <message>
         <source>Signing transaction failed</source>
@@ -6987,10 +6329,6 @@ Portafoglio EncoCoin Core.</translation>
         <translation>Sincronizzazione finita</translation>
     </message>
     <message>
-        <source>Synchronization pending...</source>
-        <translation>Sincronizzazione in attesa...</translation>
-    </message>
-    <message>
         <source>Synchronizing budgets...</source>
         <translation>Sincronizzazione budgets...</translation>
     </message>
@@ -7009,14 +6347,6 @@ Portafoglio EncoCoin Core.</translation>
     <message>
         <source>Syncing zXNK wallet...</source>
         <translation>Sincronizzazione del portafoglio zXNK...</translation>
-    </message>
-    <message>
-        <source>The coin spend has been used</source>
-        <translation>La coin spend è stata utilizzata</translation>
-    </message>
-    <message>
-        <source>The transaction did not verify</source>
-        <translation>La transazione non è stata verificata</translation>
     </message>
     <message>
         <source>This help message</source>

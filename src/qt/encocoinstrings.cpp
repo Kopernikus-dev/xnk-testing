@@ -30,8 +30,6 @@ QT_TRANSLATE_NOOP("encocoin-core", ""
 "notation for IPv6. This option can be specified multiple times (default: "
 "bind to all interfaces)"),
 QT_TRANSLATE_NOOP("encocoin-core", ""
-"Calculated accumulator checkpoint is not what is recorded by block index"),
-QT_TRANSLATE_NOOP("encocoin-core", ""
 "Cannot obtain a lock on data directory %s. EncoCoin Core is probably already "
 "running."),
 QT_TRANSLATE_NOOP("encocoin-core", ""
@@ -58,11 +56,6 @@ QT_TRANSLATE_NOOP("encocoin-core", ""
 QT_TRANSLATE_NOOP("encocoin-core", ""
 "Enable SwiftX, show confirmations for locked transactions (bool, default: %s)"),
 QT_TRANSLATE_NOOP("encocoin-core", ""
-"Enable automatic Zerocoin minting from specific addresses (0-1, default: %u)"),
-QT_TRANSLATE_NOOP("encocoin-core", ""
-"Enable automatic wallet backups triggered after each zXNK minting (0-1, "
-"default: %u)"),
-QT_TRANSLATE_NOOP("encocoin-core", ""
 "Enable cold staking functionality (0-1, default: %u). Disabled if staking=0"),
 QT_TRANSLATE_NOOP("encocoin-core", ""
 "Enable or disable staking functionality for XNK inputs (0-1, default: %u)"),
@@ -82,13 +75,14 @@ QT_TRANSLATE_NOOP("encocoin-core", ""
 "in your wallet were already spent, such as if you used a copy of wallet.dat "
 "and coins were spent in the copy but not marked as spent here."),
 QT_TRANSLATE_NOOP("encocoin-core", ""
-"Error: This transaction requires a transaction fee of at least %s because of "
-"its amount, complexity, or use of recently received funds!"),
-QT_TRANSLATE_NOOP("encocoin-core", ""
 "Error: Unsupported argument -checklevel found. Checklevel must be level 4."),
 QT_TRANSLATE_NOOP("encocoin-core", ""
 "Error: Unsupported argument -socks found. Setting SOCKS version isn't "
 "possible anymore, only SOCKS5 proxies are supported."),
+QT_TRANSLATE_NOOP("encocoin-core", ""
+"Exclude debugging information for a category. Can be used in conjunction "
+"with -debug=1 to output debug logs for all categories except one or more "
+"specified categories."),
 QT_TRANSLATE_NOOP("encocoin-core", ""
 "Execute command when a relevant alert is received or we see a really long "
 "fork (%s in cmd is replaced by message)"),
@@ -148,13 +142,10 @@ QT_TRANSLATE_NOOP("encocoin-core", ""
 QT_TRANSLATE_NOOP("encocoin-core", ""
 "Number of seconds to keep misbehaving peers from reconnecting (default: %u)"),
 QT_TRANSLATE_NOOP("encocoin-core", ""
-"Obfuscation uses exact denominated amounts to send funds, you might simply "
-"need to anonymize some more coins."),
-QT_TRANSLATE_NOOP("encocoin-core", ""
 "Output debugging information (default: %u, supplying <category> is optional)"),
 QT_TRANSLATE_NOOP("encocoin-core", ""
-"Preferred Denomination for automatically minted Zerocoin  "
-"(1/5/10/50/100/500/1000/5000), 0 for no preference. default: %u)"),
+"Please check that your computer's date and time are correct! If your clock "
+"is wrong EncoCoin Core will not work properly."),
 QT_TRANSLATE_NOOP("encocoin-core", ""
 "Query for peer addresses via DNS lookup, if low on addresses (default: 1 "
 "unless -connect)"),
@@ -177,14 +168,12 @@ QT_TRANSLATE_NOOP("encocoin-core", ""
 "Show N confirmations for a successfully locked transaction (0-9999, default: "
 "%u)"),
 QT_TRANSLATE_NOOP("encocoin-core", ""
-"Specify custom backup path to add a copy of any automatic zXNK backup. If "
-"set as dir, every backup generates a timestamped file. If set as file, will "
-"rewrite to that file every backup. If backuppath is set as well, 4 backups "
-"will happen"),
-QT_TRANSLATE_NOOP("encocoin-core", ""
 "Specify custom backup path to add a copy of any wallet backup. If set as "
 "dir, every backup generates a timestamped file. If set as file, will rewrite "
 "to that file every backup."),
+QT_TRANSLATE_NOOP("encocoin-core", ""
+"Specify location of debug log file: this can be an absolute path or a path "
+"relative to the data directory (default: %s)"),
 QT_TRANSLATE_NOOP("encocoin-core", ""
 "Support filtering of blocks and transaction with bloom filters (default: %u)"),
 QT_TRANSLATE_NOOP("encocoin-core", ""
@@ -208,14 +197,6 @@ QT_TRANSLATE_NOOP("encocoin-core", ""
 QT_TRANSLATE_NOOP("encocoin-core", ""
 "Unable to bind to %s on this computer. EncoCoin Core is probably already running."),
 QT_TRANSLATE_NOOP("encocoin-core", ""
-"Unable to locate enough Obfuscation denominated funds for this transaction."),
-QT_TRANSLATE_NOOP("encocoin-core", ""
-"Unable to locate enough Obfuscation non-denominated funds for this "
-"transaction that are not equal 10000 XNK."),
-QT_TRANSLATE_NOOP("encocoin-core", ""
-"Unable to locate enough funds for this transaction that are not equal 10000 "
-"XNK."),
-QT_TRANSLATE_NOOP("encocoin-core", ""
 "Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: "
 "%s)"),
 QT_TRANSLATE_NOOP("encocoin-core", ""
@@ -224,10 +205,6 @@ QT_TRANSLATE_NOOP("encocoin-core", ""
 QT_TRANSLATE_NOOP("encocoin-core", ""
 "Warning: -paytxfee is set very high! This is the transaction fee you will "
 "pay if you send a transaction."),
-QT_TRANSLATE_NOOP("encocoin-core", ""
-"Warning: Peers are being disconnected due time differences. Please check "
-"that your computer's date and time are correct! If your clock is wrong EncoCoin "
-"Core will not work properly."),
 QT_TRANSLATE_NOOP("encocoin-core", ""
 "Warning: Please check that your computer's date and time are correct! If "
 "your clock is wrong EncoCoin Core will not work properly."),
@@ -262,7 +239,6 @@ QT_TRANSLATE_NOOP("encocoin-core", "Accept command line and JSON-RPC commands"),
 QT_TRANSLATE_NOOP("encocoin-core", "Accept connections from outside (default: 1 if no -proxy or -connect)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Accept public REST requests (default: %u)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Add a node to connect to and attempt to keep the connection open"),
-QT_TRANSLATE_NOOP("encocoin-core", "Adding Wrapped Serials supply..."),
 QT_TRANSLATE_NOOP("encocoin-core", "Allow DNS lookups for -addnode, -seednode and -connect"),
 QT_TRANSLATE_NOOP("encocoin-core", "Always query for peer addresses via DNS lookup (default: %u)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Append comment to the user agent string"),
@@ -270,14 +246,10 @@ QT_TRANSLATE_NOOP("encocoin-core", "Attempt to force blockchain corruption recov
 QT_TRANSLATE_NOOP("encocoin-core", "Attempt to recover private keys from a corrupt wallet.dat"),
 QT_TRANSLATE_NOOP("encocoin-core", "Automatically create Tor hidden service (default: %d)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Block creation options:"),
-QT_TRANSLATE_NOOP("encocoin-core", "Calculating missing accumulators..."),
 QT_TRANSLATE_NOOP("encocoin-core", "Cannot create public spend input"),
 QT_TRANSLATE_NOOP("encocoin-core", "Cannot downgrade wallet"),
-QT_TRANSLATE_NOOP("encocoin-core", "Cannot resolve -bind address: '%s'"),
-QT_TRANSLATE_NOOP("encocoin-core", "Cannot resolve -externalip address: '%s'"),
-QT_TRANSLATE_NOOP("encocoin-core", "Cannot resolve -whitebind address: '%s'"),
-QT_TRANSLATE_NOOP("encocoin-core", "CoinSpend: Accumulator witness does not verify"),
-QT_TRANSLATE_NOOP("encocoin-core", "CoinSpend: failed check"),
+QT_TRANSLATE_NOOP("encocoin-core", "Cannot resolve -%s address: '%s'"),
+QT_TRANSLATE_NOOP("encocoin-core", "Cannot upgrade to HD wallet (already running HD support). Version: %d"),
 QT_TRANSLATE_NOOP("encocoin-core", "Connect only to the specified node(s)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Connect through SOCKS5 proxy"),
 QT_TRANSLATE_NOOP("encocoin-core", "Connect to a node to retrieve peer addresses, and disconnect"),
@@ -287,7 +259,6 @@ QT_TRANSLATE_NOOP("encocoin-core", "Copyright (C) 2014-%i The Dash Core Develope
 QT_TRANSLATE_NOOP("encocoin-core", "Copyright (C) 2015-%i The EncoCoin Core Developers"),
 QT_TRANSLATE_NOOP("encocoin-core", "Corrupted block database detected"),
 QT_TRANSLATE_NOOP("encocoin-core", "Could not parse masternode.conf"),
-QT_TRANSLATE_NOOP("encocoin-core", "Couldn't generate the accumulator witness"),
 QT_TRANSLATE_NOOP("encocoin-core", "Debugging/Testing options:"),
 QT_TRANSLATE_NOOP("encocoin-core", "Delete blockchain folders and resync from scratch"),
 QT_TRANSLATE_NOOP("encocoin-core", "Disable OS notifications for incoming transactions (default: %u)"),
@@ -298,7 +269,6 @@ QT_TRANSLATE_NOOP("encocoin-core", "Display verbose coin stake messages in the d
 QT_TRANSLATE_NOOP("encocoin-core", "Do not load the wallet and disable wallet RPC calls"),
 QT_TRANSLATE_NOOP("encocoin-core", "Do you want to rebuild the block database now?"),
 QT_TRANSLATE_NOOP("encocoin-core", "Done loading"),
-QT_TRANSLATE_NOOP("encocoin-core", "Enable automatic Zerocoin minting (0-1, default: %u)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Enable publish hash block in <address>"),
 QT_TRANSLATE_NOOP("encocoin-core", "Enable publish hash transaction (locked via SwiftX) in <address>"),
 QT_TRANSLATE_NOOP("encocoin-core", "Enable publish hash transaction in <address>"),
@@ -317,14 +287,13 @@ QT_TRANSLATE_NOOP("encocoin-core", "Error opening block database"),
 QT_TRANSLATE_NOOP("encocoin-core", "Error reading from database, shutting down."),
 QT_TRANSLATE_NOOP("encocoin-core", "Error writing zerocoinDB to disk"),
 QT_TRANSLATE_NOOP("encocoin-core", "Error"),
+QT_TRANSLATE_NOOP("encocoin-core", "Error: "),
 QT_TRANSLATE_NOOP("encocoin-core", "Error: A fatal internal error occured, see debug.log for details"),
 QT_TRANSLATE_NOOP("encocoin-core", "Error: A fatal internal error occurred, see debug.log for details"),
 QT_TRANSLATE_NOOP("encocoin-core", "Error: Disk space is low!"),
 QT_TRANSLATE_NOOP("encocoin-core", "Error: No valid utxo!"),
 QT_TRANSLATE_NOOP("encocoin-core", "Error: Unsupported argument -tor found, use -onion."),
 QT_TRANSLATE_NOOP("encocoin-core", "Error: Wallet locked, unable to create transaction!"),
-QT_TRANSLATE_NOOP("encocoin-core", "Failed to calculate accumulator checkpoint"),
-QT_TRANSLATE_NOOP("encocoin-core", "Failed to create mint"),
 QT_TRANSLATE_NOOP("encocoin-core", "Failed to find Zerocoins in wallet.dat"),
 QT_TRANSLATE_NOOP("encocoin-core", "Failed to listen on any port. Use -listen=0 if you want this."),
 QT_TRANSLATE_NOOP("encocoin-core", "Failed to parse host:port string"),
@@ -347,12 +316,8 @@ QT_TRANSLATE_NOOP("encocoin-core", "Initialization sanity check failed. EncoCoin
 QT_TRANSLATE_NOOP("encocoin-core", "Insufficient funds"),
 QT_TRANSLATE_NOOP("encocoin-core", "Insufficient funds."),
 QT_TRANSLATE_NOOP("encocoin-core", "Invalid -onion address or hostname: '%s'"),
-QT_TRANSLATE_NOOP("encocoin-core", "Invalid amount for -maxtxfee=<amount>: '%s'"),
-QT_TRANSLATE_NOOP("encocoin-core", "Invalid amount for -minrelaytxfee=<amount>: '%s'"),
-QT_TRANSLATE_NOOP("encocoin-core", "Invalid amount for -mintxfee=<amount>: '%s'"),
+QT_TRANSLATE_NOOP("encocoin-core", "Invalid amount for -%s=<amount>: '%s'"),
 QT_TRANSLATE_NOOP("encocoin-core", "Invalid amount for -paytxfee=<amount>: '%s' (must be at least %s)"),
-QT_TRANSLATE_NOOP("encocoin-core", "Invalid amount for -paytxfee=<amount>: '%s'"),
-QT_TRANSLATE_NOOP("encocoin-core", "Invalid amount for -reservebalance=<amount>"),
 QT_TRANSLATE_NOOP("encocoin-core", "Invalid amount"),
 QT_TRANSLATE_NOOP("encocoin-core", "Invalid masternodeprivkey. Please see documenation."),
 QT_TRANSLATE_NOOP("encocoin-core", "Invalid netmask specified in -whitelist: '%s'"),
@@ -363,16 +328,17 @@ QT_TRANSLATE_NOOP("encocoin-core", "Line: %d"),
 QT_TRANSLATE_NOOP("encocoin-core", "Listen for JSON-RPC connections on <port> (default: %u or testnet: %u)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Listen for connections on <port> (default: %u or testnet: %u)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Loading addresses..."),
+QT_TRANSLATE_NOOP("encocoin-core", "Loading banlist..."),
 QT_TRANSLATE_NOOP("encocoin-core", "Loading block index..."),
 QT_TRANSLATE_NOOP("encocoin-core", "Loading budget cache..."),
 QT_TRANSLATE_NOOP("encocoin-core", "Loading masternode cache..."),
 QT_TRANSLATE_NOOP("encocoin-core", "Loading masternode payment cache..."),
 QT_TRANSLATE_NOOP("encocoin-core", "Loading sporks..."),
-QT_TRANSLATE_NOOP("encocoin-core", "Loading wallet... (%3.2f %%)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Loading wallet..."),
 QT_TRANSLATE_NOOP("encocoin-core", "Location of the auth cookie (default: data dir)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Lock masternodes from masternode configuration file (default: %u)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Lookup(): Invalid -proxy address or hostname: '%s'"),
+QT_TRANSLATE_NOOP("encocoin-core", "MNs synchronization pending..."),
 QT_TRANSLATE_NOOP("encocoin-core", "Maintain at most <n> connections to peers (default: %u)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Masternode options:"),
 QT_TRANSLATE_NOOP("encocoin-core", "Maximum per-connection receive buffer, <n>*1000 bytes (default: %u)"),
@@ -384,11 +350,12 @@ QT_TRANSLATE_NOOP("encocoin-core", "Node relay options:"),
 QT_TRANSLATE_NOOP("encocoin-core", "Not enough file descriptors available."),
 QT_TRANSLATE_NOOP("encocoin-core", "Number of automatic wallet backups (default: 10)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Number of custom location backups to retain (default: %d)"),
+QT_TRANSLATE_NOOP("encocoin-core", "On first run, create a legacy wallet instead of a HD wallet"),
 QT_TRANSLATE_NOOP("encocoin-core", "Only accept block chain matching built-in checkpoints (default: %u)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Only connect to nodes in network <net> (ipv4, ipv6 or onion)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Options:"),
 QT_TRANSLATE_NOOP("encocoin-core", "Password for JSON-RPC connections"),
-QT_TRANSLATE_NOOP("encocoin-core", "Percentage of automatically minted Zerocoin  (1-100, default: %u)"),
+QT_TRANSLATE_NOOP("encocoin-core", "Peers are being disconnected due time differences."),
 QT_TRANSLATE_NOOP("encocoin-core", "Preparing for resync..."),
 QT_TRANSLATE_NOOP("encocoin-core", "Prepend debug output with timestamp (default: %u)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Print version and exit"),
@@ -398,11 +365,7 @@ QT_TRANSLATE_NOOP("encocoin-core", "Randomly drop 1 of every <n> network message
 QT_TRANSLATE_NOOP("encocoin-core", "Randomly fuzz 1 of every <n> network messages"),
 QT_TRANSLATE_NOOP("encocoin-core", "Rebuild block chain index from current blk000??.dat files"),
 QT_TRANSLATE_NOOP("encocoin-core", "Recalculating XNK supply..."),
-QT_TRANSLATE_NOOP("encocoin-core", "Recalculating minted ZXNK..."),
-QT_TRANSLATE_NOOP("encocoin-core", "Recalculating spent ZXNK..."),
-QT_TRANSLATE_NOOP("encocoin-core", "Receive and display P2P network alerts (default: %u)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Reindex the XNK and zXNK money supply statistics"),
-QT_TRANSLATE_NOOP("encocoin-core", "Reindex the accumulator database"),
 QT_TRANSLATE_NOOP("encocoin-core", "Reindexing zerocoin database..."),
 QT_TRANSLATE_NOOP("encocoin-core", "Reindexing zerocoin failed"),
 QT_TRANSLATE_NOOP("encocoin-core", "Relay and mine data carrier transactions (default: %u)"),
@@ -415,7 +378,6 @@ QT_TRANSLATE_NOOP("encocoin-core", "Run a thread to flush wallet periodically (d
 QT_TRANSLATE_NOOP("encocoin-core", "Run in the background as a daemon and accept commands"),
 QT_TRANSLATE_NOOP("encocoin-core", "Selected coins value is less than payment target"),
 QT_TRANSLATE_NOOP("encocoin-core", "Send transactions as zero-fee transactions if possible (default: %u)"),
-QT_TRANSLATE_NOOP("encocoin-core", "Session timed out."),
 QT_TRANSLATE_NOOP("encocoin-core", "Set database cache size in megabytes (%d to %d, default: %d)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Set external address:port to get to this masternode (example: %s)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Set key pool size to <n> (default: %u)"),
@@ -427,7 +389,6 @@ QT_TRANSLATE_NOOP("encocoin-core", "Set the number of threads to service RPC cal
 QT_TRANSLATE_NOOP("encocoin-core", "Sets the DB_PRIVATE flag in the wallet db environment (default: %u)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Show all debugging options (usage: --help -help-debug)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Shrink debug.log file on client startup (default: 1 when no -debug)"),
-QT_TRANSLATE_NOOP("encocoin-core", "Signing timed out."),
 QT_TRANSLATE_NOOP("encocoin-core", "Signing transaction failed"),
 QT_TRANSLATE_NOOP("encocoin-core", "Specify configuration file (default: %s)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Specify connection timeout in milliseconds (minimum: 1, default: %d)"),
@@ -440,18 +401,14 @@ QT_TRANSLATE_NOOP("encocoin-core", "Spend Valid"),
 QT_TRANSLATE_NOOP("encocoin-core", "Spend unconfirmed change when sending transactions (default: %u)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Staking options:"),
 QT_TRANSLATE_NOOP("encocoin-core", "Stop running after importing blocks from disk (default: %u)"),
-QT_TRANSLATE_NOOP("encocoin-core", "Support the zerocoin light node protocol (default: %u)"),
 QT_TRANSLATE_NOOP("encocoin-core", "SwiftX options:"),
 QT_TRANSLATE_NOOP("encocoin-core", "Synchronization failed"),
 QT_TRANSLATE_NOOP("encocoin-core", "Synchronization finished"),
-QT_TRANSLATE_NOOP("encocoin-core", "Synchronization pending..."),
 QT_TRANSLATE_NOOP("encocoin-core", "Synchronizing budgets..."),
 QT_TRANSLATE_NOOP("encocoin-core", "Synchronizing masternode winners..."),
 QT_TRANSLATE_NOOP("encocoin-core", "Synchronizing masternodes..."),
 QT_TRANSLATE_NOOP("encocoin-core", "Synchronizing sporks..."),
 QT_TRANSLATE_NOOP("encocoin-core", "Syncing zXNK wallet..."),
-QT_TRANSLATE_NOOP("encocoin-core", "The coin spend has been used"),
-QT_TRANSLATE_NOOP("encocoin-core", "The transaction did not verify"),
 QT_TRANSLATE_NOOP("encocoin-core", "This help message"),
 QT_TRANSLATE_NOOP("encocoin-core", "This is experimental software."),
 QT_TRANSLATE_NOOP("encocoin-core", "This is intended for regression testing tools and app development."),
@@ -470,9 +427,11 @@ QT_TRANSLATE_NOOP("encocoin-core", "Unable to bind to %s on this computer (bind 
 QT_TRANSLATE_NOOP("encocoin-core", "Unable to find transaction containing mint %s"),
 QT_TRANSLATE_NOOP("encocoin-core", "Unable to find transaction containing mint, txHash: %s"),
 QT_TRANSLATE_NOOP("encocoin-core", "Unable to generate initial key"),
+QT_TRANSLATE_NOOP("encocoin-core", "Unable to generate keys"),
 QT_TRANSLATE_NOOP("encocoin-core", "Unable to sign spork message, wrong key?"),
 QT_TRANSLATE_NOOP("encocoin-core", "Unable to start HTTP server. See debug log for details."),
 QT_TRANSLATE_NOOP("encocoin-core", "Unknown network specified in -onlynet: '%s'"),
+QT_TRANSLATE_NOOP("encocoin-core", "Unsupported logging category %s=%s."),
 QT_TRANSLATE_NOOP("encocoin-core", "Upgrade wallet to latest format"),
 QT_TRANSLATE_NOOP("encocoin-core", "Use UPnP to map the listening port (default: %u)"),
 QT_TRANSLATE_NOOP("encocoin-core", "Use UPnP to map the listening port (default: 1 when listening)"),
@@ -496,6 +455,7 @@ QT_TRANSLATE_NOOP("encocoin-core", "You don't have enough Zerocoins in your wall
 QT_TRANSLATE_NOOP("encocoin-core", "You need to rebuild the database using -reindex to change -txindex"),
 QT_TRANSLATE_NOOP("encocoin-core", "Zapping all transactions from wallet..."),
 QT_TRANSLATE_NOOP("encocoin-core", "ZeroMQ notification options:"),
+QT_TRANSLATE_NOOP("encocoin-core", "Zerocoin minting available only on regtest"),
 QT_TRANSLATE_NOOP("encocoin-core", "Zerocoin options:"),
 QT_TRANSLATE_NOOP("encocoin-core", "isValid(): Invalid -proxy address or hostname: '%s'"),
 QT_TRANSLATE_NOOP("encocoin-core", "on startup"),

@@ -1,5 +1,6 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
 
+set(QT_MINIMUM_VERSION 5.5.1)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_CURRENT_SOURCE_DIR}/forms ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/forms ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/settings/forms)
 set(CMAKE_AUTOMOC ON)
@@ -10,18 +11,12 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 endif ()
 
-find_package(Qrcode)
-if (QRCODE_FOUND)
-    include_directories ( ${QRCODE_INCLUDE_DIR} )
-    link_directories ( ${QRCODE_LIBRARY_DIRS} )
-endif()
-
 unset(Qt5Enables)
 foreach(comp Widgets Core Gui Network LinguistTools DBus Svg Charts)
     find_package(Qt5${comp})
     set(Qt5Enables "${Qt5Enables};Qt5${comp}_FOUND")
     if(Qt5${comp}_FOUND)
-        MESSAGE(STATUS "FOUND QT5${comp}")
+        MESSAGE(STATUS "FOUND Qt5${comp}")
         include_directories(${include_directories} ${Qt5${comp}_INCLUDE_DIRS} ${QT_USE_FILE})
         add_definitions(${Qt5${comp}_DEFINITIONS})
         list(APPEND Qt5_LIBRARIES ${Qt5${comp}_LIBRARIES})
@@ -29,6 +24,16 @@ foreach(comp Widgets Core Gui Network LinguistTools DBus Svg Charts)
         MESSAGE(WARNING "Cant find Qt5${comp}")
     endif()
 endforeach(comp)
+
+if (Qt5Core_FOUND)
+    if (Qt5Core_VERSION VERSION_LESS QT_MINIMUM_VERSION)
+        MESSAGE(FATAL_ERROR "Minimum supported Qt5 version is ${QT_MINIMUM_VERSION}")
+    else()
+        MESSAGE(STATUS "Found Qt5 version: ${Qt5Core_VERSION}")
+    endif()
+else()
+    MESSAGE(FATAL_ERROR "Could not find any Qt5 installation")
+endif()
 
 if (Qt5DBus_FOUND)
     add_compile_options("-DUSE_DBUS")
@@ -38,14 +43,21 @@ if (Qt5Charts_FOUND)
     add_compile_options("-DUSE_QTCHARTS")
 endif()
 
+find_package(Qrcode)
+if (QRCODE_FOUND)
+    include_directories ( ${QRCODE_INCLUDE_DIR} )
+    link_directories ( ${QRCODE_LIBRARY_DIRS} )
+endif()
+
 find_program(MOC_BIN NAMES moc moc-qt5 qt5-moc
         PATHS /usr/lib/qt5/bin /usr/lib/x86_64-linux-gnu/qt5/bin /usr/local/opt/qt/bin /usr/local/opt/qt5/bin
         NO_DEFAULT_PATH
         NO_SYSTEM_ENVIRONMENT_PATH)
 if (MOC_BIN)
     MESSAGE(STATUS "FOUND MOC ${MOC_BIN}")
-
 endif ()
+
+add_compile_options("-DQT_NO_KEYWORDS")
 
 # Why isn't this done automatically??
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
@@ -73,7 +85,6 @@ SET(QT_SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/bitcoinunits.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/clientmodel.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/csvmodelwriter.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/governancepage.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/guiutil.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/intro.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/networkstyle.cpp
@@ -92,9 +103,8 @@ SET(QT_SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/addresstablemodel.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/askpassphrasedialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/coincontroldialog.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/zpivcontroldialog.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/zxnkcontroldialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/coincontroltreewidget.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/proposalframe.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/editaddressdialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/openuridialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/paymentrequestplus.cpp
@@ -106,7 +116,7 @@ SET(QT_SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/transactiontablemodel.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/walletmodel.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/walletmodeltransaction.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/zpivcontroldialog.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/zxnkcontroldialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/encocoingui.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/loadingdialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/pwidget.cpp
@@ -119,12 +129,10 @@ SET(QT_SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/txviewholder.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/qtutils.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/expandablebutton.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/walletpassworddialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/topbar.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/txrow.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/addressfilterproxymodel.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/dashboardwidget.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/coincontrolpivwidget.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/addresslabelrow.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/contactdropdownrow.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/contactsdropdown.cpp
@@ -151,7 +159,6 @@ SET(QT_SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/tooltipmenu.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/addresseswidget.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/defaultdialog.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/denomgenerationdialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/privacywidget.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/coldstakingwidget.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/settings/settingsbackupwallet.cpp
@@ -166,6 +173,7 @@ SET(QT_SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/settings/settingssignmessagewidgets.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/settings/settingswalletoptionswidget.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/settings/settingswalletrepairwidget.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/settings/settingsexportcsv.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/settings/settingswidget.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/welcomecontentwidget.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/splash.cpp

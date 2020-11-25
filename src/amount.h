@@ -12,13 +12,14 @@
 #include <stdlib.h>
 #include <string>
 
+/** Amount in XNK (Can be negative) */
 typedef int64_t CAmount;
 
 static const CAmount COIN = 100000000;
 static const CAmount CENT = 1000000;
 
-/** Type-safe wrapper class to for fee rates
- * (how much to pay based on transaction size)
+/**
+ * Fee rate in XNK per kilobyte: CAmount / kB
  */
 class CFeeRate
 {

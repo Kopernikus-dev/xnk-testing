@@ -718,8 +718,8 @@ para 'Staking'</translation>
         <translation>Este rótulo fica vermelho se qualquer recipiente receber uma quantia menor que %1.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 upiv per input.</source>
-        <translation>Pode variar +/- %1 upiv por entrada.</translation>
+        <source>Can vary +/- %1 uxnk per input.</source>
+        <translation>Pode variar +/- %1 uxnk por entrada.</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -735,7 +735,7 @@ para 'Staking'</translation>
     </message>
 </context>
 <context>
-    <name>CoinControlPivWidget</name>
+    <name>CoinControlXnkWidget</name>
     <message>
         <source>Dialog</source>
         <translation>Diálogo</translation>
@@ -3428,13 +3428,13 @@ Endereço: %4
     </message>
 </context>
 <context>
-    <name>ZPivControlDialog</name>
+    <name>ZXnkControlDialog</name>
     <message>
         <source>PushButton</source>
         <translation>Aperte o Botão</translation>
     </message>
     <message>
-        <source>zPiv</source>
+        <source>zXnk</source>
         <translation>zXNK</translation>
     </message>
     <message>

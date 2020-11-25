@@ -385,9 +385,9 @@ libbitcoin_cli_a_OBJECTS = $(am_libbitcoin_cli_a_OBJECTS)
 libbitcoin_common_a_AR = $(AR) $(ARFLAGS)
 libbitcoin_common_a_LIBADD =
 am_libbitcoin_common_a_OBJECTS =  \
-	zpiv/libbitcoin_common_a-accumulators.$(OBJEXT) \
-	zpiv/libbitcoin_common_a-accumulatorcheckpoints.$(OBJEXT) \
-	zpiv/libbitcoin_common_a-accumulatormap.$(OBJEXT) \
+	zxnk/libbitcoin_common_a-accumulators.$(OBJEXT) \
+	zxnk/libbitcoin_common_a-accumulatorcheckpoints.$(OBJEXT) \
+	zxnk/libbitcoin_common_a-accumulatormap.$(OBJEXT) \
 	libbitcoin_common_a-allocators.$(OBJEXT) \
 	libbitcoin_common_a-amount.$(OBJEXT) \
 	libbitcoin_common_a-base58.$(OBJEXT) \
@@ -397,9 +397,9 @@ am_libbitcoin_common_a_OBJECTS =  \
 	libbitcoin_common_a-compressor.$(OBJEXT) \
 	consensus/libbitcoin_common_a-merkle.$(OBJEXT) \
 	primitives/libbitcoin_common_a-block.$(OBJEXT) \
-	zpiv/libbitcoin_common_a-deterministicmint.$(OBJEXT) \
+	zxnk/libbitcoin_common_a-deterministicmint.$(OBJEXT) \
 	primitives/libbitcoin_common_a-transaction.$(OBJEXT) \
-	zpiv/libbitcoin_common_a-zerocoin.$(OBJEXT) \
+	zxnk/libbitcoin_common_a-zerocoin.$(OBJEXT) \
 	libbitcoin_common_a-core_read.$(OBJEXT) \
 	libbitcoin_common_a-core_write.$(OBJEXT) \
 	libbitcoin_common_a-hash.$(OBJEXT) \
@@ -453,7 +453,7 @@ am_libbitcoin_server_a_OBJECTS =  \
 	libbitcoin_server_a-txdb.$(OBJEXT) \
 	libbitcoin_server_a-txmempool.$(OBJEXT) \
 	libbitcoin_server_a-validationinterface.$(OBJEXT) \
-	libbitcoin_server_a-zpivchain.$(OBJEXT) $(am__objects_3)
+	libbitcoin_server_a-zxnkchain.$(OBJEXT) $(am__objects_3)
 libbitcoin_server_a_OBJECTS = $(am_libbitcoin_server_a_OBJECTS)
 libbitcoin_util_a_AR = $(AR) $(ARFLAGS)
 libbitcoin_util_a_LIBADD =
@@ -487,11 +487,11 @@ am__libbitcoin_util_a_SOURCES_DIST = allocators.cpp \
 	guiinterface.h uint256.h undo.h util.h utilstrencodings.h \
 	utilmoneystr.h utiltime.h validationinterface.h version.h \
 	wallet/wallet.h wallet/wallet_ismine.h wallet/walletdb.h \
-	zpivchain.h zpiv/accumulators.h zpiv/accumulatorcheckpoints.h \
-	zpiv/accumulatorcheckpoints.json.h zpiv/accumulatormap.h \
-	zpiv/deterministicmint.h zpiv/mintpool.h zpiv/witness.h \
-	zpiv/zerocoin.h zpiv/zpivtracker.h zpiv/zpivwallet.h \
-	zpiv/zpivmodule.h genwit.h concurrentqueue.h lightzpivthread.h \
+	zxnkchain.h zxnk/accumulators.h zxnk/accumulatorcheckpoints.h \
+	zxnk/accumulatorcheckpoints.json.h zxnk/accumulatormap.h \
+	zxnk/deterministicmint.h zxnk/mintpool.h zxnk/witness.h \
+	zxnk/zerocoin.h zxnk/zxnktracker.h zxnk/zxnkwallet.h \
+	zxnk/zxnkmodule.h genwit.h concurrentqueue.h lightzxnkthread.h \
 	zmq/zmqabstractnotifier.h zmq/zmqconfig.h \
 	zmq/zmqnotificationinterface.h zmq/zmqpublishnotifier.h \
 	compat/glibc_compat.cpp
@@ -541,17 +541,17 @@ am_libbitcoin_wallet_a_OBJECTS =  \
 	wallet/libbitcoin_wallet_a-wallet.$(OBJEXT) \
 	wallet/libbitcoin_wallet_a-wallet_ismine.$(OBJEXT) \
 	wallet/libbitcoin_wallet_a-walletdb.$(OBJEXT) \
-	zpiv/libbitcoin_wallet_a-deterministicmint.$(OBJEXT) \
-	zpiv/libbitcoin_wallet_a-zerocoin.$(OBJEXT) \
-	zpiv/libbitcoin_wallet_a-accumulators.$(OBJEXT) \
-	zpiv/libbitcoin_wallet_a-mintpool.$(OBJEXT) \
-	zpiv/libbitcoin_wallet_a-witness.$(OBJEXT) \
-	zpiv/libbitcoin_wallet_a-zpivwallet.$(OBJEXT) \
-	zpiv/libbitcoin_wallet_a-zpivtracker.$(OBJEXT) \
+	zxnk/libbitcoin_wallet_a-deterministicmint.$(OBJEXT) \
+	zxnk/libbitcoin_wallet_a-zerocoin.$(OBJEXT) \
+	zxnk/libbitcoin_wallet_a-accumulators.$(OBJEXT) \
+	zxnk/libbitcoin_wallet_a-mintpool.$(OBJEXT) \
+	zxnk/libbitcoin_wallet_a-witness.$(OBJEXT) \
+	zxnk/libbitcoin_wallet_a-zxnkwallet.$(OBJEXT) \
+	zxnk/libbitcoin_wallet_a-zxnktracker.$(OBJEXT) \
 	libbitcoin_wallet_a-stakeinput.$(OBJEXT) \
 	libbitcoin_wallet_a-genwit.$(OBJEXT) \
-	zpiv/libbitcoin_wallet_a-zpivmodule.$(OBJEXT) \
-	libbitcoin_wallet_a-lightzpivthread.$(OBJEXT) $(am__objects_3)
+	zxnk/libbitcoin_wallet_a-zxnkmodule.$(OBJEXT) \
+	libbitcoin_wallet_a-lightzxnkthread.$(OBJEXT) $(am__objects_3)
 libbitcoin_wallet_a_OBJECTS = $(am_libbitcoin_wallet_a_OBJECTS)
 libbitcoin_zmq_a_AR = $(AR) $(ARFLAGS)
 libbitcoin_zmq_a_LIBADD =
@@ -621,7 +621,7 @@ am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bantablemodel.cpp \
 	qt/transactionfilterproxy.cpp qt/transactionrecord.cpp \
 	qt/transactiontablemodel.cpp qt/walletmodel.cpp \
 	qt/walletmodeltransaction.cpp qt/encocoin/loadingdialog.cpp \
-	qt/zpivcontroldialog.cpp qt/encocoin/pwidget.cpp \
+	qt/zxnkcontroldialog.cpp qt/encocoin/pwidget.cpp \
 	qt/encocoin/guitransactionsutils.cpp qt/encocoin/snackbar.cpp \
 	qt/encocoin/navmenuwidget.cpp qt/encocoin/lockunlock.cpp \
 	qt/encocoin/receivedialog.cpp \
@@ -632,7 +632,7 @@ am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bantablemodel.cpp \
 	qt/encocoin/txrow.cpp qt/encocoin/addressholder.cpp \
 	qt/encocoin/addressfilterproxymodel.cpp \
 	qt/encocoin/dashboardwidget.cpp \
-	qt/encocoin/coincontrolpivwidget.cpp \
+	qt/encocoin/coincontrolxnkwidget.cpp \
 	qt/encocoin/addresslabelrow.cpp \
 	qt/encocoin/contactdropdownrow.cpp \
 	qt/encocoin/contactsdropdown.cpp qt/encocoin/optionbutton.cpp \
@@ -685,7 +685,7 @@ am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bantablemodel.cpp \
 	qt/utilitydialog.h qt/walletmodel.h \
 	qt/walletmodeltransaction.h qt/encocoin/prunnable.h \
 	qt/encocoin/pfborderimage.h qt/encocoin/loadingdialog.h \
-	qt/winshutdownmonitor.h qt/zpivcontroldialog.h \
+	qt/winshutdownmonitor.h qt/zxnkcontroldialog.h \
 	qt/encocoin/pwidget.h qt/encocoin/guitransactionsutils.h \
 	qt/encocoin/snackbar.h qt/encocoin/navmenuwidget.h \
 	qt/encocoin/lockunlock.h qt/encocoin/receivedialog.h \
@@ -697,7 +697,7 @@ am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bantablemodel.cpp \
 	qt/encocoin/txrow.h qt/encocoin/addressholder.h \
 	qt/encocoin/addressfilterproxymodel.h \
 	qt/encocoin/dashboardwidget.h \
-	qt/encocoin/coincontrolpivwidget.h \
+	qt/encocoin/coincontrolxnkwidget.h \
 	qt/encocoin/addresslabelrow.h qt/encocoin/contactdropdownrow.h \
 	qt/encocoin/mninfodialog.h qt/encocoin/optionbutton.h \
 	qt/encocoin/coldstakingmodel.h qt/encocoin/mnmodel.h \
@@ -733,7 +733,7 @@ am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bantablemodel.cpp \
 	qt/forms/helpmessagedialog.ui qt/forms/intro.ui \
 	qt/forms/openuridialog.ui qt/forms/optionsdialog.ui \
 	qt/forms/rpcconsole.ui qt/encocoin/forms/loadingdialog.ui \
-	qt/forms/zpivcontroldialog.ui qt/encocoin/forms/snackbar.ui \
+	qt/forms/zxnkcontroldialog.ui qt/encocoin/forms/snackbar.ui \
 	qt/encocoin/forms/navmenuwidget.ui \
 	qt/encocoin/forms/lockunlock.ui \
 	qt/encocoin/forms/expandablebutton.ui \
@@ -741,7 +741,7 @@ am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bantablemodel.cpp \
 	qt/encocoin/forms/walletpassworddialog.ui \
 	qt/encocoin/forms/topbar.ui qt/encocoin/forms/txrow.ui \
 	qt/encocoin/forms/dashboardwidget.ui \
-	qt/encocoin/forms/coincontrolpivwidget.ui \
+	qt/encocoin/forms/coincontrolxnkwidget.ui \
 	qt/encocoin/forms/addresslabelrow.ui \
 	qt/encocoin/forms/contactdropdownrow.ui \
 	qt/encocoin/forms/mninfodialog.ui \
@@ -935,15 +935,15 @@ am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bantablemodel.cpp \
 	qt/encocoin/res/img/ic-radio-liliac-on.svg \
 	qt/encocoin/res/img/img-empty-staking-off.svg \
 	qt/encocoin/res/img/ic-arrow-drop-down.svg \
-	qt/encocoin/res/img/ic-coin-piv.svg \
+	qt/encocoin/res/img/ic-coin-xnk.svg \
 	qt/encocoin/res/img/ic-receive-off.svg \
 	qt/encocoin/res/img/img-empty-staking-on.svg \
 	qt/encocoin/res/img/ic-arrow-drop-up-white.svg \
-	qt/encocoin/res/img/ic-coin-zpiv.png \
+	qt/encocoin/res/img/ic-coin-zxnk.png \
 	qt/encocoin/res/img/ic-receive-on.svg \
 	qt/encocoin/res/img/img-empty-transactions.svg \
 	qt/encocoin/res/img/ic-arrow-drop-up.svg \
-	qt/encocoin/res/img/ic-coin-zpiv.svg \
+	qt/encocoin/res/img/ic-coin-zxnk.svg \
 	qt/encocoin/res/img/ic-received.svg \
 	qt/encocoin/res/img/img-logo-encocoin.png \
 	qt/encocoin/res/img/ic-arrow-drop-white-down.svg \
@@ -1099,7 +1099,7 @@ am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bantablemodel.cpp \
 @ENABLE_QT_TRUE@	qt/libbitcoinqt_a-walletmodel.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/libbitcoinqt_a-walletmodeltransaction.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-loadingdialog.$(OBJEXT) \
-@ENABLE_QT_TRUE@	qt/libbitcoinqt_a-zpivcontroldialog.$(OBJEXT) \
+@ENABLE_QT_TRUE@	qt/libbitcoinqt_a-zxnkcontroldialog.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-pwidget.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-guitransactionsutils.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-snackbar.$(OBJEXT) \
@@ -1116,7 +1116,7 @@ am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bantablemodel.cpp \
 @ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-addressholder.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-addressfilterproxymodel.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-dashboardwidget.$(OBJEXT) \
-@ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-coincontrolpivwidget.$(OBJEXT) \
+@ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-coincontrolxnkwidget.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-addresslabelrow.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-contactdropdownrow.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-contactsdropdown.$(OBJEXT) \
@@ -1208,7 +1208,7 @@ am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bantablemodel.cpp \
 @ENABLE_QT_TRUE@	qt/libbitcoinqt_a-moc_utilitydialog.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/libbitcoinqt_a-moc_walletmodel.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-moc_loadingdialog.$(OBJEXT) \
-@ENABLE_QT_TRUE@	qt/libbitcoinqt_a-moc_zpivcontroldialog.$(OBJEXT) \
+@ENABLE_QT_TRUE@	qt/libbitcoinqt_a-moc_zxnkcontroldialog.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-moc_pwidget.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-moc_snackbar.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-moc_navmenuwidget.$(OBJEXT) \
@@ -1221,7 +1221,7 @@ am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bantablemodel.cpp \
 @ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-moc_topbar.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-moc_txrow.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-moc_dashboardwidget.$(OBJEXT) \
-@ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-moc_coincontrolpivwidget.$(OBJEXT) \
+@ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-moc_coincontrolxnkwidget.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-moc_addresslabelrow.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-moc_contactdropdownrow.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/encocoin/libbitcoinqt_a-moc_mninfodialog.$(OBJEXT) \
@@ -1615,7 +1615,7 @@ am__depfiles_remade = ./$(DEPDIR)/encocoin_cli-encocoin-cli.Po \
 	./$(DEPDIR)/libbitcoin_server_a-txdb.Po \
 	./$(DEPDIR)/libbitcoin_server_a-txmempool.Po \
 	./$(DEPDIR)/libbitcoin_server_a-validationinterface.Po \
-	./$(DEPDIR)/libbitcoin_server_a-zpivchain.Po \
+	./$(DEPDIR)/libbitcoin_server_a-zxnkchain.Po \
 	./$(DEPDIR)/libbitcoin_util_a-allocators.Po \
 	./$(DEPDIR)/libbitcoin_util_a-chainparamsbase.Po \
 	./$(DEPDIR)/libbitcoin_util_a-clientversion.Po \
@@ -1634,7 +1634,7 @@ am__depfiles_remade = ./$(DEPDIR)/encocoin_cli-encocoin-cli.Po \
 	./$(DEPDIR)/libbitcoin_wallet_a-denomination_functions.Po \
 	./$(DEPDIR)/libbitcoin_wallet_a-genwit.Po \
 	./$(DEPDIR)/libbitcoin_wallet_a-kernel.Po \
-	./$(DEPDIR)/libbitcoin_wallet_a-lightzpivthread.Po \
+	./$(DEPDIR)/libbitcoin_wallet_a-lightzxnkthread.Po \
 	./$(DEPDIR)/libbitcoin_wallet_a-masternode-budget.Po \
 	./$(DEPDIR)/libbitcoin_wallet_a-masternode-payments.Po \
 	./$(DEPDIR)/libbitcoin_wallet_a-masternode-sync.Po \
@@ -1793,7 +1793,7 @@ am__depfiles_remade = ./$(DEPDIR)/encocoin_cli-encocoin-cli.Po \
 	qt/$(DEPDIR)/libbitcoinqt_a-moc_transactiontablemodel.Po \
 	qt/$(DEPDIR)/libbitcoinqt_a-moc_utilitydialog.Po \
 	qt/$(DEPDIR)/libbitcoinqt_a-moc_walletmodel.Po \
-	qt/$(DEPDIR)/libbitcoinqt_a-moc_zpivcontroldialog.Po \
+	qt/$(DEPDIR)/libbitcoinqt_a-moc_zxnkcontroldialog.Po \
 	qt/$(DEPDIR)/libbitcoinqt_a-networkstyle.Po \
 	qt/$(DEPDIR)/libbitcoinqt_a-notificator.Po \
 	qt/$(DEPDIR)/libbitcoinqt_a-openuridialog.Po \
@@ -1821,14 +1821,14 @@ am__depfiles_remade = ./$(DEPDIR)/encocoin_cli-encocoin-cli.Po \
 	qt/$(DEPDIR)/libbitcoinqt_a-walletmodel.Po \
 	qt/$(DEPDIR)/libbitcoinqt_a-walletmodeltransaction.Po \
 	qt/$(DEPDIR)/libbitcoinqt_a-winshutdownmonitor.Po \
-	qt/$(DEPDIR)/libbitcoinqt_a-zpivcontroldialog.Po \
+	qt/$(DEPDIR)/libbitcoinqt_a-zxnkcontroldialog.Po \
 	qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addnewaddressdialog.Po \
 	qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addnewcontactdialog.Po \
 	qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addresseswidget.Po \
 	qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addressfilterproxymodel.Po \
 	qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addressholder.Po \
 	qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addresslabelrow.Po \
-	qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coincontrolpivwidget.Po \
+	qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coincontrolxnkwidget.Po \
 	qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coldstakingmodel.Po \
 	qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coldstakingwidget.Po \
 	qt/encocoin/$(DEPDIR)/libbitcoinqt_a-contactdropdownrow.Po \
@@ -1852,7 +1852,7 @@ am__depfiles_remade = ./$(DEPDIR)/encocoin_cli-encocoin-cli.Po \
 	qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_addnewcontactdialog.Po \
 	qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_addresseswidget.Po \
 	qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_addresslabelrow.Po \
-	qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coincontrolpivwidget.Po \
+	qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coincontrolxnkwidget.Po \
 	qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coldstakingmodel.Po \
 	qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coldstakingwidget.Po \
 	qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_contactdropdownrow.Po \
@@ -2026,19 +2026,19 @@ am__depfiles_remade = ./$(DEPDIR)/encocoin_cli-encocoin-cli.Po \
 	zmq/$(DEPDIR)/libbitcoin_zmq_a-zmqabstractnotifier.Po \
 	zmq/$(DEPDIR)/libbitcoin_zmq_a-zmqnotificationinterface.Po \
 	zmq/$(DEPDIR)/libbitcoin_zmq_a-zmqpublishnotifier.Po \
-	zpiv/$(DEPDIR)/libbitcoin_common_a-accumulatorcheckpoints.Po \
-	zpiv/$(DEPDIR)/libbitcoin_common_a-accumulatormap.Po \
-	zpiv/$(DEPDIR)/libbitcoin_common_a-accumulators.Po \
-	zpiv/$(DEPDIR)/libbitcoin_common_a-deterministicmint.Po \
-	zpiv/$(DEPDIR)/libbitcoin_common_a-zerocoin.Po \
-	zpiv/$(DEPDIR)/libbitcoin_wallet_a-accumulators.Po \
-	zpiv/$(DEPDIR)/libbitcoin_wallet_a-deterministicmint.Po \
-	zpiv/$(DEPDIR)/libbitcoin_wallet_a-mintpool.Po \
-	zpiv/$(DEPDIR)/libbitcoin_wallet_a-witness.Po \
-	zpiv/$(DEPDIR)/libbitcoin_wallet_a-zerocoin.Po \
-	zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivmodule.Po \
-	zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivtracker.Po \
-	zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivwallet.Po
+	zxnk/$(DEPDIR)/libbitcoin_common_a-accumulatorcheckpoints.Po \
+	zxnk/$(DEPDIR)/libbitcoin_common_a-accumulatormap.Po \
+	zxnk/$(DEPDIR)/libbitcoin_common_a-accumulators.Po \
+	zxnk/$(DEPDIR)/libbitcoin_common_a-deterministicmint.Po \
+	zxnk/$(DEPDIR)/libbitcoin_common_a-zerocoin.Po \
+	zxnk/$(DEPDIR)/libbitcoin_wallet_a-accumulators.Po \
+	zxnk/$(DEPDIR)/libbitcoin_wallet_a-deterministicmint.Po \
+	zxnk/$(DEPDIR)/libbitcoin_wallet_a-mintpool.Po \
+	zxnk/$(DEPDIR)/libbitcoin_wallet_a-witness.Po \
+	zxnk/$(DEPDIR)/libbitcoin_wallet_a-zerocoin.Po \
+	zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnkmodule.Po \
+	zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnktracker.Po \
+	zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnkwallet.Po
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -2798,21 +2798,21 @@ BITCOIN_CORE_H = \
   wallet/wallet.h \
   wallet/wallet_ismine.h \
   wallet/walletdb.h \
-  zpivchain.h \
-  zpiv/accumulators.h \
-  zpiv/accumulatorcheckpoints.h \
-  zpiv/accumulatorcheckpoints.json.h \
-  zpiv/accumulatormap.h \
-  zpiv/deterministicmint.h \
-  zpiv/mintpool.h \
-  zpiv/witness.h \
-  zpiv/zerocoin.h \
-  zpiv/zpivtracker.h \
-  zpiv/zpivwallet.h \
-  zpiv/zpivmodule.h \
+  zxnkchain.h \
+  zxnk/accumulators.h \
+  zxnk/accumulatorcheckpoints.h \
+  zxnk/accumulatorcheckpoints.json.h \
+  zxnk/accumulatormap.h \
+  zxnk/deterministicmint.h \
+  zxnk/mintpool.h \
+  zxnk/witness.h \
+  zxnk/zerocoin.h \
+  zxnk/zxnktracker.h \
+  zxnk/zxnkwallet.h \
+  zxnk/zxnkmodule.h \
   genwit.h \
   concurrentqueue.h \
-  lightzpivthread.h \
+  lightzxnkthread.h \
   zmq/zmqabstractnotifier.h \
   zmq/zmqconfig.h \
   zmq/zmqnotificationinterface.h \
@@ -2855,7 +2855,7 @@ libbitcoin_server_a_SOURCES = \
   txdb.cpp \
   txmempool.cpp \
   validationinterface.cpp \
-  zpivchain.cpp \
+  zxnkchain.cpp \
   $(BITCOIN_CORE_H)
 
 @ENABLE_ZMQ_TRUE@libbitcoin_zmq_a_CPPFLAGS = $(BITCOIN_INCLUDES) $(ZMQ_CFLAGS)
@@ -2894,17 +2894,17 @@ libbitcoin_wallet_a_SOURCES = \
   wallet/wallet.cpp \
   wallet/wallet_ismine.cpp \
   wallet/walletdb.cpp \
-  zpiv/deterministicmint.cpp \
-  zpiv/zerocoin.cpp \
-  zpiv/accumulators.cpp \
-  zpiv/mintpool.cpp \
-  zpiv/witness.cpp \
-  zpiv/zpivwallet.cpp \
-  zpiv/zpivtracker.cpp \
+  zxnk/deterministicmint.cpp \
+  zxnk/zerocoin.cpp \
+  zxnk/accumulators.cpp \
+  zxnk/mintpool.cpp \
+  zxnk/witness.cpp \
+  zxnk/zxnkwallet.cpp \
+  zxnk/zxnktracker.cpp \
   stakeinput.cpp \
   genwit.cpp \
-  zpiv/zpivmodule.cpp \
-  lightzpivthread.cpp \
+  zxnk/zxnkmodule.cpp \
+  lightzxnkthread.cpp \
   $(BITCOIN_CORE_H)
 
 
@@ -2973,9 +2973,9 @@ libzerocoin_libbitcoin_zerocoin_a_SOURCES = libzerocoin/Accumulator.h \
 libbitcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_common_a_SOURCES = \
-  zpiv/accumulators.cpp \
-  zpiv/accumulatorcheckpoints.cpp \
-  zpiv/accumulatormap.cpp \
+  zxnk/accumulators.cpp \
+  zxnk/accumulatorcheckpoints.cpp \
+  zxnk/accumulatormap.cpp \
   allocators.cpp \
   amount.cpp \
   base58.cpp \
@@ -2985,9 +2985,9 @@ libbitcoin_common_a_SOURCES = \
   compressor.cpp \
   consensus/merkle.cpp \
   primitives/block.cpp \
-  zpiv/deterministicmint.cpp \
+  zxnk/deterministicmint.cpp \
   primitives/transaction.cpp \
-  zpiv/zerocoin.cpp \
+  zxnk/zerocoin.cpp \
   core_read.cpp \
   core_write.cpp \
   hash.cpp \
@@ -3089,8 +3089,8 @@ CLEANFILES = $(EXTRA_LIBRARIES) *.gcda *.gcno compat/*.gcda \
 	rpc/*.gcda rpc/*.gcno script/*.gcda script/*.gcno \
 	support/*.gcda support/*.gcno univalue/*.gcda univalue/*.gcno \
 	wallet/*.gcda wallet/*.gcno wallet/test/*.gcda \
-	wallet/test/*.gcno zmq/*.gcda zmq/*.gcno zpiv/*.gcda \
-	zpiv/*.gcno obj/build.h $(am__append_25) $(am__append_34) \
+	wallet/test/*.gcno zmq/*.gcda zmq/*.gcno zxnk/*.gcda \
+	zxnk/*.gcno obj/build.h $(am__append_25) $(am__append_34) \
 	$(am__append_41)
 EXTRA_DIST = 
 @EMBEDDED_LEVELDB_TRUE@LIBLEVELDB_INT = leveldb/libleveldb.a
@@ -3341,7 +3341,7 @@ EXTRA_DIST =
 @ENABLE_QT_TRUE@  qt/forms/optionsdialog.ui \
 @ENABLE_QT_TRUE@  qt/forms/rpcconsole.ui \
 @ENABLE_QT_TRUE@  qt/encocoin/forms/loadingdialog.ui \
-@ENABLE_QT_TRUE@  qt/forms/zpivcontroldialog.ui \
+@ENABLE_QT_TRUE@  qt/forms/zxnkcontroldialog.ui \
 @ENABLE_QT_TRUE@  qt/encocoin/forms/snackbar.ui \
 @ENABLE_QT_TRUE@  qt/encocoin/forms/navmenuwidget.ui \
 @ENABLE_QT_TRUE@  qt/encocoin/forms/lockunlock.ui \
@@ -3351,7 +3351,7 @@ EXTRA_DIST =
 @ENABLE_QT_TRUE@  qt/encocoin/forms/topbar.ui \
 @ENABLE_QT_TRUE@  qt/encocoin/forms/txrow.ui \
 @ENABLE_QT_TRUE@  qt/encocoin/forms/dashboardwidget.ui \
-@ENABLE_QT_TRUE@  qt/encocoin/forms/coincontrolpivwidget.ui \
+@ENABLE_QT_TRUE@  qt/encocoin/forms/coincontrolxnkwidget.ui \
 @ENABLE_QT_TRUE@  qt/encocoin/forms/addresslabelrow.ui \
 @ENABLE_QT_TRUE@  qt/encocoin/forms/contactdropdownrow.ui \
 @ENABLE_QT_TRUE@  qt/encocoin/forms/mninfodialog.ui \
@@ -3432,7 +3432,7 @@ EXTRA_DIST =
 @ENABLE_QT_TRUE@  qt/moc_utilitydialog.cpp \
 @ENABLE_QT_TRUE@  qt/moc_walletmodel.cpp \
 @ENABLE_QT_TRUE@  qt/encocoin/moc_loadingdialog.cpp \
-@ENABLE_QT_TRUE@  qt/moc_zpivcontroldialog.cpp \
+@ENABLE_QT_TRUE@  qt/moc_zxnkcontroldialog.cpp \
 @ENABLE_QT_TRUE@  qt/encocoin/moc_pwidget.cpp \
 @ENABLE_QT_TRUE@  qt/encocoin/moc_snackbar.cpp \
 @ENABLE_QT_TRUE@  qt/encocoin/moc_navmenuwidget.cpp \
@@ -3445,7 +3445,7 @@ EXTRA_DIST =
 @ENABLE_QT_TRUE@  qt/encocoin/moc_topbar.cpp \
 @ENABLE_QT_TRUE@  qt/encocoin/moc_txrow.cpp \
 @ENABLE_QT_TRUE@  qt/encocoin/moc_dashboardwidget.cpp \
-@ENABLE_QT_TRUE@  qt/encocoin/moc_coincontrolpivwidget.cpp \
+@ENABLE_QT_TRUE@  qt/encocoin/moc_coincontrolxnkwidget.cpp \
 @ENABLE_QT_TRUE@  qt/encocoin/moc_addresslabelrow.cpp \
 @ENABLE_QT_TRUE@  qt/encocoin/moc_contactdropdownrow.cpp \
 @ENABLE_QT_TRUE@  qt/encocoin/moc_mninfodialog.cpp \
@@ -3556,7 +3556,7 @@ EXTRA_DIST =
 @ENABLE_QT_TRUE@  qt/encocoin/pfborderimage.h \
 @ENABLE_QT_TRUE@  qt/encocoin/loadingdialog.h \
 @ENABLE_QT_TRUE@  qt/winshutdownmonitor.h \
-@ENABLE_QT_TRUE@  qt/zpivcontroldialog.h \
+@ENABLE_QT_TRUE@  qt/zxnkcontroldialog.h \
 @ENABLE_QT_TRUE@  qt/encocoin/pwidget.h \
 @ENABLE_QT_TRUE@  qt/encocoin/guitransactionsutils.h \
 @ENABLE_QT_TRUE@  qt/encocoin/snackbar.h \
@@ -3574,7 +3574,7 @@ EXTRA_DIST =
 @ENABLE_QT_TRUE@  qt/encocoin/addressholder.h \
 @ENABLE_QT_TRUE@  qt/encocoin/addressfilterproxymodel.h \
 @ENABLE_QT_TRUE@  qt/encocoin/dashboardwidget.h \
-@ENABLE_QT_TRUE@  qt/encocoin/coincontrolpivwidget.h \
+@ENABLE_QT_TRUE@  qt/encocoin/coincontrolxnkwidget.h \
 @ENABLE_QT_TRUE@  qt/encocoin/addresslabelrow.h \
 @ENABLE_QT_TRUE@  qt/encocoin/contactdropdownrow.h \
 @ENABLE_QT_TRUE@  qt/encocoin/mninfodialog.h \
@@ -3789,15 +3789,15 @@ EXTRA_DIST =
 @ENABLE_QT_TRUE@  qt/encocoin/res/img/ic-radio-liliac-on.svg \
 @ENABLE_QT_TRUE@  qt/encocoin/res/img/img-empty-staking-off.svg \
 @ENABLE_QT_TRUE@  qt/encocoin/res/img/ic-arrow-drop-down.svg \
-@ENABLE_QT_TRUE@  qt/encocoin/res/img/ic-coin-piv.svg \
+@ENABLE_QT_TRUE@  qt/encocoin/res/img/ic-coin-xnk.svg \
 @ENABLE_QT_TRUE@  qt/encocoin/res/img/ic-receive-off.svg \
 @ENABLE_QT_TRUE@  qt/encocoin/res/img/img-empty-staking-on.svg \
 @ENABLE_QT_TRUE@  qt/encocoin/res/img/ic-arrow-drop-up-white.svg \
-@ENABLE_QT_TRUE@  qt/encocoin/res/img/ic-coin-zpiv.png \
+@ENABLE_QT_TRUE@  qt/encocoin/res/img/ic-coin-zxnk.png \
 @ENABLE_QT_TRUE@  qt/encocoin/res/img/ic-receive-on.svg \
 @ENABLE_QT_TRUE@  qt/encocoin/res/img/img-empty-transactions.svg \
 @ENABLE_QT_TRUE@  qt/encocoin/res/img/ic-arrow-drop-up.svg \
-@ENABLE_QT_TRUE@  qt/encocoin/res/img/ic-coin-zpiv.svg \
+@ENABLE_QT_TRUE@  qt/encocoin/res/img/ic-coin-zxnk.svg \
 @ENABLE_QT_TRUE@  qt/encocoin/res/img/ic-received.svg \
 @ENABLE_QT_TRUE@  qt/encocoin/res/img/img-logo-encocoin.png \
 @ENABLE_QT_TRUE@  qt/encocoin/res/img/ic-arrow-drop-white-down.svg \
@@ -3942,7 +3942,7 @@ EXTRA_DIST =
 @ENABLE_QT_TRUE@  qt/walletmodel.cpp \
 @ENABLE_QT_TRUE@  qt/walletmodeltransaction.cpp \
 @ENABLE_QT_TRUE@  qt/encocoin/loadingdialog.cpp \
-@ENABLE_QT_TRUE@  qt/zpivcontroldialog.cpp \
+@ENABLE_QT_TRUE@  qt/zxnkcontroldialog.cpp \
 @ENABLE_QT_TRUE@  qt/encocoin/pwidget.cpp \
 @ENABLE_QT_TRUE@  qt/encocoin/guitransactionsutils.cpp \
 @ENABLE_QT_TRUE@  qt/encocoin/snackbar.cpp \
@@ -3959,7 +3959,7 @@ EXTRA_DIST =
 @ENABLE_QT_TRUE@  qt/encocoin/addressholder.cpp \
 @ENABLE_QT_TRUE@  qt/encocoin/addressfilterproxymodel.cpp \
 @ENABLE_QT_TRUE@  qt/encocoin/dashboardwidget.cpp \
-@ENABLE_QT_TRUE@  qt/encocoin/coincontrolpivwidget.cpp \
+@ENABLE_QT_TRUE@  qt/encocoin/coincontrolxnkwidget.cpp \
 @ENABLE_QT_TRUE@  qt/encocoin/addresslabelrow.cpp \
 @ENABLE_QT_TRUE@  qt/encocoin/contactdropdownrow.cpp \
 @ENABLE_QT_TRUE@  qt/encocoin/contactsdropdown.cpp \
@@ -4456,18 +4456,18 @@ libbitcoin_cli.a: $(libbitcoin_cli_a_OBJECTS) $(libbitcoin_cli_a_DEPENDENCIES) $
 	$(AM_V_at)-rm -f libbitcoin_cli.a
 	$(AM_V_AR)$(libbitcoin_cli_a_AR) libbitcoin_cli.a $(libbitcoin_cli_a_OBJECTS) $(libbitcoin_cli_a_LIBADD)
 	$(AM_V_at)$(RANLIB) libbitcoin_cli.a
-zpiv/$(am__dirstamp):
-	@$(MKDIR_P) zpiv
-	@: > zpiv/$(am__dirstamp)
-zpiv/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) zpiv/$(DEPDIR)
-	@: > zpiv/$(DEPDIR)/$(am__dirstamp)
-zpiv/libbitcoin_common_a-accumulators.$(OBJEXT): zpiv/$(am__dirstamp) \
-	zpiv/$(DEPDIR)/$(am__dirstamp)
-zpiv/libbitcoin_common_a-accumulatorcheckpoints.$(OBJEXT):  \
-	zpiv/$(am__dirstamp) zpiv/$(DEPDIR)/$(am__dirstamp)
-zpiv/libbitcoin_common_a-accumulatormap.$(OBJEXT):  \
-	zpiv/$(am__dirstamp) zpiv/$(DEPDIR)/$(am__dirstamp)
+zxnk/$(am__dirstamp):
+	@$(MKDIR_P) zxnk
+	@: > zxnk/$(am__dirstamp)
+zxnk/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) zxnk/$(DEPDIR)
+	@: > zxnk/$(DEPDIR)/$(am__dirstamp)
+zxnk/libbitcoin_common_a-accumulators.$(OBJEXT): zxnk/$(am__dirstamp) \
+	zxnk/$(DEPDIR)/$(am__dirstamp)
+zxnk/libbitcoin_common_a-accumulatorcheckpoints.$(OBJEXT):  \
+	zxnk/$(am__dirstamp) zxnk/$(DEPDIR)/$(am__dirstamp)
+zxnk/libbitcoin_common_a-accumulatormap.$(OBJEXT):  \
+	zxnk/$(am__dirstamp) zxnk/$(DEPDIR)/$(am__dirstamp)
 consensus/$(am__dirstamp):
 	@$(MKDIR_P) consensus
 	@: > consensus/$(am__dirstamp)
@@ -4485,13 +4485,13 @@ primitives/$(DEPDIR)/$(am__dirstamp):
 primitives/libbitcoin_common_a-block.$(OBJEXT):  \
 	primitives/$(am__dirstamp) \
 	primitives/$(DEPDIR)/$(am__dirstamp)
-zpiv/libbitcoin_common_a-deterministicmint.$(OBJEXT):  \
-	zpiv/$(am__dirstamp) zpiv/$(DEPDIR)/$(am__dirstamp)
+zxnk/libbitcoin_common_a-deterministicmint.$(OBJEXT):  \
+	zxnk/$(am__dirstamp) zxnk/$(DEPDIR)/$(am__dirstamp)
 primitives/libbitcoin_common_a-transaction.$(OBJEXT):  \
 	primitives/$(am__dirstamp) \
 	primitives/$(DEPDIR)/$(am__dirstamp)
-zpiv/libbitcoin_common_a-zerocoin.$(OBJEXT): zpiv/$(am__dirstamp) \
-	zpiv/$(DEPDIR)/$(am__dirstamp)
+zxnk/libbitcoin_common_a-zerocoin.$(OBJEXT): zxnk/$(am__dirstamp) \
+	zxnk/$(DEPDIR)/$(am__dirstamp)
 script/$(am__dirstamp):
 	@$(MKDIR_P) script
 	@: > script/$(am__dirstamp)
@@ -4583,22 +4583,22 @@ wallet/libbitcoin_wallet_a-wallet_ismine.$(OBJEXT):  \
 	wallet/$(am__dirstamp) wallet/$(DEPDIR)/$(am__dirstamp)
 wallet/libbitcoin_wallet_a-walletdb.$(OBJEXT): wallet/$(am__dirstamp) \
 	wallet/$(DEPDIR)/$(am__dirstamp)
-zpiv/libbitcoin_wallet_a-deterministicmint.$(OBJEXT):  \
-	zpiv/$(am__dirstamp) zpiv/$(DEPDIR)/$(am__dirstamp)
-zpiv/libbitcoin_wallet_a-zerocoin.$(OBJEXT): zpiv/$(am__dirstamp) \
-	zpiv/$(DEPDIR)/$(am__dirstamp)
-zpiv/libbitcoin_wallet_a-accumulators.$(OBJEXT): zpiv/$(am__dirstamp) \
-	zpiv/$(DEPDIR)/$(am__dirstamp)
-zpiv/libbitcoin_wallet_a-mintpool.$(OBJEXT): zpiv/$(am__dirstamp) \
-	zpiv/$(DEPDIR)/$(am__dirstamp)
-zpiv/libbitcoin_wallet_a-witness.$(OBJEXT): zpiv/$(am__dirstamp) \
-	zpiv/$(DEPDIR)/$(am__dirstamp)
-zpiv/libbitcoin_wallet_a-zpivwallet.$(OBJEXT): zpiv/$(am__dirstamp) \
-	zpiv/$(DEPDIR)/$(am__dirstamp)
-zpiv/libbitcoin_wallet_a-zpivtracker.$(OBJEXT): zpiv/$(am__dirstamp) \
-	zpiv/$(DEPDIR)/$(am__dirstamp)
-zpiv/libbitcoin_wallet_a-zpivmodule.$(OBJEXT): zpiv/$(am__dirstamp) \
-	zpiv/$(DEPDIR)/$(am__dirstamp)
+zxnk/libbitcoin_wallet_a-deterministicmint.$(OBJEXT):  \
+	zxnk/$(am__dirstamp) zxnk/$(DEPDIR)/$(am__dirstamp)
+zxnk/libbitcoin_wallet_a-zerocoin.$(OBJEXT): zxnk/$(am__dirstamp) \
+	zxnk/$(DEPDIR)/$(am__dirstamp)
+zxnk/libbitcoin_wallet_a-accumulators.$(OBJEXT): zxnk/$(am__dirstamp) \
+	zxnk/$(DEPDIR)/$(am__dirstamp)
+zxnk/libbitcoin_wallet_a-mintpool.$(OBJEXT): zxnk/$(am__dirstamp) \
+	zxnk/$(DEPDIR)/$(am__dirstamp)
+zxnk/libbitcoin_wallet_a-witness.$(OBJEXT): zxnk/$(am__dirstamp) \
+	zxnk/$(DEPDIR)/$(am__dirstamp)
+zxnk/libbitcoin_wallet_a-zxnkwallet.$(OBJEXT): zxnk/$(am__dirstamp) \
+	zxnk/$(DEPDIR)/$(am__dirstamp)
+zxnk/libbitcoin_wallet_a-zxnktracker.$(OBJEXT): zxnk/$(am__dirstamp) \
+	zxnk/$(DEPDIR)/$(am__dirstamp)
+zxnk/libbitcoin_wallet_a-zxnkmodule.$(OBJEXT): zxnk/$(am__dirstamp) \
+	zxnk/$(DEPDIR)/$(am__dirstamp)
 
 libbitcoin_wallet.a: $(libbitcoin_wallet_a_OBJECTS) $(libbitcoin_wallet_a_DEPENDENCIES) $(EXTRA_libbitcoin_wallet_a_DEPENDENCIES) 
 	$(AM_V_at)-rm -f libbitcoin_wallet.a
@@ -4769,7 +4769,7 @@ qt/libbitcoinqt_a-walletmodeltransaction.$(OBJEXT):  \
 qt/encocoin/libbitcoinqt_a-loadingdialog.$(OBJEXT):  \
 	qt/encocoin/$(am__dirstamp) \
 	qt/encocoin/$(DEPDIR)/$(am__dirstamp)
-qt/libbitcoinqt_a-zpivcontroldialog.$(OBJEXT): qt/$(am__dirstamp) \
+qt/libbitcoinqt_a-zxnkcontroldialog.$(OBJEXT): qt/$(am__dirstamp) \
 	qt/$(DEPDIR)/$(am__dirstamp)
 qt/encocoin/libbitcoinqt_a-pwidget.$(OBJEXT):  \
 	qt/encocoin/$(am__dirstamp) \
@@ -4819,7 +4819,7 @@ qt/encocoin/libbitcoinqt_a-addressfilterproxymodel.$(OBJEXT):  \
 qt/encocoin/libbitcoinqt_a-dashboardwidget.$(OBJEXT):  \
 	qt/encocoin/$(am__dirstamp) \
 	qt/encocoin/$(DEPDIR)/$(am__dirstamp)
-qt/encocoin/libbitcoinqt_a-coincontrolpivwidget.$(OBJEXT):  \
+qt/encocoin/libbitcoinqt_a-coincontrolxnkwidget.$(OBJEXT):  \
 	qt/encocoin/$(am__dirstamp) \
 	qt/encocoin/$(DEPDIR)/$(am__dirstamp)
 qt/encocoin/libbitcoinqt_a-addresslabelrow.$(OBJEXT):  \
@@ -5032,7 +5032,7 @@ qt/libbitcoinqt_a-moc_walletmodel.$(OBJEXT): qt/$(am__dirstamp) \
 qt/encocoin/libbitcoinqt_a-moc_loadingdialog.$(OBJEXT):  \
 	qt/encocoin/$(am__dirstamp) \
 	qt/encocoin/$(DEPDIR)/$(am__dirstamp)
-qt/libbitcoinqt_a-moc_zpivcontroldialog.$(OBJEXT): qt/$(am__dirstamp) \
+qt/libbitcoinqt_a-moc_zxnkcontroldialog.$(OBJEXT): qt/$(am__dirstamp) \
 	qt/$(DEPDIR)/$(am__dirstamp)
 qt/encocoin/libbitcoinqt_a-moc_pwidget.$(OBJEXT):  \
 	qt/encocoin/$(am__dirstamp) \
@@ -5070,7 +5070,7 @@ qt/encocoin/libbitcoinqt_a-moc_txrow.$(OBJEXT):  \
 qt/encocoin/libbitcoinqt_a-moc_dashboardwidget.$(OBJEXT):  \
 	qt/encocoin/$(am__dirstamp) \
 	qt/encocoin/$(DEPDIR)/$(am__dirstamp)
-qt/encocoin/libbitcoinqt_a-moc_coincontrolpivwidget.$(OBJEXT):  \
+qt/encocoin/libbitcoinqt_a-moc_coincontrolxnkwidget.$(OBJEXT):  \
 	qt/encocoin/$(am__dirstamp) \
 	qt/encocoin/$(DEPDIR)/$(am__dirstamp)
 qt/encocoin/libbitcoinqt_a-moc_addresslabelrow.$(OBJEXT):  \
@@ -5436,7 +5436,7 @@ mostlyclean-compile:
 	-rm -f wallet/*.$(OBJEXT)
 	-rm -f wallet/test/*.$(OBJEXT)
 	-rm -f zmq/*.$(OBJEXT)
-	-rm -f zpiv/*.$(OBJEXT)
+	-rm -f zxnk/*.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
@@ -5486,7 +5486,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_server_a-txdb.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_server_a-txmempool.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_server_a-validationinterface.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_server_a-zpivchain.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_server_a-zxnkchain.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_util_a-allocators.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_util_a-chainparamsbase.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_util_a-clientversion.Po@am__quote@ # am--include-marker
@@ -5505,7 +5505,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_wallet_a-denomination_functions.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_wallet_a-genwit.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_wallet_a-kernel.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_wallet_a-lightzpivthread.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_wallet_a-lightzxnkthread.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_wallet_a-masternode-budget.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_wallet_a-masternode-payments.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_wallet_a-masternode-sync.Po@am__quote@ # am--include-marker
@@ -5664,7 +5664,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/libbitcoinqt_a-moc_transactiontablemodel.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/libbitcoinqt_a-moc_utilitydialog.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/libbitcoinqt_a-moc_walletmodel.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/libbitcoinqt_a-moc_zpivcontroldialog.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/libbitcoinqt_a-moc_zxnkcontroldialog.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/libbitcoinqt_a-networkstyle.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/libbitcoinqt_a-notificator.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/libbitcoinqt_a-openuridialog.Po@am__quote@ # am--include-marker
@@ -5692,14 +5692,14 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/libbitcoinqt_a-walletmodel.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/libbitcoinqt_a-walletmodeltransaction.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/libbitcoinqt_a-winshutdownmonitor.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/libbitcoinqt_a-zpivcontroldialog.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/libbitcoinqt_a-zxnkcontroldialog.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addnewaddressdialog.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addnewcontactdialog.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addresseswidget.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addressfilterproxymodel.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addressholder.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addresslabelrow.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coincontrolpivwidget.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coincontrolxnkwidget.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coldstakingmodel.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coldstakingwidget.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/encocoin/$(DEPDIR)/libbitcoinqt_a-contactdropdownrow.Po@am__quote@ # am--include-marker
@@ -5723,7 +5723,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_addnewcontactdialog.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_addresseswidget.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_addresslabelrow.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coincontrolpivwidget.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coincontrolxnkwidget.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coldstakingmodel.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coldstakingwidget.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_contactdropdownrow.Po@am__quote@ # am--include-marker
@@ -5897,19 +5897,19 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@zmq/$(DEPDIR)/libbitcoin_zmq_a-zmqabstractnotifier.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@zmq/$(DEPDIR)/libbitcoin_zmq_a-zmqnotificationinterface.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@zmq/$(DEPDIR)/libbitcoin_zmq_a-zmqpublishnotifier.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@zpiv/$(DEPDIR)/libbitcoin_common_a-accumulatorcheckpoints.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@zpiv/$(DEPDIR)/libbitcoin_common_a-accumulatormap.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@zpiv/$(DEPDIR)/libbitcoin_common_a-accumulators.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@zpiv/$(DEPDIR)/libbitcoin_common_a-deterministicmint.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@zpiv/$(DEPDIR)/libbitcoin_common_a-zerocoin.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@zpiv/$(DEPDIR)/libbitcoin_wallet_a-accumulators.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@zpiv/$(DEPDIR)/libbitcoin_wallet_a-deterministicmint.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@zpiv/$(DEPDIR)/libbitcoin_wallet_a-mintpool.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@zpiv/$(DEPDIR)/libbitcoin_wallet_a-witness.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@zpiv/$(DEPDIR)/libbitcoin_wallet_a-zerocoin.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivmodule.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivtracker.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivwallet.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@zxnk/$(DEPDIR)/libbitcoin_common_a-accumulatorcheckpoints.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@zxnk/$(DEPDIR)/libbitcoin_common_a-accumulatormap.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@zxnk/$(DEPDIR)/libbitcoin_common_a-accumulators.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@zxnk/$(DEPDIR)/libbitcoin_common_a-deterministicmint.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@zxnk/$(DEPDIR)/libbitcoin_common_a-zerocoin.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@zxnk/$(DEPDIR)/libbitcoin_wallet_a-accumulators.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@zxnk/$(DEPDIR)/libbitcoin_wallet_a-deterministicmint.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@zxnk/$(DEPDIR)/libbitcoin_wallet_a-mintpool.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@zxnk/$(DEPDIR)/libbitcoin_wallet_a-witness.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@zxnk/$(DEPDIR)/libbitcoin_wallet_a-zerocoin.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnkmodule.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnktracker.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnkwallet.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -6805,47 +6805,47 @@ rpc/libbitcoin_cli_a-client.obj: rpc/client.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_cli_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_cli_a_CXXFLAGS) $(CXXFLAGS) -c -o rpc/libbitcoin_cli_a-client.obj `if test -f 'rpc/client.cpp'; then $(CYGPATH_W) 'rpc/client.cpp'; else $(CYGPATH_W) '$(srcdir)/rpc/client.cpp'; fi`
 
-zpiv/libbitcoin_common_a-accumulators.o: zpiv/accumulators.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_common_a-accumulators.o -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_common_a-accumulators.Tpo -c -o zpiv/libbitcoin_common_a-accumulators.o `test -f 'zpiv/accumulators.cpp' || echo '$(srcdir)/'`zpiv/accumulators.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_common_a-accumulators.Tpo zpiv/$(DEPDIR)/libbitcoin_common_a-accumulators.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/accumulators.cpp' object='zpiv/libbitcoin_common_a-accumulators.o' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_common_a-accumulators.o: zxnk/accumulators.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_common_a-accumulators.o -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_common_a-accumulators.Tpo -c -o zxnk/libbitcoin_common_a-accumulators.o `test -f 'zxnk/accumulators.cpp' || echo '$(srcdir)/'`zxnk/accumulators.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_common_a-accumulators.Tpo zxnk/$(DEPDIR)/libbitcoin_common_a-accumulators.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/accumulators.cpp' object='zxnk/libbitcoin_common_a-accumulators.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_common_a-accumulators.o `test -f 'zpiv/accumulators.cpp' || echo '$(srcdir)/'`zpiv/accumulators.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_common_a-accumulators.o `test -f 'zxnk/accumulators.cpp' || echo '$(srcdir)/'`zxnk/accumulators.cpp
 
-zpiv/libbitcoin_common_a-accumulators.obj: zpiv/accumulators.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_common_a-accumulators.obj -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_common_a-accumulators.Tpo -c -o zpiv/libbitcoin_common_a-accumulators.obj `if test -f 'zpiv/accumulators.cpp'; then $(CYGPATH_W) 'zpiv/accumulators.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/accumulators.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_common_a-accumulators.Tpo zpiv/$(DEPDIR)/libbitcoin_common_a-accumulators.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/accumulators.cpp' object='zpiv/libbitcoin_common_a-accumulators.obj' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_common_a-accumulators.obj: zxnk/accumulators.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_common_a-accumulators.obj -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_common_a-accumulators.Tpo -c -o zxnk/libbitcoin_common_a-accumulators.obj `if test -f 'zxnk/accumulators.cpp'; then $(CYGPATH_W) 'zxnk/accumulators.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/accumulators.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_common_a-accumulators.Tpo zxnk/$(DEPDIR)/libbitcoin_common_a-accumulators.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/accumulators.cpp' object='zxnk/libbitcoin_common_a-accumulators.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_common_a-accumulators.obj `if test -f 'zpiv/accumulators.cpp'; then $(CYGPATH_W) 'zpiv/accumulators.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/accumulators.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_common_a-accumulators.obj `if test -f 'zxnk/accumulators.cpp'; then $(CYGPATH_W) 'zxnk/accumulators.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/accumulators.cpp'; fi`
 
-zpiv/libbitcoin_common_a-accumulatorcheckpoints.o: zpiv/accumulatorcheckpoints.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_common_a-accumulatorcheckpoints.o -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_common_a-accumulatorcheckpoints.Tpo -c -o zpiv/libbitcoin_common_a-accumulatorcheckpoints.o `test -f 'zpiv/accumulatorcheckpoints.cpp' || echo '$(srcdir)/'`zpiv/accumulatorcheckpoints.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_common_a-accumulatorcheckpoints.Tpo zpiv/$(DEPDIR)/libbitcoin_common_a-accumulatorcheckpoints.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/accumulatorcheckpoints.cpp' object='zpiv/libbitcoin_common_a-accumulatorcheckpoints.o' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_common_a-accumulatorcheckpoints.o: zxnk/accumulatorcheckpoints.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_common_a-accumulatorcheckpoints.o -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_common_a-accumulatorcheckpoints.Tpo -c -o zxnk/libbitcoin_common_a-accumulatorcheckpoints.o `test -f 'zxnk/accumulatorcheckpoints.cpp' || echo '$(srcdir)/'`zxnk/accumulatorcheckpoints.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_common_a-accumulatorcheckpoints.Tpo zxnk/$(DEPDIR)/libbitcoin_common_a-accumulatorcheckpoints.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/accumulatorcheckpoints.cpp' object='zxnk/libbitcoin_common_a-accumulatorcheckpoints.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_common_a-accumulatorcheckpoints.o `test -f 'zpiv/accumulatorcheckpoints.cpp' || echo '$(srcdir)/'`zpiv/accumulatorcheckpoints.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_common_a-accumulatorcheckpoints.o `test -f 'zxnk/accumulatorcheckpoints.cpp' || echo '$(srcdir)/'`zxnk/accumulatorcheckpoints.cpp
 
-zpiv/libbitcoin_common_a-accumulatorcheckpoints.obj: zpiv/accumulatorcheckpoints.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_common_a-accumulatorcheckpoints.obj -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_common_a-accumulatorcheckpoints.Tpo -c -o zpiv/libbitcoin_common_a-accumulatorcheckpoints.obj `if test -f 'zpiv/accumulatorcheckpoints.cpp'; then $(CYGPATH_W) 'zpiv/accumulatorcheckpoints.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/accumulatorcheckpoints.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_common_a-accumulatorcheckpoints.Tpo zpiv/$(DEPDIR)/libbitcoin_common_a-accumulatorcheckpoints.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/accumulatorcheckpoints.cpp' object='zpiv/libbitcoin_common_a-accumulatorcheckpoints.obj' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_common_a-accumulatorcheckpoints.obj: zxnk/accumulatorcheckpoints.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_common_a-accumulatorcheckpoints.obj -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_common_a-accumulatorcheckpoints.Tpo -c -o zxnk/libbitcoin_common_a-accumulatorcheckpoints.obj `if test -f 'zxnk/accumulatorcheckpoints.cpp'; then $(CYGPATH_W) 'zxnk/accumulatorcheckpoints.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/accumulatorcheckpoints.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_common_a-accumulatorcheckpoints.Tpo zxnk/$(DEPDIR)/libbitcoin_common_a-accumulatorcheckpoints.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/accumulatorcheckpoints.cpp' object='zxnk/libbitcoin_common_a-accumulatorcheckpoints.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_common_a-accumulatorcheckpoints.obj `if test -f 'zpiv/accumulatorcheckpoints.cpp'; then $(CYGPATH_W) 'zpiv/accumulatorcheckpoints.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/accumulatorcheckpoints.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_common_a-accumulatorcheckpoints.obj `if test -f 'zxnk/accumulatorcheckpoints.cpp'; then $(CYGPATH_W) 'zxnk/accumulatorcheckpoints.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/accumulatorcheckpoints.cpp'; fi`
 
-zpiv/libbitcoin_common_a-accumulatormap.o: zpiv/accumulatormap.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_common_a-accumulatormap.o -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_common_a-accumulatormap.Tpo -c -o zpiv/libbitcoin_common_a-accumulatormap.o `test -f 'zpiv/accumulatormap.cpp' || echo '$(srcdir)/'`zpiv/accumulatormap.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_common_a-accumulatormap.Tpo zpiv/$(DEPDIR)/libbitcoin_common_a-accumulatormap.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/accumulatormap.cpp' object='zpiv/libbitcoin_common_a-accumulatormap.o' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_common_a-accumulatormap.o: zxnk/accumulatormap.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_common_a-accumulatormap.o -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_common_a-accumulatormap.Tpo -c -o zxnk/libbitcoin_common_a-accumulatormap.o `test -f 'zxnk/accumulatormap.cpp' || echo '$(srcdir)/'`zxnk/accumulatormap.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_common_a-accumulatormap.Tpo zxnk/$(DEPDIR)/libbitcoin_common_a-accumulatormap.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/accumulatormap.cpp' object='zxnk/libbitcoin_common_a-accumulatormap.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_common_a-accumulatormap.o `test -f 'zpiv/accumulatormap.cpp' || echo '$(srcdir)/'`zpiv/accumulatormap.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_common_a-accumulatormap.o `test -f 'zxnk/accumulatormap.cpp' || echo '$(srcdir)/'`zxnk/accumulatormap.cpp
 
-zpiv/libbitcoin_common_a-accumulatormap.obj: zpiv/accumulatormap.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_common_a-accumulatormap.obj -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_common_a-accumulatormap.Tpo -c -o zpiv/libbitcoin_common_a-accumulatormap.obj `if test -f 'zpiv/accumulatormap.cpp'; then $(CYGPATH_W) 'zpiv/accumulatormap.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/accumulatormap.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_common_a-accumulatormap.Tpo zpiv/$(DEPDIR)/libbitcoin_common_a-accumulatormap.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/accumulatormap.cpp' object='zpiv/libbitcoin_common_a-accumulatormap.obj' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_common_a-accumulatormap.obj: zxnk/accumulatormap.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_common_a-accumulatormap.obj -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_common_a-accumulatormap.Tpo -c -o zxnk/libbitcoin_common_a-accumulatormap.obj `if test -f 'zxnk/accumulatormap.cpp'; then $(CYGPATH_W) 'zxnk/accumulatormap.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/accumulatormap.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_common_a-accumulatormap.Tpo zxnk/$(DEPDIR)/libbitcoin_common_a-accumulatormap.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/accumulatormap.cpp' object='zxnk/libbitcoin_common_a-accumulatormap.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_common_a-accumulatormap.obj `if test -f 'zpiv/accumulatormap.cpp'; then $(CYGPATH_W) 'zpiv/accumulatormap.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/accumulatormap.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_common_a-accumulatormap.obj `if test -f 'zxnk/accumulatormap.cpp'; then $(CYGPATH_W) 'zxnk/accumulatormap.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/accumulatormap.cpp'; fi`
 
 libbitcoin_common_a-allocators.o: allocators.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT libbitcoin_common_a-allocators.o -MD -MP -MF $(DEPDIR)/libbitcoin_common_a-allocators.Tpo -c -o libbitcoin_common_a-allocators.o `test -f 'allocators.cpp' || echo '$(srcdir)/'`allocators.cpp
@@ -6973,19 +6973,19 @@ primitives/libbitcoin_common_a-block.obj: primitives/block.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o primitives/libbitcoin_common_a-block.obj `if test -f 'primitives/block.cpp'; then $(CYGPATH_W) 'primitives/block.cpp'; else $(CYGPATH_W) '$(srcdir)/primitives/block.cpp'; fi`
 
-zpiv/libbitcoin_common_a-deterministicmint.o: zpiv/deterministicmint.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_common_a-deterministicmint.o -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_common_a-deterministicmint.Tpo -c -o zpiv/libbitcoin_common_a-deterministicmint.o `test -f 'zpiv/deterministicmint.cpp' || echo '$(srcdir)/'`zpiv/deterministicmint.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_common_a-deterministicmint.Tpo zpiv/$(DEPDIR)/libbitcoin_common_a-deterministicmint.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/deterministicmint.cpp' object='zpiv/libbitcoin_common_a-deterministicmint.o' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_common_a-deterministicmint.o: zxnk/deterministicmint.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_common_a-deterministicmint.o -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_common_a-deterministicmint.Tpo -c -o zxnk/libbitcoin_common_a-deterministicmint.o `test -f 'zxnk/deterministicmint.cpp' || echo '$(srcdir)/'`zxnk/deterministicmint.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_common_a-deterministicmint.Tpo zxnk/$(DEPDIR)/libbitcoin_common_a-deterministicmint.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/deterministicmint.cpp' object='zxnk/libbitcoin_common_a-deterministicmint.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_common_a-deterministicmint.o `test -f 'zpiv/deterministicmint.cpp' || echo '$(srcdir)/'`zpiv/deterministicmint.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_common_a-deterministicmint.o `test -f 'zxnk/deterministicmint.cpp' || echo '$(srcdir)/'`zxnk/deterministicmint.cpp
 
-zpiv/libbitcoin_common_a-deterministicmint.obj: zpiv/deterministicmint.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_common_a-deterministicmint.obj -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_common_a-deterministicmint.Tpo -c -o zpiv/libbitcoin_common_a-deterministicmint.obj `if test -f 'zpiv/deterministicmint.cpp'; then $(CYGPATH_W) 'zpiv/deterministicmint.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/deterministicmint.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_common_a-deterministicmint.Tpo zpiv/$(DEPDIR)/libbitcoin_common_a-deterministicmint.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/deterministicmint.cpp' object='zpiv/libbitcoin_common_a-deterministicmint.obj' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_common_a-deterministicmint.obj: zxnk/deterministicmint.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_common_a-deterministicmint.obj -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_common_a-deterministicmint.Tpo -c -o zxnk/libbitcoin_common_a-deterministicmint.obj `if test -f 'zxnk/deterministicmint.cpp'; then $(CYGPATH_W) 'zxnk/deterministicmint.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/deterministicmint.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_common_a-deterministicmint.Tpo zxnk/$(DEPDIR)/libbitcoin_common_a-deterministicmint.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/deterministicmint.cpp' object='zxnk/libbitcoin_common_a-deterministicmint.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_common_a-deterministicmint.obj `if test -f 'zpiv/deterministicmint.cpp'; then $(CYGPATH_W) 'zpiv/deterministicmint.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/deterministicmint.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_common_a-deterministicmint.obj `if test -f 'zxnk/deterministicmint.cpp'; then $(CYGPATH_W) 'zxnk/deterministicmint.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/deterministicmint.cpp'; fi`
 
 primitives/libbitcoin_common_a-transaction.o: primitives/transaction.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT primitives/libbitcoin_common_a-transaction.o -MD -MP -MF primitives/$(DEPDIR)/libbitcoin_common_a-transaction.Tpo -c -o primitives/libbitcoin_common_a-transaction.o `test -f 'primitives/transaction.cpp' || echo '$(srcdir)/'`primitives/transaction.cpp
@@ -7001,19 +7001,19 @@ primitives/libbitcoin_common_a-transaction.obj: primitives/transaction.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o primitives/libbitcoin_common_a-transaction.obj `if test -f 'primitives/transaction.cpp'; then $(CYGPATH_W) 'primitives/transaction.cpp'; else $(CYGPATH_W) '$(srcdir)/primitives/transaction.cpp'; fi`
 
-zpiv/libbitcoin_common_a-zerocoin.o: zpiv/zerocoin.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_common_a-zerocoin.o -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_common_a-zerocoin.Tpo -c -o zpiv/libbitcoin_common_a-zerocoin.o `test -f 'zpiv/zerocoin.cpp' || echo '$(srcdir)/'`zpiv/zerocoin.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_common_a-zerocoin.Tpo zpiv/$(DEPDIR)/libbitcoin_common_a-zerocoin.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/zerocoin.cpp' object='zpiv/libbitcoin_common_a-zerocoin.o' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_common_a-zerocoin.o: zxnk/zerocoin.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_common_a-zerocoin.o -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_common_a-zerocoin.Tpo -c -o zxnk/libbitcoin_common_a-zerocoin.o `test -f 'zxnk/zerocoin.cpp' || echo '$(srcdir)/'`zxnk/zerocoin.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_common_a-zerocoin.Tpo zxnk/$(DEPDIR)/libbitcoin_common_a-zerocoin.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/zerocoin.cpp' object='zxnk/libbitcoin_common_a-zerocoin.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_common_a-zerocoin.o `test -f 'zpiv/zerocoin.cpp' || echo '$(srcdir)/'`zpiv/zerocoin.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_common_a-zerocoin.o `test -f 'zxnk/zerocoin.cpp' || echo '$(srcdir)/'`zxnk/zerocoin.cpp
 
-zpiv/libbitcoin_common_a-zerocoin.obj: zpiv/zerocoin.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_common_a-zerocoin.obj -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_common_a-zerocoin.Tpo -c -o zpiv/libbitcoin_common_a-zerocoin.obj `if test -f 'zpiv/zerocoin.cpp'; then $(CYGPATH_W) 'zpiv/zerocoin.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/zerocoin.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_common_a-zerocoin.Tpo zpiv/$(DEPDIR)/libbitcoin_common_a-zerocoin.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/zerocoin.cpp' object='zpiv/libbitcoin_common_a-zerocoin.obj' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_common_a-zerocoin.obj: zxnk/zerocoin.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_common_a-zerocoin.obj -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_common_a-zerocoin.Tpo -c -o zxnk/libbitcoin_common_a-zerocoin.obj `if test -f 'zxnk/zerocoin.cpp'; then $(CYGPATH_W) 'zxnk/zerocoin.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/zerocoin.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_common_a-zerocoin.Tpo zxnk/$(DEPDIR)/libbitcoin_common_a-zerocoin.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/zerocoin.cpp' object='zxnk/libbitcoin_common_a-zerocoin.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_common_a-zerocoin.obj `if test -f 'zpiv/zerocoin.cpp'; then $(CYGPATH_W) 'zpiv/zerocoin.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/zerocoin.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_common_a-zerocoin.obj `if test -f 'zxnk/zerocoin.cpp'; then $(CYGPATH_W) 'zxnk/zerocoin.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/zerocoin.cpp'; fi`
 
 libbitcoin_common_a-core_read.o: core_read.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_common_a_CXXFLAGS) $(CXXFLAGS) -MT libbitcoin_common_a-core_read.o -MD -MP -MF $(DEPDIR)/libbitcoin_common_a-core_read.Tpo -c -o libbitcoin_common_a-core_read.o `test -f 'core_read.cpp' || echo '$(srcdir)/'`core_read.cpp
@@ -7701,19 +7701,19 @@ libbitcoin_server_a-validationinterface.obj: validationinterface.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_server_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_server_a_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoin_server_a-validationinterface.obj `if test -f 'validationinterface.cpp'; then $(CYGPATH_W) 'validationinterface.cpp'; else $(CYGPATH_W) '$(srcdir)/validationinterface.cpp'; fi`
 
-libbitcoin_server_a-zpivchain.o: zpivchain.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_server_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_server_a_CXXFLAGS) $(CXXFLAGS) -MT libbitcoin_server_a-zpivchain.o -MD -MP -MF $(DEPDIR)/libbitcoin_server_a-zpivchain.Tpo -c -o libbitcoin_server_a-zpivchain.o `test -f 'zpivchain.cpp' || echo '$(srcdir)/'`zpivchain.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libbitcoin_server_a-zpivchain.Tpo $(DEPDIR)/libbitcoin_server_a-zpivchain.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpivchain.cpp' object='libbitcoin_server_a-zpivchain.o' libtool=no @AMDEPBACKSLASH@
+libbitcoin_server_a-zxnkchain.o: zxnkchain.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_server_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_server_a_CXXFLAGS) $(CXXFLAGS) -MT libbitcoin_server_a-zxnkchain.o -MD -MP -MF $(DEPDIR)/libbitcoin_server_a-zxnkchain.Tpo -c -o libbitcoin_server_a-zxnkchain.o `test -f 'zxnkchain.cpp' || echo '$(srcdir)/'`zxnkchain.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libbitcoin_server_a-zxnkchain.Tpo $(DEPDIR)/libbitcoin_server_a-zxnkchain.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnkchain.cpp' object='libbitcoin_server_a-zxnkchain.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_server_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_server_a_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoin_server_a-zpivchain.o `test -f 'zpivchain.cpp' || echo '$(srcdir)/'`zpivchain.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_server_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_server_a_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoin_server_a-zxnkchain.o `test -f 'zxnkchain.cpp' || echo '$(srcdir)/'`zxnkchain.cpp
 
-libbitcoin_server_a-zpivchain.obj: zpivchain.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_server_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_server_a_CXXFLAGS) $(CXXFLAGS) -MT libbitcoin_server_a-zpivchain.obj -MD -MP -MF $(DEPDIR)/libbitcoin_server_a-zpivchain.Tpo -c -o libbitcoin_server_a-zpivchain.obj `if test -f 'zpivchain.cpp'; then $(CYGPATH_W) 'zpivchain.cpp'; else $(CYGPATH_W) '$(srcdir)/zpivchain.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libbitcoin_server_a-zpivchain.Tpo $(DEPDIR)/libbitcoin_server_a-zpivchain.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpivchain.cpp' object='libbitcoin_server_a-zpivchain.obj' libtool=no @AMDEPBACKSLASH@
+libbitcoin_server_a-zxnkchain.obj: zxnkchain.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_server_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_server_a_CXXFLAGS) $(CXXFLAGS) -MT libbitcoin_server_a-zxnkchain.obj -MD -MP -MF $(DEPDIR)/libbitcoin_server_a-zxnkchain.Tpo -c -o libbitcoin_server_a-zxnkchain.obj `if test -f 'zxnkchain.cpp'; then $(CYGPATH_W) 'zxnkchain.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnkchain.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libbitcoin_server_a-zxnkchain.Tpo $(DEPDIR)/libbitcoin_server_a-zxnkchain.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnkchain.cpp' object='libbitcoin_server_a-zxnkchain.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_server_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_server_a_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoin_server_a-zpivchain.obj `if test -f 'zpivchain.cpp'; then $(CYGPATH_W) 'zpivchain.cpp'; else $(CYGPATH_W) '$(srcdir)/zpivchain.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_server_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_server_a_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoin_server_a-zxnkchain.obj `if test -f 'zxnkchain.cpp'; then $(CYGPATH_W) 'zxnkchain.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnkchain.cpp'; fi`
 
 libbitcoin_util_a-allocators.o: allocators.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_util_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_util_a_CXXFLAGS) $(CXXFLAGS) -MT libbitcoin_util_a-allocators.o -MD -MP -MF $(DEPDIR)/libbitcoin_util_a-allocators.Tpo -c -o libbitcoin_util_a-allocators.o `test -f 'allocators.cpp' || echo '$(srcdir)/'`allocators.cpp
@@ -8261,103 +8261,103 @@ wallet/libbitcoin_wallet_a-walletdb.obj: wallet/walletdb.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o wallet/libbitcoin_wallet_a-walletdb.obj `if test -f 'wallet/walletdb.cpp'; then $(CYGPATH_W) 'wallet/walletdb.cpp'; else $(CYGPATH_W) '$(srcdir)/wallet/walletdb.cpp'; fi`
 
-zpiv/libbitcoin_wallet_a-deterministicmint.o: zpiv/deterministicmint.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_wallet_a-deterministicmint.o -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_wallet_a-deterministicmint.Tpo -c -o zpiv/libbitcoin_wallet_a-deterministicmint.o `test -f 'zpiv/deterministicmint.cpp' || echo '$(srcdir)/'`zpiv/deterministicmint.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_wallet_a-deterministicmint.Tpo zpiv/$(DEPDIR)/libbitcoin_wallet_a-deterministicmint.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/deterministicmint.cpp' object='zpiv/libbitcoin_wallet_a-deterministicmint.o' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_wallet_a-deterministicmint.o: zxnk/deterministicmint.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_wallet_a-deterministicmint.o -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_wallet_a-deterministicmint.Tpo -c -o zxnk/libbitcoin_wallet_a-deterministicmint.o `test -f 'zxnk/deterministicmint.cpp' || echo '$(srcdir)/'`zxnk/deterministicmint.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_wallet_a-deterministicmint.Tpo zxnk/$(DEPDIR)/libbitcoin_wallet_a-deterministicmint.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/deterministicmint.cpp' object='zxnk/libbitcoin_wallet_a-deterministicmint.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_wallet_a-deterministicmint.o `test -f 'zpiv/deterministicmint.cpp' || echo '$(srcdir)/'`zpiv/deterministicmint.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_wallet_a-deterministicmint.o `test -f 'zxnk/deterministicmint.cpp' || echo '$(srcdir)/'`zxnk/deterministicmint.cpp
 
-zpiv/libbitcoin_wallet_a-deterministicmint.obj: zpiv/deterministicmint.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_wallet_a-deterministicmint.obj -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_wallet_a-deterministicmint.Tpo -c -o zpiv/libbitcoin_wallet_a-deterministicmint.obj `if test -f 'zpiv/deterministicmint.cpp'; then $(CYGPATH_W) 'zpiv/deterministicmint.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/deterministicmint.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_wallet_a-deterministicmint.Tpo zpiv/$(DEPDIR)/libbitcoin_wallet_a-deterministicmint.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/deterministicmint.cpp' object='zpiv/libbitcoin_wallet_a-deterministicmint.obj' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_wallet_a-deterministicmint.obj: zxnk/deterministicmint.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_wallet_a-deterministicmint.obj -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_wallet_a-deterministicmint.Tpo -c -o zxnk/libbitcoin_wallet_a-deterministicmint.obj `if test -f 'zxnk/deterministicmint.cpp'; then $(CYGPATH_W) 'zxnk/deterministicmint.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/deterministicmint.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_wallet_a-deterministicmint.Tpo zxnk/$(DEPDIR)/libbitcoin_wallet_a-deterministicmint.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/deterministicmint.cpp' object='zxnk/libbitcoin_wallet_a-deterministicmint.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_wallet_a-deterministicmint.obj `if test -f 'zpiv/deterministicmint.cpp'; then $(CYGPATH_W) 'zpiv/deterministicmint.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/deterministicmint.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_wallet_a-deterministicmint.obj `if test -f 'zxnk/deterministicmint.cpp'; then $(CYGPATH_W) 'zxnk/deterministicmint.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/deterministicmint.cpp'; fi`
 
-zpiv/libbitcoin_wallet_a-zerocoin.o: zpiv/zerocoin.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_wallet_a-zerocoin.o -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_wallet_a-zerocoin.Tpo -c -o zpiv/libbitcoin_wallet_a-zerocoin.o `test -f 'zpiv/zerocoin.cpp' || echo '$(srcdir)/'`zpiv/zerocoin.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_wallet_a-zerocoin.Tpo zpiv/$(DEPDIR)/libbitcoin_wallet_a-zerocoin.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/zerocoin.cpp' object='zpiv/libbitcoin_wallet_a-zerocoin.o' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_wallet_a-zerocoin.o: zxnk/zerocoin.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_wallet_a-zerocoin.o -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_wallet_a-zerocoin.Tpo -c -o zxnk/libbitcoin_wallet_a-zerocoin.o `test -f 'zxnk/zerocoin.cpp' || echo '$(srcdir)/'`zxnk/zerocoin.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_wallet_a-zerocoin.Tpo zxnk/$(DEPDIR)/libbitcoin_wallet_a-zerocoin.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/zerocoin.cpp' object='zxnk/libbitcoin_wallet_a-zerocoin.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_wallet_a-zerocoin.o `test -f 'zpiv/zerocoin.cpp' || echo '$(srcdir)/'`zpiv/zerocoin.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_wallet_a-zerocoin.o `test -f 'zxnk/zerocoin.cpp' || echo '$(srcdir)/'`zxnk/zerocoin.cpp
 
-zpiv/libbitcoin_wallet_a-zerocoin.obj: zpiv/zerocoin.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_wallet_a-zerocoin.obj -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_wallet_a-zerocoin.Tpo -c -o zpiv/libbitcoin_wallet_a-zerocoin.obj `if test -f 'zpiv/zerocoin.cpp'; then $(CYGPATH_W) 'zpiv/zerocoin.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/zerocoin.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_wallet_a-zerocoin.Tpo zpiv/$(DEPDIR)/libbitcoin_wallet_a-zerocoin.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/zerocoin.cpp' object='zpiv/libbitcoin_wallet_a-zerocoin.obj' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_wallet_a-zerocoin.obj: zxnk/zerocoin.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_wallet_a-zerocoin.obj -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_wallet_a-zerocoin.Tpo -c -o zxnk/libbitcoin_wallet_a-zerocoin.obj `if test -f 'zxnk/zerocoin.cpp'; then $(CYGPATH_W) 'zxnk/zerocoin.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/zerocoin.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_wallet_a-zerocoin.Tpo zxnk/$(DEPDIR)/libbitcoin_wallet_a-zerocoin.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/zerocoin.cpp' object='zxnk/libbitcoin_wallet_a-zerocoin.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_wallet_a-zerocoin.obj `if test -f 'zpiv/zerocoin.cpp'; then $(CYGPATH_W) 'zpiv/zerocoin.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/zerocoin.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_wallet_a-zerocoin.obj `if test -f 'zxnk/zerocoin.cpp'; then $(CYGPATH_W) 'zxnk/zerocoin.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/zerocoin.cpp'; fi`
 
-zpiv/libbitcoin_wallet_a-accumulators.o: zpiv/accumulators.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_wallet_a-accumulators.o -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_wallet_a-accumulators.Tpo -c -o zpiv/libbitcoin_wallet_a-accumulators.o `test -f 'zpiv/accumulators.cpp' || echo '$(srcdir)/'`zpiv/accumulators.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_wallet_a-accumulators.Tpo zpiv/$(DEPDIR)/libbitcoin_wallet_a-accumulators.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/accumulators.cpp' object='zpiv/libbitcoin_wallet_a-accumulators.o' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_wallet_a-accumulators.o: zxnk/accumulators.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_wallet_a-accumulators.o -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_wallet_a-accumulators.Tpo -c -o zxnk/libbitcoin_wallet_a-accumulators.o `test -f 'zxnk/accumulators.cpp' || echo '$(srcdir)/'`zxnk/accumulators.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_wallet_a-accumulators.Tpo zxnk/$(DEPDIR)/libbitcoin_wallet_a-accumulators.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/accumulators.cpp' object='zxnk/libbitcoin_wallet_a-accumulators.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_wallet_a-accumulators.o `test -f 'zpiv/accumulators.cpp' || echo '$(srcdir)/'`zpiv/accumulators.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_wallet_a-accumulators.o `test -f 'zxnk/accumulators.cpp' || echo '$(srcdir)/'`zxnk/accumulators.cpp
 
-zpiv/libbitcoin_wallet_a-accumulators.obj: zpiv/accumulators.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_wallet_a-accumulators.obj -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_wallet_a-accumulators.Tpo -c -o zpiv/libbitcoin_wallet_a-accumulators.obj `if test -f 'zpiv/accumulators.cpp'; then $(CYGPATH_W) 'zpiv/accumulators.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/accumulators.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_wallet_a-accumulators.Tpo zpiv/$(DEPDIR)/libbitcoin_wallet_a-accumulators.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/accumulators.cpp' object='zpiv/libbitcoin_wallet_a-accumulators.obj' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_wallet_a-accumulators.obj: zxnk/accumulators.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_wallet_a-accumulators.obj -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_wallet_a-accumulators.Tpo -c -o zxnk/libbitcoin_wallet_a-accumulators.obj `if test -f 'zxnk/accumulators.cpp'; then $(CYGPATH_W) 'zxnk/accumulators.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/accumulators.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_wallet_a-accumulators.Tpo zxnk/$(DEPDIR)/libbitcoin_wallet_a-accumulators.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/accumulators.cpp' object='zxnk/libbitcoin_wallet_a-accumulators.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_wallet_a-accumulators.obj `if test -f 'zpiv/accumulators.cpp'; then $(CYGPATH_W) 'zpiv/accumulators.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/accumulators.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_wallet_a-accumulators.obj `if test -f 'zxnk/accumulators.cpp'; then $(CYGPATH_W) 'zxnk/accumulators.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/accumulators.cpp'; fi`
 
-zpiv/libbitcoin_wallet_a-mintpool.o: zpiv/mintpool.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_wallet_a-mintpool.o -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_wallet_a-mintpool.Tpo -c -o zpiv/libbitcoin_wallet_a-mintpool.o `test -f 'zpiv/mintpool.cpp' || echo '$(srcdir)/'`zpiv/mintpool.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_wallet_a-mintpool.Tpo zpiv/$(DEPDIR)/libbitcoin_wallet_a-mintpool.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/mintpool.cpp' object='zpiv/libbitcoin_wallet_a-mintpool.o' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_wallet_a-mintpool.o: zxnk/mintpool.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_wallet_a-mintpool.o -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_wallet_a-mintpool.Tpo -c -o zxnk/libbitcoin_wallet_a-mintpool.o `test -f 'zxnk/mintpool.cpp' || echo '$(srcdir)/'`zxnk/mintpool.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_wallet_a-mintpool.Tpo zxnk/$(DEPDIR)/libbitcoin_wallet_a-mintpool.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/mintpool.cpp' object='zxnk/libbitcoin_wallet_a-mintpool.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_wallet_a-mintpool.o `test -f 'zpiv/mintpool.cpp' || echo '$(srcdir)/'`zpiv/mintpool.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_wallet_a-mintpool.o `test -f 'zxnk/mintpool.cpp' || echo '$(srcdir)/'`zxnk/mintpool.cpp
 
-zpiv/libbitcoin_wallet_a-mintpool.obj: zpiv/mintpool.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_wallet_a-mintpool.obj -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_wallet_a-mintpool.Tpo -c -o zpiv/libbitcoin_wallet_a-mintpool.obj `if test -f 'zpiv/mintpool.cpp'; then $(CYGPATH_W) 'zpiv/mintpool.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/mintpool.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_wallet_a-mintpool.Tpo zpiv/$(DEPDIR)/libbitcoin_wallet_a-mintpool.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/mintpool.cpp' object='zpiv/libbitcoin_wallet_a-mintpool.obj' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_wallet_a-mintpool.obj: zxnk/mintpool.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_wallet_a-mintpool.obj -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_wallet_a-mintpool.Tpo -c -o zxnk/libbitcoin_wallet_a-mintpool.obj `if test -f 'zxnk/mintpool.cpp'; then $(CYGPATH_W) 'zxnk/mintpool.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/mintpool.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_wallet_a-mintpool.Tpo zxnk/$(DEPDIR)/libbitcoin_wallet_a-mintpool.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/mintpool.cpp' object='zxnk/libbitcoin_wallet_a-mintpool.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_wallet_a-mintpool.obj `if test -f 'zpiv/mintpool.cpp'; then $(CYGPATH_W) 'zpiv/mintpool.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/mintpool.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_wallet_a-mintpool.obj `if test -f 'zxnk/mintpool.cpp'; then $(CYGPATH_W) 'zxnk/mintpool.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/mintpool.cpp'; fi`
 
-zpiv/libbitcoin_wallet_a-witness.o: zpiv/witness.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_wallet_a-witness.o -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_wallet_a-witness.Tpo -c -o zpiv/libbitcoin_wallet_a-witness.o `test -f 'zpiv/witness.cpp' || echo '$(srcdir)/'`zpiv/witness.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_wallet_a-witness.Tpo zpiv/$(DEPDIR)/libbitcoin_wallet_a-witness.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/witness.cpp' object='zpiv/libbitcoin_wallet_a-witness.o' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_wallet_a-witness.o: zxnk/witness.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_wallet_a-witness.o -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_wallet_a-witness.Tpo -c -o zxnk/libbitcoin_wallet_a-witness.o `test -f 'zxnk/witness.cpp' || echo '$(srcdir)/'`zxnk/witness.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_wallet_a-witness.Tpo zxnk/$(DEPDIR)/libbitcoin_wallet_a-witness.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/witness.cpp' object='zxnk/libbitcoin_wallet_a-witness.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_wallet_a-witness.o `test -f 'zpiv/witness.cpp' || echo '$(srcdir)/'`zpiv/witness.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_wallet_a-witness.o `test -f 'zxnk/witness.cpp' || echo '$(srcdir)/'`zxnk/witness.cpp
 
-zpiv/libbitcoin_wallet_a-witness.obj: zpiv/witness.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_wallet_a-witness.obj -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_wallet_a-witness.Tpo -c -o zpiv/libbitcoin_wallet_a-witness.obj `if test -f 'zpiv/witness.cpp'; then $(CYGPATH_W) 'zpiv/witness.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/witness.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_wallet_a-witness.Tpo zpiv/$(DEPDIR)/libbitcoin_wallet_a-witness.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/witness.cpp' object='zpiv/libbitcoin_wallet_a-witness.obj' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_wallet_a-witness.obj: zxnk/witness.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_wallet_a-witness.obj -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_wallet_a-witness.Tpo -c -o zxnk/libbitcoin_wallet_a-witness.obj `if test -f 'zxnk/witness.cpp'; then $(CYGPATH_W) 'zxnk/witness.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/witness.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_wallet_a-witness.Tpo zxnk/$(DEPDIR)/libbitcoin_wallet_a-witness.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/witness.cpp' object='zxnk/libbitcoin_wallet_a-witness.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_wallet_a-witness.obj `if test -f 'zpiv/witness.cpp'; then $(CYGPATH_W) 'zpiv/witness.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/witness.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_wallet_a-witness.obj `if test -f 'zxnk/witness.cpp'; then $(CYGPATH_W) 'zxnk/witness.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/witness.cpp'; fi`
 
-zpiv/libbitcoin_wallet_a-zpivwallet.o: zpiv/zpivwallet.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_wallet_a-zpivwallet.o -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivwallet.Tpo -c -o zpiv/libbitcoin_wallet_a-zpivwallet.o `test -f 'zpiv/zpivwallet.cpp' || echo '$(srcdir)/'`zpiv/zpivwallet.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivwallet.Tpo zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivwallet.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/zpivwallet.cpp' object='zpiv/libbitcoin_wallet_a-zpivwallet.o' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_wallet_a-zxnkwallet.o: zxnk/zxnkwallet.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_wallet_a-zxnkwallet.o -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnkwallet.Tpo -c -o zxnk/libbitcoin_wallet_a-zxnkwallet.o `test -f 'zxnk/zxnkwallet.cpp' || echo '$(srcdir)/'`zxnk/zxnkwallet.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnkwallet.Tpo zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnkwallet.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/zxnkwallet.cpp' object='zxnk/libbitcoin_wallet_a-zxnkwallet.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_wallet_a-zpivwallet.o `test -f 'zpiv/zpivwallet.cpp' || echo '$(srcdir)/'`zpiv/zpivwallet.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_wallet_a-zxnkwallet.o `test -f 'zxnk/zxnkwallet.cpp' || echo '$(srcdir)/'`zxnk/zxnkwallet.cpp
 
-zpiv/libbitcoin_wallet_a-zpivwallet.obj: zpiv/zpivwallet.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_wallet_a-zpivwallet.obj -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivwallet.Tpo -c -o zpiv/libbitcoin_wallet_a-zpivwallet.obj `if test -f 'zpiv/zpivwallet.cpp'; then $(CYGPATH_W) 'zpiv/zpivwallet.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/zpivwallet.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivwallet.Tpo zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivwallet.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/zpivwallet.cpp' object='zpiv/libbitcoin_wallet_a-zpivwallet.obj' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_wallet_a-zxnkwallet.obj: zxnk/zxnkwallet.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_wallet_a-zxnkwallet.obj -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnkwallet.Tpo -c -o zxnk/libbitcoin_wallet_a-zxnkwallet.obj `if test -f 'zxnk/zxnkwallet.cpp'; then $(CYGPATH_W) 'zxnk/zxnkwallet.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/zxnkwallet.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnkwallet.Tpo zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnkwallet.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/zxnkwallet.cpp' object='zxnk/libbitcoin_wallet_a-zxnkwallet.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_wallet_a-zpivwallet.obj `if test -f 'zpiv/zpivwallet.cpp'; then $(CYGPATH_W) 'zpiv/zpivwallet.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/zpivwallet.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_wallet_a-zxnkwallet.obj `if test -f 'zxnk/zxnkwallet.cpp'; then $(CYGPATH_W) 'zxnk/zxnkwallet.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/zxnkwallet.cpp'; fi`
 
-zpiv/libbitcoin_wallet_a-zpivtracker.o: zpiv/zpivtracker.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_wallet_a-zpivtracker.o -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivtracker.Tpo -c -o zpiv/libbitcoin_wallet_a-zpivtracker.o `test -f 'zpiv/zpivtracker.cpp' || echo '$(srcdir)/'`zpiv/zpivtracker.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivtracker.Tpo zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivtracker.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/zpivtracker.cpp' object='zpiv/libbitcoin_wallet_a-zpivtracker.o' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_wallet_a-zxnktracker.o: zxnk/zxnktracker.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_wallet_a-zxnktracker.o -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnktracker.Tpo -c -o zxnk/libbitcoin_wallet_a-zxnktracker.o `test -f 'zxnk/zxnktracker.cpp' || echo '$(srcdir)/'`zxnk/zxnktracker.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnktracker.Tpo zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnktracker.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/zxnktracker.cpp' object='zxnk/libbitcoin_wallet_a-zxnktracker.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_wallet_a-zpivtracker.o `test -f 'zpiv/zpivtracker.cpp' || echo '$(srcdir)/'`zpiv/zpivtracker.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_wallet_a-zxnktracker.o `test -f 'zxnk/zxnktracker.cpp' || echo '$(srcdir)/'`zxnk/zxnktracker.cpp
 
-zpiv/libbitcoin_wallet_a-zpivtracker.obj: zpiv/zpivtracker.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_wallet_a-zpivtracker.obj -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivtracker.Tpo -c -o zpiv/libbitcoin_wallet_a-zpivtracker.obj `if test -f 'zpiv/zpivtracker.cpp'; then $(CYGPATH_W) 'zpiv/zpivtracker.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/zpivtracker.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivtracker.Tpo zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivtracker.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/zpivtracker.cpp' object='zpiv/libbitcoin_wallet_a-zpivtracker.obj' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_wallet_a-zxnktracker.obj: zxnk/zxnktracker.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_wallet_a-zxnktracker.obj -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnktracker.Tpo -c -o zxnk/libbitcoin_wallet_a-zxnktracker.obj `if test -f 'zxnk/zxnktracker.cpp'; then $(CYGPATH_W) 'zxnk/zxnktracker.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/zxnktracker.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnktracker.Tpo zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnktracker.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/zxnktracker.cpp' object='zxnk/libbitcoin_wallet_a-zxnktracker.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_wallet_a-zpivtracker.obj `if test -f 'zpiv/zpivtracker.cpp'; then $(CYGPATH_W) 'zpiv/zpivtracker.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/zpivtracker.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_wallet_a-zxnktracker.obj `if test -f 'zxnk/zxnktracker.cpp'; then $(CYGPATH_W) 'zxnk/zxnktracker.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/zxnktracker.cpp'; fi`
 
 libbitcoin_wallet_a-stakeinput.o: stakeinput.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT libbitcoin_wallet_a-stakeinput.o -MD -MP -MF $(DEPDIR)/libbitcoin_wallet_a-stakeinput.Tpo -c -o libbitcoin_wallet_a-stakeinput.o `test -f 'stakeinput.cpp' || echo '$(srcdir)/'`stakeinput.cpp
@@ -8387,33 +8387,33 @@ libbitcoin_wallet_a-genwit.obj: genwit.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoin_wallet_a-genwit.obj `if test -f 'genwit.cpp'; then $(CYGPATH_W) 'genwit.cpp'; else $(CYGPATH_W) '$(srcdir)/genwit.cpp'; fi`
 
-zpiv/libbitcoin_wallet_a-zpivmodule.o: zpiv/zpivmodule.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_wallet_a-zpivmodule.o -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivmodule.Tpo -c -o zpiv/libbitcoin_wallet_a-zpivmodule.o `test -f 'zpiv/zpivmodule.cpp' || echo '$(srcdir)/'`zpiv/zpivmodule.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivmodule.Tpo zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivmodule.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/zpivmodule.cpp' object='zpiv/libbitcoin_wallet_a-zpivmodule.o' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_wallet_a-zxnkmodule.o: zxnk/zxnkmodule.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_wallet_a-zxnkmodule.o -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnkmodule.Tpo -c -o zxnk/libbitcoin_wallet_a-zxnkmodule.o `test -f 'zxnk/zxnkmodule.cpp' || echo '$(srcdir)/'`zxnk/zxnkmodule.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnkmodule.Tpo zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnkmodule.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/zxnkmodule.cpp' object='zxnk/libbitcoin_wallet_a-zxnkmodule.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_wallet_a-zpivmodule.o `test -f 'zpiv/zpivmodule.cpp' || echo '$(srcdir)/'`zpiv/zpivmodule.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_wallet_a-zxnkmodule.o `test -f 'zxnk/zxnkmodule.cpp' || echo '$(srcdir)/'`zxnk/zxnkmodule.cpp
 
-zpiv/libbitcoin_wallet_a-zpivmodule.obj: zpiv/zpivmodule.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zpiv/libbitcoin_wallet_a-zpivmodule.obj -MD -MP -MF zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivmodule.Tpo -c -o zpiv/libbitcoin_wallet_a-zpivmodule.obj `if test -f 'zpiv/zpivmodule.cpp'; then $(CYGPATH_W) 'zpiv/zpivmodule.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/zpivmodule.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivmodule.Tpo zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivmodule.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zpiv/zpivmodule.cpp' object='zpiv/libbitcoin_wallet_a-zpivmodule.obj' libtool=no @AMDEPBACKSLASH@
+zxnk/libbitcoin_wallet_a-zxnkmodule.obj: zxnk/zxnkmodule.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT zxnk/libbitcoin_wallet_a-zxnkmodule.obj -MD -MP -MF zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnkmodule.Tpo -c -o zxnk/libbitcoin_wallet_a-zxnkmodule.obj `if test -f 'zxnk/zxnkmodule.cpp'; then $(CYGPATH_W) 'zxnk/zxnkmodule.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/zxnkmodule.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnkmodule.Tpo zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnkmodule.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='zxnk/zxnkmodule.cpp' object='zxnk/libbitcoin_wallet_a-zxnkmodule.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zpiv/libbitcoin_wallet_a-zpivmodule.obj `if test -f 'zpiv/zpivmodule.cpp'; then $(CYGPATH_W) 'zpiv/zpivmodule.cpp'; else $(CYGPATH_W) '$(srcdir)/zpiv/zpivmodule.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o zxnk/libbitcoin_wallet_a-zxnkmodule.obj `if test -f 'zxnk/zxnkmodule.cpp'; then $(CYGPATH_W) 'zxnk/zxnkmodule.cpp'; else $(CYGPATH_W) '$(srcdir)/zxnk/zxnkmodule.cpp'; fi`
 
-libbitcoin_wallet_a-lightzpivthread.o: lightzpivthread.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT libbitcoin_wallet_a-lightzpivthread.o -MD -MP -MF $(DEPDIR)/libbitcoin_wallet_a-lightzpivthread.Tpo -c -o libbitcoin_wallet_a-lightzpivthread.o `test -f 'lightzpivthread.cpp' || echo '$(srcdir)/'`lightzpivthread.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libbitcoin_wallet_a-lightzpivthread.Tpo $(DEPDIR)/libbitcoin_wallet_a-lightzpivthread.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='lightzpivthread.cpp' object='libbitcoin_wallet_a-lightzpivthread.o' libtool=no @AMDEPBACKSLASH@
+libbitcoin_wallet_a-lightzxnkthread.o: lightzxnkthread.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT libbitcoin_wallet_a-lightzxnkthread.o -MD -MP -MF $(DEPDIR)/libbitcoin_wallet_a-lightzxnkthread.Tpo -c -o libbitcoin_wallet_a-lightzxnkthread.o `test -f 'lightzxnkthread.cpp' || echo '$(srcdir)/'`lightzxnkthread.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libbitcoin_wallet_a-lightzxnkthread.Tpo $(DEPDIR)/libbitcoin_wallet_a-lightzxnkthread.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='lightzxnkthread.cpp' object='libbitcoin_wallet_a-lightzxnkthread.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoin_wallet_a-lightzpivthread.o `test -f 'lightzpivthread.cpp' || echo '$(srcdir)/'`lightzpivthread.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoin_wallet_a-lightzxnkthread.o `test -f 'lightzxnkthread.cpp' || echo '$(srcdir)/'`lightzxnkthread.cpp
 
-libbitcoin_wallet_a-lightzpivthread.obj: lightzpivthread.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT libbitcoin_wallet_a-lightzpivthread.obj -MD -MP -MF $(DEPDIR)/libbitcoin_wallet_a-lightzpivthread.Tpo -c -o libbitcoin_wallet_a-lightzpivthread.obj `if test -f 'lightzpivthread.cpp'; then $(CYGPATH_W) 'lightzpivthread.cpp'; else $(CYGPATH_W) '$(srcdir)/lightzpivthread.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libbitcoin_wallet_a-lightzpivthread.Tpo $(DEPDIR)/libbitcoin_wallet_a-lightzpivthread.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='lightzpivthread.cpp' object='libbitcoin_wallet_a-lightzpivthread.obj' libtool=no @AMDEPBACKSLASH@
+libbitcoin_wallet_a-lightzxnkthread.obj: lightzxnkthread.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -MT libbitcoin_wallet_a-lightzxnkthread.obj -MD -MP -MF $(DEPDIR)/libbitcoin_wallet_a-lightzxnkthread.Tpo -c -o libbitcoin_wallet_a-lightzxnkthread.obj `if test -f 'lightzxnkthread.cpp'; then $(CYGPATH_W) 'lightzxnkthread.cpp'; else $(CYGPATH_W) '$(srcdir)/lightzxnkthread.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libbitcoin_wallet_a-lightzxnkthread.Tpo $(DEPDIR)/libbitcoin_wallet_a-lightzxnkthread.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='lightzxnkthread.cpp' object='libbitcoin_wallet_a-lightzxnkthread.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoin_wallet_a-lightzpivthread.obj `if test -f 'lightzpivthread.cpp'; then $(CYGPATH_W) 'lightzpivthread.cpp'; else $(CYGPATH_W) '$(srcdir)/lightzpivthread.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_wallet_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_wallet_a_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoin_wallet_a-lightzxnkthread.obj `if test -f 'lightzxnkthread.cpp'; then $(CYGPATH_W) 'lightzxnkthread.cpp'; else $(CYGPATH_W) '$(srcdir)/lightzxnkthread.cpp'; fi`
 
 zmq/libbitcoin_zmq_a-zmqabstractnotifier.o: zmq/zmqabstractnotifier.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_zmq_a_CPPFLAGS) $(CPPFLAGS) $(libbitcoin_zmq_a_CXXFLAGS) $(CXXFLAGS) -MT zmq/libbitcoin_zmq_a-zmqabstractnotifier.o -MD -MP -MF zmq/$(DEPDIR)/libbitcoin_zmq_a-zmqabstractnotifier.Tpo -c -o zmq/libbitcoin_zmq_a-zmqabstractnotifier.o `test -f 'zmq/zmqabstractnotifier.cpp' || echo '$(srcdir)/'`zmq/zmqabstractnotifier.cpp
@@ -9227,19 +9227,19 @@ qt/encocoin/libbitcoinqt_a-loadingdialog.obj: qt/encocoin/loadingdialog.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/encocoin/libbitcoinqt_a-loadingdialog.obj `if test -f 'qt/encocoin/loadingdialog.cpp'; then $(CYGPATH_W) 'qt/encocoin/loadingdialog.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/encocoin/loadingdialog.cpp'; fi`
 
-qt/libbitcoinqt_a-zpivcontroldialog.o: qt/zpivcontroldialog.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/libbitcoinqt_a-zpivcontroldialog.o -MD -MP -MF qt/$(DEPDIR)/libbitcoinqt_a-zpivcontroldialog.Tpo -c -o qt/libbitcoinqt_a-zpivcontroldialog.o `test -f 'qt/zpivcontroldialog.cpp' || echo '$(srcdir)/'`qt/zpivcontroldialog.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/$(DEPDIR)/libbitcoinqt_a-zpivcontroldialog.Tpo qt/$(DEPDIR)/libbitcoinqt_a-zpivcontroldialog.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/zpivcontroldialog.cpp' object='qt/libbitcoinqt_a-zpivcontroldialog.o' libtool=no @AMDEPBACKSLASH@
+qt/libbitcoinqt_a-zxnkcontroldialog.o: qt/zxnkcontroldialog.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/libbitcoinqt_a-zxnkcontroldialog.o -MD -MP -MF qt/$(DEPDIR)/libbitcoinqt_a-zxnkcontroldialog.Tpo -c -o qt/libbitcoinqt_a-zxnkcontroldialog.o `test -f 'qt/zxnkcontroldialog.cpp' || echo '$(srcdir)/'`qt/zxnkcontroldialog.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/$(DEPDIR)/libbitcoinqt_a-zxnkcontroldialog.Tpo qt/$(DEPDIR)/libbitcoinqt_a-zxnkcontroldialog.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/zxnkcontroldialog.cpp' object='qt/libbitcoinqt_a-zxnkcontroldialog.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/libbitcoinqt_a-zpivcontroldialog.o `test -f 'qt/zpivcontroldialog.cpp' || echo '$(srcdir)/'`qt/zpivcontroldialog.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/libbitcoinqt_a-zxnkcontroldialog.o `test -f 'qt/zxnkcontroldialog.cpp' || echo '$(srcdir)/'`qt/zxnkcontroldialog.cpp
 
-qt/libbitcoinqt_a-zpivcontroldialog.obj: qt/zpivcontroldialog.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/libbitcoinqt_a-zpivcontroldialog.obj -MD -MP -MF qt/$(DEPDIR)/libbitcoinqt_a-zpivcontroldialog.Tpo -c -o qt/libbitcoinqt_a-zpivcontroldialog.obj `if test -f 'qt/zpivcontroldialog.cpp'; then $(CYGPATH_W) 'qt/zpivcontroldialog.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/zpivcontroldialog.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/$(DEPDIR)/libbitcoinqt_a-zpivcontroldialog.Tpo qt/$(DEPDIR)/libbitcoinqt_a-zpivcontroldialog.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/zpivcontroldialog.cpp' object='qt/libbitcoinqt_a-zpivcontroldialog.obj' libtool=no @AMDEPBACKSLASH@
+qt/libbitcoinqt_a-zxnkcontroldialog.obj: qt/zxnkcontroldialog.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/libbitcoinqt_a-zxnkcontroldialog.obj -MD -MP -MF qt/$(DEPDIR)/libbitcoinqt_a-zxnkcontroldialog.Tpo -c -o qt/libbitcoinqt_a-zxnkcontroldialog.obj `if test -f 'qt/zxnkcontroldialog.cpp'; then $(CYGPATH_W) 'qt/zxnkcontroldialog.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/zxnkcontroldialog.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/$(DEPDIR)/libbitcoinqt_a-zxnkcontroldialog.Tpo qt/$(DEPDIR)/libbitcoinqt_a-zxnkcontroldialog.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/zxnkcontroldialog.cpp' object='qt/libbitcoinqt_a-zxnkcontroldialog.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/libbitcoinqt_a-zpivcontroldialog.obj `if test -f 'qt/zpivcontroldialog.cpp'; then $(CYGPATH_W) 'qt/zpivcontroldialog.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/zpivcontroldialog.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/libbitcoinqt_a-zxnkcontroldialog.obj `if test -f 'qt/zxnkcontroldialog.cpp'; then $(CYGPATH_W) 'qt/zxnkcontroldialog.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/zxnkcontroldialog.cpp'; fi`
 
 qt/encocoin/libbitcoinqt_a-pwidget.o: qt/encocoin/pwidget.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/encocoin/libbitcoinqt_a-pwidget.o -MD -MP -MF qt/encocoin/$(DEPDIR)/libbitcoinqt_a-pwidget.Tpo -c -o qt/encocoin/libbitcoinqt_a-pwidget.o `test -f 'qt/encocoin/pwidget.cpp' || echo '$(srcdir)/'`qt/encocoin/pwidget.cpp
@@ -9465,19 +9465,19 @@ qt/encocoin/libbitcoinqt_a-dashboardwidget.obj: qt/encocoin/dashboardwidget.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/encocoin/libbitcoinqt_a-dashboardwidget.obj `if test -f 'qt/encocoin/dashboardwidget.cpp'; then $(CYGPATH_W) 'qt/encocoin/dashboardwidget.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/encocoin/dashboardwidget.cpp'; fi`
 
-qt/encocoin/libbitcoinqt_a-coincontrolpivwidget.o: qt/encocoin/coincontrolpivwidget.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/encocoin/libbitcoinqt_a-coincontrolpivwidget.o -MD -MP -MF qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coincontrolpivwidget.Tpo -c -o qt/encocoin/libbitcoinqt_a-coincontrolpivwidget.o `test -f 'qt/encocoin/coincontrolpivwidget.cpp' || echo '$(srcdir)/'`qt/encocoin/coincontrolpivwidget.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coincontrolpivwidget.Tpo qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coincontrolpivwidget.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/encocoin/coincontrolpivwidget.cpp' object='qt/encocoin/libbitcoinqt_a-coincontrolpivwidget.o' libtool=no @AMDEPBACKSLASH@
+qt/encocoin/libbitcoinqt_a-coincontrolxnkwidget.o: qt/encocoin/coincontrolxnkwidget.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/encocoin/libbitcoinqt_a-coincontrolxnkwidget.o -MD -MP -MF qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coincontrolxnkwidget.Tpo -c -o qt/encocoin/libbitcoinqt_a-coincontrolxnkwidget.o `test -f 'qt/encocoin/coincontrolxnkwidget.cpp' || echo '$(srcdir)/'`qt/encocoin/coincontrolxnkwidget.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coincontrolxnkwidget.Tpo qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coincontrolxnkwidget.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/encocoin/coincontrolxnkwidget.cpp' object='qt/encocoin/libbitcoinqt_a-coincontrolxnkwidget.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/encocoin/libbitcoinqt_a-coincontrolpivwidget.o `test -f 'qt/encocoin/coincontrolpivwidget.cpp' || echo '$(srcdir)/'`qt/encocoin/coincontrolpivwidget.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/encocoin/libbitcoinqt_a-coincontrolxnkwidget.o `test -f 'qt/encocoin/coincontrolxnkwidget.cpp' || echo '$(srcdir)/'`qt/encocoin/coincontrolxnkwidget.cpp
 
-qt/encocoin/libbitcoinqt_a-coincontrolpivwidget.obj: qt/encocoin/coincontrolpivwidget.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/encocoin/libbitcoinqt_a-coincontrolpivwidget.obj -MD -MP -MF qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coincontrolpivwidget.Tpo -c -o qt/encocoin/libbitcoinqt_a-coincontrolpivwidget.obj `if test -f 'qt/encocoin/coincontrolpivwidget.cpp'; then $(CYGPATH_W) 'qt/encocoin/coincontrolpivwidget.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/encocoin/coincontrolpivwidget.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coincontrolpivwidget.Tpo qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coincontrolpivwidget.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/encocoin/coincontrolpivwidget.cpp' object='qt/encocoin/libbitcoinqt_a-coincontrolpivwidget.obj' libtool=no @AMDEPBACKSLASH@
+qt/encocoin/libbitcoinqt_a-coincontrolxnkwidget.obj: qt/encocoin/coincontrolxnkwidget.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/encocoin/libbitcoinqt_a-coincontrolxnkwidget.obj -MD -MP -MF qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coincontrolxnkwidget.Tpo -c -o qt/encocoin/libbitcoinqt_a-coincontrolxnkwidget.obj `if test -f 'qt/encocoin/coincontrolxnkwidget.cpp'; then $(CYGPATH_W) 'qt/encocoin/coincontrolxnkwidget.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/encocoin/coincontrolxnkwidget.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coincontrolxnkwidget.Tpo qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coincontrolxnkwidget.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/encocoin/coincontrolxnkwidget.cpp' object='qt/encocoin/libbitcoinqt_a-coincontrolxnkwidget.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/encocoin/libbitcoinqt_a-coincontrolpivwidget.obj `if test -f 'qt/encocoin/coincontrolpivwidget.cpp'; then $(CYGPATH_W) 'qt/encocoin/coincontrolpivwidget.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/encocoin/coincontrolpivwidget.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/encocoin/libbitcoinqt_a-coincontrolxnkwidget.obj `if test -f 'qt/encocoin/coincontrolxnkwidget.cpp'; then $(CYGPATH_W) 'qt/encocoin/coincontrolxnkwidget.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/encocoin/coincontrolxnkwidget.cpp'; fi`
 
 qt/encocoin/libbitcoinqt_a-addresslabelrow.o: qt/encocoin/addresslabelrow.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/encocoin/libbitcoinqt_a-addresslabelrow.o -MD -MP -MF qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addresslabelrow.Tpo -c -o qt/encocoin/libbitcoinqt_a-addresslabelrow.o `test -f 'qt/encocoin/addresslabelrow.cpp' || echo '$(srcdir)/'`qt/encocoin/addresslabelrow.cpp
@@ -10599,19 +10599,19 @@ qt/encocoin/libbitcoinqt_a-moc_loadingdialog.obj: qt/encocoin/moc_loadingdialog.
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/encocoin/libbitcoinqt_a-moc_loadingdialog.obj `if test -f 'qt/encocoin/moc_loadingdialog.cpp'; then $(CYGPATH_W) 'qt/encocoin/moc_loadingdialog.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/encocoin/moc_loadingdialog.cpp'; fi`
 
-qt/libbitcoinqt_a-moc_zpivcontroldialog.o: qt/moc_zpivcontroldialog.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/libbitcoinqt_a-moc_zpivcontroldialog.o -MD -MP -MF qt/$(DEPDIR)/libbitcoinqt_a-moc_zpivcontroldialog.Tpo -c -o qt/libbitcoinqt_a-moc_zpivcontroldialog.o `test -f 'qt/moc_zpivcontroldialog.cpp' || echo '$(srcdir)/'`qt/moc_zpivcontroldialog.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/$(DEPDIR)/libbitcoinqt_a-moc_zpivcontroldialog.Tpo qt/$(DEPDIR)/libbitcoinqt_a-moc_zpivcontroldialog.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/moc_zpivcontroldialog.cpp' object='qt/libbitcoinqt_a-moc_zpivcontroldialog.o' libtool=no @AMDEPBACKSLASH@
+qt/libbitcoinqt_a-moc_zxnkcontroldialog.o: qt/moc_zxnkcontroldialog.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/libbitcoinqt_a-moc_zxnkcontroldialog.o -MD -MP -MF qt/$(DEPDIR)/libbitcoinqt_a-moc_zxnkcontroldialog.Tpo -c -o qt/libbitcoinqt_a-moc_zxnkcontroldialog.o `test -f 'qt/moc_zxnkcontroldialog.cpp' || echo '$(srcdir)/'`qt/moc_zxnkcontroldialog.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/$(DEPDIR)/libbitcoinqt_a-moc_zxnkcontroldialog.Tpo qt/$(DEPDIR)/libbitcoinqt_a-moc_zxnkcontroldialog.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/moc_zxnkcontroldialog.cpp' object='qt/libbitcoinqt_a-moc_zxnkcontroldialog.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/libbitcoinqt_a-moc_zpivcontroldialog.o `test -f 'qt/moc_zpivcontroldialog.cpp' || echo '$(srcdir)/'`qt/moc_zpivcontroldialog.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/libbitcoinqt_a-moc_zxnkcontroldialog.o `test -f 'qt/moc_zxnkcontroldialog.cpp' || echo '$(srcdir)/'`qt/moc_zxnkcontroldialog.cpp
 
-qt/libbitcoinqt_a-moc_zpivcontroldialog.obj: qt/moc_zpivcontroldialog.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/libbitcoinqt_a-moc_zpivcontroldialog.obj -MD -MP -MF qt/$(DEPDIR)/libbitcoinqt_a-moc_zpivcontroldialog.Tpo -c -o qt/libbitcoinqt_a-moc_zpivcontroldialog.obj `if test -f 'qt/moc_zpivcontroldialog.cpp'; then $(CYGPATH_W) 'qt/moc_zpivcontroldialog.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/moc_zpivcontroldialog.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/$(DEPDIR)/libbitcoinqt_a-moc_zpivcontroldialog.Tpo qt/$(DEPDIR)/libbitcoinqt_a-moc_zpivcontroldialog.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/moc_zpivcontroldialog.cpp' object='qt/libbitcoinqt_a-moc_zpivcontroldialog.obj' libtool=no @AMDEPBACKSLASH@
+qt/libbitcoinqt_a-moc_zxnkcontroldialog.obj: qt/moc_zxnkcontroldialog.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/libbitcoinqt_a-moc_zxnkcontroldialog.obj -MD -MP -MF qt/$(DEPDIR)/libbitcoinqt_a-moc_zxnkcontroldialog.Tpo -c -o qt/libbitcoinqt_a-moc_zxnkcontroldialog.obj `if test -f 'qt/moc_zxnkcontroldialog.cpp'; then $(CYGPATH_W) 'qt/moc_zxnkcontroldialog.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/moc_zxnkcontroldialog.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/$(DEPDIR)/libbitcoinqt_a-moc_zxnkcontroldialog.Tpo qt/$(DEPDIR)/libbitcoinqt_a-moc_zxnkcontroldialog.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/moc_zxnkcontroldialog.cpp' object='qt/libbitcoinqt_a-moc_zxnkcontroldialog.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/libbitcoinqt_a-moc_zpivcontroldialog.obj `if test -f 'qt/moc_zpivcontroldialog.cpp'; then $(CYGPATH_W) 'qt/moc_zpivcontroldialog.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/moc_zpivcontroldialog.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/libbitcoinqt_a-moc_zxnkcontroldialog.obj `if test -f 'qt/moc_zxnkcontroldialog.cpp'; then $(CYGPATH_W) 'qt/moc_zxnkcontroldialog.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/moc_zxnkcontroldialog.cpp'; fi`
 
 qt/encocoin/libbitcoinqt_a-moc_pwidget.o: qt/encocoin/moc_pwidget.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/encocoin/libbitcoinqt_a-moc_pwidget.o -MD -MP -MF qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_pwidget.Tpo -c -o qt/encocoin/libbitcoinqt_a-moc_pwidget.o `test -f 'qt/encocoin/moc_pwidget.cpp' || echo '$(srcdir)/'`qt/encocoin/moc_pwidget.cpp
@@ -10781,19 +10781,19 @@ qt/encocoin/libbitcoinqt_a-moc_dashboardwidget.obj: qt/encocoin/moc_dashboardwid
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/encocoin/libbitcoinqt_a-moc_dashboardwidget.obj `if test -f 'qt/encocoin/moc_dashboardwidget.cpp'; then $(CYGPATH_W) 'qt/encocoin/moc_dashboardwidget.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/encocoin/moc_dashboardwidget.cpp'; fi`
 
-qt/encocoin/libbitcoinqt_a-moc_coincontrolpivwidget.o: qt/encocoin/moc_coincontrolpivwidget.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/encocoin/libbitcoinqt_a-moc_coincontrolpivwidget.o -MD -MP -MF qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coincontrolpivwidget.Tpo -c -o qt/encocoin/libbitcoinqt_a-moc_coincontrolpivwidget.o `test -f 'qt/encocoin/moc_coincontrolpivwidget.cpp' || echo '$(srcdir)/'`qt/encocoin/moc_coincontrolpivwidget.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coincontrolpivwidget.Tpo qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coincontrolpivwidget.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/encocoin/moc_coincontrolpivwidget.cpp' object='qt/encocoin/libbitcoinqt_a-moc_coincontrolpivwidget.o' libtool=no @AMDEPBACKSLASH@
+qt/encocoin/libbitcoinqt_a-moc_coincontrolxnkwidget.o: qt/encocoin/moc_coincontrolxnkwidget.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/encocoin/libbitcoinqt_a-moc_coincontrolxnkwidget.o -MD -MP -MF qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coincontrolxnkwidget.Tpo -c -o qt/encocoin/libbitcoinqt_a-moc_coincontrolxnkwidget.o `test -f 'qt/encocoin/moc_coincontrolxnkwidget.cpp' || echo '$(srcdir)/'`qt/encocoin/moc_coincontrolxnkwidget.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coincontrolxnkwidget.Tpo qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coincontrolxnkwidget.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/encocoin/moc_coincontrolxnkwidget.cpp' object='qt/encocoin/libbitcoinqt_a-moc_coincontrolxnkwidget.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/encocoin/libbitcoinqt_a-moc_coincontrolpivwidget.o `test -f 'qt/encocoin/moc_coincontrolpivwidget.cpp' || echo '$(srcdir)/'`qt/encocoin/moc_coincontrolpivwidget.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/encocoin/libbitcoinqt_a-moc_coincontrolxnkwidget.o `test -f 'qt/encocoin/moc_coincontrolxnkwidget.cpp' || echo '$(srcdir)/'`qt/encocoin/moc_coincontrolxnkwidget.cpp
 
-qt/encocoin/libbitcoinqt_a-moc_coincontrolpivwidget.obj: qt/encocoin/moc_coincontrolpivwidget.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/encocoin/libbitcoinqt_a-moc_coincontrolpivwidget.obj -MD -MP -MF qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coincontrolpivwidget.Tpo -c -o qt/encocoin/libbitcoinqt_a-moc_coincontrolpivwidget.obj `if test -f 'qt/encocoin/moc_coincontrolpivwidget.cpp'; then $(CYGPATH_W) 'qt/encocoin/moc_coincontrolpivwidget.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/encocoin/moc_coincontrolpivwidget.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coincontrolpivwidget.Tpo qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coincontrolpivwidget.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/encocoin/moc_coincontrolpivwidget.cpp' object='qt/encocoin/libbitcoinqt_a-moc_coincontrolpivwidget.obj' libtool=no @AMDEPBACKSLASH@
+qt/encocoin/libbitcoinqt_a-moc_coincontrolxnkwidget.obj: qt/encocoin/moc_coincontrolxnkwidget.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/encocoin/libbitcoinqt_a-moc_coincontrolxnkwidget.obj -MD -MP -MF qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coincontrolxnkwidget.Tpo -c -o qt/encocoin/libbitcoinqt_a-moc_coincontrolxnkwidget.obj `if test -f 'qt/encocoin/moc_coincontrolxnkwidget.cpp'; then $(CYGPATH_W) 'qt/encocoin/moc_coincontrolxnkwidget.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/encocoin/moc_coincontrolxnkwidget.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coincontrolxnkwidget.Tpo qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coincontrolxnkwidget.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/encocoin/moc_coincontrolxnkwidget.cpp' object='qt/encocoin/libbitcoinqt_a-moc_coincontrolxnkwidget.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/encocoin/libbitcoinqt_a-moc_coincontrolpivwidget.obj `if test -f 'qt/encocoin/moc_coincontrolpivwidget.cpp'; then $(CYGPATH_W) 'qt/encocoin/moc_coincontrolpivwidget.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/encocoin/moc_coincontrolpivwidget.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/encocoin/libbitcoinqt_a-moc_coincontrolxnkwidget.obj `if test -f 'qt/encocoin/moc_coincontrolxnkwidget.cpp'; then $(CYGPATH_W) 'qt/encocoin/moc_coincontrolxnkwidget.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/encocoin/moc_coincontrolxnkwidget.cpp'; fi`
 
 qt/encocoin/libbitcoinqt_a-moc_addresslabelrow.o: qt/encocoin/moc_addresslabelrow.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/encocoin/libbitcoinqt_a-moc_addresslabelrow.o -MD -MP -MF qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_addresslabelrow.Tpo -c -o qt/encocoin/libbitcoinqt_a-moc_addresslabelrow.o `test -f 'qt/encocoin/moc_addresslabelrow.cpp' || echo '$(srcdir)/'`qt/encocoin/moc_addresslabelrow.cpp
@@ -12908,8 +12908,8 @@ distclean-generic:
 	-rm -f wallet/test/$(am__dirstamp)
 	-rm -f zmq/$(DEPDIR)/$(am__dirstamp)
 	-rm -f zmq/$(am__dirstamp)
-	-rm -f zpiv/$(DEPDIR)/$(am__dirstamp)
-	-rm -f zpiv/$(am__dirstamp)
+	-rm -f zxnk/$(DEPDIR)/$(am__dirstamp)
+	-rm -f zxnk/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -12965,7 +12965,7 @@ distclean: distclean-recursive
 	-rm -f ./$(DEPDIR)/libbitcoin_server_a-txdb.Po
 	-rm -f ./$(DEPDIR)/libbitcoin_server_a-txmempool.Po
 	-rm -f ./$(DEPDIR)/libbitcoin_server_a-validationinterface.Po
-	-rm -f ./$(DEPDIR)/libbitcoin_server_a-zpivchain.Po
+	-rm -f ./$(DEPDIR)/libbitcoin_server_a-zxnkchain.Po
 	-rm -f ./$(DEPDIR)/libbitcoin_util_a-allocators.Po
 	-rm -f ./$(DEPDIR)/libbitcoin_util_a-chainparamsbase.Po
 	-rm -f ./$(DEPDIR)/libbitcoin_util_a-clientversion.Po
@@ -12984,7 +12984,7 @@ distclean: distclean-recursive
 	-rm -f ./$(DEPDIR)/libbitcoin_wallet_a-denomination_functions.Po
 	-rm -f ./$(DEPDIR)/libbitcoin_wallet_a-genwit.Po
 	-rm -f ./$(DEPDIR)/libbitcoin_wallet_a-kernel.Po
-	-rm -f ./$(DEPDIR)/libbitcoin_wallet_a-lightzpivthread.Po
+	-rm -f ./$(DEPDIR)/libbitcoin_wallet_a-lightzxnkthread.Po
 	-rm -f ./$(DEPDIR)/libbitcoin_wallet_a-masternode-budget.Po
 	-rm -f ./$(DEPDIR)/libbitcoin_wallet_a-masternode-payments.Po
 	-rm -f ./$(DEPDIR)/libbitcoin_wallet_a-masternode-sync.Po
@@ -13143,7 +13143,7 @@ distclean: distclean-recursive
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-moc_transactiontablemodel.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-moc_utilitydialog.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-moc_walletmodel.Po
-	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-moc_zpivcontroldialog.Po
+	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-moc_zxnkcontroldialog.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-networkstyle.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-notificator.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-openuridialog.Po
@@ -13171,14 +13171,14 @@ distclean: distclean-recursive
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-walletmodel.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-walletmodeltransaction.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-winshutdownmonitor.Po
-	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-zpivcontroldialog.Po
+	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-zxnkcontroldialog.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addnewaddressdialog.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addnewcontactdialog.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addresseswidget.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addressfilterproxymodel.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addressholder.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addresslabelrow.Po
-	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coincontrolpivwidget.Po
+	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coincontrolxnkwidget.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coldstakingmodel.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coldstakingwidget.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-contactdropdownrow.Po
@@ -13202,7 +13202,7 @@ distclean: distclean-recursive
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_addnewcontactdialog.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_addresseswidget.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_addresslabelrow.Po
-	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coincontrolpivwidget.Po
+	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coincontrolxnkwidget.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coldstakingmodel.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coldstakingwidget.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_contactdropdownrow.Po
@@ -13376,19 +13376,19 @@ distclean: distclean-recursive
 	-rm -f zmq/$(DEPDIR)/libbitcoin_zmq_a-zmqabstractnotifier.Po
 	-rm -f zmq/$(DEPDIR)/libbitcoin_zmq_a-zmqnotificationinterface.Po
 	-rm -f zmq/$(DEPDIR)/libbitcoin_zmq_a-zmqpublishnotifier.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_common_a-accumulatorcheckpoints.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_common_a-accumulatormap.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_common_a-accumulators.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_common_a-deterministicmint.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_common_a-zerocoin.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_wallet_a-accumulators.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_wallet_a-deterministicmint.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_wallet_a-mintpool.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_wallet_a-witness.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_wallet_a-zerocoin.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivmodule.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivtracker.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivwallet.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_common_a-accumulatorcheckpoints.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_common_a-accumulatormap.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_common_a-accumulators.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_common_a-deterministicmint.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_common_a-zerocoin.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_wallet_a-accumulators.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_wallet_a-deterministicmint.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_wallet_a-mintpool.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_wallet_a-witness.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_wallet_a-zerocoin.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnkmodule.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnktracker.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnkwallet.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -13479,7 +13479,7 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f ./$(DEPDIR)/libbitcoin_server_a-txdb.Po
 	-rm -f ./$(DEPDIR)/libbitcoin_server_a-txmempool.Po
 	-rm -f ./$(DEPDIR)/libbitcoin_server_a-validationinterface.Po
-	-rm -f ./$(DEPDIR)/libbitcoin_server_a-zpivchain.Po
+	-rm -f ./$(DEPDIR)/libbitcoin_server_a-zxnkchain.Po
 	-rm -f ./$(DEPDIR)/libbitcoin_util_a-allocators.Po
 	-rm -f ./$(DEPDIR)/libbitcoin_util_a-chainparamsbase.Po
 	-rm -f ./$(DEPDIR)/libbitcoin_util_a-clientversion.Po
@@ -13498,7 +13498,7 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f ./$(DEPDIR)/libbitcoin_wallet_a-denomination_functions.Po
 	-rm -f ./$(DEPDIR)/libbitcoin_wallet_a-genwit.Po
 	-rm -f ./$(DEPDIR)/libbitcoin_wallet_a-kernel.Po
-	-rm -f ./$(DEPDIR)/libbitcoin_wallet_a-lightzpivthread.Po
+	-rm -f ./$(DEPDIR)/libbitcoin_wallet_a-lightzxnkthread.Po
 	-rm -f ./$(DEPDIR)/libbitcoin_wallet_a-masternode-budget.Po
 	-rm -f ./$(DEPDIR)/libbitcoin_wallet_a-masternode-payments.Po
 	-rm -f ./$(DEPDIR)/libbitcoin_wallet_a-masternode-sync.Po
@@ -13657,7 +13657,7 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-moc_transactiontablemodel.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-moc_utilitydialog.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-moc_walletmodel.Po
-	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-moc_zpivcontroldialog.Po
+	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-moc_zxnkcontroldialog.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-networkstyle.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-notificator.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-openuridialog.Po
@@ -13685,14 +13685,14 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-walletmodel.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-walletmodeltransaction.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-winshutdownmonitor.Po
-	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-zpivcontroldialog.Po
+	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-zxnkcontroldialog.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addnewaddressdialog.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addnewcontactdialog.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addresseswidget.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addressfilterproxymodel.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addressholder.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-addresslabelrow.Po
-	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coincontrolpivwidget.Po
+	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coincontrolxnkwidget.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coldstakingmodel.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-coldstakingwidget.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-contactdropdownrow.Po
@@ -13716,7 +13716,7 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_addnewcontactdialog.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_addresseswidget.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_addresslabelrow.Po
-	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coincontrolpivwidget.Po
+	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coincontrolxnkwidget.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coldstakingmodel.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_coldstakingwidget.Po
 	-rm -f qt/encocoin/$(DEPDIR)/libbitcoinqt_a-moc_contactdropdownrow.Po
@@ -13890,19 +13890,19 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f zmq/$(DEPDIR)/libbitcoin_zmq_a-zmqabstractnotifier.Po
 	-rm -f zmq/$(DEPDIR)/libbitcoin_zmq_a-zmqnotificationinterface.Po
 	-rm -f zmq/$(DEPDIR)/libbitcoin_zmq_a-zmqpublishnotifier.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_common_a-accumulatorcheckpoints.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_common_a-accumulatormap.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_common_a-accumulators.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_common_a-deterministicmint.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_common_a-zerocoin.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_wallet_a-accumulators.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_wallet_a-deterministicmint.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_wallet_a-mintpool.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_wallet_a-witness.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_wallet_a-zerocoin.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivmodule.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivtracker.Po
-	-rm -f zpiv/$(DEPDIR)/libbitcoin_wallet_a-zpivwallet.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_common_a-accumulatorcheckpoints.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_common_a-accumulatormap.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_common_a-accumulators.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_common_a-deterministicmint.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_common_a-zerocoin.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_wallet_a-accumulators.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_wallet_a-deterministicmint.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_wallet_a-mintpool.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_wallet_a-witness.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_wallet_a-zerocoin.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnkmodule.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnktracker.Po
+	-rm -f zxnk/$(DEPDIR)/libbitcoin_wallet_a-zxnkwallet.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

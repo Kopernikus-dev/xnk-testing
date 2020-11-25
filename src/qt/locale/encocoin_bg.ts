@@ -511,8 +511,8 @@
         <translation>Етикета става червен, когато получателя ще получи сума по-малка от %1.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 upiv per input.</source>
-        <translation>Може да има разлика от +/- %1 upiv на вх.</translation>
+        <source>Can vary +/- %1 uxnk per input.</source>
+        <translation>Може да има разлика от +/- %1 uxnk на вх.</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -528,7 +528,7 @@
     </message>
 </context>
 <context>
-    <name>CoinControlPivWidget</name>
+    <name>CoinControlXnkWidget</name>
     <message>
         <source>XNK:</source>
         <translation>XNK:</translation>
@@ -2888,7 +2888,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
 </context>
 <context>
-    <name>ZPivControlDialog</name>
+    <name>ZXnkControlDialog</name>
     <message>
         <source>Select zXNK to Spend</source>
         <translation>Изберете zXNK за Изпращане</translation>
@@ -2898,7 +2898,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
         <translation>Монетен контрол...</translation>
     </message>
     <message>
-        <source>zPiv</source>
+        <source>zXnk</source>
         <translation>zXNK</translation>
     </message>
     <message>

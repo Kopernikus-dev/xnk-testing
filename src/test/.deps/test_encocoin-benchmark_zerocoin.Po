@@ -1209,12 +1209,12 @@ test/test_encocoin-benchmark_zerocoin.o: test/benchmark_zerocoin.cpp \
  /usr/include/boost/unordered/detail/fwd.hpp \
  /usr/include/boost/unordered/unordered_map_fwd.hpp net.h bloom.h \
  libzerocoin/bignum.h limitedmap.h mruset.h random.h utilstrencodings.h \
- zpiv/zerocoin.h chainparams.h libzerocoin/bignum.h zpiv/zpivmodule.h \
+ zxnk/zerocoin.h chainparams.h libzerocoin/bignum.h zxnk/zxnkmodule.h \
  libzerocoin/CoinRandomnessSchnorrSignature.h libzerocoin/SpendType.h \
- zpiv/zerocoin.h script/sigcache.h txmempool.h libzerocoin/CoinSpend.h \
- lightzpivthread.h genwit.h zpiv/accumulators.h zpiv/accumulatormap.h \
- zpiv/accumulatorcheckpoints.h univalue/include/univalue.h chain.h \
- bloom.h zpiv/witness.h zpiv/zerocoin.h concurrentqueue.h \
+ zxnk/zerocoin.h script/sigcache.h txmempool.h libzerocoin/CoinSpend.h \
+ lightzxnkthread.h genwit.h zxnk/accumulators.h zxnk/accumulatormap.h \
+ zxnk/accumulatorcheckpoints.h univalue/include/univalue.h chain.h \
+ bloom.h zxnk/witness.h zxnk/zerocoin.h concurrentqueue.h \
  /usr/include/boost/thread.hpp /usr/include/boost/thread/thread.hpp \
  /usr/include/boost/thread/thread_only.hpp \
  /usr/include/boost/thread/detail/thread.hpp \
@@ -4208,19 +4208,19 @@ random.h:
 
 utilstrencodings.h:
 
-zpiv/zerocoin.h:
+zxnk/zerocoin.h:
 
 chainparams.h:
 
 libzerocoin/bignum.h:
 
-zpiv/zpivmodule.h:
+zxnk/zxnkmodule.h:
 
 libzerocoin/CoinRandomnessSchnorrSignature.h:
 
 libzerocoin/SpendType.h:
 
-zpiv/zerocoin.h:
+zxnk/zerocoin.h:
 
 script/sigcache.h:
 
@@ -4228,15 +4228,15 @@ txmempool.h:
 
 libzerocoin/CoinSpend.h:
 
-lightzpivthread.h:
+lightzxnkthread.h:
 
 genwit.h:
 
-zpiv/accumulators.h:
+zxnk/accumulators.h:
 
-zpiv/accumulatormap.h:
+zxnk/accumulatormap.h:
 
-zpiv/accumulatorcheckpoints.h:
+zxnk/accumulatorcheckpoints.h:
 
 univalue/include/univalue.h:
 
@@ -4244,9 +4244,9 @@ chain.h:
 
 bloom.h:
 
-zpiv/witness.h:
+zxnk/witness.h:
 
-zpiv/zerocoin.h:
+zxnk/zerocoin.h:
 
 concurrentqueue.h:
 

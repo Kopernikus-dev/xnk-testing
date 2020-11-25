@@ -721,8 +721,8 @@ for staking</source>
         <translation>Den här etiketten blir röd, ifall någon mottagare får en mängd som är mindre än %1.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 upiv per input.</source>
-        <translation>Kan variera med +/- %1 upiv per inmatning.</translation>
+        <source>Can vary +/- %1 uxnk per input.</source>
+        <translation>Kan variera med +/- %1 uxnk per inmatning.</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -738,7 +738,7 @@ for staking</source>
     </message>
 </context>
 <context>
-    <name>CoinControlPivWidget</name>
+    <name>CoinControlXnkWidget</name>
     <message>
         <source>Dialog</source>
         <translation>Dialog</translation>
@@ -4095,7 +4095,7 @@ Var vänlig kontrollera adressen och försök igen.</translation>
     </message>
 </context>
 <context>
-    <name>ZPivControlDialog</name>
+    <name>ZXnkControlDialog</name>
     <message>
         <source>Select zXNK to Spend</source>
         <translation>Välj zXNK att Spendera</translation>

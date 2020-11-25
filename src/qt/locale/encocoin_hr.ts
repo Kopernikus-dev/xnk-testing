@@ -622,7 +622,7 @@
     </message>
 </context>
 <context>
-    <name>CoinControlPivWidget</name>
+    <name>CoinControlXnkWidget</name>
     <message>
         <source>Transaction Details</source>
         <translation>Detalji o transakciji</translation>
@@ -2460,7 +2460,7 @@
     </message>
     </context>
 <context>
-    <name>ZPivControlDialog</name>
+    <name>ZXnkControlDialog</name>
     <message>
         <source>PushButton</source>
         <translation>PritisniTipku</translation>

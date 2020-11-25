@@ -511,8 +511,8 @@
         <translation>This label turns red if any recipient receives an amount smaller than %1.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 upiv per input.</source>
-        <translation>Can vary +/- %1 upiv per input.</translation>
+        <source>Can vary +/- %1 uxnk per input.</source>
+        <translation>Can vary +/- %1 uxnk per input.</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -528,7 +528,7 @@
     </message>
 </context>
 <context>
-    <name>CoinControlPivWidget</name>
+    <name>CoinControlXnkWidget</name>
     <message>
         <source>TextLabel</source>
         <translation>TextLabel</translation>
@@ -2934,7 +2934,7 @@ Please check the address and try again.</translation>
     </message>
 </context>
 <context>
-    <name>ZPivControlDialog</name>
+    <name>ZXnkControlDialog</name>
     <message>
         <source>Select zXNK to Spend</source>
         <translation>Select zXNK to Spend</translation>

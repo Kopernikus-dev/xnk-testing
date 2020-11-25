@@ -19,7 +19,8 @@ else
 LIBUNIVALUE = $(UNIVALUE_LIBS)
 endif
 
-BITCOIN_INCLUDES=-I$(builddir) $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
+BITCOIN_CONFIG_INCLUDES=-I$(builddir)/config
+BITCOIN_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
 
 BITCOIN_INCLUDES += -I$(srcdir)/secp256k1/include
 BITCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
@@ -78,7 +79,6 @@ endif
 BITCOIN_CORE_H = \
   activemasternode.h \
   addrman.h \
-  alert.h \
   allocators.h \
   amount.h \
   base58.h \
@@ -100,7 +100,12 @@ BITCOIN_CORE_H = \
   compat/endian.h \
   compat/sanity.h \
   compressor.h \
+  consensus/consensus.h \
   consensus/merkle.h \
+  consensus/validation.h \
+  consensus/tx_verify.h \
+  consensus/zerocoin_verify.h \
+  consensus/params.h \
   primitives/block.h \
   primitives/transaction.h \
   core_io.h \
@@ -108,8 +113,6 @@ BITCOIN_CORE_H = \
   pairresult.h \
   addressbook.h \
   denomination_functions.h \
-  obfuscation.h \
-  obfuscation-relay.h \
   wallet/db.h \
   hash.h \
   httprpc.h \
@@ -118,12 +121,15 @@ BITCOIN_CORE_H = \
   invalid.h \
   invalid_outpoints.json.h \
   invalid_serials.json.h \
+  legacy/stakemodifier.h \
   kernel.h \
   swifttx.h \
   key.h \
+  key_io.h \
   keystore.h \
   leveldbwrapper.h \
   limitedmap.h \
+  logging.h \
   main.h \
   masternode.h \
   masternode-payments.h \
@@ -149,6 +155,7 @@ BITCOIN_CORE_H = \
   rpc/server.h \
   scheduler.h \
   script/interpreter.h \
+  script/keyorigin.h \
   script/script.h \
   script/sigcache.h \
   script/sign.h \
@@ -169,32 +176,31 @@ BITCOIN_CORE_H = \
   txdb.h \
   txmempool.h \
   guiinterface.h \
+  guiinterfaceutil.h \
   uint256.h \
   undo.h \
+  util/memory.h \
   util.h \
+  util/macros.h \
+  util/threadnames.h \
   utilstrencodings.h \
   utilmoneystr.h \
   utiltime.h \
   validationinterface.h \
   version.h \
+  wallet/hdchain.h \
+  wallet/scriptpubkeyman.h \
   wallet/wallet.h \
   wallet/wallet_ismine.h \
   wallet/walletdb.h \
-  zpivchain.h \
-  zpiv/accumulators.h \
-  zpiv/accumulatorcheckpoints.h \
-  zpiv/accumulatorcheckpoints.json.h \
-  zpiv/accumulatormap.h \
-  zpiv/deterministicmint.h \
-  zpiv/mintpool.h \
-  zpiv/witness.h \
-  zpiv/zerocoin.h \
-  zpiv/zpivtracker.h \
-  zpiv/zpivwallet.h \
-  zpiv/zpivmodule.h \
-  genwit.h \
-  concurrentqueue.h \
-  lightzpivthread.h \
+  zxnkchain.h \
+  zxnk/deterministicmint.h \
+  zxnk/mintpool.h \
+  zxnk/zerocoin.h \
+  zxnk/zxnktracker.h \
+  zxnk/zxnkwallet.h \
+  zxnk/zxnkmodule.h \
+  zxnk/zpos.h \
   zmq/zmqabstractnotifier.h \
   zmq/zmqconfig.h \
   zmq/zmqnotificationinterface.h \
@@ -211,11 +217,12 @@ libbitcoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CP
 libbitcoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_server_a_SOURCES = \
   addrman.cpp \
-  alert.cpp \
   bloom.cpp \
   blocksignature.cpp \
   chain.cpp \
   checkpoints.cpp \
+  consensus/tx_verify.cpp \
+  consensus/zerocoin_verify.cpp \
   httprpc.cpp \
   httpserver.cpp \
   init.cpp \
@@ -242,7 +249,7 @@ libbitcoin_server_a_SOURCES = \
   txdb.cpp \
   txmempool.cpp \
   validationinterface.cpp \
-  zpivchain.cpp \
+  zxnkchain.cpp \
   $(BITCOIN_CORE_H)
 
 if ENABLE_ZMQ
@@ -263,11 +270,9 @@ libbitcoin_wallet_a_SOURCES = \
   bip38.cpp \
   collateral.cpp \
   denomination_functions.cpp \
-  obfuscation.cpp \
-  obfuscation-relay.cpp \
-  wallet/db.cpp \
   addressbook.cpp \
   crypter.cpp \
+  key_io.cpp \
   swifttx.cpp \
   masternode.cpp \
   masternode-budget.cpp \
@@ -276,23 +281,25 @@ libbitcoin_wallet_a_SOURCES = \
   masternodeconfig.cpp \
   masternodeman.cpp \
   messagesigner.cpp \
+  legacy/stakemodifier.cpp \
+  kernel.cpp \
+  wallet/db.cpp \
   wallet/rpcdump.cpp \
   wallet/rpcwallet.cpp \
-  kernel.cpp \
+  wallet/hdchain.cpp \
+  wallet/scriptpubkeyman.cpp \
   wallet/wallet.cpp \
   wallet/wallet_ismine.cpp \
+  wallet/wallet_zerocoin.cpp \
   wallet/walletdb.cpp \
-  zpiv/deterministicmint.cpp \
-  zpiv/zerocoin.cpp \
-  zpiv/accumulators.cpp \
-  zpiv/mintpool.cpp \
-  zpiv/witness.cpp \
-  zpiv/zpivwallet.cpp \
-  zpiv/zpivtracker.cpp \
+  zxnk/deterministicmint.cpp \
+  zxnk/zerocoin.cpp \
+  zxnk/mintpool.cpp \
+  zxnk/zxnkwallet.cpp \
+  zxnk/zxnktracker.cpp \
   stakeinput.cpp \
-  genwit.cpp \
-  zpiv/zpivmodule.cpp \
-  lightzpivthread.cpp \
+  zxnk/zxnkmodule.cpp \
+  zxnk/zpos.cpp \
   $(BITCOIN_CORE_H)
 
 # crypto primitives library
@@ -338,7 +345,6 @@ libzerocoin_libbitcoin_zerocoin_a_CPPFLAGS = $(AM_CPPFLAGS) $(BOOST_CPPFLAGS)
 libzerocoin_libbitcoin_zerocoin_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libzerocoin_libbitcoin_zerocoin_a_SOURCES = \
   libzerocoin/Accumulator.h \
-  libzerocoin/AccumulatorProofOfKnowledge.h \
   libzerocoin/bignum.h \
   libzerocoin/Coin.h \
   libzerocoin/CoinRandomnessSchnorrSignature.h \
@@ -347,20 +353,16 @@ libzerocoin_libbitcoin_zerocoin_a_SOURCES = \
   libzerocoin/Denominations.h \
   libzerocoin/ParamGeneration.h \
   libzerocoin/Params.h \
-  libzerocoin/SerialNumberSignatureOfKnowledge.h \
   libzerocoin/SpendType.h \
   libzerocoin/ZerocoinDefines.h \
   libzerocoin/bignum.cpp \
   libzerocoin/Accumulator.cpp \
-  libzerocoin/AccumulatorProofOfKnowledge.cpp \
   libzerocoin/Coin.cpp \
   libzerocoin/CoinRandomnessSchnorrSignature.cpp \
   libzerocoin/CoinSpend.cpp \
-  libzerocoin/Commitment.cpp \
   libzerocoin/Denominations.cpp \
   libzerocoin/ParamGeneration.cpp \
-  libzerocoin/Params.cpp \
-  libzerocoin/SerialNumberSignatureOfKnowledge.cpp
+  libzerocoin/Params.cpp
 if USE_NUM_GMP
   libzerocoin_libbitcoin_zerocoin_a_SOURCES += libzerocoin/bignum_gmp.cpp
 endif
@@ -372,9 +374,6 @@ endif
 libbitcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_common_a_SOURCES = \
-  zpiv/accumulators.cpp \
-  zpiv/accumulatorcheckpoints.cpp \
-  zpiv/accumulatormap.cpp \
   allocators.cpp \
   amount.cpp \
   base58.cpp \
@@ -384,9 +383,9 @@ libbitcoin_common_a_SOURCES = \
   compressor.cpp \
   consensus/merkle.cpp \
   primitives/block.cpp \
-  zpiv/deterministicmint.cpp \
+  zxnk/deterministicmint.cpp \
   primitives/transaction.cpp \
-  zpiv/zerocoin.cpp \
+  zxnk/zerocoin.cpp \
   core_read.cpp \
   core_write.cpp \
   hash.cpp \
@@ -418,6 +417,7 @@ libbitcoin_util_a_SOURCES = \
   compat/glibc_sanity.cpp \
   compat/glibcxx_sanity.cpp \
   compat/strnlen.cpp \
+  logging.cpp \
   random.cpp \
   rpc/protocol.cpp \
   support/cleanse.cpp \
@@ -425,6 +425,7 @@ libbitcoin_util_a_SOURCES = \
   uint256.cpp \
   util.cpp \
   utilmoneystr.cpp \
+  util/threadnames.cpp \
   utilstrencodings.cpp \
   utiltime.cpp \
   $(BITCOIN_CORE_H)
@@ -545,6 +546,7 @@ CLEANFILES = $(EXTRA_LIBRARIES)
 
 CLEANFILES += *.gcda *.gcno
 CLEANFILES += compat/*.gcda compat/*.gcno
+CLEANFILES += consensus/*.gcda consensus/*.gcno
 CLEANFILES += crypto/*.gcda crypto/*.gcno
 CLEANFILES += libzerocoin/*.gcda libzerocoin/*.gcno
 CLEANFILES += primitives/*.gcda primitives/*.gcno
@@ -555,7 +557,7 @@ CLEANFILES += univalue/*.gcda univalue/*.gcno
 CLEANFILES += wallet/*.gcda wallet/*.gcno
 CLEANFILES += wallet/test/*.gcda wallet/test/*.gcno
 CLEANFILES += zmq/*.gcda zmq/*.gcno
-CLEANFILES += zpiv/*.gcda zpiv/*.gcno
+CLEANFILES += zxnk/*.gcda zxnk/*.gcno
 CLEANFILES += obj/build.h
 
 EXTRA_DIST =

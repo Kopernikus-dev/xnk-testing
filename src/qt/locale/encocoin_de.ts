@@ -19,7 +19,7 @@
     </message>
     <message>
         <source>CANCEL</source>
-        <translation>Abbrechen</translation>
+        <translation>ABBRECHEN</translation>
     </message>
     <message>
         <source>OK</source>
@@ -38,7 +38,7 @@
     </message>
     <message>
         <source>CANCEL</source>
-        <translation>Abbrechen</translation>
+        <translation>ABBRECHEN</translation>
     </message>
     <message>
         <source>OK</source>
@@ -131,11 +131,11 @@
     </message>
     <message>
         <source>These are your EncoCoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Dies sind ihre EncoCoin-Adressen zum Tätigen von Überweisungen. Bitte prüfen Sie den Betrag und die Empfangsadresse, bevor Sie XNK überweisen.</translation>
+        <translation>Dies sind ihre EncoCoin-Adressen zum Senden von Zahlungen. Bitte prüfen Sie den Betrag und die Empfangsadresse, bevor Sie XNK überweisen.</translation>
     </message>
     <message>
         <source>These are your EncoCoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Dies sind ihre EncoCoin-Adressen zum Empfangen von Zahlungen. Es wird empfohlen für jede Transaktion eine neue Empfangsadresse zu verwenden.</translation>
+        <translation>Das sind Ihre EncoCoin-Adressen zum Empfangen von Zahlungen. Es wird empfohlen für jede Transaktion eine neue Empfangsadresse zu verwenden.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -196,6 +196,10 @@
         <translation>Datum</translation>
     </message>
     <message>
+        <source>Type</source>
+        <translation>Art</translation>
+    </message>
+    <message>
         <source>(no label)</source>
         <translation>(keine Bezeichnung)</translation>
     </message>
@@ -245,6 +249,10 @@
     <message>
         <source>e.g. John Doe</source>
         <translation>z.B. John Doe</translation>
+    </message>
+    <message>
+        <source>Enter EncoCoin address</source>
+        <translation>EncoCoin Adresse eingeben</translation>
     </message>
     <message>
         <source>SAVE</source>
@@ -363,6 +371,18 @@ for staking</source>
         <translation>Verschlüsselung der Wallet bestätigen</translation>
     </message>
     <message>
+        <source>WARNING</source>
+        <translation>WARNUNG</translation>
+    </message>
+    <message>
+        <source>If you encrypt your wallet and lose your passphrase, you will</source>
+        <translation>Wenn Sie ihr Wallet verschlüsseln und Ihre Passphrase verlieren, werden Sie</translation>
+    </message>
+    <message>
+        <source>LOSE ALL OF YOUR XNK</source>
+        <translation>ALLE IHRE EncoCoin VERLIEREN</translation>
+    </message>
+    <message>
         <source>ENCRYPT</source>
         <translation>VERSCHLÜSSELN</translation>
     </message>
@@ -371,16 +391,16 @@ for staking</source>
         <translation>ABBRECHEN</translation>
     </message>
     <message>
+        <source>WARNING: The Caps Lock key is on!</source>
+        <translation>WARNUNG: CAPS LOCK IST EINGESCHALTET</translation>
+    </message>
+    <message>
         <source>EncoCoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your XNKs from being stolen by malware infecting your computer.</source>
         <translation>Die Anwendung wird nun geschlossen um die Verschlüsselung abzuschließen. Bitte bedenken Sie, dass auch die Verschlüsselung nicht sicher vor Diebstahl ihrer XNKs durch Schadsoftware schützt, die ihren Computer befällt.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Sind Sie sich sicher, dass Sie Ihre Wallet verschlüsseln möchten?</translation>
-    </message>
-    <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR XNK&lt;/b&gt;!</source>
-        <translation>Warnung: Wenn Sie Ihre Wallet verschlüsseln und Ihre Passphrase verlieren, &lt;b&gt;verlieren Sie alle ihre XNKs&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -422,10 +442,6 @@ for staking</source>
         <source>Wallet passphrase was successfully changed.</source>
         <translation>Die Passphrase der Wallet wurde erfolgreich geändert.</translation>
     </message>
-    <message>
-        <source>Warning: The Caps Lock key is on!</source>
-        <translation>Warnung: Die Feststelltaste ist aktiviert!</translation>
-    </message>
 </context>
 <context>
     <name>BanTableModel</name>
@@ -439,52 +455,37 @@ for staking</source>
     </message>
 </context>
 <context>
-    <name>BlockExplorer</name>
-    <message>
-        <source>Blockchain Explorer</source>
-        <translation>Blockchain Explorer</translation>
-    </message>
-    <message>
-        <source>Back</source>
-        <translation>Zurück</translation>
-    </message>
-    <message>
-        <source>Forward</source>
-        <translation>Vor</translation>
-    </message>
-    <message>
-        <source>Address / Block / Transaction</source>
-        <translation>Addrese / Block / Tansaktion</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation>Suche</translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation>TextEtikett</translation>
-    </message>
-    <message>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (encocoin.conf).</source>
-        <translation>Nicht alle Transaktionen können anzezeigt werden. Um alle Transaktionen zu sehen, müssen sie die Option  "txindex=1" in der "encocoin.conf" Konfigurationsdatei hinzufügen.</translation>
-    </message>
-</context>
-<context>
     <name>CSRow</name>
     <message>
         <source>Form</source>
         <translation>Formular</translation>
     </message>
-    </context>
+    <message>
+        <source>Savings</source>
+        <translation>Erspartes</translation>
+    </message>
+    <message>
+        <source>0,00 XNK</source>
+        <translation>0,00 EncoCoin</translation>
+    </message>
+    <message>
+        <source>address</source>
+        <translation>Adresse</translation>
+    </message>
+    <message>
+        <source>Not Staking</source>
+        <translation>Nicht staking</translation>
+    </message>
+    <message>
+        <source>Own delegation</source>
+        <translation>Eigene Zuweisung</translation>
+    </message>
+</context>
 <context>
     <name>ClientModel</name>
     <message>
         <source>Total: %1 (IPv4: %2 / IPv6: %3 / Tor: %4 / Unknown: %5)</source>
         <translation>Total: %1 (IPv4: %2 / IPv6: %3 / Tor: %4 / Unbekannt: %5)</translation>
-    </message>
-    <message>
-        <source>Network Alert</source>
-        <translation>Netzwerkalarm</translation>
     </message>
 </context>
 <context>
@@ -504,6 +505,10 @@ for staking</source>
     <message>
         <source>Coin Selection</source>
         <translation>Münzenauswahl </translation>
+    </message>
+    <message>
+        <source>Select XNK Outputs to Spend</source>
+        <translation>XNK Outputs zum Ausgeben wählen</translation>
     </message>
     <message>
         <source>Dust:</source>
@@ -530,14 +535,6 @@ for staking</source>
         <translation>Betrag</translation>
     </message>
     <message>
-        <source>Transaction Details</source>
-        <translation>Transaktionsdetails</translation>
-    </message>
-    <message>
-        <source>PushButton</source>
-        <translation>Druckknopf</translation>
-    </message>
-    <message>
         <source>0.00 XNK</source>
         <translation>0.00 XNK</translation>
     </message>
@@ -548,6 +545,10 @@ for staking</source>
     <message>
         <source>Select all</source>
         <translation>Alle anwählen</translation>
+    </message>
+    <message>
+        <source>Toggle lock state</source>
+        <translation>Verriegelungsstatus umschalten</translation>
     </message>
     <message>
         <source>Received with label</source>
@@ -602,40 +603,40 @@ for staking</source>
         <translation>Entsperre Verwendung</translation>
     </message>
     <message>
-        <source>Copy quantity</source>
-        <translation>Anzahl kopieren</translation>
-    </message>
-    <message>
-        <source>Copy fee</source>
-        <translation>Gebühr kopieren</translation>
-    </message>
-    <message>
-        <source>Copy after fee</source>
-        <translation>Kopiere nach Gebühr</translation>
-    </message>
-    <message>
-        <source>Copy bytes</source>
-        <translation>Kopiere Bytes</translation>
-    </message>
-    <message>
-        <source>Copy priority</source>
-        <translation>Kopiere Priorität</translation>
-    </message>
-    <message>
-        <source>Copy dust</source>
-        <translation>Kopiere Abzug</translation>
-    </message>
-    <message>
-        <source>Copy change</source>
-        <translation>Kopiere Wechselgeld</translation>
-    </message>
-    <message>
         <source>Unselect all</source>
         <translation>Alle abwählen</translation>
     </message>
     <message>
         <source>Please switch to "List mode" to use this function.</source>
         <translation>Bitte wechsle zur "Listenansicht" um diese Funktion zu verwenden.</translation>
+    </message>
+    <message>
+        <source>Quantity Copied</source>
+        <translation>Menge kopiert</translation>
+    </message>
+    <message>
+        <source>Amount Copied</source>
+        <translation>Menge kopiert</translation>
+    </message>
+    <message>
+        <source>Fee Copied</source>
+        <translation>Gebühr kopiert</translation>
+    </message>
+    <message>
+        <source>After Fee Copied</source>
+        <translation>Nach Gebühr kopiert</translation>
+    </message>
+    <message>
+        <source>Bytes Copied</source>
+        <translation>Bytes kopiert</translation>
+    </message>
+    <message>
+        <source>Dust Copied</source>
+        <translation>Staub kopiert</translation>
+    </message>
+    <message>
+        <source>Change Copied</source>
+        <translation>Wechselbetrag kopiert</translation>
     </message>
     <message>
         <source>highest</source>
@@ -686,6 +687,10 @@ for staking</source>
         <translation>ja</translation>
     </message>
     <message>
+        <source>delegated to %1 for cold staking</source>
+        <translation>%1 für Cold Staking zugewiesen</translation>
+    </message>
+    <message>
         <source>no</source>
         <translation>nein</translation>
     </message>
@@ -714,8 +719,8 @@ for staking</source>
         <translation>Diese Bezeichnung wird rot, wenn ein Empfänger einen Betrag erhält, der kleiner ist als %1.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 upiv per input.</source>
-        <translation>Kann um +/- %1 upiv pro Eingang variieren.</translation>
+        <source>Can vary +/- %1 uxnk per input.</source>
+        <translation>Kann um +/- %1 uxnk pro Eingang variieren.</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -728,89 +733,6 @@ for staking</source>
     <message>
         <source>(change)</source>
         <translation>(Wechselgeld)</translation>
-    </message>
-</context>
-<context>
-    <name>CoinControlPivWidget</name>
-    <message>
-        <source>Dialog</source>
-        <translation>Dialog</translation>
-    </message>
-    <message>
-        <source>Transaction Details</source>
-        <translation>Transaktionsdetails</translation>
-    </message>
-    <message>
-        <source>PushButton</source>
-        <translation>Druckknopf</translation>
-    </message>
-    <message>
-        <source>XNK:</source>
-        <translation>XNK:</translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation>TextEtikett</translation>
-    </message>
-    <message>
-        <source>Quantity:</source>
-        <translation>Anzahl:</translation>
-    </message>
-    <message>
-        <source>Fee:</source>
-        <translation>Gebühr:</translation>
-    </message>
-    <message>
-        <source>Amount</source>
-        <translation>Betrag</translation>
-    </message>
-    <message>
-        <source>Label</source>
-        <translation>Bezeichnung</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation>Adresse</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation>Art</translation>
-    </message>
-    <message>
-        <source>Date</source>
-        <translation>Datum</translation>
-    </message>
-    <message>
-        <source>Confirmations</source>
-        <translation>Betätigungen</translation>
-    </message>
-    <message>
-        <source>CheckBox</source>
-        <translation>Checkbox</translation>
-    </message>
-    <message>
-        <source>Bytes:</source>
-        <translation>Byte:</translation>
-    </message>
-    <message>
-        <source>Dust:</source>
-        <translation>Abzug:</translation>
-    </message>
-    <message>
-        <source>Change:</source>
-        <translation>Wechselgeld:</translation>
-    </message>
-    <message>
-        <source>After Fee: </source>
-        <translation>Nach Gebühren:</translation>
-    </message>
-    <message>
-        <source>CANCEL</source>
-        <translation>ABBRECHEN</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation>OK</translation>
     </message>
 </context>
 <context>
@@ -828,12 +750,140 @@ for staking</source>
         <translation>TextEtikett</translation>
     </message>
     <message>
+        <source>Owner address (optional, if empty a new address will be created)</source>
+        <translation>Adresse des Besitzers (Optional, wenn leer, wird eine neue Adresse erzeugt)</translation>
+    </message>
+    <message>
+        <source>Total Staking:</source>
+        <translation>Gesamtmenge Staking</translation>
+    </message>
+    <message>
+        <source>List of delegated balance by address</source>
+        <translation>Auflistung zugewiesener Bilanz nach Adresse</translation>
+    </message>
+    <message>
+        <source>No balance delegated</source>
+        <translation>Keine Bilanz zugewiesen</translation>
+    </message>
+    <message>
+        <source>Cold Staking</source>
+        <translation>Cold Staking</translation>
+    </message>
+    <message>
+        <source>Staker</source>
+        <translation>Staker</translation>
+    </message>
+    <message>
+        <source>Delegation</source>
+        <translation>Zuweisung</translation>
+    </message>
+    <message>
+        <source>Delegate</source>
+        <translation>Delegierter</translation>
+    </message>
+    <message>
+        <source>Clear All</source>
+        <translation>Alles löschen</translation>
+    </message>
+    <message>
+        <source>Delegated balance history</source>
+        <translation>Verlauf zugewiesener Bilanzen</translation>
+    </message>
+    <message>
+        <source>No delegations yet</source>
+        <translation>Bisher keine Zuweisungen</translation>
+    </message>
+    <message>
+        <source>Total Staking: %1</source>
+        <translation>Insgesamt %1 staking</translation>
+    </message>
+    <message>
+        <source>Error loading delegations: %1</source>
+        <translation>Fehler beim Laden der Zuweisungen: %1</translation>
+    </message>
+    <message>
+        <source>You can delegate your XNKs, letting a hot node (24/7 online node)
+stake on your behalf, while you keep the keys securely offline.</source>
+        <translation>Sie können Ihre XNKs zuweisen und einen Node (24/7) für Sie staken lassen, während Sie Ihre Schlüssel sicher offline verwahren. </translation>
+    </message>
+    <message>
+        <source>Enter owner address</source>
+        <translation>Adresse des Besitzers eingeben</translation>
+    </message>
+    <message>
+        <source>Accept XNK delegation / Delegate XNK</source>
+        <translation>XNK Zusweisung annehmen / XNK zuweisen</translation>
+    </message>
+    <message>
+        <source>Cold Staking address</source>
+        <translation>Adresse für Cold Staking</translation>
+    </message>
+    <message>
+        <source>No receive addresses available, you can go to the receive screen and create some there!</source>
+        <translation>Keine Empfangsadresse verfügbar. Sie können zum Empfangsfenster gehen und dort eine erzeugen.</translation>
+    </message>
+    <message>
+        <source>No contacts available, you can go to the contacts screen and add some there!</source>
+        <translation>Keine Kontakte verfügbar. Sie können zum Kontaktfenster wechseln und dort welche hinzufügen.</translation>
+    </message>
+    <message>
+        <source>Cannot send delegation, wallet locked</source>
+        <translation>Zuweisung konnte nicht gesendet werden. Ihr Wallet ist verschlossen.</translation>
+    </message>
+    <message>
         <source>Invalid entry</source>
         <translation>Ungültige Eingabe</translation>
     </message>
     <message>
+        <source>Invalid entry, minimum delegable amount is </source>
+        <translation>Ungültiger Eintrag, die Mindestmenge für Zuweisungen ist</translation>
+    </message>
+    <message>
+        <source>Owner address invalid</source>
+        <translation>Adresse des Besitzers ist ungültig</translation>
+    </message>
+    <message>
+        <source>ALERT!</source>
+        <translation>ALARM!</translation>
+    </message>
+    <message>
+        <source>Delegating to an external owner address!
+
+The delegated coins will NOT be spendable by this wallet.
+Spending these coins will need to be done from the wallet or
+device containing the owner address.
+
+Do you wish to proceed?</source>
+        <translation>Weise einer externen Adresse zu!
+
+Die zugewiesenen Coins können von diesem Wallet nicht mehr ausgegeben werden.
+Das Ausgeben dieser Münzen ist nur von dem Wallet oder Gerät möglich, das die Besitzer Adresse enthält.
+
+Möchten Sie fortfahren?</translation>
+    </message>
+    <message>
+        <source>Staking address corresponds to this wallet, change it to an external node</source>
+        <translation>Die Staking Adresse entspricht diesem Wallet, ändern Sie dies zu einem externen Node.</translation>
+    </message>
+    <message>
         <source>Cannot create transaction.</source>
         <translation>Die Transaktion kann nicht erzeugt werden.</translation>
+    </message>
+    <message>
+        <source>Coins delegated</source>
+        <translation>Coins zugewiesen</translation>
+    </message>
+    <message>
+        <source>You don't have any XNK to select.</source>
+        <translation>Sie haben keine XNK zu wählen</translation>
+    </message>
+    <message>
+        <source>Cannot perform operation, wallet locked</source>
+        <translation>Aufgabe kann nicht durchgeführt werden, Ihr Wallet ist verschlossen</translation>
+    </message>
+    <message>
+        <source>URI copied to clipboard</source>
+        <translation>URI in die Zwischenablage kopiert</translation>
     </message>
     <message>
         <source>Address copied to clipboard</source>
@@ -844,8 +894,57 @@ for staking</source>
         <translation>Kopieren</translation>
     </message>
     <message>
+        <source>Edit</source>
+        <translation>Bearbeiten</translation>
+    </message>
+    <message>
+        <source>Stake</source>
+        <translation>Stake</translation>
+    </message>
+    <message>
+        <source>Blacklist</source>
+        <translation>Blacklist</translation>
+    </message>
+    <message>
+        <source>Edit Label</source>
+        <translation>Bezeichnung bearbeiten</translation>
+    </message>
+    <message>
+        <source>Copy owner
+address</source>
+        <translation>Besitzeradresse kopieren</translation>
+    </message>
+    <message>
         <source>Address copied</source>
         <translation>Adresse kopiert</translation>
+    </message>
+    <message>
+        <source>Edit Cold Address Label</source>
+        <translation>Bezeichnung der Cold Adresse bearbeiten</translation>
+    </message>
+    <message>
+        <source>Whitelist failed, please check the logs</source>
+        <translation>Whitelist gescheitert. Bitte überprüfen Sie die Logs.</translation>
+    </message>
+    <message>
+        <source> staking!</source>
+        <translation>Staking!</translation>
+    </message>
+    <message>
+        <source>Blacklist failed, please check the logs</source>
+        <translation>Blacklist gescheitert. Bitte überprüfen Sie die Logs.</translation>
+    </message>
+    <message>
+        <source> blacklisted from staking</source>
+        <translation>Vom Staking geblacklisted</translation>
+    </message>
+    <message>
+        <source>Owner address copied</source>
+        <translation>Besitzeradresse kopiert</translation>
+    </message>
+    <message>
+        <source>Edit Owner Address Label</source>
+        <translation>Besitzeradresse bearbeiten</translation>
     </message>
     <message>
         <source>Address label saved</source>
@@ -895,7 +994,7 @@ for staking</source>
     </message>
     <message>
         <source>Staking Rewards</source>
-        <translation>Staking Entschädigung</translation>
+        <translation>Staking Einnahmen</translation>
     </message>
     <message>
         <source>TextLabel</source>
@@ -934,40 +1033,16 @@ for staking</source>
         <translation>Filtern nach</translation>
     </message>
     <message>
+        <source>LabelText</source>
+        <translation>Text für die Bezeichnung</translation>
+    </message>
+    <message>
         <source>You can view your account's history</source>
         <translation>Der Link zum Verlauf des Accounts</translation>
     </message>
     <message>
         <source>Amount of XNK and zXNK staked.</source>
         <translation>Wieviele XNK und z XNK am staken sind.</translation>
-    </message>
-    <message>
-        <source>All</source>
-        <translation>Alle</translation>
-    </message>
-    <message>
-        <source>Received</source>
-        <translation>Empfangen</translation>
-    </message>
-    <message>
-        <source>Sent</source>
-        <translation>Gesendet</translation>
-    </message>
-    <message>
-        <source>Mined</source>
-        <translation>Erarbeitet</translation>
-    </message>
-    <message>
-        <source>Minted</source>
-        <translation>Erzeugt</translation>
-    </message>
-    <message>
-        <source>MN reward</source>
-        <translation>MN Vergütung</translation>
-    </message>
-    <message>
-        <source>To yourself</source>
-        <translation>Eigenüberweisung</translation>
     </message>
     <message>
         <source>Please wait until the wallet is fully synced to see your correct balance</source>
@@ -1004,6 +1079,10 @@ Die staking Aktivität wird automatisch gestartet, sobald die Wallet genügend K
         <translation>Fehler beim Laden der Tabelle, ungültige Anzeigeoption</translation>
     </message>
     <message>
+        <source>Error loading chart, invalid data</source>
+        <translation>Fehler beim Laden des Charts. Daten sind ungültig.</translation>
+    </message>
+    <message>
         <source>Error loading chart: %1</source>
         <translation>Fehler beim Laden der Tabelle: %1</translation>
     </message>
@@ -1021,65 +1100,6 @@ Die staking Aktivität wird automatisch gestartet, sobald die Wallet genügend K
     <message>
         <source>Text Label</source>
         <translation>Text Bezeichnung</translation>
-    </message>
-    <message>
-        <source>CANCEL</source>
-        <translation>Abbrechen</translation>
-    </message>
-    <message>
-        <source>SAVE</source>
-        <translation>SICHERN</translation>
-    </message>
-</context>
-<context>
-    <name>DenomGenerationDialog</name>
-    <message>
-        <source>Form</source>
-        <translation>Formular</translation>
-    </message>
-    <message>
-        <source>Transaction Details</source>
-        <translation>Transaktionsdetails</translation>
-    </message>
-    <message>
-        <source>This will unlock your wallet fully, so that anyone with access to it can spend until the wallet is closed or locked again.</source>
-        <translation>Diese Option schaltet ihre Wallet ganz frei. Jeder der Zugriff hat, kann XNK ausgeben bis die Wallet wieder geschlossen oder gesperrt wird.</translation>
-    </message>
-    <message>
-        <source>5000</source>
-        <translation>5000</translation>
-    </message>
-    <message>
-        <source>100</source>
-        <translation>100</translation>
-    </message>
-    <message>
-        <source>10</source>
-        <translation>10</translation>
-    </message>
-    <message>
-        <source>1000</source>
-        <translation>1000</translation>
-    </message>
-    <message>
-        <source>50</source>
-        <translation>50</translation>
-    </message>
-    <message>
-        <source>500</source>
-        <translation>500</translation>
-    </message>
-    <message>
-        <source>5</source>
-        <translation>5</translation>
-    </message>
-    <message>
-        <source>1</source>
-        <translation>1</translation>
-    </message>
-    <message>
-        <source>Select All</source>
-        <translation>Alle anwählen</translation>
     </message>
     <message>
         <source>CANCEL</source>
@@ -1176,45 +1196,6 @@ Die staking Aktivität wird automatisch gestartet, sobald die Wallet genügend K
     </message>
 </context>
 <context>
-    <name>GovernancePage</name>
-    <message>
-        <source>Form</source>
-        <translation>Formular</translation>
-    </message>
-    <message>
-        <source>GOVERNANCE</source>
-        <translation>KONTROLLE</translation>
-    </message>
-    <message>
-        <source>Update Proposals</source>
-        <translation>Vorschläge aktualisieren</translation>
-    </message>
-    <message>
-        <source>Next super block:</source>
-        <translation>Nächster Superblock:</translation>
-    </message>
-    <message>
-        <source>0</source>
-        <translation>0</translation>
-    </message>
-    <message>
-        <source>Blocks to next super block:</source>
-        <translation>Blöcke zum nächsten Superblock:</translation>
-    </message>
-    <message>
-        <source>Days to budget payout (estimate):</source>
-        <translation>Tage zur nächsten Auszahlung ( Schätzung):</translation>
-    </message>
-    <message>
-        <source>Budget left:</source>
-        <translation>Restliches Budget:</translation>
-    </message>
-    <message>
-        <source>Masternodes count:</source>
-        <translation>Anzahl Masternodes:</translation>
-    </message>
-</context>
-<context>
     <name>HelpMessageDialog</name>
     <message>
         <source>version</source>
@@ -1257,6 +1238,10 @@ Die staking Aktivität wird automatisch gestartet, sobald die Wallet genügend K
         <translation>Zeige Startbildschirm beim Start (Standard: %u)</translation>
     </message>
     <message>
+        <source>Hide QT staking charts on startup (default: %u)</source>
+        <translation>QT Staking Charts beim Startup verbergen (Standardmäßig: %u)</translation>
+    </message>
+    <message>
         <source>Set language, for example "de_DE" (default: system locale)</source>
         <translation>Sprache festlegen, z.B. "de_DE" (Standard: Systemstandard)</translation>
     </message>
@@ -1296,8 +1281,12 @@ Die staking Aktivität wird automatisch gestartet, sobald die Wallet genügend K
         <translation>Standard-Datenverzeichnis verwenden</translation>
     </message>
     <message>
+        <source>Use a custom data directory</source>
+        <translation>Wähle ein beliebiges Verzeichnis</translation>
+    </message>
+    <message>
         <source>CANCEL</source>
-        <translation>Abbrechen</translation>
+        <translation>ABBRECHEN</translation>
     </message>
     <message>
         <source>OK</source>
@@ -1368,18 +1357,6 @@ Die staking Aktivität wird automatisch gestartet, sobald die Wallet genügend K
         <source>Form</source>
         <translation>Formular</translation>
     </message>
-    <message>
-        <source>user_masternode</source>
-        <translation>Benutzer_masternode</translation>
-    </message>
-    <message>
-        <source>Address: 88.26.164.88:51474</source>
-        <translation>Address: 88.26.164.88:51474</translation>
-    </message>
-    <message>
-        <source>Jan. 19, 2019</source>
-        <translation>Jan. 19, 2019</translation>
-    </message>
 </context>
 <context>
     <name>MasterNodeWizardDialog</name>
@@ -1412,8 +1389,25 @@ Die staking Aktivität wird automatisch gestartet, sobald die Wallet genügend K
         <translation>Adresse</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;To create a EncoCoin Masternode you must dedicate 10.000 XNK (the unit of EncoCoin) to the network (however, these coins are still yours and will never leave your possession). &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;You can deactivate the node and unlock the coins at any time.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Um einen EncoCoin Masternode zu erstellen benötigen Sie 10'000 XNK (die Einheit von EncoCoin), welche sie dem Netzwerk zur Verfügung stellen (Diese Münzen gehören Ihnen und werden Ihren Besitz nie verlassen). &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Sie können den Node zu jeder Zeit deaktivieren und somit die Münzen freischalten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>Create New Masternode Controller</source>
+        <translation>Erzeuge neuen Masternode Controller</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;To create a EncoCoin Masternode you must dedicate 10,000 XNK (the unit of EncoCoin) to the network (however, these coins are still yours and will never leave your possession). &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;You can deactivate the node and unlock the coins at any time.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>Um einen EncoCoin Masternode zu erzeugen, müssen Sie 10.000 XNK (die Einheit von EncoCoin) dem Netzwerk zuweisen (diese Coins sind weiterhin Ihre und Sie werden Ihren Besitz nicht verlassen)
+Sie können den Node jederzeit deaktivieren und die Coins entriegeln.</translation>
+    </message>
+    <message>
+        <source>Set Masternode Name</source>
+        <translation>Namen des Masternodes eingeben</translation>
+    </message>
+    <message>
+        <source>Set Masternode IP and Port</source>
+        <translation>Masternode IP und Port eingeben</translation>
+    </message>
+    <message>
+        <source>Enter port</source>
+        <translation>Port eingeben</translation>
     </message>
     <message>
         <source>Make sure you have this amount of coins.</source>
@@ -1433,7 +1427,7 @@ Die staking Aktivität wird automatisch gestartet, sobald die Wallet genügend K
     </message>
     <message>
         <source>CANCEL</source>
-        <translation>Abbrechen</translation>
+        <translation>ABBRECHEN</translation>
     </message>
     <message>
         <source>OK</source>
@@ -1460,16 +1454,38 @@ Die staking Aktivität wird automatisch gestartet, sobald die Wallet genügend K
         <translation>IP und port dürfen nicht leer sein</translation>
     </message>
     <message>
-        <source>Invalid port number</source>
-        <translation>Ungültige Portnummer</translation>
+        <source>Prepare master node failed.
+
+%1
+</source>
+        <translation>Vorbereitung des Masternode ist gescheitert.
+
+%1
+</translation>
+    </message>
+    <message>
+        <source>Invalid collateral output index</source>
+        <translation>Ungültiger Index der Kollateralausgabe </translation>
+    </message>
+    <message>
+        <source>Master node created! Wait %1 confirmations before starting it.</source>
+        <translation>Masternode erstellt. Warten Sie auf %1 Bestätigungen, bevor Sie ihn starten</translation>
+    </message>
+    <message>
+        <source>Cannot send collateral transaction.
+
+%1</source>
+        <translation>Kollateral konnte nicht gesendet werden
+%1
+</translation>
     </message>
     <message>
         <source>Invalid masternode.conf file</source>
         <translation>Ungültiges masternode.conf file</translation>
     </message>
     <message>
-        <source>Master node created!</source>
-        <translation>Masternode erstellt!</translation>
+        <source>Error parsing masternode.conf file</source>
+        <translation>Fehler beim Parsen der masternode.conf Datei </translation>
     </message>
     <message>
         <source>masternode.conf file doesn't exists</source>
@@ -1491,8 +1507,21 @@ Die staking Aktivität wird automatisch gestartet, sobald die Wallet genügend K
         <translation>k.A.</translation>
     </message>
     <message>
+        <source>Start All</source>
+        <translation>Alle ausführen</translation>
+    </message>
+    <message>
+        <source>Start Inactive/s</source>
+        <translation>Starte Inaktive</translation>
+    </message>
+    <message>
         <source>Masternodes</source>
         <translation>Masternodes</translation>
+    </message>
+    <message>
+        <source>Full nodes that incentivize node operators to perform the core consensus functions
+and vote on the treasury system receiving a periodic reward.</source>
+        <translation>Full Nodes, die Node Betreibern einen Anreiz bieten, die Kern Konsensfunktionen zu betreiben und in dem Treasury System mit abstimmen, erhalten periodisch eine Belohnung.</translation>
     </message>
     <message>
         <source>Create Masternode Controller</source>
@@ -1515,6 +1544,10 @@ Die staking Aktivität wird automatisch gestartet, sobald die Wallet genügend K
         <translation>Info</translation>
     </message>
     <message>
+        <source>Please wait until the node is fully synced</source>
+        <translation>Bitte warten Sie bis der Node vollständig synchronisiert ist</translation>
+    </message>
+    <message>
         <source>Start Masternode</source>
         <translation>Starte Masternode</translation>
     </message>
@@ -1525,10 +1558,49 @@ Die staking Aktivität wird automatisch gestartet, sobald die Wallet genügend K
 </translation>
     </message>
     <message>
-        <source>Cannot start masternode, the collateral transaction has not been accepted by the network.
-Please wait few more minutes.</source>
-        <translation>Masternode kann nicht gestartet werden, die Sicherungstransaktion wurde vom Netzwerk noch nicht akzeptiert.
-Bitte warte einige Minuten.</translation>
+        <source>Cannot edit masternode, wallet locked</source>
+        <translation>Masternode kann nicht bearbeitet werden, das Wallet ist verschlossen</translation>
+    </message>
+    <message>
+        <source>Cannot start masternode, the collateral transaction has not been confirmed by the network yet.
+Please wait few more minutes (masternode collaterals require %1 confirmations).</source>
+        <translation>Masternode kann nicht gestartet werden, das Kollateral wurde noch nicht durch das Netzwerk bestätigt. Bitte warten Sie einige Minuten (Es werden %1 Bestätigungen benötigt)</translation>
+    </message>
+    <message>
+        <source>Background task is being executed, please wait</source>
+        <translation>Hintergrundprozess wird ausgeführt. Bitte warten Sie</translation>
+    </message>
+    <message>
+        <source>Start ALL masternodes failed</source>
+        <translation>Starten ALLER Masternodes gescheitert</translation>
+    </message>
+    <message>
+        <source>Wallet unlock cancelled</source>
+        <translation>Entriegelung des Wallets abgebrochen</translation>
+    </message>
+    <message>
+        <source>Cannot perform Masternodes start</source>
+        <translation>Start des Masternodes kann nicht durchgeführt werden</translation>
+    </message>
+    <message>
+        <source>%1 Masternodes failed to start, %2 started</source>
+        <translation>%1 Masternodes konnten nicht gestartet werden, %2 wurden gestartet</translation>
+    </message>
+    <message>
+        <source>All Masternodes started!</source>
+        <translation>Alle Masternodes gestartet</translation>
+    </message>
+    <message>
+        <source>Cannot show Masternode information, wallet locked</source>
+        <translation>Informationen des Masternodes konnten nicht angezeigt werden, das Wallet ist verriegelt.</translation>
+    </message>
+    <message>
+        <source>Masternode data copied to the clipboard.</source>
+        <translation>Masternode Daten in die Zwischenablage kopiert</translation>
+    </message>
+    <message>
+        <source>Remote Masternode Data</source>
+        <translation>Remote Masternode Daten</translation>
     </message>
     <message>
         <source>You are just about to export the required data to run a Masternode
@@ -1539,19 +1611,15 @@ You will only have to paste the data in the encocoin.conf file
 of your remote server and start it, then start the Masternode using
 this controller wallet (select the Masternode in the list and press "start").
 </source>
-        <translation>Sie sind dabei die erforderlichen Daten, 
-um einen Masternode auf einem externen Server laufen zu lassen, 
+        <translation>Sie sind dabei die erforderlichen Daten,
+um einen Masternode auf einem externen Server laufen zu lassen,
 in die Zwischenablage zu kopieren.
 
 
 SIe müssen lediglich die Daten in das encocoin.conf-File ihres externen Servers einfügen,
-die EncoCoin-wallet starten, um dann von der Kontrollwallet aus 
+die Xnkx-wallet starten, um dann von der Kontrollwallet aus
 ihren Masternode zu starten.
 </translation>
-    </message>
-    <message>
-        <source>Masternode exported!, check your clipboard</source>
-        <translation>Masternode exportiert!, Befindet sich in der Zwischenablage</translation>
     </message>
     <message>
         <source>Delete Masternode</source>
@@ -1572,8 +1640,16 @@ Sind sie sicher?</translation>
         <translation>Ungültiges masternode.conf file</translation>
     </message>
     <message>
+        <source>Error parsing masternode.conf file</source>
+        <translation>Fehler beim Parsen der masternode.conf Datei </translation>
+    </message>
+    <message>
         <source>masternode.conf file doesn't exists</source>
         <translation>masternode.conf File existiert nicht</translation>
+    </message>
+    <message>
+        <source>Cannot create Masternode controller, wallet locked</source>
+        <translation>Konnte keinen Masternode Controller erzeugen, das Wallet ist verriegelt</translation>
     </message>
     <message>
         <source>Not enough balance to create a masternode, 10,000 XNK required.</source>
@@ -1589,6 +1665,10 @@ Sind sie sicher?</translation>
     <message>
         <source>Form</source>
         <translation>Formular</translation>
+    </message>
+    <message>
+        <source>Masternode Information</source>
+        <translation>Masternode Information</translation>
     </message>
     <message>
         <source>Public Key:</source>
@@ -1607,15 +1687,39 @@ Sind sie sicher?</translation>
         <translation>127.0.0.2:43223</translation>
     </message>
     <message>
+        <source>Collaterall tx id:</source>
+        <translation>ID der Kollateral-Transaktion:</translation>
+    </message>
+    <message>
+        <source>Output index:</source>
+        <translation>Output Index:</translation>
+    </message>
+    <message>
+        <source>1 Inputs</source>
+        <translation>1 Input</translation>
+    </message>
+    <message>
         <source>Status:</source>
         <translation>Status:</translation>
     </message>
-    </context>
+    <message>
+        <source>MISSING</source>
+        <translation>FEHLEND</translation>
+    </message>
+    <message>
+        <source>Export data to run the Masternode on a remote server</source>
+        <translation>Ausgabe der Daten, um Masternode auf externem Server auszuführen</translation>
+    </message>
+</context>
 <context>
     <name>MyAddressRow</name>
     <message>
         <source>Form</source>
         <translation>Formular</translation>
+    </message>
+    <message>
+        <source>Savings</source>
+        <translation>Erspartes</translation>
     </message>
     <message>
         <source>Jan. 19, 2019</source>
@@ -1632,7 +1736,15 @@ Sind sie sicher?</translation>
         <source>Form</source>
         <translation>Formular</translation>
     </message>
-    </context>
+    <message>
+        <source>V 1.0.0</source>
+        <translation>V 1.0.0</translation>
+    </message>
+    <message>
+        <source>v%1</source>
+        <translation>v%1</translation>
+    </message>
+</context>
 <context>
     <name>OpenURIDialog</name>
     <message>
@@ -1649,7 +1761,7 @@ Sind sie sicher?</translation>
     </message>
     <message>
         <source>CANCEL</source>
-        <translation>Abbrechen</translation>
+        <translation>ABBRECHEN</translation>
     </message>
     <message>
         <source>OK</source>
@@ -1663,7 +1775,19 @@ Sind sie sicher?</translation>
         <source>Select payment request file to open</source>
         <translation>Datei für Zahlungsanfrage öffnen</translation>
     </message>
-    </context>
+    <message>
+        <source>File not found</source>
+        <translation>Datei nicht gefunden</translation>
+    </message>
+    <message>
+        <source>Parsed data too large</source>
+        <translation>Zu viele Daten zu parsen</translation>
+    </message>
+    <message>
+        <source>Invalid URI, not starting with "encocoin" prefix</source>
+        <translation>Ungültige URI, sie beginnt nicht mit "encocoin"-Präfix</translation>
+    </message>
+</context>
 <context>
     <name>OptionButton</name>
     <message>
@@ -1880,6 +2004,14 @@ https://www.transifex.com/encocoin-project/encocoin-project-translations</transl
         <translation>Leere Salden ausblenden</translation>
     </message>
     <message>
+        <source>Hide orphan stakes in transaction lists</source>
+        <translation>Verbirge verwaiste Stakes in der Transaktionsliste</translation>
+    </message>
+    <message>
+        <source>Hide orphan stakes</source>
+        <translation>Verbirge verwaiste Stakes</translation>
+    </message>
+    <message>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
         <translation>Drittpartei URLs (z.B. Blockexplorer) die auf der Registerkarte Transaktionen als Kontextmenü erscheinen. %s in der URL wird durch den Transaktionshash ersetzt. Mehrere URLs sind durch vertikale Balken | getrennt.</translation>
     </message>
@@ -1995,6 +2127,10 @@ https://www.transifex.com/encocoin-project/encocoin-project-translations</transl
         <translation>Hinweis</translation>
     </message>
     <message>
+        <source>System Message</source>
+        <translation>Systembenachrichtigung</translation>
+    </message>
+    <message>
         <source>Sent MultiSend transaction</source>
         <translation>Versende MultiSend Transaktion</translation>
     </message>
@@ -2017,10 +2153,11 @@ Betrag: %2
 Typ: %3
 Adresse: %4</translation>
     </message>
-    </context>
-<context>
-    <name>PWidget</name>
-    </context>
+    <message>
+        <source>A fatal error occurred. EncoCoin can no longer continue safely and will quit.</source>
+        <translation>Ein fataler Fehler ist aufgetreten. EncoCoin kann nicht länger sicher fortfahren und wird geschlossen</translation>
+    </message>
+</context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -2162,6 +2299,19 @@ Adresse: %4</translation>
         <translation>Prägen</translation>
     </message>
     <message>
+        <source>Minting zXNK anonymizes your XNK by removing any
+transaction history, making transactions untraceable </source>
+        <translation>Das Prägen von zXNK anonymisiert Ihre XNK, indem es die Transaktionshistorie entfernt und Transaktionen so nicht rückverfolgbar macht.</translation>
+    </message>
+    <message>
+        <source>Mint new zXNK or convert back to XNK</source>
+        <translation>Präge neue zXNK oder einlösen für XNK</translation>
+    </message>
+    <message>
+        <source>Last zXNK Movements</source>
+        <translation>letzte zXNK Bewegungen</translation>
+    </message>
+    <message>
         <source>No transactions yet</source>
         <translation>Keine Transaktionen</translation>
     </message>
@@ -2178,12 +2328,20 @@ Adresse: %4</translation>
         <translation>Konvertiere zXNK zurück zu XNK</translation>
     </message>
     <message>
+        <source>Enter amount of zXNK to convert back into XNK</source>
+        <translation>Geben Sie die Menge zXNK ein, die in XNK umgewandelt werden sollen</translation>
+    </message>
+    <message>
         <source>Zerocoin</source>
         <translation>Zerocoin</translation>
     </message>
     <message>
         <source>zXNK is currently undergoing maintenance</source>
         <translation>zXNK wird momentan überarbeitet</translation>
+    </message>
+    <message>
+        <source>You need to unlock the wallet to be able to %1 zXNK</source>
+        <translation>Sie müssen Ihr Wallet entriegeln, um %1 zXNK zu</translation>
     </message>
     <message>
         <source>convert</source>
@@ -2197,44 +2355,37 @@ Adresse: %4</translation>
         <source>Invalid value</source>
         <translation>Ungültiger Wert</translation>
     </message>
-    </context>
-<context>
-    <name>ProposalFrame</name>
     <message>
-        <source>Open proposal page in browser</source>
-        <translation>Vorschläge-Seite im Browser</translation>
+        <source>zXNK minted successfully</source>
+        <translation>zXNK erfolgreich geprägt</translation>
     </message>
     <message>
-        <source>Yes:</source>
-        <translation>Ja:</translation>
+        <source>zXNK converted back to XNK</source>
+        <translation>zXNK zurück in XNK konvertiert</translation>
     </message>
     <message>
-        <source>No:</source>
-        <translation>Nein:</translation>
+        <source>You don't have any XNK to select.</source>
+        <translation>Sie haben keine XNK zu wählen</translation>
     </message>
     <message>
-        <source>Open link</source>
-        <translation>Öffentlicher Link</translation>
+        <source>Rescan Mints</source>
+        <translation>Prägungen erneut scannen</translation>
     </message>
     <message>
-        <source>Copy link</source>
-        <translation>Link kopieren</translation>
+        <source>Your zerocoin mints are going to be scanned from the blockchain from scratch</source>
+        <translation>Ihre zerocoin Prägungen werden von Beginn der Blockchain gescannt</translation>
     </message>
     <message>
-        <source>Wallet Locked</source>
-        <translation>Wallet gesperrt</translation>
+        <source>Reset Spent zXNK</source>
+        <translation>Ausgegebene zXNK erneut senden</translation>
     </message>
     <message>
-        <source>You must unlock your wallet to vote.</source>
-        <translation>Um wählen zu können, muss dein Wallet entsperrt sein.</translation>
+        <source>Your zerocoin spends are going to be scanned from the blockchain from scratch</source>
+        <translation>Ihre Zerocoin-Ausgaben werden von Beginn der Blockchain gescannt</translation>
     </message>
     <message>
-        <source>Confirm Vote</source>
-        <translation>Bestätige deine Stimmabgabe</translation>
-    </message>
-    <message>
-        <source>Vote Results</source>
-        <translation>Abstimmresultate</translation>
+        <source>Total %1</source>
+        <translation>Gesamt %1</translation>
     </message>
 </context>
 <context>
@@ -2242,6 +2393,10 @@ Adresse: %4</translation>
     <message>
         <source>Amount</source>
         <translation>Betrag</translation>
+    </message>
+    <message>
+        <source>Enter EncoCoin address (e.g. %1)</source>
+        <translation>EncoCoin Adresse eingeben (z.B. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -2287,7 +2442,123 @@ Adresse: %4</translation>
         <source>EncoCoin Core</source>
         <translation>EncoCoin Core</translation>
     </message>
-    </context>
+    <message>
+        <source>Error: Specified data directory "%1" does not exist.</source>
+        <translation>Fehler: Angegebener Speicherpfad "%1" existiert nicht.</translation>
+    </message>
+    <message>
+        <source>Error: Cannot parse configuration file: %1. Only use key=value syntax.</source>
+        <translation>Fehler: Konfigurationsdatei: %1 konnte nicht geparst werden. Bitte nutzen Sie nur Schlüssel=Wert Syntax</translation>
+    </message>
+    <message>
+        <source>Error: Invalid combination of -regtest and -testnet.</source>
+        <translation>Fehler: Ungültige Kombination von -regtest und -testnet</translation>
+    </message>
+    <message>
+        <source>Error reading masternode configuration file: %1</source>
+        <translation>Fehler beim Einlesen der Konfigurationsdatei %1 für den Masternode.</translation>
+    </message>
+    <message>
+        <source>EncoCoin Core didn't yet exit safely...</source>
+        <translation>EncoCoin Core konnte noch nicht sicher beendet werden...</translation>
+    </message>
+    <message>
+        <source>Contact</source>
+        <translation>Kontakt</translation>
+    </message>
+    <message>
+        <source>Receiving</source>
+        <translation>Empfangen</translation>
+    </message>
+    <message>
+        <source>Delegator</source>
+        <translation>Delegierter</translation>
+    </message>
+    <message>
+        <source>Cold Staking</source>
+        <translation>Cold Staking</translation>
+    </message>
+    <message>
+        <source>Cold Staking Contact</source>
+        <translation>Cold Staking Kontakt</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>Verborgen</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Unbekannt</translation>
+    </message>
+    <message>
+        <source>All</source>
+        <translation>Alle</translation>
+    </message>
+    <message>
+        <source>Contacts</source>
+        <translation>Kontakte</translation>
+    </message>
+    <message>
+        <source>Delegators</source>
+        <translation>Delegierte</translation>
+    </message>
+    <message>
+        <source>Staking Contacts</source>
+        <translation>Staking Kontakte</translation>
+    </message>
+    <message>
+        <source>Received</source>
+        <translation>Empfangen</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Gesendet</translation>
+    </message>
+    <message>
+        <source>Mined</source>
+        <translation>Erarbeitet</translation>
+    </message>
+    <message>
+        <source>Minted</source>
+        <translation>Erzeugt</translation>
+    </message>
+    <message>
+        <source>MN reward</source>
+        <translation>MN Vergütung</translation>
+    </message>
+    <message>
+        <source>To yourself</source>
+        <translation>Eigenüberweisung</translation>
+    </message>
+    <message>
+        <source>Cold stakes</source>
+        <translation>Cold Stakes</translation>
+    </message>
+    <message>
+        <source>Hot stakes</source>
+        <translation>Hot Stakes</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Zugewiesen</translation>
+    </message>
+    <message>
+        <source>Delegations</source>
+        <translation>Delegationen</translation>
+    </message>
+    <message>
+        <source>by Label</source>
+        <translation>nach Bezeichnung</translation>
+    </message>
+    <message>
+        <source>by Address</source>
+        <translation>nach Adresse</translation>
+    </message>
+    <message>
+        <source>by Date</source>
+        <translation>nach Datum</translation>
+    </message>
+</context>
 <context>
     <name>RPCConsole</name>
     <message>
@@ -2365,6 +2636,14 @@ Adresse: %4</translation>
     <message>
         <source>Number of Masternodes</source>
         <translation>Anzahl der Masternodes</translation>
+    </message>
+    <message>
+        <source>Data Directory</source>
+        <translation>Datenverzeichnis</translation>
+    </message>
+    <message>
+        <source>Last block hash</source>
+        <translation>Letzter Blockhash</translation>
     </message>
     <message>
         <source>&amp;Console</source>
@@ -2635,6 +2914,10 @@ Adresse: %4</translation>
         <translation>Gebe &lt;b&gt;help&lt;/b&gt; ein, um eine Übersicht der verfügbaren Befehle zu erhalten.</translation>
     </message>
     <message>
+        <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramifications of a command.</source>
+        <translation>Warnung: Abzocker sind aktiv und erzählen Nutzer hier Befehle einzugeben, um so den Inhalt des Wallets zu stehlen. Nutzen Sie diese Konsole nicht, ohne die Bedeutungen eines Befehls vollständig zu verstehen.</translation>
+    </message>
+    <message>
         <source>%1 B</source>
         <translation>%1 Byte</translation>
     </message>
@@ -2699,7 +2982,7 @@ Adresse: %4</translation>
     </message>
     <message>
         <source>CANCEL</source>
-        <translation>Abbrechen</translation>
+        <translation>ABBRECHEN</translation>
     </message>
     <message>
         <source>OK</source>
@@ -2753,6 +3036,10 @@ Adresse: %4</translation>
         <translation>Fehler beim Erstellen der Adresse</translation>
     </message>
     <message>
+        <source>Edit Label</source>
+        <translation>Bezeichnung bearbeiten</translation>
+    </message>
+    <message>
         <source>Edit Address Label</source>
         <translation>Adressbezeichnung bearbeiten</translation>
     </message>
@@ -2765,12 +3052,24 @@ Adresse: %4</translation>
         <translation>Fehler beim Speichern der Adressbezeichnung</translation>
     </message>
     <message>
+        <source>Cannot create new address, wallet locked</source>
+        <translation>Konnte keine neue Adresse erzeugen. Wallet verriegelt.</translation>
+    </message>
+    <message>
         <source>New address created</source>
         <translation>Neue Adresse erstellen</translation>
     </message>
     <message>
         <source>Address copied</source>
         <translation>Adresse kopiert</translation>
+    </message>
+    <message>
+        <source>Cannot perform operation, wallet locked</source>
+        <translation>Aufgabe kann nicht durchgeführt werden, Ihr Wallet ist verschlossen</translation>
+    </message>
+    <message>
+        <source>URI copied to clipboard</source>
+        <translation>URI in die Zwischenablage kopiert</translation>
     </message>
     <message>
         <source>Address copied to clipboard</source>
@@ -2852,7 +3151,7 @@ Adresse: %4</translation>
     </message>
     <message>
         <source>CANCEL</source>
-        <translation>Abbrechen</translation>
+        <translation>ABBRECHEN</translation>
     </message>
     <message>
         <source>REQUEST</source>
@@ -2867,6 +3166,22 @@ Adresse: %4</translation>
         <translation>Beschreibung (optional)</translation>
     </message>
     <message>
+        <source>New Payment Request</source>
+        <translation>Neue Bezahlung anfordern</translation>
+    </message>
+    <message>
+        <source>Instead of sharing only a EncoCoin address, you can create a payment request, bundling up more information.</source>
+        <translation>Anstatt nur eine EncoCoin Adresse zu teilen, können Sie eine Zahlung anfordern, die mehr Informationen enthält.</translation>
+    </message>
+    <message>
+        <source>Enter a label for the address</source>
+        <translation>Eine Bezeichnung für die Adresse eingeben</translation>
+    </message>
+    <message>
+        <source>Enter description</source>
+        <translation>Beschreibung eingeben</translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
@@ -2874,7 +3189,19 @@ Adresse: %4</translation>
         <source>GENERATE</source>
         <translation>ERSTELLEN</translation>
     </message>
-    </context>
+    <message>
+        <source>Creates an address to receive coin delegations and be able to stake them.</source>
+        <translation>Erstellt eine Adresse um Münzzuweisungen zu empfangen und diese zu staken</translation>
+    </message>
+    <message>
+        <source>New Cold Staking Address</source>
+        <translation>Neue Cold Staking Adresse</translation>
+    </message>
+    <message>
+        <source>Amount (optional)</source>
+        <translation>Betrag (optional)</translation>
+    </message>
+</context>
 <context>
     <name>SendChangeAddressDialog</name>
     <message>
@@ -2886,14 +3213,34 @@ Adresse: %4</translation>
         <translation>Transaktionsdetails</translation>
     </message>
     <message>
+        <source>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</source>
+        <translation>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</translation>
+    </message>
+    <message>
         <source>CANCEL</source>
-        <translation>Abbrechen</translation>
+        <translation>ABBRECHEN</translation>
     </message>
     <message>
         <source>OK</source>
         <translation>OK</translation>
     </message>
-    </context>
+    <message>
+        <source>Custom Change Address</source>
+        <translation>Benutzerdefinierte Wechseladresse</translation>
+    </message>
+    <message>
+        <source>The remainder of the value resultant from the inputs minus the outputs value goes to the "change" EncoCoin address</source>
+        <translation>Der verbleibende Betrag der Inputs minus der Outputs geht an die Wechseladresse</translation>
+    </message>
+    <message>
+        <source>SAVE</source>
+        <translation>SICHERN</translation>
+    </message>
+    <message>
+        <source>Invalid address</source>
+        <translation>Ungültige Adresse</translation>
+    </message>
+</context>
 <context>
     <name>SendCustomFeeDialog</name>
     <message>
@@ -2905,8 +3252,16 @@ Adresse: %4</translation>
         <translation>Transaktionsdetails</translation>
     </message>
     <message>
-        <source>Recomended</source>
+        <source>Customize the transaction fee at your to your liking, depending on the fee value your transaction will be included or not in the blockchain.</source>
+        <translation>Passen Sie die Transaktionsgebühr nach Ihrem Befinden an. Abhängig von der Gebühr wird ihre Transaktion in die Blockchain eingefügt oder vom Netzwerk zurückgewiesen</translation>
+    </message>
+    <message>
+        <source>Recommended</source>
         <translation>Empfohlen</translation>
+    </message>
+    <message>
+        <source>XNK/kilobyte</source>
+        <translation>XNK/kB</translation>
     </message>
     <message>
         <source>0.00 KB</source>
@@ -2917,12 +3272,8 @@ Adresse: %4</translation>
         <translation>Benutzerdefiniert:</translation>
     </message>
     <message>
-        <source>Per kilobyte</source>
-        <translation>pro Kilobyte</translation>
-    </message>
-    <message>
         <source>CANCEL</source>
-        <translation>Abbrechen</translation>
+        <translation>ABBRECHEN</translation>
     </message>
     <message>
         <source>OK</source>
@@ -2931,6 +3282,10 @@ Adresse: %4</translation>
     <message>
         <source>Customize Fee</source>
         <translation>Benutzerdefinierte Gebühr</translation>
+    </message>
+    <message>
+        <source>Customize the transaction fee, depending on the fee value your transaction might be included faster in the blockchain.</source>
+        <translation>Passen Sie die Transaktionsgebühr an. Abhängig von der Gebühr kann Ihre Transaktion schneller in die Blockchain eingefügt werden.</translation>
     </message>
     <message>
         <source>Normal</source>
@@ -2948,7 +3303,7 @@ Adresse: %4</translation>
         <source>SAVE</source>
         <translation>SICHERN</translation>
     </message>
-</context>
+    </context>
 <context>
     <name>SendMultiRow</name>
     <message>
@@ -2963,7 +3318,11 @@ Adresse: %4</translation>
         <source>Enter address</source>
         <translation>Adresse einfügen</translation>
     </message>
-    </context>
+    <message>
+        <source>Enter label</source>
+        <translation>Bezeichnung eingeben</translation>
+    </message>
+</context>
 <context>
     <name>SendWidget</name>
     <message>
@@ -3011,12 +3370,28 @@ Adresse: %4</translation>
         <translation>Sende zXNK</translation>
     </message>
     <message>
+        <source>Total remaining from the selected UTXO</source>
+        <translation>Verbleibender Gesamtbetrag von der ausgewählten UTXO</translation>
+    </message>
+    <message>
+        <source>Total remaining</source>
+        <translation>Verbleibender Gesamtbetrag</translation>
+    </message>
+    <message>
+        <source>Warning!</source>
+        <translation>Warnung!</translation>
+    </message>
+    <message>
         <source>Customize Fee</source>
         <translation>Benutzerdefinierte Gebühr</translation>
     </message>
     <message>
         <source>Maximum amount of outputs reached</source>
         <translation>Maximale Anzahl an Outputs erreicht</translation>
+    </message>
+    <message>
+        <source>EncoCoin address or contact label</source>
+        <translation>EncoCoin Adresse oder Kontaktbezeichnung</translation>
     </message>
     <message>
         <source>Invalid entry, previous entries must be valid before add a new one</source>
@@ -3039,6 +3414,13 @@ Adresse: %4</translation>
         <translation>Die Transaktion kann nicht erzeugt werden.</translation>
     </message>
     <message>
+        <source>WARNING:
+Transaction spends a cold-stake delegation, voiding it.
+These coins will no longer be cold-staked.</source>
+        <translation>WARNUNG:
+Transaktion gibt eine cold-staking Zuweisung aus und macht diese nichtig. Diese Münzen werden nicht länger cold gestaked.</translation>
+    </message>
+    <message>
         <source>Transaction sent</source>
         <translation>Transaktion geschickt</translation>
     </message>
@@ -3049,6 +3431,24 @@ Adresse: %4</translation>
     <message>
         <source>zXNK is currently undergoing maintenance.</source>
         <translation>zXNK unterliegt momentan Wartungsarbeiten.</translation>
+    </message>
+    <message>
+        <source>Coin control mint not found</source>
+        <translation>Coin control mint nicht gefunden</translation>
+    </message>
+    <message>
+        <source>Sending %1 to address %2
+</source>
+        <translation>Sende %1 an Adresse %2</translation>
+    </message>
+    <message>
+        <source>Sending %1 to addresses:
+%2</source>
+        <translation>Sende %1 an Adressen %2</translation>
+    </message>
+    <message>
+        <source>zXNK transaction sent!</source>
+        <translation>zXNK Transaktion ausgeführt</translation>
     </message>
     <message>
         <source>Version 1 zXNK require a security level of 100 to successfully spend.</source>
@@ -3069,6 +3469,46 @@ Maximal erlaubt:</translation>
 Either mint higher denominations (so fewer inputs are needed) or reduce the amount to spend.</source>
         <translation>
 Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn) oder reduziere die aufzuwendende Menge.</translation>
+    </message>
+    <message>
+        <source>Address label update failed for address: %1</source>
+        <translation>Update fpr Adressbezeichnung der Adresse %1 gescheitert</translation>
+    </message>
+    <message>
+        <source>Invalid URI</source>
+        <translation>Ungültige URI</translation>
+    </message>
+    <message>
+        <source>Invalid address in URI</source>
+        <translation>Ungültige Adresse in URI</translation>
+    </message>
+    <message>
+        <source>Custom Fee %1</source>
+        <translation>Benutzerdefinierte Gebühr %1</translation>
+    </message>
+    <message>
+        <source>You don't have any XNK to select.</source>
+        <translation>Sie haben keine XNK zu wählen</translation>
+    </message>
+    <message>
+        <source>You don't have any zXNK in your balance to select.</source>
+        <translation>Sie haben keine zXNK zum Auswählen</translation>
+    </message>
+    <message>
+        <source>No contacts available, you can go to the contacts screen and add some there!</source>
+        <translation>Keine Kontakte verfügbar. Sie können zum Kontaktfenster wechseln und dort welche hinzufügen.</translation>
+    </message>
+    <message>
+        <source>Save contact</source>
+        <translation>Kontakt speichern</translation>
+    </message>
+    <message>
+        <source>Address field is empty</source>
+        <translation>Adressfeld ist leer</translation>
+    </message>
+    <message>
+        <source>Invalid address</source>
+        <translation>Ungültige Adresse</translation>
     </message>
     <message>
         <source>Cannot store your own address as contact</source>
@@ -3110,12 +3550,23 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Wallet Passwort ändern</translation>
     </message>
     <message>
+        <source>This will decrypt the whole wallet data and encrypt it back with the new passphrase.
+Remember to write it down and store it safely, otherwise you might lose access to your funds.</source>
+        <translation>Dies wird die Walletdatei entschlüsseln und mit einer neuen Passphrase verschlüsseln. Bedenken Sie, diese aufzuschreiben und sicher zu verwahren. Andernfalls können Sie den Zugriff auf Ihr Vermögen verlieren</translation>
+    </message>
+    <message>
         <source>Where</source>
         <translation>Wo</translation>
     </message>
     <message>
-        <source>Backup</source>
-        <translation>Backup</translation>
+        <source>Keep your wallet safe by doing regular backups and storing your backup file externally.
+This option creates a wallet.dat file that can be used to recover your whole balance (transactions and addresses) on another device.</source>
+        <translation>Halten Sie Ihr Wallet durch regelmäßiges Backup sicher und speichern Sie diese auf einem externen Gerät ab.
+Diese Option erzeugt eine wallet.dat Datei, die sie nutzen können, um Ihr Vermögen (Transaktionen und Adressen) auf einem anderen Gerät vollständig wiederherzustellen.</translation>
+    </message>
+    <message>
+        <source>Select folder...</source>
+        <translation>Ordner auswählen</translation>
     </message>
     <message>
         <source>Change Passphrase</source>
@@ -3137,7 +3588,11 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <source>Backup creation failed</source>
         <translation>Erstellung des Backups fehlgeschlagen</translation>
     </message>
-    </context>
+    <message>
+        <source>Please select a folder to export the backup first.</source>
+        <translation>Bitte wählen Sie zuerst einen Ordner aus, um das Backup zu exportieren.</translation>
+    </message>
+</context>
 <context>
     <name>SettingsBitToolWidget</name>
     <message>
@@ -3153,12 +3608,56 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Druckknopf</translation>
     </message>
     <message>
+        <source>Decrypt Address Result</source>
+        <translation>Entschlüssel Adressergebnisse</translation>
+    </message>
+    <message>
         <source>Import Address</source>
         <translation>Adresse importieren</translation>
     </message>
     <message>
         <source>Clear</source>
         <translation>Clear</translation>
+    </message>
+    <message>
+        <source>BIP38 Tool</source>
+        <translation>BIP 38 Werkzeug</translation>
+    </message>
+    <message>
+        <source>Encrypt</source>
+        <translation>VERSCHLÜSSELN</translation>
+    </message>
+    <message>
+        <source>Decrypt</source>
+        <translation>ENTSCHLÜSSELN</translation>
+    </message>
+    <message>
+        <source>Encrypted key</source>
+        <translation>Schlüssel zur Verschlüsselung</translation>
+    </message>
+    <message>
+        <source>Enter a encrypted key</source>
+        <translation>Geben Sie einen Schlüssel für die Verschlüsselung ein</translation>
+    </message>
+    <message>
+        <source>Passphrase</source>
+        <translation>Passphrase</translation>
+    </message>
+    <message>
+        <source>Enter a passphrase </source>
+        <translation>Gib eine Passphrase ein</translation>
+    </message>
+    <message>
+        <source>Decrypted address result</source>
+        <translation>Ergebnisse entschlüsselter Adressen</translation>
+    </message>
+    <message>
+        <source>Decrypted Address</source>
+        <translation>Entschlüsselte Adresse</translation>
+    </message>
+    <message>
+        <source>EncoCoin address</source>
+        <translation>EncoCoin Adresse</translation>
     </message>
     <message>
         <source>Enter address</source>
@@ -3174,7 +3673,7 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     </message>
     <message>
         <source>ENCRYPT</source>
-        <translation>Verschlüsseln</translation>
+        <translation>VERSCHLÜSSELN</translation>
     </message>
     <message>
         <source>CLEAR ALL</source>
@@ -3249,8 +3748,8 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Fehler beim Hinzufügen des Schlüssels zur Wallet</translation>
     </message>
     <message>
-        <source>Successfully added pivate key to the wallet</source>
-        <translation>Privater Schlüssel erfolgreich zur Wallet hinzugefügt</translation>
+        <source>Successfully added private key to the wallet</source>
+        <translation>Private Key erfolgreich zum Wallet hinzugefügt</translation>
     </message>
 </context>
 <context>
@@ -3268,6 +3767,27 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Konsole</translation>
     </message>
     <message>
+        <source>Console input</source>
+        <translation>Konsoleneingabe</translation>
+    </message>
+    <message>
+        <source>Command Line Options </source>
+        <translation>Befehlszeilenoptionen</translation>
+    </message>
+    <message>
+        <source>Open Debug File</source>
+        <translation>Öffne Debug-Datei</translation>
+    </message>
+    <message>
+        <source>Clear history</source>
+        <translation>Verlauf löschen</translation>
+    </message>
+    <message>
+        <source>Cannot open debug file.
+Verify that you have installed a predetermined text editor.</source>
+        <translation>Debug Datei konnte nicht geöffnet werden. Stellen Sie sicher, den vorher bestimmten Texteditor installiert zu haben.</translation>
+    </message>
+    <message>
         <source>Welcome to the EncoCoin RPC console.</source>
         <translation>Willkommen in der EncoCoin RPC-Konsole.</translation>
     </message>
@@ -3279,7 +3799,11 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
         <translation>Gebe &lt;b&gt;help&lt;/b&gt; ein, um eine Übersicht der verfügbaren Befehle zu erhalten.</translation>
     </message>
-    </context>
+    <message>
+        <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramifications of a command.</source>
+        <translation>Warnung: Abzocker sind aktiv und erzählen Nutzer hier Befehle einzugeben, um so den Inhalt des Wallets zu stehlen. Nutzen Sie diese Konsole nicht, ohne die Bedeutungen eines Befehls vollständig zu verstehen.</translation>
+    </message>
+</context>
 <context>
     <name>SettingsDisplayOptionsWidget</name>
     <message>
@@ -3289,6 +3813,10 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     <message>
         <source>TextLabel</source>
         <translation>TextEtikett</translation>
+    </message>
+    <message>
+        <source>Hide stake charts in the dashboard</source>
+        <translation>Verbirge Stake Charts im Dashboard</translation>
     </message>
     <message>
         <source>Reset to default</source>
@@ -3319,6 +3847,10 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Dezimalstellen</translation>
     </message>
     <message>
+        <source>Third party transactions URLs</source>
+        <translation>URLs für Drittpartei-Transaktionen</translation>
+    </message>
+    <message>
         <source>Hide empty balances</source>
         <translation>Leere Salden ausblenden</translation>
     </message>
@@ -3330,7 +3862,110 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <source>default</source>
         <translation>standard</translation>
     </message>
-    </context>
+    <message>
+        <source>Options reset succeed</source>
+        <translation>Zurücksetzen der Optionen erfolgreich.</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsExportCSV</name>
+    <message>
+        <source>Form</source>
+        <translation>Formular</translation>
+    </message>
+    <message>
+        <source>Export your wallet's accounting data to a csv file.</source>
+        <translation>Wallet Daten als csv Datei exportieren</translation>
+    </message>
+    <message>
+        <source>Where</source>
+        <translation>Wo</translation>
+    </message>
+    <message>
+        <source>Select folder...</source>
+        <translation>Ordner auswählen</translation>
+    </message>
+    <message>
+        <source>Export Address Book</source>
+        <translation>Adressbuch exportieren</translation>
+    </message>
+    <message>
+        <source>Export CSV</source>
+        <translation>Exportiere CSV</translation>
+    </message>
+    <message>
+        <source>Export Address List</source>
+        <translation>Adressliste exportieren</translation>
+    </message>
+    <message>
+        <source>EncoCoin_tx_csv_export(*.csv)</source>
+        <translation>EncoCoin_tx_csv_export(*.csv)</translation>
+    </message>
+    <message>
+        <source>EncoCoin_addresses_csv_export(*.csv)</source>
+        <translation>EncoCoin_addresses_csv_export(*.csv)</translation>
+    </message>
+    <message>
+        <source>Please select a folder to export the csv file first.</source>
+        <translation>Bitte wählen Sie zuerst einen Ordner für den Export der CSV-Datei aus</translation>
+    </message>
+    <message>
+        <source>Confirmed</source>
+        <translation>Bestätigt</translation>
+    </message>
+    <message>
+        <source>Watch-only</source>
+        <translation>Nur beobachtet</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Datum</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Art</translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation>Bezeichnung</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Adresse</translation>
+    </message>
+    <message>
+        <source>ID</source>
+        <translation>ID</translation>
+    </message>
+    <message>
+        <source>Exporting Successful
+The transaction history was successfully saved to %1.</source>
+        <translation>Export erfolgreich.
+Die Transaktionshistorie wurde erfolgreich unter %1 gespeichert.</translation>
+    </message>
+    <message>
+        <source>Exporting Failed
+There was an error trying to save the transaction history to %1.</source>
+        <translation>Export gescheitert.
+Es gab einen Fehler beim Versuch die Transaktionshistorie unter %1 zu speichern.</translation>
+    </message>
+    <message>
+        <source>No available addresses to export under the selected filter</source>
+        <translation>Für den Export sind bei dem ausgewählten Filter keine Adressen verfügbar.</translation>
+    </message>
+    <message>
+        <source>Exporting Successful
+The address book was successfully saved to %1.</source>
+        <translation>Export erfolgreich!
+Das Adressbuch wurde erfolgreich unter %1 gespeichert.</translation>
+    </message>
+    <message>
+        <source>Exporting Failed
+There was an error trying to save the address list to %1. Please try again.</source>
+        <translation>Export gescheitert.
+Es gab ein Problem bei dem Versuch die Adressen unter %1 zu speichern. Bitte versuchen Sie es erneut.</translation>
+    </message>
+</context>
 <context>
     <name>SettingsFaqWidget</name>
     <message>
@@ -3379,12 +4014,39 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>8) Wo sollte ich hingehen, wenn ich ein Problem habe?</translation>
     </message>
     <message>
+        <source>9) What is a Masternode?</source>
+        <translation>9) Was ist ein Masternode?</translation>
+    </message>
+    <message>
+        <source>10) What is a Masternode Controller?</source>
+        <translation>10) Was ist ein Masternode Controller?</translation>
+    </message>
+    <message>
         <source>1</source>
         <translation>1</translation>
     </message>
     <message>
         <source>What is EncoCoin?</source>
         <translation>Was ist EncoCoin</translation>
+    </message>
+    <message>
+        <source>
+                           &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="justify"&gt;
+                           EncoCoin is a form of digital online money using blockchain technology
+                           that can be easily transferred globally, instantly, and with near
+                           zero fees.  EncoCoin incorporates market leading security &amp;
+                           privacy and is also the first PoS (Proof of Stake) Cryptocurrency
+                           to implement ZeroCoin(zXNK) and Zerocoin staking.
+                           &lt;/p&gt;&lt;p align="justify"&gt;
+                           EncoCoin utilizes a Proof of Stake (PoS) consensus system algorithm,
+                           allowing all owners of EncoCoin to participate in earning block rewards
+                           while securing the network with full node wallets, as well as to
+                           run Masternodes to create and vote on proposals.
+                           &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                         </source>
+        <translation>EncoCoin ist eine Form von digitalem Onlinegeld, das die Blockchaintechnologie verwendet und
+einfach, global, sofort und nahezu kostenlos versendet werden kann. EncoCoin enthält marktführende Sicherheits- und Privatsphäretechnologien und ist auch die erste PoS (Proof of Stake) Kryptowährung, die ZeroCoin (zXNK) und Zerocoin Staking verwendet.
+EncoCoin nutzt einen PoS Konsensalgorithmus, der es den Besitzern von EncoCoin erlaubt, an der Vergabe der Block Rewards teilzuhaben, während das Netzwerk durch Fullnode Wallets abgesichert ist. Darüber hinaus können Masternode Proposals einreichen und darüber abstimmen.</translation>
     </message>
     <message>
         <source>2</source>
@@ -3395,12 +4057,41 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Wieso kann ich meine XNK nicht ausgeben?</translation>
     </message>
     <message>
+        <source>
+                           &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="justify"&gt;
+                           Newly received EncoCoin requires 6 confirmations on the network
+                           to become eligible for spending which can take ~6 minutes.
+                           &lt;/p&gt;&lt;p align="justify"&gt;
+                           Your EncoCoin wallet also needs to be completely synchronized
+                           to see and spend balances on the network.
+                           &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                         </source>
+        <translation>Neu empfangene EncoCoin brauchen 6 Bestätigungen im Netzwerkum für Transaktionen verwendet werden zu können. Dies dauert ungeführ 6 Minuten. Ihr EncoCoin Wallet muss auch komplett mit dem Netzwerk synchronisiert sein um Guthaben einsehen und versenden zu können.</translation>
+    </message>
+    <message>
         <source>3</source>
         <translation>3</translation>
     </message>
     <message>
         <source>EncoCoin privacy? What is Zerocoin (zXNK)?</source>
         <translation>EncoCoin Privatsphäre? Was ist ein Zercoin (zXNK)?</translation>
+    </message>
+    <message>
+        <source>
+                           &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="justify"&gt;
+                           zXNK is an optional privacy-centric method of coin mixing on the
+                           EncoCoin blockchain. Basically all your transactions cannot be tracked
+                           on to any block explorer. You can read more about the technicals in the
+                           &lt;a style='color: #b088ff' href='https://EncoCoin.org/zxnk/'&gt;
+                           "EncoCoin Zerocoin (zXNK) Technical Paper"&lt;/a&gt;.
+                           &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                         </source>
+        <translation>
+&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="justify"&gt;
+zXNK ist eine optionale Methode zur Mischung von Münzen auf der EncoCoin Blockchain, deren Fokus auf Privatsphäre liegt. Im Grunde können all Ihre Transaktionen nicht auf einem Blockexplorer verfolgt werden. Hier  finden Sie mehr über die Technik heraus.
+&lt;a style='color: #b088ff' href='https://EncoCoin.org/zxnk/'&gt;
+"EncoCoin Zerocoin (zXNK) Technical Paper"&lt;/a&gt;
+&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>4</source>
@@ -3411,6 +4102,16 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Wieso kann ich meine zXNK nicht ausgeben?</translation>
     </message>
     <message>
+        <source>
+                           &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="justify"&gt;
+                           After minting, zXNK will require 20 confirmations as well as 1
+                           additional mint of the same denomination on the network to
+                           become eligible for spending.
+                           &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                         </source>
+        <translation>Nach der Prägung - dem Minting - benötigen zXNK 20 Bestätigungen und eine weitere Prägung gleichen Nennwerts, bevor diese für Zahlungen geeignet sind.</translation>
+    </message>
+    <message>
         <source>5</source>
         <translation>5</translation>
     </message>
@@ -3419,12 +4120,40 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Wieso hat meine Wallet automatisch das Guthaben in zXNK gewechselt?</translation>
     </message>
     <message>
+        <source>6</source>
+        <translation>6</translation>
+    </message>
+    <message>
         <source>How do I receive XNK/zXNK?</source>
         <translation>Wie empfange ich XNK/zXNK?</translation>
     </message>
     <message>
+        <source>7</source>
+        <translation>7</translation>
+    </message>
+    <message>
         <source>How do I stake XNK/zXNK?</source>
         <translation>Wie stake ich XNK/zXNK?</translation>
+    </message>
+    <message>
+        <source>Where should I go if I need support?</source>
+        <translation>An wen kann ich mich wenden, wenn ich Hilfe benötige?</translation>
+    </message>
+    <message>
+        <source>What is a Masternode?</source>
+        <translation>Was ist ein Masternode?</translation>
+    </message>
+    <message>
+        <source>What is a Masternode Controller?</source>
+        <translation>Was ist ein Masternode Controller?</translation>
+    </message>
+    <message>
+        <source>8</source>
+        <translation>8</translation>
+    </message>
+    <message>
+        <source>9</source>
+        <translation>9</translation>
     </message>
     <message>
         <source>10</source>
@@ -3450,10 +4179,6 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Formular</translation>
     </message>
     <message>
-        <source>TextLabel</source>
-        <translation>TextEtikett</translation>
-    </message>
-    <message>
         <source>Network Monitor</source>
         <translation>Netzwerkmonitor</translation>
     </message>
@@ -3466,12 +4191,88 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Allgemein</translation>
     </message>
     <message>
-        <source>Client Version: </source>
-        <translation>Client Version</translation>
+        <source>Client Version:</source>
+        <translation>Client Version:</translation>
+    </message>
+    <message>
+        <source>BerkeleyDB version:</source>
+        <translation>BerkeleyDB version:</translation>
+    </message>
+    <message>
+        <source>Datadir:</source>
+        <translation>Speicherpfad:</translation>
+    </message>
+    <message>
+        <source>Startup time:</source>
+        <translation>Startzeit:</translation>
+    </message>
+    <message>
+        <source>Connections:</source>
+        <translation>Verbindungen</translation>
+    </message>
+    <message>
+        <source>Number of Masternodes:</source>
+        <translation>Anzahl der Masternodes:</translation>
+    </message>
+    <message>
+        <source>Current number of blocks:</source>
+        <translation>Aktuelle Nummer von Blöcken:</translation>
+    </message>
+    <message>
+        <source>Last block time:</source>
+        <translation>Letzte Blockzeit:</translation>
+    </message>
+    <message>
+        <source>Last block hash:</source>
+        <translation>Letzter Blockhash:</translation>
+    </message>
+    <message>
+        <source>Current number of transactions:</source>
+        <translation>Aktuelle Anzahl von Transaktionen:</translation>
+    </message>
+    <message>
+        <source>User Agent:</source>
+        <translation>User Agent:</translation>
     </message>
     <message>
         <source>Network</source>
         <translation>Netzwerk</translation>
+    </message>
+    <message>
+        <source>Name:</source>
+        <translation>Name:</translation>
+    </message>
+    <message>
+        <source>Blockchain</source>
+        <translation>Blockchain</translation>
+    </message>
+    <message>
+        <source>Memory Pool</source>
+        <translation>Memory Pool</translation>
+    </message>
+    <message>
+        <source>Main</source>
+        <translation>Main</translation>
+    </message>
+    <message>
+        <source>Wallet Conf</source>
+        <translation>Wallet Konfiguration</translation>
+    </message>
+    <message>
+        <source>Backups</source>
+        <translation>Backups</translation>
+    </message>
+    <message>
+        <source>No information</source>
+        <translation>Keine Information</translation>
+    </message>
+    <message>
+        <source>Unable to open backups folder</source>
+        <translation>Backup-Ordner konnte nicht geöffnet werden</translation>
+    </message>
+    <message>
+        <source>Unable to open encocoin.conf with default application</source>
+        <translation>encocoin.conf konnte mit der Standardanwendung nicht geöffnet werden</translation>
     </message>
     <message>
         <source>In:</source>
@@ -3493,6 +4294,14 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>TextEtikett</translation>
     </message>
     <message>
+        <source>Window</source>
+        <translation>Fenster</translation>
+    </message>
+    <message>
+        <source>Customize the application window options</source>
+        <translation>Optionen des Anwendungsfensters anpassen</translation>
+    </message>
+    <message>
         <source>CheckBox</source>
         <translation>Checkbox</translation>
     </message>
@@ -3508,7 +4317,48 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <source>SAVE</source>
         <translation>SICHERN</translation>
     </message>
-    </context>
+    <message>
+        <source>Main</source>
+        <translation>Main</translation>
+    </message>
+    <message>
+        <source>Size of database cache</source>
+        <translation>Größe des Datenbankcache</translation>
+    </message>
+    <message>
+        <source>Number of script verification threads</source>
+        <translation>Anzahl der Threads für die Skriptverifizierung</translation>
+    </message>
+    <message>
+        <source>Start EncoCoin on system login</source>
+        <translation>Starte EncoCoin bei Systemlogin</translation>
+    </message>
+    <message>
+        <source>Minimize to the tray instead of the taskbar</source>
+        <translation>Minimiere in den Tray statt in die Taskbar</translation>
+    </message>
+    <message>
+        <source>Minimize on close</source>
+        <translation>Minimiere bei Schließen</translation>
+    </message>
+    <message>
+        <source>Reset Options</source>
+        <translation>Optionen zurücksetzen</translation>
+    </message>
+    <message>
+        <source>You are just about to reset the app's options to the default values.
+
+Are you sure?
+</source>
+        <translation>Sind sind dabei die Optionen der Anwendung auf die Standardwerte zurückzusetzen.
+
+Sind Sie sicher?</translation>
+    </message>
+    <message>
+        <source>Options reset succeed</source>
+        <translation>Zurücksetzen der Optionen erfolgreich.</translation>
+    </message>
+</context>
 <context>
     <name>SettingsMultisendDialog</name>
     <message>
@@ -3525,13 +4375,29 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     </message>
     <message>
         <source>CANCEL</source>
-        <translation>Abbrechen</translation>
+        <translation>ABBRECHEN</translation>
     </message>
     <message>
         <source>SAVE</source>
         <translation>SICHERN</translation>
     </message>
-    </context>
+    <message>
+        <source>New recipient for multisend</source>
+        <translation>Neuer Empfänger für Multisend</translation>
+    </message>
+    <message>
+        <source>Address Label (optional)</source>
+        <translation>Adressbezeichnung (optional)</translation>
+    </message>
+    <message>
+        <source>Enter label to be saved with this address</source>
+        <translation>Bezeichnung, die mit dieser Adresse gespeichert wird</translation>
+    </message>
+    <message>
+        <source>Percentage</source>
+        <translation>Prozentsatz</translation>
+    </message>
+</context>
 <context>
     <name>SettingsMultisendWidget</name>
     <message>
@@ -3551,16 +4417,97 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Checkbox</translation>
     </message>
     <message>
+        <source>MultiSend allows you to automatically send up to 100% of your stake or masternode reward to a list of other EncoCoin addresses after it matures.</source>
+        <translation>MultiSend erlaubt automatisch bis zu 100% Ihres Stakes oder Ihrer Masternode Belohnungen an eine Liste von EncoCoin Adressen zu senden, nachdem diese fällig geworden sind.</translation>
+    </message>
+    <message>
         <source>Active</source>
         <translation>Aktiv</translation>
     </message>
     <message>
+        <source>Disable</source>
+        <translation>deaktivieren</translation>
+    </message>
+    <message>
+        <source>No active recipient yet</source>
+        <translation>Noch kein aktiver Empfänger</translation>
+    </message>
+    <message>
+        <source>Send stakes</source>
+        <translation>Sende Stakes</translation>
+    </message>
+    <message>
+        <source>Send masternode rewards</source>
+        <translation>Sende Masternode Belohnungen</translation>
+    </message>
+    <message>
+        <source>ADD RECIPIENT</source>
+        <translation>EMPFÄNGER HINZUFÜGEN</translation>
+    </message>
+    <message>
         <source>CLEAR ALL</source>
-        <translation>Alles löschen</translation>
+        <translation>ALLES LÖSCHEN</translation>
+    </message>
+    <message>
+        <source>Cannot perform operation, wallet locked</source>
+        <translation>Aufgabe kann nicht durchgeführt werden, Ihr Wallet ist verschlossen</translation>
+    </message>
+    <message>
+        <source>Clear succeed</source>
+        <translation>Löschen erfolgreich</translation>
+    </message>
+    <message>
+        <source>Clear all failed, could not locate address in wallet file</source>
+        <translation>Adresse konnte in der Wallet Datei nicht gefunden werden.</translation>
+    </message>
+    <message>
+        <source>Cannot add multisend recipient, wallet locked</source>
+        <translation>Multisend Empfänger konnte nicht hinzugefügt werden, das Wallet ist verriegelt</translation>
+    </message>
+    <message>
+        <source>The entered address: %1 is invalid.
+Please check the address and try again.</source>
+        <translation>Die eingegebene Adresse %1 ist ungültig. Bitte kontrollieren Sie diese und versuchen Sie es erneut.</translation>
+    </message>
+    <message>
+        <source>Invalid percentage, please enter values from 1 to 100.</source>
+        <translation>Ungültiger Prozentsatz. Bitte geben Sie einen Wert zwischen 1 und 100 ein.</translation>
+    </message>
+    <message>
+        <source>The total amount of your MultiSend vector is over 100% of your stake reward</source>
+        <translation>Die Gesamtmenge Ihres MultiSend-Vektors ist größer als 100% Ihrer Belohnung</translation>
+    </message>
+    <message>
+        <source>Error saving  MultiSend, failed saving properties to the database.</source>
+        <translation>Fehler beim Speichern von MultiSend.
+Eigenschaften konnten nicht in der Datenbank gespeichert werden.</translation>
+    </message>
+    <message>
+        <source>Unable to activate MultiSend, no available recipients</source>
+        <translation>Multisend konnte nicht aktiviert werden. Keine Empfänger verfügbar.</translation>
+    </message>
+    <message>
+        <source>Unable to activate MultiSend
+Check one or both of the check boxes to send on stake and/or masternode rewards</source>
+        <translation>MultiSend konnte nicht aktiviert werden
+
+Aktivieren Sie eine oder beide Checkboxen, um Stake oder Masternode Rewards zu senden</translation>
+    </message>
+    <message>
+        <source>MultiSend activated but writing settings to DB failed</source>
+        <translation>MultiSend wurde aktiviert aber das Schreiben der Einstellung in die Datenbank ist gescheitert.</translation>
     </message>
     <message>
         <source>MultiSend activated</source>
         <translation>MultiSend aktiviert</translation>
+    </message>
+    <message>
+        <source>First multiSend address invalid</source>
+        <translation>Die erste MultiSend Adresse ist ungültig.</translation>
+    </message>
+    <message>
+        <source>MultiSend deactivated but writing settings to DB failed</source>
+        <translation>MultiSend wurde deatktiviert, aber das Schreiben der Einstellungen in die Datenbank ist gescheitert.</translation>
     </message>
     <message>
         <source>MultiSend deactivated</source>
@@ -3582,20 +4529,48 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Clear</translation>
     </message>
     <message>
+        <source>Sign/Verify Message</source>
+        <translation>Signiere/Verifiziere Nachricht</translation>
+    </message>
+    <message>
+        <source>Sign</source>
+        <translation>Signiere</translation>
+    </message>
+    <message>
+        <source>Verify</source>
+        <translation>Verifiziere</translation>
+    </message>
+    <message>
+        <source>Select mode</source>
+        <translation>Modus auswählen</translation>
+    </message>
+    <message>
         <source>Message</source>
         <translation>Nachricht</translation>
+    </message>
+    <message>
+        <source>EncoCoin address or contact label</source>
+        <translation>EncoCoin Adresse oder Kontaktbezeichnung</translation>
     </message>
     <message>
         <source>Enter address</source>
         <translation>Adresse einfügen</translation>
     </message>
     <message>
+        <source>Write message</source>
+        <translation>Nachricht schreiben</translation>
+    </message>
+    <message>
         <source>Signature</source>
         <translation>Signatur</translation>
     </message>
     <message>
+        <source>SIGN</source>
+        <translation>SIGNIEREN</translation>
+    </message>
+    <message>
         <source>CLEAR ALL</source>
-        <translation>Alles löschen</translation>
+        <translation>ALLES LÖSCHEN</translation>
     </message>
     <message>
         <source>You can sign messages with your addresses to prove you own them. Be careful not to sign anything vague, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
@@ -3604,6 +4579,10 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     <message>
         <source>Enter the signing address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack.</source>
         <translation>Geben Sie die signierte Adresse, die Nachricht (stellen Sie sicher, dass Zeilenumbrüche, Leerzeichen, Tabs usw. genau kopieren) und Signatur unten ein, um die Nachricht zu überprüfen. Seien Sie vorsichtig, nicht mehr in die Signatur hinein zu interpretieren, als das was in der signierten Nachricht selbst angegeben ist, um zu vermeiden, von einem Mann-in-der-Mitte Angriff getroffen zu werden.</translation>
+    </message>
+    <message>
+        <source>VERIFY</source>
+        <translation>VERIFIZIEREN</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
@@ -3673,6 +4652,10 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Checkbox</translation>
     </message>
     <message>
+        <source>RadioButton</source>
+        <translation>RadioButton</translation>
+    </message>
+    <message>
         <source>Reset to default</source>
         <translation>Auf Voreinstellungen zurücksetzen</translation>
     </message>
@@ -3685,22 +4668,54 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Wallet</translation>
     </message>
     <message>
+        <source>Customize the internal wallet options</source>
+        <translation>Interne Optionen des Wallets anpassen</translation>
+    </message>
+    <message>
         <source>Stake split threshold:</source>
         <translation>Staff Split-Schwelle:</translation>
+    </message>
+    <message>
+        <source>Spend unconfirmed change</source>
+        <translation>Unconfirmed Change ausgeben</translation>
     </message>
     <message>
         <source>Network</source>
         <translation>Netzwerk</translation>
     </message>
     <message>
+        <source>Customize the node network options</source>
+        <translation>Optionen des Node-Netzwerks anpassen</translation>
+    </message>
+    <message>
+        <source>Proxy IP:</source>
+        <translation>Proxy IP:</translation>
+    </message>
+    <message>
+        <source>Enter proxy IP</source>
+        <translation>Proxy IP eingeben</translation>
+    </message>
+    <message>
+        <source>Port:</source>
+        <translation>Port</translation>
+    </message>
+    <message>
         <source>Allow incoming connections</source>
         <translation>Eingehende Verbindungen erlauben</translation>
+    </message>
+    <message>
+        <source>Connect through SOCKS5 proxy (default proxy):</source>
+        <translation>Durch SOCKS5 Verbinden (Standardmäßiger Proxy):</translation>
     </message>
     <message>
         <source>SAVE</source>
         <translation>SICHERN</translation>
     </message>
-    </context>
+    <message>
+        <source>Options reset succeed</source>
+        <translation>Zurücksetzen der Optionen erfolgreich.</translation>
+    </message>
+</context>
 <context>
     <name>SettingsWalletRepairWidget</name>
     <message>
@@ -3712,12 +4727,36 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>TextEtikett</translation>
     </message>
     <message>
+        <source>Wallet Repair</source>
+        <translation>Wallet Reparatur</translation>
+    </message>
+    <message>
+        <source>The buttons below will restart the wallet with command-line options to repair this wallet, fix issues with corrupt blockchain files or missing/obsolete transactions.</source>
+        <translation>Durch die unteren Buttons wird das Wallet mit den Kommandozeilen Optionen für die Reparatur dieses Wallets, zur Behebung von Fehlern mit beschädigten Blockchain Datein oder zur Behebung fehlender/obsolter Transaktionen neu gestartet</translation>
+    </message>
+    <message>
         <source>Attempt to recover private keys from a corrupt wallet.dat.</source>
         <translation>Versuche, private Schlüssel aus einer beschädigten wallet.dat wiederherzustellen.</translation>
     </message>
     <message>
+        <source>Rescan the blockchain for missing wallet transactions.</source>
+        <translation>Blockchain nach fehlenden Transaktionen durchsuchen</translation>
+    </message>
+    <message>
+        <source>Recover transactions from blockchain (keep-meta-data, e.g. account owner).</source>
+        <translation>Transaktionen aus Blockchain wiederherstellen (Behalte Metadaten wie Account Besitzer)</translation>
+    </message>
+    <message>
         <source>Recover transactions from blockchain (drop meta-data).</source>
         <translation>Wiederherstellung von Transaktionen aus der Blockchain (verwerfe Meta-Daten)</translation>
+    </message>
+    <message>
+        <source>Upgrade wallet to latest format on startup. (Note: this is NOT an update of the wallet itself)</source>
+        <translation>Upgrade das Wallet zum aktuellen Format bei Start-up. (Bedenke: Dies updated nicht das Wallet selbst)</translation>
+    </message>
+    <message>
+        <source>Rebuild blockchain index from current blk000???.dat files.</source>
+        <translation>Rekonstruiere Blockchain Index aus blk000???.dat Datein</translation>
     </message>
     <message>
         <source>Deletes all local blockchain folders so the wallet synchronizes from scratch.</source>
@@ -3726,6 +4765,10 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     <message>
         <source>Salvage wallet</source>
         <translation>Wallet Rettung</translation>
+    </message>
+    <message>
+        <source>Rescan blockchain file</source>
+        <translation>Blockchain Datei erneut scannen</translation>
     </message>
     <message>
         <source>Recover transactions 1</source>
@@ -3742,6 +4785,10 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     <message>
         <source>Rebuild index</source>
         <translation>Index neu aufbauen</translation>
+    </message>
+    <message>
+        <source>Delete local blockchain </source>
+        <translation>Lokale Blockchain löschen</translation>
     </message>
     <message>
         <source>This will delete your local blockchain folders and the wallet will synchronize the complete Blockchain from scratch.&lt;br /&gt;&lt;br /&gt;</source>
@@ -3771,20 +4818,44 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Formular</translation>
     </message>
     <message>
-        <source>TextLabel</source>
-        <translation>TextEtikett</translation>
+        <source>Wallet Data</source>
+        <translation>Wallet Daten</translation>
     </message>
     <message>
         <source>Wallet</source>
         <translation>Wallet</translation>
     </message>
     <message>
+        <source>Multisend</source>
+        <translation>Multisend</translation>
+    </message>
+    <message>
+        <source>Tools</source>
+        <translation>Werkzeuge</translation>
+    </message>
+    <message>
+        <source>Sign/Verify Message</source>
+        <translation>Signiere/Verifiziere Nachricht</translation>
+    </message>
+    <message>
+        <source>BIP38 Tool</source>
+        <translation>BIP 38 Werkzeug</translation>
+    </message>
+    <message>
         <source>Options</source>
         <translation>Optionen</translation>
     </message>
     <message>
+        <source>Main</source>
+        <translation>Main</translation>
+    </message>
+    <message>
         <source>Display</source>
         <translation>Display</translation>
+    </message>
+    <message>
+        <source>Debug</source>
+        <translation>Debug</translation>
     </message>
     <message>
         <source>Information</source>
@@ -3793,6 +4864,22 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     <message>
         <source>Console</source>
         <translation>Konsole</translation>
+    </message>
+    <message>
+        <source>Wallet Repair</source>
+        <translation>Wallet Reparatur</translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation>Hilfe</translation>
+    </message>
+    <message>
+        <source>FAQ</source>
+        <translation>FAQ</translation>
+    </message>
+    <message>
+        <source>About EncoCoin</source>
+        <translation>Über EncoCoin</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -3810,7 +4897,49 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <source>Client will be shutdown, do you want to proceed?</source>
         <translation>Der Client wird heruntergefahren, wollen Sie fortfahren?</translation>
     </message>
-    </context>
+    <message>
+        <source>Restart required</source>
+        <translation>Neustart erforderlich</translation>
+    </message>
+    <message>
+        <source>Your wallet needs to be restarted to apply the changes
+</source>
+        <translation>Ihr Wallet muss für die Übernahme der Änderungen neu gestartet werden</translation>
+    </message>
+    <message>
+        <source>Restart Now</source>
+        <translation>Jetzt neu starten</translation>
+    </message>
+    <message>
+        <source>Restart Later</source>
+        <translation>Später neu starten</translation>
+    </message>
+    <message>
+        <source>Options will be applied on next wallet restart</source>
+        <translation>Änderungen werden mit dem nächsten Start des Wallets wirksam</translation>
+    </message>
+    <message>
+        <source>Options stored</source>
+        <translation>Optionen gesichert</translation>
+    </message>
+    <message>
+        <source>Options store failed</source>
+        <translation>Speichern der Optionen gescheitert</translation>
+    </message>
+    <message>
+        <source>Discard Unsaved Changes</source>
+        <translation>Entferne nicht gespeicherte Änderungen</translation>
+    </message>
+    <message>
+        <source>You are just about to discard all of your unsaved options.
+
+Are you sure?
+</source>
+        <translation>Sie sind dabei all Ihre ungespeicherten Optionen zu entfernen.
+
+Sind Sie sicher?</translation>
+    </message>
+</context>
 <context>
     <name>ShutdownWindow</name>
     <message>
@@ -3828,12 +4957,20 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <source>Form</source>
         <translation>Formular</translation>
     </message>
-    </context>
+    <message>
+        <source>Contact Stored</source>
+        <translation>Kontakt gespeichert</translation>
+    </message>
+</context>
 <context>
     <name>Splash</name>
     <message>
         <source>Form</source>
         <translation>Formular</translation>
+    </message>
+    <message>
+        <source>Loading…</source>
+        <translation>Lade...</translation>
     </message>
     <message>
         <source>EncoCoin Core</source>
@@ -3878,10 +5015,18 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Kopieren</translation>
     </message>
     <message>
+        <source>Edit</source>
+        <translation>Bearbeiten</translation>
+    </message>
+    <message>
         <source>Delete</source>
         <translation>Löschen</translation>
     </message>
-    </context>
+    <message>
+        <source>Last</source>
+        <translation>Letzte</translation>
+    </message>
+</context>
 <context>
     <name>TopBar</name>
     <message>
@@ -3889,14 +5034,140 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Formular</translation>
     </message>
     <message>
+        <source>Available</source>
+        <translation>Verfügbar</translation>
+    </message>
+    <message>
+        <source>Pending</source>
+        <translation>Ausstehend</translation>
+    </message>
+    <message>
+        <source>Immature</source>
+        <translation>Noch nicht fällig</translation>
+    </message>
+    <message>
+        <source>Wallet Unlocked for staking</source>
+        <translation>Wallet für das Staking entriegelt</translation>
+    </message>
+    <message>
         <source>Error generating address</source>
         <translation>Fehler beim Erstellen der Adresse</translation>
+    </message>
+    <message>
+        <source>Address Copied</source>
+        <translation>Adresse kopiert</translation>
+    </message>
+    <message>
+        <source>Staking active</source>
+        <translation>Staking aktiv</translation>
+    </message>
+    <message>
+        <source>Staking not active</source>
+        <translation>Staking nicht aktiv</translation>
+    </message>
+    <message>
+        <source>Synchronized - Block: %1</source>
+        <translation>Synchronisierter Block:%1</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation><numerusform>%n Stunden</numerusform><numerusform>%n Stunden</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation><numerusform>%n Tage</numerusform><numerusform>%n Tage</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n week(s)</source>
+        <translation><numerusform>%n Wochen</numerusform><numerusform>%n Wochen</numerusform></translation>
     </message>
     <message>
         <source>%1 and %2</source>
         <translation>%1 und %2</translation>
     </message>
-    </context>
+    <message numerus="yes">
+        <source>%n year(s)</source>
+        <translation><numerusform>%n Jahre</numerusform><numerusform>%n Jahre</numerusform></translation>
+    </message>
+    <message>
+        <source>Wallet Upgrade</source>
+        <translation>Wallet Upgrade</translation>
+    </message>
+    <message>
+        <source>Upgrading to HD wallet will improve
+the wallet's reliability and security.
+
+
+NOTE: after the upgrade, a new
+backup will be created.
+</source>
+        <translation>Das Upgrade auf ein HD Wallet wird die Verlässlichkeit und Sicherheit des Wallets erhöhen.
+
+
+BEDENKEN SIE: Nach dem Upgrade wird ein neues Backup erstellt.
+</translation>
+    </message>
+    <message>
+        <source>Upgrade Wallet</source>
+        <translation>Upgrade Wallet</translation>
+    </message>
+    <message>
+        <source>Wallet unlock cancelled</source>
+        <translation>Entriegelung des Wallets abgebrochen</translation>
+    </message>
+    <message>
+        <source>Tor Disabled</source>
+        <translation>Tor ausgeschaltet</translation>
+    </message>
+    <message>
+        <source>Available (Locked included)</source>
+        <translation>Verfügbar (einschl. Verriegelte)</translation>
+    </message>
+    <message>
+        <source>The wallet has been successfully upgraded to HD.</source>
+        <translation>Das Wallet wurde erfolgreich auf HD geupgradet.</translation>
+    </message>
+    <message>
+        <source>It is advised to make a backup.</source>
+        <translation>Es wird empfohlen ein Backup zu machen.</translation>
+    </message>
+    <message>
+        <source>Do you wish to backup now?</source>
+        <translation>Möchten Sie jetzt ein Backup erstellen?</translation>
+    </message>
+    <message>
+        <source>Backup Wallet</source>
+        <translation>Wallet sichern</translation>
+    </message>
+    <message>
+        <source>Wallet Data (*.dat)</source>
+        <translation>Wallet-Daten (*.dat)</translation>
+    </message>
+    <message>
+        <source>Backup created</source>
+        <translation>Backup erstellt</translation>
+    </message>
+    <message>
+        <source>Backup creation failed</source>
+        <translation>Erstellung des Backups fehlgeschlagen</translation>
+    </message>
+    <message>
+        <source>no file selected</source>
+        <translation>Keine Datei ausgewählt</translation>
+    </message>
+    <message>
+        <source>Wallet upgraded successfully, but no backup created.</source>
+        <translation>Wallet erfolgreich geupgradet, aber es wurde kein Backup erstellt.</translation>
+    </message>
+    <message>
+        <source>WARNING: remember to make a copy of your wallet.dat file!</source>
+        <translation>WARNUNG: Vergessen Sie nicht eine Kopie Ihrer Wallet.dat Datei zu machen!</translation>
+    </message>
+    <message>
+        <source>Upgrade Wallet Error</source>
+        <translation>Fehler beim Upgrade des Wallets</translation>
+    </message>
+</context>
 <context>
     <name>TrafficGraphWidget</name>
     <message>
@@ -3906,6 +5177,10 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
 </context>
 <context>
     <name>TransactionDesc</name>
+    <message numerus="yes">
+        <source>Open for %n more block(s)</source>
+        <translation><numerusform>Geöffnet für %n weitere Blöcke</numerusform><numerusform>Geöffnet für %n weitere Blöcke</numerusform></translation>
+    </message>
     <message>
         <source>Open until %1</source>
         <translation>Offen bis %1</translation>
@@ -3966,6 +5241,10 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <source>, has not been successfully broadcast yet</source>
         <translation>, wurde noch nicht erfolgreich übertragen</translation>
     </message>
+    <message numerus="yes">
+        <source>, broadcast through %n node(s)</source>
+        <translation><numerusform>, über %n Knoten übertragen</numerusform><numerusform>, über %n Knoten übertragen</numerusform></translation>
+    </message>
     <message>
         <source>Date</source>
         <translation>Datum</translation>
@@ -4005,6 +5284,10 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     <message>
         <source>Credit</source>
         <translation>Gutschrift</translation>
+    </message>
+    <message numerus="yes">
+        <source>matures in %n more block(s)</source>
+        <translation><numerusform>reift noch %n weitere Blöcke</numerusform><numerusform>reift noch %n weitere Blöcke</numerusform></translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -4089,6 +5372,10 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <source>Address</source>
         <translation>Adresse</translation>
     </message>
+    <message numerus="yes">
+        <source>Open for %n more block(s)</source>
+        <translation><numerusform>Geöffnet für %n weitere Blöcke</numerusform><numerusform>Geöffnet für %n weitere Blöcke</numerusform></translation>
+    </message>
     <message>
         <source>Open until %1</source>
         <translation>Offen bis %1</translation>
@@ -4134,10 +5421,6 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Empfangen von</translation>
     </message>
     <message>
-        <source>Received via Obfuscation</source>
-        <translation>über/durch Verschleierung empfangen</translation>
-    </message>
-    <message>
         <source>XNK Stake</source>
         <translation>XNK Stake</translation>
     </message>
@@ -4146,20 +5429,12 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>zXNK Stake</translation>
     </message>
     <message>
-        <source>Obfuscation Denominate</source>
-        <translation>Stückelung der Verschleierung</translation>
+        <source>XNK Cold Stake</source>
+        <translation>XNK Cold Stake</translation>
     </message>
     <message>
-        <source>Obfuscation Collateral Payment</source>
-        <translation>Sicherheitspfandzahlung für Verschleierung</translation>
-    </message>
-    <message>
-        <source>Obfuscation Make Collateral Inputs</source>
-        <translation>Verschleierung Erzeugung des Sicherheitspfand</translation>
-    </message>
-    <message>
-        <source>Obfuscation Create Denominations</source>
-        <translation>Verschleierung Erzeugung der Stückelung</translation>
+        <source>Stake delegation</source>
+        <translation>Stake Zuweisung</translation>
     </message>
     <message>
         <source>Converted XNK to zXNK</source>
@@ -4194,16 +5469,28 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Eigenüberweisung</translation>
     </message>
     <message>
+        <source>XNK Stake on behalf of</source>
+        <translation>XNK Stake im Auftrag von</translation>
+    </message>
+    <message>
+        <source>Stake delegation spent by</source>
+        <translation>Stake Zuweisung ausgegeben durch</translation>
+    </message>
+    <message>
         <source>Mined</source>
         <translation>Erarbeitet</translation>
     </message>
     <message>
-        <source>Obfuscated</source>
-        <translation>Verschleiert</translation>
-    </message>
-    <message>
         <source>watch-only</source>
         <translation>nur beobachtet</translation>
+    </message>
+    <message>
+        <source>Anonymous</source>
+        <translation>Anonym</translation>
+    </message>
+    <message>
+        <source>No information</source>
+        <translation>Keine Information</translation>
     </message>
     <message>
         <source>(n/a)</source>
@@ -4245,20 +5532,64 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Transaktionsdetails</translation>
     </message>
     <message>
-        <source>492526e7fa3c810b35016...40a5df85ee227ab00b1156994</source>
-        <translation>492526e7fa3c810b35016...40a5df85ee227ab00b1156994</translation>
+        <source>Total amount</source>
+        <translation>Gesamtmenge</translation>
     </message>
     <message>
-        <source>D7VFR83SQbiezrW72hjcWJtcfip5krte2Z </source>
-        <translation>D7VFR83SQbiezrW72hjcWJtcfip5krte2Z</translation>
+        <source>Previous Transaction</source>
+        <translation>Vorherige Transaktion</translation>
     </message>
     <message>
-        <source>Fee:</source>
-        <translation>Gebühr:</translation>
+        <source>Output Index</source>
+        <translation>Output Index</translation>
     </message>
     <message>
-        <source>Status:</source>
-        <translation>Status:</translation>
+        <source>D7VFR83SQbie…BhjcWJtcfip5krte2Z </source>
+        <translation>D7VFR83SQbie…BhjcWJtcfip5krte2Z</translation>
+    </message>
+    <message>
+        <source>May 25, 2017</source>
+        <translation>25. Mai 2017</translation>
+    </message>
+    <message>
+        <source>ID</source>
+        <translation>ID</translation>
+    </message>
+    <message>
+        <source>Sending to</source>
+        <translation>Sende an</translation>
+    </message>
+    <message>
+        <source>Coin inputs</source>
+        <translation>Münzeingaben</translation>
+    </message>
+    <message>
+        <source>Fee</source>
+        <translation>Gebühr</translation>
+    </message>
+    <message>
+        <source>Size</source>
+        <translation>Größe</translation>
+    </message>
+    <message>
+        <source>Change address</source>
+        <translation>Wechseladresse</translation>
+    </message>
+    <message>
+        <source>Spendable</source>
+        <translation>Verfügbar für die Ausgabe</translation>
+    </message>
+    <message>
+        <source>Confirmations</source>
+        <translation>Betätigungen</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Status</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Datum</translation>
     </message>
     <message>
         <source>TextLabel</source>
@@ -4266,15 +5597,23 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     </message>
     <message>
         <source>CANCEL</source>
-        <translation>Abbrechen</translation>
+        <translation>ABBRECHEN</translation>
     </message>
     <message>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
+        <source>Confirm Your Transaction</source>
+        <translation>Bestätigen Sie Ihre Transaktion</translation>
+    </message>
+    <message>
         <source>SEND</source>
         <translation>SENDEN</translation>
+    </message>
+    <message>
+        <source>ID copied</source>
+        <translation>ID kopiert</translation>
     </message>
     <message>
         <source>Unknown</source>
@@ -4287,7 +5626,19 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <source>Form</source>
         <translation>Formular</translation>
     </message>
-    </context>
+    <message>
+        <source>Received from Bob</source>
+        <translation>Von Bob empfangen</translation>
+    </message>
+    <message>
+        <source>18/05/18</source>
+        <translation>18/05/18</translation>
+    </message>
+    <message>
+        <source>+0.000585 XNK</source>
+        <translation>+0.000585 XNK</translation>
+    </message>
+</context>
 <context>
     <name>WalletModel</name>
     <message>
@@ -4297,25 +5648,6 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     <message>
         <source>SwiftX doesn't support sending values that high yet. Transactions are currently limited to %1 XNK.</source>
         <translation>Swift Transaktionen unterstützen das senden solch hoher Beträge noch nicht. Transaktionen sind momentan auf %1 XNK begrenzt.</translation>
-    </message>
-</context>
-<context>
-    <name>WalletPasswordDialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation>Dialog</translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation>TextEtikett</translation>
-    </message>
-    <message>
-        <source>CANCEL</source>
-        <translation>Abbrechen</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation>OK</translation>
     </message>
 </context>
 <context>
@@ -4353,12 +5685,41 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Masternodes</translation>
     </message>
     <message>
+        <source>Select your language</source>
+        <translation>Wählen Sie Ihre Sprache</translation>
+    </message>
+    <message>
+        <source>Welcome to
+EncoCoin Core Wallet</source>
+        <translation>Willkommen beim EncoCoin Core Wallet</translation>
+    </message>
+    <message>
+        <source>EncoCoin is the world’s most innovative Proof of Stake blockchain based technology. Developed by a team of highly experienced developers and cryptographers.</source>
+        <translation>EncoCoin ist die innovativste, auf Proof of Stake Blockchain basierende Technologie. Es wurde von einem Team hoch erfahrener Entwickler und Kryptographen entwickelt.</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;As our manifesto says: Privacy is a non-negotiable basic human right; it grants users the freedom to share their data whenever and with whomever they want - EncoCoin believes in self sovereignty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>Wie unser Manifestum sagt: Privatsphäre ist ein nicht-verhandelbares Menschenrecht; es garantiert Nuzern die Freiheit ihre Daten wann immer und mit wem auch immer zu teilen - EncoCoin galubt an diese Souveränität.</translation>
+    </message>
+    <message>
+        <source>The masternode network is EncoCoin's second layer network on top of the blockchain that enables our DAO to provide decentralized governance and a treasury.</source>
+        <translation>Das Masternode Netzwerk ist EncoCoin zweite Schicht, die auf der Blockchain aufgesetzt wurde und unserer DAO ermöglicht, dezentrale Steuerung und einen Fiskus ermöglicht.</translation>
+    </message>
+    <message>
+        <source>How EncoCoin respects your privacy?</source>
+        <translation>Wie respektiert EncoCoin meine Privatsphäre?</translation>
+    </message>
+    <message>
+        <source>What is a Masternode?</source>
+        <translation>Was ist ein Masternode?</translation>
+    </message>
+    <message>
         <source>default</source>
         <translation>standard</translation>
     </message>
 </context>
 <context>
-    <name>ZPivControlDialog</name>
+    <name>ZXnkControlDialog</name>
     <message>
         <source>Select zXNK to Spend</source>
         <translation>Wählen Sie die zXNK aus, die Sie ausgeben möchten</translation>
@@ -4372,8 +5733,12 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Druckknopf</translation>
     </message>
     <message>
-        <source>zPiv</source>
+        <source>zXnk</source>
         <translation>zXNK</translation>
+    </message>
+    <message>
+        <source>0.00 </source>
+        <translation>0.00</translation>
     </message>
     <message>
         <source>Quantity:</source>
@@ -4391,7 +5756,11 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <source>Select/Deselect All</source>
         <translation>Alle Aus-/Abwählen</translation>
     </message>
-    </context>
+    <message>
+        <source>Select zXNK Denominations to Spend</source>
+        <translation>Auswahl des zXNK Nennwerts für das Ausgaben</translation>
+    </message>
+</context>
 <context>
     <name>encocoin-core</name>
     <message>
@@ -4413,10 +5782,6 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     <message>
         <source>Bind to given address to listen for JSON-RPC connections. Use [host]:port notation for IPv6. This option can be specified multiple times (default: bind to all interfaces)</source>
         <translation>Binde an die angegebene Adresse und höre auf JSON-RPC verbindungen. Benutze [host]:port Notation für IPv6. Diese Option kann mehrere Male aufgerufen werden (Standard: Binde an alle Schnittstellen)</translation>
-    </message>
-    <message>
-        <source>Calculated accumulator checkpoint is not what is recorded by block index</source>
-        <translation>Der berechnete Akkumulator-Checkpoint stimmt nicht mit dem vom Blockindex aufgezeichneten überein</translation>
     </message>
     <message>
         <source>Cannot obtain a lock on data directory %s. EncoCoin Core is probably already running.</source>
@@ -4447,8 +5812,8 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Veröffentlicht unter der MIT-Software-Lizenz, siehe die beigelegte Datei COPYING oder &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</translation>
     </message>
     <message>
-        <source>Enable automatic wallet backups triggered after each zXNK minting (0-1, default: %u)</source>
-        <translation>Aktiviere nach jeder zXNK-Prägung ausgelöste automatische Wallet-Backups (0-1, Standard: %u)</translation>
+        <source>Enable cold staking functionality (0-1, default: %u). Disabled if staking=0</source>
+        <translation>Ermögliche Cold Staking Funktionalität (0-1, standardmäßig: %u). Ausgeschaltet, wenn staking=0</translation>
     </message>
     <message>
         <source>Enable or disable staking functionality for XNK inputs (0-1, default: %u)</source>
@@ -4535,16 +5900,16 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Maximale Größe der Daten in Datenträgertransaktionen, die wir weiterleiten und abbilden (default: %u)</translation>
     </message>
     <message>
+        <source>Maximum size of the list of indexes in the block spam filter (default: %u)</source>
+        <translation>Maximale Größe der Indexliste im Blockspamfilter (standardmäßig: %u)</translation>
+    </message>
+    <message>
         <source>Maximum total fees to use in a single wallet transaction, setting too low may abort large transactions (default: %s)</source>
         <translation>Maximale Gesamtgebühren für die Verwendung in einer einzigen Wallet-Transaktion. Zu niedrige Einstellung kann große Transaktionen abbrechen (default: %s)</translation>
     </message>
     <message>
         <source>Number of seconds to keep misbehaving peers from reconnecting (default: %u)</source>
         <translation>Sekundenanzahl, um fehlerhafte Peers von der Wiederverbindung abzuhalten (default: %u)</translation>
-    </message>
-    <message>
-        <source>Obfuscation uses exact denominated amounts to send funds, you might simply need to anonymize some more coins.</source>
-        <translation>Verschleierung benötigt exakt gestückelte Mengen um Gelder zu versenden, ggf. müssen Sie einfach mehr Münzen anonymisieren.</translation>
     </message>
     <message>
         <source>Output debugging information (default: %u, supplying &lt;category&gt; is optional)</source>
@@ -4595,18 +5960,6 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Fehler: Port %s ist bereits belegt! Läuft bereits eine andere EncoCoin Core Wallet ?</translation>
     </message>
     <message>
-        <source>Unable to locate enough Obfuscation denominated funds for this transaction.</source>
-        <translation>Nicht genügend gestückeltes, verschleiertes Guthaben für diese Transaktion gefunden.</translation>
-    </message>
-    <message>
-        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 10000 XNK.</source>
-        <translation>Nicht genügend verschleiertes, nicht gestückeltes Guthaben für diese Transaktion gefunden, die nicht gleich 10000 XNK entsprechen.</translation>
-    </message>
-    <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 10000 XNK.</source>
-        <translation>Nicht genügend Guthaben für diese Transaktion gefunden, die nicht gleich 10000 XNK entsprechen.</translation>
-    </message>
-    <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
         <translation>Verwende seperate SOCKS5-Proxys um Gegenstellen über Tor-Hidden-Services zu erreichen (Standard: %s)</translation>
     </message>
@@ -4651,8 +6004,8 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Sie müssen einen privaten Masternode-Schlüssel in der Konfiguration festlegen. Bitte nutzen Sie die Dokumentation zwecks Hilfe.</translation>
     </message>
     <message>
-        <source>(43013 could be used only on mainnet)</source>
-        <translation>(43013 kann nur im Mainnet verwendet werden)</translation>
+        <source>(51472 could be used only on mainnet)</source>
+        <translation>(51472 kann nur im Mainnet verwendet werden)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -4663,8 +6016,8 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>(default: 1)</translation>
     </message>
     <message>
-        <source>(must be 43013 for mainnet)</source>
-        <translation>(muss im Mainnet 43013 sein)</translation>
+        <source>(must be 51472 for mainnet)</source>
+        <translation>(muss im Mainnet 51472 sein)</translation>
     </message>
     <message>
         <source>Accept command line and JSON-RPC commands</source>
@@ -4691,6 +6044,10 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Gegenstellen-Adressen immer per DNS lookup anfragen (Standard: %u)</translation>
     </message>
     <message>
+        <source>Append comment to the user agent string</source>
+        <translation>Hänge Kommentar an den User Agent String</translation>
+    </message>
+    <message>
         <source>Attempt to recover private keys from a corrupt wallet.dat</source>
         <translation>Versuche private Schlüssel aus fehlerhafter wallet.dat wiederherzustellen.</translation>
     </message>
@@ -4703,24 +6060,8 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Block-Erzeugungs-Optionen:</translation>
     </message>
     <message>
-        <source>Calculating missing accumulators...</source>
-        <translation>Fehlende Akkus berechnen ...</translation>
-    </message>
-    <message>
         <source>Cannot downgrade wallet</source>
         <translation>Wallet downgrade nicht möglich</translation>
-    </message>
-    <message>
-        <source>Cannot resolve -bind address: '%s'</source>
-        <translation>Kann -bind Adresse nicht auflösen: '%s'</translation>
-    </message>
-    <message>
-        <source>Cannot resolve -externalip address: '%s'</source>
-        <translation>Kann -externalip Adresse nicht auflösen: '%s'</translation>
-    </message>
-    <message>
-        <source>Cannot resolve -whitebind address: '%s'</source>
-        <translation>Kann -whitebind Adresse nicht auflösen: '%s'</translation>
     </message>
     <message>
         <source>Connect only to the specified node(s)</source>
@@ -4791,10 +6132,6 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Geladen</translation>
     </message>
     <message>
-        <source>Enable automatic Zerocoin minting (0-1, default: %u)</source>
-        <translation>Automatische Zerocoin-Prägung ermöglichen (0-1, Standard: %u)</translation>
-    </message>
-    <message>
         <source>Enable publish hash transaction (locked via SwiftX) in &lt;address&gt;</source>
         <translation>Aktivieren Sie die Veröffentlichung der Hash-Transaktion (gesperrt über SwiftX) in &lt;address&gt;</translation>
     </message>
@@ -4847,6 +6184,10 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Fehler</translation>
     </message>
     <message>
+        <source>Error: </source>
+        <translation>Fehler:</translation>
+    </message>
+    <message>
         <source>Error: A fatal internal error occured, see debug.log for details</source>
         <translation>Fehler: Ein schwerwiegender Fehler ist aufgetreten, schauen Sie für detailiertere Infos ins debug.log </translation>
     </message>
@@ -4861,10 +6202,6 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     <message>
         <source>Error: Wallet locked, unable to create transaction!</source>
         <translation>Fehler: Wallet verschlossen, Transaktion konnte nicht erstellt werden!</translation>
-    </message>
-    <message>
-        <source>Failed to calculate accumulator checkpoint</source>
-        <translation>Fehler beim Berechnen des Akku-Checkpoints</translation>
     </message>
     <message>
         <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
@@ -4935,28 +6272,8 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Ungültige -onion Adresse oder Hostname: '%s'</translation>
     </message>
     <message>
-        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s'</source>
-        <translation>Ungültiger Betrag für -maxtxfee=&lt;amount&gt;: '%s'</translation>
-    </message>
-    <message>
-        <source>Invalid amount for -minrelaytxfee=&lt;amount&gt;: '%s'</source>
-        <translation>Ungültiger Betrag für -minrelaytxfee=&lt;amount&gt;: '%s'</translation>
-    </message>
-    <message>
-        <source>Invalid amount for -mintxfee=&lt;amount&gt;: '%s'</source>
-        <translation>Ungültiger Betrag für -mintxfee=&lt;amount&gt;: '%s'</translation>
-    </message>
-    <message>
         <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
         <translation>Ungültiger Betrag für -paytxfee=&lt;amount&gt;: '%s' (muss mindestens  %s sein)</translation>
-    </message>
-    <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s'</source>
-        <translation>Ungültiger Betrag für -paytxfee=&lt;amount&gt;: '%s'</translation>
-    </message>
-    <message>
-        <source>Invalid amount for -reservebalance=&lt;amount&gt;</source>
-        <translation>Ungültiger Betrag für -reservebalance=&lt;amount&gt;</translation>
     </message>
     <message>
         <source>Invalid amount</source>
@@ -4975,8 +6292,8 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Ungültiger Port in masternode.conf entdeckt</translation>
     </message>
     <message>
-        <source>Percentage of automatically minted Zerocoin  (1-100, default: %u)</source>
-        <translation>Prozent automatisch geprägter Zerocoins (1-100, Standard: %u)</translation>
+        <source>Recalculating XNK supply...</source>
+        <translation>Bestimme XNK Bestand erneut...</translation>
     </message>
     <message>
         <source>Reindex the XNK and zXNK money supply statistics</source>
@@ -5005,7 +6322,7 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     <message>
         <source> mints deleted
 </source>
-        <translation>Prägungen gelöscht 
+        <translation>Prägungen gelöscht
 </translation>
     </message>
     <message>
@@ -5031,10 +6348,6 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Fehler: Die Transaktion wurde abgelehnt! Dies könnte passieren, wenn einige Coins in deiner Wallet schon ausgegeben wurden, als  wenn du eine Kopie von der wallet.dat benutzt hättest. Coins wurden in der Kopie verbracht, aber hier nicht als verbracht markiert.</translation>
     </message>
     <message>
-        <source>Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!</source>
-        <translation>Fehler: Diese Transaktion erfordert eine Transaktionsgebühr von mindestens %s wegen ihrer Menge, Komplexität oder Verwendung von kürzlich erhaltenen Mitteln!</translation>
-    </message>
-    <message>
         <source>Error: Unsupported argument -checklevel found. Checklevel must be level 4.</source>
         <translation>Fehler: Nicht unterstütztes Argument -checklevel entdeckt. Checklevel muss Level 4 sein.</translation>
     </message>
@@ -5049,14 +6362,6 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     <message>
         <source>In rare cases, a spend with 7 coins exceeds our maximum allowable transaction size, please retry spend using 6 or less coins</source>
         <translation>In seltenen Fällen überschreiten Ausgaben mit 7 Münzen die maximal zulässige Transaktionsgröße. Bitte versuchen Sie erneut, mit 6 oder weniger Münzen auszugeben</translation>
-    </message>
-    <message>
-        <source>Preferred Denomination for automatically minted Zerocoin  (1/5/10/50/100/500/1000/5000), 0 for no preference. default: %u)</source>
-        <translation>Bervorzugte Stückelung für automatisch geprägte Zerocoins (1/5/10/50/100/500/1000/5000), 0 falls keine bestimmte Stückelung präferiert wird. Standard: %u)</translation>
-    </message>
-    <message>
-        <source>Specify custom backup path to add a copy of any automatic zXNK backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</source>
-        <translation>Benutzerdefinierten Sicherungspfad festlegen, in den Kopien von allen automatischen zXNK-Sicherungen abgelegt werden. Wenn ein Verzeichnis ausgewählt ist, wird jede Sicherung als Datei mit Zeitstempel erstellt. Wenn eine Datei ausgewählt ist, wird diese Datei bei jeder Sicherung überschrieben. Wenn der Sicherungspfad auch festgelegt ist, werden 4 Sicherungen erstellt.</translation>
     </message>
     <message>
         <source>Specify custom backup path to add a copy of any wallet backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup.</source>
@@ -5075,8 +6380,8 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Versuche die Wiederherstellung der fehlerhaften Blockchain zu forcieren</translation>
     </message>
     <message>
-        <source>CoinSpend: Accumulator witness does not verify</source>
-        <translation>CoinSpend: Akkumulator-Zeuge verifiziert nicht</translation>
+        <source>Cannot create public spend input</source>
+        <translation>Public Spend Input konnte nicht erzeugt werden</translation>
     </message>
     <message>
         <source>Display the stake modifier calculations in the debug.log file.</source>
@@ -5115,12 +6420,12 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Error: No valid utxo!</translation>
     </message>
     <message>
-        <source>Failed to create mint</source>
-        <translation>Fehler beim Erstellen von Minze</translation>
-    </message>
-    <message>
         <source>Failed to find Zerocoins in wallet.dat</source>
         <translation>Zerocoins in wallet.dat nicht gefunden</translation>
+    </message>
+    <message>
+        <source>Failed to parse public spend</source>
+        <translation>Parsen des Public Spend gescheitert</translation>
     </message>
     <message>
         <source>Failed to select a zerocoin</source>
@@ -5133,6 +6438,10 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     <message>
         <source>Failed to write coin serial number into wallet</source>
         <translation>Fehler beim Schreiben der Seriennummer der Münze in die Brieftasche</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
+        <translation>Ungültiger Betrag für -%s=&lt;amount&gt;: '%s'</translation>
     </message>
     <message>
         <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
@@ -5177,10 +6486,6 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     <message>
         <source>Loading sporks...</source>
         <translation>Lade Sporks...</translation>
-    </message>
-    <message>
-        <source>Loading wallet... (%3.2f %%)</source>
-        <translation>Lade Wallet... (%3.2f %%)</translation>
     </message>
     <message>
         <source>Loading wallet...</source>
@@ -5255,6 +6560,18 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Passwort für JSON-RPC Verbindungen</translation>
     </message>
     <message>
+        <source>Unable to find transaction containing mint %s</source>
+        <translation>Transaktion mit Prägung %s konnte nicht gefunden werden</translation>
+    </message>
+    <message>
+        <source>Unable to find transaction containing mint, txHash: %s</source>
+        <translation>Transaktion mit Prägung und Hash: %s konnte nicht gefunden werden</translation>
+    </message>
+    <message>
+        <source>Use block spam filter (default: %u)</source>
+        <translation>Nutze Block Spamfilter (standardmäßig %u)</translation>
+    </message>
+    <message>
         <source>isValid(): Invalid -proxy address or hostname: '%s'</source>
         <translation>isValid(): Invalid -proxy address or hostname: '%s'</translation>
     </message>
@@ -5263,12 +6580,28 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Vorbereitung für die Resynchronisierung ...</translation>
     </message>
     <message>
+        <source>Please check that your computer's date and time are correct! If your clock is wrong EncoCoin Core will not work properly.</source>
+        <translation>Bitte stellen Sie sicher, das vom Computer verwendete Zeit und Datumangaben korrekt sind! Wenn ihr System falsche Zeitangaben nutzt, wird EncoCoin Core nicht korrekt funktionieren.</translation>
+    </message>
+    <message>
+        <source>Cannot resolve -%s address: '%s'</source>
+        <translation>Kann -%s Adresse nicht auflösen: '%s'</translation>
+    </message>
+    <message>
+        <source>Need destination or change address because change is not exact</source>
+        <translation>Benötige Zieladresse oder Wechseladresse, weil der Wechsel nicht exakt ist</translation>
+    </message>
+    <message>
         <source>Prepend debug output with timestamp (default: %u)</source>
         <translation>Zeitstempel vor Debug-Ausgabe vermerken (Standard: %u)</translation>
     </message>
     <message>
         <source>Print version and exit</source>
         <translation>Version drucken und Programm beenden</translation>
+    </message>
+    <message>
+        <source>Pubcoin not found in mint tx</source>
+        <translation>Pubcoin in Prägungstransaktion nicht gefunden</translation>
     </message>
     <message>
         <source>RPC server options:</source>
@@ -5285,14 +6618,6 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     <message>
         <source>Rebuild block chain index from current blk000??.dat files</source>
         <translation>Baue den Blockchain-Index mithilfe der aktuellen blk000??.dat Datei erneut auf</translation>
-    </message>
-    <message>
-        <source>Receive and display P2P network alerts (default: %u)</source>
-        <translation>Empfange P2P-Netzwerk-Warnsignale und zeige diese an (Standard: %u)</translation>
-    </message>
-    <message>
-        <source>Reindex the accumulator database</source>
-        <translation>Reinde die Akkumulator-Datenbank neu</translation>
     </message>
     <message>
         <source>Relay and mine data carrier transactions (default: %u)</source>
@@ -5329,10 +6654,6 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     <message>
         <source>Send transactions as zero-fee transactions if possible (default: %u)</source>
         <translation>Sende die Transaktion als gebührenfreie Transaktion, falls möglich (Standard: %u)</translation>
-    </message>
-    <message>
-        <source>Session timed out.</source>
-        <translation>Zeitüberschreitung</translation>
     </message>
     <message>
         <source>Set database cache size in megabytes (%d to %d, default: %d)</source>
@@ -5377,10 +6698,6 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     <message>
         <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
         <translation>Schrumpfe debug.log Datei beim Client-Start (Standard: 1, falls -debug nicht gesetzt ist)</translation>
-    </message>
-    <message>
-        <source>Signing timed out.</source>
-        <translation>Zeitüberschreitung bei der Signierung.</translation>
     </message>
     <message>
         <source>Signing transaction failed</source>
@@ -5439,10 +6756,6 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Synchronisierung erfolgreich beendet</translation>
     </message>
     <message>
-        <source>Synchronization pending...</source>
-        <translation>Synchronisierung ausstehend...</translation>
-    </message>
-    <message>
         <source>Synchronizing budgets...</source>
         <translation>Synchronisiere Budgets....</translation>
     </message>
@@ -5463,20 +6776,12 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Synchronisiere zXNK Wallet... </translation>
     </message>
     <message>
-        <source>The coin spend has been used</source>
-        <translation>Die Münzausgabe wurde verwendet</translation>
-    </message>
-    <message>
-        <source>The transaction did not verify</source>
-        <translation>Die Transaktion wurde nicht verifiziert</translation>
-    </message>
-    <message>
         <source>This help message</source>
         <translation>Dieser Hilfetext</translation>
     </message>
     <message>
         <source>This is experimental software.</source>
-        <translation>Dies ist experimentelle Software.</translation>
+        <translation>Dies ist eine experimentelle Software.</translation>
     </message>
     <message>
         <source>This is intended for regression testing tools and app development.</source>
@@ -5531,6 +6836,10 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Kann auf diesem Computer nicht an %s binden (zurückgegebener Fehler: %s)</translation>
     </message>
     <message>
+        <source>Unable to generate initial key</source>
+        <translation>Initialschlüssel konnte nicht generiert werden</translation>
+    </message>
+    <message>
         <source>Unable to sign spork message, wrong key?</source>
         <translation>Die Spork-Nachricht konnte nicht signiert werden. Falscher Key?</translation>
     </message>
@@ -5561,6 +6870,10 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     <message>
         <source>Use the test network</source>
         <translation>Das Testnetzwerk verwenden</translation>
+    </message>
+    <message>
+        <source>User Agent comment (%s) contains unsafe characters.</source>
+        <translation>User Agend Kommentar (%s) enthält nicht sichere Zeichen.</translation>
     </message>
     <message>
         <source>Username for JSON-RPC connections</source>
@@ -5652,6 +6965,10 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     <message>
         <source>TextLabel</source>
         <translation>TextEtikett</translation>
+    </message>
+    <message>
+        <source>Include delegated</source>
+        <translation>Schließe Zugewiesene mit ein</translation>
     </message>
     <message>
         <source>PushButton</source>

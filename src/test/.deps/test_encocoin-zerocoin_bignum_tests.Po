@@ -955,7 +955,7 @@ test/test_encocoin-zerocoin_bignum_tests.o: \
  libzerocoin/AccumulatorProofOfKnowledge.h libzerocoin/Commitment.h \
  libzerocoin/SerialNumberSignatureOfKnowledge.h \
  /usr/include/c++/9.3.0/bitset hash.h libzerocoin/SpendType.h pubkey.h \
- libzerocoin/Accumulator.h zpiv/zerocoin.h chainparams.h \
+ libzerocoin/Accumulator.h zxnk/zerocoin.h chainparams.h \
  chainparamsbase.h checkpoints.h primitives/block.h \
  primitives/transaction.h script/script.h keystore.h key.h sync.h \
  threadsafety.h /usr/include/c++/9.3.0/condition_variable \
@@ -3455,7 +3455,7 @@ pubkey.h:
 
 libzerocoin/Accumulator.h:
 
-zpiv/zerocoin.h:
+zxnk/zerocoin.h:
 
 chainparams.h:
 

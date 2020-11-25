@@ -131,8 +131,8 @@
         </spacer>
        </item>
        <item>
-        <widget class="QWidget" name="verticalZpivOptionsWidget" native="true">
-         <layout class="QVBoxLayout" name="verticalZpivOptionsLayout">
+        <widget class="QWidget" name="verticalZxnkOptionsWidget" native="true">
+         <layout class="QVBoxLayout" name="verticalZxnkOptionsLayout">
           <property name="margin">
            <number>0</number>
           </property>
@@ -561,8 +561,8 @@ https://www.transifex.com/encocoin-project/encocoin-project-translations</string
         </layout>
        </item>
        <item>
-        <widget class="QWidget" name="verticalZpivDisplayWidget" native="true">
-         <layout class="QVBoxLayout" name="verticalZpivDisplayLayout">
+        <widget class="QWidget" name="verticalZxnkDisplayWidget" native="true">
+         <layout class="QVBoxLayout" name="verticalZxnkDisplayLayout">
           <property name="margin">
            <number>0</number>
           </property>
