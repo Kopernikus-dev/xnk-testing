@@ -158,6 +158,7 @@ jobs:
         GOAL="install"
         BITCOIN_CONFIG="--enable-zmq --with-gui=qt5 --enable-glibc-back-compat --enable-reduce-exports --disable-online-rust --with-params-dir=$PARAMS_DIR"
         BUILT_TIMEOUT=1200
+
     - stage: test
       name: 'x86_64 Linux  [GOAL: install]  [bionic]  [no GUI, no unit tests - only functional tests on legacy pre-HD wallets]'
       env: >-
@@ -179,7 +180,7 @@ jobs:
         DEP_OPTS="NO_QT=1 NO_UPNP=1 DEBUG=1 ALLOW_HOST_PACKAGES=1"
         RUN_UNIT_TESTS=false
         RUN_FUNCTIONAL_TESTS=true
-        TEST_RUNNER_EXTRA="--tiertwo --sapling --skipcache"   # Run tier two and sapling functional tests only.
+        TEST_RUNNER_EXTRA="--tiertwo --sapling"   # Run tier two and sapling functional tests only.
         GOAL="install"
         BITCOIN_CONFIG="--with-gui=no --enable-glibc-back-compat --enable-reduce-exports --disable-online-rust --with-params-dir=$PARAMS_DIR"
         BUILD_TIMEOUT=800
