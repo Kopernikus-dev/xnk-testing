@@ -1644,12 +1644,38 @@ QPushButton[cssClass="btn-secundary-add"] {
 
 
 QPushButton[cssClass="btn-secundary-add"]:hover {
-    border:  1px solid #ffd166;
+    border:  1px solid #19170c;
     background-color:#19170c;
 }
 
 QPushButton[cssClass="btn-secundary-add"]:pressed {
-    border:  1px solid #ffd166;
+    border:  1px solid #59543d;
+    background-color:#59543d;
+}
+
+QPushButton[cssClass="btn-secondary-update"] {
+    background-image: url("://ic-chevron-right-liliac");
+    background-position:right center;
+    background-repeat:no-repeat;
+    border:  1px solid #7c6817;
+    background-color:#19170c;
+    font-size:18px;
+    padding-top:4px;
+    padding-left:6px;
+    padding-bottom:4px;
+    padding-right:30px;
+    color: #ffd166;
+    border-radius: 2px;
+}
+
+
+QPushButton[cssClass="btn-secondary-update"]:hover {
+    border:  1px solid #19170c;
+    background-color:#19170c;
+}
+
+QPushButton[cssClass="btn-secondary-update"]:pressed {
+    border:  1px solid #59543d;
     background-color:#59543d;
 }
 
@@ -2540,6 +2566,27 @@ QLineEdit[cssClass="edit-primary-dialog-error"] {
     border-radius: 2px;
     padding:8px;
     color: #FFFFFF;
+}
+
+QTextEdit[cssClass="edit-text-dialog"] {
+    border:  1px solid #bababa;
+    background-color:#19170c;
+    font-size:16px;
+    border-radius: 2px;
+    padding:8px;
+    color: #FFFFFF;
+}
+
+QTextEdit[cssClass="edit-text-dialog"]:focus {
+    border: 1px solid #ffd166;
+}
+
+QTextEdit[cssClass="edit-text-dialog"]:focus:hover {
+    border: 1px solid #ffd166;
+}
+
+QTextEdit[cssClass="edit-text-dialog"]:hover {
+    border: 1px solid #FFFFFF;
 }
 
 QLabel[cssClass="label-subtitle-dialog"] {

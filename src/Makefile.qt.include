@@ -37,10 +37,10 @@ QT_FORMS_UI = \
   qt/encocoin/forms/masternodeswidget.ui \
   qt/encocoin/forms/myaddressrow.ui \
   qt/encocoin/forms/csrow.ui \
+  qt/encocoin/forms/sendmemodialog.ui \
   qt/encocoin/forms/sendchangeaddressdialog.ui \
   qt/encocoin/forms/sendconfirmdialog.ui \
   qt/encocoin/forms/sendcustomfeedialog.ui \
-  qt/encocoin/forms/sendchangeaddressdialog.ui \
   qt/encocoin/forms/sendmultirow.ui \
   qt/encocoin/forms/send.ui \
   qt/encocoin/forms/addnewaddressdialog.ui \
@@ -128,7 +128,7 @@ QT_MOC_CPP = \
   qt/encocoin/moc_sendchangeaddressdialog.cpp \
   qt/encocoin/moc_sendconfirmdialog.cpp \
   qt/encocoin/moc_sendcustomfeedialog.cpp \
-  qt/encocoin/moc_sendchangeaddressdialog.cpp \
+  qt/encocoin/moc_sendmemodialog.cpp \
   qt/encocoin/moc_sendmultirow.cpp \
   qt/encocoin/moc_send.cpp \
   qt/encocoin/moc_addnewaddressdialog.cpp \
@@ -250,7 +250,7 @@ BITCOIN_QT_H = \
   qt/encocoin/sendchangeaddressdialog.h \
   qt/encocoin/sendconfirmdialog.h \
   qt/encocoin/sendcustomfeedialog.h \
-  qt/encocoin/sendchangeaddressdialog.h \
+  qt/encocoin/sendmemodialog.h \
   qt/encocoin/sendmultirow.h \
   qt/encocoin/send.h \
   qt/encocoin/addnewaddressdialog.h \
@@ -367,6 +367,7 @@ RES_ICONS = \
   qt/encocoin/res/img/img-empty-dark-transactions.svg \
   qt/encocoin/res/img/ic-address-book-white.svg \
   qt/encocoin/res/img/ic-chevron-right.svg \
+  qt/encocoin/res/img/ic-chevron-right-liliac.svg \
   qt/encocoin/res/img/ic-nav-send.svg \
   qt/encocoin/res/img/img-empty-error.svg \
   qt/encocoin/res/img/ic-address-book.svg \
@@ -571,7 +572,7 @@ BITCOIN_QT_WALLET_CPP = \
   qt/encocoin/sendchangeaddressdialog.cpp \
   qt/encocoin/sendconfirmdialog.cpp \
   qt/encocoin/sendcustomfeedialog.cpp \
-  qt/encocoin/sendchangeaddressdialog.cpp \
+  qt/encocoin/sendmemodialog.cpp \
   qt/encocoin/sendmultirow.cpp \
   qt/encocoin/send.cpp \
   qt/encocoin/addnewaddressdialog.cpp \

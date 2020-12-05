@@ -164,6 +164,7 @@ public:
     CAmount credit;
     unsigned int size;
      Optional<CAmount> shieldedCredit{nullopt};
+    Optional<std::string> memo{nullopt};
     /**@}*/
 
     /** Subtransaction index, for sort key */

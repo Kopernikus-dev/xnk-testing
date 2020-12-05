@@ -26,7 +26,7 @@ class SendMultiRow : public PWidget
     Q_OBJECT
 
 public:
-    explicit SendMultiRow(PWidget *parent = nullptr);
+    explicit SendMultiRow(EncoCoinGUI* _window, PWidget *parent = nullptr);
     ~SendMultiRow();
 
     void hideLabels();
@@ -39,6 +39,7 @@ public:
     SendCoinsRecipient getValue();
     QString getAddress();
     CAmount getAmountValue();
+    QString getMemo();
 
     /** Return whether the entry is still empty and unedited */
     bool isClear();
@@ -56,9 +57,13 @@ public:
     int getEditWidth();
     int getMenuBtnWidth();
 
+    // Return true if memo was set and false if it was cleared.
+    bool launchMemoDialog();
+
 public Q_SLOTS:
     void clear();
     void updateDisplayUnit();
+    void onMemoClicked();
 
 Q_SIGNALS:
     void removeEntry(SendMultiRow* entry);

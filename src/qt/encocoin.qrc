@@ -86,6 +86,7 @@
         <file alias="ic-check">encocoin/res/img/ic-check.svg</file>
         <file alias="ic-chevron-left">encocoin/res/img/ic-chevron-left.svg</file>
         <file alias="ic-chevron-right">encocoin/res/img/ic-chevron-right.svg</file>
+        <file alias="ic-chevron-right-liliac">encocoin/res/img/ic-chevron-right-liliac.svg</file>
         <file alias="ic-clear-liliac">encocoin/res/img/ic-clear-liliac.svg</file>
         <file alias="ic-clear-purple">encocoin/res/img/ic-clear-purple.svg</file>
         <file alias="ic-close-white">encocoin/res/img/ic-close-white.svg</file>

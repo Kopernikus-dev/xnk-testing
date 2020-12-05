@@ -142,7 +142,7 @@ SET(QT_SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/sendchangeaddressdialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/sendconfirmdialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/sendcustomfeedialog.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/sendchangeaddressdialog.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/sendmemodialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/sendmultirow.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/send.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/addnewaddressdialog.cpp
