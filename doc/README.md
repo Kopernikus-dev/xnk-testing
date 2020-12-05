@@ -16,6 +16,8 @@ Unpack the files into a directory and run:
 - `bin/encocoin-qt` (GUI) or
 - `bin/encocoind` (headless)
 
+If this is the first time running EncoCoin Core (since v5.0.0), you'll need to install the sapling params by running the included `install-params.sh` script, which copies the two params files to `$HOME/.encocoin-params`
+
 ### Windows
 
 Unpack the files into a directory, and then run encocoin-qt.exe.
