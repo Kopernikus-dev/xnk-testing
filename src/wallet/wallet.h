@@ -23,19 +23,16 @@
 #include "primitives/block.h"
 #include "primitives/transaction.h"
 #include "sapling/address.hpp"
-#include "zxnk/zerocoin.h"
 #include "guiinterface.h"
 #include "util.h"
 #include "util/memory.h"
+#include "utilstrencodings.h"
 #include "validationinterface.h"
 #include "script/ismine.h"
 #include "wallet/scriptpubkeyman.h"
 #include "sapling/saplingscriptpubkeyman.h"
 #include "validation.h"
 #include "wallet/walletdb.h"
-#include "zxnk/zxnkmodule.h"
-#include "zxnk/zxnkwallet.h"
-#include "zxnk/zxnktracker.h"
 
 #include <algorithm>
 #include <atomic>
@@ -128,27 +125,6 @@ enum AvailableCoinsType {
     ALL_COINS = 1,
     ONLY_10000 = 5,                                 // find masternode outputs including locked ones (use with caution)
     STAKEABLE_COINS = 6                             // UTXO's that are valid for staking
-};
-
-// Possible states for zXNK send
-enum ZerocoinSpendStatus {
-    ZXNK_SPEND_OKAY = 0,                            // No error
-    ZXNK_SPEND_ERROR = 1,                           // Unspecified class of errors, more details are (hopefully) in the returning text
-    ZXNK_WALLET_LOCKED = 2,                         // Wallet was locked
-    ZXNK_COMMIT_FAILED = 3,                         // Commit failed, reset status
-    ZXNK_ERASE_SPENDS_FAILED = 4,                   // Erasing spends during reset failed
-    ZXNK_ERASE_NEW_MINTS_FAILED = 5,                // Erasing new mints during reset failed
-    ZXNK_TRX_FUNDS_PROBLEMS = 6,                    // Everything related to available funds
-    ZXNK_TRX_CREATE = 7,                            // Everything related to create the transaction
-    ZXNK_TRX_CHANGE = 8,                            // Everything related to transaction change
-    ZXNK_TXMINT_GENERAL = 9,                        // General errors in MintsToInputVectorPublicSpend
-    ZXNK_INVALID_COIN = 10,                         // Selected mint coin is not valid
-    ZXNK_FAILED_ACCUMULATOR_INITIALIZATION = 11,    // Failed to initialize witness
-    ZXNK_INVALID_WITNESS = 12,                      // Spend coin transaction did not verify
-    ZXNK_BAD_SERIALIZATION = 13,                    // Transaction verification failed
-    ZXNK_SPENT_USED_ZXNK = 14,                      // Coin has already been spend
-    ZXNK_TX_TOO_LARGE = 15,                         // The transaction is larger than the max tx size
-    ZXNK_SPEND_V1_SEC_LEVEL                         // Spend is V1 and security level is not set to 100
 };
 
 /** A key pool entry */
@@ -344,9 +320,6 @@ private:
                                                      const bool fIncludeColdStaking,
                                                      const bool fIncludeDelegated,
                                                      const bool fIncludeLocked) const;
-
-    // Zerocoin wallet
-    CzXNKWallet* zwallet{nullptr};
 
     //! Destination --> label/purpose mapping.
     std::map<CWDestination, AddressBook::CAddressBookData> mapAddressBook;
@@ -817,56 +790,6 @@ public:
 
     /** notify wallet file backed up */
     boost::signals2::signal<void (const bool& fSuccess, const std::string& filename)> NotifyWalletBacked;
-
-
-    /* Legacy ZC - implementations in wallet_zerocoin.cpp */
-
-    bool GetDeterministicSeed(const uint256& hashSeed, uint256& seed);
-    bool AddDeterministicSeed(const uint256& seed);
-
-    // Par of the tx rescan process
-    void doZXnkRescan(const CBlockIndex* pindex, const CBlock& block, std::set<uint256>& setAddedToWallet, const Consensus::Params& consensus, bool fCheckZXNK);
-
-    //- ZC Mints (Only for regtest)
-    std::string MintZerocoin(CAmount nValue, CWalletTx& wtxNew, std::vector<CDeterministicMint>& vDMints, const CCoinControl* coinControl = NULL);
-    std::string MintZerocoinFromOutPoint(CAmount nValue, CWalletTx& wtxNew, std::vector<CDeterministicMint>& vDMints, const std::vector<COutPoint> vOutpts);
-    bool CreateZXNKOutPut(libzerocoin::CoinDenomination denomination, CTxOut& outMint, CDeterministicMint& dMint);
-    bool CreateZerocoinMintTransaction(const CAmount nValue,
-            CMutableTransaction& txNew,
-            std::vector<CDeterministicMint>& vDMints,
-            CReserveKey* reservekey,
-            std::string& strFailReason,
-            const CCoinControl* coinControl = NULL);
-
-    // - ZC PublicSpends
-    bool SpendZerocoin(CAmount nAmount, CWalletTx& wtxNew, CZerocoinSpendReceipt& receipt, std::vector<CZerocoinMint>& vMintsSelected, std::list<std::pair<CTxDestination,CAmount>> addressesTo, CTxDestination* changeAddress = nullptr);
-    bool MintsToInputVectorPublicSpend(std::map<CBigNum, CZerocoinMint>& mapMintsSelected, const uint256& hashTxOut, std::vector<CTxIn>& vin, CZerocoinSpendReceipt& receipt, libzerocoin::SpendType spendType, CBlockIndex* pindexCheckpoint = nullptr);
-    bool CreateZCPublicSpendTransaction(
-            CAmount nValue,
-            CWalletTx& wtxNew,
-            CReserveKey& reserveKey,
-            CZerocoinSpendReceipt& receipt,
-            std::vector<CZerocoinMint>& vSelectedMints,
-            std::vector<CDeterministicMint>& vNewMints,
-            std::list<std::pair<CTxDestination,CAmount>> addressesTo,
-            CTxDestination* changeAddress = nullptr);
-
-    // - ZC Balances
-    CAmount GetZerocoinBalance() const;
-    std::map<libzerocoin::CoinDenomination, CAmount> GetMyZerocoinDistribution() const;
-
-    // zXNK wallet
-    std::unique_ptr<CzXNKTracker> zxnkTracker{nullptr};
-    void setZWallet(CzXNKWallet* zwallet);
-    CzXNKWallet* getZWallet();
-    bool IsMyZerocoinSpend(const CBigNum& bnSerial) const;
-    bool IsMyMint(const CBigNum& bnValue) const;
-    void ReconsiderZerocoins(std::list<CZerocoinMint>& listMintsRestored, std::list<CDeterministicMint>& listDMintsRestored);
-    bool GetMint(const uint256& hashSerial, CZerocoinMint& mint);
-    bool SetMintUnspent(const CBigNum& bnSerial);
-    bool UpdateMint(const CBigNum& bnValue, const int& nHeight, const uint256& txid, const libzerocoin::CoinDenomination& denom);
-    // Zerocoin entry changed. (called with lock cs_wallet held)
-    boost::signals2::signal<void(CWallet* wallet, const std::string& pubCoin, const std::string& isUsed, ChangeType status)> NotifyZerocoinChanged;
 };
 
 /** A key allocated from the key pool. */

@@ -16,7 +16,6 @@
 #include "zxnk/zerocoin.h"
 #include "libzerocoin/Accumulator.h"
 #include "libzerocoin/Denominations.h"
-#include "zxnk/zxnktracker.h"
 
 #include <list>
 #include <stdint.h>

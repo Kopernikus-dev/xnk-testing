@@ -184,7 +184,6 @@ BITCOIN_CORE_H = \
   cyclingvector.h \
   pairresult.h \
   addressbook.h \
-  denomination_functions.h \
   wallet/db.h \
   fs.h \
   hash.h \
@@ -294,9 +293,6 @@ BITCOIN_CORE_H = \
   zxnk/deterministicmint.h \
   zxnk/mintpool.h \
   zxnk/zerocoin.h \
-  zxnk/zxnktracker.h \
-  zxnk/zxnkwallet.h \
-  zxnk/zxnkmodule.h \
   zxnk/zpos.h \
   zmq/zmqabstractnotifier.h \
   zmq/zmqconfig.h \
@@ -376,7 +372,6 @@ libbitcoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_wallet_a_SOURCES = \
   activemasternode.cpp \
   bip38.cpp \
-  denomination_functions.cpp \
   interface/wallet.cpp \
   addressbook.cpp \
   crypter.cpp \
@@ -399,20 +394,15 @@ libbitcoin_wallet_a_SOURCES = \
   wallet/db.cpp \
   wallet/rpcdump.cpp \
   wallet/rpcwallet.cpp \
-  wallet/rpczxnk.cpp \
   wallet/hdchain.cpp \
   wallet/scriptpubkeyman.cpp \
   destination_io.cpp \
   wallet/wallet.cpp \
-  wallet/wallet_zerocoin.cpp \
   wallet/walletdb.cpp \
   zxnk/deterministicmint.cpp \
   zxnk/zerocoin.cpp \
   zxnk/mintpool.cpp \
-  zxnk/zxnkwallet.cpp \
-  zxnk/zxnktracker.cpp \
   stakeinput.cpp \
-  zxnk/zxnkmodule.cpp \
   zxnk/zpos.cpp \
   $(BITCOIN_CORE_H) \
   $(LIBSAPLING_H)
@@ -472,6 +462,7 @@ libzerocoin_libbitcoin_zerocoin_a_SOURCES = \
   libzerocoin/Params.h \
   libzerocoin/SpendType.h \
   libzerocoin/ZerocoinDefines.h \
+  zxnk/zxnkmodule.h \
   libzerocoin/bignum.cpp \
   libzerocoin/Accumulator.cpp \
   libzerocoin/Coin.cpp \
@@ -479,7 +470,8 @@ libzerocoin_libbitcoin_zerocoin_a_SOURCES = \
   libzerocoin/CoinSpend.cpp \
   libzerocoin/Denominations.cpp \
   libzerocoin/ParamGeneration.cpp \
-  libzerocoin/Params.cpp
+  libzerocoin/Params.cpp \
+  zxnk/zxnkmodule.cpp
 if USE_NUM_GMP
   libzerocoin_libbitcoin_zerocoin_a_SOURCES += libzerocoin/bignum_gmp.cpp
 endif

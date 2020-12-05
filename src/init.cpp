@@ -22,7 +22,6 @@
 #include "checkpoints.h"
 #include "compat/sanity.h"
 #include "consensus/upgrades.h"
-#include "consensus/zerocoin_verify.h"
 #include "fs.h"
 #include "httpserver.h"
 #include "httprpc.h"
@@ -530,10 +529,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-masternodeprivkey=<n>", _("Set the masternode private key"));
     strUsage += HelpMessageOpt("-masternodeaddr=<n>", strprintf(_("Set external address:port to get to this masternode (example: %s)"), "128.127.106.235:43013"));
     strUsage += HelpMessageOpt("-budgetvotemode=<mode>", _("Change automatic finalized budget voting behavior. mode=auto: Vote for only exact finalized budget match to my generated budget. (string, default: auto)"));
-/*
-    strUsage += HelpMessageGroup(_("Zerocoin options:"));
-    strUsage += HelpMessageOpt("-reindexzerocoin=<n>", strprintf(_("Delete all zerocoin spends and mints that have been recorded to the blockchain database and reindex them (0-1, default: %u)"), 0));
-*/
+
     strUsage += HelpMessageGroup(_("Node relay options:"));
     strUsage += HelpMessageOpt("-datacarrier", strprintf(_("Relay and mine data carrier transactions (default: %u)"), DEFAULT_ACCEPT_DATACARRIER));
     strUsage += HelpMessageOpt("-datacarriersize", strprintf(_("Maximum size of data in data carrier transactions we relay and mine (default: %u)"), MAX_OP_RETURN_RELAY));
@@ -1086,8 +1082,6 @@ bool AppInit2()
     } else {
         // Register wallet RPC commands
         RegisterWalletRPCCommands(tableRPC);
-        // Register zXNK RPC commands
-        RegisterZXNKRPCCommands(tableRPC);
     }
 #endif
 
@@ -1571,8 +1565,6 @@ bool AppInit2()
                 invalid_out::LoadOutpoints();
                 invalid_out::LoadSerials();
 
-                bool fReindexZerocoin = gArgs.GetBoolArg("-reindexzerocoin", false);
-
                 int chainHeight;
                 bool fZerocoinActive;
                 {
@@ -1587,38 +1579,6 @@ bool AppInit2()
                         LogPrintf("Pruning zerocoin mints / invalid outs, at height %d\n", chainHeight);
                         pcoinsTip->PruneInvalidEntries();
                         pblocktree->Erase('M');
-                    }
-
-                    // initialize zXNK supply to 0
-                    mapZerocoinSupply.clear();
-                    for (auto& denom : libzerocoin::zerocoinDenomList) mapZerocoinSupply.emplace(denom, 0);
-
-                    // Load XNK and zXNK supply from DB
-                    if (chainHeight >= 0) {
-                        const uint256& tipHash = chainActive[chainHeight]->GetBlockHash();
-                        CLegacyBlockIndex bi;
-
-                        // Load zXNK supply map
-                        if (!fReindexZerocoin && fZerocoinActive && !zerocoinDB->ReadZCSupply(mapZerocoinSupply)) {
-                            // try first reading legacy block index from DB
-                            if (pblocktree->ReadLegacyBlockIndex(tipHash, bi) && !bi.mapZerocoinSupply.empty()) {
-                                mapZerocoinSupply = bi.mapZerocoinSupply;
-                            } else {
-                                // reindex from disk
-                                fReindexZerocoin = true;
-                            }
-                        }
-                    }
-                }
-
-                // Drop all information from the zerocoinDB and repopulate
-                if (fReindexZerocoin && fZerocoinActive) {
-                    LOCK(cs_main);
-                    uiInterface.InitMessage(_("Reindexing zerocoin database..."));
-                    std::string strError = ReindexZerocoinDB();
-                    if (strError != "") {
-                        strLoadError = strError;
-                        break;
                     }
                 }
 

@@ -327,7 +327,6 @@ bool CWallet::Lock()
     {
         LOCK(cs_KeyStore);
         vMasterKey.clear();
-        if (zwallet) zwallet->Lock();
     }
 
     NotifyStatusChanged(this);
@@ -385,16 +384,6 @@ bool CWallet::Unlock(const CKeyingMaterial& vMasterKeyIn)
         vMasterKey = vMasterKeyIn;
         fDecryptionThoroughlyChecked = true;
 
-        if (zwallet) {
-            uint256 hashSeed;
-            if (CWalletDB(strWalletFile).ReadCurrentSeedHash(hashSeed)) {
-                uint256 nSeed;
-                if (!GetDeterministicSeed(hashSeed, nSeed)) {
-                    return error("Failed to read zXNK seed from DB. Wallet is probably corrupt.");
-                }
-                zwallet->SetMasterSeed(nSeed, false);
-            }
-        }
     }
 
     NotifyStatusChanged(this);
@@ -1687,9 +1676,6 @@ int CWallet::ScanForWalletTransactions(CBlockIndex* pindexStart, bool fUpdate, b
 {
     int ret = 0;
     int64_t nNow = GetTime();
-    bool fCheckZXNK = gArgs.GetBoolArg("-zapwallettxes", false);
-    if (fCheckZXNK)
-        zxnkTracker->Init();
 
     const Consensus::Params& consensus = Params().GetConsensus();
 
@@ -1738,9 +1724,6 @@ int CWallet::ScanForWalletTransactions(CBlockIndex* pindexStart, bool fUpdate, b
                     ChainTipAdded(pindex, &block, saplingTree);
                 }
             }
-
-            // Will try to rescan it if zXNK upgrade is active.
-            doZXnkRescan(pindex, block, setAddedToWallet, consensus, fCheckZXNK);
 
             pindex = chainActive.Next(pindex);
             if (GetTime() >= nNow + 60) {
@@ -4106,9 +4089,6 @@ CWallet* CWallet::CreateWalletFromFile(const std::string walletFile)
 
     LogPrintf("Wallet completed loading in %15dms\n", GetTimeMillis() - nStart);
 
-    CzXNKWallet* zwalletInstance = new CzXNKWallet(walletInstance);
-    walletInstance->setZWallet(zwalletInstance);
-
     RegisterValidationInterface(walletInstance);
 
     CBlockIndex* pindexRescan = chainActive.Tip();
@@ -4155,16 +4135,6 @@ CWallet* CWallet::CreateWalletFromFile(const std::string walletFile)
         }
     }
     fVerifyingBlocks = false;
-
-    if (!zwalletInstance->GetMasterSeed().IsNull()) {
-        //Inititalize zXNKWallet
-        uiInterface.InitMessage(_("Syncing zXNK wallet..."));
-
-        //Load zerocoin mint hashes to memory
-        walletInstance->zxnkTracker->Init();
-        zwalletInstance->LoadMintPoolFromDB();
-        zwalletInstance->SyncWithChain();
-    }
 
     return walletInstance;
 }
@@ -4311,7 +4281,6 @@ CWallet::CWallet(std::string strWalletFileIn)
 
 CWallet::~CWallet()
 {
-    delete zwallet;
     delete pwalletdbEncryption;
     delete pStakerStatus;
 }
