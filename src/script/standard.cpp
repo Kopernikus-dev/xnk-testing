@@ -3,14 +3,12 @@
 // Copyright (c) 2017-2020 The PIVX developers
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+// file COPYING or https://www.opensource.org/licenses/mit-license.php.
 
 #include "script/standard.h"
 
 #include "pubkey.h"
 #include "script/script.h"
-#include "util.h"
-#include "utilstrencodings.h"
 
 typedef std::vector<unsigned char> valtype;
 

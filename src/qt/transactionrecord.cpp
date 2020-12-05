@@ -8,7 +8,7 @@
 #include "transactionrecord.h"
 
 #include "base58.h"
-#include "timedata.h"
+#include "sapling/key_io_sapling.h"
 #include "wallet/wallet.h"
 #include "zxnkchain.h"
 
@@ -207,31 +207,117 @@ bool TransactionRecord::decomposeCreditTransaction(const CWallet* wallet, const 
             parts.append(sub);
         }
     }
+
+    if (wtx.hasSaplingData()) {
+        auto sspkm = wallet->GetSaplingScriptPubKeyMan();
+        for (int i = 0; i < (int) wtx.sapData->vShieldedOutput.size(); ++i) {
+            SaplingOutPoint out(sub.hash, i);
+            auto opAddr = sspkm->GetOutPointAddress(wtx, out);
+            if (opAddr) {
+                // skip it if change
+                if (sspkm->IsNoteSaplingChange(out, *opAddr)) {
+                    continue;
+                }
+
+                sub.address = (opAddr) ? KeyIO::EncodePaymentAddress(*opAddr) : "";
+                sub.type = TransactionRecord::RecvWithShieldedAddress;
+                sub.credit = sspkm->GetOutPointValue(wtx, out);
+                sub.idx = i;
+                parts.append(sub);
+            }
+        }
+    }
+
     return true;
 }
 
 bool TransactionRecord::decomposeSendToSelfTransaction(const CWalletTx& wtx, const CAmount& nCredit,
                                                        const CAmount& nDebit, bool involvesWatchAddress,
-                                                       QList<TransactionRecord>& parts)
+                                                       QList<TransactionRecord>& parts, const CWallet* wallet)
 {
     // Payment to self tx is presented as a single record.
     TransactionRecord sub(wtx.GetHash(), wtx.GetTxTime(), wtx.GetTotalSize());
-    // Payment to self by default
-    sub.type = TransactionRecord::SendToSelf;
     sub.address = "";
-
-    // Label for payment to self
-    CTxDestination address;
-    if (ExtractDestination(wtx.vout[0].scriptPubKey, address)) {
-        sub.address = EncodeDestination(address);
-    }
-
     CAmount nChange = wtx.GetChange();
+    if (!wtx.hasSaplingData()) {
+        sub.type = TransactionRecord::SendToSelf;
+        // Label for payment to self
+        CTxDestination address;
+        if (ExtractDestination(wtx.vout[0].scriptPubKey, address)) {
+            sub.address = EncodeDestination(address);
+        }
+    } else {
+        // we know that all of the inputs and outputs are mine and that have shielded data.
+        // Let's see if only have transparent inputs, so we know that this is a
+        // transparent -> shield transaction
+        if (wtx.sapData->vShieldedSpend.empty()) {
+            sub.type = TransactionRecord::SendToSelfShieldedAddress;
+            sub.shieldedCredit = wtx.GetCredit(ISMINE_SPENDABLE_SHIELDED);
+            nChange += wtx.GetShieldedChange();
+
+            SaplingOutPoint out(sub.hash, 0);
+            auto opAddr = wallet->GetSaplingScriptPubKeyMan()->GetOutPointAddress(wtx, out);
+            if (opAddr) {
+                sub.address = KeyIO::EncodePaymentAddress(*opAddr);
+            }
+        } else {
+            // we know that the inputs are shielded now, let's see if
+            // if we have transparent outputs. if we have then we are converting back coins,
+            // from shield to transparent
+            if (!wtx.vout.empty()) {
+                sub.type = TransactionRecord::SendToSelfShieldToTransparent;
+                // Label for payment to self
+                CTxDestination address;
+                if (ExtractDestination(wtx.vout[0].scriptPubKey, address)) {
+                    sub.address = EncodeDestination(address);
+                }
+                // little hack to show the correct amount
+                sub.shieldedCredit = wtx.GetCredit(ISMINE_SPENDABLE_TRANSPARENT);
+            } else {
+                // we know that the outputs are only shield, this is purely a change address tx.
+                // show only the fee.
+                sub.type = TransactionRecord::SendToSelfShieldToShieldChangeAddress;
+            }
+        }
+    }
 
     sub.debit = -(nDebit - nChange);
     sub.credit = nCredit - nChange;
     sub.involvesWatchAddress = involvesWatchAddress;
     parts.append(sub);
+    return true;
+}
+
+bool TransactionRecord::decomposeShieldedDebitTransaction(const CWallet* wallet, const CWalletTx& wtx, CAmount nTxFee,
+                                                          bool involvesWatchAddress, QList<TransactionRecord>& parts)
+{
+    // Return early if there are no outputs.
+    if (wtx.sapData->vShieldedOutput.empty()) {
+        return false;
+    }
+
+    TransactionRecord sub(wtx.GetHash(), wtx.GetTxTime(), wtx.GetTotalSize());
+    auto sspkm = wallet->GetSaplingScriptPubKeyMan();
+    for (int i = 0; i < (int) wtx.sapData->vShieldedOutput.size(); ++i) {
+        SaplingOutPoint out(sub.hash, i);
+        auto opAddr = sspkm->GetOutPointAddress(wtx, out);
+        // skip change
+        if (!opAddr || sspkm->IsNoteSaplingChange(out, *opAddr)) {
+            continue;
+        }
+        sub.idx = i;
+        sub.involvesWatchAddress = involvesWatchAddress;
+        sub.type = TransactionRecord::SendToShielded;
+        sub.address = KeyIO::EncodePaymentAddress(*opAddr);
+        CAmount nValue = sspkm->GetOutPointValue(wtx, out);
+        /* Add fee to first output */
+        if (nTxFee > 0) {
+            nValue += nTxFee;
+            nTxFee = 0;
+        }
+        sub.debit = -nValue;
+        parts.append(sub);
+    }
     return true;
 }
 
@@ -243,11 +329,13 @@ bool TransactionRecord::decomposeDebitTransaction(const CWallet* wallet, const C
                                                   QList<TransactionRecord>& parts)
 {
     // Return early if there are no outputs.
-    if (wtx.vout.empty()) {
+    if (wtx.vout.empty() && wtx.sapData->vShieldedOutput.empty()) {
         return false;
     }
 
-    CAmount nTxFee = nDebit - wtx.GetValueOut();
+    // GetValueOut is the sum of transparent outs and negative sapValueBalance (shielded outs minus shielded spends).
+    // Therefore to get the sum of the whole outputs of the tx, must re-add the shielded inputs spent to it
+    CAmount nTxFee = nDebit - (wtx.GetValueOut() + wtx.GetDebit(ISMINE_SPENDABLE_SHIELDED | ISMINE_WATCH_ONLY_SHIELDED));
     unsigned int txSize = wtx.GetTotalSize();
     const uint256& txHash = wtx.GetHash();
     const int64_t txTime = wtx.GetTxTime();
@@ -295,7 +383,33 @@ bool TransactionRecord::decomposeDebitTransaction(const CWallet* wallet, const C
 
         parts.append(sub);
     }
-    return true;
+
+    // Decompose shielded debit
+    return decomposeShieldedDebitTransaction(wallet, wtx, nTxFee, involvesWatchAddress, parts);
+}
+
+// Check whether all the shielded inputs and outputs are from and send to this wallet
+std::pair<bool, bool> areInputsAndOutputsFromAndToMe(const CWalletTx& wtx, SaplingScriptPubKeyMan* sspkm, bool& involvesWatchAddress)
+{
+    // Check if all the shielded spends are from me
+    bool allShieldedSpendsFromMe = true;
+    for (const auto& spend : wtx.sapData->vShieldedSpend) {
+        if (!sspkm->IsSaplingNullifierFromMe(spend.nullifier)) {
+            allShieldedSpendsFromMe = false;
+            break;
+        }
+    }
+
+    // Check if all the shielded outputs are to me
+    bool allShieldedOutToMe = true;
+    for (int i = 0; i < (int) wtx.sapData->vShieldedOutput.size(); ++i) {
+        SaplingOutPoint op(wtx.GetHash(), i);
+        isminetype mine = sspkm->IsMine(wtx, op);
+        if (mine & ISMINE_WATCH_ONLY_SHIELDED) involvesWatchAddress = true;
+        if (mine != ISMINE_SPENDABLE_SHIELDED) allShieldedOutToMe = false;
+    }
+
+    return std::make_pair(allShieldedSpendsFromMe, allShieldedOutToMe);
 }
 
 /*
@@ -311,11 +425,6 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
     if (wtx.HasZerocoinSpendInputs()) {
         libzerocoin::CoinSpend zcspend = wtx.HasZerocoinPublicSpendInputs() ? ZXNKModule::parseCoinSpend(wtx.vin[0]) : TxInToZerocoinSpend(wtx.vin[0]);
         fZSpendFromMe = wallet->IsMyZerocoinSpend(zcspend.getCoinSerialNumber());
-    }
-
-    // TODO: Add shielded transactions parsing.
-    if (wtx.IsShieldedTx()) {
-        return parts;
     }
 
     // Decompose coinstake if needed (if it's not a coinstake, the method will no perform any action).
@@ -345,6 +454,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
         }
     }
 
+    auto sspkm = wallet->GetSaplingScriptPubKeyMan();
     // As the tx is not credit, need to check if all the inputs and outputs are from and to this wallet.
     // If it's true, then it's a sendToSelf. If not, then it's an outgoing tx.
 
@@ -363,10 +473,15 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
         if (fAllToMe > mine) fAllToMe = mine;
     }
 
+    // Check whether all the shielded spends/outputs are from or to me.
+    bool allShieldedSpendsFromMe, allShieldedOutToMe = true;
+    std::tie(allShieldedSpendsFromMe, allShieldedOutToMe) =
+            areInputsAndOutputsFromAndToMe(wtx, sspkm, involvesWatchAddress);
+
     // Check if this tx is purely a payment to self.
-    if (fAllFromMe && fAllToMe) {
+    if (fAllFromMe && fAllToMe && allShieldedOutToMe && allShieldedSpendsFromMe) {
         // Single record for sendToSelf.
-        if (decomposeSendToSelfTransaction(wtx, nCredit, nDebit, involvesWatchAddress, parts)) {
+        if (decomposeSendToSelfTransaction(wtx, nCredit, nDebit, involvesWatchAddress, parts, wallet)) {
             return parts;
         }
     }
@@ -383,6 +498,21 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
     record.involvesWatchAddress = involvesWatchAddress;
     parts.append(record);
     return parts;
+}
+
+bool ExtractAddress(const CScript& scriptPubKey, bool fColdStake, std::string& addressStr) {
+    CTxDestination address;
+    if (!ExtractDestination(scriptPubKey, address, fColdStake)) {
+        // this shouldn't happen..
+        addressStr = "No available address";
+        return false;
+    } else {
+        addressStr = EncodeDestination(
+                address,
+                (fColdStake ? CChainParams::STAKING_ADDRESS : CChainParams::PUBKEY_ADDRESS)
+        );
+        return true;
+    }
 }
 
 void TransactionRecord::loadUnlockColdStake(const CWallet* wallet, const CWalletTx& wtx, TransactionRecord& record)
@@ -466,21 +596,6 @@ void TransactionRecord::loadHotOrColdStakeOrContract(
 
     // Extract and set the owner address
     ExtractAddress(p2csUtxo.scriptPubKey, false, record.address);
-}
-
-bool TransactionRecord::ExtractAddress(const CScript& scriptPubKey, bool fColdStake, std::string& addressStr) {
-    CTxDestination address;
-    if (!ExtractDestination(scriptPubKey, address, fColdStake)) {
-        // this shouldn't happen..
-        addressStr = "No available address";
-        return false;
-    } else {
-        addressStr = EncodeDestination(
-                address,
-                (fColdStake ? CChainParams::STAKING_ADDRESS : CChainParams::PUBKEY_ADDRESS)
-        );
-        return true;
-    }
 }
 
 bool IsZXNKType(TransactionRecord::Type type)

@@ -32,6 +32,11 @@ CWalletTx* WalletModelTransaction::getTransaction()
     return walletTransaction;
 }
 
+void WalletModelTransaction::setTransaction(CWalletTx* tx)
+{
+    walletTransaction = tx;
+}
+
 unsigned int WalletModelTransaction::getTransactionSize()
 {
     return (!walletTransaction ? 0 : (::GetSerializeSize(*(CTransaction*)walletTransaction, SER_NETWORK, PROTOCOL_VERSION)));
@@ -56,9 +61,10 @@ CAmount WalletModelTransaction::getTotalTransactionAmount()
     return totalTransactionAmount;
 }
 
-void WalletModelTransaction::newPossibleKeyChange(CWallet* wallet)
+CReserveKey* WalletModelTransaction::newPossibleKeyChange(CWallet* wallet)
 {
     keyChange = new CReserveKey(wallet);
+    return keyChange;
 }
 
 CReserveKey* WalletModelTransaction::getPossibleKeyChange()

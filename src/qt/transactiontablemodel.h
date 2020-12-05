@@ -65,6 +65,8 @@ public:
         FormattedAmountRole,
         /** Transaction status (TransactionRecord::Status) */
         StatusRole,
+        /** Credit amount of transaction */
+        ShieldedCreditAmountRole,
         /** Transaction size in bytes */
         SizeRole
     };

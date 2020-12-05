@@ -24,6 +24,7 @@ QT_FORMS_UI = \
   qt/encocoin/forms/lockunlock.ui \
   qt/encocoin/forms/expandablebutton.ui \
   qt/encocoin/forms/receivedialog.ui \
+  qt/encocoin/forms/balancebubble.ui \
   qt/encocoin/forms/topbar.ui \
   qt/encocoin/forms/txrow.ui \
   qt/encocoin/forms/dashboardwidget.ui \
@@ -228,6 +229,7 @@ BITCOIN_QT_H = \
   qt/encocoin/txviewholder.h \
   qt/encocoin/qtutils.h \
   qt/encocoin/expandablebutton.h \
+  qt/encocoin/balancebubble.h \
   qt/encocoin/topbar.h \
   qt/encocoin/txrow.h \
   qt/encocoin/addressholder.h \
@@ -492,10 +494,10 @@ RES_ICONS = \
   qt/encocoin/res/img/ic-transaction-cs-contract.svg \
   qt/encocoin/res/img/ic-transaction-cs-contract-inactive.svg \
   qt/encocoin/res/img/ic-check-box-indeterminate.svg \
+  qt/encocoin/res/img/ic-information.svg \
+  qt/encocoin/res/img/ic-information-hover.svg \
   qt/encocoin/res/img/ani-loading-dark.gif \
   qt/encocoin/res/img/ani-loading.gif
-
-
 
 BITCOIN_QT_BASE_CPP = \
   qt/bantablemodel.cpp \
@@ -548,6 +550,7 @@ BITCOIN_QT_WALLET_CPP = \
   qt/encocoin/txviewholder.cpp \
   qt/encocoin/qtutils.cpp \
   qt/encocoin/expandablebutton.cpp \
+  qt/encocoin/balancebubble.cpp \
   qt/encocoin/topbar.cpp \
   qt/encocoin/txrow.cpp \
   qt/encocoin/addressholder.cpp \

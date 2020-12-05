@@ -219,5 +219,7 @@
         <file alias="ic-check-cold-staking">encocoin/res/img/ic-check-cold-staking.svg</file>
         <file alias="ic-check-cold-staking-off">encocoin/res/img/ic-check-cold-staking-off.svg</file>
         <file alias="ic-check-cold-staking-enabled">encocoin/res/img/ic-check-cold-staking-enabled.svg</file>
+        <file alias="ic-information">encocoin/res/img/ic-information.svg</file>
+        <file alias="ic-information-hover">encocoin/res/img/ic-information-hover.svg</file>
     </qresource>
 </RCC>

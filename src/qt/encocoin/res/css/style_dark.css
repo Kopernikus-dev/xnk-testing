@@ -421,7 +421,12 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 *[cssClass="amount-small-topbar"] {
     color:#FFFFFF;
-    font-size:22px;
+    font-size:21px;
+}
+
+*[cssClass="amount-small-popup"] {
+    color:#FFFFFF;
+    font-size:17px;
 }
 
 *[cssClass="container-qr"] {
@@ -431,6 +436,18 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 QPushButton[cssClass="btn-qr"] {
     qproperty-icon: url("://ic-arrow-drop-down-white");
+    qproperty-iconSize: 24px 24px;
+    background-color:transparent;
+}
+
+QPushButton[cssClass="btn-info"] {
+    qproperty-icon: url("://ic-information");
+    qproperty-iconSize: 24px 24px;
+    background-color:transparent;
+}
+
+QPushButton[cssClass="btn-info"]:hover {
+    qproperty-icon: url("://ic-information-hover");
     qproperty-iconSize: 24px 24px;
     background-color:transparent;
 }
@@ -933,6 +950,11 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 *[cssClass="text-list-amount-send"] {
     color:#f84444;
     font-size:16px;
+}
+
+*[cssClass="text-list-amount-send-small"] {
+    color:#f84444;
+    font-size:15px;
 }
 
 *[cssClass="text-list-amount-unconfirmed"] {
@@ -2434,6 +2456,11 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     border:1px solid #ffd166;
 }
 
+*[cssClass="container-popup"] {
+    background-color:#19170c;
+    border-radius:14px;
+    border:1px solid #ffd166;
+}
 
 *[cssClass="text-title-dialog"] {
     color:#ffd166;

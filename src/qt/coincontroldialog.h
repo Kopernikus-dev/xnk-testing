@@ -53,7 +53,8 @@ public:
     void updateView();
     void refreshDialog();
     void clearPayAmounts();
-    void addPayAmount(const CAmount& amount);
+    void addPayAmount(const CAmount& amount, bool isShieldedRecipient);
+    void setSelectionType(bool isTransparent) { fSelectTransparent = isTransparent; }
 
     static QString getPriorityLabel(double dPriority, double mempoolEstimatePriority);
 
@@ -66,8 +67,12 @@ private:
     int sortColumn;
     Qt::SortOrder sortOrder;
     bool forDelegation;
-    QList<CAmount> payAmounts{};
+    // pair (recipient amount, ishielded recipient)
+    std::vector<std::pair<CAmount, bool>> payAmounts{};
     unsigned int nSelectableInputs{0};
+
+    // whether should show available utxo or notes.
+    bool fSelectTransparent{true};
 
     QMenu* contextMenu;
     QTreeWidgetItem* contextMenuItem;

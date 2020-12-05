@@ -126,6 +126,11 @@ QString formatBalance(CAmount amount, int nDisplayUnit, bool isZxnk)
     return (amount == 0) ? ("0.00 " + BitcoinUnits::name(nDisplayUnit, isZxnk)) : BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, amount, false, BitcoinUnits::separatorAlways, true, isZxnk);
 }
 
+QString formatBalanceWithoutHtml(CAmount amount, int nDisplayUnit, bool isZxnk)
+{
+    return (amount == 0) ? ("0.00 " + BitcoinUnits::name(nDisplayUnit, isZxnk)) : BitcoinUnits::floorWithUnit(nDisplayUnit, amount, false, BitcoinUnits::separatorAlways, true, isZxnk);
+}
+
 void setupAddressWidget(QValidatedLineEdit* widget, QWidget* parent)
 {
     parent->setFocusProxy(widget);

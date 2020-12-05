@@ -123,6 +123,7 @@ SET(QT_SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/furabstractlistitemdelegate.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/txviewholder.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/qtutils.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/balancebubble.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/expandablebutton.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/topbar.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/encocoin/txrow.cpp
