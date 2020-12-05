@@ -308,6 +308,7 @@ void SendMultiRow::setFocus()
 void SendMultiRow::setOnlyStakingAddressAccepted(bool onlyStakingAddress)
 {
     this->onlyStakingAddressAccepted = onlyStakingAddress;
+    ui->containerMemo->setVisible(!onlyStakingAddress);
 }
 
 
