@@ -397,8 +397,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
         LogPrintf("%s : total size %u\n", __func__, nBlockSize);
 
         // Sapling
-        if (NetworkUpgradeActive(nHeight, consensus, Consensus::UPGRADE_V5_0)) {
-            pblock->nVersion = 8;
+        if (fSaplingActive) {
             SaplingMerkleTree sapling_tree;
             assert(view.GetSaplingAnchorAt(view.GetBestAnchor(), sapling_tree));
 
