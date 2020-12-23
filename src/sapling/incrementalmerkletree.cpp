@@ -5,7 +5,7 @@
 // file COPYING or https://www.opensource.org/licenses/mit-license.php.
 #include <stdexcept>
 
-#include "sapling/incrementalmerkletree.hpp"
+#include "sapling/incrementalmerkletree.h"
 #include "crypto/sha256.h"
 #include <librustzcash.h>
 
