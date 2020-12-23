@@ -289,6 +289,7 @@ BITCOIN_CORE_H = \
   destination_io.h \
   wallet/wallet.h \
   wallet/walletdb.h \
+  warnings.h \
   zxnkchain.h \
   zxnk/deterministicmint.h \
   zxnk/mintpool.h \
@@ -511,6 +512,7 @@ libbitcoin_common_a_SOURCES = \
   script/script.cpp \
   script/sign.cpp \
   script/standard.cpp \
+  warnings.cpp \
   script/script_error.cpp \
   spork.cpp \
   sporkdb.cpp \
