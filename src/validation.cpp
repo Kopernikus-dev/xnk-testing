@@ -2666,26 +2666,6 @@ bool FindUndoPos(CValidationState& state, int nFile, CDiskBlockPos& pos, unsigne
     return true;
 }
 
-bool CheckBlockHeader(const CBlockHeader& block, CValidationState& state, bool fCheckPOW)
-{
-    // Check proof of work matches claimed amount
-    if (fCheckPOW && !CheckProofOfWork(block.GetHash(), block.nBits))
-        return state.DoS(50, false, REJECT_INVALID, "high-hash", false, "proof of work failed");
-
-    //if (Params().IsRegTestNet()) return true;
-
-    // Version 4 header must be used after consensus.ZC_TimeStart. And never before.
-    //if (block.GetBlockTime() > Params().GetConsensus().ZC_TimeStart) {
-        //if (block.nVersion < 4)
-            //return state.DoS(50,false, REJECT_INVALID, "block-version", "must be above 4 after ZC_TimeStart");
-    //} else {
-        //if (block.nVersion >= 4)
-          //return state.DoS(50,false, REJECT_INVALID, "block-version", "must be below 4 before ZC_TimeStart");
-   // }
-
-    return true;
-}
-
 bool CheckColdStakeFreeOutput(const CTransaction& tx, const int nHeight)
 {
     if (!tx.HasP2CSOutputs())
@@ -2756,8 +2736,8 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
 
     // Check that the header is valid (particularly PoW).  This is mostly
     // redundant with the call in AcceptBlockHeader.
-    if (!CheckBlockHeader(block, state, !IsPoS))
-        return false;
+    if (!IsPoS && fCheckPOW && !CheckProofOfWork(block.GetHash(), block.nBits))
+        return state.DoS(50, false, REJECT_INVALID, "high-hash", false, "proof of work failed");
 
     // All potential-corruption validation must be done before we do any
     // transaction validation, as otherwise we may mark the header as invalid
@@ -3010,7 +2990,8 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
         (block.nVersion < 4 && consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_ZC)) ||
         (block.nVersion < 5 && consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_BIP65)) ||
         (block.nVersion < 6 && consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_V3_4)) ||
-        (block.nVersion < 7 && consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_V4_0)))
+        (block.nVersion < 7 && consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_V4_0)) ||
+        (block.nVersion < 8 && consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_V5_0)))
     {
         std::string stringErr = strprintf("rejected block version %d at height %d", block.nVersion, nHeight);
         return state.Invalid(false, REJECT_OBSOLETE, "bad-version", stringErr);
@@ -3126,10 +3107,7 @@ bool AcceptBlockHeader(const CBlock& block, CValidationState& state, CBlockIndex
         return true;
     }
 
-    if (!CheckBlockHeader(block, state, false)) {
-        return error("%s: CheckBlockHeader failed for block %s: %s", __func__, hash.ToString(), FormatStateMessage(state));
-    }
-
+    // Get prev block index
     if (pindexPrev == nullptr && !GetPrevIndex(block, &pindexPrev, state)) {
         return false;
     }
