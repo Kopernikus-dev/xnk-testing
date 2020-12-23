@@ -67,6 +67,7 @@ private:
     int sortColumn;
     Qt::SortOrder sortOrder;
     bool forDelegation;
+    int colCheckBoxWidth_treeMode{110};
     // pair (recipient amount, ishielded recipient)
     std::vector<std::pair<CAmount, bool>> payAmounts{};
     unsigned int nSelectableInputs{0};
