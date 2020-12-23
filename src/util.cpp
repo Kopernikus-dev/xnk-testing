@@ -90,7 +90,6 @@ const char * const EncoCoin_MASTERNODE_CONF_FILENAME = "masternode.conf";
 // EncoCoin only features
 // Masternode
 std::atomic<bool> fMasterNode{false};
-std::string strMasterNodePrivKey = "";
 std::string strMasterNodeAddr = "";
 bool fLiteMode = false;
 
