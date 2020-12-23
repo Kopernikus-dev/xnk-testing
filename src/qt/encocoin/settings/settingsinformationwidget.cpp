@@ -1,7 +1,7 @@
 // Copyright (c) 2019-2020 The PIVX developers
 // Copyright (c) 2020 The EncoCoin developers
 // Distributed under the MIT software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+// file COPYING or https://www.opensource.org/licenses/mit-license.php.
 
 #include "qt/encocoin/settings/settingsinformationwidget.h"
 #include "qt/encocoin/settings/forms/ui_settingsinformationwidget.h"
@@ -14,6 +14,8 @@
 #include "qt/encocoin/qtutils.h"
 
 #include <QDir>
+
+#define REQUEST_UPDATE_MN_COUNT 0
 
 SettingsInformationWidget::SettingsInformationWidget(EncoCoinGUI* _window,QWidget *parent) :
     PWidget(_window,parent),
@@ -166,6 +168,8 @@ void SettingsInformationWidget::showEvent(QShowEvent *event)
     QWidget::showEvent(event);
     if (clientModel) {
         clientModel->startMasternodesTimer();
+        // Initial masternodes count value, running in a worker thread to not lock mnmanager mutex in the main thread.
+        execute(REQUEST_UPDATE_MN_COUNT);
     }
 }
 
@@ -173,6 +177,21 @@ void SettingsInformationWidget::hideEvent(QHideEvent *event) {
     QWidget::hideEvent(event);
     if (clientModel) {
         clientModel->stopMasternodesTimer();
+    }
+}
+
+void SettingsInformationWidget::run(int type)
+{
+    if (type == REQUEST_UPDATE_MN_COUNT) {
+        QMetaObject::invokeMethod(this, "setMasternodeCount",
+                                  Qt::QueuedConnection, Q_ARG(QString, clientModel->getMasternodesCount()));
+    }
+}
+
+void SettingsInformationWidget::onError(QString error, int type)
+{
+    if (type == REQUEST_UPDATE_MN_COUNT) {
+        setMasternodeCount(tr("No available data"));
     }
 }
 
