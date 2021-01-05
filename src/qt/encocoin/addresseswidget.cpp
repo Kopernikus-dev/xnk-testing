@@ -190,7 +190,7 @@ void AddressesWidget::onStoreContactClicked()
         bool isStakingAddress = false;
         auto xnkAdd = Standard::DecodeDestination(address.toUtf8().constData(), isStakingAddress);
 
-        if (!Standard::IsValidDestination(xnkAdd) || isStakingAddress) {
+        if (!Standard::IsValidDestination(xnkAdd)) {
             setCssEditLine(ui->lineEditAddress, false, true);
             inform(tr("Invalid Contact Address"));
             return;
