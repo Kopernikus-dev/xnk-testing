@@ -190,6 +190,7 @@ public:
         consensus.vUpgrades[Consensus::UPGRADE_ZC_PUBLIC].nActivationHeight     = 15000000;
         consensus.vUpgrades[Consensus::UPGRADE_V3_4].nActivationHeight          = 501;
         consensus.vUpgrades[Consensus::UPGRADE_V4_0].nActivationHeight          = 530;
+//        consensus.vUpgrades[Consensus::UPGRADE_V5_0].nActivationHeight          = 2700500;
         consensus.vUpgrades[Consensus::UPGRADE_V5_0].nActivationHeight =
                 Consensus::NetworkUpgrade::NO_ACTIVATION_HEIGHT;
 
