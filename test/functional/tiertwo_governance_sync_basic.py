@@ -8,6 +8,7 @@ from test_framework.test_framework import EncoCoinTier2TestFramework
 from test_framework.util import (
     assert_equal,
     assert_true,
+    Decimal,
 )
 
 import time
@@ -60,6 +61,39 @@ class MasternodeGovernanceBasicTest(EncoCoinTier2TestFramework):
                     assert_equal(voteInfo["Vote"], voteType)
                     found = True
             assert_true(found, "Error checking vote existence in node " + str(i))
+
+    def get_proposal_obj(self, Name, URL, Hash, FeeHash, BlockStart, BlockEnd,
+                             TotalPaymentCount, RemainingPaymentCount, PaymentAddress,
+                             Ratio, Yeas, Nays, Abstains, TotalPayment, MonthlyPayment,
+                             IsEstablished, IsValid, Allotted, TotalBudgetAllotted, IsInvalidReason = ""):
+        obj = {}
+        obj["Name"] = Name
+        obj["URL"] = URL
+        obj["Hash"] = Hash
+        obj["FeeHash"] = FeeHash
+        obj["BlockStart"] = BlockStart
+        obj["BlockEnd"] = BlockEnd
+        obj["TotalPaymentCount"] = TotalPaymentCount
+        obj["RemainingPaymentCount"] = RemainingPaymentCount
+        obj["PaymentAddress"] = PaymentAddress
+        obj["Ratio"] = Ratio
+        obj["Yeas"] = Yeas
+        obj["Nays"] = Nays
+        obj["Abstains"] = Abstains
+        obj["TotalPayment"] = TotalPayment
+        obj["MonthlyPayment"] = MonthlyPayment
+        obj["IsEstablished"] = IsEstablished
+        obj["IsValid"] = IsValid
+        if IsInvalidReason != "":
+            obj["IsInvalidReason"] = IsInvalidReason
+        obj["Allotted"] = Allotted
+        obj["TotalBudgetAllotted"] = TotalBudgetAllotted
+        return obj
+
+    def check_budgetprojection(self, expected):
+        for i in range(self.num_nodes):
+            assert_equal(self.nodes[i].getbudgetprojection(), expected)
+            self.log.info("Budget projection valid for node %d" % i)
 
     def run_test(self):
         self.enable_mocktime()

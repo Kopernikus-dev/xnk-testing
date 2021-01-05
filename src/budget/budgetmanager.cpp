@@ -749,50 +749,10 @@ std::string CBudgetManager::GetRequiredPaymentsString(int nBlockHeight)
 
 CAmount CBudgetManager::GetTotalBudget(int nHeight)
 {
-    if (Params().NetworkID() == CBaseChainParams::TESTNET) {
-        CAmount nSubsidy = 500 * COIN;
-        return ((nSubsidy / 100) * 10) * 146;
-    }
-
-    //get block value and calculate from that
-    CAmount nSubsidy = 0;
-    if (nHeight == 0) {
-        nSubsidy = 0 * COIN;
-    } else if (nHeight == 1 ) {
-        nSubsidy = 2400000 * COIN;
-    } else if (nHeight > 1 && nHeight <= 500) {
-        nSubsidy = 0.5 * COIN;
-    } else if (nHeight > 500 && nHeight <= 2000) {
-        nSubsidy = 0.1 * COIN;
-    } else if (nHeight > 2000 && nHeight <= 10000) {
-        nSubsidy = 0.15 * COIN;
-    } else if (nHeight > 10000 && nHeight <= 20000) {
-        nSubsidy = 0.3 * COIN;
-    } else if (nHeight > 20000 && nHeight <= 30000) {
-        nSubsidy = 0.6 * COIN;
-    } else if (nHeight > 30000 && nHeight <= 40000) {
-        nSubsidy = 1.2 * COIN;
-    } else if (nHeight > 40000 && nHeight <= 50000) {
-        nSubsidy = 1.5 * COIN;
-    } else if (nHeight > 50000 && nHeight <= 70000) {
-        nSubsidy = 3 * COIN;
-    } else if (nHeight > 70000 && nHeight <= 80000) {
-        nSubsidy = 6 * COIN;
-    } else if (nHeight > 80000 && nHeight <= 90000) {
-        nSubsidy = 7 * COIN;
-    } else if (nHeight > 90000 && nHeight <= 100000) {
-        nSubsidy = 7.5 * COIN;
-    } else if (nHeight > 100000 && nHeight <= 120000) {
-        nSubsidy = 15 * COIN;
-    } else if (nHeight > 120000 && nHeight <= 140000) {
-        nSubsidy = 16.5 * COIN;
-    } else if (nHeight > 140000 && nHeight <= 150000) {
-        nSubsidy = 17 * COIN;  
-    } else {
-        nSubsidy = 20 * COIN;
-    }
-    // Amount of blocks in a months period of time (using 1 minutes per) = (60*24*30)
-        return ((nSubsidy / 100) * 10) * 1440 * 30;
+    // 20% of the block value
+    CAmount nSubsidy = GetBlockValue(nHeight) / 5;
+    // multiplied by the number of blocks in a cycle (144 on testnet, 30*1440 on mainnet)
+    return nSubsidy * Params().GetConsensus().nBudgetCycleBlocks;
 }
 
 void CBudgetManager::AddSeenProposalVote(const CBudgetVote& vote)

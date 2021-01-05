@@ -143,6 +143,7 @@ public:
         consensus.nTargetTimespanV2 = 30 * 60;					// 30 minutes
         consensus.nTargetSpacing = 1 * 60;						// 1 minute
         consensus.nTimeSlotLength = 15;							// 15 seconds
+        consensus.nMaxProposalPayments = 6;
 
         // spork keys
         consensus.strSporkPubKey = "0485126a36740117077d8c3b7a503a79b6d696d0626c1d929b4242344fe3bf7dde8377dc19679466e28fffd1aad4e6b2b3ee74de1d96de5fdb5a4bdd5ba3dd6ebe";
@@ -279,6 +280,7 @@ public:
         consensus.nTargetTimespanV2 = 30 * 60;					// 30 minutes
         consensus.nTargetSpacing = 1 * 60;						// 1 minute
         consensus.nTimeSlotLength = 15;							// 15 seconds
+        consensus.nMaxProposalPayments = 20;
 
         // spork keys
         consensus.strSporkPubKey = "04677c34726c491117265f4b1c83cef085684f36c8df5a97a3a42fc499316d0c4e63959c9eca0dba239d9aaaf72011afffeb3ef9f51b9017811dec686e412eb504";
