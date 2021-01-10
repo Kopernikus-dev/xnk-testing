@@ -324,7 +324,6 @@ public:
         }
         return 0;
     }
-
 };
 
 TransactionTableModel::TransactionTableModel(CWallet* wallet, WalletModel* parent) : QAbstractTableModel(parent),
@@ -576,7 +575,7 @@ QString TransactionTableModel::formatTxToAddress(const TransactionRecord* wtx, b
         QString label = walletModel->getAddressTableModel()->labelForAddress(QString::fromStdString(wtx->address));
         return label.isEmpty() ? "" : label;
     }
-     case TransactionRecord::SendToSelfShieldedAddress:
+    case TransactionRecord::SendToSelfShieldedAddress:
     case TransactionRecord::SendToSelfShieldToTransparent:
     case TransactionRecord::SendToSelfShieldToShieldChangeAddress:
         // Do not show the send to self address. todo: add addressbook for shielded addr

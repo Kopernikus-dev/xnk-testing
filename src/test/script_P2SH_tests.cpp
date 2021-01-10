@@ -19,6 +19,7 @@
 
 #include <boost/test/unit_test.hpp>
 
+
 // Helpers:
 static std::vector<unsigned char>
 Serialize(const CScript& s)

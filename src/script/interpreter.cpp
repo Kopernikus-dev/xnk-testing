@@ -1264,7 +1264,7 @@ uint256 SignatureHash(const CScript& scriptCode, const CTransaction& txTo, unsig
     if ((nHashType & 0x1f) == SIGHASH_SINGLE) {
         if (nIn >= txTo.vout.size()) {
             //  nOut out of range
-        return UINT256_ONE;
+            return UINT256_ONE;
         }
     }
 

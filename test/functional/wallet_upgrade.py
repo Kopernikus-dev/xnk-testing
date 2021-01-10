@@ -75,7 +75,6 @@ class WalletUpgradeTest (EncoCoinTestFramework):
         self.setup_clean_chain = True
         self.num_nodes = 1
 
-    def check_keys(self, addrs):
     def check_keys(self, addrs, mined_blocks = 0):
         self.log.info("Checking old keys existence in the upgraded wallet..")
         # Now check that all of the pre upgrade addresses are still in the wallet
@@ -146,7 +145,6 @@ class WalletUpgradeTest (EncoCoinTestFramework):
         self.check_keys(addrs, 1)
 
         self.log.info("Upgrade via RPC completed, all good :)")
-
 
 if __name__ == '__main__':
     WalletUpgradeTest().main()

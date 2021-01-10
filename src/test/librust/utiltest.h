@@ -46,6 +46,7 @@ CScript CreateDummyDestinationScript();
  */
 TestSaplingNote GetTestSaplingNote(const libzcash::SaplingPaymentAddress& pa, CAmount value);
 
+
 /**
  * One or many inputs from keyStoreFrom, one or many shielded outputs to pwalletIn (if not nullptr).
  */

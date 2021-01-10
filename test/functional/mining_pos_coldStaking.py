@@ -271,7 +271,7 @@ class EncoCoin_ColdStakingTest(EncoCoinTestFramework):
 
         # check balances after staked block.
         self.expected_balance -= INPUT_VALUE
-        self.expected_immature_balance += INPUT_VALUE + 250
+        self.expected_immature_balance += (INPUT_VALUE + 250)
         self.checkBalances()
         self.log.info("Balances check out after staked block")
 

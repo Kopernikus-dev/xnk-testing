@@ -3045,19 +3045,19 @@ bool ContextualCheckBlock(const CBlock& block, CValidationState& state, CBlockIn
     }
 
     // Enforce block.nVersion=2 rule that the coinbase starts with serialized block height
-        if (pindexPrev) { // pindexPrev is only null on the first block which is a version 1 block.
-            CScript expect = CScript() << nHeight;
+    if (pindexPrev) { // pindexPrev is only null on the first block which is a version 1 block.
+        CScript expect = CScript() << nHeight;
         if (block.vtx[0]->vin[0].scriptSig.size() < expect.size() ||
             !std::equal(expect.begin(), expect.end(), block.vtx[0]->vin[0].scriptSig.begin())) {
-                    if (nHeight <= 500) {
-                        return true;    
-                    } else {
+                if (nHeight <= 500) {
+                    return true;    
+                } else {
             return state.DoS(100, false, REJECT_INVALID, "bad-cb-height", false, "block height mismatch in coinbase");
-                    }
             }
         }
+    }
 
-        return true;    
+    return true;    
 }
 
 // Get the index of previous block of given CBlock
@@ -3134,6 +3134,7 @@ bool AcceptBlock(const CBlock& block, CValidationState& state, CBlockIndex** ppi
 
     const Consensus::Params& consensus = Params().GetConsensus();
 
+    // Get prev block index
     CBlockIndex* pindexPrev = nullptr;
     if (!GetPrevIndex(block, &pindexPrev, state))
         return false;

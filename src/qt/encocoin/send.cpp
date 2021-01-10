@@ -142,7 +142,7 @@ void SendWidget::refreshAmounts()
     }
 
     nDisplayUnit = walletModel->getOptionsModel()->getDisplayUnit();
-    ui->labelAmountSend->setText(GUIUtil::formatBalance(total, nDisplayUnit));
+    ui->labelAmountSend->setText(GUIUtil::formatBalance(total, nDisplayUnit, false));
 
     CAmount totalAmount = 0;
     if (coinControlDialog->coinControl->HasSelected()) {
@@ -165,7 +165,7 @@ void SendWidget::refreshAmounts()
     ui->labelAmountRemaining->setText(
             GUIUtil::formatBalance(
                     totalAmount,
-                    nDisplayUnit                    
+                    nDisplayUnit,               
                     false) + " " + type
     );
     // show or hide delegations checkbox if need be
@@ -344,7 +344,7 @@ void SendWidget::showHideCheckBoxDelegations()
     if (showCheckBox)
         ui->checkBoxDelegations->setToolTip(
                 tr("Possibly spend coins delegated for cold-staking (currently available: %1").arg(
-                        GUIUtil::formatBalance(cachedDelegatedBalance, nDisplayUnit))
+                        GUIUtil::formatBalance(cachedDelegatedBalance, nDisplayUnit, false))
         );
 }
 
@@ -576,7 +576,6 @@ void SendWidget::updateEntryLabels(QList<SendCoinsRecipient> recipients)
     }
 }
 
-
 void SendWidget::onChangeAddressClicked()
 {
     showHideOp(true);
@@ -584,6 +583,7 @@ void SendWidget::onChangeAddressClicked()
     if (IsValidDestination(coinControlDialog->coinControl->destChange)) {
         dialog->setAddress(QString::fromStdString(EncodeDestination(coinControlDialog->coinControl->destChange)));
     }
+
     CTxDestination destChange = (openDialogWithOpaqueBackgroundY(dialog, window, 3, 5) ?
                                  dialog->getDestination() : CNoDestination());
 
@@ -599,6 +599,7 @@ void SendWidget::onChangeAddressClicked()
         }
         ui->btnChangeAddress->setActive(true);
     }
+
     // save change address in coin control
     coinControlDialog->coinControl->destChange = destChange;
     dialog->deleteLater();
@@ -655,8 +656,8 @@ void SendWidget::onChangeCustomFeeClicked()
 void SendWidget::onCoinControlClicked()
 {
     if (walletModel->getBalance() > 0) {
-        coinControlDialog->refreshDialog();
         coinControlDialog->setSelectionType(isTransparent);
+        coinControlDialog->refreshDialog();
         setCoinControlPayAmounts();
         coinControlDialog->exec();
         ui->btnCoinControl->setActive(coinControlDialog->coinControl->HasSelected());

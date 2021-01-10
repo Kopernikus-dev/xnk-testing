@@ -15,7 +15,7 @@ from test_framework.util import (
 def connect_nodes_bi(nodes, a, b):
     connect_nodes(nodes[a], b)
     connect_nodes(nodes[b], a)
-    
+
 class TimeOffsetTest(EncoCoinTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True

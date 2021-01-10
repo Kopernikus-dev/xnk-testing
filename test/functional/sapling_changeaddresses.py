@@ -32,7 +32,7 @@ class WalletChangeAddressesTest(EncoCoinTestFramework):
         taddrSource = self.nodes[0].getnewaddress()
         for _ in range(6):
             recipients = [{"address": taddrSource, "amount": Decimal('3')}]
-            txid = self.nodes[0].shieldedsendmany(midAddr, recipients, 1)
+            txid = self.nodes[0].shieldsendmany(midAddr, recipients, 1)
             self.sync_all()
             self.nodes[1].generate(1)
             self.sync_all()

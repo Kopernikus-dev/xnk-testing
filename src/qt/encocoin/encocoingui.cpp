@@ -300,11 +300,11 @@ void EncoCoinGUI::createTrayIconMenu()
     trayIconMenu->setAsDockMenu();
 #endif
 
-    // Configuration of the tray icon (or dock icon) icon menu
+    // Configuration of the tray icon (or Dock icon) icon menu
     trayIconMenu->addAction(toggleHideAction);
     trayIconMenu->addSeparator();
 
-#ifndef Q_OS_MAC // This is built-in on Mac
+#ifndef Q_OS_MAC // This is built-in on macOs
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(quitAction);
 #endif

@@ -59,7 +59,6 @@ public:
     {
         {
             cachedNodeStats.clear();
-
             std::vector<CNodeStats> vstats;
             if(g_connman)
                 g_connman->GetNodeStats(vstats);

@@ -530,7 +530,7 @@ bool ProcessBlockFound(const std::shared_ptr<const CBlock>& pblock, CWallet& wal
         return error("EncoCoinMiner : ProcessNewBlock, block not accepted");
     }
 
-   g_connman->ForEachNode([&pblock](CNode* node)
+    g_connman->ForEachNode([&pblock](CNode* node)
     {
         node->PushInventory(CInv(MSG_BLOCK, pblock->GetHash()));
     });
@@ -608,7 +608,7 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
             // Late PoW: run for a little while longer, just in case there is a rewind on the chain.
             LogPrintf("%s: Exiting PoW Mining Thread at height: %d\n", __func__, pindexPrev->nHeight);
             return;
-        }
+		}
 
         //
         // Create new block

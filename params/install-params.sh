@@ -92,8 +92,10 @@ function main() {
 
     cat <<EOF
 EncoCOin - install-params.sh
+
 This script will install the EncoCoin zkSNARK parameters and verify their
 integrity with sha256sum.
+
 If they already exist locally, it will exit now and do nothing else.
 EOF
 
@@ -114,8 +116,10 @@ EOF
         cat <<EOF
 If the files are already present and have the correct
 sha256sum, nothing else is done.
+
 Creating params directory. For details about this directory, see:
 $README_PATH
+
 EOF
     fi
 

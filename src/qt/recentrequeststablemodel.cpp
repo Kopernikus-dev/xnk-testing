@@ -12,8 +12,8 @@
 #include "optionsmodel.h"
 #include "streams.h"
 
-
 #include <algorithm>
+
 
 RecentRequestsTableModel::RecentRequestsTableModel(CWallet* wallet, WalletModel* parent) : walletModel(parent)
 {

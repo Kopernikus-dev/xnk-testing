@@ -817,6 +817,7 @@ void ColdStakingWidget::sortAddresses()
         this->addressesFilter->sort(sortType, sortOrder);
 }
 
+
 ColdStakingWidget::~ColdStakingWidget()
 {
     if (sendMultiRow)

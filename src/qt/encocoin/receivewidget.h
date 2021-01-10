@@ -68,7 +68,7 @@ private:
     AddressTableModel::ColumnIndex sortType = AddressTableModel::Label;
     Qt::SortOrder sortOrder = Qt::AscendingOrder;
 
-    void updateQr(QString& address);;
+    void updateQr(QString& address);
     void updateLabel();
     void showAddressGenerationDialog(bool isPaymentRequest);
     void sortAddresses();

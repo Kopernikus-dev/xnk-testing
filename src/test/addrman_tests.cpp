@@ -154,7 +154,7 @@ BOOST_AUTO_TEST_CASE(addrman_ports)
 
     // Test 8: Add same IP but diff port to tried table, it doesn't get added.
     //  Perhaps this is not ideal behavior but it is the current behavior.
-   addrman.Good(CAddress(addr1_port, NODE_NONE));
+    addrman.Good(CAddress(addr1_port, NODE_NONE));
     BOOST_CHECK(addrman.size() == 1);
     bool newOnly = true;
     CAddrInfo addr_ret3 = addrman.Select(newOnly);
@@ -280,7 +280,7 @@ BOOST_AUTO_TEST_CASE(addrman_tried_collisions)
     BOOST_CHECK(addrman.size() == 79);
 
     CService addr2 = ResolveService("250.1.1.81");
-   addrman.Add(CAddress(addr2, NODE_NONE), source);
+    addrman.Add(CAddress(addr2, NODE_NONE), source);
     BOOST_CHECK(addrman.size() == 80);
 }
 

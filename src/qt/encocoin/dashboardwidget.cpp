@@ -374,7 +374,7 @@ void DashboardWidget::tryChartRefresh()
     }
 }
 
-void DashboardWidget::setChartShow(ChartShowType type) 
+void DashboardWidget::setChartShow(ChartShowType type)
 {
     this->chartShow = type;
     if (chartShow == MONTH) {
@@ -412,7 +412,7 @@ void DashboardWidget::loadChart()
     }
 }
 
-void DashboardWidget::showHideEmptyChart(bool showEmpty, bool loading, bool forceView) 
+void DashboardWidget::showHideEmptyChart(bool showEmpty, bool loading, bool forceView)
 {
     if (stakesFilter->rowCount() > SHOW_EMPTY_CHART_VIEW_THRESHOLD || forceView) {
         ui->layoutChart->setVisible(!showEmpty);

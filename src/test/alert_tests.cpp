@@ -17,7 +17,7 @@
 BOOST_FIXTURE_TEST_SUITE(Alert_tests, TestingSetup)
 
 BOOST_AUTO_TEST_CASE(PartitionAlert)
-
+{
     // !TODO: implement this
 }
 

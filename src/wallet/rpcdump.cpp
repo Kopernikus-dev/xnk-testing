@@ -384,7 +384,7 @@ UniValue importwallet(const JSONRPCRequest& request)
             continue;
         }
         pwalletMain->mapKeyMetadata[keyid].nCreateTime = nTime;
-       if (fLabel) // TODO: This is not entirely true.. needs to be reviewed properly.
+        if (fLabel) // TODO: This is not entirely true.. needs to be reviewed properly.
             pwalletMain->SetAddressBook(keyid, strLabel, AddressBook::AddressBookPurpose::RECEIVE);
         nTimeBegin = std::min(nTimeBegin, nTime);
     }
@@ -484,7 +484,7 @@ UniValue dumpwallet(const JSONRPCRequest& request)
      */
     if (fs::exists(filepath)) {
         throw JSONRPCError(RPC_INVALID_PARAMETER, filepath.string() + " already exists. If you are sure this is what you want, move it out of the way first");
-	}
+    }
 
     std::ofstream file;
     file.open(request.params[0].get_str().c_str());

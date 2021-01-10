@@ -73,6 +73,7 @@ void BatchWriteAnchors(CDBBatch& batch, Map& mapToUse, const char& dbChar)
         MapIterator itOld = it++;
         mapToUse.erase(itOld);
     }
+    LogPrint(BCLog::COINDB, "Committed %u changed sapling anchors (out of %u) to coin database...\n", (unsigned int)changed, (unsigned int)count);
 }
 
 bool CCoinsViewDB::BatchWriteSapling(const uint256& hashSaplingAnchor,

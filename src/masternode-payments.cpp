@@ -702,7 +702,6 @@ void CMasternodePayments::Sync(CNode* node, int nCountNeeded)
     LOCK(cs_mapMasternodePayeeVotes);
 
     int nHeight = mnodeman.GetBestHeight();
-
     int nCount = (mnodeman.CountEnabled() * 1.25);
     if (nCountNeeded > nCount) nCountNeeded = nCount;
 

@@ -84,7 +84,7 @@ class WalletTest(EncoCoinTestFramework):
         assert_equal(len(node0utxos), 2)
 
         # create both transactions
-       fee_per_kbyte = Decimal('0.001')
+        fee_per_kbyte = Decimal('0.001')
         txns_to_send = []
         for utxo in node0utxos:
             inputs = []

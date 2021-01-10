@@ -201,8 +201,8 @@ void TxDetailDialog::setData(WalletModel *_model, WalletModelTransaction* _tx)
             ui->labelSend->setText(tr("Shielding to"));
         }
         if (recipient.label.isEmpty()) { // If there is no label, then do not show the blank space.
-            ui->textSendLabel->setText(formatAdressToShow(recipient.address));
             ui->textSend->setVisible(false);
+            ui->textSendLabel->setText(formatAdressToShow(recipient.address));
         } else {
             ui->textSend->setText(formatAdressToShow(recipient.address));
             ui->textSendLabel->setText(recipient.label);

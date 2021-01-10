@@ -414,7 +414,7 @@ UniValue validateaddress(const JSONRPCRequest& request)
     LOCK(cs_main);
 #endif
 
-   std::string strAddress = request.params[0].get_str();
+    std::string strAddress = request.params[0].get_str();
 
     // First check if it's a regular address
     bool isStakingAddress = false;

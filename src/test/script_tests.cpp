@@ -91,7 +91,7 @@ void DoTest(const CScript& scriptPubKey, const CScript& scriptSig, int flags, bo
     CMutableTransaction tx = BuildSpendingTransaction(scriptSig, BuildCreditingTransaction(scriptPubKey));
     CMutableTransaction tx2 = tx;
     static const CAmount amountZero = 0;
-   BOOST_CHECK_MESSAGE(VerifyScript(scriptSig, scriptPubKey, flags,
+    BOOST_CHECK_MESSAGE(VerifyScript(scriptSig, scriptPubKey, flags,
             MutableTransactionSignatureChecker(&tx, 0, amountZero), tx.GetRequiredSigVersion(), &err) == expect, message);
     BOOST_CHECK_MESSAGE(expect == (err == SCRIPT_ERR_OK), std::string(ScriptErrorString(err)) + ": " + message);
 #if defined(HAVE_CONSENSUS_LIB)
@@ -262,7 +262,7 @@ public:
 
     TestBuilder& PushRedeem()
     {
-       DoPush(std::vector<unsigned char>(scriptPubKey.begin(), scriptPubKey.end()));
+        DoPush(std::vector<unsigned char>(scriptPubKey.begin(), scriptPubKey.end()));
         return *this;
     }
 

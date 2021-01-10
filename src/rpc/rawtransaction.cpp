@@ -556,7 +556,7 @@ UniValue fundrawtransaction(const JSONRPCRequest& request)
         }
     }
 
-        // parse hex string from parameter
+    // parse hex string from parameter
     CTransaction origTx;
     if (!DecodeHexTx(origTx, request.params[0].get_str()))
         throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "TX decode failed");
@@ -904,7 +904,6 @@ UniValue sendrawtransaction(const JSONRPCRequest& request)
     }
     bool fHaveMempool = mempool.exists(hashTx);
     if (!fHaveMempool && !fHaveChain) {
-        // push to local node and sync with wallets
         CValidationState state;
         bool fMissingInputs;
         {

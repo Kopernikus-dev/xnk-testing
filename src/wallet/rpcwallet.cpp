@@ -210,7 +210,7 @@ UniValue getaddressinfo(const JSONRPCRequest& request)
         // transparent destination
         const CKeyID* keyID = boost::get<CKeyID>(pTransDest);
         if (keyID) {
-            std::map<CKeyID, CKeyMetadata>::iterator it = pwallet->mapKeyMetadata.find(*keyID);
+            auto it = pwallet->mapKeyMetadata.find(*keyID);
             if(it != pwallet->mapKeyMetadata.end()) {
                 meta = &it->second;
             }
@@ -632,7 +632,7 @@ UniValue listshieldunspent(const JSONRPCRequest& request)
             setAddress.insert(address);
         }
     } else {
-        // User did not provide shielded addrs, so use default i.e. all addresses
+        // User did not provide shield addrs, so use default i.e. all addresses
         std::set<libzcash::SaplingPaymentAddress> saplingzaddrs = {};
         pwalletMain->GetSaplingPaymentAddresses(saplingzaddrs);
         shieldAddrs.insert(saplingzaddrs.begin(), saplingzaddrs.end());
@@ -1275,7 +1275,7 @@ CAmount getBalanceShieldedAddr(Optional<libzcash::SaplingPaymentAddress>& filter
     return balance;
 }
 
-UniValue getshieldedbalance(const JSONRPCRequest& request)
+UniValue getshieldbalance(const JSONRPCRequest& request)
 {
     if (!pwalletMain)
         return NullUniValue;
@@ -1531,7 +1531,7 @@ static SaplingOperation CreateShieldedTransaction(const JSONRPCRequest& request)
             }
             libzcash::SaplingPaymentAddress fromShieldedAddress = *boost::get<libzcash::SaplingPaymentAddress>(&res);
             if (!pwalletMain->HaveSpendingKeyForPaymentAddress(fromShieldedAddress)) {
-                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "From address does not belong to this node, shielded addr spending key not found.");
+                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "From address does not belong to this node, shield addr spending key not found.");
             }
             // send from user-supplied shield address
             operation.setFromAddress(fromShieldedAddress);
@@ -1623,13 +1623,13 @@ static SaplingOperation CreateShieldedTransaction(const JSONRPCRequest& request)
         throw JSONRPCError(RPC_INVALID_PARAMETER, opResult.getError());
     }
 
-    // Param 3: Fee
+    // Param 2: Minimum confirmations
     int nMinDepth = request.params.size() > 2 ? request.params[2].get_int() : 1;
     if (nMinDepth < 0) {
         throw JSONRPCError(RPC_INVALID_PARAMETER, "Minimum number of confirmations cannot be less than 0");
     }
 
-    // Fee
+    // Param 3: Fee
     // If not set, SaplingOperation will set the minimum fee (based on minRelayFee and tx size)
     if (request.params.size() > 3) {
         CAmount nFee = AmountFromValue(request.params[3]);
@@ -1730,7 +1730,7 @@ UniValue rawshieldsendmany(const JSONRPCRequest& request)
                 "\nExamples:\n"
                 + HelpExampleCli("rawshieldsendmany",
                                  "\"DMJRSsuU9zfyrvxVaAEFQqK4MxZg6vgeS6\" '[{\"address\": \"ps1ra969yfhvhp73rw5ak2xvtcm9fkuqsnmad7qln79mphhdrst3lwu9vvv03yuyqlh42p42st47qd\" ,\"amount\": 5.0}]'")
-                + HelpExampleRpc("raw_shield_sendmany",
+                + HelpExampleRpc("rawshield_sendmany",
                                  "\"DMJRSsuU9zfyrvxVaAEFQqK4MxZg6vgeS6\", [{\"address\": \"ps1ra969yfhvhp73rw5ak2xvtcm9fkuqsnmad7qln79mphhdrst3lwu9vvv03yuyqlh42p42st47qd\" ,\"amount\": 5.0}]")
         );
 
@@ -2850,7 +2850,7 @@ UniValue listsinceblock(const JSONRPCRequest& request)
     if (request.params.size() > 0) {
         uint256 blockId;
 
-			blockId.SetHex(request.params[0].get_str());
+		blockId.SetHex(request.params[0].get_str());
         BlockMap::iterator it = mapBlockIndex.find(blockId);
         if (it != mapBlockIndex.end())
             pindex = it->second;
@@ -4030,7 +4030,7 @@ UniValue multisend(const JSONRPCRequest& request)
     }
     return printMultiSend();
 }
-    */
+*/
 
 
 UniValue getsaplingnotescount(const JSONRPCRequest& request)

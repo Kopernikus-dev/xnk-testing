@@ -550,6 +550,7 @@ UniValue clearbanned(const JSONRPCRequest& request)
 
     return NullUniValue;
 }
+
 static const CRPCCommand commands[] =
 { //  category              name                      actor (function)         okSafeMode
   //  --------------------- ------------------------  -----------------------  ----------

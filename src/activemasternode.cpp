@@ -212,8 +212,8 @@ bool CActiveMasternode::SendMasternodePing(std::string& errorMessage)
         }
 
         mnp.Relay();
-
         return true;
+
     } else {
         // Seems like we are trying to send a ping while the Masternode is not registered in the network
         errorMessage = "Masternode List doesn't include our Masternode, shutting down Masternode pinging service! " + vin->ToString();

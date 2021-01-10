@@ -113,7 +113,7 @@ struct Params {
     int64_t nTime_EnforceNewSporkKey;
     int64_t nTime_RejectOldSporkKey;
 
-    // Height-based activations
+    // height-based activations
     int height_last_ZC_AccumCheckpoint;
     int height_last_ZC_WrappedSerials;
     int height_start_InvalidUTXOsCheck;
@@ -158,6 +158,7 @@ struct Params {
         // with stake modifier V2+, we require the utxo to be nStakeMinDepth deep in the chain
         return (contextHeight - utxoFromBlockHeight >= nStakeMinDepth);
     }
+
 
     /*
      * (Legacy) Zerocoin consensus params

@@ -1217,6 +1217,7 @@ void CConnman::ThreadSocketHandler()
                     LOCK(pnode->cs_vSend);
                     select_send = !pnode->vSendMsg.empty();
                 }
+
                 LOCK(pnode->cs_hSocket);
                 if (pnode->hSocket == INVALID_SOCKET)
                     continue;
@@ -1323,7 +1324,7 @@ void CConnman::ThreadSocketHandler()
                                 }
                                 WakeMessageHandler();
                             }
-							} else if (nBytes == 0) {
+						} else if (nBytes == 0) {
                             // socket closed gracefully
                             if (!pnode->fDisconnect)
                                 LogPrint(BCLog::NET, "socket closed\n");
@@ -1809,7 +1810,7 @@ std::vector<AddedNodeInfo> CConnman::GetAddedNodeInfo()
                 ret.emplace_back(strAddNode, CService(), false, false);
             }
         }
-	}
+    }
 
     return ret;
 }

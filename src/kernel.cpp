@@ -197,7 +197,6 @@ bool CheckProofOfStake(const CBlock& block, std::string& strError, const CBlockI
 }
 
 
-
 /*
  * GetStakeKernelHash   Return stake kernel of a block
  *

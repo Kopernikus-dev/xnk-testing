@@ -164,7 +164,7 @@ public:
     CAmount debit;
     CAmount credit;
     unsigned int size;
-     Optional<CAmount> shieldedCredit{nullopt};
+    Optional<CAmount> shieldedCredit{nullopt};
     Optional<std::string> memo{nullopt};
     /**@}*/
 

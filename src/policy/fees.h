@@ -219,7 +219,7 @@ public:
     /** Return a feerate estimate */
     CFeeRate estimateFee(int confTarget);
 
-    /** Estimate fee rate needed to get be included in a block within
+    /** Estimate feerate needed to get be included in a block within
      *  confTarget blocks. If no answer can be given at confTarget, return an
      *  estimate at the lowest target where one can be given.
      */

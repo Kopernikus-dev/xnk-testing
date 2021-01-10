@@ -699,7 +699,7 @@ template<typename Stream, typename T> void Unserialize(Stream& os, std::unique_p
 template <typename Stream, typename T>
 inline void Serialize(Stream& os, const T& a)
 {
-   a.Serialize(os);
+    a.Serialize(os);
 }
 
 template <typename Stream, typename T>

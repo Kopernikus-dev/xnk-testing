@@ -60,7 +60,7 @@ class ZapWalletTXesTest (EncoCoinTestFramework):
         assert_equal(self.nodes[0].gettransaction(txid1)['txid'], txid1)
         assert_equal(self.nodes[0].gettransaction(txid2)['txid'], txid2)
 
-        # Stop node0 and restart with zapwallettxes and persistmempool. The unconfirmed
+        # Stop nodes and restart with zapwallettxes and persistmempool. The unconfirmed
         # transaction is zapped from the wallet, but is re-added when the mempool is reloaded.
         # original balances are restored
         for i in range(1, 3):

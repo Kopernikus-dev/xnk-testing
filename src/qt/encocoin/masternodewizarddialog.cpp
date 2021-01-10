@@ -214,7 +214,7 @@ bool MasterNodeWizardDialog::createMN()
                 QString::fromStdString(dest.ToString()),
                 QString::fromStdString(alias),
                 CAmount(50000) * COIN, // CAmount(GetMNCollateral()) * COIN,
-				"");
+			    "");
 
         // Send the 10 tx to one of your address
         QList<SendCoinsRecipient> recipients;

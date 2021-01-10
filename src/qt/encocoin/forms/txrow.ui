@@ -140,7 +140,7 @@
              <height>0</height>
             </size>
            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_4">
+           <layout class="QVBoxLayout" name="verticalLayout_4">
             <property name="leftMargin">
              <number>0</number>
             </property>
@@ -160,7 +160,7 @@
               </property>
               <property name="text">
                <string>+0.000585 XNK</string>
-               </property>
+              </property>
              </widget>
             </item>
             <item alignment="Qt::AlignRight">
@@ -170,7 +170,7 @@
               </property>
               <property name="text">
                <string>-0.000585 XNK</string>
-               </property>
+              </property>
              </widget>
             </item>
            </layout>

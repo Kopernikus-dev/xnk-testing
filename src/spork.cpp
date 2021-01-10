@@ -57,7 +57,7 @@ void CSporkManager::LoadSporksFromDB()
             continue;
         }
 
-/*        // TODO: Temporary workaround for v5.0 clients to ensure up-to-date protocol version spork
+        // TODO: Temporary workaround for v5.0 clients to ensure up-to-date protocol version spork
         if (spork.nSporkID == SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2) {
             LogPrintf("%s : Spork 15 signed at %d\n", __func__, spork.nTimeSigned);
             // 1578338986 is the timestamp that spork 15 was last signed at for mainnet for the previous
@@ -70,7 +70,7 @@ void CSporkManager::LoadSporksFromDB()
                 CSporkManager::Clear();
                 return;
             }
-        } */
+        }
 
         // add spork to memory
         mapSporks[spork.GetHash()] = spork;

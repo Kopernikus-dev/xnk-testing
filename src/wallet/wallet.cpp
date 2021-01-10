@@ -24,7 +24,7 @@
 #include <boost/thread.hpp>
 
 CWallet* pwalletMain = nullptr;
-/** 
+/**
  * Settings
  */
 CFeeRate payTxFee(DEFAULT_TRANSACTION_FEE);
@@ -393,7 +393,6 @@ bool CWallet::Unlock(const CKeyingMaterial& vMasterKeyIn)
 
         vMasterKey = vMasterKeyIn;
         fDecryptionThoroughlyChecked = true;
-
     }
 
     NotifyStatusChanged(this);
@@ -2700,8 +2699,8 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend,
     coinFilter.nCoinType = coin_type;
 
     {
-        LOCK2(cs_main, cs_wallet);
         std::set<std::pair<const CWalletTx*,unsigned int> > setCoins;
+        LOCK2(cs_main, cs_wallet);
         {
             std::vector<COutput> vAvailableCoins;
             AvailableCoins(&vAvailableCoins, coinControl, coinFilter);
@@ -2715,7 +2714,7 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend,
                 wtxNew->fFromMe = true;
                 CAmount nTotalValue = nValue + nFeeRet;
 
-                 // Fill outputs
+                // Fill outputs
                 for (const CRecipient& rec : vecSend) {
                     CTxOut txout(rec.nAmount, rec.scriptPubKey);
                     if (IsDust(txout, ::minRelayTxFee)) {

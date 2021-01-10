@@ -59,15 +59,12 @@ public:
     ~CoinControlDialog() override;
 
     void setModel(WalletModel* model);
-    void updateDialogLabels();
     void updateLabels();
     void updateView();
     void refreshDialog();
     void clearPayAmounts();
     void addPayAmount(const CAmount& amount, bool isShieldedRecipient);
     void setSelectionType(bool isTransparent) { fSelectTransparent = isTransparent; }
-
-    static QString getPriorityLabel(double dPriority, double mempoolEstimatePriority);
 
     CCoinControl* coinControl;
 

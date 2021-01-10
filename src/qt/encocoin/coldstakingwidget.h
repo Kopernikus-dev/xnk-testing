@@ -78,7 +78,6 @@ private Q_SLOTS:
     void onSortChanged(int idx);
     void onSortOrderChanged(int idx);
 
-
 private:
     Ui::ColdStakingWidget *ui = nullptr;
     FurAbstractListItemDelegate *delegate = nullptr;
@@ -94,7 +93,7 @@ private:
     QSpacerItem *spacerDiv = nullptr;
 
     bool isInDelegation = true;
-	bool isStakingAddressListVisible = false;
+    bool isStakingAddressListVisible = false;
 
     ContactsDropdown *menuContacts = nullptr;
     TooltipMenu* menu = nullptr;

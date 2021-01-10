@@ -77,7 +77,7 @@ void OptionsModel::Init()
     // Main
     setMainDefaultOptions(settings);
 
-	// Wallet
+    // Wallet
 #ifdef ENABLE_WALLET
     setWalletDefaultOptions(settings);
 #endif
@@ -262,7 +262,7 @@ QVariant OptionsModel::data(const QModelIndex& index, int role) const
         case ShowMasternodesTab:
             return settings.value("fShowMasternodesTab");
         case StakeSplitThreshold:
-			{
+		{
             // Return CAmount/qlonglong as double
             const CAmount nStakeSplitThreshold = (pwalletMain) ? pwalletMain->nStakeSplitThreshold : CWallet::DEFAULT_STAKE_SPLIT_THRESHOLD;
             return QVariant(static_cast<double>(nStakeSplitThreshold / static_cast<double>(COIN)));

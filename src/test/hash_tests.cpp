@@ -46,7 +46,6 @@ BOOST_AUTO_TEST_CASE(murmurhash3)
 #undef T
 }
 
-
 /*
    SipHash-2-4 output with
    k = 00 01 02 ...
@@ -57,6 +56,7 @@ BOOST_AUTO_TEST_CASE(murmurhash3)
    in = 00 01 02 (3 bytes)
    ...
    in = 00 01 02 ... 3e (63 bytes)
+
    from: https://131002.net/siphash/siphash24.c
 */
 uint64_t siphash_4_2_testvec[] = {

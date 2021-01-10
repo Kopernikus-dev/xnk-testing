@@ -340,7 +340,7 @@ BOOST_AUTO_TEST_CASE(saplingOperationTests) {
         operation.setFromAddress(zaddr1);
         auto res = operation.setRecipients(recipients)->setMinDepth(0)->buildAndSend(ret);
         BOOST_CHECK(!res);
-        BOOST_CHECK(res.getError().find("Minconf cannot be zero when sending from shield address") != std::string::npos);
+        BOOST_CHECK(res.getError().find("Minconf cannot be zero when sending from shielded address") != std::string::npos);
     }
 
     // there are no unspent notes to spend
@@ -451,22 +451,22 @@ BOOST_AUTO_TEST_CASE(rpc_shieldsendmany_taddr_to_sapling)
     CDataStream ss(ParseHex(hexTx), SER_NETWORK, PROTOCOL_VERSION);
     CTransaction tx;
     ss >> tx;
-    BOOST_ASSERT(!tx.sapData->vshieldOutput.empty());
+    BOOST_ASSERT(!tx.sapData->vshieldedOutput.empty());
 
     // We shouldn't be able to decrypt with the empty ovk
     BOOST_CHECK(!libzcash::AttemptSaplingOutDecryption(
-            tx.sapData->vshieldOutput[0].outCiphertext,
+            tx.sapData->vshieldedOutput[0].outCiphertext,
             uint256(),
-            tx.sapData->vshieldOutput[0].cv,
-            tx.sapData->vshieldOutput[0].cmu,
-            tx.sapData->vshieldOutput[0].ephemeralKey));
+            tx.sapData->vshieldedOutput[0].cv,
+            tx.sapData->vshieldedOutput[0].cmu,
+            tx.sapData->vshieldedOutput[0].ephemeralKey));
 
     BOOST_CHECK(libzcash::AttemptSaplingOutDecryption(
-            tx.sapData->vshieldOutput[0].outCiphertext,
+            tx.sapData->vshieldedOutput[0].outCiphertext,
             pwalletMain->GetSaplingScriptPubKeyMan()->getCommonOVK(),
-            tx.sapData->vshieldOutput[0].cv,
-            tx.sapData->vshieldOutput[0].cmu,
-            tx.sapData->vshieldOutput[0].ephemeralKey));
+            tx.sapData->vshieldedOutput[0].cv,
+            tx.sapData->vshieldedOutput[0].cmu,
+            tx.sapData->vshieldedOutput[0].ephemeralKey));
 
     // Tear down
     chainActive.SetTip(nullptr);
@@ -574,7 +574,7 @@ BOOST_AUTO_TEST_CASE(rpc_listshieldunspent_parameters)
     // wrong network, mainnet instead of testnet
     BOOST_CHECK_THROW(CallRPC("listshieldunspent 1 999 true [\"ps1qenk9kapr0crx7lmdl4yclx78spc36wh7d5hm9hglp85f43k9dupyf0c5836h42wq2ejv0ef2v3\"]"), std::runtime_error);
 
-    // create shield address so we have the spending key
+    // create shielded address so we have the spending key
     BOOST_CHECK_NO_THROW(retValue = CallRPC("getnewshieldaddress"));
     std::string myzaddr = retValue.get_str();
 

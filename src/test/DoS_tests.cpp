@@ -75,7 +75,7 @@ BOOST_AUTO_TEST_CASE(DoS_banning)
     SendMessages(&dummyNode2, *connman, interruptDummy);
     BOOST_CHECK(!connman->IsBanned(addr2)); // 2 not banned yet...
     BOOST_CHECK(connman->IsBanned(addr1));  // ... but 1 still should be
-    Misbehaving(dummyNode2.GetId(), 50);
+    misbehave(dummyNode2.GetId(), 50);
     SendMessages(&dummyNode2, *connman, interruptDummy);
     BOOST_CHECK(connman->IsBanned(addr2));
 }

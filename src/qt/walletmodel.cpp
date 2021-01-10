@@ -884,7 +884,7 @@ bool WalletModel::blacklistAddressFromColdStaking(const QString &addressStr)
 }
 
 bool WalletModel::updateAddressBookPurpose(const QString &addressStr, const std::string& purpose)
- {
+{
     bool isStaking = false;
     CTxDestination address = DecodeDestination(addressStr.toStdString(), isStaking);
     if (isStaking)
@@ -908,7 +908,7 @@ bool WalletModel::getKeyId(const CTxDestination& address, CKeyID& keyID)
     return true;
 }
 
-std::string WalletModel::getLabelForAddress(const CTxDestination& address) 
+std::string WalletModel::getLabelForAddress(const CTxDestination& address)
 {
     std::string label = "";
     label = wallet->GetNameForAddressBookEntry(address);

@@ -101,8 +101,6 @@ public:
 
     void SetFee(CAmount _fee);
 
-
-
     // Throws if the anchor does not match the anchor used by
     // previously-added Sapling spends.
     void AddSaplingSpend(

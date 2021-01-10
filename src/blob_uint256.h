@@ -63,7 +63,7 @@ public:
     {
         return &data[WIDTH];
     }
-    
+
     const unsigned char* begin() const
     {
         return &data[0];
