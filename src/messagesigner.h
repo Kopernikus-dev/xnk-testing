@@ -51,7 +51,6 @@ class CSignedMessage
 {
 protected:
     std::vector<unsigned char> vchSig;
-    void swap(CSignedMessage& first, CSignedMessage& second); // Swap two messages
 
 public:
     int nMessVersion;
@@ -60,11 +59,6 @@ public:
         vchSig(),
         nMessVersion(MessageVersion::MESS_VER_HASH)
     {}
-    CSignedMessage(const CSignedMessage& other)
-    {
-        vchSig = other.GetVchSig();
-        nMessVersion = other.nMessVersion;
-    }
     virtual ~CSignedMessage() {};
 
     // Sign-Verify message
