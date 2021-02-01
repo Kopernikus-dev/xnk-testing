@@ -19,8 +19,6 @@
 #include "zxnkchain.h"
 #include "zxnk/zpos.h"
 
-#include <boost/assign/list_of.hpp>
-
 /**
  * CStakeKernel Constructor
  *
