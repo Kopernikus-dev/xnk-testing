@@ -132,6 +132,7 @@ int CSporkManager::ProcessSporkMsg(CSporkMessage& spork)
 
     uint256 hash = spork.GetHash();
     std::string sporkName = sporkManager.GetSporkNameByID(spork.nSporkID);
+    std::string strStatus;
     {
         LOCK(cs);
         if (mapSporksActive.count(spork.nSporkID)) {
@@ -144,13 +145,11 @@ int CSporkManager::ProcessSporkMsg(CSporkMessage& spork)
                 return 0;
             } else {
                 // update active spork
-                LogPrint(BCLog::SPORKS, "%s : got updated spork %d (%s) with value %d (signed at %d)\n", __func__,
-                          spork.nSporkID, sporkName, spork.nValue, spork.nTimeSigned);
+                strStatus = "updated";
             }
         } else {
             // spork is not active
-            LogPrint(BCLog::SPORKS, "%s : got new spork %d (%s) with value %d (signed at %d)\n", __func__,
-                      spork.nSporkID, sporkName, spork.nValue, spork.nTimeSigned);
+            strStatus = "new";
         }
     }
 
@@ -168,6 +167,10 @@ int CSporkManager::ProcessSporkMsg(CSporkMessage& spork)
         LogPrint(BCLog::SPORKS, "%s : Invalid Signature\n", __func__);
         return 100;
     }
+
+    // Log valid spork value change
+    LogPrintf("%s : got %s spork %d (%s) with value %d (signed at %d)\n", __func__,
+              strStatus, spork.nSporkID, sporkName, spork.nValue, spork.nTimeSigned);
 
     {
         LOCK(cs);
