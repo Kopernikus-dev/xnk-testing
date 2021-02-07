@@ -120,6 +120,7 @@ private:
     void setCoinControlPayAmounts();
     void resetCoinControl();
     void resetChangeAddress();
+    void hideContactsMenu();
 };
 
 #endif // SEND_H
