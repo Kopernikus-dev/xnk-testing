@@ -60,7 +60,7 @@ QString BitcoinUnits::name(int unit, bool isZxnk)
     const QString CURR_UNIT = QString(CURRENCY_UNIT.c_str());
     QString z = "";
     if(isZxnk) z = "z";
-    if (Params().NetworkID() == CBaseChainParams::MAIN) {
+    if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
         switch (unit) {
         case XNK:
             return z + CURR_UNIT;
@@ -88,7 +88,7 @@ QString BitcoinUnits::name(int unit, bool isZxnk)
 QString BitcoinUnits::description(int unit)
 {
     const QString CURR_UNIT = QString(CURRENCY_UNIT.c_str());
-    if (Params().NetworkID() == CBaseChainParams::MAIN) {
+    if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
         switch (unit) {
         case XNK:
             return CURR_UNIT;

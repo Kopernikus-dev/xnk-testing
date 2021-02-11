@@ -9,7 +9,7 @@
 
 #include "chainparamsseeds.h"
 #include "consensus/merkle.h"
-#include "util.h"
+#include "tinyformat.h"
 #include "utilstrencodings.h"
 
 #include <assert.h>
@@ -33,6 +33,13 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
     genesis.nNonce   = nNonce;
     genesis.hashMerkleRoot = BlockMerkleRoot(genesis);
     return genesis;
+}
+
+void CChainParams::UpdateNetworkUpgradeParameters(Consensus::UpgradeIndex idx, int nActivationHeight)
+{
+    assert(IsRegTestNet()); // only available for regtest
+    assert(idx > Consensus::BASE_NETWORK && idx < Consensus::MAX_NETWORK_UPGRADES);
+    consensus.vUpgrades[idx].nActivationHeight = nActivationHeight;
 }
 
 /**
@@ -63,25 +70,25 @@ static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits
  * + Contains no strange transactions
  */
 static Checkpoints::MapCheckpoints mapCheckpoints = {
-    { 0, uint256S("0x00000ae5d77e5eb3010a53e731688304019cdada4fee60dfa6b5bc424d87b2a1")},
-    { 500, uint256S("0x0000042ff28adc30c4ebe9faa16e8a014bd9e327866413e0e536687e7c789c65")}, // genesis
-    { 2001, uint256S("0x034f2fbbdb4654d8796f2dc30826605861616ffe5880c6f228f7f0d115255e8e")}, //new collatral
-    { 10001, uint256S("0x8cdd558c63de28aaf6dcb40b6409968081a004348aa7ef1daf53412ffa7c9161")}, //new collatral
-    { 16373, uint256S("0x3a066d10c877c40f9b27fde2c51363074e54429abc1ac414f80c3fff4f8ab4ab")}, // ntworksplit here? peer asking for block bed2e290edbe8c0f36ff3817a64d660c45d1873a4764bc50a2b459381844843b
-    { 20001, uint256S("0xf39f388b55aa469a3d8dd7582fdc1271b80743aa0b72b63b1518776ebfcf09aa")}, //new collatral
-    { 30001, uint256S("0x697b2ab9411fa49f20d62bb25ee2fd6e09f5a08871c8e13d380c9b495e9dd9e8")}, //new collatral
-    { 40001, uint256S("0xaa5db40ccfc839bea65c08268dd242e8508ef559b272e17729d20a75fe7f2478")}, //new collatral
-    { 50001, uint256S("0xbd13a59a139f094aad587f191dd050b4f0853c78c88a704adeaf3fbe321608a7")}, //new collatral
-    { 70001, uint256S("0x89b21413ba25ff759535b27324f185cf0005faf99a9bd66325dedf7e5c6ff506")}, //new collatral
-    { 80001, uint256S("0xa2e800989a13a7f6a291a1477b57237d32520aadc1fec546d3b5506aac6e8ab8")}, //new collatral
-    { 90001, uint256S("0x078b598b43257ee0b7e33b63458eb39623554b0130a4affbcefe4860e0072f62")}, //new collatral
-    { 100001, uint256S("0xe0578f9a19bca0bf16f19bb9e84a28230ff505707a07fef1b69f9706af7addf3")}, //new collatral
-    { 120001, uint256S("0x03dd81f003126e362559822d78c4d6c4fa17d19cb82aa2890bfbf5a1f8131a8d")}, //new collatral
-    { 140001, uint256S("0x3ae4595300544e43c07b7e07de3d7103a25e392ed76ce3bc7fb8afd428107c20")}, //new collatral
-    { 150001, uint256S("0xd2c77bec94601ef35e978774c89a3213df61bba2b27d4cfa2b4744a7842ec0a6")}, //new collatral
-    { 182881, uint256S("0xb638593545e9c0d6460d2eab9c5ff8cef133baa95e803a0c306fc9193a571185")}, // networksplit here? wallet break by Crypos and Midas
-    { 183002, uint256S("0x5e29fcf20d2efbcb8bc1ab7a41e87425f515d4c67277ea04f4e8b8d781701be9")}, // or here Wallet was stuck by user
-    { 200000, uint256S("0x90784a8df844a7aa590f4ce86004ab56da0aea466bb02f4c896f1c4d6614d65b")}; // additional Checkpoint
+    {0, uint256S("0x00000ae5d77e5eb3010a53e731688304019cdada4fee60dfa6b5bc424d87b2a1")},
+    {500, uint256S("0x0000042ff28adc30c4ebe9faa16e8a014bd9e327866413e0e536687e7c789c65")}, // genesis
+    {2001, uint256S("0x034f2fbbdb4654d8796f2dc30826605861616ffe5880c6f228f7f0d115255e8e")}, //new collatral
+    {10001, uint256S("0x8cdd558c63de28aaf6dcb40b6409968081a004348aa7ef1daf53412ffa7c9161")}, //new collatral
+    {16373, uint256S("0x3a066d10c877c40f9b27fde2c51363074e54429abc1ac414f80c3fff4f8ab4ab")}, // ntworksplit here? peer asking for block bed2e290edbe8c0f36ff3817a64d660c45d1873a4764bc50a2b459381844843b
+    {20001, uint256S("0xf39f388b55aa469a3d8dd7582fdc1271b80743aa0b72b63b1518776ebfcf09aa")}, //new collatral
+    {30001, uint256S("0x697b2ab9411fa49f20d62bb25ee2fd6e09f5a08871c8e13d380c9b495e9dd9e8")}, //new collatral
+    {40001, uint256S("0xaa5db40ccfc839bea65c08268dd242e8508ef559b272e17729d20a75fe7f2478")}, //new collatral
+    {50001, uint256S("0xbd13a59a139f094aad587f191dd050b4f0853c78c88a704adeaf3fbe321608a7")}, //new collatral
+    {70001, uint256S("0x89b21413ba25ff759535b27324f185cf0005faf99a9bd66325dedf7e5c6ff506")}, //new collatral
+    {80001, uint256S("0xa2e800989a13a7f6a291a1477b57237d32520aadc1fec546d3b5506aac6e8ab8")}, //new collatral
+    {90001, uint256S("0x078b598b43257ee0b7e33b63458eb39623554b0130a4affbcefe4860e0072f62")}, //new collatral
+    {100001, uint256S("0xe0578f9a19bca0bf16f19bb9e84a28230ff505707a07fef1b69f9706af7addf3")}, //new collatral
+    {120001, uint256S("0x03dd81f003126e362559822d78c4d6c4fa17d19cb82aa2890bfbf5a1f8131a8d")}, //new collatral
+    {140001, uint256S("0x3ae4595300544e43c07b7e07de3d7103a25e392ed76ce3bc7fb8afd428107c20")}, //new collatral
+    {150001, uint256S("0xd2c77bec94601ef35e978774c89a3213df61bba2b27d4cfa2b4744a7842ec0a6")}, //new collatral
+    {182881, uint256S("0xb638593545e9c0d6460d2eab9c5ff8cef133baa95e803a0c306fc9193a571185")}, // networksplit here? wallet break by Crypos and Midas
+    {183002, uint256S("0x5e29fcf20d2efbcb8bc1ab7a41e87425f515d4c67277ea04f4e8b8d781701be9")}, // or here Wallet was stuck by user
+    {200000, uint256S("0x90784a8df844a7aa590f4ce86004ab56da0aea466bb02f4c896f1c4d6614d65b")}; // additional Checkpoint
 };
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
@@ -114,7 +121,6 @@ class CMainParams : public CChainParams
 public:
     CMainParams()
     {
-        networkID = CBaseChainParams::MAIN;
         strNetworkID = "main";
 
         genesis = CreateGenesisBlock(1588787853, 39886, 0x1e0ffff0, 1, 50 * COIN);
@@ -247,17 +253,15 @@ public:
     }
 
 };
-static CMainParams mainParams;
 
 /**
  * Testnet (v5)
  */
-class CTestNetParams : public CMainParams
+class CTestNetParams : public CChainParams
 {
 public:
     CTestNetParams()
     {
-        networkID = CBaseChainParams::TESTNET;
         strNetworkID = "test";
 
 //        genesis = CreateGenesisBlock(1454124731, 2402015, 0x1e0ffff0, 1, 50 * COIN);
@@ -272,6 +276,11 @@ public:
         consensus.nBudgetCycleBlocks = 144;         			// approx 10 cycles per day
         consensus.nBudgetFeeConfirmations = 3;      			// (only 8-blocks window for finalization on testnet)
         consensus.nCoinbaseMaturity = 15;
+        consensus.nFutureTimeDriftPoW = 7200;
+        consensus.nFutureTimeDriftPoS = 180;
+        consensus.nMasternodeCountDrift = 20;       // num of MN we allow the see-saw payments to be off by
+        consensus.nMaxMoneyOut = 60000000 * COIN;
+        consensus.nPoolMaxTransactions = 3;
         consensus.nProposalEstablishmentTime = 60 * 5; 			// at least 5 min old to make it into a budget
         consensus.nStakeMinAge = 60 * 60;						// 1 hour
         consensus.nStakeMinDepth = 100;
@@ -284,6 +293,8 @@ public:
         // spork keys
         consensus.strSporkPubKey = "04677c34726c491117265f4b1c83cef085684f36c8df5a97a3a42fc499316d0c4e63959c9eca0dba239d9aaaf72011afffeb3ef9f51b9017811dec686e412eb504";
         consensus.strSporkPubKeyOld = "04E88BB455E2A04E65FCC41D88CD367E9CCE1F5A409BE94D8C2B4B35D223DED9C8E2F4E061349BA3A38839282508066B6DC4DB72DD432AC4067991E6BF20176127";
+        consensus.nTime_EnforceNewSporkKey = 1608512400;    //!> December 21, 2020 01:00:00 AM GMT
+        consensus.nTime_RejectOldSporkKey = 1614560400;     //!> March 1, 2021 01:00:00 AM GMT
 
         // height based activations
         consensus.height_last_ZC_AccumCheckpoint = -1;
@@ -292,6 +303,20 @@ public:
         consensus.height_start_ZC_InvalidSerials = 999999999;
         consensus.height_start_ZC_SerialRangeCheck = 1;			//Enforce serial range starting this block
         consensus.height_ZC_RecalcAccumulators = 999999999;
+
+        // Zerocoin-related params
+        consensus.ZC_Modulus = "25195908475657893494027183240048398571429282126204032027777137836043662020707595556264018525880784"
+                "4069182906412495150821892985591491761845028084891200728449926873928072877767359714183472702618963750149718246911"
+                "6507761337985909570009733045974880842840179742910064245869181719511874612151517265463228221686998754918242243363"
+                "7259085141865462043576798423387184774447920739934236584823824281198163815010674810451660377306056201619676256133"
+                "8441436038339044149526344321901146575444541784240209246165157233507787077498171257724679629263863563732899121548"
+                "31438167899885040445364023527381951378636564391212010397122822120720357";
+        consensus.ZC_MaxPublicSpendsPerTx = 637;    // Assume about 220 bytes each input
+        consensus.ZC_MaxSpendsPerTx = 7;            // Assume about 20kb each input
+        consensus.ZC_MinMintConfirmations = 20;
+        consensus.ZC_MinMintFee = 1 * CENT;
+        consensus.ZC_MinStakeDepth = 200;
+        consensus.ZC_TimeStart = 1508214600;        // October 17, 2017 4:30:00 AM
 
         // Network upgrades
         consensus.vUpgrades[Consensus::BASE_NETWORK].nActivationHeight =
@@ -313,15 +338,12 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-
         pchMessageStart[0] = 0xf5;
         pchMessageStart[1] = 0xe6;
         pchMessageStart[2] = 0xd5;
         pchMessageStart[3] = 0xca;
         nDefaultPort = 51474;
 
-        vFixedSeeds.clear();
-        vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
         vSeeds.emplace_back("fuzzbawls.pw", "encocoin-testnet.seed.fuzzbawls.pw", true);
         vSeeds.emplace_back("fuzzbawls.pw", "encocoin-testnet.seed2.fuzzbawls.pw", true);
@@ -352,17 +374,15 @@ public:
         return dataTestnet;
     }
 };
-static CTestNetParams testNetParams;
 
 /**
  * Regression test
  */
-class CRegTestParams : public CTestNetParams
+class CRegTestParams : public CChainParams
 {
 public:
     CRegTestParams()
     {
-        networkID = CBaseChainParams::REGTEST;
         strNetworkID = "regtest";
 
 //        genesis = CreateGenesisBlock(1454124731, 2402015, 0x1e0ffff0, 1, 250 * COIN);
@@ -389,6 +409,7 @@ public:
         consensus.nTargetTimespanV2 = 30 * 60;					// 30 minutes
         consensus.nTargetSpacing = 1 * 60;						// 1 minute
         consensus.nTimeSlotLength = 15;							// 15 seconds
+        consensus.nMaxProposalPayments = 20;
 
         /* Spork Key for RegTest:
         WIF private key: 932HEevBSujW2ud7RfB1YF91AFygbBRQj3de3LyaCRqNzKKgWXi
@@ -444,70 +465,63 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-
         pchMessageStart[0] = 0xa1;
         pchMessageStart[1] = 0xcf;
         pchMessageStart[2] = 0x7e;
         pchMessageStart[3] = 0xac;
         nDefaultPort = 51476;
 
-        vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
-        vSeeds.clear();      //! Testnet mode doesn't have any DNS seeds.
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 139); // Testnet pivx addresses start with 'x' or 'y'
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);  // Testnet pivx script addresses start with '8' or '9'
+        base58Prefixes[STAKING_ADDRESS] = std::vector<unsigned char>(1, 73);     // starting with 'W'
+        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 239);     // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
+        // Testnet pivx BIP32 pubkeys start with 'DRKV'
+        base58Prefixes[EXT_PUBLIC_KEY] = {0x3a, 0x80, 0x61, 0xa0};
+        // Testnet pivx BIP32 prvkeys start with 'DRKP'
+        base58Prefixes[EXT_SECRET_KEY] = {0x3a, 0x80, 0x58, 0x37};
+        // Testnet pivx BIP44 coin type is '1' (All coin's testnet default)
+        base58Prefixes[EXT_COIN_TYPE] = {0x80, 0x00, 0x00, 0x01};
+
+        // Sapling
+        bech32HRPs[SAPLING_PAYMENT_ADDRESS]      = "ptestsapling";
+        bech32HRPs[SAPLING_FULL_VIEWING_KEY]     = "pviewtestsapling";
+        bech32HRPs[SAPLING_INCOMING_VIEWING_KEY] = "pivktestsapling";
+        bech32HRPs[SAPLING_EXTENDED_SPEND_KEY]   = "p-secret-spending-key-test";
+        bech32HRPs[SAPLING_EXTENDED_FVK]         = "pxviewtestsapling";
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const
     {
         return dataRegtest;
     }
-
-    void UpdateNetworkUpgradeParameters(Consensus::UpgradeIndex idx, int nActivationHeight)
-    {
-        assert(idx > Consensus::BASE_NETWORK && idx < Consensus::MAX_NETWORK_UPGRADES);
-        consensus.vUpgrades[idx].nActivationHeight = nActivationHeight;
-    }
 };
-static CRegTestParams regTestParams;
 
-static CChainParams* pCurrentParams = 0;
+static std::unique_ptr<CChainParams> globalChainParams;
 
-const CChainParams& Params()
+const CChainParams &Params()
 {
-    assert(pCurrentParams);
-    return *pCurrentParams;
+    assert(globalChainParams);
+    return *globalChainParams;
 }
 
-CChainParams& Params(CBaseChainParams::Network network)
+std::unique_ptr<CChainParams> CreateChainParams(const std::string& chain)
 {
-    switch (network) {
-    case CBaseChainParams::MAIN:
-        return mainParams;
-    case CBaseChainParams::TESTNET:
-        return testNetParams;
-    case CBaseChainParams::REGTEST:
-        return regTestParams;
-    default:
-        assert(false && "Unimplemented network");
-        return mainParams;
-    }
+    if (chain == CBaseChainParams::MAIN)
+        return std::unique_ptr<CChainParams>(new CMainParams());
+    else if (chain == CBaseChainParams::TESTNET)
+        return std::unique_ptr<CChainParams>(new CTestNetParams());
+    else if (chain == CBaseChainParams::REGTEST)
+        return std::unique_ptr<CChainParams>(new CRegTestParams());
+    throw std::runtime_error(strprintf("%s: Unknown chain %s.", __func__, chain));
 }
 
-void SelectParams(CBaseChainParams::Network network)
+void SelectParams(const std::string& network)
 {
     SelectBaseParams(network);
-    pCurrentParams = &Params(network);
-}
-
-bool SelectParamsFromCommandLine()
-{
-    CBaseChainParams::Network network = NetworkIdFromCommandLine();
-    if (network == CBaseChainParams::MAX_NETWORK_TYPES)
-        return false;
-
-    SelectParams(network);
-    return true;
+    globalChainParams = CreateChainParams(network);
 }
 
 void UpdateNetworkUpgradeParameters(Consensus::UpgradeIndex idx, int nActivationHeight)
 {
-    regTestParams.UpdateNetworkUpgradeParameters(idx, nActivationHeight);
+    globalChainParams->UpdateNetworkUpgradeParameters(idx, nActivationHeight);
 }

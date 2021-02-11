@@ -792,7 +792,7 @@ double ConvertBitsToDouble(unsigned int nBits)
 
 int64_t GetBlockValue(int nHeight)
 {
-    if (Params().NetworkID() == CBaseChainParams::TESTNET) {
+    const bool isTestnet = Params().IsTestnet();
         if (nHeight < 200 && nHeight > 0)
             return 250000 * COIN;
     }
