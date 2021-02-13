@@ -18,7 +18,7 @@ CXnkStake* CXnkStake::NewXnkStake(const CTxIn& txin)
 
     // Find the previous transaction in database
     uint256 hashBlock;
-    CTransaction txPrev;
+    CTransactionRef txPrev;
     if (!GetTransaction(txin.prevout.hash, txPrev, hashBlock, true)) {
         error("%s : INFO: read txPrev failed, tx id prev: %s", __func__, txin.prevout.hash.GetHex());
         return nullptr;
@@ -36,7 +36,7 @@ CXnkStake* CXnkStake::NewXnkStake(const CTxIn& txin)
         return nullptr;
     }
 
-    return new CXnkStake(txPrev.vout[txin.prevout.n],
+    return new CPivStake(txPrev->vout[txin.prevout.n],
                          txin.prevout,
                          pindexFrom);
 }
