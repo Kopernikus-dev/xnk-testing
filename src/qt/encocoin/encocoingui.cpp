@@ -420,7 +420,7 @@ void EncoCoinGUI::message(const QString& title, const QString& message, unsigned
         // Append title to "EncoCoin - "
         if (!msgType.isEmpty())
             strTitle += " - " + msgType;
-        notificator->notify((Notificator::Class) nNotifyIcon, strTitle, message);
+        notificator->notify(static_cast<Notificator::Class>(nNotifyIcon), strTitle, message);
     }
 }
 
