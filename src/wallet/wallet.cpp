@@ -1753,8 +1753,11 @@ int CWallet::ScanForWalletTransactions(CBlockIndex* pindexStart, bool fUpdate, b
             }
 
             CBlock block;
-            ReadBlockFromDisk(block, pindex);
-            int posInBlock;
+            if (!ReadBlockFromDisk(block, pindex)) {
+                LogPrintf("Unable to read block %d (%s) from disk.", pindex->nHeight, pindex->GetBlockHash().ToString());
+                return -1;
+            }
+            int posInBlock
             for (posInBlock = 0; posInBlock < (int)block.vtx.size(); posInBlock++) {
                 const auto& tx = block.vtx[posInBlock];
                 if (AddToWalletIfInvolvingMe(tx, pindex->GetBlockHash(), posInBlock, fUpdate)) {
