@@ -28,9 +28,9 @@ public:
 private Q_SLOTS:
     void onCopy();
 private:
-    Ui::ReceiveDialog *ui;
-    QPixmap *qrImage;
-    SendCoinsRecipient *info = nullptr;
+    Ui::ReceiveDialog *ui{nullptr};
+    QPixmap *qrImage{nullptr};
+    SendCoinsRecipient *info{nullptr};
 };
 
 #endif // RECEIVEDIALOG_H
