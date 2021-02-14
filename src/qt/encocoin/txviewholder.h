@@ -41,9 +41,9 @@ public:
     }
 
 private:
-    int nDisplayUnit;
-    TransactionFilterProxy *filter = nullptr;
-    TxRow* txRow = nullptr;
+    int nDisplayUnit{0};
+    TransactionFilterProxy *filter{nullptr};
+    TxRow* txRow{nullptr};
 };
 
 #endif // TXVIEWHOLDER_H
